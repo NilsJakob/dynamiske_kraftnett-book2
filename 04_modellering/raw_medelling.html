@@ -64,6 +64,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '04_modellering/raw_medelling';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -334,6 +336,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-standardavvik-til-gaussisk-filter">Fra standardavvik til gaussisk filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-beskrivelse-til-vekting">Fra beskrivelse til vekting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokal-gjennomsnittsberegning">Lokal gjennomsnittsberegning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuisjon">Intuisjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenligning">Sammenligning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-innsikt">Viktig innsikt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummert">Oppsummert</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussisk-filter">Gaussisk filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diskret-versjon-tidsserier">Diskret versjon (tidsserier)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intuisjon</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representativ-dag">Representativ dag</a></li>
 </ul>
             </nav>
@@ -348,6 +364,161 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modellering-gaussisk-filter">
 <h1>Modellering gaussisk filter<a class="headerlink" href="#modellering-gaussisk-filter" title="Permalink to this heading">#</a></h1>
+<section id="fra-standardavvik-til-gaussisk-filter">
+<h2>Fra standardavvik til gaussisk filter<a class="headerlink" href="#fra-standardavvik-til-gaussisk-filter" title="Permalink to this heading">#</a></h2>
+<p>Vi har sett at standardavviket ( \sigma ) måler spredningen i dataene:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2}
+\]</div>
+<p>Dette tallet forteller oss hvor langt observasjoner typisk ligger fra gjennomsnittet.</p>
+<hr class="docutils" />
+<section id="fra-beskrivelse-til-vekting">
+<h3>Fra beskrivelse til vekting<a class="headerlink" href="#fra-beskrivelse-til-vekting" title="Permalink to this heading">#</a></h3>
+<p>I stedet for bare å <em>måle</em> spredningen, kan vi bruke ( \sigma ) til å konstruere en funksjon som gir vekter til datapunkter basert på avstand fra sentrum:</p>
+<div class="math notranslate nohighlight">
+\[
+G(x) = \frac{1}{\sqrt{2\pi}\,\sigma} \, e^{-\frac{x^2}{2\sigma^2}}
+\]</div>
+<p>Denne funksjonen gir:</p>
+<ul class="simple">
+<li><p>høy vekt til verdier nær sentrum</p></li>
+<li><p>lav vekt til verdier langt unna</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="lokal-gjennomsnittsberegning">
+<h3>Lokal gjennomsnittsberegning<a class="headerlink" href="#lokal-gjennomsnittsberegning" title="Permalink to this heading">#</a></h3>
+<p>Når vi analyserer tidsserier, ønsker vi ofte et lokalt gjennomsnitt rundt et tidspunkt ( t ).</p>
+<p>I stedet for et vanlig gjennomsnitt (der alle punkter teller likt), bruker vi gaussiske vekter:</p>
+<div class="math notranslate nohighlight">
+\[
+y_t = \sum_{k=-K}^{K} G(k)\, x_{t-k}
+\]</div>
+<p>Dette betyr:</p>
+<ul class="simple">
+<li><p>( x_{t-k} ): naboverdier</p></li>
+<li><p>( G(k) ): hvor mye hver nabo skal telle</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="intuisjon">
+<h3>Intuisjon<a class="headerlink" href="#intuisjon" title="Permalink to this heading">#</a></h3>
+<p>Dette kan tolkes som:</p>
+<blockquote>
+<div><p>Et gjennomsnitt der nærliggende observasjoner teller mest.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="sammenligning">
+<h3>Sammenligning<a class="headerlink" href="#sammenligning" title="Permalink to this heading">#</a></h3>
+<p>Vanlig glidende gjennomsnitt:</p>
+<div class="math notranslate nohighlight">
+\[
+y_t = \frac{1}{2K+1} \sum x_{t-k}
+\]</div>
+<p>Gaussisk filter:</p>
+<div class="math notranslate nohighlight">
+\[
+y_t = \sum w_k x_{t-k}, \quad w_k \propto e^{-\frac{k^2}{2\sigma^2}}
+\]</div>
+<p>Forskjellen er at:</p>
+<ul class="simple">
+<li><p>vanlig gjennomsnitt gir lik vekt</p></li>
+<li><p>gaussisk filter gir mest vekt til nærliggende punkter</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="viktig-innsikt">
+<h3>Viktig innsikt<a class="headerlink" href="#viktig-innsikt" title="Permalink to this heading">#</a></h3>
+<p>Standardavviket <span class="math notranslate nohighlight">\(\sigma\)</span>:</p>
+<ul class="simple">
+<li><p>bestemmer hvor bred fordelingen er</p></li>
+<li><p>bestemmer hvor mye vi “ser rundt” hvert punkt</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\sigma \uparrow \Rightarrow \text{mer glatting}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="oppsummert">
+<h3>Oppsummert<a class="headerlink" href="#oppsummert" title="Permalink to this heading">#</a></h3>
+<p>Vi har gått fra:</p>
+<ul class="simple">
+<li><p>gjennomsnitt ( \mu )</p></li>
+<li><p>spredning ( \sigma )</p></li>
+</ul>
+<p>til:</p>
+<ul class="simple">
+<li><p>en vektfunksjon (gaussisk kurve)</p></li>
+<li><p>som brukes til å beregne et lokalt, vektet gjennomsnitt</p></li>
+</ul>
+<p>Dette er kjernen i det gaussiske filteret.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># vis hvordan vektene faktisk ser ut</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">k</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Gaussiske vekter&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6   7
+   8   9  10]
+</pre></div>
+</div>
+<img alt="../_images/3512be0e1ce0b0602cc4a09c8750d9a02ab750620fe79860d759534c1c903acf.png" src="../_images/3512be0e1ce0b0602cc4a09c8750d9a02ab750620fe79860d759534c1c903acf.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="gaussisk-filter">
+<h2>Gaussisk filter<a class="headerlink" href="#gaussisk-filter" title="Permalink to this heading">#</a></h2>
+<p>Vi starter med den kontinuerlige gaussiske funksjonen:</p>
+<div class="math notranslate nohighlight">
+\[
+G(x) = \frac{1}{\sqrt{2\pi}\,\sigma} \, e^{-\frac{x^2}{2\sigma^2}}
+\]</div>
+<p>Her er:</p>
+<ul class="simple">
+<li><p>x : avstand fra sentrum</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span>: standardavvik som styrer bredden på filteret</p></li>
+<li><p>e : den naturlige eksponentialfunksjonen</p></li>
+</ul>
+<p>Denne funksjonen er kjent som normalfordelingen, og har en karakteristisk klokkeform. Verdier nær ( x = 0 ) får høy vekt, mens verdier lengre unna får stadig lavere vekt.</p>
+<hr class="docutils" />
+<section id="diskret-versjon-tidsserier">
+<h3>Diskret versjon (tidsserier)<a class="headerlink" href="#diskret-versjon-tidsserier" title="Permalink to this heading">#</a></h3>
+<p>Når vi jobber med datasett (for eksempel strømforbruk over tid), bruker vi en diskret versjon:</p>
+<div class="math notranslate nohighlight">
+\[
+y_t = \sum_{k=-K}^{K} G(k)\, x_{t-k}
+\]</div>
+<p>Dette betyr at hver verdi ( y_t ) er en vektet sum av nabopunkter, der vektene bestemmes av den gaussiske funksjonen.</p>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h3>Intuisjon<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Nærliggende punkter påvirker mest</p></li>
+<li><p>Fjerne punkter påvirker lite</p></li>
+<li><p>Resultatet er en glatt versjon av signalet</p></li>
+</ul>
+<p>Dette brukes ofte for å redusere støy i tidsserier.</p>
+</section>
+</section>
 <section id="representativ-dag">
 <h2>Representativ dag<a class="headerlink" href="#representativ-dag" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -547,7 +718,7 @@ Representativ dag: 2026-04-13
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/30e67ec20686034403cb887a4fd35b622b5e4d397e63ae5f63c7554f46eaa82b.png" src="../_images/30e67ec20686034403cb887a4fd35b622b5e4d397e63ae5f63c7554f46eaa82b.png" />
+<img alt="../_images/42e8762b574dbde19ac547299b1f40edde7b57e5f70feef495fde0a51f3c6aaa.png" src="../_images/42e8762b574dbde19ac547299b1f40edde7b57e5f70feef495fde0a51f3c6aaa.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -565,11 +736,6 @@ Representativ dag: 2026-04-13
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">interact</span><span class="p">(</span><span class="n">plot_sigma</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6799dec4f8b54633b050a066bb6a04d2", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_sigma(sigma)&gt;
 </pre></div>
 </div>
 </div>
@@ -641,6 +807,20 @@ Representativ dag: 2026-04-13
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-standardavvik-til-gaussisk-filter">Fra standardavvik til gaussisk filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-beskrivelse-til-vekting">Fra beskrivelse til vekting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokal-gjennomsnittsberegning">Lokal gjennomsnittsberegning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuisjon">Intuisjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenligning">Sammenligning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-innsikt">Viktig innsikt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummert">Oppsummert</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussisk-filter">Gaussisk filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diskret-versjon-tidsserier">Diskret versjon (tidsserier)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intuisjon</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representativ-dag">Representativ dag</a></li>
 </ul>
   </nav></div>
