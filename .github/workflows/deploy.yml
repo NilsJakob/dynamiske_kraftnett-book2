@@ -18,12 +18,14 @@ jobs:
         run: |
           pip install jupyter-book
 
-      - name: Build the book
+      - name: Build book
         run: |
           jupyter-book build .
+          ls -R _build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build/html
+          publish_dir: _build/html
+
