@@ -7,5 +7,5 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "TEST2 RUNNING"
-``
+      - name: Print message
+        run: echo "TEST2 RUNNING"
