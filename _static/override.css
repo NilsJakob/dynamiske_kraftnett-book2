@@ -1,0 +1,31 @@
+/* =====================================
+   MATCH ACTUAL SPHINX BOOK THEME DOM
+===================================== */
+
+/* make page full width */
+.bd-container__inner.bd-page-width {
+    max-width: 100% !important;
+}
+
+/* expand main content */
+.bd-main {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* expand content container */
+.bd-content {
+    max-width: 100% !important;
+}
+
+/* control readable width */
+.bd-article-container {
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* OPTIONAL: adjust sidebar width */
+.bd-sidebar-primary {
+    width: 260px !important;
+}
