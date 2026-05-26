@@ -334,7 +334,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
 </ul>
             </nav>
         </div>
@@ -534,15 +539,16 @@ Hva er Pandas?</p>
 </div>
 </div>
 </div>
-<p>🔹 Hva er en tidsserie?
-I kraftsystemer jobber vi ofte med tidsserier:
+<section id="hva-er-en-tidsserie">
+<h2>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h2>
+<p>I kraftsystemer jobber vi ofte med tidsserier:
 data som er målt over tid
 Eksempel:</p>
 <p>last (MW)</p>
 <p>produksjon</p>
 <p>frekvens</p>
 <section id="viktig-datetimeindex">
-<h2>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h2>
+<h3>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h3>
 <p>En vanlig index er bare “labels”.
 Men DatetimeIndex gir deg tidsforståelse innebygd, som betyr at du kan hente ut tid direkte.</p>
 <ul class="simple">
@@ -643,7 +649,10 @@ Time(Local)
 </div>
 <p>Første linje i dataene 18448,59 er norsk format: , = desimaltegn</p>
 <p>pandas har lest det som tekst</p>
-<p>FIX (konverter til tall)</p>
+</section>
+</section>
+<section id="fix-konverter-til-tall">
+<h2>FIX (konverter til tall)<a class="headerlink" href="#fix-konverter-til-tall" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Consumption&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Consumption&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -685,7 +694,10 @@ Freq: D, Name: Consumption, dtype: float64
 </div>
 </div>
 </div>
-<p>🧠 Hvorfor dette er viktig i dette kurset
+</section>
+<section id="motivasjon">
+<h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h2>
+<p>Hvorfor dette er viktig i dette kurset
 I dette kurset bruker vi pandas til å:
 ✅ lese ekte kraftsystemdata
 ✅ analysere lastprofiler
@@ -763,7 +775,12 @@ analysere dynamikk (swing equation)</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
 </ul>
   </nav></div>
 
