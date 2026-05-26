@@ -1,0 +1,38 @@
+title: Dynamiske kraftnett
+author: Nils Jakob Johannesen
+copyright: "2026"
+
+execute:
+  execute_notebooks: false
+
+html_theme: sphinx_book_theme
+
+html_theme_options:
+  show_prev_next: false
+  secondary_sidebar_items: []
+
+html_static_path:
+  - _static
+
+
+exclude_patterns:
+  - jb-env/**
+  - jv-env/**
+  - _build/**
+
+sphinx:
+  config:
+    html_css_files:
+      - override.css
+
+  extra_extensions: 
+    - sphinxcontrib.bibtex
+
+    
+bibtex_bibfiles:
+  - references.bib
+
+bibtex_reference_style: author-year
+
+launch_buttons:
+  thebe: false

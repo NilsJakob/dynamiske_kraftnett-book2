@@ -1,0 +1,22 @@
+format: jb-book
+root: index
+
+options:
+  numbered: true
+
+parts:
+  - caption: Tallgrunnlag
+    chapters:
+      - file: 02_tallgrunnlag/norske_data_slides
+
+  - caption: Analyse
+    chapters:
+      - file: 03_data/behandle_tall
+
+  - caption: Modellering
+    chapters:
+      - file: 04_modellering/raw_medelling
+
+  - caption: Referanser
+    chapters:
+      - file: references
