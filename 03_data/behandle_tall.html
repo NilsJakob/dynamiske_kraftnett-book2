@@ -311,7 +311,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -327,6 +329,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -526,12 +536,22 @@ Hva er Pandas?</p>
 </div>
 <p>🔹 Hva er en tidsserie?
 I kraftsystemer jobber vi ofte med tidsserier:
-👉 data som er målt over tid
+data som er målt over tid
 Eksempel:</p>
 <p>last (MW)</p>
 <p>produksjon</p>
 <p>frekvens</p>
-<p>Viktig: DatetimeIndex</p>
+<section id="viktig-datetimeindex">
+<h2>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h2>
+<p>En vanlig index er bare “labels”.
+Men DatetimeIndex gir deg tidsforståelse innebygd, som betyr at du kan hente ut tid direkte.</p>
+<ul class="simple">
+<li><p>df.index.hour</p></li>
+<li><p>df.index.day</p></li>
+<li><p>df.index.month</p></li>
+<li><p>df.index.year</p></li>
+</ul>
+<p>Dette er veldig nyttig når vi jobber med tidsserier</p>
 <p>For å analysere tidsserier setter vi tid som indeks:</p>
 <p>Selv med parse_dates, kan pandas feile hvis formatet er rart.</p>
 <div class="cell docutils container">
@@ -677,6 +697,7 @@ Når dataene er klare, kan vi:</p>
 glatte data (Gaussian-filter)
 analysere dynamikk (swing equation)</p>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -732,6 +753,21 @@ analysere dynamikk (swing equation)</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
