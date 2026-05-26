@@ -16,16 +16,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install jupyter-book
+          pip uninstall -y mystmd jupyter-book || true
+          pip install "jupyter-book==0.15.1"
 
-      - name: Build book
+      - name: Build the book
         run: |
           jupyter-book build .
-          ls -R _build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _build/html
-
