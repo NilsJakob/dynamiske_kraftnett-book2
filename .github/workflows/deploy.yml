@@ -4,17 +4,26 @@ on:
   push:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - run: pip install jupyter-book
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - run: jupyter-book build .
+      - name: Install dependencies
+        run: |
+          pip install jupyter-book
 
-      - uses: peaceiris/actions-gh-pages@v4
+      - name: Build the book
+        run: |
+          jupyter-book build .
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_build/html
