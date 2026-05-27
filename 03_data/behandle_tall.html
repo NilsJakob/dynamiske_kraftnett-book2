@@ -334,12 +334,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
 </ul>
             </nav>
         </div>
@@ -356,7 +358,7 @@ document.write(`
 <p>Introduksjon: Python filtyper og Pandas
 Hva er Pandas?</p>
 <p>Pandas er et bibliotek i Python som brukes til å jobbe med data.</p>
-<p>pandas er et sentralt verktøy for dataanalyse <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Wes McKinney. Data structures for statistical computing in python. In Proceedings of the 9th Python in Science Conference, 51–56. 2010.">McK10</a>]</span>.</p>
+<p>Pandas er et sentralt verktøy for dataanalyse <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Wes McKinney. Data structures for statistical computing in python. In Proceedings of the 9th Python in Science Conference, 51–56. 2010.">McK10</a>]</span>.</p>
 <p>NumPy brukes for numeriske beregninger <span id="id2">[<a class="reference internal" href="../references.html#id3" title="Charles R. Harris and others. Array programming with numpy. Nature, 585:357–362, 2020. doi:10.1038/s41586-020-2649-2.">H+20</a>]</span>.</p>
 <hr class="docutils" />
 <p>Hva brukes det til?</p>
@@ -373,6 +375,8 @@ Hva er Pandas?</p>
 <p>Når vi skriver det på denne måten:</p>
 <p>df = pd.read_csv(“../data/load_data.csv”)</p>
 <p>../ betyr en mappe opp</p>
+<hr class="docutils" />
+<p>Tabellen under viser ulike filtyper som brukes til kraftsystemdata og på hvilken måte vi bruker de.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Filtype</p></th>
@@ -418,6 +422,80 @@ Hva er Pandas?</p>
 <td><p>Serialisering av Python-objekter til binært format</p></td>
 <td><p>✅ Midlertidig lagring i Python</p></td>
 <td><p>Python standard library <a class="reference external" href="https://energifaktanorge.no/en/interactive-map-quick-downloads/quick-downloads/">3</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="internasjonal-standard">
+<h2>Internasjonal standard<a class="headerlink" href="#internasjonal-standard" title="Permalink to this heading">#</a></h2>
+<p>For å blant annet kunne behandle geografiske tidsforskjeller benyttes Coordinated Universal Time (UTC), en felles referansetid som aldri forandrer seg</p>
+<p>UTC brukes fordi:</p>
+<ul class="simple">
+<li><p>ingen sommertid → ingen forvirring</p></li>
+<li><p>gjør data sammenlignbare globalt</p></li>
+<li><p>unngår feil i tidsserier</p></li>
+<li><p>standard i API-er, databaser og analyse</p></li>
+</ul>
+<p>I cellen under kaller vi på importerer vi datetime, timezone, fra datetme som er et begrep og en klasse i Python som brukes til å representere dato og tidspunkt</p>
+<p>Den inneholder:</p>
+<ul class="simple">
+<li><p>år: 2026</p></li>
+<li><p>måned: 1</p></li>
+<li><p>dag: 1</p></li>
+<li><p>time: 13</p></li>
+<li><p>minutt: 45</p></li>
+<li><p>sekund: 00</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-01 13:45:00
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi oppdager fort at denne typen å representere tid på ikke vil fungere fordi den ikke tar høyde for tidssoner eller normaltid/sommertid.</p>
+<p>Dette løses i timezone med å bruke utc:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">utc_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">utc_now</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-05-27 12:16:50.789300+00:00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sted</p></th>
+<th class="head"><p>Tid</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>UTC</p></td>
+<td><p>12:00</p></td>
+</tr>
+<tr class="row-odd"><td><p>Norge (vinter)</p></td>
+<td><p>13:00 (UTC +1)</p></td>
+</tr>
+<tr class="row-even"><td><p>Norge (sommer)</p></td>
+<td><p>14:00 (UTC +2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>New York</p></td>
+<td><p>07:00 (UTC −5)</p></td>
 </tr>
 </tbody>
 </table>
@@ -539,6 +617,7 @@ Hva er Pandas?</p>
 </div>
 </div>
 </div>
+</section>
 <section id="hva-er-en-tidsserie">
 <h2>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h2>
 <p>I kraftsystemer jobber vi ofte med tidsserier:
@@ -563,7 +642,6 @@ Men DatetimeIndex gir deg tidsforståelse innebygd, som betyr at du kan hente ut
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/load_data.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time(Local)&quot;</span><span class="p">])</span>
-<span class="c1">#df = df.set_index(&quot;Time(Local)&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -698,14 +776,18 @@ Freq: D, Name: Consumption, dtype: float64
 <section id="motivasjon">
 <h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h2>
 <p>Hvorfor dette er viktig i dette kurset
-I dette kurset bruker vi pandas til å:
-✅ lese ekte kraftsystemdata
-✅ analysere lastprofiler
-✅ finne mønstre i forbruk
-✅ koble data til dynamiske modeller</p>
-<p>🎯 Kobling videre
-Når dataene er klare, kan vi:</p>
-<p>lage en representativ døgnprofil
+I dette kurset bruker vi pandas til å:</p>
+<ul class="simple">
+<li><p>lese ekte kraftsystemdata</p></li>
+<li><p>analysere lastprofiler</p></li>
+<li><p>finne mønstre i forbruk</p></li>
+<li><p>koble data til dynamiske modeller</p></li>
+</ul>
+</section>
+<section id="kobling-videre">
+<h2>Kobling videre<a class="headerlink" href="#kobling-videre" title="Permalink to this heading">#</a></h2>
+<p>Når dataene er klare, kan vi:</p>
+<p>Lage en representativ døgnprofil
 glatte data (Gaussian-filter)
 analysere dynamikk (swing equation)</p>
 </section>
@@ -775,12 +857,14 @@ analysere dynamikk (swing equation)</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
 </ul>
   </nav></div>
 
