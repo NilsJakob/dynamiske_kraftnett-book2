@@ -350,6 +350,311 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="application-programming-interface-api">
 <h1>Application Programming Interface (API)<a class="headerlink" href="#application-programming-interface-api" title="Permalink to this heading">#</a></h1>
+<p>Med Application Programming Interface eller API, kan vi få tilgang til databased direkte gjennom en API-nøkkel (API-KEY).</p>
+<p>API-nøkkelen er en adgangsnøkkel til data, som identifiserer hvem som henter data med en digital ID, og bestemmer hvilke og hvor mye data du får lov til å hente.</p>
+<p>Mange tjenester gir deg en gratis API-nøkkel ved registrering, men ofte er tjenesten laget slik at dette kun gjelder ved et lavt antall kall f.eks. 100–10 000 kall per dag med begrenset hastighet (rate limits) og litt lavere datakvalitet / forsinkelse, enn de tjenestene man betaler for.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>API / Datasett</p></th>
+<th class="head"><p>Lenke</p></th>
+<th class="head"><p>Krever nøkkel</p></th>
+<th class="head"><p>Type data</p></th>
+<th class="head"><p>Kommentar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Energy‑Charts API</p></td>
+<td><p><a class="reference external" href="https://api.energy-charts.info/">https://api.energy-charts.info/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Strømproduksjon, priser, flyt</p></td>
+<td><p>Best direkte API for EU strømdata</p></td>
+</tr>
+<tr class="row-odd"><td><p>Open‑Meteo</p></td>
+<td><p><a class="reference external" href="https://api.open-meteo.com/">https://api.open-meteo.com/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Vær (temp, vind, sol)</p></td>
+<td><p>Viktig for energimodellering</p></td>
+</tr>
+<tr class="row-even"><td><p>Frankfurter API</p></td>
+<td><p><a class="reference external" href="https://api.frankfurter.dev/">https://api.frankfurter.dev/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Valutakurser</p></td>
+<td><p>Relevant for energimarkeder</p></td>
+</tr>
+<tr class="row-odd"><td><p>Open Power System Data</p></td>
+<td><p><a class="reference external" href="https://open-power-system-data.org/">https://open-power-system-data.org/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Load, vind/sol, priser</p></td>
+<td><p>CSV/JSON datasett, ikke ren API</p></td>
+</tr>
+<tr class="row-even"><td><p>Open Energy Data (OEDI)</p></td>
+<td><p><a class="reference external" href="https://data.openei.org/">https://data.openei.org/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Grid, fornybar, simulering</p></td>
+<td><p>Stor data lake</p></td>
+</tr>
+<tr class="row-odd"><td><p>EIA Open Data</p></td>
+<td><p><a class="reference external" href="https://www.eia.gov/opendata/">https://www.eia.gov/opendata/</a></p></td>
+<td><p>⚠️ Delvis</p></td>
+<td><p>Energi (US)</p></td>
+<td><p>API krever nøkkel, men bulk-data åpen</p></td>
+</tr>
+<tr class="row-even"><td><p>ENTSO‑E Transparency</p></td>
+<td><p><a class="reference external" href="https://transparency.entsoe.eu/">https://transparency.entsoe.eu/</a></p></td>
+<td><p>⚠️ Delvis</p></td>
+<td><p>Strømdata EU</p></td>
+<td><p>API krever nøkkel, men CSV tilgjengelig</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Land / Region</p></th>
+<th class="head"><p>API / Kilde</p></th>
+<th class="head"><p>Lenke</p></th>
+<th class="head"><p>Nøkkel</p></th>
+<th class="head"><p>Type data</p></th>
+<th class="head"><p>Kommentar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>🇳🇴 Norge</p></td>
+<td><p>Statnett / Nord Pool</p></td>
+<td><p><a class="reference external" href="https://www.statnett.no/">https://www.statnett.no/</a></p></td>
+<td><p>⚠️ Delvis</p></td>
+<td><p>Load, flyt, priser</p></td>
+<td><p>API ikke offisielt komplett, men åpne data finnes</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇸🇪 Sverige</p></td>
+<td><p>Svenska kraftnät</p></td>
+<td><p><a class="reference external" href="https://api.sek.se/">https://api.sek.se/</a></p></td>
+<td><p>❌ / ⚠️</p></td>
+<td><p>Load, balanse</p></td>
+<td><p>Noen åpne endpoints</p></td>
+</tr>
+<tr class="row-even"><td><p>🇫🇮 Finland</p></td>
+<td><p>Fingrid API</p></td>
+<td><p><a class="reference external" href="https://data.fingrid.fi/en/">https://data.fingrid.fi/en/</a></p></td>
+<td><p>✅ Ja (gratis)</p></td>
+<td><p>Load, produksjon, frekvens</p></td>
+<td><p>Krever gratis API‑nøkkel</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇩🇰 Danmark</p></td>
+<td><p>Energinet DataHub</p></td>
+<td><p><a class="reference external" href="https://www.energidataservice.dk/">https://www.energidataservice.dk/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Produksjon, priser, marked</p></td>
+<td><p>Veldig bra REST API uten nøkkel</p></td>
+</tr>
+<tr class="row-even"><td><p>🇩🇪 Tyskland</p></td>
+<td><p>Energy‑Charts</p></td>
+<td><p><a class="reference external" href="https://api.energy-charts.info/">https://api.energy-charts.info/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Produksjon, priser</p></td>
+<td><p>En av de beste åpne APIene</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇩🇪 Tyskland</p></td>
+<td><p>SMARD (Bundesnetzagentur)</p></td>
+<td><p><a class="reference external" href="https://www.smard.de/">https://www.smard.de/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Produksjon, priser</p></td>
+<td><p>JSON endpoints via web</p></td>
+</tr>
+<tr class="row-even"><td><p>🇫🇷 Frankrike</p></td>
+<td><p>RTE Eco2mix</p></td>
+<td><p><a class="reference external" href="https://opendata.rte-france.com/">https://opendata.rte-france.com/</a></p></td>
+<td><p>✅ Ja (gratis)</p></td>
+<td><p>Produksjon, load</p></td>
+<td><p>Krever registrering</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇬🇧 Storbritannia</p></td>
+<td><p>National Grid ESO</p></td>
+<td><p><a class="reference external" href="https://data.nationalgrideso.com/">https://data.nationalgrideso.com/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Load, produksjon, karbon</p></td>
+<td><p>Åpen portal med API</p></td>
+</tr>
+<tr class="row-even"><td><p>🇪🇺 EU</p></td>
+<td><p>ENTSO‑E</p></td>
+<td><p><a class="reference external" href="https://transparency.entsoe.eu/">https://transparency.entsoe.eu/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Alt (load, priser, produksjon)</p></td>
+<td><p>API krever nøkkel, men bulk data åpen</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇺🇸 USA</p></td>
+<td><p>EIA</p></td>
+<td><p><a class="reference external" href="https://www.eia.gov/opendata/">https://www.eia.gov/opendata/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Energi (alle sektorer)</p></td>
+<td><p>API krever nøkkel, bulk data fri</p></td>
+</tr>
+<tr class="row-even"><td><p>🇺🇸 USA</p></td>
+<td><p>CAISO (California)</p></td>
+<td><p><a class="reference external" href="https://www.caiso.com/">https://www.caiso.com/</a></p></td>
+<td><p>❌ / ⚠️</p></td>
+<td><p>Markedsdata, priser</p></td>
+<td><p>Mange åpne CSV/feeds</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇨🇦 Canada</p></td>
+<td><p>IESO</p></td>
+<td><p><a class="reference external" href="https://www.ieso.ca/en/Power-Data">https://www.ieso.ca/en/Power-Data</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Load, priser, produksjon</p></td>
+<td><p>Åpne datafeeds</p></td>
+</tr>
+<tr class="row-even"><td><p>🇦🇺 Australia</p></td>
+<td><p>AEMO</p></td>
+<td><p><a class="reference external" href="https://aemo.com.au/energy-systems/electricity">https://aemo.com.au/energy-systems/electricity</a></p></td>
+<td><p>❌ / ⚠️</p></td>
+<td><p>Markedsdata</p></td>
+<td><p>API + nedlastbare datasett</p></td>
+</tr>
+<tr class="row-odd"><td><p>🌍 Global</p></td>
+<td><p>Open‑Meteo</p></td>
+<td><p><a class="reference external" href="https://api.open-meteo.com/">https://api.open-meteo.com/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Værdata</p></td>
+<td><p>Viktig input til energimodeller</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Land / Region</p></th>
+<th class="head"><p>API / Datasett</p></th>
+<th class="head"><p>Lenke</p></th>
+<th class="head"><p>Nøkkel</p></th>
+<th class="head"><p>Type data</p></th>
+<th class="head"><p>Tidsoppløsning</p></th>
+<th class="head"><p>Kommentar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>🇩🇪 Tyskland / EU</p></td>
+<td><p>Energy‑Charts API</p></td>
+<td><p><a class="reference external" href="https://api.energy-charts.info/">https://api.energy-charts.info/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Produksjon, priser, flyt</p></td>
+<td><p>Time</p></td>
+<td><p>Beste åpne strøm-API uten nøkkel</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇩🇰 Danmark</p></td>
+<td><p>Energi Data Service (Energinet)</p></td>
+<td><p><a class="reference external" href="https://www.energidataservice.dk/">https://www.energidataservice.dk/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Produksjon, priser, marked</p></td>
+<td><p>Time</p></td>
+<td><p>Svært god og stabil REST API</p></td>
+</tr>
+<tr class="row-even"><td><p>🌍 Global</p></td>
+<td><p>Open‑Meteo</p></td>
+<td><p><a class="reference external" href="https://api.open-meteo.com/">https://api.open-meteo.com/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Vær (vind, temp)</p></td>
+<td><p>Time</p></td>
+<td><p>Viktig forklaringsvariabler</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇪🇺 Europa</p></td>
+<td><p>Open Power System Data (OPSD)</p></td>
+<td><p><a class="reference external" href="https://open-power-system-data.org/">https://open-power-system-data.org/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Load, vind, sol, priser</p></td>
+<td><p>Time</p></td>
+<td><p>Standard datasett i forskning</p></td>
+</tr>
+<tr class="row-even"><td><p>🇪🇺 Europa</p></td>
+<td><p>ENTSO‑E (Transparency + FTP)</p></td>
+<td><p><a class="reference external" href="https://transparency.entsoe.eu/">https://transparency.entsoe.eu/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Load, produksjon, priser</p></td>
+<td><p>Time</p></td>
+<td><p>Mest komplette EU‑kilde</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇳🇴 Norge</p></td>
+<td><p>Statnett</p></td>
+<td><p><a class="reference external" href="https://www.statnett.no/">https://www.statnett.no/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Load, flyt</p></td>
+<td><p>Time</p></td>
+<td><p>Krever scraping / JSON endpoints</p></td>
+</tr>
+<tr class="row-even"><td><p>🇫🇮 Finland</p></td>
+<td><p>Fingrid Data API</p></td>
+<td><p><a class="reference external" href="https://data.fingrid.fi/en/">https://data.fingrid.fi/en/</a></p></td>
+<td><p>✅ Ja (gratis)</p></td>
+<td><p>Produksjon, load, frekvens</p></td>
+<td><p>Minutt–time</p></td>
+<td><p>Svært høy kvalitet</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇸🇪 Sverige</p></td>
+<td><p>Svenska Kraftnät</p></td>
+<td><p><a class="reference external" href="https://www.svk.se/">https://www.svk.se/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Load, balanse</p></td>
+<td><p>Time</p></td>
+<td><p>Data tilgjengelig, API begrenset</p></td>
+</tr>
+<tr class="row-even"><td><p>🇬🇧 UK</p></td>
+<td><p>National Grid ESO</p></td>
+<td><p><a class="reference external" href="https://data.nationalgrideso.com/">https://data.nationalgrideso.com/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Load, karbon, produksjon</p></td>
+<td><p>5 min–time</p></td>
+<td><p>God for høyoppløselig analyse</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇫🇷 Frankrike</p></td>
+<td><p>RTE Eco2mix</p></td>
+<td><p><a class="reference external" href="https://opendata.rte-france.com/">https://opendata.rte-france.com/</a></p></td>
+<td><p>✅ Ja (gratis)</p></td>
+<td><p>Produksjon, load</p></td>
+<td><p>Time</p></td>
+<td><p>Krever registrering</p></td>
+</tr>
+<tr class="row-even"><td><p>🇺🇸 USA</p></td>
+<td><p>EIA Open Data</p></td>
+<td><p><a class="reference external" href="https://www.eia.gov/opendata/">https://www.eia.gov/opendata/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Energi (alle)</p></td>
+<td><p>Dag–måned</p></td>
+<td><p>API krever nøkkel, bulk åpen</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇺🇸 USA</p></td>
+<td><p>CAISO</p></td>
+<td><p><a class="reference external" href="https://www.caiso.com/">https://www.caiso.com/</a></p></td>
+<td><p>❌ / ⚠️</p></td>
+<td><p>Markedsdata, priser</p></td>
+<td><p>5 min–time</p></td>
+<td><p>Viktig for markedsanalyse</p></td>
+</tr>
+<tr class="row-even"><td><p>🇨🇦 Canada</p></td>
+<td><p>IESO</p></td>
+<td><p><a class="reference external" href="https://www.ieso.ca/en/Power-Data">https://www.ieso.ca/en/Power-Data</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Load, priser, produksjon</p></td>
+<td><p>Time</p></td>
+<td><p>Åpne feeds</p></td>
+</tr>
+<tr class="row-odd"><td><p>🇦🇺 Australia</p></td>
+<td><p>AEMO</p></td>
+<td><p><a class="reference external" href="https://aemo.com.au/">https://aemo.com.au/</a></p></td>
+<td><p>⚠️</p></td>
+<td><p>Markedsdata</p></td>
+<td><p>5 min</p></td>
+<td><p>Krever noe arbeid</p></td>
+</tr>
+<tr class="row-even"><td><p>🌍 Global</p></td>
+<td><p>Open Energy Data Initiative (OEDI)</p></td>
+<td><p><a class="reference external" href="https://data.openei.org/">https://data.openei.org/</a></p></td>
+<td><p>❌ Nei</p></td>
+<td><p>Grid, simulering</p></td>
+<td><p>Varierer</p></td>
+<td><p>Stor forskningsplattform</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">entsoe</span><span class="w"> </span><span class="kn">import</span> <span class="n">EntsoePandasClient</span>

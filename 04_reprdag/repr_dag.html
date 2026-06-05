@@ -65,6 +65,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '04_reprdag/repr_dag';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -323,7 +325,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -339,6 +343,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akser-rader-og-kolonner">Akser - rader og kolonner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hele-scriptet-og-plot">Hele scriptet og plot</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -350,11 +364,308 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-og-modeller">
 <h1>Data og modeller<a class="headerlink" href="#data-og-modeller" title="Permalink to this heading">#</a></h1>
-<p>For å koble data til modeller skal vi bruke python-bibliotekene pandas og numpy</p>
+<p>For å koble data til modeller skal vi bruke python-bibliotekene pandas og numpy, for å lage datadrevne modeller.</p>
 <p>Datasettet kan lastes ned her:</p>
 <ul class="simple">
-<li><p><span class="xref myst">Last ned norway_load_2025.csv</span></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/58efdfe81b3feb996e92ad0017159f8b/load_data.csv"><span class="xref download myst">Last ned load_data.csv</span></a></p></li>
 </ul>
+<p>Dataene er lastet ned fra Statnetts side <a class="reference external" href="https://www.statnett.no/for-aktorer-i-kraftbransjen/tall-og-data-fra-kraftsystemet">Tall og data fra kraftsystemet</a> og viser timesbaserte verdier av produskjon og forbruk av elektrisk kraft fra 01.01.2026 til 20.05.2026.</p>
+<p>Tidligere har vi brukt numpy og pandas seperat, først numpy til å lage en typisk døgnprofil og deretter pandas til å lese data.</p>
+<p>Nå skal vi kombinere de til å finne en representativ dag i den angitte dataperiosen fra 01.01.2026 til 20.05.2026.</p>
+<section id="index-datetime">
+<h2>Index - datetime<a class="headerlink" href="#index-datetime" title="Permalink to this heading">#</a></h2>
+<p>Vi vil finne den mest representative døgnprofilen i datasettet og vi ser nå styrken til Datetimeindex, ved at vi kan lage en døgnmatrise. Vi har tidliger sett at vi kan hente ut tidsforståelse direkte ved Datetimeindex. Vi kan legge til dette som en kolonne i vår dataframe ved å bruke tilegge <code class="docutils literal notranslate"><span class="pre">df.index.date</span></code> et <code class="docutils literal notranslate"><span class="pre">df['kolonnenavn']</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Production  Consumption        date
+Time(Local)                                                  
+2026-01-01 00:00:00+01:00   18448,59     16662.95  2026-01-01
+2026-01-01 01:00:00+01:00   18693,66     14953.24  2026-01-01
+2026-01-01 02:00:00+01:00   18639,68     14298.07  2026-01-01
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi har nå fått en egen kolonne som gir oss datoen eksplisitt. Deretter kan vi gruppere data etter dato og samle alle “Consumption”-verdier per dag i en liste.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;Consumption&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daglige tidsserier:&#39;</span><span class="p">,</span><span class="n">daily</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daglige tidsserier: date
+2026-01-01    [16662.95, 14953.24, 14298.07, 13254.81, 12678...
+2026-01-02    [14821.37, 13826.33, 12743.11, 12786.86, 12647...
+2026-01-03    [22115.9, 21572.64, 20710.6, 20344.44, 19724.8...
+2026-01-04    [23251.09, 22995.68, 22691.57, 22255.31, 21886...
+Name: Consumption, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi får tilbake en pandas Series hvor hver verdi er en Python-liste</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">daily</span><span class="p">))</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beholder kun komplette døgnlastprofiler, kun de seriene som har 24 timesverdier</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily</span> <span class="o">=</span> <span class="n">daily</span><span class="p">[</span><span class="n">daily</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">daily</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>date
+2026-01-01    [16662.95, 14953.24, 14298.07, 13254.81, 12678...
+2026-01-02    [14821.37, 13826.33, 12743.11, 12786.86, 12647...
+2026-01-03    [22115.9, 21572.64, 20710.6, 20344.44, 19724.8...
+2026-01-04    [23251.09, 22995.68, 22691.57, 22255.31, 21886...
+Name: Consumption, dtype: object
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi gjør om til matriseverdier ved <code class="docutils literal notranslate"><span class="pre">.values</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">daily</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[list([16662.95, 14953.24, 14298.07, 13254.81, 12678.51, 12706.47, 12967.66, 13289.36, 13593.11, 14009.36, 14417.61, 15096.71, 15274.79, 15438.74, 15905.07, 16701.68, 17356.46, 17827.26, 18362.0, 18243.72, 18017.53, 17380.07, 16740.26, 15974.65])
+ list([14821.37, 13826.33, 12743.11, 12786.86, 12647.35, 12850.44, 14353.17, 16450.39, 18967.05, 20141.75, 20267.21, 19592.5, 20247.72, 20332.97, 21395.35, 23500.14, 24447.04, 24701.44, 24840.75, 24320.26, 23539.46, 23506.18, 22675.59, 21693.33])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Numpy funksjonen <code class="docutils literal notranslate"><span class="pre">.vstack()</span></code> stacker verdiene vertikalt i en 2D matrise med shape = (antall dager, antall observasjoner per dag)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Konverter til array</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">daily</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[16662.95 14953.24 14298.07 13254.81 12678.51 12706.47 12967.66 13289.36
+  13593.11 14009.36 14417.61 15096.71 15274.79 15438.74 15905.07 16701.68
+  17356.46 17827.26 18362.   18243.72 18017.53 17380.07 16740.26 15974.65]
+ [14821.37 13826.33 12743.11 12786.86 12647.35 12850.44 14353.17 16450.39
+  18967.05 20141.75 20267.21 19592.5  20247.72 20332.97 21395.35 23500.14
+  24447.04 24701.44 24840.75 24320.26 23539.46 23506.18 22675.59 21693.33]]
+(139, 24)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="akser-rader-og-kolonner">
+<h2>Akser - rader og kolonner<a class="headerlink" href="#akser-rader-og-kolonner" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>axis</p></th>
+<th class="head"><p>Hva betyr det</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>axis=0</p></td>
+<td><p>gå nedover (kolonnevis)</p></td>
+</tr>
+<tr class="row-odd"><td><p>axis=1</p></td>
+<td><p>gå bortover (radvis)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[16662.95, 14953.24, 14298.07, 13254.81, 12678.51, 12706.47,
+        12967.66, 13289.36, 13593.11, 14009.36, 14417.61, 15096.71,
+        15274.79, 15438.74, 15905.07, 16701.68, 17356.46, 17827.26,
+        18362.  , 18243.72, 18017.53, 17380.07, 16740.26, 15974.65],
+       [14821.37, 13826.33, 12743.11, 12786.86, 12647.35, 12850.44,
+        14353.17, 16450.39, 18967.05, 20141.75, 20267.21, 19592.5 ,
+        20247.72, 20332.97, 21395.35, 23500.14, 24447.04, 24701.44,
+        24840.75, 24320.26, 23539.46, 23506.18, 22675.59, 21693.33]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">16662.95</span><span class="o">+</span><span class="mf">14821.37</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15742.16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_mean</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">example_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[15742.16  14389.785 13520.59  13020.835 12662.93  12778.455 13660.415
+ 14869.875 16280.08  17075.555 17342.41  17344.605 17761.255 17885.855
+ 18650.21  20100.91  20901.75  21264.35  21601.375 21281.99  20778.495
+ 20443.125 19707.925 18833.99 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gjennomsnittsdøgn</span>
+<span class="n">mean_profile</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[17348.67064748 16825.29064748 16483.71158273 16271.33827338
+ 16361.54647482 17045.13460432 18490.70035971 19485.6418705
+ 19415.1118705  18602.7971223  17716.57820144 17068.45920863
+ 16669.99539568 16525.28388489 16645.27978417 17207.02625899
+ 18207.51208633 19614.14935252 20812.24338129 21374.07661871
+ 21078.09258993 20460.2818705  19615.22582734 18308.60431655]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2677912c690&gt;]
+</pre></div>
+</div>
+<img alt="../_images/2dd0c05612fc5d9ae66e978ba58955b003f2542fc6bdb05b871fa59c3cd2c2db.png" src="../_images/2dd0c05612fc5d9ae66e978ba58955b003f2542fc6bdb05b871fa59c3cd2c2db.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">mean_profile</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ -685.72064748, -1872.05064748, -2185.64158273, -3016.52827338,
+       -3683.03647482, -4338.66460432, -5523.04035971, -6196.2818705 ,
+       -5822.0018705 , -4593.4371223 , -3298.96820144, -1971.74920863,
+       -1395.20539568, -1086.54388489,  -740.20978417,  -505.34625899,
+        -851.05208633, -1786.88935252, -2450.24338129, -3130.35661871,
+       -3060.56258993, -3080.2118705 , -2874.96582734, -2333.95431655])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi bruker en Euklids distanse <span class="math notranslate nohighlight">\(\sqrt{x^2_1+x^2_s+...+x^2_n}\)</span> for å finne hvert døgns absolutte avstand til gjennomsnittet</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([15656.38324215, 18166.64870605])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ex_dist</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([15656.38324215, 18166.64870605, 24696.51266733, 27130.40920812])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finn dag med minst avvik (minste norm)</span>
+<span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x26778adf4d0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/fa286e39285e4a8d2bffe82393f68987616751223e5b2ef7516bcc03e5f460fe.png" src="../_images/fa286e39285e4a8d2bffe82393f68987616751223e5b2ef7516bcc03e5f460fe.png" />
+</div>
+</div>
+<p>Vi bruker numpys <code class="docutils literal notranslate"><span class="pre">argmin()</span></code> funksjon til å gi oss raden (altså det spesifikke) døgnet med den minste euklidske avstand til gjennomsnittet</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(101)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Så kan Datetimeindex gi oss nøyaktig dato</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2026, 4, 13)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hele-scriptet-og-plot">
+<h2>Hele scriptet og plot<a class="headerlink" href="#hele-scriptet-og-plot" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -365,16 +676,13 @@ document.write(`
 <span class="c1"># Lag daglig matrise (hver dag = 24 verdier)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span>
 <span class="n">daily</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;Consumption&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daglige tidsserier:&#39;</span><span class="p">,</span><span class="n">daily</span><span class="p">)</span>
+
 <span class="c1"># Fjern dager som ikke har 24 timer</span>
 <span class="n">daily</span> <span class="o">=</span> <span class="n">daily</span><span class="p">[</span><span class="n">daily</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span>
 <span class="c1"># Konverter til array</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">daily</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="c1"># Gjennomsnittsdøgn</span>
 <span class="n">mean_profile</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
 <span class="c1"># Finn dag med minst avvik (minste norm)</span>
 <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -384,52 +692,12 @@ document.write(`
 <span class="n">rep_profile</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 <span class="n">rep_date</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Representativ dag:&quot;</span><span class="p">,</span> <span class="n">rep_date</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daglige tidsserier: date
-2026-01-01    [16662.95, 14953.24, 14298.07, 13254.81, 12678...
-2026-01-02    [14821.37, 13826.33, 12743.11, 12786.86, 12647...
-2026-01-03    [22115.9, 21572.64, 20710.6, 20344.44, 19724.8...
-2026-01-04    [23251.09, 22995.68, 22691.57, 22255.31, 21886...
-2026-01-05    [24208.62, 23689.68, 23986.93, 23956.24, 24106...
-                                    ...                        
-2026-05-16    [16276.98, 14535.05, 13984.31, 13857.01, 13656...
-2026-05-17    [14220.04, 12912.59, 12540.78, 12134.04, 11770...
-2026-05-18    [15629.79, 14382.06, 14139.4, 14017.26, 14589....
-2026-05-19    [17748.79, 17015.92, 16436.45, 15904.32, 15931...
-2026-05-20    [14881.17, 14265.45, 13891.66, 13679.98, 13776...
-Name: Consumption, Length: 140, dtype: object
-date
-2026-01-01    [16662.95, 14953.24, 14298.07, 13254.81, 12678...
-2026-01-02    [14821.37, 13826.33, 12743.11, 12786.86, 12647...
-2026-01-03    [22115.9, 21572.64, 20710.6, 20344.44, 19724.8...
-2026-01-04    [23251.09, 22995.68, 22691.57, 22255.31, 21886...
-2026-01-05    [24208.62, 23689.68, 23986.93, 23956.24, 24106...
-                                    ...                        
-2026-05-16    [16276.98, 14535.05, 13984.31, 13857.01, 13656...
-2026-05-17    [14220.04, 12912.59, 12540.78, 12134.04, 11770...
-2026-05-18    [15629.79, 14382.06, 14139.4, 14017.26, 14589....
-2026-05-19    [17748.79, 17015.92, 16436.45, 15904.32, 15931...
-2026-05-20    [14881.17, 14265.45, 13891.66, 13679.98, 13776...
-Name: Consumption, Length: 139, dtype: object
-[[16662.95 14953.24 14298.07 ... 17380.07 16740.26 15974.65]
- [14821.37 13826.33 12743.11 ... 23506.18 22675.59 21693.33]
- [22115.9  21572.64 20710.6  ... 24670.23 24444.7  23747.27]
- ...
- [15629.79 14382.06 14139.4  ... 19827.35 18935.78 17564.5 ]
- [17748.79 17015.92 16436.45 ... 18438.31 17396.93 15295.22]
- [14881.17 14265.45 13891.66 ... 19944.19 19368.15 18385.77]]
-[17348.67064748 16825.29064748 16483.71158273 16271.33827338
- 16361.54647482 17045.13460432 18490.70035971 19485.6418705
- 19415.1118705  18602.7971223  17716.57820144 17068.45920863
- 16669.99539568 16525.28388489 16645.27978417 17207.02625899
- 18207.51208633 19614.14935252 20812.24338129 21374.07661871
- 21078.09258993 20460.2818705  19615.22582734 18308.60431655]
-Representativ dag: 2026-04-13
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Representativ dag: 2026-04-13
 </pre></div>
 </div>
 </div>
@@ -453,6 +721,7 @@ Representativ dag: 2026-04-13
 <img alt="../_images/9a91a327397ae93cddee5af4bac7a507a290516117942512102a490e47bcc9d1.png" src="../_images/9a91a327397ae93cddee5af4bac7a507a290516117942512102a490e47bcc9d1.png" />
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -509,6 +778,23 @@ Representativ dag: 2026-04-13
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akser-rader-og-kolonner">Akser - rader og kolonner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hele-scriptet-og-plot">Hele scriptet og plot</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
