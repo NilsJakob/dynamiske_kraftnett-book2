@@ -13,9 +13,13 @@ parts:
     chapters:
       - file: 03_data/behandle_tall
 
+  - caption: Representativ dag
+    chapters:
+      - file: 04_data/repr_dag
+
   - caption: Modellering
     chapters:
-      - file: 04_modellering/raw_medelling
+      - file: 05_modellering/raw_medelling
 
   - caption: Referanser
     chapters:
