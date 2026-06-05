@@ -25,6 +25,10 @@ parts:
     chapters:
       - file: 06_tidsserie/tidsserie
 
+  - caption: Application Programming Interface
+    chapters:
+      - file: 07_api/api
+
   - caption: Referanser
     chapters:
       - file: references
