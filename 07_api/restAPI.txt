@@ -1,0 +1,18 @@
+from entsoe import EntsoePandasClient
+import pandas as pd
+
+client = EntsoePandasClient(api_key="46f44dd0-dbfc-4b66-90c7-4f022872ae7f")
+
+start = pd.Timestamp("2025-01-01", tz="Europe/Oslo")
+end   = pd.Timestamp("2026-01-01", tz="Europe/Oslo")
+
+data = client.query_load("NO", start=start, end=end)
+
+data.to_csv("norway_load_2025.csv")
+
+entso_data = pd.read_csv('norway_load_2025.csv', index_col=0, parse_dates=True)
+
+print(data.head())
+
+
+
