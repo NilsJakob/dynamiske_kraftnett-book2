@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Tallgrunnlag (Norge) &#8212; Dynamiske kraftnett</title>
+    <title>Data og modeller &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -64,11 +64,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '02_tallgrunnlag/norske_data_slides';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_reprdag/repr_dag';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tallbehandling" href="../03_data/behandle_tall.html" />
-    <link rel="prev" title="Velkommen til boken om dynamiske kraftnett" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,6 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -170,8 +170,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tallgrunnlag (Norge)</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/norske_data_slides.html">Tallgrunnlag (Norge)</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
@@ -239,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/02_tallgrunnlag/norske_data_slides.ipynb" target="_blank"
+      <li><a href="../_sources/04_reprdag/repr_dag.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -310,9 +310,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -323,27 +321,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tallgrunnlag (Norge)</h1>
+    <h1>Data og modeller</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">⚡ 🇳🇴 Nøkkeltall for kraftsystemet (2025)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a></li>
-</ul>
-</li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -353,106 +335,111 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tallgrunnlag-norge">
-<h1>Tallgrunnlag (Norge)<a class="headerlink" href="#tallgrunnlag-norge" title="Permalink to this heading">#</a></h1>
-<p>Vi ser på:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-og-modeller">
+<h1>Data og modeller<a class="headerlink" href="#data-og-modeller" title="Permalink to this heading">#</a></h1>
+<p>For å koble data til modeller skal vi bruke python-bibliotekene pandas og numpy</p>
+<p>Datasettet kan lastes ned her:</p>
 <ul class="simple">
-<li><p>Lastnivå</p></li>
-<li><p>Produksjon</p></li>
-<li><p>Variasjon over tid</p></li>
+<li><p><span class="xref myst">Last ned norway_load_2025.csv</span></p></li>
 </ul>
-<section id="nokkeltall-for-kraftsystemet-2025">
-<h2>⚡ 🇳🇴 Nøkkeltall for kraftsystemet (2025)<a class="headerlink" href="#nokkeltall-for-kraftsystemet-2025" title="Permalink to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Variabel</p></th>
-<th class="head"><p>Verdi</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>🔋 Produksjon</p></td>
-<td><p>ca. 161.8–162 TWh</p></td>
-</tr>
-<tr class="row-odd"><td><p>⚡ Forbruk</p></td>
-<td><p>ca. 138–139 TWh</p></td>
-</tr>
-<tr class="row-even"><td><p>📈 Kraftoverskudd</p></td>
-<td><p>ca. 22–23 TWh</p></td>
-</tr>
-<tr class="row-odd"><td><p>🌊 Andel vannkraft</p></td>
-<td><p>~90 %</p></td>
-</tr>
-<tr class="row-even"><td><p>🌬️ Andel vindkraft</p></td>
-<td><p>~8–9 %</p></td>
-</tr>
-<tr class="row-odd"><td><p>☀️ Andel sol</p></td>
-<td><p>~0.2 %</p></td>
-</tr>
-<tr class="row-even"><td><p>🪫 Fossil / termisk</p></td>
-<td><p>~1 %</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="typisk-dognprofil-norge">
-<h1>Typisk døgnprofil (Norge)<a class="headerlink" href="#typisk-dognprofil-norge" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">load</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">17</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span>
+<span class="c1"># df: time-serie med load</span>
+<span class="c1"># index = datetime</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid [timer]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Last [GW]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Typisk lastprofil i Norge (døgn)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Lag daglig matrise (hver dag = 24 verdier)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span>
+<span class="n">daily</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;Consumption&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daglige tidsserier:&#39;</span><span class="p">,</span><span class="n">daily</span><span class="p">)</span>
+<span class="c1"># Fjern dager som ikke har 24 timer</span>
+<span class="n">daily</span> <span class="o">=</span> <span class="n">daily</span><span class="p">[</span><span class="n">daily</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span>
+<span class="c1"># Konverter til array</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">daily</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># Gjennomsnittsdøgn</span>
+<span class="n">mean_profile</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
+<span class="c1"># Finn dag med minst avvik (minste norm)</span>
+<span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Velg mest representative dag</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+
+<span class="n">rep_profile</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="n">rep_date</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Representativ dag:&quot;</span><span class="p">,</span> <span class="n">rep_date</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1965a5999356f2787180403340ce205ddfc3044e44a7783a88f45f15033cd4ae.png" src="../_images/1965a5999356f2787180403340ce205ddfc3044e44a7783a88f45f15033cd4ae.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daglige tidsserier: date
+2026-01-01    [16662.95, 14953.24, 14298.07, 13254.81, 12678...
+2026-01-02    [14821.37, 13826.33, 12743.11, 12786.86, 12647...
+2026-01-03    [22115.9, 21572.64, 20710.6, 20344.44, 19724.8...
+2026-01-04    [23251.09, 22995.68, 22691.57, 22255.31, 21886...
+2026-01-05    [24208.62, 23689.68, 23986.93, 23956.24, 24106...
+                                    ...                        
+2026-05-16    [16276.98, 14535.05, 13984.31, 13857.01, 13656...
+2026-05-17    [14220.04, 12912.59, 12540.78, 12134.04, 11770...
+2026-05-18    [15629.79, 14382.06, 14139.4, 14017.26, 14589....
+2026-05-19    [17748.79, 17015.92, 16436.45, 15904.32, 15931...
+2026-05-20    [14881.17, 14265.45, 13891.66, 13679.98, 13776...
+Name: Consumption, Length: 140, dtype: object
+date
+2026-01-01    [16662.95, 14953.24, 14298.07, 13254.81, 12678...
+2026-01-02    [14821.37, 13826.33, 12743.11, 12786.86, 12647...
+2026-01-03    [22115.9, 21572.64, 20710.6, 20344.44, 19724.8...
+2026-01-04    [23251.09, 22995.68, 22691.57, 22255.31, 21886...
+2026-01-05    [24208.62, 23689.68, 23986.93, 23956.24, 24106...
+                                    ...                        
+2026-05-16    [16276.98, 14535.05, 13984.31, 13857.01, 13656...
+2026-05-17    [14220.04, 12912.59, 12540.78, 12134.04, 11770...
+2026-05-18    [15629.79, 14382.06, 14139.4, 14017.26, 14589....
+2026-05-19    [17748.79, 17015.92, 16436.45, 15904.32, 15931...
+2026-05-20    [14881.17, 14265.45, 13891.66, 13679.98, 13776...
+Name: Consumption, Length: 139, dtype: object
+[[16662.95 14953.24 14298.07 ... 17380.07 16740.26 15974.65]
+ [14821.37 13826.33 12743.11 ... 23506.18 22675.59 21693.33]
+ [22115.9  21572.64 20710.6  ... 24670.23 24444.7  23747.27]
+ ...
+ [15629.79 14382.06 14139.4  ... 19827.35 18935.78 17564.5 ]
+ [17748.79 17015.92 16436.45 ... 18438.31 17396.93 15295.22]
+ [14881.17 14265.45 13891.66 ... 19944.19 19368.15 18385.77]]
+[17348.67064748 16825.29064748 16483.71158273 16271.33827338
+ 16361.54647482 17045.13460432 18490.70035971 19485.6418705
+ 19415.1118705  18602.7971223  17716.57820144 17068.45920863
+ 16669.99539568 16525.28388489 16645.27978417 17207.02625899
+ 18207.51208633 19614.14935252 20812.24338129 21374.07661871
+ 21078.09258993 20460.2818705  19615.22582734 18308.60431655]
+Representativ dag: 2026-04-13
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">18</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">base_load</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
 
-<span class="n">load</span> <span class="o">=</span> <span class="n">base_load</span> <span class="o">+</span> <span class="n">morning_peak</span> <span class="o">+</span> <span class="n">evening_peak</span>
-
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid [timer]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Last [GW]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Typisk norsk lastprofil (døgn)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rep_profile</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;MW&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Representativ dag: </span><span class="si">{</span><span class="n">rep_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">.%m.%Y&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/54338e391a1aeb6bb569f8ea3c49c025852c1a2e1dd1e6a2b1c8417e1fad3c12.png" src="../_images/54338e391a1aeb6bb569f8ea3c49c025852c1a2e1dd1e6a2b1c8417e1fad3c12.png" />
+<img alt="../_images/9a91a327397ae93cddee5af4bac7a507a290516117942512102a490e47bcc9d1.png" src="../_images/9a91a327397ae93cddee5af4bac7a507a290516117942512102a490e47bcc9d1.png" />
 </div>
 </div>
-<section id="hva-ser-vi">
-<h2>Hva ser vi?<a class="headerlink" href="#hva-ser-vi" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Morgenpeak rundt kl. 08</p></li>
-<li><p>Kveldspeak rundt kl. 18</p></li>
-<li><p>Lav last om natten</p></li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,7 +455,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./02_tallgrunnlag"
+            path: "./04_reprdag"
         },
         predefinedOutput: true
     }
@@ -485,53 +472,12 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../index.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Velkommen til boken om dynamiske kraftnett</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../03_data/behandle_tall.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tallbehandling</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">⚡ 🇳🇴 Nøkkeltall for kraftsystemet (2025)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a></li>
-</ul>
-</li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
