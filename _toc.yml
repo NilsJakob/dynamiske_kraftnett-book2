@@ -15,7 +15,7 @@ parts:
 
   - caption: Representativ dag
     chapters:
-      - file: 04_data/repr_dag
+      - file: 04_reprdag/repr_dag
 
   - caption: Modellering
     chapters:
