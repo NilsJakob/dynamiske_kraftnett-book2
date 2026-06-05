@@ -21,6 +21,10 @@ parts:
     chapters:
       - file: 05_modellering/raw_medelling
 
+  - caption: Tidsserie
+    chapters:
+      - file: 06_tidsserie/tidsserie
+
   - caption: Referanser
     chapters:
       - file: references
