@@ -1,0 +1,794 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Stabilitet &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08_stability/stability';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/norske_data_slides.html">Tallgrunnlag (Norge)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/behandle_tall.html">Tallbehandling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/raw_medelling.html">Modellering gaussisk filter</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tidsserie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../06_tidsserie/tidsserie.html">Tidsserieanalyse</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/api.html">Application Programming Interface (API)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/08_stability/stability.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stabilitet</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stabilitet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baser">Baser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-og-fasor">Tidsdomene og fasor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-bolgeform-og-roterende-vektor-fasor">Tidsdomene (bølgeform) og roterende vektor (fasor)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-cheat-sheet-power-systems-rms-simulation">📘 Notation Cheat Sheet (Power Systems &amp; RMS Simulation)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-domain-instantaneous-signal">🔹 1. Time-domain (instantaneous signal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phasor-ieee-notation">🔹 2. Phasor (IEEE notation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-time-domain-phasor">🔹 3. Link: Time-domain → Phasor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangular-form">🔹 4. Rectangular form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-and-impedance">🔹 5. Current and impedance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-power">🔹 6. Complex power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-unit-system">🔹 7. Per unit system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-vs-emt-interpretation">🔹 8. RMS vs EMT interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rms">RMS:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emt">EMT:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaway">🎯 Key takeaway</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stabilitet">
+<h1>Stabilitet<a class="headerlink" href="#stabilitet" title="Permalink to this heading">#</a></h1>
+<p>For å forstå stabilitet i dynamiske kraftnett må vi definere tidsaspektet. Hittil har vi jobbet med tiddserier og tidsserieanalyse, for å modellere kraftnettet. Vi skal nå bevege oss inn på transient-, spenning- og frekvensstabilitet.</p>
+<p>Vi starter med den generiske sinusoide funksjonen og husker Eulers formel: <span class="math notranslate nohighlight">\(e^{j\theta}=cos\theta+jsin\theta\)</span>.</p>
+<p>I denne boken bruker vi MKS-enheter og IEEE-standarder så langt det lar seg gjøre
+Meter–Kilogram–Sekund (MKS) systemet er et enhetssystem der de grunnleggende måleenhetene er:</p>
+<p>Lengde: meter (m)</p>
+<p>Masse: kilogram (kg)</p>
+<p>Tid: sekund (s)</p>
+<p>MKS betyr at vi bygger alle fysiske størrelser fra meter, kilogram og sekund – og det er grunnlaget for SI-enhetene vi bruker i kraftsystemer.</p>
+<div class="math notranslate nohighlight">
+\[ 1 V = \frac{kg\cdot m^2}{s^3\cdot A} \]</div>
+<p>Alle fysiske størrelser i kraftsystemer er egentlig i SI-enheter (MKS-basert):</p>
+<p>Spenning: Volt
+Strøm: Ampere
+Effekt: Watt
+Impedans: Ohm</p>
+<p>Per enhet normaliserer MKS-verdier ved å dividere med en valgt baseverdi, for å skape dimensjonsløse tall uten enheter</p>
+<div class="math notranslate nohighlight">
+\[ x_{pu} = \frac{x_{MKS}}{x_{base}} \]</div>
+<section id="baser">
+<h2>Baser<a class="headerlink" href="#baser" title="Permalink to this heading">#</a></h2>
+<p>Fra basene <span class="math notranslate nohighlight">\(S_{base}(VA)\)</span> og <span class="math notranslate nohighlight">\(V_{base}(Volt)\)</span> kan vi utlede:
+$<span class="math notranslate nohighlight">\(I_{base} = \frac{S_{base}}{\sqrt{3}V_{base}}\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(Z_{base} = \frac{V^2_{base}}{S_{base}}\)</span>$</p>
+</section>
+<section id="tidsdomene-og-fasor">
+<h2>Tidsdomene og fasor<a class="headerlink" href="#tidsdomene-og-fasor" title="Permalink to this heading">#</a></h2>
+<p>Tidsdomenerepresentasjon for spenning kan beskrives som: <span class="math notranslate nohighlight">\(v(t)=\hat{V} \cdot cos(\omega t)\)</span></p>
+<p>Små bokstaver (v) brukes til å representere instansverdier som varierer som funksjon av tiden (t).</p>
+<p>Mens stor bokstav (V) er konstant.</p>
+<p>Representasjon av tiden og konstanter er ikke standardisert som ved (MKS, SI og IEEE), men et produkt av konvensjoner; hva man over tid har blitt enige om å uttrykke noe på. Dette er også en god beskrivelse av forskjellen på standarder og konvensjoner.</p>
+<p>Der <span class="math notranslate nohighlight">\(\hat{V}\)</span> er spenningens amplitude, frekvensen (f) er 50 Hz (50 svingninger i sekundet).</p>
+<p>I python-scriptet under er V_ampl den konstante spenningen mens v forandrer seg med tid (t)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">V_ampl</span> <span class="o">=</span> <span class="mi">325</span>            <span class="c1"># Peak voltage [V]</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">50</span>                 <span class="c1"># Frequency [Hz]</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span>      <span class="c1"># Angular frequency</span>
+<span class="n">theta_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span>     <span class="c1"># Phase angle (30 degrees)</span>
+
+<span class="c1"># Time vector</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Voltage signal</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">V_ampl</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">theta_v</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage v(t) [V]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$v(t) = \hat</span><span class="si">{V}</span><span class="s2"> cos(ωt)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/34bea42d589597e8588df675eb956b0695941aec86c7d6bf15d07f31f47ef9f6.png" src="../_images/34bea42d589597e8588df675eb956b0695941aec86c7d6bf15d07f31f47ef9f6.png" />
+</div>
+</div>
+<p>I kraftsystemer beskriver man ofte cos(<span class="math notranslate nohighlight">\(\omega t\)</span>), fordi dette viser projeksjonen av spenningen v, i cosinusplanet og gir verdien 1 der v(t) = 0. Da er v(0) lik V den konstante, som er det samme som amplitudeverdien <span class="math notranslate nohighlight">\(\hat{V}\)</span>. På denne måten beskriver cosinus systemet ved kontinuerlig drift som et steady-state perspektiv. Steady-state perspektivet er også en viktig faktor når vektoren (V) roterer i tidsdomenet og blir en fasorrepresentasjon.</p>
+</section>
+<section id="tidsdomene-bolgeform-og-roterende-vektor-fasor">
+<h2>Tidsdomene (bølgeform) og roterende vektor (fasor)<a class="headerlink" href="#tidsdomene-bolgeform-og-roterende-vektor-fasor" title="Permalink to this heading">#</a></h2>
+<p>Fasorrepresentasjonen blir særlig aktuell ved faseforskyvning, nyttig for å vise faseforskyvning av spenning (som i trefasesystemer) eller strøm (på grunn av passive komponenter:</p>
+<div class="math notranslate nohighlight">
+\[v(t)=\hat{V} \cdot sin(\omega t+ \theta_v) \Longleftrightarrow \bar{V} = \hat{V} \angle \theta\]</div>
+<p><img alt="Phasor animation" src="../_images/phasor_animation_sin.gif" /></p>
+<p>Vi bruker benevnelsen <span class="math notranslate nohighlight">\(\bar{V}\)</span> for å vise at det er et kompleks tall med en utstrekning (amplitude - \hat{V}) og fase (<span class="math notranslate nohighlight">\(\theta\)</span>). Utstrekningen er også magnituden eller absoluttverdien |V|, der fasen eller vinkelen er argumentet til det komplekse tallet.</p>
+<p>I kraftsystemer er konvensjonen å jobbe med cosinusrepresentasjon på grunn av steady-state perspektivet nevnt ovenfor.</p>
+<p><img alt="Phasor animation" src="../_images/phasor_animation_fixed.gif" /></p>
+<div class="math notranslate nohighlight">
+\[
+\Re\{e^{j\omega t}\} = \cos(\omega t)
+\]</div>
+<ul class="simple">
+<li><p>ingen ekstra fase</p></li>
+<li><p>fasoren peker langs x-aksen ved <span class="math notranslate nohighlight">\(t = 0\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\Im\{e^{j\omega t}\} = \sin(\omega t)
+\]</div>
+<p>👉 Men da skjer dette:</p>
+<ul class="simple">
+<li><p>ved <span class="math notranslate nohighlight">\(t = 0\)</span>: verdi = 0</p></li>
+<li><p>du “ser” ikke vektoren direkte</p></li>
+</ul>
+<p>Når du bruker realdelen:</p>
+<div class="math notranslate nohighlight">
+\[
+v(t) = \Re\{V e^{j\omega t}\}
+\]</div>
+<p>blir koblingen:</p>
+<div class="math notranslate nohighlight">
+\[
+V = |V| e^{j\theta}
+\]</div>
+<p>helt direkte.</p>
+<section id="resultat">
+<h3>Resultat:<a class="headerlink" href="#resultat" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+v(t) = |V| \cos(\omega t + \theta)
+\]</div>
+<ul class="simple">
+<li><p>fasen <span class="math notranslate nohighlight">\(\theta\)</span> er akkurat den samme som i fasoren</p></li>
+<li><p>ingen ekstra forskyvning</p></li>
+</ul>
+<p>Med sinus må du skrive:</p>
+<div class="math notranslate nohighlight">
+\[
+v(t) = |V| \sin(\omega t + \theta)
+\]</div>
+<p>som egentlig er:</p>
+<div class="math notranslate nohighlight">
+\[
+= |V| \cos(\omega t + \theta - 90^\circ)
+\]</div>
+<p>altså:</p>
+<div class="math notranslate nohighlight">
+\[
+V = |V| e^{j(\theta - 90^\circ)}
+\]</div>
+<p><img alt="Phasor animation" src="../_images/complex_exponential.gif" /></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/2b3186a9ce706702eaccc1bcdd6122b34d5380b82991a8bb3ea410b193216e22.png" src="../_images/2b3186a9ce706702eaccc1bcdd6122b34d5380b82991a8bb3ea410b193216e22.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/6078231d5c2266ea9fb323cb20273371b2e06546669853cd5e28e653766f8601.png" src="../_images/6078231d5c2266ea9fb323cb20273371b2e06546669853cd5e28e653766f8601.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/2a3b3381ded9b6a151efbf23008e88f24455f78908674eb777bd3ee739cb362b.png" src="../_images/2a3b3381ded9b6a151efbf23008e88f24455f78908674eb777bd3ee739cb362b.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/74275de2cb525295fc0316804ecaec69b5bf065d882a8061aa5a00601b30d801.png" src="../_images/74275de2cb525295fc0316804ecaec69b5bf065d882a8061aa5a00601b30d801.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/98fe10ed7272edd9698b0d9c3a1d21fb4e623ac6711dd0bbf9a7d06c9a6f6807.png" src="../_images/98fe10ed7272edd9698b0d9c3a1d21fb4e623ac6711dd0bbf9a7d06c9a6f6807.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/de35d0a9582b34cbcc4553e402aff32837d238f8cb0aed5338b2f013ef0f3d57.png" src="../_images/de35d0a9582b34cbcc4553e402aff32837d238f8cb0aed5338b2f013ef0f3d57.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notation-cheat-sheet-power-systems-rms-simulation">
+<h1>📘 Notation Cheat Sheet (Power Systems &amp; RMS Simulation)<a class="headerlink" href="#notation-cheat-sheet-power-systems-rms-simulation" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<section id="time-domain-instantaneous-signal">
+<h2>🔹 1. Time-domain (instantaneous signal)<a class="headerlink" href="#time-domain-instantaneous-signal" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ v(t) = \sqrt{2} V \cos(\omega t + \theta) \]</div>
+<ul class="simple">
+<li><p>( v(t) ): instantaneous voltage</p></li>
+<li><p>( V ): <strong>RMS value</strong></p></li>
+<li><p>( \sqrt{2}V ): peak value</p></li>
+<li><p>( \omega = 2\pi f ): angular frequency</p></li>
+<li><p>( \theta ): phase angle</p></li>
+</ul>
+<p>👉 Real waveform in time (EMT view)</p>
+</section>
+<hr class="docutils" />
+<section id="phasor-ieee-notation">
+<h2>🔹 2. Phasor (IEEE notation)<a class="headerlink" href="#phasor-ieee-notation" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\bar{V} = V \angle \theta\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{V} = V e^{j\theta}
+\]</div>
+<ul class="simple">
+<li><p>( V ): RMS magnitude</p></li>
+<li><p>( \theta ): phase</p></li>
+<li><p>( j = \sqrt{-1} )</p></li>
+</ul>
+<p>👉 Compact representation of sinusoid<br />
+👉 No explicit time dependence</p>
+</section>
+<hr class="docutils" />
+<section id="link-time-domain-phasor">
+<h2>🔹 3. Link: Time-domain → Phasor<a class="headerlink" href="#link-time-domain-phasor" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[v(t) = \sqrt{2} \, \Re \left\{ \underline{V} e^{j\omega t} \right\}\]</div>
+<p>👉 Phasor rotates at frequency ( \omega )<br />
+👉 RMS simulation tracks ( \underline{V}(t) )</p>
+</section>
+<hr class="docutils" />
+<section id="rectangular-form">
+<h2>🔹 4. Rectangular form<a class="headerlink" href="#rectangular-form" title="Permalink to this heading">#</a></h2>
+<p>[
+\underline{V} = V_d + j V_q = V(\cos\theta + j\sin\theta)
+]</p>
+<ul class="simple">
+<li><p>Real part = in-phase component</p></li>
+<li><p>Imaginary part = quadrature component</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="current-and-impedance">
+<h2>🔹 5. Current and impedance<a class="headerlink" href="#current-and-impedance" title="Permalink to this heading">#</a></h2>
+<p>[
+\underline{I} = I \angle \theta_i
+]</p>
+<p>[
+\underline{Z} = R + jX
+]</p>
+<p>Ohm’s law (phasor form):</p>
+<p>[
+\underline{V} = \underline{Z} \cdot \underline{I}
+]</p>
+</section>
+<hr class="docutils" />
+<section id="complex-power">
+<h2>🔹 6. Complex power<a class="headerlink" href="#complex-power" title="Permalink to this heading">#</a></h2>
+<p>[
+\underline{S} = \underline{V} \cdot \underline{I}^*
+= P + jQ
+]</p>
+<ul class="simple">
+<li><p>( P ): active power (W)</p></li>
+<li><p>( Q ): reactive power (var)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="per-unit-system">
+<h2>🔹 7. Per unit system<a class="headerlink" href="#per-unit-system" title="Permalink to this heading">#</a></h2>
+<p>[
+x_{pu} = \frac{x}{x_{base}}
+]</p>
+<ul class="simple">
+<li><p>Removes units</p></li>
+<li><p>Keeps physical relationships</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="rms-vs-emt-interpretation">
+<h2>🔹 8. RMS vs EMT interpretation<a class="headerlink" href="#rms-vs-emt-interpretation" title="Permalink to this heading">#</a></h2>
+<section id="rms">
+<h3>RMS:<a class="headerlink" href="#rms" title="Permalink to this heading">#</a></h3>
+<p>[
+\underline{V}(t) = V(t)\angle\theta(t)
+]</p>
+<p>👉 Simulates phasors (magnitude + phase)</p>
+</section>
+<section id="emt">
+<h3>EMT:<a class="headerlink" href="#emt" title="Permalink to this heading">#</a></h3>
+<p>[
+v(t)
+]</p>
+<p>👉 Simulates instantaneous waveform</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="key-takeaway">
+<h1>🎯 Key takeaway<a class="headerlink" href="#key-takeaway" title="Permalink to this heading">#</a></h1>
+<p><strong>Time-domain signals are sinusoidal, but RMS simulation tracks only their phasors (RMS magnitude + phase).</strong>
+``</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./08_stability"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stabilitet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baser">Baser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-og-fasor">Tidsdomene og fasor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-bolgeform-og-roterende-vektor-fasor">Tidsdomene (bølgeform) og roterende vektor (fasor)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-cheat-sheet-power-systems-rms-simulation">📘 Notation Cheat Sheet (Power Systems &amp; RMS Simulation)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-domain-instantaneous-signal">🔹 1. Time-domain (instantaneous signal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phasor-ieee-notation">🔹 2. Phasor (IEEE notation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-time-domain-phasor">🔹 3. Link: Time-domain → Phasor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangular-form">🔹 4. Rectangular form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-and-impedance">🔹 5. Current and impedance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-power">🔹 6. Complex power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-unit-system">🔹 7. Per unit system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-vs-emt-interpretation">🔹 8. RMS vs EMT interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rms">RMS:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emt">EMT:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaway">🎯 Key takeaway</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
