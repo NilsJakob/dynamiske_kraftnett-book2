@@ -29,6 +29,10 @@ parts:
     chapters:
       - file: 07_api/api
 
+  - caption: Stabilitet
+    chapters:
+      - file: 08_stability/stability
+
   - caption: Referanser
     chapters:
       - file: references
