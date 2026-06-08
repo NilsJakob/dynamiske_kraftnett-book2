@@ -356,8 +356,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-og-fasor">Tidsdomene og fasor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-bolgeform-og-roterende-vektor-fasor">Tidsdomene (bølgeform) og roterende vektor (fasor)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#root-mean-square-rms">Root Mean Square (RMS)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theta-v-i-trefase"><span class="math notranslate nohighlight">\(\theta_v\)</span> i trefase?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-fasor-roterende-vektor">Kobling til fasor (roterende vektor)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-mellom-de-to">✅ Kobling mellom de to</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisering">Visualisering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kompakt-skrivemate">kompakt skrivemåte</a></li>
 </ul>
             </nav>
         </div>
@@ -391,9 +397,11 @@ Impedans: Ohm</p>
 \[ x_{pu} = \frac{x_{MKS}}{x_{base}} \]</div>
 <section id="baser">
 <h2>Baser<a class="headerlink" href="#baser" title="Permalink to this heading">#</a></h2>
-<p>Fra basene <span class="math notranslate nohighlight">\(S_{base}(VA)\)</span> og <span class="math notranslate nohighlight">\(V_{base}(Volt)\)</span> kan vi utlede:
-$<span class="math notranslate nohighlight">\(I_{base} = \frac{S_{base}}{\sqrt{3}V_{base}}\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(Z_{base} = \frac{V^2_{base}}{S_{base}}\)</span>$</p>
+<p>Fra basene <span class="math notranslate nohighlight">\(S_{base}(VA)\)</span> og <span class="math notranslate nohighlight">\(V_{base}(Volt)\)</span> kan vi utlede:</p>
+<div class="math notranslate nohighlight">
+\[I_{base} = \frac{S_{base}}{\sqrt{3}V_{base}}\]</div>
+<div class="math notranslate nohighlight">
+\[Z_{base} = \frac{V^2_{base}}{S_{base}}\]</div>
 </section>
 <section id="tidsdomene-og-fasor">
 <h2>Tidsdomene og fasor<a class="headerlink" href="#tidsdomene-og-fasor" title="Permalink to this heading">#</a></h2>
@@ -441,9 +449,9 @@ $<span class="math notranslate nohighlight">\(I_{base} = \frac{S_{base}}{\sqrt{3
 <h2>Tidsdomene (bølgeform) og roterende vektor (fasor)<a class="headerlink" href="#tidsdomene-bolgeform-og-roterende-vektor-fasor" title="Permalink to this heading">#</a></h2>
 <p>Fasorrepresentasjonen blir særlig aktuell ved faseforskyvning, nyttig for å vise faseforskyvning av spenning (som i trefasesystemer) eller strøm (på grunn av passive komponenter:</p>
 <div class="math notranslate nohighlight">
-\[v(t)=\hat{V} \cdot sin(\omega t+ \theta_v) \Longleftrightarrow \bar{V} = \hat{V} \angle \theta\]</div>
+\[v(t)=\hat{V} \cdot sin(\omega t) \Longleftrightarrow \bar{V} = \hat{V} \angle \theta\]</div>
 <p><img alt="Phasor animation" src="../_images/phasor_animation_sin.gif" /></p>
-<p>Vi bruker benevnelsen <span class="math notranslate nohighlight">\(\bar{V}\)</span> for å vise at det er et kompleks tall med en utstrekning (amplitude - \hat{V}) og fase (<span class="math notranslate nohighlight">\(\theta\)</span>). Utstrekningen er også magnituden eller absoluttverdien |V|, der fasen eller vinkelen er argumentet til det komplekse tallet.</p>
+<p>Vi bruker benevnelsen <span class="math notranslate nohighlight">\(\bar{V}\)</span> for å vise at det er et kompleks tall med en utstrekning (amplitude - <span class="math notranslate nohighlight">\(\hat{V}\)</span>) og fase (<span class="math notranslate nohighlight">\(\theta\)</span>). Utstrekningen er også magnituden eller absoluttverdien |V|, der fasen eller vinkelen er argumentet til det komplekse tallet.</p>
 <p>I kraftsystemer er konvensjonen å jobbe med cosinusrepresentasjon på grunn av steady-state perspektivet nevnt ovenfor.</p>
 <p><img alt="Phasor animation" src="../_images/phasor_animation_fixed.gif" /></p>
 <div class="math notranslate nohighlight">
@@ -501,6 +509,259 @@ V = |V| e^{j(\theta - 90^\circ)}
 \]</div>
 <p><img alt="Phasor animation" src="../_images/complex_exponential.gif" /></p>
 </section>
+<section id="root-mean-square-rms">
+<h3>Root Mean Square (RMS)<a class="headerlink" href="#root-mean-square-rms" title="Permalink to this heading">#</a></h3>
+<p>“RMS står for ‘root mean square’, og er den effektive verdien av et signal.
+For en vekselspenning som går opp og ned, kan vi ikke bruke vanlig gjennomsnitt, fordi det blir null.
+I stedet kvadrerer vi signalet, tar gjennomsnittet, og tar kvadratroten tilbake — og da får vi en verdi som tilsvarer den DC‑spenningen som gir samme effekt.
+For en sinus gjelder:</p>
+<div class="math notranslate nohighlight">
+\[V_{RMS} =  \frac{\hat{V}}{\sqrt{2}}\]</div>
+<p>Så når vi sier 230 volt i stikkontakten, er det RMS — altså den verdien som faktisk bestemmer hvor mye energi som leveres.</p>
+<p>Men den faktiske sinusen er <span class="math notranslate nohighlight">\(v(t) = 325sin(\omega t)\)</span></p>
+<p>For et signal x(t):
+$<span class="math notranslate nohighlight">\(X_{RMS} = \sqrt{\frac{1}{T}\int^T_0x^2(t)dt}\)</span>$</p>
+<p>Derfor får vi
+$<span class="math notranslate nohighlight">\(V_{RMS} =  \frac{\hat{V}}{\sqrt{2}}\)</span><span class="math notranslate nohighlight">\(
+og 
+\)</span><span class="math notranslate nohighlight">\(I_{RMS} =  \frac{\hat{I}}{\sqrt{2}}\)</span>$</p>
+<p>Det vi kan trekk av spenning er 230 V, men amplitudesignalet er <span class="math notranslate nohighlight">\(\hat{V} = V \cdot \sqrt{2} = 230 \cdot \sqrt{2}\approx 325\)</span> V</p>
+<p><span class="math notranslate nohighlight">\(cos \theta\)</span> blir brukt til å foklare faseforskyvning og kjenner vi den kan vi gjøre effektberegninger direkte:
+$<span class="math notranslate nohighlight">\(P = V_{RMS}I_{RMS}cos\theta\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Data</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># RMS value</span>
+<span class="n">v_rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">gggggggggggggggggggggggggggggggggggggg1</span>
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Signal (sinus)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">v_rms</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RMS-verdi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="o">-</span><span class="n">v_rms</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Visualisering av RMS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Save file</span>
+<span class="c1">#file_path = &#39;/mnt/data/rms_visualisering.png&#39;</span>
+<span class="c1">#plt.savefig(file_path)</span>
+<span class="c1">#plt.close()</span>
+
+<span class="c1">#file_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7063993204979744
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x18d22e0bd90&gt;
+</pre></div>
+</div>
+<img alt="../_images/94dba865cc7eb0c7919abc2595b6c4773f0eca95d6af39773064c6be4aa70c5a.png" src="../_images/94dba865cc7eb0c7919abc2595b6c4773f0eca95d6af39773064c6be4aa70c5a.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="theta-v-i-trefase">
+<h2><span class="math notranslate nohighlight">\(\theta_v\)</span> i trefase?<a class="headerlink" href="#theta-v-i-trefase" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\theta_v = \omega t + \phi
+\]\\- $\omega t$ → tidsutvikling  
+- $\phi$ → fasevinkel  
+- $\theta_v$ → instantan vinkel for spenningen  \\Dette brukes til å beskrive signalene i tidsdomene\\---\\## Trefasespenninger med $\theta_v$\\Standard balansert system:\end{aligned}\end{align} \]</div>
+<p>\begin{aligned}
+v_r(t) &amp;= V_m \cos(\theta_v) \
+v_s(t) &amp;= V_m \cos(\theta_v - 120^\circ) \
+v_t(t) &amp;= V_m \cos(\theta_v - 240^\circ)
+\end{aligned}
+$$</p>
+<p>kompaktform:</p>
+<div class="math notranslate nohighlight">
+\[
+v_k(t) = V_m \cos(\theta_v - k \cdot 120^\circ), \quad k = 0, 1, 2
+\]</div>
+<hr class="docutils" />
+<p>Alt styres av én vinkel <span class="math notranslate nohighlight">\(\theta_v\)</span></p>
+<ul class="simple">
+<li><p>Alle tre fasene “roterer sammen”</p></li>
+<li><p>Forskyvningen er konstant (<span class="math notranslate nohighlight">\(120^\circ\)</span>)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="kobling-til-fasor-roterende-vektor">
+<h2>Kobling til fasor (roterende vektor)<a class="headerlink" href="#kobling-til-fasor-roterende-vektor" title="Permalink to this heading">#</a></h2>
+<p>I fasorform skriver vi:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+V_a &amp;= V \angle 0^\circ \\
+V_b &amp;= V \angle -120^\circ \\
+V_c &amp;= V \angle -240^\circ
+\end{aligned}
+\end{split}\]</div>
+<p>👉 Tolkning:</p>
+<ul class="simple">
+<li><p>Fasorene er konstante</p></li>
+<li><p>Rotasjonen ligger i:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+e^{j\omega t}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="kobling-mellom-de-to">
+<h2>✅ Kobling mellom de to<a class="headerlink" href="#kobling-mellom-de-to" title="Permalink to this heading">#</a></h2>
+<p>Tidssignal ↔ fasor:</p>
+<div class="math notranslate nohighlight">
+\[
+v_r(t) = \Re \{ V_r e^{j\omega t} \}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_v = \omega t
+\]</div>
+<hr class="docutils" />
+<blockquote>
+<div><p>“Vi beskriver trefasesystemet med én felles vinkel <span class="math notranslate nohighlight">\(\theta_v\)</span>.<br />
+Alle fasene er bare forskjøvet versjoner av samme signal, med <span class="math notranslate nohighlight">\(120^\circ\)</span> mellomrom.<br />
+Det betyr at hele systemet kan sees som én roterende størrelse.”</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="visualisering">
+<h2>Visualisering<a class="headerlink" href="#visualisering" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Tegn en sirkel</p></li>
+<li><p>Marker tre vektorer:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(0^\circ\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-120^\circ\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-240^\circ\)</span></p></li>
+</ul>
+</li>
+<li><p>La hele systemet rotere med <span class="math notranslate nohighlight">\(\omega\)</span></p></li>
+</ul>
+<p>👉 Pek:</p>
+<ul class="simple">
+<li><p>Rotasjonen = <span class="math notranslate nohighlight">\(\theta_v\)</span></p></li>
+<li><p>Avstand mellom vektorer = konstant</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="kompakt-skrivemate">
+<h2>kompakt skrivemåte<a class="headerlink" href="#kompakt-skrivemate" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+v_{rst}(t) =
+V_m
+\begin{bmatrix}
+\cos(\theta_v) \\
+\cos(\theta_v - 120^\circ) \\
+\cos(\theta_v - 240^\circ)
+\end{bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">Vm</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Figure with two panels</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_time</span><span class="p">,</span> <span class="n">ax_phasor</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># --- Time domain ---</span>
+<span class="n">ax_time</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax_time</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax_time</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Tidsdomeneprojeksjon&quot;</span><span class="p">)</span>
+<span class="n">ax_time</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Tid&quot;</span><span class="p">)</span>
+
+<span class="n">line_a</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax_time</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;va&quot;</span><span class="p">)</span>
+<span class="n">line_b</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax_time</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;vb&quot;</span><span class="p">)</span>
+<span class="n">line_c</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax_time</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;vc&quot;</span><span class="p">)</span>
+<span class="n">ax_time</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># --- Phasor plot ---</span>
+<span class="n">ax_phasor</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">ax_phasor</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">ax_phasor</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Roterende vektorer (fasor)&quot;</span><span class="p">)</span>
+<span class="n">ax_phasor</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax_phasor</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">vec_a</span> <span class="o">=</span> <span class="n">ax_phasor</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vec_b</span> <span class="o">=</span> <span class="n">ax_phasor</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vec_c</span> <span class="o">=</span> <span class="n">ax_phasor</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># storage</span>
+<span class="n">ta</span><span class="p">,</span> <span class="n">va_hist</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">tb</span><span class="p">,</span> <span class="n">vb_hist</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">tc</span><span class="p">,</span> <span class="n">vc_hist</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">vec_a</span><span class="p">,</span> <span class="n">vec_b</span><span class="p">,</span> <span class="n">vec_c</span>
+    
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">frame</span>
+    
+    <span class="c1"># phases</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta</span><span class="p">,</span> <span class="n">theta</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">theta</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">]</span>
+    
+    <span class="n">va</span> <span class="o">=</span> <span class="n">Vm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">vb</span> <span class="o">=</span> <span class="n">Vm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">vc</span> <span class="o">=</span> <span class="n">Vm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    
+    <span class="c1"># store history (normalized time)</span>
+    <span class="n">time_val</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">ta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_val</span><span class="p">);</span> <span class="n">va_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">va</span><span class="p">)</span>
+    <span class="n">tb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_val</span><span class="p">);</span> <span class="n">vb_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vb</span><span class="p">)</span>
+    <span class="n">tc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_val</span><span class="p">);</span> <span class="n">vc_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vc</span><span class="p">)</span>
+    
+    <span class="c1"># update time plot</span>
+    <span class="n">line_a</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">ta</span><span class="p">,</span> <span class="n">va_hist</span><span class="p">)</span>
+    <span class="n">line_b</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">tb</span><span class="p">,</span> <span class="n">vb_hist</span><span class="p">)</span>
+    <span class="n">line_c</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="n">vc_hist</span><span class="p">)</span>
+    
+    <span class="c1"># remove old arrows</span>
+    <span class="n">vec_a</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="n">vec_b</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="n">vec_c</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    
+    <span class="c1"># draw new phasors</span>
+    <span class="n">vec_a</span> <span class="o">=</span> <span class="n">ax_phasor</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                           <span class="n">head_width</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">vec_b</span> <span class="o">=</span> <span class="n">ax_phasor</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                           <span class="n">head_width</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">vec_c</span> <span class="o">=</span> <span class="n">ax_phasor</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                           <span class="n">head_width</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">line_a</span><span class="p">,</span> <span class="n">line_b</span><span class="p">,</span> <span class="n">line_c</span><span class="p">,</span> <span class="n">vec_a</span><span class="p">,</span> <span class="n">vec_b</span><span class="p">,</span> <span class="n">vec_c</span>
+
+<span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
+
+<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;trefase_fasor.gif&quot;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s2">&quot;pillow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="Phasor animation" src="../_images/trefase_fasor.gif" /></p>
 </section>
 </section>
 
@@ -572,8 +833,14 @@ V = |V| e^{j(\theta - 90^\circ)}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-og-fasor">Tidsdomene og fasor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsdomene-bolgeform-og-roterende-vektor-fasor">Tidsdomene (bølgeform) og roterende vektor (fasor)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#root-mean-square-rms">Root Mean Square (RMS)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theta-v-i-trefase"><span class="math notranslate nohighlight">\(\theta_v\)</span> i trefase?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-fasor-roterende-vektor">Kobling til fasor (roterende vektor)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-mellom-de-to">✅ Kobling mellom de to</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisering">Visualisering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kompakt-skrivemate">kompakt skrivemåte</a></li>
 </ul>
   </nav></div>
 
