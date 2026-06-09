@@ -33,6 +33,10 @@ parts:
     chapters:
       - file: 08_stability/stability
 
+  - caption: Stabilitet
+    chapters:
+      - file: 09_gridradar/kraftsystemmålinger
+
   - caption: Referanser
     chapters:
       - file: references
