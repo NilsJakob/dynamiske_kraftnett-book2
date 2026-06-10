@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Modellering gaussisk filter &#8212; Dynamiske kraftnett</title>
+    <title>Modellering &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -177,13 +177,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/norske_data_slides.html">Tallgrunnlag (Norge)</a></li>
 
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/behandle_tall.html">Tallbehandling</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modellering gaussisk filter</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modellering</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tidsserie</span></p>
 <ul class="nav bd-sidenav">
@@ -343,7 +347,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modellering gaussisk filter</h1>
+    <h1>Modellering</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,11 +383,208 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modellering-gaussisk-filter">
-<h1>Modellering gaussisk filter<a class="headerlink" href="#modellering-gaussisk-filter" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="modellering">
+<h1>Modellering<a class="headerlink" href="#modellering" title="Permalink to this heading">#</a></h1>
+<p>Vi har funnet en representativ dag for en norsk døgnprofil fra datasettet med data fra våren 2026. Dette er en datadrevet modell, det vil si at den er laget fra data, i motsetning til vår første døgnprofil som er matematisk modellert.</p>
+<p>Vi modellerer døgnprofilen fordi den vil gi oss nyttig kunnskap om lastprofilen, og om fremtidige scenarioer, som vi bruker i driften av kraftsystemet.</p>
+<p>Baseline (Grunnlinje / Utgangspunkt) En baseline er den enkleste mulige modellen du kan bruke, og fungerer som et referansepunkt for å se om mer avanserte metoder faktisk fungerer.</p>
+<p>Formål: Bevise at modellen din tilfører verdi sammenlignet med enkle tommelfingerregler. Dette er særlig viktig når maskinlæringsalgoritmer blir veldig kompliserte, både for å vise til om de faktisk tilfører kunnskapsbasen og for å forhindre datalekkasje (at algoritmen ‘ser’ det den verifiserer seg mot).</p>
+<p>Den enkleste bunnlinjen er persistensmodell, som tar forige verdi <span class="math notranslate nohighlight">\(y_{t-1}\)</span> som det riktige svaret for nåtiden <span class="math notranslate nohighlight">\(y_t\)</span> eller predikert verdi <span class="math notranslate nohighlight">\(\hat{y}\)</span></p>
+<p>En enkel regelbasert algoritme kan også brukes som bunnlinje.</p>
+<p>En Regelbasert Kunstig Intelligens (ekspertsystemer) har vært mye brukt i kraftsystemer, spesielt innen vern, kontroll og overvåkning. Ekspersystemene bruker domenekunnskap til å styre venter. Disse systemene bruker forhåndsdefinerte IF–THEN-regler for å ta beslutninger, og anvendes blant annet i feilidentifikasjon, spenningskontroll og beskyttelseskoordinering \cite{Rule_basedAI_Enns1994}.</p>
+<p>Ekeempel på regelbasert:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">strøm</span> <span class="o">&gt;</span> <span class="n">grense</span><span class="p">:</span>
+    <span class="n">koble</span> <span class="n">ut</span> <span class="n">linje</span>
+</pre></div>
+</div>
+<p>La oss se på et eksempel på persistensmodellfra et datasett vi kjenner:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/load_data.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time(Local)&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time(Local)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time(Local)&quot;</span><span class="p">],</span>
+    <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">utc</span><span class="o">=</span><span class="kc">True</span>  
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time(Local)&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Consumption&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Consumption&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Consumption</th>
+    </tr>
+    <tr>
+      <th>Time(Local)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-12-31 23:00:00+00:00</th>
+      <td>16662.95</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 00:00:00+00:00</th>
+      <td>14953.24</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 01:00:00+00:00</th>
+      <td>14298.07</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 02:00:00+00:00</th>
+      <td>13254.81</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 03:00:00+00:00</th>
+      <td>12678.51</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Consumption&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_forbruk</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                           Consumption       t-1
+Time(Local)                                     
+2025-12-31 23:00:00+00:00     16662.95       NaN
+2026-01-01 00:00:00+00:00     14953.24  16662.95
+2026-01-01 01:00:00+00:00     14298.07  14953.24
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span> <span class="o">=</span> <span class="n">df_forbruk</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                           Consumption       t-1
+Time(Local)                                     
+2026-01-01 00:00:00+00:00     14953.24  16662.95
+2026-01-01 01:00:00+00:00     14298.07  14953.24
+2026-01-01 02:00:00+00:00     13254.81  14298.07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span> <span class="o">=</span> <span class="n">df_forbruk</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_forbruk</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                           Consumption       t-1
+Time(Local)                                     
+2026-01-01 00:00:00+00:00     14953.24  16662.95
+2026-01-01 01:00:00+00:00     14298.07  14953.24
+2026-01-01 02:00:00+00:00     13254.81  14298.07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="n">df_forbruk</span><span class="p">[</span><span class="s1">&#39;Consumption&#39;</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">df_forbruk</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sann verdi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predikert (t-1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Naiv prediksjon med t-1&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0ad4ddeb6dd68096d818b877666e4db4c7b28cc6f983ad29553e12da76e08835.png" src="../_images/0ad4ddeb6dd68096d818b877666e4db4c7b28cc6f983ad29553e12da76e08835.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">/</span> <span class="n">y_test</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAPE: </span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAE: 822.04
+RMSE: 1149.18
+MAPE: 4.80%
+R2: 0.944
+</pre></div>
+</div>
+</div>
+</div>
 <section id="fra-standardavvik-til-gaussisk-filter">
 <h2>Fra standardavvik til gaussisk filter<a class="headerlink" href="#fra-standardavvik-til-gaussisk-filter" title="Permalink to this heading">#</a></h2>
-<p>Vi har sett at standardavviket ( \sigma ) måler spredningen i dataene:</p>
+<p>Vi har sett at standardavviket <span class="math notranslate nohighlight">\(\sigma\)</span> måler spredningen i dataene:</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2}
@@ -735,7 +936,7 @@ Representativ dag: 2026-04-13
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/42e8762b574dbde19ac547299b1f40edde7b57e5f70feef495fde0a51f3c6aaa.png" src="../_images/42e8762b574dbde19ac547299b1f40edde7b57e5f70feef495fde0a51f3c6aaa.png" />
+<img alt="../_images/30e67ec20686034403cb887a4fd35b622b5e4d397e63ae5f63c7554f46eaa82b.png" src="../_images/30e67ec20686034403cb887a4fd35b622b5e4d397e63ae5f63c7554f46eaa82b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -753,6 +954,11 @@ Representativ dag: 2026-04-13
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">interact</span><span class="p">(</span><span class="n">plot_sigma</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e916e61ea56c4427bb9f12dc48878e06", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_sigma(sigma)&gt;
 </pre></div>
 </div>
 </div>
