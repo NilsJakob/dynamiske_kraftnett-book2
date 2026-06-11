@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Tallgrunnlag (Norge) &#8212; Dynamiske kraftnett</title>
+    <title>Klassifisering av stabilitet &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -65,11 +65,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '02_tallgrunnlag/norske_data_slides';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_stabilityclass/stabilityclass';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tallbehandling" href="../03_data/behandle_tall.html" />
-    <link rel="prev" title="Velkommen til boken om dynamiske kraftnett" href="../index.html" />
+    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="prev" title="Kraftsystemmålinger (Power system measurements)" href="../09_gridradar/kraftsystemm%C3%A5linger.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,8 +173,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tallgrunnlag (Norge)</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/norske_data_slides.html">Tallgrunnlag (Norge)</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
@@ -205,8 +207,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Klassifisering av stabilitet</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
 <ul class="nav bd-sidenav">
@@ -265,7 +267,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/02_tallgrunnlag/norske_data_slides.ipynb" target="_blank"
+      <li><a href="../_sources/10_stabilityclass/stabilityclass.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -349,7 +351,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tallgrunnlag (Norge)</h1>
+    <h1>Klassifisering av stabilitet</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -359,16 +361,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">⚡ 🇳🇴 Nøkkeltall for kraftsystemet (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekvensstabilitet">Frekvensstabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsstabilitet">Spenningsstabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treghetskonstant">Treghetskonstant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonans-og-omformerdrevet-stabilitet">Resonans- og omformerdrevet stabilitet</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -379,105 +376,44 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tallgrunnlag-norge">
-<h1>Tallgrunnlag (Norge)<a class="headerlink" href="#tallgrunnlag-norge" title="Permalink to this heading">#</a></h1>
-<p>Vi ser på:</p>
-<ul class="simple">
-<li><p>Lastnivå</p></li>
-<li><p>Produksjon</p></li>
-<li><p>Variasjon over tid</p></li>
-</ul>
-<section id="nokkeltall-for-kraftsystemet-2025">
-<h2>⚡ 🇳🇴 Nøkkeltall for kraftsystemet (2025)<a class="headerlink" href="#nokkeltall-for-kraftsystemet-2025" title="Permalink to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Variabel</p></th>
-<th class="head"><p>Verdi</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>🔋 Produksjon</p></td>
-<td><p>ca. 161.8–162 TWh</p></td>
-</tr>
-<tr class="row-odd"><td><p>⚡ Forbruk</p></td>
-<td><p>ca. 138–139 TWh</p></td>
-</tr>
-<tr class="row-even"><td><p>📈 Kraftoverskudd</p></td>
-<td><p>ca. 22–23 TWh</p></td>
-</tr>
-<tr class="row-odd"><td><p>🌊 Andel vannkraft</p></td>
-<td><p>~90 %</p></td>
-</tr>
-<tr class="row-even"><td><p>🌬️ Andel vindkraft</p></td>
-<td><p>~8–9 %</p></td>
-</tr>
-<tr class="row-odd"><td><p>☀️ Andel sol</p></td>
-<td><p>~0.2 %</p></td>
-</tr>
-<tr class="row-even"><td><p>🪫 Fossil / termisk</p></td>
-<td><p>~1 %</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="klassifisering-av-stabilitet">
+<h1>Klassifisering av stabilitet<a class="headerlink" href="#klassifisering-av-stabilitet" title="Permalink to this heading">#</a></h1>
+<p>Stabiliteten i kraftsystemet klassifiseres i rotorvinkel‑, spennings‑, frekvens‑, omformerdrevet‑ og resonansstabilitet.
+Vannkraftverk bidrar til robustheten i kraftnettet gjennom treghet (inerti) og aktiv effektkontroll, men også gjennom reaktiv effektkontroll fra eksitasjonssystemet.
+Kraftsystemstabilitet kan forklares som nettets evne til å gjenopprette likevekt etter å ha blitt utsatt for en forstyrrelse.
+Hvis dette ikke lykkes, kan det føre til en delvis eller total kollaps av systemet.
+Konvensjonell kraftsystemstabilitet fokuserer på rotorvinkel, frekvens og spenning.
+Generatorens bidrag til rotorvinkelstabilitet er dens evne til å opprettholde synkronisme mellom rotasjonshastigheten og systemfrekvensen etter en forstyrrelse.</p>
+<img src="../images/stabilitet_diagram.svg">
+<p>Dette oppnås primært ved å opprettholde en balanse mellom den mekaniske tilført effekten (Pm) og den elektriske avgitt effekten (Pe), som beskrevet gjennom svingligningen (Swing equation), utledet fra Newtons andre lov for rotasjonsbevegelse
+$<span class="math notranslate nohighlight">\(
+\frac{2H}{\omega_s} \frac{d^2 \delta}{dt^2} = P_m - P_e
+\)</span>$
+Her er H [J/MVA] treghetskonstanten, som beskriver den totale kinetiske energien lagret i generatoren.
+ωs\omega_sωs [rad/s] er synkronturtallet.</p>
+<section id="frekvensstabilitet">
+<h2>Frekvensstabilitet<a class="headerlink" href="#frekvensstabilitet" title="Permalink to this heading">#</a></h2>
+<p>Frekvensstabilitet refererer til kraftsystemets evne til å opprettholde en stabil frekvens etter å ha blitt utsatt for en ubalanse mellom produksjon og forbruk [26].
+Dette håndteres hovedsakelig av regulatoren (governor), som registrerer endringer i nettet, uttrykt som avvik i rotorhastigheten, og automatisk justerer vanninntaket for å gjenopprette effektbalansen i svingligningen.
+Denne responsen skjer vanligvis gjennom en droop‑regulering i regulatorsystemet.
+Dersom en forstyrrelse oppstår, er det først maskinens treghetsrespons som virker. Deretter følger aktivering av droop‑regulering og til slutt automatisk generatorregulering (AGC).
+Disse frekvensreservene bidrar til at frekvensen stabiliseres tilbake til sin nominelle verdi.</p>
 </section>
+<section id="spenningsstabilitet">
+<h2>Spenningsstabilitet<a class="headerlink" href="#spenningsstabilitet" title="Permalink to this heading">#</a></h2>
+<p>Spenningsstabilitet refererer til kraftsystemets evne til å opprettholde spenningen på et nominelt nivå i alle knutepunkter (busser) i systemet etter en forstyrrelse [26].
+Dette kan styres ved hjelp av en automatisk spenningsregulator (AVR), som reagerer på ubalanser i reaktiv effekt som påvirker spenningsnivåene [30].
+Generatoren kan regulere strømmen i eksitasjonssystemet, noe som endrer den reaktive effekten, og dermed justere driftspunktet for å støtte spenningen i nettet.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="typisk-dognprofil-norge">
-<h1>Typisk døgnprofil (Norge)<a class="headerlink" href="#typisk-dognprofil-norge" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">load</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">17</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid [timer]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Last [GW]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Typisk lastprofil i Norge (døgn)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/1965a5999356f2787180403340ce205ddfc3044e44a7783a88f45f15033cd4ae.png" src="../_images/1965a5999356f2787180403340ce205ddfc3044e44a7783a88f45f15033cd4ae.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-
-<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">18</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">base_load</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="n">load</span> <span class="o">=</span> <span class="n">base_load</span> <span class="o">+</span> <span class="n">morning_peak</span> <span class="o">+</span> <span class="n">evening_peak</span>
-
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid [timer]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Last [GW]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Typisk norsk lastprofil (døgn)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/54338e391a1aeb6bb569f8ea3c49c025852c1a2e1dd1e6a2b1c8417e1fad3c12.png" src="../_images/54338e391a1aeb6bb569f8ea3c49c025852c1a2e1dd1e6a2b1c8417e1fad3c12.png" />
-</div>
-</div>
-<section id="hva-ser-vi">
-<h2>Hva ser vi?<a class="headerlink" href="#hva-ser-vi" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Morgenpeak rundt kl. 08</p></li>
-<li><p>Kveldspeak rundt kl. 18</p></li>
-<li><p>Lav last om natten</p></li>
-</ul>
+<section id="treghetskonstant">
+<h2>Treghetskonstant<a class="headerlink" href="#treghetskonstant" title="Permalink to this heading">#</a></h2>
+<p>Et annet viktig aspekt er maskinens treghetskonstant. Ifølge svingligningen vil en høyere verdi av HHH føre til langsommere akselerasjon ved samme effektubalanse, noe som gjør systemet mindre følsomt for forstyrrelser.</p>
+</section>
+<section id="resonans-og-omformerdrevet-stabilitet">
+<h2>Resonans- og omformerdrevet stabilitet<a class="headerlink" href="#resonans-og-omformerdrevet-stabilitet" title="Permalink to this heading">#</a></h2>
+<p>Moderne stabilitetsfenomener (resonans og omformerdrevet stabilitet) er knyttet til effekten av hurtigvirkende kraftelektroniske (PE) enheter, som forventes å dominere kraftsystemet i fremtiden.
+Resonans beskriver nettets evne til å opprettholde korrekt oscillasjon av spenning, strøm eller dreiemoment.
+Omformerdrevet stabilitet beskriver nettets evne til å forbli stabilt når raske, programvarestyrte «beslutninger» fra kraftelektroniske omformere samspiller med de elektriske egenskapene i nettet.</p>
 </section>
 </section>
 
@@ -494,7 +430,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./02_tallgrunnlag"
+            path: "./10_stabilityclass"
         },
         predefinedOutput: true
     }
@@ -512,20 +448,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../09_gridradar/kraftsystemm%C3%A5linger.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Velkommen til boken om dynamiske kraftnett</p>
+        <p class="prev-next-title">Kraftsystemmålinger (Power system measurements)</p>
       </div>
     </a>
     <a class="right-next"
-       href="../03_data/behandle_tall.html"
+       href="../references.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tallbehandling</p>
+        <p class="prev-next-title">Referanser</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -545,16 +481,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">⚡ 🇳🇴 Nøkkeltall for kraftsystemet (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekvensstabilitet">Frekvensstabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsstabilitet">Spenningsstabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treghetskonstant">Treghetskonstant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonans-og-omformerdrevet-stabilitet">Resonans- og omformerdrevet stabilitet</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
