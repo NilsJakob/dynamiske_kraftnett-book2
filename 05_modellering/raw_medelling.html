@@ -357,6 +357,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksmetode">Indeksmetode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sliding-window-med-shift-metode">Sliding window med shift-metode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropna-metoden">.dropna() metoden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-standardavvik-til-gaussisk-filter">Fra standardavvik til gaussisk filter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-beskrivelse-til-vekting">Fra beskrivelse til vekting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokal-gjennomsnittsberegning">Lokal gjennomsnittsberegning</a></li>
@@ -368,7 +371,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussisk-filter">Gaussisk filter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diskret-versjon-tidsserier">Diskret versjon (tidsserier)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intuisjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Intuisjon</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representativ-dag">Representativ dag</a></li>
@@ -391,13 +394,15 @@ document.write(`
 <p>Formål: Bevise at modellen din tilfører verdi sammenlignet med enkle tommelfingerregler. Dette er særlig viktig når maskinlæringsalgoritmer blir veldig kompliserte, både for å vise til om de faktisk tilfører kunnskapsbasen og for å forhindre datalekkasje (at algoritmen ‘ser’ det den verifiserer seg mot).</p>
 <p>Den enkleste bunnlinjen er persistensmodell, som tar forige verdi <span class="math notranslate nohighlight">\(y_{t-1}\)</span> som det riktige svaret for nåtiden <span class="math notranslate nohighlight">\(y_t\)</span> eller predikert verdi <span class="math notranslate nohighlight">\(\hat{y}\)</span></p>
 <p>En enkel regelbasert algoritme kan også brukes som bunnlinje.</p>
-<p>En Regelbasert Kunstig Intelligens (ekspertsystemer) har vært mye brukt i kraftsystemer, spesielt innen vern, kontroll og overvåkning. Ekspersystemene bruker domenekunnskap til å styre venter. Disse systemene bruker forhåndsdefinerte IF–THEN-regler for å ta beslutninger, og anvendes blant annet i feilidentifikasjon, spenningskontroll og beskyttelseskoordinering \cite{Rule_basedAI_Enns1994}.</p>
+<p>En Regelbasert Kunstig Intelligens (ekspertsystemer) har vært mye brukt i kraftsystemer, spesielt innen vern, kontroll og overvåkning. Ekspersystemene bruker domenekunnskap til å styre venter. Disse systemene bruker forhåndsdefinerte IF–THEN-regler for å ta beslutninger, og anvendes blant annet i feilidentifikasjon, spenningskontroll og beskyttelseskoordinering <span id="id1">[]</span>.</p>
 <p>Ekeempel på regelbasert:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">strøm</span> <span class="o">&gt;</span> <span class="n">grense</span><span class="p">:</span>
     <span class="n">koble</span> <span class="n">ut</span> <span class="n">linje</span>
 </pre></div>
 </div>
-<p>La oss se på et eksempel på persistensmodellfra et datasett vi kjenner:</p>
+<p>La oss se på et eksempel på persistensmodell fra et datasett vi kjenner.</p>
+<p>Vi importerer og leser i pandas med <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">pd.read_csv(&quot;../data/load_data.csv&quot;,</span> <span class="pre">parse_dates=[&quot;Time(Local)&quot;])</span></code>,
+og ser på de 3 første radene:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -411,10 +416,25 @@ document.write(`
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time(Local)&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Consumption&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Consumption&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Production  Consumption
+Time(Local)                                      
+2025-12-31 23:00:00+00:00   18448,59     16662.95
+2026-01-01 00:00:00+00:00   18693,66     14953.24
+2026-01-01 01:00:00+00:00   18639,68     14298.07
 </pre></div>
 </div>
 </div>
 </div>
+<section id="indeksmetode">
+<h2>Indeksmetode<a class="headerlink" href="#indeksmetode" title="Permalink to this heading">#</a></h2>
+<p>Vi bruker indeksmetoden <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> fra pandas-biblioteket til å kvitte oss med første kolonne <code class="docutils literal notranslate"><span class="pre">df['Production']</span></code>.
+Indeksmetoden <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, velger vi ut kolonner vi vil jobbe videre med. Dette kalles ‘slicing’.
+Med <code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">1:]</span></code> velger vi alle utenom første kolonne; kolon (:) før komma, velger alle rader, 1 kolon (1:) etter komma velger alle kolonner fra indeks 1 og utover, og står igjennom med at indeks 0 som er <code class="docutils literal notranslate"><span class="pre">df['Production']</span></code>, ikke blir valgt. Vi lar denne slicen bli den nye dataframen vi jobber med <code class="docutils literal notranslate"><span class="pre">df_forbruk</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
@@ -424,7 +444,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -467,18 +487,17 @@ document.write(`
       <th>2026-01-01 01:00:00+00:00</th>
       <td>14298.07</td>
     </tr>
-    <tr>
-      <th>2026-01-01 02:00:00+00:00</th>
-      <td>13254.81</td>
-    </tr>
-    <tr>
-      <th>2026-01-01 03:00:00+00:00</th>
-      <td>12678.51</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="sliding-window-med-shift-metode">
+<h2>Sliding window med shift-metode<a class="headerlink" href="#sliding-window-med-shift-metode" title="Permalink to this heading">#</a></h2>
+<p>For å manipulere tid i tidsserieanalyse og maskinlæring bruker vi sliding window. Da er pandas .shift-metode praktisk.
+En metode er en funksjon som er knyttet til et objekt (eller en klasse).
+Funksjonen <code class="docutils literal notranslate"><span class="pre">.shift()</span></code>  tilhører dataframe objektet i pandas.
+Bruker vi funksjonen på objektet; <code class="docutils literal notranslate"><span class="pre">df.shift(1)</span></code>, vil metoden lage en ny kolonne <code class="docutils literal notranslate"><span class="pre">t-1</span></code>, som skifter alle radene i kolonnen nedover med en (1), eller et tidsteg. Vi har nå laget et sliding window med et tidssteg forskyvning. Legg merke til at <code class="docutils literal notranslate"><span class="pre">t-1</span></code> verdien for <code class="docutils literal notranslate"><span class="pre">2026-01-01</span> <span class="pre">00:00:00+00:00</span></code> er det samme som ‘Consumption’ verdien fra timen før <code class="docutils literal notranslate"><span class="pre">2025-12-31</span> <span class="pre">23:00:00+00:00</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Consumption&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -496,6 +515,23 @@ Time(Local)
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Consumption    0
+t-1            1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dropna-metoden">
+<h2>.dropna() metoden<a class="headerlink" href="#dropna-metoden" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_forbruk</span> <span class="o">=</span> <span class="n">df_forbruk</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -582,6 +618,7 @@ R2: 0.944
 </div>
 </div>
 </div>
+</section>
 <section id="fra-standardavvik-til-gaussisk-filter">
 <h2>Fra standardavvik til gaussisk filter<a class="headerlink" href="#fra-standardavvik-til-gaussisk-filter" title="Permalink to this heading">#</a></h2>
 <p>Vi har sett at standardavviket <span class="math notranslate nohighlight">\(\sigma\)</span> måler spredningen i dataene:</p>
@@ -727,8 +764,8 @@ y_t = \sum_{k=-K}^{K} G(k)\, x_{t-k}
 <p>Dette betyr at hver verdi ( y_t ) er en vektet sum av nabopunkter, der vektene bestemmes av den gaussiske funksjonen.</p>
 </section>
 <hr class="docutils" />
-<section id="id1">
-<h3>Intuisjon<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>Intuisjon<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Nærliggende punkter påvirker mest</p></li>
 <li><p>Fjerne punkter påvirker lite</p></li>
@@ -1030,6 +1067,9 @@ Representativ dag: 2026-04-13
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksmetode">Indeksmetode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sliding-window-med-shift-metode">Sliding window med shift-metode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropna-metoden">.dropna() metoden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-standardavvik-til-gaussisk-filter">Fra standardavvik til gaussisk filter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-beskrivelse-til-vekting">Fra beskrivelse til vekting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokal-gjennomsnittsberegning">Lokal gjennomsnittsberegning</a></li>
@@ -1041,7 +1081,7 @@ Representativ dag: 2026-04-13
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussisk-filter">Gaussisk filter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diskret-versjon-tidsserier">Diskret versjon (tidsserier)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intuisjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Intuisjon</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representativ-dag">Representativ dag</a></li>
