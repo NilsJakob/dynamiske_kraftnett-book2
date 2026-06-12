@@ -32,13 +32,7 @@ parts:
   - caption: Stabilitet
     chapters:
       - file: 08_stability/stability
-
-  - caption: Stabilitet
-    chapters:
       - file: 09_gridradar/kraftsystemmålinger
-
-  - caption: Stabilitet
-    chapters:
       - file: 10_stabilityclass/stabilityclass
 
   - caption: Referanser
