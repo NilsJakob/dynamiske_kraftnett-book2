@@ -1,0 +1,8 @@
+
+jupyter-book
+notebook
+jupyterlab
+numpy
+pandas
+matplotlib
+scipy

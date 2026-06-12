@@ -15,6 +15,21 @@ html_static_path:
   - _static
 
 
+html:
+  use_repository_button: true
+  use_issues_button: true
+
+
+repository:
+  url: https://github.com/NilsJakob/dynamiske_kraftnett-book2
+  branch: main
+
+
+launch_buttons:
+  binderhub_url: https://mybinder.org
+
+
+
 exclude_patterns:
   - jb-env/**
   - jv-env/**
