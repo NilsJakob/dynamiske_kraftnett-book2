@@ -3,6 +3,7 @@
 I denne boken vil vi behandle dynamiske forhold i kraftnettet vårt.
 
 
+
 ---
 
 ```{figure} https://unsplash.com/photos/yETqkLnhsUI/download?force=true
@@ -19,9 +20,10 @@ Boken er inndelt i flere deler:
 - **Analyse** – behandling av data
 - **Modellering og tidsserier**
 - **Stabilitet i kraftsystemer**
+- **Dynamisk oppførsel**
 
 Generelt:
 
-Første del av boken tar for seg hvordan håndtere tid i form av tidsserier.
+Første del av boken tar for seg hvordan håndtere tid i form av tidsserier. 
 
 Andre del tar for seg stabilitet og transient stabilitet
