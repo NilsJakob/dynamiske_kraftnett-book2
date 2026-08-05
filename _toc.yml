@@ -35,6 +35,10 @@ parts:
       - file: 09_gridradar/kraftsystemmålinger
       - file: 10_stabilityclass/stabilityclass
 
+  - caption: Power Factory
+    chapters: 
+      - file: 11_powerfactory/about_pf
+
   - caption: Referanser
     chapters:
       - file: references
