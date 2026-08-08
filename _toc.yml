@@ -7,7 +7,7 @@ options:
 parts:
   - caption: Forord
     chapters:
-      - file: about330
+      - file: 01_forord/about330
 
   - caption: Tallgrunnlag
     chapters:
