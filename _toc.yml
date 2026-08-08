@@ -5,6 +5,10 @@ options:
   numbered: true
 
 parts:
+  - caption: Forord
+    chapters:
+      -file: about330
+      
   - caption: Tallgrunnlag
     chapters:
       - file: 02_tallgrunnlag/norske_data_slides
@@ -38,6 +42,7 @@ parts:
   - caption: Power Factory
     chapters: 
       - file: 11_powerfactory/about_pf
+      - file: 11_powerfactory/license_pf
 
   - caption: Referanser
     chapters:
