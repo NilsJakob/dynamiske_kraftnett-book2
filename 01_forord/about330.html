@@ -386,7 +386,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -402,6 +404,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitalisering">Digitalisering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulering">Simulering</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -414,6 +427,68 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="om-emnet-elektriske-anlegg-og-installasjoner-elk330">
 <h1>Om Emnet Elektriske anlegg og installasjoner - ELK330<a class="headerlink" href="#om-emnet-elektriske-anlegg-og-installasjoner-elk330" title="Permalink to this heading">#</a></h1>
 <p>Emnet ELK330 er en introduksjon til modellering av transmisjonsliner og 3-fase-systemer. Dette inkluderer last- og kortslutningsberegninger, belastningsfordeling, samt spenningsfall, effekt- og energitap. Emnet inkluderer videre analyse og simulering av dynamisk oppførsel. Emnet gir en oversikt over vern for distribusjonssystemer og i nettet, samt beskyttelse av kabler, generatorer og motorer.</p>
+<p>En statisk analyse forteller hvordan nettet ser ut i et gitt øyeblikk. En dynamisk analyse forteller hvordan nettet utvikler seg over tid etter en hendelse.</p>
+<p>Når vi snakker om analyse og simulering av dynamisk oppførsel i kraftsystemer, mener vi å studere hvordan systemet utvikler seg over tid når det utsettes for endringer eller forstyrrelser.</p>
+<p>Typiske dynamiske fenomener vi analyserer i kraftsystemer:</p>
+<ul class="simple">
+<li><p>Frekvensrespons etter bortfall av produksjon.</p></li>
+<li><p>Rotorvinkelstabilitet mellom generatorer.</p></li>
+<li><p>Spenningsstabilitet.</p></li>
+<li><p>Oppførsel til regulatorer.</p></li>
+<li><p>Vernoperasjoner.</p></li>
+<li><p>Oscillasjoner i nettet.</p></li>
+<li><p>Respons fra vindkraft, solkraft og batterier.</p></li>
+<li><p>Oppstart og innkobling av store laster.</p></li>
+</ul>
+<p>Et godt eksempel er bortfall av en generator.</p>
+<p>Hva skjer hvis en genrator på 500 MW kobles fra nettet?</p>
+<p>En statisk analyse er opptatt av  effektflyten etter at systemet har stabilisert seg.</p>
+<p>Et dynamisk perspektiv spør:</p>
+<p>Hvor raskt synker frekvensen?</p>
+<p>Hvor lav blir frekvensen?</p>
+<p>Rekker regulatorene å reagere?</p>
+<p>Forblir generatorene synkrone?</p>
+<p>Kobles vernene ut?</p>
+<p>Disse spørsmålene krever simulering av tidsforløpet.</p>
+<p>Hva simuleres egentlig?</p>
+<p>I dynamiske simuleringer løser vi differensialligninger som beskriver:</p>
+<ul class="simple">
+<li><p>Generatorenes mekaniske bevegelse.</p></li>
+<li><p>Elektromagnetiske prosesser.</p></li>
+<li><p>Regulatorers virkemåte.</p></li>
+<li><p>Lastdynamikk.</p></li>
+</ul>
+<p>Resultatet blir kurver som viser hvordan variabler endrer seg over tid.</p>
+<p>For eksempel:</p>
+<p>Frekvens som funksjon av tid.
+Spenning som funksjon av tid.
+Generatorhastighet som funksjon av tid.
+Kobling til digitalisering og digitale tvillinger</p>
+<p>Digitalisering forteller oss hvordan systemet oppfører seg nå.</p>
+<p>Analyse og simulering av dynamisk oppførsel i kraftsystemer innebærer å modellere og beregne tidsavhengige prosesser i nettet for å studere hvordan systemet responderer på forstyrrelser, driftsendringer og kontrollhandlinger. Målet er å vurdere systemets stabilitet, robusthet og evne til å opprettholde sikker drift over tid.</p>
+<p>Statiske analyser forteller hvor systemet ender opp. Dynamiske analyser forteller hvordan systemet kommer dit.</p>
+<p>Statiske analyser: Hva er situasjonen akkurat nå?
+Dynamiske analyser: Hva skjer de neste sekundene, minuttene eller timene?
+Eksempler på dynamiske forhold er:</p>
+<p>En lastflytberegning kan vise hvilke effektflyter som oppstår etter at generatoren er ute av drift.</p>
+<p>Men den forteller ikke:</p>
+<ul class="simple">
+<li><p>Hvor raskt frekvensen synker.</p></li>
+<li><p>Om frekvensen blir kritisk lav.</p></li>
+<li><p>Hvordan regulatorene reagerer.</p></li>
+<li><p>Om nettet forblir stabilt.
+For å analysere dette trenger man dynamisk simulering.</p></li>
+</ul>
+<section id="digitalisering">
+<h2>Digitalisering<a class="headerlink" href="#digitalisering" title="Permalink to this heading">#</a></h2>
+<p>Digitalisering gir informasjon om hvordan nettet faktisk oppfører seg.
+Tilstandsestimering gir et oppdatert bilde av driftstilstand.
+Dynamiske simuleringer gjør det mulig å undersøke hvordan nettet vil utvikle seg etter en forstyrrelse eller endring.
+Digitale tvillinger kombinerer disse elementene for å støtte prediksjon og beslutningstaking.</p>
+<p>Mens digitalisering gir økt situasjonsforståelse gjennom innsamling og behandling av driftsdata, muliggjør dynamiske simuleringer prediksjon av tidsavhengig systemoppførsel. Sammen gir dette grunnlag for analyse av stabilitet, robusthet og fremtidige driftstilstander i moderne kraftsystemer.</p>
+<p>Vi går fra å vite hvordan nettet ser ut, til å forstå hvordan nettet beveger seg.</p>
+<section id="simulering">
+<h3>Simulering<a class="headerlink" href="#simulering" title="Permalink to this heading">#</a></h3>
 <p>PowerFactory er et verktøy for å modellere, analysere og simulere elektriske kraftsystemer. Det brukes av nettselskaper, kraftprodusenter, konsulenter og forskere for å modellere og analysere hvordan elektriske nett oppfører seg. Power factory hjelper oss å forstå hvordan strømnettet oppfører seg under normal drift og ved feil, uten å måtte eksperimentere på det virkelige nettet.</p>
 <p>En PowerFactory-representasjon kan beskrives både gjennom sin integrasjonsgrad <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Werner Kritzinger, Matthias Karner, Georg Traar, Jan Henjes, and Wilfried Sihn. Digital twin in manufacturing: a categorical literature review and classification. IFAC-PapersOnLine, 51(11):1016–1022, 2018. doi:10.1016/j.ifacol.2018.08.474.">KKT+18</a>]</span> og gjennom sin modellmodenhet, karakterisert ved kompleksitet, fidelity (troverdighet) og funksjonalitet <span id="id2">[<a class="reference internal" href="../references.html#id4" title="David Jones, Chris Snider, Aydin Nassehi, J.-L. Yon, and Ben Hicks. Characterising the digital twin: a systematic literature review. CIRP Journal of Manufacturing Science and Technology, 29:36–52, 2020. doi:10.1016/j.cirpj.2020.02.002.">JSN+20</a>]</span><span id="id3">[<a class="reference internal" href="../references.html#id5" title="Stefan Boschert and Roland Rosen. Digital twin—the simulation aspect. In Peter Hehenberger and David Bradley, editors, Mechatronic Futures, pages 59–74. Springer, Cham, 2016. doi:10.1007/978-3-319-32156-1_5.">BR16</a>]</span>. Modellens integrasjons- og kompleksitetsgrad avgjør i hvilken grad den er avgjørende for kraftselskapets beslutningsstøtte <span id="id4">[<a class="reference internal" href="../references.html#id3" title="Azad M. Madni, Carla C. Madni, and Scott D. Lucero. Leveraging digital twin technology in model-based systems engineering. Systems, 7(1):7, 2019. doi:10.3390/systems7010007.">MML19</a>]</span>.</p>
 <p><img alt="pf_modell" src="../_images/digital_tvilling_PF_resize.png" /></p>
@@ -471,18 +546,15 @@ Alle regulatorer og vern er modellert.</p>
 <p>Dette er en modell med svært høy fidelity.</p>
 <p>Men dersom ingen sanntidsdata flyter inn og ingen informasjon flyter tilbake til driften, vil Kritzinger fortsatt klassifisere den som en Digital Model.</p>
 <p>For kraftsystemer</p>
-<p>I kraftsystemforskning synes jeg ofte fidelity-perspektivet er spesielt nyttig.</p>
 <p>For eksempel kan vi tenke oss tre PowerFactory-modeller:</p>
 <p>Nivå 1: Digital modell
 Topologi
 Lastflyt
 Statiske data</p>
-<p>Studentoppgaver.</p>
 <p>Nivå 2: Delvis integrert
 SCADA-data importeres
 Modellen oppdateres daglig eller kontinuerlig
 State estimation</p>
-<p>Typisk hos nettselskaper.</p>
 <p>Nivå 3: Fullt integrert digital tvilling
 Sanntidsmålinger
 Dynamiske modeller
@@ -529,6 +601,8 @@ Lastflyt og andre analyser kjøres på det estimerte driftsbildet.</p>
 <p>Dermed får man en modell som kontinuerlig følger den virkelige driften.</p>
 <p>Tilstandsestimering (state estimation) er en metode som kombinerer målinger og nettmodell for å beregne den mest sannsynlige tilstanden til kraftsystemet.</p>
 <p>Tilstandsestimering er en sentral funksjon i en delvis integrert digital tvilling. Ved hjelp av måledata og nettmodell beregnes den mest sannsynlige driftstilstanden, slik at den digitale representasjonen bedre samsvarer med det fysiske kraftsystemet.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -585,6 +659,24 @@ Lastflyt og andre analyser kjøres på det estimerte driftsbildet.</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitalisering">Digitalisering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulering">Simulering</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
