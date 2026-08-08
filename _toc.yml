@@ -7,8 +7,8 @@ options:
 parts:
   - caption: Forord
     chapters:
-      -file: about330
-      
+      - file: about330
+
   - caption: Tallgrunnlag
     chapters:
       - file: 02_tallgrunnlag/norske_data_slides
