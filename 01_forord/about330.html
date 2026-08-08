@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Klassifisering av stabilitet &#8212; Dynamiske kraftnett</title>
+    <title>Om Emnet Elektriske anlegg og installasjoner - ELK330 &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -65,13 +65,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '10_stabilityclass/stabilityclass';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_forord/about330';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Om Power Factory" href="../11_powerfactory/about_pf.html" />
-    <link rel="prev" title="Kraftsystemmålinger (Power system measurements)" href="../09_gridradar/kraftsystemm%C3%A5linger.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -133,6 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -198,11 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../07_api/api.html">Application Programming Interface (API)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08_stability/stability.html">Stabilitet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09_gridradar/kraftsystemm%C3%A5linger.html">Kraftsystemmålinger (Power system measurements)</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
@@ -283,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F10_stabilityclass/stabilityclass.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F01_forord/about330.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -313,7 +311,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/10_stabilityclass/stabilityclass.ipynb" target="_blank"
+      <li><a href="../_sources/01_forord/about330.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,9 +382,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -397,22 +393,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Klassifisering av stabilitet</h1>
+    <h1>Om Emnet Elektriske anlegg og installasjoner - ELK330</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekvensstabilitet">Frekvensstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsstabilitet">Spenningsstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treghetskonstant">Treghetskonstant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonans-og-omformerdrevet-stabilitet">Resonans- og omformerdrevet stabilitet</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -422,45 +407,124 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="klassifisering-av-stabilitet">
-<h1>Klassifisering av stabilitet<a class="headerlink" href="#klassifisering-av-stabilitet" title="Permalink to this heading">#</a></h1>
-<p>Stabiliteten i kraftsystemet klassifiseres i rotorvinkel‑, spennings‑, frekvens‑, omformerdrevet‑ og resonansstabilitet.
-Vannkraftverk bidrar til robustheten i kraftnettet gjennom treghet (inerti) og aktiv effektkontroll, men også gjennom reaktiv effektkontroll fra eksitasjonssystemet.
-Kraftsystemstabilitet kan forklares som nettets evne til å gjenopprette likevekt etter å ha blitt utsatt for en forstyrrelse.
-Hvis dette ikke lykkes, kan det føre til en delvis eller total kollaps av systemet.
-Konvensjonell kraftsystemstabilitet fokuserer på rotorvinkel, frekvens og spenning.
-Generatorens bidrag til rotorvinkelstabilitet er dens evne til å opprettholde synkronisme mellom rotasjonshastigheten og systemfrekvensen etter en forstyrrelse.</p>
-<p><img alt="Stabilitetsdiagram" src="../_images/stabilitet_diagram.svg" /></p>
-<p>Dette oppnås primært ved å opprettholde en balanse mellom den mekaniske tilført effekten (Pm) og den elektriske avgitt effekten (Pe), som beskrevet gjennom svingligningen (Swing equation), utledet fra Newtons andre lov for rotasjonsbevegelse
-$<span class="math notranslate nohighlight">\(
-\frac{2H}{\omega_s} \frac{d^2 \delta}{dt^2} = P_m - P_e
-\)</span>$
-Her er H [J/MVA] treghetskonstanten, som beskriver den totale kinetiske energien lagret i generatoren.
-ωs\omega_sωs [rad/s] er synkronturtallet.</p>
-<section id="frekvensstabilitet">
-<h2>Frekvensstabilitet<a class="headerlink" href="#frekvensstabilitet" title="Permalink to this heading">#</a></h2>
-<p>Frekvensstabilitet refererer til kraftsystemets evne til å opprettholde en stabil frekvens etter å ha blitt utsatt for en ubalanse mellom produksjon og forbruk.
-Dette håndteres hovedsakelig av regulatoren (governor), som registrerer endringer i nettet, uttrykt som avvik i rotorhastigheten, og automatisk justerer vanninntaket for å gjenopprette effektbalansen i svingligningen.
-Denne responsen skjer vanligvis gjennom en droop‑regulering i regulatorsystemet.
-Dersom en forstyrrelse oppstår, er det først maskinens treghetsrespons som virker. Deretter følger aktivering av droop‑regulering og til slutt automatisk generatorregulering (AGC).
-Disse frekvensreservene bidrar til at frekvensen stabiliseres tilbake til sin nominelle verdi.</p>
-</section>
-<section id="spenningsstabilitet">
-<h2>Spenningsstabilitet<a class="headerlink" href="#spenningsstabilitet" title="Permalink to this heading">#</a></h2>
-<p>Spenningsstabilitet refererer til kraftsystemets evne til å opprettholde spenningen på et nominelt nivå i alle knutepunkter (busser) i systemet etter en forstyrrelse.
-Dette kan styres ved hjelp av en automatisk spenningsregulator (AVR), som reagerer på ubalanser i reaktiv effekt som påvirker spenningsnivåene.
-Generatoren kan regulere strømmen i eksitasjonssystemet, noe som endrer den reaktive effekten, og dermed justere driftspunktet for å støtte spenningen i nettet.</p>
-</section>
-<section id="treghetskonstant">
-<h2>Treghetskonstant<a class="headerlink" href="#treghetskonstant" title="Permalink to this heading">#</a></h2>
-<p>Et annet viktig aspekt er maskinens treghetskonstant. Ifølge svingligningen vil en høyere verdi av HHH føre til langsommere akselerasjon ved samme effektubalanse, noe som gjør systemet mindre følsomt for forstyrrelser.</p>
-</section>
-<section id="resonans-og-omformerdrevet-stabilitet">
-<h2>Resonans- og omformerdrevet stabilitet<a class="headerlink" href="#resonans-og-omformerdrevet-stabilitet" title="Permalink to this heading">#</a></h2>
-<p>Moderne stabilitetsfenomener (resonans og omformerdrevet stabilitet) er knyttet til effekten av hurtigvirkende kraftelektroniske (PE) enheter, som forventes å dominere kraftsystemet i fremtiden.
-Resonans beskriver nettets evne til å opprettholde korrekt oscillasjon av spenning, strøm eller dreiemoment.
-Omformerdrevet stabilitet beskriver nettets evne til å forbli stabilt når raske, programvarestyrte «beslutninger» fra kraftelektroniske omformere samspiller med de elektriske egenskapene i nettet.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="om-emnet-elektriske-anlegg-og-installasjoner-elk330">
+<h1>Om Emnet Elektriske anlegg og installasjoner - ELK330<a class="headerlink" href="#om-emnet-elektriske-anlegg-og-installasjoner-elk330" title="Permalink to this heading">#</a></h1>
+<p>Emnet ELK330 er en introduksjon til modellering av transmisjonsliner og 3-fase-systemer. Dette inkluderer last- og kortslutningsberegninger, belastningsfordeling, samt spenningsfall, effekt- og energitap. Emnet inkluderer videre analyse og simulering av dynamisk oppførsel. Emnet gir en oversikt over vern for distribusjonssystemer og i nettet, samt beskyttelse av kabler, generatorer og motorer.</p>
+<p>PowerFactory er et verktøy for å modellere, analysere og simulere elektriske kraftsystemer. Det brukes av nettselskaper, kraftprodusenter, konsulenter og forskere for å modellere og analysere hvordan elektriske nett oppfører seg. Power factory hjelper oss å forstå hvordan strømnettet oppfører seg under normal drift og ved feil, uten å måtte eksperimentere på det virkelige nettet.</p>
+<p>En PowerFactory-representasjon kan beskrives både gjennom sin integrasjonsgrad <span id="id1">[]</span> og gjennom sin modellmodenhet, karakterisert ved kompleksitet, fidelity (troverdighet) og funksjonalitet <span id="id2">[]</span><span id="id3">[<a class="reference internal" href="../references.html#id5" title="Stefan Boschert and Roland Rosen. Digital twin—the simulation aspect. In Peter Hehenberger and David Bradley, editors, Mechatronic Futures, pages 59–74. Springer, Cham, 2016. doi:10.1007/978-3-319-32156-1_5.">BR16</a>]</span>. Modellens integrasjons- og kompleksitetsgrad avgjør i hvilken grad den er avgjørende for kraftselskapets beslutningsstøtte <span id="id4">[<a class="reference internal" href="../references.html#id3" title="Azad M. Madni, Carla C. Madni, and Scott D. Lucero. Leveraging digital twin technology in model-based systems engineering. Systems, 7(1):7, 2019. doi:10.3390/systems7010007.">MML19</a>]</span>.</p>
+<p><img alt="pfmodell" src="../_images/digital_tvilling_PF.png" /></p>
+<p>En vanlig PowerFactory-modell som brukes i studier/undervisning er ofte en digital modell. En PowerFactory-modell koblet til SCADA, PMU-data og driftsstøttesystemer kan utvikles til en delvis eller fullt integrert digital tvilling.</p>
+<p>Integritet (fidelity) i den digitale tvillingen</p>
+<p>PowerFactory ligger typisk et sted mellom:</p>
+<p>Konseptuell modell (lav integritet)</p>
+<p>Bare topologi og grove effektflyter.
+Brukes i tidlige studier.</p>
+<p>Ingeniørmodell (middels til høy integritet)</p>
+<p>Det vanligste.
+Nettkomponenter er representert med tekniske parametere.
+Lastflyt, kortslutning, vern og stabilitetsanalyser gir resultater som er tilstrekkelig nøyaktige for planlegging og drift.</p>
+<p>Operasjonell digital tvilling (svært høy integritet)</p>
+<p>Koblet mot sanntidsdata fra SCADA, PMU-er og målesystemer.
+Modellen oppdateres kontinuerlig.
+Kan brukes til driftstøtte og prediksjon.</p>
+<ul class="simple">
+<li><p>Kompleksitet beskriver hvor mye av systemet som er modellert.</p></li>
+<li><p>Integritet (fidelity) beskriver hvor realistisk modellen er.</p></li>
+<li><p>Integrasjon beskriver hvor tett modellen er koblet til virkeligheten.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kritzinger</p></th>
+<th class="head"><p>Integrasjon</p></th>
+<th class="head"><p>Integritet</p></th>
+<th class="head"><p>Kraftsystemeksempel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Digital Model</p></td>
+<td><p>Ingen automatisk kobling</p></td>
+<td><p>Lav til høy</p></td>
+<td><p>Vanlig PowerFactory-studie</p></td>
+</tr>
+<tr class="row-odd"><td><p>Digital Shadow</p></td>
+<td><p>Enveis dataflyt</p></td>
+<td><p>Ofte høy</p></td>
+<td><p>Modell oppdateres fra SCADA</p></td>
+</tr>
+<tr class="row-even"><td><p>Digital Twin</p></td>
+<td><p>Toveis dataflyt</p></td>
+<td><p>Høy</p></td>
+<td><p>Sanntidsmodell med beslutningsstøtte</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Her ser vi at en modell kan ha svært høy integritet uten å være en digital tvilling.</p>
+<p>Eksempel:</p>
+<p>Du har en PowerFactory-modell av hele det norske transmisjonsnettet.
+Alle parametre er korrekte.
+Alle regulatorer og vern er modellert.</p>
+<p>Dette er en modell med svært høy fidelity.</p>
+<p>Men dersom ingen sanntidsdata flyter inn og ingen informasjon flyter tilbake til driften, vil Kritzinger fortsatt klassifisere den som en Digital Model.</p>
+<p>For kraftsystemer</p>
+<p>I kraftsystemforskning synes jeg ofte fidelity-perspektivet er spesielt nyttig.</p>
+<p>For eksempel kan vi tenke oss tre PowerFactory-modeller:</p>
+<p>Nivå 1: Digital modell
+Topologi
+Lastflyt
+Statiske data</p>
+<p>Studentoppgaver.</p>
+<p>Nivå 2: Delvis integrert
+SCADA-data importeres
+Modellen oppdateres daglig eller kontinuerlig
+State estimation</p>
+<p>Typisk hos nettselskaper.</p>
+<p>Nivå 3: Fullt integrert digital tvilling
+Sanntidsmålinger
+Dynamiske modeller
+Automatisk parameteroppdatering
+Prediksjon og operativ beslutningsstøtte</p>
+<p>Dette ligger nær både Kritzingers DT-begrep og industrien sin moderne forståelse.</p>
+<p>Hvor oppstår den akademiske uenigheten?</p>
+<p>Uenigheten skyldes egentlig at forskere svarer på forskjellige spørsmål.</p>
+<p>Kritzinger-skolen</p>
+<p>Spør:</p>
+<p>“Hva er graden av integrasjon mellom fysisk og digital verden?”</p>
+<p>De ser digital tvilling som et informasjons- og kommunikasjonssystem.</p>
+<p>Fidelity-/kompleksitetsskolen</p>
+<p>Spør:</p>
+<p>“Hvor komplett og realistisk er den digitale representasjonen?”</p>
+<p>De ser digital tvilling mer som en modellering- og simuleringsutfordring.</p>
+<p>Kobling til digital tvilling</p>
+<p>Når vi snakker om digitale tvillinger er det nyttig å skille mellom:</p>
+<ul class="simple">
+<li><p>Fidelity: Hvor riktig modellen er.</p></li>
+<li><p>Kompleksitet: Hvor mye av systemet som er representert.</p></li>
+<li><p>Integrasjon: Hvor sterk koblingen er mellom modell og fysisk system.</p></li>
+</ul>
+<p>Hvor passer dette inn i digital tvilling-begrepet?</p>
+<p>Digital modell</p>
+<p>Lastflyt basert på historiske eller antatte data.
+Oppdateres manuelt.</p>
+<p>Delvis integrert modell</p>
+<p>Modellen mottar virkelige måledata.
+State estimation brukes for å oppdatere nettstatus.
+Modellen reflekterer faktisk drift.</p>
+<p>Fullt integrert digital tvilling</p>
+<p>Kontinuerlig state estimation.
+Automatisk parameteroppdatering.
+Prediksjon av fremtidige tilstander.
+Beslutningsstøtte eller automatisk styring.</p>
+<p>Kobling til PowerFactory</p>
+<p>I PowerFactory brukes state estimation ofte som:</p>
+<p>Målte verdier leses inn fra SCADA.
+Feilaktige målinger identifiseres.
+Manglende verdier estimeres.
+Nettets mest sannsynlige tilstand beregnes.
+Lastflyt og andre analyser kjøres på det estimerte driftsbildet.</p>
+<p>Dermed får man en modell som kontinuerlig følger den virkelige driften.</p>
+<p>Tilstandsestimering (state estimation) er en metode som kombinerer målinger og nettmodell for å beregne den mest sannsynlige tilstanden til kraftsystemet.</p>
+<p>Tilstandsestimering er en sentral funksjon i en delvis integrert digital tvilling. Ved hjelp av måledata og nettmodell beregnes den mest sannsynlige driftstilstanden, slik at den digitale representasjonen bedre samsvarer med det fysiske kraftsystemet.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -476,7 +540,7 @@ Omformerdrevet stabilitet beskriver nettets evne til å forbli stabilt når rask
         },
         kernelOptions: {
             name: "python3",
-            path: "./10_stabilityclass"
+            path: "./01_forord"
         },
         predefinedOutput: true
     }
@@ -493,48 +557,12 @@ Omformerdrevet stabilitet beskriver nettets evne til å forbli stabilt når rask
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../09_gridradar/kraftsystemm%C3%A5linger.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Kraftsystemmålinger (Power system measurements)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../11_powerfactory/about_pf.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Om Power Factory</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekvensstabilitet">Frekvensstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsstabilitet">Spenningsstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treghetskonstant">Treghetskonstant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonans-og-omformerdrevet-stabilitet">Resonans- og omformerdrevet stabilitet</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
