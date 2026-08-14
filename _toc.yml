@@ -13,37 +13,37 @@ parts:
 
   - caption: Tallgrunnlag
     chapters:
-      -file: 02_tallgrunnlag/under_utvikling
+      - file: 02_tallgrunnlag/under_utvikling
       #- file: 02_tallgrunnlag/norske_data_slides
 
   - caption: Analyse
     chapters:
-      -file: 02_tallgrunnlag/under_utvikling
+      - file: 02_tallgrunnlag/under_utvikling
       #- file: 03_data/behandle_tall
 
   - caption: Representativ dag
     chapters:
-      -file: 02_tallgrunnlag/under_utvikling
+      - file: 02_tallgrunnlag/under_utvikling
       #- file: 04_reprdag/repr_dag
 
   - caption: Modellering
     chapters:
-      -file: 02_tallgrunnlag/under_utvikling
+      - file: 02_tallgrunnlag/under_utvikling
       #- file: 05_modellering/raw_medelling
 
   - caption: Tidsserie
     chapters:
-      -file: 02_tallgrunnlag/under_utvikling
+      - file: 02_tallgrunnlag/under_utvikling
       #- file: 06_tidsserie/tidsserie
 
   - caption: Application Programming Interface
     chapters:
-      -file: 02_tallgrunnlag/under_utvikling
+      - file: 02_tallgrunnlag/under_utvikling
       #- file: 07_api/api
 
   - caption: Stabilitet
     chapters:
-      -file: 02_tallgrunnlag/under_utvikling
+      - file: 02_tallgrunnlag/under_utvikling
       #- file: 08_stability/stability
       #- file: 09_gridradar/kraftsystemmålinger
       #- file: 10_stabilityclass/stabilityclass
