@@ -50,8 +50,8 @@ parts:
 
   - caption: Power Factory
     chapters: 
-      #- file: 11_powerfactory/about_pf
-      #- file: 11_powerfactory/license_pf
+      - file: 11_powerfactory/about_pf
+      - file: 11_powerfactory/license_pf
 
   - caption: Referanser
     chapters:
