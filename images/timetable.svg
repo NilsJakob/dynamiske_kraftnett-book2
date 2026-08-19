@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="850">
+
+<style>
+.header { fill:#d7dce4; stroke:#c0c0c0; }
+.cell { fill:white; stroke:#d0d0d0; }
+.blue { fill:white; stroke:#2b78da; stroke-width:3; }
+.orange { fill:white; stroke:#e66100; stroke-width:3; }
+.green { fill:white; stroke:#409243; stroke-width:3; }
+.title { font:bold 12px Arial, sans-serif; }
+.text { font:11px Arial, sans-serif; }
+.time { font:bold 12px Arial, sans-serif; }
+.dayname { font:bold 14px Arial, sans-serif; }
+</style>
+
+<!-- Tittel -->
+<text x="20" y="30"
+      font-family="Arial"
+      font-size="24"
+      font-weight="bold">
+Uker: høst2026
+</text>
+
+<!-- Kolonneoverskrifter -->
+<rect x="20" y="60" width="70" height="40" class="header"/>
+<rect x="90" y="60" width="160" height="40" class="header"/>
+<rect x="250" y="60" width="160" height="40" class="header"/>
+<rect x="410" y="60" width="160" height="40" class="header"/>
+<rect x="570" y="60" width="160" height="40" class="header"/>
+<rect x="730" y="60" width="160" height="40" class="header"/>
+
+<text x="160" y="85" text-anchor="middle" class="dayname">Man</text>
+<text x="320" y="85" text-anchor="middle" class="dayname">Tir</text>
+<text x="480" y="85" text-anchor="middle" class="dayname">Ons</text>
+<text x="640" y="85" text-anchor="middle" class="dayname">Tor</text>
+<text x="800" y="85" text-anchor="middle" class="dayname">Fre</text>
+
+<!-- Rutenett -->
+<rect x="20" y="100" width="70" height="640" class="cell"/>
+<rect x="90" y="100" width="160" height="640" class="cell"/>
+<rect x="250" y="100" width="160" height="640" class="cell"/>
+<rect x="410" y="100" width="160" height="640" class="cell"/>
+<rect x="570" y="100" width="160" height="640" class="cell"/>
+<rect x="730" y="100" width="160" height="640" class="cell"/>
+
+<!-- Horisontale tidslinjer -->
+<g stroke="#dddddd">
+<line x1="20" y1="100" x2="890" y2="100"/>
+<line x1="20" y1="180" x2="890" y2="180"/>
+<line x1="20" y1="260" x2="890" y2="260"/>
+<line x1="20" y1="340" x2="890" y2="340"/>
+<line x1="20" y1="420" x2="890" y2="420"/>
+<line x1="20" y1="500" x2="890" y2="500"/>
+<line x1="20" y1="580" x2="890" y2="580"/>
+<line x1="20" y1="660" x2="890" y2="660"/>
+<line x1="20" y1="740" x2="890" y2="740"/>
+</g>
+
+<!-- Klokkeslett -->
+<text x="30" y="120" class="time">08:00</text>
+<text x="30" y="200" class="time">09:00</text>
+<text x="30" y="280" class="time">10:00</text>
+<text x="30" y="360" class="time">11:00</text>
+<text x="30" y="440" class="time">12:00</text>
+<text x="30" y="520" class="time">13:00</text>
+<text x="30" y="600" class="time">14:00</text>
+<text x="30" y="680" class="time">15:00</text>
+<text x="30" y="760" class="time">16:00</text>
+
+<!-- Mandag -->
+<rect x="95" y="120" width="150" height="140" class="blue"/>
+<text x="103" y="140" class="title">ELE230 Undervisning</text>
+<text x="103" y="160" class="text">08:15-10:00</text>
+<text x="103" y="176" class="text">KE A-101</text>
+
+<rect x="95" y="280" width="150" height="140" class="blue"/>
+<text x="103" y="300" class="title">ELE230 Laboratorium</text>
+<text x="103" y="320" class="text">Elektro y-vei</text>
+<text x="103" y="336" class="text">10:15-12:00</text>
+
+<rect x="95" y="440" width="150" height="140" class="blue"/>
+<text x="103" y="460" class="title">ELE230 Laboratorium</text>
+<text x="103" y="480" class="text">Elkraft + medtek</text>
+<text x="103" y="496" class="text">12:15-14:00</text>
+
+<rect x="95" y="600" width="150" height="140" class="orange"/>
+<text x="103" y="620" class="title">ELE300 Forelesning</text>
+<text x="103" y="640" class="text">14:15-16:00</text>
+
+<!-- Tirsdag -->
+<rect x="255" y="120" width="150" height="140" class="blue"/>
+<text x="263" y="140" class="title">ELE230 Undervisning</text>
+<text x="263" y="160" class="text">08:15-10:00</text>
+<text x="263" y="176" class="text">KE E-166</text>
+
+<rect x="255" y="280" width="150" height="140" class="blue"/>
+<text x="263" y="300" class="title">ELE230 Laboratorium</text>
+<text x="263" y="320" class="text">Elektro s-vei</text>
+<text x="263" y="336" class="text">10:15-12:00</text>
+
+<rect x="255" y="440" width="150" height="140" class="orange"/>
+<text x="263" y="460" class="title">ELE300 Forelesning</text>
+<text x="263" y="480" class="text">12:15-14:00</text>
+
+<!-- Onsdag -->
+<rect x="415" y="280" width="150" height="140" class="orange"/>
+<text x="423" y="300" class="title">ELE300 Øving</text>
+<text x="423" y="320" class="text">10:15-12:00</text>
+
+<!-- Torsdag -->
+<rect x="575" y="120" width="150" height="140" class="orange"/>
+<text x="583" y="140" class="title">ELE300 Forelesning</text>
+<text x="583" y="160" class="text">08:15-10:00</text>
+
+<rect x="575" y="280" width="150" height="140" class="green"/>
+<text x="583" y="300" class="title">ELK330 Forelesning</text>
+<text x="583" y="320" class="text">10:15-12:00</text>
+
+<rect x="575" y="440" width="150" height="140" class="blue"/>
+<text x="583" y="460" class="title">ELE230 Undervisning</text>
+<text x="583" y="480" class="text">12:15-14:00</text>
+
+<rect x="575" y="600" width="150" height="140" class="green"/>
+<text x="583" y="620" class="title">ELK330 Forelesning</text>
+<text x="583" y="640" class="text">14:15-16:00</text>
+
+<!-- Fredag -->
+<rect x="735" y="200" width="150" height="60" class="green"/>
+<text x="743" y="220" class="title">ELK330 Veiledning</text>
+<text x="743" y="238" class="text">09:15-10:00</text>
+
+<rect x="735" y="440" width="150" height="140" class="blue"/>
+<text x="743" y="460" class="title">ELE230 Undervisning</text>
+<text x="743" y="480" class="text">12:15-14:00</text>
+
+</svg>
