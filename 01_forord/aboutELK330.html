@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Klassifisering av stabilitet &#8212; Dynamiske kraftnett</title>
+    <title>Om ELK330 &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -65,9 +65,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '10_stabilityclass/stabilityclass';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_forord/aboutELK330';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -174,9 +172,9 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_forord/digital.html">Digitalisering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_forord/about330.html">Om ELK330</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature.html">Støttelitteratur ELK330</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
 <ul class="nav bd-sidenav">
@@ -261,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F10_stabilityclass/stabilityclass.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F01_forord/aboutELK330.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/10_stabilityclass/stabilityclass.ipynb" target="_blank"
+      <li><a href="../_sources/01_forord/aboutELK330.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +373,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Klassifisering av stabilitet</h1>
+    <h1>Om ELK330</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,10 +383,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekvensstabilitet">Frekvensstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsstabilitet">Spenningsstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treghetskonstant">Treghetskonstant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonans-og-omformerdrevet-stabilitet">Resonans- og omformerdrevet stabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitalisering">Digitalisering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulering">Simulering</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -400,44 +398,153 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="klassifisering-av-stabilitet">
-<h1>Klassifisering av stabilitet<a class="headerlink" href="#klassifisering-av-stabilitet" title="Permalink to this heading">#</a></h1>
-<p>Stabiliteten i kraftsystemet klassifiseres i rotorvinkel‑, spennings‑, frekvens‑, omformerdrevet‑ og resonansstabilitet.
-Vannkraftverk bidrar til robustheten i kraftnettet gjennom treghet (inerti) og aktiv effektkontroll, men også gjennom reaktiv effektkontroll fra eksitasjonssystemet.
-Kraftsystemstabilitet kan forklares som nettets evne til å gjenopprette likevekt etter å ha blitt utsatt for en forstyrrelse.
-Hvis dette ikke lykkes, kan det føre til en delvis eller total kollaps av systemet.
-Konvensjonell kraftsystemstabilitet fokuserer på rotorvinkel, frekvens og spenning.
-Generatorens bidrag til rotorvinkelstabilitet er dens evne til å opprettholde synkronisme mellom rotasjonshastigheten og systemfrekvensen etter en forstyrrelse.</p>
-<p><img alt="Stabilitetsdiagram" src="../_images/stabilitet_diagram.svg" /></p>
-<p>Dette oppnås primært ved å opprettholde en balanse mellom den mekaniske tilført effekten (Pm) og den elektriske avgitt effekten (Pe), som beskrevet gjennom svingligningen (Swing equation), utledet fra Newtons andre lov for rotasjonsbevegelse
-$<span class="math notranslate nohighlight">\(
-\frac{2H}{\omega_s} \frac{d^2 \delta}{dt^2} = P_m - P_e
-\)</span>$
-Her er H [J/MVA] treghetskonstanten, som beskriver den totale kinetiske energien lagret i generatoren.
-ωs\omega_sωs [rad/s] er synkronturtallet.</p>
-<section id="frekvensstabilitet">
-<h2>Frekvensstabilitet<a class="headerlink" href="#frekvensstabilitet" title="Permalink to this heading">#</a></h2>
-<p>Frekvensstabilitet refererer til kraftsystemets evne til å opprettholde en stabil frekvens etter å ha blitt utsatt for en ubalanse mellom produksjon og forbruk.
-Dette håndteres hovedsakelig av regulatoren (governor), som registrerer endringer i nettet, uttrykt som avvik i rotorhastigheten, og automatisk justerer vanninntaket for å gjenopprette effektbalansen i svingligningen.
-Denne responsen skjer vanligvis gjennom en droop‑regulering i regulatorsystemet.
-Dersom en forstyrrelse oppstår, er det først maskinens treghetsrespons som virker. Deretter følger aktivering av droop‑regulering og til slutt automatisk generatorregulering (AGC).
-Disse frekvensreservene bidrar til at frekvensen stabiliseres tilbake til sin nominelle verdi.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="om-elk330">
+<h1>Om ELK330<a class="headerlink" href="#om-elk330" title="Permalink to this heading">#</a></h1>
+<p>Emnet ELK330 er en introduksjon til modellering av transmisjonsliner og 3-fase-systemer. Dette inkluderer last- og kortslutningsberegninger, belastningsfordeling, samt spenningsfall, effekt- og energitap. Emnet inkluderer videre analyse og simulering av dynamisk oppførsel. Emnet gir en oversikt over vern for distribusjonssystemer og i nettet, samt beskyttelse av kabler, generatorer og motorer.</p>
+<p>En statisk analyse forteller hvordan nettet ser ut i et gitt øyeblikk. En dynamisk analyse forteller hvordan nettet utvikler seg over tid etter en hendelse.</p>
+<p>Når vi snakker om analyse og simulering av dynamisk oppførsel i kraftsystemer, mener vi å studere hvordan systemet utvikler seg over tid når det utsettes for endringer eller forstyrrelser.</p>
+<p>Typiske dynamiske fenomener vi analyserer i kraftsystemer:</p>
+<ul class="simple">
+<li><p>Frekvensrespons etter bortfall av produksjon.</p></li>
+<li><p>Rotorvinkelstabilitet mellom generatorer.</p></li>
+<li><p>Spenningsstabilitet.</p></li>
+<li><p>Oppførsel til regulatorer.</p></li>
+<li><p>Vernoperasjoner.</p></li>
+<li><p>Oscillasjoner i nettet.</p></li>
+<li><p>Respons fra vindkraft, solkraft og batterier.</p></li>
+<li><p>Oppstart og innkobling av store laster.</p></li>
+</ul>
+<p>Et godt eksempel er bortfall av en generator.</p>
+<p>Hva skjer hvis en genrator på 500 MW kobles fra nettet?</p>
+<p>En statisk analyse er opptatt av  effektflyten etter at systemet har stabilisert seg.</p>
+<p>Et dynamisk perspektiv spør:</p>
+<p>Hvor raskt synker frekvensen?</p>
+<p>Hvor lav blir frekvensen?</p>
+<p>Rekker regulatorene å reagere?</p>
+<p>Forblir generatorene synkrone?</p>
+<p>Kobles vernene ut?</p>
+<p>Disse spørsmålene krever simulering av tidsforløpet.</p>
+<p>Hva simuleres egentlig?</p>
+<p>I dynamiske simuleringer løser vi differensialligninger som beskriver:</p>
+<ul class="simple">
+<li><p>Generatorenes mekaniske bevegelse.</p></li>
+<li><p>Elektromagnetiske prosesser.</p></li>
+<li><p>Regulatorers virkemåte.</p></li>
+<li><p>Lastdynamikk.</p></li>
+</ul>
+<p>Resultatet blir kurver som viser hvordan variabler endrer seg over tid.</p>
+<p>For eksempel:</p>
+<p>Frekvens som funksjon av tid.
+Spenning som funksjon av tid.
+Generatorhastighet som funksjon av tid.
+Kobling til digitalisering og digitale tvillinger</p>
+<p>Digitalisering forteller oss hvordan systemet oppfører seg nå.</p>
+<p>Analyse og simulering av dynamisk oppførsel i kraftsystemer innebærer å modellere og beregne tidsavhengige prosesser i nettet for å studere hvordan systemet responderer på forstyrrelser, driftsendringer og kontrollhandlinger. Målet er å vurdere systemets stabilitet, robusthet og evne til å opprettholde sikker drift over tid.</p>
+<p>Statiske analyser forteller hvor systemet ender opp. Dynamiske analyser forteller hvordan systemet kommer dit.</p>
+<p>Statiske analyser: Hva er situasjonen akkurat nå?
+Dynamiske analyser: Hva skjer de neste sekundene, minuttene eller timene?
+Eksempler på dynamiske forhold er:</p>
+<p>En lastflytberegning kan vise hvilke effektflyter som oppstår etter at generatoren er ute av drift.</p>
+<p>Men den forteller ikke:</p>
+<ul class="simple">
+<li><p>Hvor raskt frekvensen synker.</p></li>
+<li><p>Om frekvensen blir kritisk lav.</p></li>
+<li><p>Hvordan regulatorene reagerer.</p></li>
+<li><p>Om nettet forblir stabilt.
+For å analysere dette trenger man dynamisk simulering.</p></li>
+</ul>
+<section id="digitalisering">
+<h2>Digitalisering<a class="headerlink" href="#digitalisering" title="Permalink to this heading">#</a></h2>
+<p>Digitalisering gir informasjon om hvordan nettet faktisk oppfører seg.
+Tilstandsestimering gir et oppdatert bilde av driftstilstand.
+Dynamiske simuleringer gjør det mulig å undersøke hvordan nettet vil utvikle seg etter en forstyrrelse eller endring.
+Digitale tvillinger kombinerer disse elementene for å støtte prediksjon og beslutningstaking.</p>
+<p>Mens digitalisering gir økt situasjonsforståelse gjennom innsamling og behandling av driftsdata, muliggjør dynamiske simuleringer prediksjon av tidsavhengig systemoppførsel. Sammen gir dette grunnlag for analyse av stabilitet, robusthet og fremtidige driftstilstander i moderne kraftsystemer.</p>
+<p>Vi går fra å vite hvordan nettet ser ut, til å forstå hvordan nettet beveger seg.</p>
+<section id="simulering">
+<h3>Simulering<a class="headerlink" href="#simulering" title="Permalink to this heading">#</a></h3>
+<p>PowerFactory er et verktøy for å modellere, analysere og simulere elektriske kraftsystemer. Det brukes av nettselskaper, kraftprodusenter, konsulenter og forskere for å modellere og analysere hvordan elektriske nett oppfører seg. Power factory hjelper oss å forstå hvordan strømnettet oppfører seg under normal drift og ved feil, uten å måtte eksperimentere på det virkelige nettet.</p>
+<p>En PowerFactory-representasjon kan beskrives både gjennom sin integrasjonsgrad <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Werner Kritzinger, Matthias Karner, Georg Traar, Jan Henjes, and Wilfried Sihn. Digital twin in manufacturing: a categorical literature review and classification. IFAC-PapersOnLine, 51(11):1016–1022, 2018. doi:10.1016/j.ifacol.2018.08.474.">KKT+18</a>]</span> og gjennom sin modellmodenhet, karakterisert ved kompleksitet, fidelity (troverdighet) og funksjonalitet <span id="id2">[<a class="reference internal" href="../references.html#id4" title="David Jones, Chris Snider, Aydin Nassehi, J.-L. Yon, and Ben Hicks. Characterising the digital twin: a systematic literature review. CIRP Journal of Manufacturing Science and Technology, 29:36–52, 2020. doi:10.1016/j.cirpj.2020.02.002.">JSN+20</a>]</span><span id="id3">[<a class="reference internal" href="../references.html#id5" title="Stefan Boschert and Roland Rosen. Digital twin—the simulation aspect. In Peter Hehenberger and David Bradley, editors, Mechatronic Futures, pages 59–74. Springer, Cham, 2016. doi:10.1007/978-3-319-32156-1_5.">BR16</a>]</span>. Modellens integrasjons- og kompleksitetsgrad avgjør i hvilken grad den er avgjørende for kraftselskapets beslutningsstøtte <span id="id4">[<a class="reference internal" href="../references.html#id3" title="Azad M. Madni, Carla C. Madni, and Scott D. Lucero. Leveraging digital twin technology in model-based systems engineering. Systems, 7(1):7, 2019. doi:10.3390/systems7010007.">MML19</a>]</span>.</p>
+<p><img alt="pf_modell" src="../_images/digital_tvilling_PF_resize.png" /></p>
+<p>En vanlig PowerFactory-modell som brukes i studier/undervisning er ofte en digital modell. En PowerFactory-modell koblet til SCADA, PMU-data og driftsstøttesystemer kan utvikles til en delvis eller fullt integrert digital tvilling.</p>
+<p>Integritet (fidelity) i den digitale tvillingen</p>
+<p>PowerFactory ligger typisk et sted mellom:</p>
+<p>Konseptuell modell (lav integritet)</p>
+<p>Bare topologi og grove effektflyter.
+Brukes i tidlige studier.</p>
+<p>Ingeniørmodell (middels til høy integritet)</p>
+<p>Det vanligste.
+Nettkomponenter er representert med tekniske parametere.
+Lastflyt, kortslutning, vern og stabilitetsanalyser gir resultater som er tilstrekkelig nøyaktige for planlegging og drift.</p>
+<p>Operasjonell digital tvilling (svært høy integritet)</p>
+<p>Koblet mot sanntidsdata fra SCADA, PMU-er og målesystemer.
+Modellen oppdateres kontinuerlig.
+Kan brukes til driftstøtte og prediksjon.</p>
+<ul class="simple">
+<li><p>Kompleksitet beskriver hvor mye av systemet som er modellert.</p></li>
+<li><p>Integritet (fidelity) beskriver hvor realistisk modellen er.</p></li>
+<li><p>Integrasjon beskriver hvor tett modellen er koblet til virkeligheten.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kritzinger</p></th>
+<th class="head"><p>Integrasjon</p></th>
+<th class="head"><p>Integritet</p></th>
+<th class="head"><p>Kraftsystemeksempel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Digital Model</p></td>
+<td><p>Ingen automatisk kobling</p></td>
+<td><p>Lav til høy</p></td>
+<td><p>Vanlig PowerFactory-studie</p></td>
+</tr>
+<tr class="row-odd"><td><p>Digital Shadow</p></td>
+<td><p>Enveis dataflyt</p></td>
+<td><p>Ofte høy</p></td>
+<td><p>Modell oppdateres fra SCADA</p></td>
+</tr>
+<tr class="row-even"><td><p>Digital Twin</p></td>
+<td><p>Toveis dataflyt</p></td>
+<td><p>Høy</p></td>
+<td><p>Sanntidsmodell med beslutningsstøtte</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Her ser vi at en modell kan ha svært høy integritet uten å være en digital tvilling.</p>
+<p>Eksempel:</p>
+<p>Du har en PowerFactory-modell av hele det norske transmisjonsnettet.
+Alle parametre er korrekte.
+Alle regulatorer og vern er modellert.</p>
+<p>Dette er en modell med svært høy fidelity.</p>
+<p>Men dersom ingen sanntidsdata flyter inn og ingen informasjon flyter tilbake til driften, vil Kritzinger fortsatt klassifisere den som en Digital Model.</p>
+<p>For kraftsystemer</p>
+<p>For eksempel kan vi tenke oss tre PowerFactory-modeller:</p>
+<p>Nivå 1: Digital modell
+Topologi
+Lastflyt
+Statiske data</p>
+<p>Nivå 2: Delvis integrert
+SCADA-data importeres
+Modellen oppdateres daglig eller kontinuerlig
+State estimation</p>
+<p>Nivå 3: Fullt integrert digital tvilling
+Sanntidsmålinger
+Dynamiske modeller
+Automatisk parameteroppdatering
+Prediksjon og operativ beslutningsstøtte</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+    <span class="n">Dette</span> <span class="n">ligger</span> <span class="n">nær</span> <span class="n">både</span> <span class="n">Kritzingers</span> <span class="n">DT</span><span class="o">-</span><span class="n">begrep</span> <span class="n">og</span> <span class="n">industrien</span> <span class="n">sin</span> <span class="n">moderne</span> <span class="n">forståelse</span><span class="o">.</span>
+          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="spenningsstabilitet">
-<h2>Spenningsstabilitet<a class="headerlink" href="#spenningsstabilitet" title="Permalink to this heading">#</a></h2>
-<p>Spenningsstabilitet refererer til kraftsystemets evne til å opprettholde spenningen på et nominelt nivå i alle knutepunkter (busser) i systemet etter en forstyrrelse.
-Dette kan styres ved hjelp av en automatisk spenningsregulator (AVR), som reagerer på ubalanser i reaktiv effekt som påvirker spenningsnivåene.
-Generatoren kan regulere strømmen i eksitasjonssystemet, noe som endrer den reaktive effekten, og dermed justere driftspunktet for å støtte spenningen i nettet.</p>
-</section>
-<section id="treghetskonstant">
-<h2>Treghetskonstant<a class="headerlink" href="#treghetskonstant" title="Permalink to this heading">#</a></h2>
-<p>Et annet viktig aspekt er maskinens treghetskonstant. Ifølge svingligningen vil en høyere verdi av HHH føre til langsommere akselerasjon ved samme effektubalanse, noe som gjør systemet mindre følsomt for forstyrrelser.</p>
-</section>
-<section id="resonans-og-omformerdrevet-stabilitet">
-<h2>Resonans- og omformerdrevet stabilitet<a class="headerlink" href="#resonans-og-omformerdrevet-stabilitet" title="Permalink to this heading">#</a></h2>
-<p>Moderne stabilitetsfenomener (resonans og omformerdrevet stabilitet) er knyttet til effekten av hurtigvirkende kraftelektroniske (PE) enheter, som forventes å dominere kraftsystemet i fremtiden.
-Resonans beskriver nettets evne til å opprettholde korrekt oscillasjon av spenning, strøm eller dreiemoment.
-Omformerdrevet stabilitet beskriver nettets evne til å forbli stabilt når raske, programvarestyrte «beslutninger» fra kraftelektroniske omformere samspiller med de elektriske egenskapene i nettet.</p>
 </section>
 </section>
 
@@ -454,7 +561,7 @@ Omformerdrevet stabilitet beskriver nettets evne til å forbli stabilt når rask
         },
         kernelOptions: {
             name: "python3",
-            path: "./10_stabilityclass"
+            path: "./01_forord"
         },
         predefinedOutput: true
     }
@@ -487,10 +594,10 @@ Omformerdrevet stabilitet beskriver nettets evne til å forbli stabilt når rask
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekvensstabilitet">Frekvensstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsstabilitet">Spenningsstabilitet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treghetskonstant">Treghetskonstant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonans-og-omformerdrevet-stabilitet">Resonans- og omformerdrevet stabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitalisering">Digitalisering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulering">Simulering</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

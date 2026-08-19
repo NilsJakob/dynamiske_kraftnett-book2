@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01_forord/digital.html">Digitalisering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_forord/about330.html">Om Emnet Elektriske anlegg og installasjoner - ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/about330.html">Om ELK330</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
@@ -703,14 +703,14 @@ document.write(`
 <span class="n">load_dotenv</span><span class="p">()</span>
 
 <span class="c1"># Hent API key fra miljøvariabel</span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">)</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"API_KEY"</span><span class="p">)</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">EntsoePandasClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2025-01-01&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Europe/Oslo&quot;</span><span class="p">)</span>
-<span class="n">end</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2026-01-01&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Europe/Oslo&quot;</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2025-01-01"</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Oslo"</span><span class="p">)</span>
+<span class="n">end</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2026-01-01"</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Oslo"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_load</span><span class="p">(</span><span class="s2">&quot;NO&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_load</span><span class="p">(</span><span class="s2">"NO"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
@@ -729,9 +729,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data.to_csv(&quot;norway_load_2025.csv&quot;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data.to_csv("norway_load_2025.csv")</span>
 
-<span class="c1">#entso_data = pd.read_csv(&#39;norway_load_2025.csv&#39;, index_col=0, parse_dates=True)</span>
+<span class="c1">#entso_data = pd.read_csv('norway_load_2025.csv', index_col=0, parse_dates=True)</span>
 </pre></div>
 </div>
 </div>

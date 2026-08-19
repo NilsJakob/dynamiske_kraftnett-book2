@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Om Emnet Elektriske anlegg og installasjoner - ELK330 &#8212; Dynamiske kraftnett</title>
+    <title>Om ELK330 &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="digital.html">Digitalisering</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Om Emnet Elektriske anlegg og installasjoner - ELK330</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Om ELK330</a></li>
 <li class="toctree-l1"><a class="reference internal" href="literature.html">Støttelitteratur ELK330</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
@@ -373,7 +373,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Om Emnet Elektriske anlegg og installasjoner - ELK330</h1>
+    <h1>Om ELK330</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -383,7 +383,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitalisering">Digitalisering</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilstandsestimering">Tilstandsestimering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulering">Simulering</a></li>
 </ul>
 </li>
@@ -398,10 +398,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="om-emnet-elektriske-anlegg-og-installasjoner-elk330">
-<h1>Om Emnet Elektriske anlegg og installasjoner - ELK330<a class="headerlink" href="#om-emnet-elektriske-anlegg-og-installasjoner-elk330" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="om-elk330">
+<h1>Om ELK330<a class="headerlink" href="#om-elk330" title="Permalink to this heading">#</a></h1>
 <p>Emnet ELK330 er en introduksjon til modellering av transmisjonsliner og 3-fase-systemer. Dette inkluderer last- og kortslutningsberegninger, belastningsfordeling, samt spenningsfall, effekt- og energitap. Emnet inkluderer videre analyse og simulering av dynamisk oppførsel. Emnet gir en oversikt over vern for distribusjonssystemer og i nettet, samt beskyttelse av kabler, generatorer og motorer.</p>
-<p>En statisk analyse forteller hvordan nettet ser ut i et gitt øyeblikk. En dynamisk analyse forteller hvordan nettet utvikler seg over tid etter en hendelse.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">En</span> <span class="n">statisk</span> <span class="n">analyse</span> <span class="n">forteller</span> <span class="n">hvordan</span> <span class="n">nettet</span> <span class="n">ser</span> <span class="n">ut</span> <span class="n">i</span> <span class="n">et</span> <span class="n">gitt</span> <span class="n">øyeblikk</span><span class="o">.</span> <span class="n">En</span> <span class="n">dynamisk</span> <span class="n">analyse</span> <span class="n">forteller</span> <span class="n">hvordan</span> <span class="n">nettet</span> <span class="n">utvikler</span> <span class="n">seg</span> <span class="n">over</span> <span class="n">tid</span> <span class="n">etter</span> <span class="n">en</span> <span class="n">hendelse</span><span class="o">.</span>
+</pre></div>
+</div>
 <p>Når vi snakker om analyse og simulering av dynamisk oppførsel i kraftsystemer, mener vi å studere hvordan systemet utvikler seg over tid når det utsettes for endringer eller forstyrrelser.</p>
 <p>Typiske dynamiske fenomener vi analyserer i kraftsystemer:</p>
 <ul class="simple">
@@ -415,46 +417,16 @@ document.write(`
 <li><p>Oppstart og innkobling av store laster.</p></li>
 </ul>
 <p>Et godt eksempel er bortfall av en generator.</p>
-<p>Hva skjer hvis en genrator på 500 MW kobles fra nettet?</p>
-<p>En statisk analyse er opptatt av  effektflyten etter at systemet har stabilisert seg.</p>
+<p>Hva skjer hvis en generator på 500 MW kobles fra nettet?</p>
+<p>En statisk analyse er opptatt av effektflyten etter at systemet har stabilisert seg.</p>
 <p>Et dynamisk perspektiv spør:</p>
 <p>Hvor raskt synker frekvensen?</p>
 <p>Hvor lav blir frekvensen?</p>
 <p>Rekker regulatorene å reagere?</p>
 <p>Forblir generatorene synkrone?</p>
 <p>Kobles vernene ut?</p>
-<p>Disse spørsmålene krever simulering av tidsforløpet.</p>
-<p>Hva simuleres egentlig?</p>
-<p>I dynamiske simuleringer løser vi differensialligninger som beskriver:</p>
-<ul class="simple">
-<li><p>Generatorenes mekaniske bevegelse.</p></li>
-<li><p>Elektromagnetiske prosesser.</p></li>
-<li><p>Regulatorers virkemåte.</p></li>
-<li><p>Lastdynamikk.</p></li>
-</ul>
-<p>Resultatet blir kurver som viser hvordan variabler endrer seg over tid.</p>
-<p>For eksempel:</p>
-<p>Frekvens som funksjon av tid.
-Spenning som funksjon av tid.
-Generatorhastighet som funksjon av tid.
-Kobling til digitalisering og digitale tvillinger</p>
-<p>Digitalisering forteller oss hvordan systemet oppfører seg nå.</p>
-<p>Analyse og simulering av dynamisk oppførsel i kraftsystemer innebærer å modellere og beregne tidsavhengige prosesser i nettet for å studere hvordan systemet responderer på forstyrrelser, driftsendringer og kontrollhandlinger. Målet er å vurdere systemets stabilitet, robusthet og evne til å opprettholde sikker drift over tid.</p>
-<p>Statiske analyser forteller hvor systemet ender opp. Dynamiske analyser forteller hvordan systemet kommer dit.</p>
-<p>Statiske analyser: Hva er situasjonen akkurat nå?
-Dynamiske analyser: Hva skjer de neste sekundene, minuttene eller timene?
-Eksempler på dynamiske forhold er:</p>
-<p>En lastflytberegning kan vise hvilke effektflyter som oppstår etter at generatoren er ute av drift.</p>
-<p>Men den forteller ikke:</p>
-<ul class="simple">
-<li><p>Hvor raskt frekvensen synker.</p></li>
-<li><p>Om frekvensen blir kritisk lav.</p></li>
-<li><p>Hvordan regulatorene reagerer.</p></li>
-<li><p>Om nettet forblir stabilt.
-For å analysere dette trenger man dynamisk simulering.</p></li>
-</ul>
-<section id="digitalisering">
-<h2>Digitalisering<a class="headerlink" href="#digitalisering" title="Permalink to this heading">#</a></h2>
+<section id="tilstandsestimering">
+<h2>Tilstandsestimering<a class="headerlink" href="#tilstandsestimering" title="Permalink to this heading">#</a></h2>
 <p>Digitalisering gir informasjon om hvordan nettet faktisk oppfører seg.
 Tilstandsestimering gir et oppdatert bilde av driftstilstand.
 Dynamiske simuleringer gjør det mulig å undersøke hvordan nettet vil utvikle seg etter en forstyrrelse eller endring.
@@ -465,21 +437,7 @@ Digitale tvillinger kombinerer disse elementene for å støtte prediksjon og bes
 <h3>Simulering<a class="headerlink" href="#simulering" title="Permalink to this heading">#</a></h3>
 <p>PowerFactory er et verktøy for å modellere, analysere og simulere elektriske kraftsystemer. Det brukes av nettselskaper, kraftprodusenter, konsulenter og forskere for å modellere og analysere hvordan elektriske nett oppfører seg. Power factory hjelper oss å forstå hvordan strømnettet oppfører seg under normal drift og ved feil, uten å måtte eksperimentere på det virkelige nettet.</p>
 <p>En PowerFactory-representasjon kan beskrives både gjennom sin integrasjonsgrad <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Werner Kritzinger, Matthias Karner, Georg Traar, Jan Henjes, and Wilfried Sihn. Digital twin in manufacturing: a categorical literature review and classification. IFAC-PapersOnLine, 51(11):1016–1022, 2018. doi:10.1016/j.ifacol.2018.08.474.">KKT+18</a>]</span> og gjennom sin modellmodenhet, karakterisert ved kompleksitet, fidelity (troverdighet) og funksjonalitet <span id="id2">[<a class="reference internal" href="../references.html#id4" title="David Jones, Chris Snider, Aydin Nassehi, J.-L. Yon, and Ben Hicks. Characterising the digital twin: a systematic literature review. CIRP Journal of Manufacturing Science and Technology, 29:36–52, 2020. doi:10.1016/j.cirpj.2020.02.002.">JSN+20</a>]</span><span id="id3">[<a class="reference internal" href="../references.html#id5" title="Stefan Boschert and Roland Rosen. Digital twin—the simulation aspect. In Peter Hehenberger and David Bradley, editors, Mechatronic Futures, pages 59–74. Springer, Cham, 2016. doi:10.1007/978-3-319-32156-1_5.">BR16</a>]</span>. Modellens integrasjons- og kompleksitetsgrad avgjør i hvilken grad den er avgjørende for kraftselskapets beslutningsstøtte <span id="id4">[<a class="reference internal" href="../references.html#id3" title="Azad M. Madni, Carla C. Madni, and Scott D. Lucero. Leveraging digital twin technology in model-based systems engineering. Systems, 7(1):7, 2019. doi:10.3390/systems7010007.">MML19</a>]</span>.</p>
-<p><img alt="pf_modell" src="../_images/digital_tvilling_PF_resize.png" /></p>
 <p>En vanlig PowerFactory-modell som brukes i studier/undervisning er ofte en digital modell. En PowerFactory-modell koblet til SCADA, PMU-data og driftsstøttesystemer kan utvikles til en delvis eller fullt integrert digital tvilling.</p>
-<p>Integritet (fidelity) i den digitale tvillingen</p>
-<p>PowerFactory ligger typisk et sted mellom:</p>
-<p>Konseptuell modell (lav integritet)</p>
-<p>Bare topologi og grove effektflyter.
-Brukes i tidlige studier.</p>
-<p>Ingeniørmodell (middels til høy integritet)</p>
-<p>Det vanligste.
-Nettkomponenter er representert med tekniske parametere.
-Lastflyt, kortslutning, vern og stabilitetsanalyser gir resultater som er tilstrekkelig nøyaktige for planlegging og drift.</p>
-<p>Operasjonell digital tvilling (svært høy integritet)</p>
-<p>Koblet mot sanntidsdata fra SCADA, PMU-er og målesystemer.
-Modellen oppdateres kontinuerlig.
-Kan brukes til driftstøtte og prediksjon.</p>
 <ul class="simple">
 <li><p>Kompleksitet beskriver hvor mye av systemet som er modellert.</p></li>
 <li><p>Integritet (fidelity) beskriver hvor realistisk modellen er.</p></li>
@@ -512,14 +470,6 @@ Kan brukes til driftstøtte og prediksjon.</p>
 </tbody>
 </table>
 </div>
-<p>Her ser vi at en modell kan ha svært høy integritet uten å være en digital tvilling.</p>
-<p>Eksempel:</p>
-<p>Du har en PowerFactory-modell av hele det norske transmisjonsnettet.
-Alle parametre er korrekte.
-Alle regulatorer og vern er modellert.</p>
-<p>Dette er en modell med svært høy fidelity.</p>
-<p>Men dersom ingen sanntidsdata flyter inn og ingen informasjon flyter tilbake til driften, vil Kritzinger fortsatt klassifisere den som en Digital Model.</p>
-<p>For kraftsystemer</p>
 <p>For eksempel kan vi tenke oss tre PowerFactory-modeller:</p>
 <p>Nivå 1: Digital modell
 Topologi
@@ -534,15 +484,78 @@ Sanntidsmålinger
 Dynamiske modeller
 Automatisk parameteroppdatering
 Prediksjon og operativ beslutningsstøtte</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-    <span class="n">Dette</span> <span class="n">ligger</span> <span class="n">nær</span> <span class="n">både</span> <span class="n">Kritzingers</span> <span class="n">DT</span><span class="o">-</span><span class="n">begrep</span> <span class="n">og</span> <span class="n">industrien</span> <span class="n">sin</span> <span class="n">moderne</span> <span class="n">forståelse</span><span class="o">.</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">IFrame</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s2">"digital_tvilling.html"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">950</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">850</span><span class="p">))</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">&lt;div style="text-align:center; margin-top:10px;"&gt;</span>
+<span class="s2">&lt;b&gt;Figur 1.&lt;/b&gt; Modenhetsnivåer for digitale tvillinger.</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">"""</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="950"
+            height="850"
+            src="digital_tvilling.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div><div class="output text_html">
+<div style="text-align:center; margin-top:10px;">
+<b>Figur 1.</b> Modenhetsnivåer for digitale tvillinger.
+</div>
+</div></div>
+</div>
+<p>Et PowerFactory-nett med 50 noder som brukes til manuelle lastflytberegninger er typisk en digital modell.</p>
+<p>Selv om dette ikke nødvendigvis er en digital tvilling, gir den digitale modellen betydelige fordeler. En viktig fordel er skalerbarhet. Mens manuelle analyser av større kraftsystemer raskt blir upraktiske, kan en digital modell håndtere nett med titalls, hundrevis eller tusenvis av noder og gjøre beregninger på sekunder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Den</span> <span class="n">digitale</span> <span class="n">modellen</span> <span class="n">gir</span> <span class="n">først</span> <span class="n">og</span> <span class="n">fremst</span> <span class="n">skalerbar</span> <span class="n">analysekapasitet</span><span class="p">,</span> <span class="n">mens</span> <span class="n">den</span> <span class="n">digitale</span> <span class="n">tvillingen</span> <span class="n">tilfører</span> <span class="n">kontinuerlig</span> <span class="n">kobling</span> <span class="n">til</span> <span class="n">den</span> <span class="n">fysiske</span> <span class="n">virkeligheten</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Den digitale modellen gjør det mulig å:</p>
+<ul class="simple">
+<li><p>analysere store og komplekse nettverk</p></li>
+<li><p>utføre lastflyt- og kortslutningsberegninger effektivt</p></li>
+<li><p>teste ulike drifts- og feilsituasjoner uten risiko for det fysiske anlegget</p></li>
+<li><p>evaluere konsekvensene av nye laster, produksjonsenheter og nettutvidelser</p></li>
+<li><p>gjennomføre mange analyser på kort tid</p></li>
+</ul>
+<p>En digital tvilling bygger videre på disse egenskapene ved å koble modellen til det fysiske systemet gjennom sanntidsdata. Forskjellen ligger derfor ikke i evnen til å gjennomføre beregninger, men i graden av integrasjon mellom modellen og den virkelige infrastrukturen.</p>
+<p>Analyse og simulering av dynamisk oppførsel i kraftsystemer innebærer å modellere og beregne tidsavhengige prosesser i nettet for å studere hvordan systemet responderer på forstyrrelser, driftsendringer og kontrollhandlinger. Målet er å vurdere systemets stabilitet, robusthet og evne til å opprettholde sikker drift over tid.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aktivitet</p></th>
+<th class="head"><p>Nivå i figuren</p></th>
+<th class="head"><p>Begrunnelse</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. Lage nettmodellen i PowerFactory</strong></p></td>
+<td><p><strong>Digital modell (Representasjon)</strong></p></td>
+<td><p>Du har en digital representasjon av nettet, men modellen er ikke nødvendigvis koblet til virkelige data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2. Koble modellen til sanntidsdata fra driftssystemer</strong></p></td>
+<td><p><strong>Delvis integrert (Tilstandsestimering)</strong></p></td>
+<td><p>Modellen begynner å motta data fra SCADA/DMS/AMS og reflekterer faktisk driftstilstand.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3. Oppdatere modellen automatisk slik at den speiler den faktiske tilstanden i nettet</strong></p></td>
+<td><p><strong>Delvis integrert (Tilstandsestimering)</strong></p></td>
+<td><p>Dette er kjernen i en digital tvilling: toveis kobling eller kontinuerlig synkronisering mellom fysisk og digitalt system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>4. Kjøre analyser og scenarioer på tvillingen før tiltak utføres i virkeligheten</strong></p></td>
+<td><p><strong>Fullt integrert (Prediktiv)</strong></p></td>
+<td><p>Modellen brukes ikke bare til å beskrive nåsituasjonen, men til å forutsi konsekvenser av framtidige hendelser og tiltak.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -612,7 +625,7 @@ Prediksjon og operativ beslutningsstøtte</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitalisering">Digitalisering</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilstandsestimering">Tilstandsestimering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulering">Simulering</a></li>
 </ul>
 </li>
