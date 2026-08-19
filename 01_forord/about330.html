@@ -402,7 +402,8 @@ document.write(`
 <h1>Om ELK330<a class="headerlink" href="#om-elk330" title="Permalink to this heading">#</a></h1>
 <p>Emnet ELK330 er en introduksjon til modellering av transmisjonsliner og 3-fase-systemer. Dette inkluderer last- og kortslutningsberegninger, belastningsfordeling, samt spenningsfall, effekt- og energitap. Emnet inkluderer videre analyse og simulering av dynamisk oppførsel. Emnet gir en oversikt over vern for distribusjonssystemer og i nettet, samt beskyttelse av kabler, generatorer og motorer.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">En</span> <span class="n">statisk</span> <span class="n">analyse</span> <span class="n">forteller</span> <span class="n">hvordan</span> <span class="n">nettet</span> <span class="n">ser</span> <span class="n">ut</span> <span class="n">i</span> <span class="n">et</span> <span class="n">gitt</span> <span class="n">øyeblikk</span><span class="o">.</span>
-<span class="n">En</span> <span class="n">dynamisk</span> <span class="n">analyse</span> <span class="n">forteller</span> <span class="n">hvordan</span> <span class="n">nettet</span> <span class="n">utvikler</span> <span class="n">seg</span> <span class="n">over</span> <span class="n">tid</span> <span class="n">etter</span> <span class="n">en</span> <span class="n">hendelse</span><span class="o">.</span>
+<span class="n">En</span> <span class="n">dynamisk</span> <span class="n">analyse</span> <span class="n">forteller</span> <span class="n">hvordan</span> <span class="n">nettet</span> <span class="n">utvikler</span> <span class="n">seg</span>
+<span class="n">over</span> <span class="n">tid</span> <span class="n">etter</span> <span class="n">en</span> <span class="n">hendelse</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>Når vi snakker om analyse og simulering av dynamisk oppførsel i kraftsystemer, mener vi å studere hvordan systemet utvikler seg over tid når det utsettes for endringer eller forstyrrelser.</p>
@@ -438,7 +439,7 @@ Digitale tvillinger kombinerer disse elementene for å støtte prediksjon og bes
 <h3>Simulering<a class="headerlink" href="#simulering" title="Permalink to this heading">#</a></h3>
 <p>PowerFactory er et verktøy for å modellere, analysere og simulere elektriske kraftsystemer. Det brukes av nettselskaper, kraftprodusenter, konsulenter og forskere for å modellere og analysere hvordan elektriske nett oppfører seg. Power factory hjelper oss å forstå hvordan strømnettet oppfører seg under normal drift og ved feil, uten å måtte eksperimentere på det virkelige nettet.</p>
 <p>En PowerFactory-representasjon kan beskrives både gjennom sin integrasjonsgrad <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Werner Kritzinger, Matthias Karner, Georg Traar, Jan Henjes, and Wilfried Sihn. Digital twin in manufacturing: a categorical literature review and classification. IFAC-PapersOnLine, 51(11):1016–1022, 2018. doi:10.1016/j.ifacol.2018.08.474.">KKT+18</a>]</span> og gjennom sin modellmodenhet, karakterisert ved kompleksitet, fidelity (troverdighet) og funksjonalitet <span id="id2">[<a class="reference internal" href="../references.html#id4" title="David Jones, Chris Snider, Aydin Nassehi, J.-L. Yon, and Ben Hicks. Characterising the digital twin: a systematic literature review. CIRP Journal of Manufacturing Science and Technology, 29:36–52, 2020. doi:10.1016/j.cirpj.2020.02.002.">JSN+20</a>]</span><span id="id3">[<a class="reference internal" href="../references.html#id5" title="Stefan Boschert and Roland Rosen. Digital twin—the simulation aspect. In Peter Hehenberger and David Bradley, editors, Mechatronic Futures, pages 59–74. Springer, Cham, 2016. doi:10.1007/978-3-319-32156-1_5.">BR16</a>]</span>. Modellens integrasjons- og kompleksitetsgrad avgjør i hvilken grad den er avgjørende for kraftselskapets beslutningsstøtte <span id="id4">[<a class="reference internal" href="../references.html#id3" title="Azad M. Madni, Carla C. Madni, and Scott D. Lucero. Leveraging digital twin technology in model-based systems engineering. Systems, 7(1):7, 2019. doi:10.3390/systems7010007.">MML19</a>]</span>.</p>
-<p>En vanlig PowerFactory-modell som brukes i studier/undervisning er ofte en digital modell. En PowerFactory-modell koblet til SCADA, PMU-data og driftsstøttesystemer kan utvikles til en delvis eller fullt integrert digital tvilling.</p>
+<p>En vanlig PowerFactory-modell som brukes i studier/undervisning er ofte en digital modell. En PowerFactory-modell koblet til SCADA, PMU-data og driftsstøttesystemer kan utvikles til en delvis eller fullt integrert digital tvilling, som vist i Fig .{cite}`fig-digital-tvilling’.</p>
 <ul class="simple">
 <li><p>Kompleksitet beskriver hvor mye av systemet som er modellert.</p></li>
 <li><p>Integritet (fidelity) beskriver hvor realistisk modellen er.</p></li>
@@ -485,18 +486,17 @@ Sanntidsmålinger
 Dynamiske modeller
 Automatisk parameteroppdatering
 Prediksjon og operativ beslutningsstøtte</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html">
-<div style="text-align:center; margin-top:10px;">
-<b>Figur 1.</b> Modenhetsnivåer for digitale tvillinger.
-</div>
-</div></div>
-</div>
+<figure class="align-default" id="fig-digital-tvilling">
+<a class="reference internal image-reference" href="../_images/digital_tvilling.svg"><img alt="../_images/digital_tvilling.svg" src="../_images/digital_tvilling.svg" width="700px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Modenhetsnivåer for digitale tvillinger.</span><a class="headerlink" href="#fig-digital-tvilling" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Et PowerFactory-nett med 50 noder som brukes til manuelle lastflytberegninger er typisk en digital modell.</p>
 <p>Selv om dette ikke nødvendigvis er en digital tvilling, gir den digitale modellen betydelige fordeler. En viktig fordel er skalerbarhet. Mens manuelle analyser av større kraftsystemer raskt blir upraktiske, kan en digital modell håndtere nett med titalls, hundrevis eller tusenvis av noder og gjøre beregninger på sekunder.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Den</span> <span class="n">digitale</span> <span class="n">modellen</span> <span class="n">gir</span> <span class="n">først</span> <span class="n">og</span> <span class="n">fremst</span> <span class="n">skalerbar</span> <span class="n">analysekapasitet</span><span class="p">,</span>
-<span class="n">mens</span> <span class="n">den</span> <span class="n">digitale</span> <span class="n">tvillingen</span> <span class="n">tilfører</span> <span class="n">kontinuerlig</span> <span class="n">kobling</span> <span class="n">til</span> <span class="n">den</span> <span class="n">fysiske</span> <span class="n">virkeligheten</span><span class="o">.</span>
+<span class="n">mens</span> <span class="n">den</span> <span class="n">digitale</span> <span class="n">tvillingen</span> <span class="n">tilfører</span> <span class="n">kontinuerlig</span> <span class="n">kobling</span>
+<span class="n">til</span> <span class="n">den</span> <span class="n">fysiske</span> <span class="n">virkeligheten</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>Den digitale modellen gjør det mulig å:</p>
@@ -536,7 +536,15 @@ Prediksjon og operativ beslutningsstøtte</p>
 </tbody>
 </table>
 </div>
-</section>
+<figure style="text-align:center;">
+  <img src="../images/digital_>
+    <b>Figur 1.</b> Modenhetsnivåer for digitale tvillinger.
+  </figcaption>
+</figure><figure style="text-align:center;">
+  <img src="../images/digital_>
+    <b>Figur 1.</b> Modenhetsnivåer for digitale tvillinger.
+  </figcaption>
+</figure></section>
 </section>
 </section>
 
