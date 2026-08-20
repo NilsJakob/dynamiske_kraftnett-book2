@@ -8,6 +8,8 @@ parts:
   - caption: Forord
     chapters:
       - file: 01_forord/practical
+      - file: 01_forord/author
+      - file: 01_forord/contacts
       - file: 01_forord/idea330
       - file: 01_forord/literature      
       - file: 01_forord/timetable
@@ -16,6 +18,7 @@ parts:
     chapters:
       - file: 01_intro/digital
       - file: 01_intro/about330
+      - file: 01_intro/git
 
   - caption: Tallgrunnlag
     chapters:
