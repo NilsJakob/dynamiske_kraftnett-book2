@@ -7,8 +7,9 @@ options:
 parts:
   - caption: Forord
     chapters:
-      - file: 01_forord/literature
+      - file: 01_forord/practical
       - file: 01_forord/idea330
+      - file: 01_forord/literature      
       - file: 01_forord/timetable
 
   - caption: Introduksjon
