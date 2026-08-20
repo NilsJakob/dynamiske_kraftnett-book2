@@ -7,11 +7,14 @@ options:
 parts:
   - caption: Forord
     chapters:
-      - file: 01_forord/digital
       - file: 01_forord/about330
       - file: 01_forord/literature
       - file: 01_forord/idea330
       - file: 01_forord/timetable
+
+  - caption: Introduksjon
+    chapters:
+      - file: 01_intro/digital
 
   - caption: Tallgrunnlag
     chapters:
