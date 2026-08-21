@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Git &#8212; Dynamiske kraftnett</title>
+    <title>Installere Git Bash &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -65,11 +65,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '01_intro/git';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_tallgrunnlag/repo';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Øving 1: Opprett GitHub-konto og repository" href="../assignments/assignment1.html" />
-    <link rel="prev" title="Om ELK330" href="about330.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -132,6 +130,8 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,15 +180,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="digital.html">Digitalisering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about330.html">Om ELK330</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Git</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-konto og repository</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/under_utvikling.html">Under utvikling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under_utvikling.html">Under utvikling</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
 <ul class="nav bd-sidenav">
@@ -273,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F01_intro/git.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F02_tallgrunnlag/repo.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +303,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/01_intro/git.ipynb" target="_blank"
+      <li><a href="../_sources/02_tallgrunnlag/repo.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -387,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Git</h1>
+    <h1>Installere Git Bash</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,16 +397,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-create-a-github-account">How to Create a GitHub Account</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-bash">Git Bash</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Installere Git Bash</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ned-git-for-windows">1. Last ned Git for Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installer-programmet">2. Installer programmet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-git-bash">3. Start Git Bash</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-installasjonen">4. Test installasjonen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurer-navn-og-e-post">5. Konfigurer navn og e-post</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repositorium">6. Klon et repositorium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repositorium">7. Oppdater et repositorium</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-git-commands">Essential Git Commands</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repositorium-i-git-bash">Opprette et Git-repositorium i Git Bash</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repositoriet">4. Opprett Git-repositoriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koble-til-github-valgfritt">8. Koble til GitHub (valgfritt)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-opp-til-github">9. Last opp til GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyttige-kommandoer">Nyttige kommandoer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-solve-assignments-in-nbgrader">How to solve assignments in nbgrader</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -417,164 +432,150 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="git">
-<h1>Git<a class="headerlink" href="#git" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://jupyterbook.org/">Jupyter Book</a> is an open-source tool used to build books, websites, and documents from a collection of interactive notebooks and Markdown files hosted, developed, and managed as an open-source project on <a class="reference external" href="https://github.com/jupyter-book">GitHub</a>. One such notebook is jupyter notebook. Jupyter Notebook is a free, web-based tool that supports python and lets you write and run live code through live cells, add text explanations and include hyperlinks (hyperreference online links) in markdown cells, so that you can work with data all in one page.</p>
-<p><a class="reference external" href="https://github.com/">GitHub</a> is a cloud-based platform and website used to manage code. It builds on Git as the underlying tool that runs on your local machine to log file history. <a class="reference external" href="https://www.geeksforgeeks.org/git/what-is-github/">GitHub</a> allows developers to collaborate on projects, track changes, and maintain a history of all code versions. It is widely used by individual developers, teams, and <a class="reference external" href="https://github.com/USN-Porsgrunn-Smart-Grid-LAB">organizations</a> to develop software.</p>
-<section id="how-to-create-a-github-account">
-<h2>How to Create a GitHub Account<a class="headerlink" href="#how-to-create-a-github-account" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Go to <a class="github reference external" href="https://github.com">github</a></p></li>
-<li><p>Click “Sign up”.</p></li>
-<li><p>Enter:</p>
+  <section id="installere-git-bash">
+<h1>Installere Git Bash<a class="headerlink" href="#installere-git-bash" title="Permalink to this heading">#</a></h1>
+<section id="last-ned-git-for-windows">
+<h2>1. Last ned Git for Windows<a class="headerlink" href="#last-ned-git-for-windows" title="Permalink to this heading">#</a></h2>
+<p>Gå til:</p>
+<p><a class="reference external" href="https://git-scm.com/downloads/win">https://git-scm.com/downloads/win</a></p>
+</section>
+<section id="installer-programmet">
+<h2>2. Installer programmet<a class="headerlink" href="#installer-programmet" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Email address</p></li>
-<li><p>Password</p></li>
-<li><p>Username (must be unique)</p></li>
+<li><p>Kjør installasjonsfilen.</p></li>
+<li><p>Behold standardinnstillingene.</p></li>
+<li><p>Fullfør installasjonen.</p></li>
 </ul>
-</li>
-<li><p>Verify your email address when GitHub sends a confirmation email.</p></li>
-<li><p>Complete any verification steps.</p></li>
-<li><p>Choose the Free plan.</p></li>
-<li><p>Finish the setup wizard.</p></li>
-</ol>
-<p>After Creating the Account</p>
-<p>Install Git:</p>
-<p>Windows:
-<a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
-<p>macOS:
-brew install git</p>
-<p>Ubuntu/Debian:
-sudo apt update
-sudo apt install git</p>
-<p>Configure Git:</p>
-<p>git config –global <a class="reference external" href="http://user.name">user.name</a> “Your Name”
-git config –global user.email “<a class="reference external" href="mailto:your_email&#37;&#52;&#48;example&#46;com">your_email<span>&#64;</span>example<span>&#46;</span>com</a>”</p>
-<p>Create a Repository:</p>
-<ol class="arabic simple">
-<li><p>Click New Repository on GitHub.</p></li>
-<li><p>Enter a repository name.</p></li>
-<li><p>Optionally add a README.</p></li>
-<li><p>Click Create repository.</p></li>
-</ol>
-<p>Push Code to GitHub:</p>
-<p>git init
-git add .
-git commit -m “Initial commit”
-git branch -M main
-git remote add origin <a class="github reference external" href="https://github.com/yourusername/repository.git">yourusername/repository.git</a>
-git push -u origin main</p>
-<p>Profile URL Format:
-<a class="github reference external" href="https://github.com/yourusername">yourusername</a></p>
-<section id="git-bash">
-<h3>Git Bash<a class="headerlink" href="#git-bash" title="Permalink to this heading">#</a></h3>
-<p>Git Bash is a command-line terminal application for Windows that provides:</p>
-<ol class="arabic simple">
-<li><p>Git command-line tools</p></li>
-<li><p>A Bash shell similar to Linux and macOS terminals</p></li>
-<li><p>Common Unix/Linux commands such as:</p>
+</section>
+<section id="start-git-bash">
+<h2>3. Start Git Bash<a class="headerlink" href="#start-git-bash" title="Permalink to this heading">#</a></h2>
+<p>Etter installasjonen kan du:</p>
 <ul class="simple">
-<li><p>ls</p></li>
-<li><p>pwd</p></li>
-<li><p>cd</p></li>
-<li><p>mkdir</p></li>
-<li><p>rm</p></li>
-<li><p>cp</p></li>
-<li><p>mv</p></li>
+<li><p>åpne <strong>Git Bash</strong> fra Start-menyen, eller</p></li>
+<li><p>høyreklikke i en mappe og velge <strong>Open Git Bash Here</strong>.</p></li>
 </ul>
-</li>
-</ol>
-<p>Why Use Git Bash?</p>
-<p>Git Bash allows Windows users to work with Git and Linux-style commands in a familiar development environment.</p>
-<p>Examples:</p>
-<p>pwd
-ls
-cd Documents
-mkdir MyProject</p>
-<p>Git Commands:</p>
-<p>git init
-git status
-git add .
-git commit -m “Initial commit”
-git push</p>
-<p>What Is Installed?</p>
-<p>When you install Git for Windows, you typically get:</p>
-<ul class="simple">
-<li><p>Git Bash</p></li>
-<li><p>Git command-line tools</p></li>
-<li><p>Git GUI</p></li>
-</ul>
-<p>Git Bash vs PowerShell</p>
-<p>Git Bash:</p>
-<ul class="simple">
-<li><p>Includes Linux-style commands</p></li>
-<li><p>Includes Git by default</p></li>
-<li><p>Supports Bash scripting</p></li>
-<li><p>Popular for GitHub workflows</p></li>
-</ul>
-<p>PowerShell:</p>
-<ul class="simple">
-<li><p>Better for Windows administration</p></li>
-<li><p>Uses PowerShell commands and scripting</p></li>
-<li><p>Can also run Git if installed separately</p></li>
-</ul>
-<p>Typical Workflow</p>
-<p>mkdir power-system-analysis
-cd power-system-analysis</p>
-<p>git init
-git add .
-git commit -m “Initial commit”</p>
-<p>git remote add origin <a class="github reference external" href="https://github.com/username/power-system-analysis.git">username/power-system-analysis.git</a>
-git push -u origin main</p>
-<p>Who Should Use Git Bash?</p>
-<p>Git Bash is useful for:</p>
-<ul class="simple">
-<li><p>Python developers</p></li>
-<li><p>Engineering students</p></li>
-<li><p>Researchers</p></li>
-<li><p>GitHub users</p></li>
-<li><p>Anyone following Linux-based tutorials</p></li>
-</ul>
-<p>It is often the easiest way for Windows users to learn and use Git.</p>
+</section>
+<section id="test-installasjonen">
+<h2>4. Test installasjonen<a class="headerlink" href="#test-installasjonen" title="Permalink to this heading">#</a></h2>
+<p>Skriv:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Eksempel på utskrift:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>git version 2.51.0.windows.1
+</pre></div>
+</div>
+</section>
+<section id="konfigurer-navn-og-e-post">
+<h2>5. Konfigurer navn og e-post<a class="headerlink" href="#konfigurer-navn-og-e-post" title="Permalink to this heading">#</a></h2>
+<p>Kjør én gang:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Ditt Navn"</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"epost@example.com"</span>
+</pre></div>
+</div>
+</section>
+<section id="klon-et-repositorium">
+<h2>6. Klon et repositorium<a class="headerlink" href="#klon-et-repositorium" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/bruker/repo.git
+</pre></div>
+</div>
+</section>
+<section id="oppdater-et-repositorium">
+<h2>7. Oppdater et repositorium<a class="headerlink" href="#oppdater-et-repositorium" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
+</pre></div>
+</div>
+<p>For dette emnet er det i hovedsak disse to kommandoene som brukes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone
+git<span class="w"> </span>pull
+</pre></div>
+</div>
 </section>
 </section>
-<section id="core-concepts">
-<h2>Core Concepts<a class="headerlink" href="#core-concepts" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Repository (Repo): A project folder tracking file histories</p></li>
-<li><p>Commit: A permanent snapshot of your saved changes.</p></li>
-<li><p>Fork: A complete copy of the repository</p></li>
-<li><p>Fetch changes: Run git fetch fork to download the fork data.</p></li>
-<li><p>Merge: Combining separate branch histories back together</p></li>
-</ul>
-<section id="essential-git-commands">
-<h3>Essential Git Commands<a class="headerlink" href="#essential-git-commands" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>git init: Starts a new, empty repository locally</p></li>
-<li><p>git clone: Downloads a copy of a remote project</p></li>
-<li><p>git add: Moves your local changes to staging</p></li>
-<li><p>git commit -m “message”: Saves staged changes with a note</p></li>
-<li><p>git status: Shows modified, staged, or untracked files</p></li>
-<li><p>git push: Sends local commits to a cloud server</p></li>
-<li><p>git pull: Grabs and merges remote changes into local files.</p></li>
-</ul>
-<p>In addition to provide resources as jupyter notebooks, this jupyter book provide assignments in Binder links. The Binder link will lead you to a server that installs a environment for you, and you can run, modify, and try these scripts using your web browser. Currently it is set up with the service from <a class="reference external" href="http://MyBinder.org">MyBinder.org</a> which uses the cloud computing resources at Amazon Web Services so that everyone can try jupyter notebooks without installing it. Feel free to give it a try!</p>
-<p>Jupyter provides an extension that facilitates creating, distributing, and grading assignments within Jupyter Notebooks called nbgrader.</p>
-<p>Nbgrader is an open-source tool, but unfortunaltely it does not work with binder launch.</p>
-<p>In the future the course will implement nbgrader to solve assignments.</p>
-<p>Nbgrader allows instructors to build a single master copy of an assignment (with hidden tests and solutions) and automatically generate stripped-down student versions, while providing automated and manual grading pipelines.</p>
-<p>When nbgrader is implemented in the course it be facilitated to solve assignments.</p>
+<section id="opprette-et-git-repositorium-i-git-bash">
+<h1>Opprette et Git-repositorium i Git Bash<a class="headerlink" href="#opprette-et-git-repositorium-i-git-bash" title="Permalink to this heading">#</a></h1>
+<section id="ga-til-onsket-mappe">
+<h2>1. Gå til ønsket mappe<a class="headerlink" href="#ga-til-onsket-mappe" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/c/repos
+</pre></div>
+</div>
 </section>
+<section id="opprett-en-ny-mappe">
+<h2>2. Opprett en ny mappe<a class="headerlink" href="#opprett-en-ny-mappe" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>power-system-data
+</pre></div>
+</div>
 </section>
-<section id="how-to-solve-assignments-in-nbgrader">
-<h2>How to solve assignments in nbgrader<a class="headerlink" href="#how-to-solve-assignments-in-nbgrader" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Download the notebook</p></li>
-<li><p>Open in Jupyter or VS Code</p></li>
-<li><p>Run all cells</p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">YOUR</span> <span class="pre">CODE</span> <span class="pre">HERE</span></code></p></li>
-<li><p>Submit the notebook file</p></li>
-</ol>
+<section id="ga-inn-i-mappen">
+<h2>3. Gå inn i mappen<a class="headerlink" href="#ga-inn-i-mappen" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>power-system-data
+</pre></div>
+</div>
+</section>
+<section id="opprett-git-repositoriet">
+<h2>4. Opprett Git-repositoriet<a class="headerlink" href="#opprett-git-repositoriet" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+</pre></div>
+</div>
+<p>Du får en melding som ligner:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Initialized empty Git repository
+</pre></div>
+</div>
+</section>
+<section id="opprett-en-readme-fil">
+<h2>5. Opprett en README-fil<a class="headerlink" href="#opprett-en-readme-fil" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"# Power System Data"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+</pre></div>
+</div>
+</section>
+<section id="legg-filen-til-git">
+<h2>6. Legg filen til Git<a class="headerlink" href="#legg-filen-til-git" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>README.md
+</pre></div>
+</div>
+</section>
+<section id="lag-forste-commit">
+<h2>7. Lag første commit<a class="headerlink" href="#lag-forste-commit" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Initial commit"</span>
+</pre></div>
+</div>
+</section>
+<section id="koble-til-github-valgfritt">
+<h2>8. Koble til GitHub (valgfritt)<a class="headerlink" href="#koble-til-github-valgfritt" title="Permalink to this heading">#</a></h2>
+<p>Opprett først et tomt repository på GitHub, og koble deretter til:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/brukernavn/power-system-data.git
+</pre></div>
+</div>
+</section>
+<section id="last-opp-til-github">
+<h2>9. Last opp til GitHub<a class="headerlink" href="#last-opp-til-github" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="nyttige-kommandoer">
+<h2>Nyttige kommandoer<a class="headerlink" href="#nyttige-kommandoer" title="Permalink to this heading">#</a></h2>
+<p>Vis status:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>Legg til alle endringer:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Lag commit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Beskrivelse av endringen"</span>
+</pre></div>
+</div>
+<p>Last opp til GitHub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push
+</pre></div>
+</div>
+<p>Hent siste endringer:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -591,7 +592,7 @@ git push -u origin main</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./01_intro"
+            path: "./02_tallgrunnlag"
         },
         predefinedOutput: true
     }
@@ -608,24 +609,6 @@ git push -u origin main</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="about330.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Om ELK330</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../assignments/assignment1.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Øving 1: Opprett GitHub-konto og repository</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -642,16 +625,31 @@ git push -u origin main</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-create-a-github-account">How to Create a GitHub Account</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-bash">Git Bash</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Installere Git Bash</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ned-git-for-windows">1. Last ned Git for Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installer-programmet">2. Installer programmet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-git-bash">3. Start Git Bash</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-installasjonen">4. Test installasjonen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurer-navn-og-e-post">5. Konfigurer navn og e-post</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repositorium">6. Klon et repositorium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repositorium">7. Oppdater et repositorium</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-git-commands">Essential Git Commands</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repositorium-i-git-bash">Opprette et Git-repositorium i Git Bash</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repositoriet">4. Opprett Git-repositoriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koble-til-github-valgfritt">8. Koble til GitHub (valgfritt)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-opp-til-github">9. Last opp til GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyttige-kommandoer">Nyttige kommandoer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-solve-assignments-in-nbgrader">How to solve assignments in nbgrader</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

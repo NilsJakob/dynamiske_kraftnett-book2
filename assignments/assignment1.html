@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Øving 2: Branch, Push, Pull og Merge med Git og GitHub &#8212; Dynamiske kraftnett</title>
+    <title>Øving 1: Opprett GitHub-konto og repository &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/assignment1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Under utvikling" href="../02_tallgrunnlag/under_utvikling.html" />
+    <link rel="prev" title="Git" href="../01_intro/git.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,8 +132,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,14 +180,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_intro/git.html">Git</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 1: Opprett GitHub-konto og repository</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/under_utvikling.html">Under utvikling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/under_utvikling.html">Under utvikling</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
@@ -382,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Øving 2: Branch, Push, Pull og Merge med Git og GitHub</h1>
+    <h1>Øving 1: Opprett GitHub-konto og repository</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,43 +398,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-opprette-en-branch-og-merge-den">Del 1: Opprette en branch og merge den</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-repositoryet">1. Klon repositoryet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-branch">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring">3. Gjør en endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagre-endringen-som-en-commit">4. Lagre endringen som en commit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bytt-tilbake-til-main">5. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-branchen">6. Merge branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#se-commit-historikken">7. Se commit-historikken</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-push-og-pull">Del 2: Push og Pull</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-endringer-til-github">1. Push endringer til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-ny-endring">3. Gjør en ny endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-endringen">4. Commit endringen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen-til-github">5. Push branchen til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hent-siste-versjon-fra-github">7. Hent siste versjon fra GitHub</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-simuler-to-utviklere">Del 3: Simuler to utviklere</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-a">Student A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-b">Student B</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-pull-request-pa-github">Del 4: Pull Request på GitHub</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring-og-commit-den">2. Gjør en endring og commit den</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen">3. Push branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-pull-request">4. Opprett en Pull Request</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-pull-requesten">5. Merge Pull Requesten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-ditt-lokale-repository">6. Oppdater ditt lokale repository</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levering">Levering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-opprett-en-github-bruker">Oppgave 1: Opprett en GitHub-bruker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-opprett-repo">Oppgave 2: Opprett repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-dokumenter-arbeidet-i-latex">Oppgave 3: Dokumenter arbeidet i LaTeX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levere">Levere</a></li>
 </ul>
             </nav>
         </div>
@@ -441,222 +413,72 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oving-2-branch-push-pull-og-merge-med-git-og-github">
-<h1>Øving 2: Branch, Push, Pull og Merge med Git og GitHub<a class="headerlink" href="#oving-2-branch-push-pull-og-merge-med-git-og-github" title="Permalink to this heading">#</a></h1>
+  <section id="oving-1-opprett-github-konto-og-repository">
+<h1>Øving 1: Opprett GitHub-konto og repository<a class="headerlink" href="#oving-1-opprett-github-konto-og-repository" title="Permalink to this heading">#</a></h1>
 <section id="laeringsmal">
 <h2>Læringsmål<a class="headerlink" href="#laeringsmal" title="Permalink to this heading">#</a></h2>
 <p>Etter denne øvingen skal du kunne:</p>
 <ul class="simple">
-<li><p>Opprette og bytte mellom brancher</p></li>
-<li><p>Gjøre endringer og opprette commits</p></li>
-<li><p>Push endringer til GitHub</p></li>
-<li><p>Pull endringer fra GitHub</p></li>
-<li><p>Merge brancher</p></li>
-<li><p>Forstå hvordan Git brukes i samarbeid</p></li>
+<li><p>opprette en GitHub-konto,</p></li>
+<li><p>opprette et GitHub-repo,</p></li>
+<li><p>dokumentere arbeidet ved hjelp av LaTeX,</p></li>
+<li><p>generere en PDF-rapport.</p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="del-1-opprette-en-branch-og-merge-den">
-<h2>Del 1: Opprette en branch og merge den<a class="headerlink" href="#del-1-opprette-en-branch-og-merge-den" title="Permalink to this heading">#</a></h2>
-<section id="klon-repositoryet">
-<h3>1. Klon repositoryet<a class="headerlink" href="#klon-repositoryet" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;repo-url&gt;
-<span class="nb">cd</span><span class="w"> </span>&lt;repo-navn&gt;
-</pre></div>
-</div>
-</section>
-<section id="opprett-en-ny-branch">
-<h3>2. Opprett en ny branch<a class="headerlink" href="#opprett-en-ny-branch" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature-1
-</pre></div>
-</div>
-</section>
-<section id="gjor-en-endring">
-<h3>3. Gjør en endring<a class="headerlink" href="#gjor-en-endring" title="Permalink to this heading">#</a></h3>
-<p>Legg til en linje i en eksisterende fil eller opprett en ny fil.</p>
-</section>
-<section id="lagre-endringen-som-en-commit">
-<h3>4. Lagre endringen som en commit<a class="headerlink" href="#lagre-endringen-som-en-commit" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"La til feature 1"</span>
-</pre></div>
-</div>
-</section>
-<section id="bytt-tilbake-til-main">
-<h3>5. Bytt tilbake til main<a class="headerlink" href="#bytt-tilbake-til-main" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
-</pre></div>
-</div>
-</section>
-<section id="merge-branchen">
-<h3>6. Merge branchen<a class="headerlink" href="#merge-branchen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>feature-1
-</pre></div>
-</div>
-</section>
-<section id="se-commit-historikken">
-<h3>7. Se commit-historikken<a class="headerlink" href="#se-commit-historikken" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph
-</pre></div>
-</div>
-</section>
-<section id="oppgave">
-<h3>Oppgave<a class="headerlink" href="#oppgave" title="Permalink to this heading">#</a></h3>
-<p>Ta et skjermbilde av resultatet fra:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="del-2-push-og-pull">
-<h2>Del 2: Push og Pull<a class="headerlink" href="#del-2-push-og-pull" title="Permalink to this heading">#</a></h2>
-<section id="push-endringer-til-github">
-<h3>1. Push endringer til GitHub<a class="headerlink" href="#push-endringer-til-github" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
-</pre></div>
-</div>
-</section>
-<section id="id1">
-<h3>2. Opprett en ny branch<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature-2
-</pre></div>
-</div>
-</section>
-<section id="gjor-en-ny-endring">
-<h3>3. Gjør en ny endring<a class="headerlink" href="#gjor-en-ny-endring" title="Permalink to this heading">#</a></h3>
-<p>Rediger en fil i repositoryet.</p>
-</section>
-<section id="commit-endringen">
-<h3>4. Commit endringen<a class="headerlink" href="#commit-endringen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"La til feature 2"</span>
-</pre></div>
-</div>
-</section>
-<section id="push-branchen-til-github">
-<h3>5. Push branchen til GitHub<a class="headerlink" href="#push-branchen-til-github" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature-2
-</pre></div>
-</div>
-</section>
-<section id="id2">
-<h3>6. Bytt tilbake til main<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
-</pre></div>
-</div>
-</section>
-<section id="hent-siste-versjon-fra-github">
-<h3>7. Hent siste versjon fra GitHub<a class="headerlink" href="#hent-siste-versjon-fra-github" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="del-3-simuler-to-utviklere">
-<h2>Del 3: Simuler to utviklere<a class="headerlink" href="#del-3-simuler-to-utviklere" title="Permalink to this heading">#</a></h2>
-<p>Denne delen gjennomføres i grupper på to studenter.</p>
-<p>Begge studentene kloner samme repository.</p>
-<section id="student-a">
-<h3>Student A<a class="headerlink" href="#student-a" title="Permalink to this heading">#</a></h3>
-<p>Legg til en linje i filen <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code>:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lagt til av Student A
-</pre></div>
-</div>
-<p>Deretter:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppdatering fra Student A"</span>
-git<span class="w"> </span>push
-</pre></div>
-</div>
-</section>
-<section id="student-b">
-<h3>Student B<a class="headerlink" href="#student-b" title="Permalink to this heading">#</a></h3>
-<p>Legg til en annen linje i samme fil:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lagt til av Student B
-</pre></div>
-</div>
-<p>Deretter:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppdatering fra Student B"</span>
-</pre></div>
-</div>
-<p>Prøv å hente siste versjon:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
-</pre></div>
-</div>
-<p>Dersom Git rapporterer en konflikt, må konflikten løses før arbeidet kan fortsette.</p>
-<p>Når konflikten er løst:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit
-git<span class="w"> </span>push
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="del-4-pull-request-pa-github">
-<h2>Del 4: Pull Request på GitHub<a class="headerlink" href="#del-4-pull-request-pa-github" title="Permalink to this heading">#</a></h2>
-<section id="id3">
-<h3>1. Opprett en ny branch<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>min-feature
-</pre></div>
-</div>
-</section>
-<section id="gjor-en-endring-og-commit-den">
-<h3>2. Gjør en endring og commit den<a class="headerlink" href="#gjor-en-endring-og-commit-den" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Lagde min feature"</span>
-</pre></div>
-</div>
-</section>
-<section id="push-branchen">
-<h3>3. Push branchen<a class="headerlink" href="#push-branchen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>min-feature
-</pre></div>
-</div>
-</section>
-<section id="opprett-en-pull-request">
-<h3>4. Opprett en Pull Request<a class="headerlink" href="#opprett-en-pull-request" title="Permalink to this heading">#</a></h3>
-<p>Gå til GitHub og opprett en Pull Request fra <code class="docutils literal notranslate"><span class="pre">min-feature</span></code> til <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
-</section>
-<section id="merge-pull-requesten">
-<h3>5. Merge Pull Requesten<a class="headerlink" href="#merge-pull-requesten" title="Permalink to this heading">#</a></h3>
-<p>Gjennomfør merge på GitHub.</p>
-</section>
-<section id="oppdater-ditt-lokale-repository">
-<h3>6. Oppdater ditt lokale repository<a class="headerlink" href="#oppdater-ditt-lokale-repository" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
-git<span class="w"> </span>pull
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="levering">
-<h2>Levering<a class="headerlink" href="#levering" title="Permalink to this heading">#</a></h2>
-<p>For å få godkjent øvingen skal du:</p>
-<ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Opprette minst to brancher</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Gjøre minst to commits</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Push’e endringer til GitHub</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Pull’e endringer fra GitHub</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Merge en branch inn i <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Opprette og merge en Pull Request</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Dokumentere resultatet med skjermbilder av relevante Git-kommandoer og GitHub-aktiviteter</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="refleksjonssporsmal">
-<h2>Refleksjonsspørsmål<a class="headerlink" href="#refleksjonssporsmal" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Hva er forskjellen mellom <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> og <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>?</p></li>
-<li><p>Hvorfor bruker man brancher i programvareutvikling?</p></li>
-<li><p>Hva er fordelen med Pull Requests?</p></li>
-<li><p>Hva er en merge-konflikt, og hvordan løses den?</p></li>
-<li><p>Hvordan bidrar Git og GitHub til samarbeid mellom utviklere?</p></li>
+<section id="oppgave-1-opprett-en-github-bruker">
+<h2>Oppgave 1: Opprett en GitHub-bruker<a class="headerlink" href="#oppgave-1-opprett-en-github-bruker" title="Permalink to this heading">#</a></h2>
+<p>Dersom du ikke allerede har en GitHub-konto:</p>
+<ol class="arabic">
+<li><p>Gå til:</p>
+<p><a class="github reference external" href="https://github.com">github</a></p>
+</li>
+<li><p>Klikk <strong>Sign up</strong>.</p></li>
+<li><p>Opprett en brukerkonto.</p></li>
+<li><p>Verifiser kontoen og logg inn.</p></li>
 </ol>
+</section>
+<hr class="docutils" />
+<section id="oppgave-2-opprett-repo">
+<h2>Oppgave 2: Opprett repo<a class="headerlink" href="#oppgave-2-opprett-repo" title="Permalink to this heading">#</a></h2>
+<p>Opprett et nytt repo på GitHub.</p>
+<p>Repoet skal hete:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ELK330
+</pre></div>
+</div>
+<p>eller</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>elk330
+</pre></div>
+</div>
+<p>Repo skal være:</p>
+<ul class="simple">
+<li><p>Public</p></li>
+<li><p>uten README-fil</p></li>
+</ul>
+<p>Når repoet er opprettet, ta et skjermbilde som viser:</p>
+<ul class="simple">
+<li><p>repo-navn</p></li>
+<li><p>GitHub-kontoen</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="oppgave-3-dokumenter-arbeidet-i-latex">
+<h2>Oppgave 3: Dokumenter arbeidet i LaTeX<a class="headerlink" href="#oppgave-3-dokumenter-arbeidet-i-latex" title="Permalink to this heading">#</a></h2>
+<p>Opprett filen:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>oving1.tex
+</pre></div>
+</div>
+<p>og inkluder skjermbildet ved hjelp av:</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="k">\includegraphics</span><span class="nb">{}</span>
+</pre></div>
+</div>
+</section>
+<section id="levere">
+<h2>Levere<a class="headerlink" href="#levere" title="Permalink to this heading">#</a></h2>
+<p>Last opp følgende fil i canvas:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>oving1.pdf
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -690,6 +512,24 @@ git<span class="w"> </span>pull
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../01_intro/git.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Git</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../02_tallgrunnlag/under_utvikling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Under utvikling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -707,43 +547,10 @@ git<span class="w"> </span>pull
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-opprette-en-branch-og-merge-den">Del 1: Opprette en branch og merge den</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-repositoryet">1. Klon repositoryet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-branch">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring">3. Gjør en endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagre-endringen-som-en-commit">4. Lagre endringen som en commit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bytt-tilbake-til-main">5. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-branchen">6. Merge branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#se-commit-historikken">7. Se commit-historikken</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-push-og-pull">Del 2: Push og Pull</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-endringer-til-github">1. Push endringer til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-ny-endring">3. Gjør en ny endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-endringen">4. Commit endringen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen-til-github">5. Push branchen til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hent-siste-versjon-fra-github">7. Hent siste versjon fra GitHub</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-simuler-to-utviklere">Del 3: Simuler to utviklere</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-a">Student A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-b">Student B</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-pull-request-pa-github">Del 4: Pull Request på GitHub</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring-og-commit-den">2. Gjør en endring og commit den</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen">3. Push branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-pull-request">4. Opprett en Pull Request</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-pull-requesten">5. Merge Pull Requesten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-ditt-lokale-repository">6. Oppdater ditt lokale repository</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levering">Levering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-opprett-en-github-bruker">Oppgave 1: Opprett en GitHub-bruker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-opprett-repo">Oppgave 2: Opprett repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-dokumenter-arbeidet-i-latex">Oppgave 3: Dokumenter arbeidet i LaTeX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levere">Levere</a></li>
 </ul>
   </nav></div>
 
