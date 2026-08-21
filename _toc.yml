@@ -19,15 +19,16 @@ parts:
       - file: 01_intro/digital
       - file: 01_intro/about330
       - file: 01_intro/git
+      - file: assignments/assignment1
 
   - caption: Tallgrunnlag
     chapters:
       - file: 02_tallgrunnlag/under_utvikling
       #- file: 02_tallgrunnlag/norske_data_slides
 
-  #- caption: Analyse
-    #chapters:
-      #- file: 02_tallgrunnlag/under_utvikling
+  - caption: Analyse
+    chapters:
+      - file: 03_data/under_utvikling
       #- file: 03_data/behandle_tall
 
   #- caption: Representativ dag
