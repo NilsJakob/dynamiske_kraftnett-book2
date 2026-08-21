@@ -181,9 +181,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_intro/git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-konto og repository</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
@@ -403,15 +400,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-git-bash">3. Start Git Bash</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-installasjonen">4. Test installasjonen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurer-navn-og-e-post">5. Konfigurer navn og e-post</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repositorium">6. Klon et repositorium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repositorium">7. Oppdater et repositorium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repo">6. Klon et repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repo">7. Oppdater et repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-git-pull">Hva gjør <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>?</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repositorium-i-git-bash">Opprette et Git-repositorium i Git Bash</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repo-i-git-bash">Opprette et Git-repo i Git Bash</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repositoriet">4. Opprett Git-repositoriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repo">4. Opprett Git-repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>
@@ -434,17 +432,19 @@ document.write(`
                   
   <section id="installere-git-bash">
 <h1>Installere Git Bash<a class="headerlink" href="#installere-git-bash" title="Permalink to this heading">#</a></h1>
+<p>Git Bash er et kommandolinjeprogram for Windows som inneholder Git og Bash. Bash står for <em>Bourne Again Shell</em> og gir tilgang til en rekke kommandoer som brukes til filhåndtering, programmering og versjonskontroll med Git.</p>
 <section id="last-ned-git-for-windows">
 <h2>1. Last ned Git for Windows<a class="headerlink" href="#last-ned-git-for-windows" title="Permalink to this heading">#</a></h2>
 <p>Gå til:</p>
 <p><a class="reference external" href="https://git-scm.com/downloads/win">https://git-scm.com/downloads/win</a></p>
+<a class="reference internal image-reference" href="images/git_bash_install.webp"><img alt="images/git_bash_install.webp" class="align-center" src="images/git_bash_install.webp" style="width: 80%;" /></a>
 </section>
 <section id="installer-programmet">
 <h2>2. Installer programmet<a class="headerlink" href="#installer-programmet" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Kjør installasjonsfilen.</p></li>
 <li><p>Behold standardinnstillingene.</p></li>
-<li><p>Fullfør installasjonen.</p></li>
+<li><p>Fullfør installasjonen</p></li>
 </ul>
 </section>
 <section id="start-git-bash">
@@ -468,23 +468,30 @@ document.write(`
 </section>
 <section id="konfigurer-navn-og-e-post">
 <h2>5. Konfigurer navn og e-post<a class="headerlink" href="#konfigurer-navn-og-e-post" title="Permalink to this heading">#</a></h2>
-<p>Kjør én gang:</p>
+<p>Git lagrer informasjon om hvem som oppretter commits. Derfor må navn og e-post registreres én gang:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Ditt Navn"</span>
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"epost@example.com"</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"din.epost@example.com"</span>
 </pre></div>
 </div>
+<p>Disse opplysningene lagres sammen med alle commits og gjør det mulig å se hvem som har gjort ulike endringer i et prosjekt.</p>
 </section>
-<section id="klon-et-repositorium">
-<h2>6. Klon et repositorium<a class="headerlink" href="#klon-et-repositorium" title="Permalink to this heading">#</a></h2>
+<section id="klon-et-repo">
+<h2>6. Klon et repo<a class="headerlink" href="#klon-et-repo" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/bruker/repo.git
 </pre></div>
 </div>
 </section>
-<section id="oppdater-et-repositorium">
-<h2>7. Oppdater et repositorium<a class="headerlink" href="#oppdater-et-repositorium" title="Permalink to this heading">#</a></h2>
+<section id="oppdater-et-repo">
+<h2>7. Oppdater et repo<a class="headerlink" href="#oppdater-et-repo" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="hva-gjor-git-pull">
+<h2>Hva gjør <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>?<a class="headerlink" href="#hva-gjor-git-pull" title="Permalink to this heading">#</a></h2>
+<p>Kommandoen</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
 </pre></div>
 </div>
+<p>henter de nyeste endringene fra GitHub og oppdaterer den lokale kopien av repoet.</p>
+<p>Denne kommandoen brukes når andre har lagt til eller oppdatert filer i repoet, for eksempel nye datasett eller øvingsfiler.</p>
 <p>For dette emnet er det i hovedsak disse to kommandoene som brukes:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone
 git<span class="w"> </span>pull
@@ -492,8 +499,8 @@ git<span class="w"> </span>pull
 </div>
 </section>
 </section>
-<section id="opprette-et-git-repositorium-i-git-bash">
-<h1>Opprette et Git-repositorium i Git Bash<a class="headerlink" href="#opprette-et-git-repositorium-i-git-bash" title="Permalink to this heading">#</a></h1>
+<section id="opprette-et-git-repo-i-git-bash">
+<h1>Opprette et Git-repo i Git Bash<a class="headerlink" href="#opprette-et-git-repo-i-git-bash" title="Permalink to this heading">#</a></h1>
 <section id="ga-til-onsket-mappe">
 <h2>1. Gå til ønsket mappe<a class="headerlink" href="#ga-til-onsket-mappe" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/c/repos
@@ -512,8 +519,8 @@ git<span class="w"> </span>pull
 </pre></div>
 </div>
 </section>
-<section id="opprett-git-repositoriet">
-<h2>4. Opprett Git-repositoriet<a class="headerlink" href="#opprett-git-repositoriet" title="Permalink to this heading">#</a></h2>
+<section id="opprett-git-repo">
+<h2>4. Opprett Git-repo<a class="headerlink" href="#opprett-git-repo" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
 </pre></div>
 </div>
@@ -631,15 +638,16 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-git-bash">3. Start Git Bash</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-installasjonen">4. Test installasjonen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurer-navn-og-e-post">5. Konfigurer navn og e-post</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repositorium">6. Klon et repositorium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repositorium">7. Oppdater et repositorium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repo">6. Klon et repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repo">7. Oppdater et repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-git-pull">Hva gjør <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>?</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repositorium-i-git-bash">Opprette et Git-repositorium i Git Bash</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repo-i-git-bash">Opprette et Git-repo i Git Bash</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repositoriet">4. Opprett Git-repositoriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repo">4. Opprett Git-repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>

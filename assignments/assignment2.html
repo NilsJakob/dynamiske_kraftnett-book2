@@ -181,9 +181,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_intro/git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignment1.html">Øving 1: Opprett GitHub-konto og repository</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
@@ -400,13 +397,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bakgrunn">Bakgrunn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-opprett-en-arbeidsmappe">Oppgave 1: Opprett en arbeidsmappe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-klon-repositoryet">Oppgave 2: Klon repositoryet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-ga-inn-i-repositoryet">Oppgave 3: Gå inn i repositoryet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-klon-repo">Oppgave 2: Klon repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-ga-inn-i-repo">Oppgave 3: Gå inn i repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-undersok-datasettet">Oppgave 4: Undersøk datasettet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-apne-repositoryet-i-vs-code">Oppgave 5: Åpne repositoryet i VS Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6-hent-oppdateringer">Oppgave 6: Hent oppdateringer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon">Refleksjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lever">Lever</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dokumenter-arbeidet-i-latex">Dokumenter arbeidet i LaTeX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levere">Levere</a></li>
 </ul>
             </nav>
         </div>
@@ -426,7 +425,7 @@ document.write(`
 <ul class="simple">
 <li><p>klone et Git-repositorium fra GitHub,</p></li>
 <li><p>navigere i mappestrukturen,</p></li>
-<li><p>åpne datafiler i et repository,</p></li>
+<li><p>åpne datafiler i et repo,</p></li>
 <li><p>hente oppdateringer med Git.</p></li>
 </ul>
 </section>
@@ -439,24 +438,24 @@ document.write(`
 <hr class="docutils" />
 <section id="oppgave-1-opprett-en-arbeidsmappe">
 <h2>Oppgave 1: Opprett en arbeidsmappe<a class="headerlink" href="#oppgave-1-opprett-en-arbeidsmappe" title="Permalink to this heading">#</a></h2>
-<p>Åpne Git Bash og gå til katalogen der du ønsker å lagre repositoryet.</p>
+<p>Åpne Git Bash og gå til katalogen der du ønsker å lagre repoet.</p>
 <p>Eksempel:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/c/repos
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
-<section id="oppgave-2-klon-repositoryet">
-<h2>Oppgave 2: Klon repositoryet<a class="headerlink" href="#oppgave-2-klon-repositoryet" title="Permalink to this heading">#</a></h2>
-<p>Klon datasett-repositoryet:</p>
+<section id="oppgave-2-klon-repo">
+<h2>Oppgave 2: Klon repo<a class="headerlink" href="#oppgave-2-klon-repo" title="Permalink to this heading">#</a></h2>
+<p>Klon datasett-repoet:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/NilsJakob/power-system-data.git
 </pre></div>
 </div>
-<p>Git oppretter nå en lokal kopi av repositoryet.</p>
+<p>Git oppretter nå en lokal kopi av repoet.</p>
 </section>
 <hr class="docutils" />
-<section id="oppgave-3-ga-inn-i-repositoryet">
-<h2>Oppgave 3: Gå inn i repositoryet<a class="headerlink" href="#oppgave-3-ga-inn-i-repositoryet" title="Permalink to this heading">#</a></h2>
+<section id="oppgave-3-ga-inn-i-repo">
+<h2>Oppgave 3: Gå inn i repo<a class="headerlink" href="#oppgave-3-ga-inn-i-repo" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>power-system-data
 </pre></div>
 </div>
@@ -533,8 +532,8 @@ src/
 </div>
 </section>
 <hr class="docutils" />
-<section id="leveranse">
-<h2>Leveranse<a class="headerlink" href="#leveranse" title="Permalink to this heading">#</a></h2>
+<section id="lever">
+<h2>Lever<a class="headerlink" href="#lever" title="Permalink to this heading">#</a></h2>
 <p>Ta et skjermbilde som viser:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone
 </pre></div>
@@ -543,7 +542,24 @@ src/
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
-<p>i Git Bash etter at repositoryet er klonet.</p>
+</section>
+<section id="dokumenter-arbeidet-i-latex">
+<h2>Dokumenter arbeidet i LaTeX<a class="headerlink" href="#dokumenter-arbeidet-i-latex" title="Permalink to this heading">#</a></h2>
+<p>Opprett filen:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>oving2.tex
+</pre></div>
+</div>
+<p>og inkluder skjermbildet ved hjelp av:</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="k">\includegraphics</span><span class="nb">{}</span>
+</pre></div>
+</div>
+</section>
+<section id="levere">
+<h2>Levere<a class="headerlink" href="#levere" title="Permalink to this heading">#</a></h2>
+<p>Last opp følgende fil i canvas:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>oving2.pdf
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -596,13 +612,15 @@ src/
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bakgrunn">Bakgrunn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-opprett-en-arbeidsmappe">Oppgave 1: Opprett en arbeidsmappe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-klon-repositoryet">Oppgave 2: Klon repositoryet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-ga-inn-i-repositoryet">Oppgave 3: Gå inn i repositoryet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-klon-repo">Oppgave 2: Klon repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-ga-inn-i-repo">Oppgave 3: Gå inn i repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-undersok-datasettet">Oppgave 4: Undersøk datasettet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-apne-repositoryet-i-vs-code">Oppgave 5: Åpne repositoryet i VS Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6-hent-oppdateringer">Oppgave 6: Hent oppdateringer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon">Refleksjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lever">Lever</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dokumenter-arbeidet-i-latex">Dokumenter arbeidet i LaTeX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levere">Levere</a></li>
 </ul>
   </nav></div>
 
