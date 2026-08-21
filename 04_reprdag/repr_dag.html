@@ -417,7 +417,7 @@ document.write(`
 </ul>
 <p>Dataene er lastet ned fra Statnetts side <a class="reference external" href="https://www.statnett.no/for-aktorer-i-kraftbransjen/tall-og-data-fra-kraftsystemet">Tall og data fra kraftsystemet</a> og viser timesbaserte verdier av produskjon og forbruk av elektrisk kraft fra 01.01.2026 til 20.05.2026.</p>
 <p>Tidligere har vi brukt numpy og pandas seperat, først numpy til å lage en typisk døgnprofil og deretter pandas til å lese data.</p>
-<p>Nå skal vi kombinere de til å finne en representativ dag i den angitte dataperiosen fra 01.01.2026 til 20.05.2026.</p>
+<p>Nå skal vi kombinere de til å finne en representativ dag i den angitte dataperioden fra 01.01.2026 til 20.05.2026.</p>
 <section id="index-datetime">
 <h2>Index - datetime<a class="headerlink" href="#index-datetime" title="Permalink to this heading">#</a></h2>
 <p>Vi vil finne den mest representative døgnprofilen i datasettet og vi ser nå styrken til Datetimeindex, ved at vi kan lage en døgnmatrise. Vi har tidliger sett at vi kan hente ut tidsforståelse direkte ved Datetimeindex. Vi kan legge til dette som en kolonne i vår dataframe ved å bruke tilegge <code class="docutils literal notranslate"><span class="pre">df.index.date</span></code> et <code class="docutils literal notranslate"><span class="pre">df['kolonnenavn']</span></code>:</p>

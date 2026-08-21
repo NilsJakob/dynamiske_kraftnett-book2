@@ -65,6 +65,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '02_tallgrunnlag/norske_data_slides';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -393,11 +395,93 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">Nøkkeltall for kraftsystemet (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">Nøkkeltall for kraftsystemet (2025)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-av-dognlast">Modellering av døgnlast</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#begrensninger-ved-modellen">Begrensninger ved modellen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diskusjon-modellering-av-elektrisk-belastning">Diskusjon: Modellering av elektrisk belastning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-systematiske-feil">1. Bias (systematiske feil)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#residualer">2. Residualer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellens-antakelser">3. Modellens antakelser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalisering">4. Generalisering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellkompleksitet">5. Modellkompleksitet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overtilpasning-og-undertilpasning">6. Overtilpasning og undertilpasning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidens-betydning">7. Tidens betydning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistikk-i-praksis">8. Statistikk i praksis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forklaring-av-bias-variance-figuren">Forklaring av bias-variance-figuren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-horisontale-aksen">Den horisontale aksen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-vertikale-aksen">Den vertikale aksen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-set-kurven">Training set-kurven</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-set-kurven">Test set-kurven</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting">Underfitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">Overfitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suitable-model">Suitable Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-entso-e-eksemplet">Kobling til ENTSO-E-eksemplet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-og-varians">Bias og varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varians">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenhengen-mellom-bias-og-varians">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bias-variance trade-off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-dognlastmodellen">Kobling til døgnlastmodellen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bias og varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utgangspunkt">Matematisk utgangspunkt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bias-hat-f-x">[
+\text{Bias}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-bias">Høy bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Varians</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-var-hat-f-x">[
+\text{Var}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-varians">Høy varians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-dekomponeringen">Bias-variance-dekomponeringen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Kobling til døgnlastmodellen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#l-t">[
+L(t)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-de-tre-komponentene">Hva betyr de tre komponentene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias2">Bias²</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stoy">Støy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-varians-og-total-feil">Bias, varians og total feil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-feil">Total feil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-y">Hva er Y?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Eksempel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-sanne-sammenhengen">Den sanne sammenhengen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Bias, varians og total feil</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -454,57 +538,289 @@ document.write(`
 </tbody>
 </table>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">entsoe</span><span class="w"> </span><span class="kn">import</span> <span class="n">EntsoePandasClient</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">load_dotenv</span><span class="p">(</span><span class="s2">"../.env"</span><span class="p">)</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">EntsoePandasClient</span><span class="p">(</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"ENTSOE_API_KEY"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Oslo"</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">today</span>
+
+<span class="n">load</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_load</span><span class="p">(</span>
+    <span class="n">country_code</span><span class="o">=</span><span class="s2">"NO"</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="n">end</span>
+<span class="p">)</span>
+
+<span class="n">load_hourly</span> <span class="o">=</span> <span class="n">load</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"h"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">load_hourly</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
+         <span class="n">load_hourly</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Faktisk last siste komplette døgn"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Time"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Last (MW)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+
+<span class="n">request_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
+<span class="c1">#load = client.query_load(</span>
+<span class="c1">#    country_code="NO",</span>
+<span class="c1">#    start=start,</span>
+<span class="c1">#    end=end</span>
+<span class="c1">#)</span>
+
+<span class="n">toc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"API forespørsel sendt: </span><span class="si">{</span><span class="n">request_time</span><span class="si">:</span><span class="s2">%Y-%m-%d %H:%M:%S</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Forespurt intervall: </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Første målepunkt: </span><span class="si">{</span><span class="n">load</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Siste målepunkt: </span><span class="si">{</span><span class="n">load</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Analyserer siste komplette døgn: "</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Antall målepunkter: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">load</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hentet </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">load</span><span class="p">)</span><span class="si">}</span><span class="s2"> målepunkter"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Responstid: </span><span class="si">{</span><span class="n">toc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tic</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> sekunder"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">load_hourly</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eddf5a19539b9e81028e94c044f2b7bc358ce7b98c812e58ddb172f494a32bd6.png" src="../_images/eddf5a19539b9e81028e94c044f2b7bc358ce7b98c812e58ddb172f494a32bd6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>API forespørsel sendt: 2026-08-21 10:55:30
+Forespurt intervall: 2026-08-20 00:00:00+02:00 -&gt; 2026-08-21 00:00:00+02:00
+Første målepunkt: 2026-08-20 00:00:00+02:00
+Siste målepunkt: 2026-08-20 23:45:00+02:00
+Analyserer siste komplette døgn: 2026-08-20
+Antall målepunkter: 95
+Hentet 95 målepunkter
+Responstid: 0.00 sekunder
+                            Actual Load
+2026-08-20 00:00:00+02:00  12663.857500
+2026-08-20 01:00:00+02:00  12339.872500
+2026-08-20 02:00:00+02:00  12132.090000
+2026-08-20 03:00:00+02:00  11978.257500
+2026-08-20 04:00:00+02:00  11938.867500
+2026-08-20 05:00:00+02:00  12182.557500
+2026-08-20 06:00:00+02:00  12951.100000
+2026-08-20 07:00:00+02:00  13921.402500
+2026-08-20 08:00:00+02:00  14094.967500
+2026-08-20 09:00:00+02:00  14022.007500
+2026-08-20 10:00:00+02:00  13923.665000
+2026-08-20 11:00:00+02:00  13792.017500
+2026-08-20 12:00:00+02:00  13723.102500
+2026-08-20 13:00:00+02:00  13640.327500
+2026-08-20 14:00:00+02:00  13758.350000
+2026-08-20 15:00:00+02:00  13900.420000
+2026-08-20 16:00:00+02:00  14116.710000
+2026-08-20 17:00:00+02:00  14087.817500
+2026-08-20 18:00:00+02:00  14042.150000
+2026-08-20 19:00:00+02:00  14152.177500
+2026-08-20 20:00:00+02:00  14152.432500
+2026-08-20 21:00:00+02:00  14200.592500
+2026-08-20 22:00:00+02:00  14064.836667
+2026-08-20 23:00:00+02:00  13594.912500
+</pre></div>
+</div>
+</div>
+</div>
+<section id="beregning-av-standardavvik">
+<h3>Beregning av standardavvik<a class="headerlink" href="#beregning-av-standardavvik" title="Permalink to this heading">#</a></h3>
+<p>Standardavviket er et mål på hvor mye observasjonene varierer rundt gjennomsnittet. Et stort standardavvik betyr at verdiene varierer mye, mens et lite standardavvik betyr at verdiene ligger nær gjennomsnittet.</p>
+<p>For en dataserie <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span> beregnes utvalgsstandardavviket som</p>
+<div class="math notranslate nohighlight">
+\[
+s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> er observasjonene,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span> er gjennomsnittet,</p></li>
+<li><p>n er antall observasjoner.</p></li>
+</ul>
+<p>I Python kan standardavviket for lastdata beregnes med:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">load_hourly</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">load_hourly</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Gjennomsnitt = </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> MW"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Standardavvik = </span><span class="si">{</span><span class="n">std</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> MW"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gjennomsnitt = 13473.9 MW
+Standardavvik = 800.7 MW
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="typisk-dognprofil-norge">
 <h1>Typisk døgnprofil (Norge)<a class="headerlink" href="#typisk-dognprofil-norge" title="Permalink to this heading">#</a></h1>
+<section id="modellering-av-dognlast">
+<h2>Modellering av døgnlast<a class="headerlink" href="#modellering-av-dognlast" title="Permalink to this heading">#</a></h2>
+<p>Tidsserien viser en typisk døgnprofil for elektrisk belastning:</p>
+<ul class="simple">
+<li><p>Lavest last om natten, rundt kl. 03-05.</p></li>
+<li><p>Kraftig økning om morgenen.</p></li>
+<li><p>En tydelig topp på formiddagen.</p></li>
+<li><p>Et mindre fall midt på dagen.</p></li>
+<li><p>En ny topp om kvelden.</p></li>
+<li><p>Avtakende last utover natten.</p></li>
+</ul>
+<p>For å beskrive dette mønsteret kan vi bruke en modell som består av en grunnlast og to Gauss-kurver:</p>
+<div class="math notranslate nohighlight">
+\[
+L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
++A_2\exp\left(-\frac{(t-\mu_2)^2}{2\sigma_2^2}\right)
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_0\)</span> er grunnlasten,</p></li>
+<li><p><span class="math notranslate nohighlight">\(A_1\)</span> og <span class="math notranslate nohighlight">\(A_2\)</span> er høyden på toppene,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_1\)</span> og <span class="math notranslate nohighlight">\(\mu_2\)</span> er tidspunktet for toppene,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_1\)</span> og <span class="math notranslate nohighlight">\(\sigma_2\)</span> beskriver bredden på toppene.</p></li>
+</ul>
+<p>Basert på observasjonene kan vi estimere:</p>
+<ul class="simple">
+<li><p>Grunnlast: ca. 11 900 MW</p></li>
+<li><p>Morgentopp: ca. 2 200 MW ved kl. 08</p></li>
+<li><p>Kveldstopp: ca. 2 300 MW ved kl. 20</p></li>
+</ul>
+<p>I Python kan modellen skrives som:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">base_load</span> <span class="o">=</span> <span class="mi">11900</span>
+
+<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">2300</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mf">4.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">model_load</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base_load</span>
+    <span class="o">+</span> <span class="n">morning_peak</span>
+    <span class="o">+</span> <span class="n">evening_peak</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Modellen representerer en enkel form for ikke-lineær regresjon der belastningen beskrives som summen av flere komponenter. Parametrene kan estimeres manuelt fra data eller automatisk ved hjelp av statistiske metoder som minste kvadraters metode og funksjonen <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> i SciPy.</p>
+<p>Ved å sammenligne modellen med observerte data kan vi undersøke hvor godt modellen beskriver virkeligheten og beregne mål som residualer, RMSE og forklaringsgrad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">morning_peak</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(43.65040843761466)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">load</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">17</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Tid [timer]"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Last [GW]"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Typisk lastprofil i Norge (døgn)"</span><span class="p">)</span>
+<span class="n">base_load</span> <span class="o">=</span> <span class="mi">11900</span>
+
+<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">2300</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mf">4.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">model_load</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base_load</span>
+    <span class="o">+</span> <span class="n">morning_peak</span>
+    <span class="o">+</span> <span class="n">evening_peak</span>
+<span class="p">)</span>
+
+<span class="n">hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">load_hourly</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
+    <span class="n">load_hourly</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="s2">"o-"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Observerte data"</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">model_load</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Gauss-modell"</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Klokkeslett"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Last (MW)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Observerte data og modell"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1965a5999356f2787180403340ce205ddfc3044e44a7783a88f45f15033cd4ae.png" src="../_images/1965a5999356f2787180403340ce205ddfc3044e44a7783a88f45f15033cd4ae.png" />
+<img alt="../_images/b6dff1e081c5cd876b4986e33642c3b79dfc5c10c365062a2d683b8a3891544d.png" src="../_images/b6dff1e081c5cd876b4986e33642c3b79dfc5c10c365062a2d683b8a3891544d.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">18</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">base_load</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">model_load</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Total modell"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">base_load</span> <span class="o">+</span> <span class="n">morning_peak</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Morgenkomponent"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">base_load</span> <span class="o">+</span> <span class="n">evening_peak</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Kveldskomponent"</span><span class="p">)</span>
 
-<span class="n">load</span> <span class="o">=</span> <span class="n">base_load</span> <span class="o">+</span> <span class="n">morning_peak</span> <span class="o">+</span> <span class="n">evening_peak</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">load_hourly</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
+    <span class="n">load_hourly</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="s2">"ko"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Observerte data"</span>
+<span class="p">)</span>
 
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Tid [timer]"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Last [GW]"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Typisk norsk lastprofil (døgn)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Klokkeslett"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Last (MW)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Døgnlast modellert med to Gauss-kurver"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/54338e391a1aeb6bb569f8ea3c49c025852c1a2e1dd1e6a2b1c8417e1fad3c12.png" src="../_images/54338e391a1aeb6bb569f8ea3c49c025852c1a2e1dd1e6a2b1c8417e1fad3c12.png" />
+<img alt="../_images/002717303f8a320488a3e9bfb01829e942bb1c463c11595e2b03e2e7035b7751.png" src="../_images/002717303f8a320488a3e9bfb01829e942bb1c463c11595e2b03e2e7035b7751.png" />
 </div>
 </div>
+</section>
 <section id="hva-ser-vi">
 <h2>Hva ser vi?<a class="headerlink" href="#hva-ser-vi" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -512,6 +828,777 @@ document.write(`
 <li><p>Kveldspeak rundt kl. 18</p></li>
 <li><p>Lav last om natten</p></li>
 </ul>
+<section id="begrensninger-ved-modellen">
+<h3>Begrensninger ved modellen<a class="headerlink" href="#begrensninger-ved-modellen" title="Permalink to this heading">#</a></h3>
+<p>Modellen ble utviklet for å beskrive et bestemt døgns belastningsprofil. Når modellen sammenlignes med nye observasjoner fra ENTSO-E, vil man se at den ikke treffer perfekt. Dette illustrerer at alle modeller er forenklinger av virkeligheten.</p>
+<p>Dersom modellen brukes på flere døgn gjennom året, vil avvikene ofte øke. Lasten påvirkes blant annet av temperatur, ukedag, sesong, ferier og økonomisk aktivitet, faktorer som ikke er inkludert i modellen.</p>
+<p>En slik sammenligning viser hvordan en modell kan være nyttig for å beskrive hovedtrekkene i dataene, samtidig som den inneholder systematiske skjevheter (bias) og tilfeldige avvik (residualer).</p>
+</section>
+</section>
+<section id="diskusjon-modellering-av-elektrisk-belastning">
+<h2>Diskusjon: Modellering av elektrisk belastning<a class="headerlink" href="#diskusjon-modellering-av-elektrisk-belastning" title="Permalink to this heading">#</a></h2>
+<p>Ved å sammenligne en enkel modell med oppdaterte data fra ENTSO-E kan vi undersøke hvor godt modellen beskriver virkeligheten. Dette gir flere interessante problemstillinger innen statistikk og dataanalyse.</p>
+<section id="bias-systematiske-feil">
+<h3>1. Bias (systematiske feil)<a class="headerlink" href="#bias-systematiske-feil" title="Permalink to this heading">#</a></h3>
+<p>Bias oppstår når modellen systematisk overvurderer eller undervurderer belastningen.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Er modellen gjennomgående for høy eller for lav?</p></li>
+<li><p>Er avvikene størst om natten, dagen eller kvelden?</p></li>
+<li><p>Hva kan være årsaken til systematiske feil?</p></li>
+</ul>
+</section>
+<section id="residualer">
+<h3>2. Residualer<a class="headerlink" href="#residualer" title="Permalink to this heading">#</a></h3>
+<p>Residualen er forskjellen mellom observert verdi og modellert verdi:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Residual} = \text{Observert verdi} - \text{Modellverdi}
+\]</div>
+<p>Residualene inneholder informasjon om hva modellen ikke klarer å forklare.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Er residualene tilfeldig fordelt?</p></li>
+<li><p>Finnes det mønstre i residualene?</p></li>
+<li><p>Hvilke faktorer kan forklare residualene?</p></li>
+</ul>
+</section>
+<section id="modellens-antakelser">
+<h3>3. Modellens antakelser<a class="headerlink" href="#modellens-antakelser" title="Permalink to this heading">#</a></h3>
+<p>Modellen antar at belastningen kan beskrives ved hjelp av en grunnlast og to Gauss-formede topper.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Er dette en rimelig beskrivelse av virkeligheten?</p></li>
+<li><p>Hvilke deler av kurven beskrives godt?</p></li>
+<li><p>Hvilke deler beskrives dårlig?</p></li>
+</ul>
+</section>
+<section id="generalisering">
+<h3>4. Generalisering<a class="headerlink" href="#generalisering" title="Permalink to this heading">#</a></h3>
+<p>Modellen er utviklet på bakgrunn av ett bestemt døgn.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Fungerer modellen like godt neste dag?</p></li>
+<li><p>Fungerer modellen om vinteren?</p></li>
+<li><p>Hvordan påvirker ukedager og helger modellens kvalitet?</p></li>
+</ul>
+</section>
+<section id="modellkompleksitet">
+<h3>5. Modellkompleksitet<a class="headerlink" href="#modellkompleksitet" title="Permalink to this heading">#</a></h3>
+<p>En enkel modell er lett å forstå, men kan gi store avvik. En mer kompleks modell kan gi bedre tilpasning.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Hvor mange komponenter bør modellen inneholde?</p></li>
+<li><p>Når blir modellen for kompleks?</p></li>
+<li><p>Hva er fordeler og ulemper med en enkel modell?</p></li>
+</ul>
+</section>
+<section id="overtilpasning-og-undertilpasning">
+<h3>6. Overtilpasning og undertilpasning<a class="headerlink" href="#overtilpasning-og-undertilpasning" title="Permalink to this heading">#</a></h3>
+<p>En modell kan være for enkel eller for spesialisert.</p>
+<ul class="simple">
+<li><p><strong>Undertilpasning (underfitting):</strong> Modellen er for enkel og klarer ikke å beskrive viktige mønstre.</p></li>
+<li><p><strong>Overtilpasning (overfitting):</strong> Modellen tilpasses ett datasett svært godt, men fungerer dårlig på nye data.</p></li>
+</ul>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Hvilke tegn tyder på undertilpasning?</p></li>
+<li><p>Hvilke tegn tyder på overtilpasning?</p></li>
+<li><p>Hvordan kan vi teste modellens evne til å generalisere?</p></li>
+</ul>
+<figure class="align-default" id="fig-biasvariance">
+<a class="reference internal image-reference" href="../_images/bias_variance.svg"><img alt="../_images/bias_variance.svg" src="../_images/bias_variance.svg" width="900px" /></a>
+<figcaption>
+<p><span class="caption-text">Illustrasjon av overtilpasning og undertilpasning</span><a class="headerlink" href="#fig-biasvariance" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="tidens-betydning">
+<h3>7. Tidens betydning<a class="headerlink" href="#tidens-betydning" title="Permalink to this heading">#</a></h3>
+<p>Dataene hentes automatisk fra ENTSO-E hver gang notatboken eller Jupyter Book bygges.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Hvordan endres belastningskurven fra dag til dag?</p></li>
+<li><p>Er modellen fortsatt relevant etter en uke?</p></li>
+<li><p>Hva skjer dersom vi sammenligner sommer- og vinterdata?</p></li>
+</ul>
+</section>
+<section id="statistikk-i-praksis">
+<h3>8. Statistikk i praksis<a class="headerlink" href="#statistikk-i-praksis" title="Permalink to this heading">#</a></h3>
+<p>Sammenligningen mellom modell og virkelige data illustrerer et sentralt prinsipp i statistikk:</p>
+<blockquote>
+<div><p>Alle modeller er feil, men noen modeller er nyttige.</p>
+</div></blockquote>
+<p>Målet er ikke nødvendigvis å få en perfekt modell, men å utvikle en modell som forklarer de viktigste trekkene i dataene og samtidig gir innsikt i fenomenet som studeres.</p>
+</section>
+</section>
+<section id="bias-variance-trade-off">
+<h2>Bias-variance trade-off<a class="headerlink" href="#bias-variance-trade-off" title="Permalink to this heading">#</a></h2>
+<p>Når vi sammenligner modellen med observerte lastdata, ser vi at modellen ikke treffer perfekt. Dette er normalt og illustrerer et sentralt prinsipp innen statistikk og maskinlæring: bias-variance trade-off.</p>
+<p>bias_variance.png</p>
+<p>En svært enkel modell vil ofte ha høy bias. Modellen klarer da ikke å beskrive viktige mønstre i dataene og vil systematisk gjøre feil.</p>
+<p>En svært kompleks modell vil ofte ha høy varians. Modellen tilpasser seg treningsdataene svært godt, men presterer dårlig på nye observasjoner.</p>
+<p>Målet er å finne en modell med passende kompleksitet som gir god generalisering til nye data.</p>
+<section id="refleksjonssporsmal">
+<h3>Refleksjonsspørsmål<a class="headerlink" href="#refleksjonssporsmal" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Er Gauss-modellen vår for enkel?</p></li>
+<li><p>Hvilke mønstre i lastdataene klarer modellen ikke å beskrive?</p></li>
+<li><p>Hva ville skjedd dersom vi la til flere topper eller flere parametere?</p></li>
+<li><p>Ville modellen blitt bedre, eller risikerer vi overtilpasning?</p></li>
+<li><p>Er modellen som ble utviklet basert på ett døgn fortsatt relevant en uke senere?</p></li>
+<li><p>Hvordan påvirkes modellen av temperatur, årstid og ukedag?</p></li>
+</ul>
+<p>I statistikk er målet ofte ikke å finne en perfekt modell, men en modell som beskriver de viktigste trekkene i dataene på en robust måte.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"../images/bias_variance.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ec90c4a8d1e9c42d87afd69fba222af57721058291e28e9fb1e316a9d3056b5f.svg" src="../_images/ec90c4a8d1e9c42d87afd69fba222af57721058291e28e9fb1e316a9d3056b5f.svg" /></div>
+</div>
+</section>
+</section>
+<section id="forklaring-av-bias-variance-figuren">
+<h2>Forklaring av bias-variance-figuren<a class="headerlink" href="#forklaring-av-bias-variance-figuren" title="Permalink to this heading">#</a></h2>
+<p>Figuren illustrerer hvordan modellens kompleksitet påvirker evnen til å beskrive eksisterende data og generalisere til nye data.</p>
+<section id="den-horisontale-aksen">
+<h3>Den horisontale aksen<a class="headerlink" href="#den-horisontale-aksen" title="Permalink to this heading">#</a></h3>
+<p>Den horisontale aksen viser <strong>modellkompleksitet</strong>.</p>
+<ul class="simple">
+<li><p>Til venstre finner vi enkle modeller.</p></li>
+<li><p>Til høyre finner vi mer kompliserte modeller med flere parametere og større fleksibilitet.</p></li>
+</ul>
+</section>
+<section id="den-vertikale-aksen">
+<h3>Den vertikale aksen<a class="headerlink" href="#den-vertikale-aksen" title="Permalink to this heading">#</a></h3>
+<p>Den vertikale aksen viser modellens <strong>ytelse (fit score)</strong>.</p>
+<p>Høyere verdi betyr bedre tilpasning til dataene.</p>
+</section>
+<section id="training-set-kurven">
+<h3>Training set-kurven<a class="headerlink" href="#training-set-kurven" title="Permalink to this heading">#</a></h3>
+<p>Den oransje kurven viser ytelsen på <strong>treningsdataene</strong>.</p>
+<p>Etter hvert som modellen blir mer kompleks, blir den stadig bedre til å beskrive dataene den er trent på.</p>
+<p>Derfor stiger treningsytelsen kontinuerlig med økende modellkompleksitet.</p>
+</section>
+<section id="test-set-kurven">
+<h3>Test set-kurven<a class="headerlink" href="#test-set-kurven" title="Permalink to this heading">#</a></h3>
+<p>Den blå kurven viser ytelsen på <strong>testdataene</strong>, altså data modellen ikke har sett tidligere.</p>
+<p>I starten forbedres ytelsen når modellen blir mer kompleks fordi modellen klarer å fange opp flere viktige mønstre.</p>
+<p>Etter et visst punkt begynner ytelsen å bli dårligere. Modellen lærer da ikke bare de underliggende mønstrene, men også støy og tilfeldige variasjoner i treningsdataene.</p>
+<p>Dette fenomenet kalles <strong>overtilpasning (overfitting)</strong>.</p>
+</section>
+<section id="underfitting">
+<h3>Underfitting<a class="headerlink" href="#underfitting" title="Permalink to this heading">#</a></h3>
+<p>Til venstre i figuren finner vi området merket <strong>Underfitted</strong>.</p>
+<p>Her er modellen for enkel til å beskrive datasettet.</p>
+<p>Kjennetegn:</p>
+<ul class="simple">
+<li><p>Høy bias</p></li>
+<li><p>Dårlig ytelse på både trenings- og testdata</p></li>
+<li><p>Viktige mønstre blir ikke fanget opp</p></li>
+</ul>
+</section>
+<section id="overfitting">
+<h3>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this heading">#</a></h3>
+<p>Til høyre i figuren finner vi området merket <strong>Overfitted</strong>.</p>
+<p>Her er modellen så kompleks at den tilpasser seg tilfeldige detaljer i treningsdataene.</p>
+<p>Kjennetegn:</p>
+<ul class="simple">
+<li><p>Høy varians</p></li>
+<li><p>Svært god ytelse på treningsdata</p></li>
+<li><p>Dårligere ytelse på nye data</p></li>
+</ul>
+</section>
+<section id="suitable-model">
+<h3>Suitable Model<a class="headerlink" href="#suitable-model" title="Permalink to this heading">#</a></h3>
+<p>Den stiplede vertikale linjen markerer den <strong>passende modellen</strong>.</p>
+<p>Her er balansen mellom bias og varians best.</p>
+<p>Modellen:</p>
+<ul class="simple">
+<li><p>forklarer viktige mønstre i dataene,</p></li>
+<li><p>generaliserer godt til nye observasjoner,</p></li>
+<li><p>unngår både undertilpasning og overtilpasning.</p></li>
+</ul>
+</section>
+<section id="kobling-til-entso-e-eksemplet">
+<h3>Kobling til ENTSO-E-eksemplet<a class="headerlink" href="#kobling-til-entso-e-eksemplet" title="Permalink to this heading">#</a></h3>
+<p>Når vi modellerer døgnlast med en enkel modell som</p>
+<p>[
+\text{Last}(t)=\text{grunnlast}+\text{morgentopp}+\text{kveldstopp},
+]</p>
+<p>ligger vi relativt langt mot venstre i figuren.</p>
+<p>Modellen er enkel å forstå og forklare, men den vil ikke kunne beskrive alle variasjonene i de virkelige ENTSO-E-dataene.</p>
+<p>Hvis vi derimot legger til stadig flere topper, parametere og justeringer for å få perfekt samsvar med ett bestemt døgn, beveger vi oss mot høyre i figuren og risikerer overtilpasning.</p>
+<p>Figuren illustrerer derfor et sentralt mål i statistikk:</p>
+<blockquote>
+<div><p>Målet er ikke å finne den mest kompliserte modellen eller den som passer ett datasett perfekt, men den modellen som gir best generalisering til nye observasjoner.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="bias-og-varians">
+<h2>Bias og varians<a class="headerlink" href="#bias-og-varians" title="Permalink to this heading">#</a></h2>
+<p>Bias og varians er to sentrale begreper innen statistisk modellering og maskinlæring. De beskriver to ulike typer feil som kan oppstå når vi bruker en modell til å beskrive eller predikere data.</p>
+<section id="bias">
+<h3>Bias<a class="headerlink" href="#bias" title="Permalink to this heading">#</a></h3>
+<p>Bias er den systematiske feilen i modellen.</p>
+<p>En modell med høy bias er ofte for enkel og klarer ikke å beskrive de viktigste mønstrene i dataene. Modellen gjør de samme feilene om og om igjen.</p>
+<p>Høy bias fører ofte til:</p>
+<ul class="simple">
+<li><p>undertilpasning (underfitting),</p></li>
+<li><p>dårlig ytelse på både treningsdata og testdata,</p></li>
+<li><p>systematiske avvik mellom modell og virkelighet.</p></li>
+</ul>
+<p>Eksempel:</p>
+<p>Hvis vi modellerer døgnlasten med kun én sinuskurve,</p>
+<p>[
+L(t)=A+B\sin(t),
+]</p>
+<p>vil modellen ofte være for enkel til å beskrive både morgen- og kveldstoppen i de observerte dataene. Modellen har da høy bias.</p>
+</section>
+<section id="varians">
+<h3>Varians<a class="headerlink" href="#varians" title="Permalink to this heading">#</a></h3>
+<p>Varians beskriver hvor følsom modellen er for endringer i datasettet.</p>
+<p>En modell med høy varians tilpasser seg treningsdataene svært godt, men reagerer kraftig på små endringer i dataene.</p>
+<p>Høy varians fører ofte til:</p>
+<ul class="simple">
+<li><p>overtilpasning (overfitting),</p></li>
+<li><p>svært god ytelse på treningsdata,</p></li>
+<li><p>dårlig generalisering til nye data.</p></li>
+</ul>
+<p>Eksempel:</p>
+<p>Hvis vi lager en svært kompleks modell som passer perfekt til ett bestemt døgn med ENTSO-E-data, kan modellen begynne å tilpasse seg tilfeldige variasjoner og målefeil. Modellen fungerer da dårlig når vi prøver å bruke den på neste døgn.</p>
+</section>
+<section id="sammenhengen-mellom-bias-og-varians">
+<h3>Sammenhengen mellom bias og varians<a class="headerlink" href="#sammenhengen-mellom-bias-og-varians" title="Permalink to this heading">#</a></h3>
+<p>Det er ofte en avveining mellom bias og varians:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modelltype</p></th>
+<th class="head"><p>Bias</p></th>
+<th class="head"><p>Varians</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Enkel modell</p></td>
+<td><p>Høy</p></td>
+<td><p>Lav</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kompleks modell</p></td>
+<td><p>Lav</p></td>
+<td><p>Høy</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Når modellkompleksiteten øker:</p>
+<ul class="simple">
+<li><p>Bias reduseres.</p></li>
+<li><p>Variansen øker.</p></li>
+</ul>
+<p>Målet er å finne en balanse mellom de to.</p>
+</section>
+<section id="id1">
+<h3>Bias-variance trade-off<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Den beste modellen er ofte ikke den enkleste eller den mest kompliserte.</p>
+<p>En god modell:</p>
+<ul class="simple">
+<li><p>beskriver de viktigste strukturene i dataene,</p></li>
+<li><p>unngår å lære tilfeldige variasjoner,</p></li>
+<li><p>generaliserer godt til nye observasjoner.</p></li>
+</ul>
+<p>Dette punktet kalles ofte den optimale balansen mellom bias og varians.</p>
+</section>
+<section id="kobling-til-dognlastmodellen">
+<h3>Kobling til døgnlastmodellen<a class="headerlink" href="#kobling-til-dognlastmodellen" title="Permalink to this heading">#</a></h3>
+<p>Når vi modellerer belastningen som</p>
+<p>[
+\text{Last}(t)=\text{grunnlast}+\text{morgentopp}+\text{kveldstopp},
+]</p>
+<p>må vi gjøre en avveining:</p>
+<ul class="simple">
+<li><p>En svært enkel modell gir høy bias fordi den ikke fanger alle mønstrene i lastdataene.</p></li>
+<li><p>En svært komplisert modell gir høy varians fordi den tilpasser seg ett bestemt døgn for godt.</p></li>
+</ul>
+<p>Målet er å finne en modell som beskriver hovedtrekkene i belastningskurven samtidig som den fungerer godt på nye døgn med andre værforhold, sesonger og forbruksmønstre.</p>
+<blockquote>
+<div><p>En modell med høy bias lærer for lite av dataene. En modell med høy varians lærer for mye av dataene. En god modell lærer akkurat nok.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="id2">
+<h2>Bias og varians<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Bias og varians er to sentrale begreper innen statistisk modellering og maskinlæring. De beskriver to ulike kilder til prediksjonsfeil.</p>
+<section id="matematisk-utgangspunkt">
+<h3>Matematisk utgangspunkt<a class="headerlink" href="#matematisk-utgangspunkt" title="Permalink to this heading">#</a></h3>
+<p>Anta at vi ønsker å modellere en sammenheng</p>
+<p>[
+Y=f(X)+\varepsilon,
+]</p>
+<p>der</p>
+<ul class="simple">
+<li><p>(f(X)) er den sanne sammenhengen,</p></li>
+<li><p>(\varepsilon) er tilfeldig støy med</p></li>
+</ul>
+<p>[
+E[\varepsilon]=0
+]</p>
+<p>og</p>
+<p>[
+\text{Var}(\varepsilon)=\sigma^2.
+]</p>
+<p>Vi bruker en modell (\hat{f}(X)) til å estimere den ukjente funksjonen (f(X)).</p>
+</section>
+<section id="id3">
+<h3>Bias<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Bias beskriver den systematiske forskjellen mellom den sanne funksjonen og modellens forventede prediksjon:</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="text-bias-hat-f-x">
+<h1>[
+\text{Bias}(\hat{f}(x))<a class="headerlink" href="#text-bias-hat-f-x" title="Permalink to this heading">#</a></h1>
+<p>E[\hat{f}(x)] - f(x).
+]</p>
+<p>Hvis bias er stor, vil modellen konsekvent over- eller underestimere den sanne verdien.</p>
+<p>Bias måler derfor hvor gode modellens grunnleggende antakelser er.</p>
+<section id="hoy-bias">
+<h2>Høy bias<a class="headerlink" href="#hoy-bias" title="Permalink to this heading">#</a></h2>
+<p>Høy bias oppstår ofte når modellen er for enkel.</p>
+<p>Eksempel:</p>
+<ul class="simple">
+<li><p>Lineær modell brukt på en sterkt ikke-lineær sammenheng.</p></li>
+<li><p>Én sinuskurve brukt til å beskrive en lastprofil med både morgen- og kveldstopp.</p></li>
+</ul>
+<p>Konsekvenser:</p>
+<ul class="simple">
+<li><p>Undertilpasning (underfitting)</p></li>
+<li><p>Dårlig ytelse på både trenings- og testdata</p></li>
+<li><p>Systematiske feil</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Varians<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Varians beskriver hvor mye modellen varierer dersom vi trener den på nye datasett fra samme prosess.</p>
+<p>Matematisk:</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="text-var-hat-f-x">
+<h1>[
+\text{Var}(\hat{f}(x))<a class="headerlink" href="#text-var-hat-f-x" title="Permalink to this heading">#</a></h1>
+<p>E\left[
+\left(
+\hat{f}(x)-E[\hat{f}(x)]
+\right)^2
+\right].
+]</p>
+<p>En modell med høy varians er svært følsom for små endringer i treningsdataene.</p>
+<section id="hoy-varians">
+<h2>Høy varians<a class="headerlink" href="#hoy-varians" title="Permalink to this heading">#</a></h2>
+<p>Høy varians oppstår ofte når modellen er svært kompleks.</p>
+<p>Eksempel:</p>
+<ul class="simple">
+<li><p>Mange parametere.</p></li>
+<li><p>Svært komplekse nevrale nettverk.</p></li>
+<li><p>En modell som forsøker å passe perfekt til hvert målepunkt i ett bestemt døgn.</p></li>
+</ul>
+<p>Konsekvenser:</p>
+<ul class="simple">
+<li><p>Overtilpasning (overfitting)</p></li>
+<li><p>Svært god ytelse på treningsdata</p></li>
+<li><p>Dårlig generalisering til nye data</p></li>
+</ul>
+</section>
+<section id="bias-variance-dekomponeringen">
+<h2>Bias-variance-dekomponeringen<a class="headerlink" href="#bias-variance-dekomponeringen" title="Permalink to this heading">#</a></h2>
+<p>For kvadratisk tap kan forventet prediksjonsfeil skrives som</p>
+<div class="math notranslate nohighlight">
+\[
+E
+\left[
+(\hat{f}(x)-Y)^2
+\right]
+=
+\underbrace{\text{Bias}^2}_{\text{systematisk feil}}
++
+\underbrace{\text{Varians}}_{\text{følsomhet}}
++
+\underbrace{\sigma^2}_{\text{støy}}
+\]</div>
+<p>Dette er den klassiske <strong>bias-variance-dekomponeringen</strong>.</p>
+<p>Den viser at den totale prediksjonsfeilen består av tre deler:</p>
+<ol class="arabic simple">
+<li><p>Bias²</p></li>
+<li><p>Varians</p></li>
+<li><p>Uunngåelig støy</p></li>
+</ol>
+</section>
+<section id="id5">
+<h2>Sammenhengen mellom bias og varians<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>Når modellkompleksiteten øker:</p>
+<ul class="simple">
+<li><p>Bias reduseres.</p></li>
+<li><p>Variansen øker.</p></li>
+</ul>
+<p>Når modellkompleksiteten reduseres:</p>
+<ul class="simple">
+<li><p>Bias øker.</p></li>
+<li><p>Variansen reduseres.</p></li>
+</ul>
+<p>Dette skaper en avveining, kjent som <strong>bias-variance trade-off</strong>.</p>
+</section>
+<section id="id6">
+<h2>Kobling til døgnlastmodellen<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>Anta at vi modellerer elektrisk belastning som</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="l-t">
+<h1>[
+L(t)<a class="headerlink" href="#l-t" title="Permalink to this heading">#</a></h1>
+<p>L_0
++
+A_1
+e^{-\frac{(t-\mu_1)^2}{2\sigma_1^2}}
++
+A_2
+e^{-\frac{(t-\mu_2)^2}{2\sigma_2^2}}.
+]</p>
+<p>Denne modellen består av en grunnlast og to Gauss-formede topper.</p>
+<ul class="simple">
+<li><p>Dersom modellen er for enkel, vil den ikke klare å beskrive alle variasjonene i ENTSO-E-dataene. Dette gir høy bias.</p></li>
+<li><p>Dersom vi stadig legger til flere topper og parametere for å tilpasse ett bestemt døgn perfekt, vil modellen få høy varians.</p></li>
+</ul>
+<p>Målet er å finne en modell som beskriver de viktigste mønstrene i belastningsdataene samtidig som den generaliserer godt til nye døgn.</p>
+<blockquote>
+<div><p>En modell med høy bias lærer for lite av dataene. En modell med høy varians lærer for mye av dataene. En god modell finner en balanse mellom de to.</p>
+</div></blockquote>
+<p>Bias skyldes antagelsene vi bygger inn i modellen. Jo enklere modellen er, desto flere forenklinger må vi gjøre, og desto større blir risikoen for systematiske feil.</p>
+<p>Varians skyldes modellens fleksibilitet. Jo mer kompleks modellen er, desto bedre kan den tilpasses eksisterende data, men desto større er risikoen for at modellen lærer tilfeldigheter som ikke vil gjenta seg i nye observasjoner.</p>
+<p>Bias-variance trade-off handler derfor om balansen mellom forklaringskraft og generalisering.</p>
+<p>For de som ønsker en mer matematisk beskrivelse kan den forventede prediksjonsfeilen deles opp i tre komponenter:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Total feil}
+=
+\text{Bias}^2
++
+\text{Varians}
++
+\text{Støy}
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p>Bias² beskriver systematiske feil i modellen.</p></li>
+<li><p>Varians beskriver modellens følsomhet for endringer i dataene.</p></li>
+<li><p>Støy er variasjon som ikke kan forklares av modellen.</p></li>
+</ul>
+<section id="hva-betyr-de-tre-komponentene">
+<h2>Hva betyr de tre komponentene?<a class="headerlink" href="#hva-betyr-de-tre-komponentene" title="Permalink to this heading">#</a></h2>
+<section id="bias2">
+<h3>Bias²<a class="headerlink" href="#bias2" title="Permalink to this heading">#</a></h3>
+<p>Bias oppstår når modellen systematisk bommer på virkeligheten.</p>
+<p>Eksempel:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bias}
+=
+\text{Virkelig verdi}
+-
+\text{Gjennomsnittlig modellverdi}
+\]</div>
+<p>Hvis den virkelige lasten er 14 000 MW og modellen i gjennomsnitt predikerer 13 000 MW, får vi</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bias}=1000
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bias}^2 = 1000^2.
+\]</div>
+<p>Bias skyldes ofte forenklede antagelser i modellen.</p>
+</section>
+<section id="id7">
+<h3>Varians<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>Varians beskriver hvor mye modellens prediksjoner endrer seg dersom modellen trenes på nye datasett.</p>
+<p>En intuitiv representasjon er</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Varians}
+\approx
+m
+\]</div>
+<p>Stor varians betyr at modellen reagerer kraftig på små endringer i dataene.</p>
+</section>
+<section id="stoy">
+<h3>Støy<a class="headerlink" href="#stoy" title="Permalink to this heading">#</a></h3>
+<p>Støy er variasjon som ikke kan forklares av modellen.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Støy}
+=
+\text{Observasjon}
+-
+\text{Virkelig sammenheng}
+\]</div>
+<p>Eksempler kan være:</p>
+<ul class="simple">
+<li><p>tilfeldige variasjoner i forbruk,</p></li>
+<li><p>målefeil,</p></li>
+<li><p>værforhold som ikke inngår i modellen,</p></li>
+<li><p>menneskelig atferd.</p></li>
+</ul>
+</section>
+</section>
+<section id="eksempel">
+<h2>Eksempel<a class="headerlink" href="#eksempel" title="Permalink to this heading">#</a></h2>
+<p>Anta at den observerte lasten er</p>
+<p>[
+14000\ \text{MW}
+]</p>
+<p>og modellen predikerer</p>
+<p>[
+13500\ \text{MW}.
+]</p>
+<p>Feilen er da</p>
+<p>[
+500\ \text{MW}.
+]</p>
+<p>Denne feilen kan skyldes:</p>
+<ul class="simple">
+<li><p>bias (modellen er for enkel),</p></li>
+<li><p>varians (modellen er tilpasset andre data),</p></li>
+<li><p>støy (tilfeldige variasjoner i belastningen).</p></li>
+</ul>
+<p>Dermed kan vi se på den totale prediksjonsfeilen som summen av disse tre bidragene.</p>
+</section>
+<section id="bias-varians-og-total-feil">
+<h2>Bias, varians og total feil<a class="headerlink" href="#bias-varians-og-total-feil" title="Permalink to this heading">#</a></h2>
+<p>La <span class="math notranslate nohighlight">\(f(x)\)</span> være den sanne sammenhengen vi ønsker å beskrive, og la <span class="math notranslate nohighlight">\(\hat f(x)\)</span> være modellens prediksjon.</p>
+<section id="id8">
+<h3>Bias<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>Bias er den systematiske forskjellen mellom modellens gjennomsnittlige prediksjon og den sanne verdien:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bias}
+=
+E[\hat f(x)] - f(x)
+\]</div>
+<p>Bias måler hvor mye modellen i gjennomsnitt bommer på virkeligheten.</p>
+</section>
+<section id="id9">
+<h3>Varians<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p>Varians beskriver hvor mye modellens prediksjoner varierer dersom modellen trenes på ulike datasett:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(\hat f(x))
+=
+E\left[
+\left(
+\hat f(x)-E[\hat f(x)]
+\right)^2
+\right].
+\]</div>
+<p>Legg merke til at variansen allerede inneholder et kvadrert avvik.</p>
+</section>
+<section id="total-feil">
+<h3>Total feil<a class="headerlink" href="#total-feil" title="Permalink to this heading">#</a></h3>
+<p>Den forventede prediksjonsfeilen kan deles opp som</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Total feil}
+=
+\text{Bias}^2
++
+\text{Var}(\hat f(x))
++
+\sigma^2.
+\]</div>
+<p>Mer eksplisitt:</p>
+<div class="math notranslate nohighlight">
+\[
+E[(Y-\hat f(x))^2]
+=
+\big(E[\hat f(x)]-f(x)\big)^2
++
+E\left[
+\left(
+\hat f(x)-E[\hat f(x)]
+\right)^2
+\right]
++
+\sigma^2.
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\big(E[\hat f(x)]-f(x)\big)^2\)</span> er bias²,</p></li>
+<li><p><span class="math notranslate nohighlight">\(E[(\hat f(x)-E[\hat f(x)])^2]\)</span> er variansen,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2\)</span> er uunngåelig støy i dataene.</p></li>
+</ul>
+</section>
+<section id="tolkning">
+<h3>Tolkning<a class="headerlink" href="#tolkning" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Bias²</strong> oppstår fordi modellen bygger på forenklede antagelser.</p></li>
+<li><p><strong>Varians</strong> oppstår fordi modellen kan bli for følsom for treningsdataene.</p></li>
+<li><p><strong>Støy</strong> er variasjon som ingen modell kan forklare fullt ut.</p></li>
+</ul>
+<p>En enkel modell gir ofte høy bias og lav varians.</p>
+<p>En kompleks modell gir ofte lav bias og høy varians.</p>
+<p>Målet er å finne en modell som balanserer disse to effektene slik at den totale prediksjonsfeilen blir minst mulig.</p>
+</section>
+<section id="hva-er-y">
+<h3>Hva er Y?<a class="headerlink" href="#hva-er-y" title="Permalink to this heading">#</a></h3>
+<p>I den matematiske formuleringen</p>
+<div class="math notranslate nohighlight">
+\[
+E[(Y-\hat f(x))^2]
+=
+\text{Bias}^2
++
+\text{Var}(\hat f(x))
++
+\sigma^2
+\]</div>
+<p>representerer</p>
+<ul class="simple">
+<li><p>Y den observerte verdien,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat f(x)\)</span> modellens prediksjon,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> den sanne, men ukjente sammenhengen.</p></li>
+</ul>
+<p>For lastdata fra ENTSO-E kan vi tenke oss at</p>
+<div class="math notranslate nohighlight">
+\[
+Y = \text{observert elektrisk last}
+\]</div>
+<p>og at modellen forsøker å predikere denne lasten ved hjelp av</p>
+<div class="math notranslate nohighlight">
+\[
+\hat f(x).
+\]</div>
+</section>
+<section id="id10">
+<h3>Eksempel<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>Anta at den observerte lasten klokken 08 er</p>
+<div class="math notranslate nohighlight">
+\[
+Y=14095\ \text{MW}
+\]</div>
+<p>mens modellen predikerer</p>
+<div class="math notranslate nohighlight">
+\[
+\hat f(x)=13800\ \text{MW}.
+\]</div>
+<p>Da er prediksjonsfeilen</p>
+<div class="math notranslate nohighlight">
+\[
+Y-\hat f(x)=295\ \text{MW}.
+\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Klokkeslett</p></th>
+<th class="head text-right"><p>Observert last $<span class="math notranslate nohighlight">\(Y\)</span>$</p></th>
+<th class="head text-right"><p>Modell $<span class="math notranslate nohighlight">\(\hat f(x)\)</span>$</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>08:00</p></td>
+<td class="text-right"><p>14095 MW</p></td>
+<td class="text-right"><p>13800 MW</p></td>
+</tr>
+<tr class="row-odd"><td><p>09:00</p></td>
+<td class="text-right"><p>14022 MW</p></td>
+<td class="text-right"><p>13900 MW</p></td>
+</tr>
+<tr class="row-even"><td><p>10:00</p></td>
+<td class="text-right"><p>13924 MW</p></td>
+<td class="text-right"><p>13750 MW</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="den-sanne-sammenhengen">
+<h3>Den sanne sammenhengen<a class="headerlink" href="#den-sanne-sammenhengen" title="Permalink to this heading">#</a></h3>
+<p>Vi antar ofte at observasjonene kan beskrives som</p>
+<div class="math notranslate nohighlight">
+\[
+Y=f(x)+\varepsilon,
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> er den sanne sammenhengen,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span> er tilfeldig støy.</p></li>
+</ul>
+<p>For elektrisk belastning kan den sanne sammenhengen påvirkes av faktorer som:</p>
+<ul class="simple">
+<li><p>klokkeslett,</p></li>
+<li><p>temperatur,</p></li>
+<li><p>ukedag,</p></li>
+<li><p>årstid,</p></li>
+<li><p>økonomisk aktivitet.</p></li>
+</ul>
+<p>Modellen forsøker å finne en tilnærming til denne ukjente funksjonen.</p>
+</section>
+<section id="id11">
+<h3>Bias, varians og total feil<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p>Bias beskriver den systematiske forskjellen mellom modellens gjennomsnittlige prediksjon og den sanne sammenhengen:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bias}
+=
+E[\hat f(x)] - f(x).
+\]</div>
+<p>Varians beskriver hvor mye modellens prediksjoner varierer dersom modellen trenes på ulike datasett:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(\hat f(x))
+=
+E\left[
+\left(
+\hat f(x)-E[\hat f(x)]
+\right)^2
+\right]
+\]</div>
+<p>Den forventede prediksjonsfeilen kan skrives som</p>
+<div class="math notranslate nohighlight">
+\[
+E[(Y-\hat f(x))^2]
+=
+\big(E[\hat f(x)]-f(x)\big)^2
++
+E\left[
+\left(
+\hat f(x)-E[\hat f(x)]
+\right)^2
+\right]
++
+\sigma^2.
+\]</div>
+<p>Dette uttrykket viser at den totale feilen består av tre komponenter:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Total feil}
+=
+\text{Bias}^2
++
+\text{Varians}
++
+\text{Støy}.
+\]</div>
+<ul class="simple">
+<li><p><strong>Bias²</strong> skyldes forenklede antagelser i modellen.</p></li>
+<li><p><strong>Varians</strong> skyldes modellens følsomhet for treningsdataene.</p></li>
+<li><p><strong>Støy</strong> er variasjon som ingen modell kan forklare fullt ut.</p></li>
+</ul>
+<p>For enkle modeller er bias ofte høy og variansen lav.</p>
+<p>For svært komplekse modeller er bias ofte lav, men variansen høy.</p>
+<p>Målet er å finne en modell som balanserer disse to effektene slik at den totale prediksjonsfeilen blir minst mulig.</p>
+</section>
 </section>
 </section>
 
@@ -562,11 +1649,93 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">Nøkkeltall for kraftsystemet (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">Nøkkeltall for kraftsystemet (2025)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-av-dognlast">Modellering av døgnlast</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#begrensninger-ved-modellen">Begrensninger ved modellen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diskusjon-modellering-av-elektrisk-belastning">Diskusjon: Modellering av elektrisk belastning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-systematiske-feil">1. Bias (systematiske feil)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#residualer">2. Residualer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellens-antakelser">3. Modellens antakelser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalisering">4. Generalisering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellkompleksitet">5. Modellkompleksitet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overtilpasning-og-undertilpasning">6. Overtilpasning og undertilpasning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidens-betydning">7. Tidens betydning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistikk-i-praksis">8. Statistikk i praksis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forklaring-av-bias-variance-figuren">Forklaring av bias-variance-figuren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-horisontale-aksen">Den horisontale aksen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-vertikale-aksen">Den vertikale aksen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-set-kurven">Training set-kurven</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-set-kurven">Test set-kurven</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting">Underfitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">Overfitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suitable-model">Suitable Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-entso-e-eksemplet">Kobling til ENTSO-E-eksemplet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-og-varians">Bias og varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varians">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenhengen-mellom-bias-og-varians">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bias-variance trade-off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-dognlastmodellen">Kobling til døgnlastmodellen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bias og varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utgangspunkt">Matematisk utgangspunkt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bias-hat-f-x">[
+\text{Bias}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-bias">Høy bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Varians</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-var-hat-f-x">[
+\text{Var}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-varians">Høy varians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-dekomponeringen">Bias-variance-dekomponeringen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Kobling til døgnlastmodellen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#l-t">[
+L(t)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-de-tre-komponentene">Hva betyr de tre komponentene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias2">Bias²</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stoy">Støy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-varians-og-total-feil">Bias, varians og total feil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-feil">Total feil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-y">Hva er Y?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Eksempel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-sanne-sammenhengen">Den sanne sammenhengen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Bias, varians og total feil</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
