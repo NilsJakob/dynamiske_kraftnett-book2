@@ -23,8 +23,8 @@ parts:
 
   - caption: Tallgrunnlag
     chapters:
-      - file: 02_tallgrunnlag/under_utvikling
-      #- file: 02_tallgrunnlag/norske_data_slides
+      - file: 02_tallgrunnlag/repo
+      - file: assignments/assignment2
 
   - caption: Analyse
     chapters:
