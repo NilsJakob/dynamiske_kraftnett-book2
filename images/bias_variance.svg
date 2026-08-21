@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="900"
+     height="600"
+     viewBox="0 0 900 600">
+
+<style>
+.axis {
+    stroke:#000;
+    stroke-width:2;
+}
+
+.training {
+    fill:none;
+    stroke:#e67e22;
+    stroke-width:5;
+}
+
+.test {
+    fill:none;
+    stroke:#4a86e8;
+    stroke-width:5;
+}
+
+.guide {
+    stroke:#555;
+    stroke-width:2;
+    stroke-dasharray:8 8;
+}
+
+text {
+    font-family:Arial, Helvetica, sans-serif;
+    fill:#222;
+}
+</style>
+
+<!-- Akser -->
+
+<line x1="100" y1="500" x2="820" y2="500" class="axis"/>
+<line x1="100" y1="500" x2="100" y2="80" class="axis"/>
+
+<polygon points="820,500 805,492 805,508" fill="black"/>
+<polygon points="100,80 92,95 108,95" fill="black"/>
+
+<!-- Training set -->
+
+<path class="training"
+      d="
+      M160 170
+      C250 250,
+        370 330,
+        520 400
+      C620 435,
+        700 455,
+        770 470
+      "/>
+
+<!-- Test set -->
+
+<path class="test"
+      d="
+      M160 145
+      C260 220,
+        380 320,
+        510 390
+      C560 405,
+        620 360,
+        690 250
+      C720 205,
+        740 160,
+        760 120
+      "/>
+
+<!-- Suitable Model -->
+
+<line x1="520"
+      y1="500"
+      x2="520"
+      y2="255"
+      class="guide"/>
+
+<text x="502"
+      y="245"
+      transform="rotate(-90 502 245)"
+      font-size="18">
+Suitable Model
+</text>
+
+<!-- Tekst -->
+
+<text x="650"
+      y="450"
+      fill="#e67e22"
+      font-size="24">
+Training set
+</text>
+
+<text x="705"
+      y="175"
+      fill="#4a86e8"
+      font-size="24">
+Test set
+</text>
+
+<text x="125"
+      y="108"
+      font-size="24">
+Underfitted
+</text>
+
+<text x="610"
+      y="108"
+      font-size="24">
+Overfitted
+</text>
+
+<text x="125"
+      y="470"
+      font-size="22">
+High bias
+</text>
+
+<text x="610"
+      y="470"
+      font-size="22">
+High variance
+</text>
+
+<!-- Aksetitler -->
+
+<text x="460"
+      y="560"
+      text-anchor="middle"
+      font-size="26">
+Model Complexity
+</text>
+
+<text x="35"
+      y="290"
+      text-anchor="middle"
+      transform="rotate(-90 35 290)"
+      font-size="26">
+Fit Score
+</text>
+
+</svg>
