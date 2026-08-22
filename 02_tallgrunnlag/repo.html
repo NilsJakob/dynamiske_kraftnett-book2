@@ -181,6 +181,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
@@ -437,41 +440,58 @@ document.write(`
                   
   <section id="installere-git-bash">
 <h1>Installere Git Bash<a class="headerlink" href="#installere-git-bash" title="Permalink to this heading">#</a></h1>
+<figure class="align-center" id="fig-github">
+<a class="reference internal image-reference" href="images/github_invertocat_Black.svg"><img alt="images/github_invertocat_Black.svg" src="images/github_invertocat_Black.svg" width="20%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">GitHubs logo (Invertocat), som representerer GitHubs maskot Mona the Octocat. Kilde: GitHub Brand Toolkit, <em>Invertocat logo</em>.</span><a class="headerlink" href="#fig-github" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"../images/github_invertocat_Black.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/94abfd97c8bd2d70416e02be890ff9b59d6314afe1c7f53c9ce9a0fbe38f8f39.svg" src="../_images/94abfd97c8bd2d70416e02be890ff9b59d6314afe1c7f53c9ce9a0fbe38f8f39.svg" /></div>
+</div>
 <p>Git Bash er et kommandolinjeprogram for Windows som inneholder Git og Bash. Bash står for <em>Bourne Again Shell</em> og gir tilgang til en rekke kommandoer som brukes til filhåndtering, programmering og versjonskontroll med Git.</p>
-<p>Hvis du allerede har Git installert, kan du sjekke om Git Bash er tilgjengelig ved å søke etter Git Bash i Start-menyen. Hvis Git Bash ikke finnes, installer eller oppdater Git for Windows fra <a class="reference external" href="https://gitforwindows.org/">https://gitforwindows.org/</a>, se Fig. <a class="reference internal" href="#fig-install-bash"><span class="std std-numref">Fig. 3</span></a>. Da får du både Git og Git Bash.</p>
+<p>Hvis du allerede har Git installert, kan du sjekke om Git Bash er tilgjengelig ved å søke etter Git Bash i Start-menyen. Hvis Git Bash ikke finnes, installer eller oppdater Git for Windows fra <a class="reference external" href="https://gitforwindows.org/">https://gitforwindows.org/</a>, se Fig. <a class="reference internal" href="#fig-install-bash"><span class="std std-numref">Fig. 5</span></a>. Da får du både Git og Git Bash.</p>
 <figure class="align-center" id="fig-install-bash">
 <a class="reference internal image-reference" href="../_images/install_bash.png"><img alt="../_images/install_bash.png" src="../_images/install_bash.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Første steg i installasjonen av Git for Windows.</span><a class="headerlink" href="#fig-install-bash" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Første steg i installasjonen av Git for Windows.</span><a class="headerlink" href="#fig-install-bash" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Klikk på Download, som laster ned installasjonsveiviseren.</p>
 <section id="gnu-lisens">
 <h2>GNU lisens<a class="headerlink" href="#gnu-lisens" title="Permalink to this heading">#</a></h2>
 <p>Bash er et kommandolinjegrensesnitt (Command Line Interface - CLI) som ble laget i 1989 av Brian Fox som en fri programvare-erstatning for Bourne Shell. Bash ble utviklet som en del av <em>GNU’s not unix</em> (GNU)-prosjektet startet av Richard Stallman i 1983 for å utvikle fri programvare.</p>
-<p>Installasjonsveiviseren for Git for Windows viser lisensvilkårene til GNU General Public Licence, i Fig. <a class="reference internal" href="#fig-gitsetup"><span class="std std-numref">Fig. 4</span></a>. Etter å ha gjennomgått informasjonen kan du fortsette ved å klikke Next.</p>
+<p>Installasjonsveiviseren for Git for Windows viser lisensvilkårene til GNU General Public Licence, i Fig. <a class="reference internal" href="#fig-gitsetup"><span class="std std-numref">Fig. 6</span></a>. Etter å ha gjennomgått informasjonen kan du fortsette ved å klikke Next.</p>
 <figure class="align-center" id="fig-gitsetup">
 <a class="reference internal image-reference" href="../_images/setup_bash.png"><img alt="../_images/setup_bash.png" src="../_images/setup_bash.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Installasjonsveiviseren for Git</span><a class="headerlink" href="#fig-gitsetup" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Installasjonsveiviseren for Git</span><a class="headerlink" href="#fig-gitsetup" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>CLI er en måte å bruke et program på ved å skrive kommandoer i et tekstvindu i stedet for å klikke på knapper og menyer. I Fig. <a class="reference internal" href="#fig-gw1"><span class="std std-numref">Fig. 5</span></a> er et eksempel på kommandoer brukt i Git Bash. Målet var å lage en gratis og fritt tilgjengelig versjon av den opprinnelige Bourne Shell, den klassiske Unix-skallen (sh) utviklet av Stephen Bourne på 1970-tallet.</p>
+<p>CLI er en måte å bruke et program på ved å skrive kommandoer i et tekstvindu i stedet for å klikke på knapper og menyer. I Fig. <a class="reference internal" href="#fig-gw1"><span class="std std-numref">Fig. 7</span></a> er et eksempel på kommandoer brukt i Git Bash. Målet var å lage en gratis og fritt tilgjengelig versjon av den opprinnelige Bourne Shell, den klassiske Unix-skallen (sh) utviklet av Stephen Bourne på 1970-tallet.</p>
 <figure class="align-center" id="fig-gw1">
 <a class="reference internal image-reference" href="../_images/gw1.png"><img alt="../_images/gw1.png" src="../_images/gw1.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Eksempel på kommandolinjegrensesnitt</span><a class="headerlink" href="#fig-gw1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Eksempel på kommandolinjegrensesnitt</span><a class="headerlink" href="#fig-gw1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="kuriositet-gnu-og-linux">
 <h3>Kuriositet: GNU og Linux<a class="headerlink" href="#kuriositet-gnu-og-linux" title="Permalink to this heading">#</a></h3>
 <p>Målet var å bygge et komplett operativsystem, men GNU manglet én sentral komponent: kjernen (kernel).</p>
 <p>I 1991 utviklet Linus Torvalds Linux-kjernen. Da kunne GNU-verktøyene kombineres med Linux-kjernen, og resultatet ble det vi i dag vanligvis kaller Linux.</p>
-<p>Linux-kjernen ble utviklet av Linus Torvalds i 1991 og har pingvinen Tux (Torvalds UniX) som maskot, i Fig. <a class="reference internal" href="#fig-tux"><span class="std std-numref">Fig. 6</span></a>. Sammen med verktøy fra GNU-prosjektet danner Linux-kjernen grunnlaget for de fleste moderne Linux-distribusjoner.</p>
+<p>Linux-kjernen ble utviklet av Linus Torvalds i 1991 og har pingvinen Tux (Torvalds UniX) som maskot, i Fig. <a class="reference internal" href="#fig-tux"><span class="std std-numref">Fig. 8</span></a>. Sammen med verktøy fra GNU-prosjektet danner Linux-kjernen grunnlaget for de fleste moderne Linux-distribusjoner.</p>
 <figure class="align-center" id="fig-tux">
 <a class="reference internal image-reference" href="../_images/Linux_mascot_tux.png"><img alt="../_images/Linux_mascot_tux.png" src="../_images/Linux_mascot_tux.png" style="width: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Tux, Linux-maskoten. Illustrasjon basert på originaldesignet til Larry Ewing (1996), tilgjengelig via Wikimedia Commons.</span><a class="headerlink" href="#fig-tux" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Tux, Linux-maskoten. Illustrasjon basert på originaldesignet til Larry Ewing (1996), tilgjengelig via Wikimedia Commons.</span><a class="headerlink" href="#fig-tux" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
