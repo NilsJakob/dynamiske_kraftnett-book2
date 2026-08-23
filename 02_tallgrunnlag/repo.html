@@ -188,7 +188,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Git</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
@@ -398,7 +397,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Git</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-lisens">GNU lisens</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kuriositet-gnu-og-linux">Kuriositet: GNU og Linux</a></li>
 </ul>
@@ -410,23 +408,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repo">6. Klon et repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repo">7. Oppdater et repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-git-pull">Hva gjør <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repo-i-git-bash">Opprette et Git-repo i Git Bash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repo">4. Opprett Git-repo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koble-til-github-valgfritt">8. Koble til GitHub (valgfritt)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-opp-til-github">9. Last opp til GitHub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nyttige-kommandoer">Nyttige kommandoer</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repo-i-git-bash">Opprette et Git-repo i Git Bash</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repo">4. Opprett Git-repo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koble-til-github-valgfritt">8. Koble til GitHub (valgfritt)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-opp-til-github">9. Last opp til GitHub</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyttige-kommandoer">Nyttige kommandoer</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -437,9 +432,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="git">
+  <section class="tex2jax_ignore mathjax_ignore" id="git">
 <h1>Git<a class="headerlink" href="#git" title="Permalink to this heading">#</a></h1>
-<p>GitHub ble etablert i 2008 av Tom Preston-Werner, Chris Wanstrath, PJ Hyett og Scott Chacon, og bygger på Git for versjonskontroll og samarbeid. GitHub kjennetegnes ved logoen Mona the octocat, se Fig <a class="reference internal" href="#githublogo"><span class="std std-numref">Fig. 4</span></a>.</p>
+<p>GitHub ble etablert i 2008 av Tom Preston-Werner, Chris Wanstrath, PJ Hyett og Scott Chacon, og bygger på Git for versjonskontroll og samarbeid. GitHub kjennetegnes ved logoen Mona the octocat, se Fig <a class="reference internal" href="#githublogo"><span class="std std-numref">Fig. 4</span></a>. GitHub desktop tilbyr et grafisk grensesnitt for Git. Ikka alle installasjoner av GitHub Desktop inkluderer Git. Det kan derfor være nødvendig å innstallere Git for windows for å få fullt utbytte av Git, som kommandolinjegrensesnitt.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 50%" />
@@ -462,7 +457,10 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Linus Torvalds utviklet både Linux-kjernen og Git. GitHub bygger på Git, men er utviklet av et annet team.</p>
+<p>Linux-kjernen ble utviklet av Linus Torvalds i 1991 og har pingvinen Tux (Torvalds UniX) som maskot, i Fig. <a class="reference internal" href="#tux"><span class="std std-numref">Fig. 6</span></a>.
+Git-logoen med den oransje diamanten, se Fig. <a class="reference internal" href="#gitlogo"><span class="std std-numref">Fig. 5</span></a>, ble designet av Jason Long i 2012 som en del av en redesign av nettstedet <a class="reference external" href="https://git-scm.com/">git-scm.com</a>. På <a class="reference external" href="http://git-scm.com">git-scm.com</a> finner du alt om git. Den oransje diamanten er egentlig et stilisert symbol inspirert av Gits forgreningsmodell (branching). De hvite linjene og sirklene inne i diamanten representerer grener og sammenkoblinger i et Git-repositorium. Jason Long har selv forklart at konseptet var basert på Gits brancher og at han eksperimenterte med ulike rutenett før han landet på den endelige formen.
+<a class="reference external" href="https://git-scm.com/book/ms/v2/Getting-Started-A-Short-History-of-Git">Utviklingen av Git</a> sprang ut av en periode preget av både innovasjon og konflikt.
+Linux-kjerneprosjektet begynte å bruke BitKeeper i 2002. BitKeeper var et distribuert versjonskontrollsystem, men det var proprietær programvare. I 2005 oppstod det en konflikt mellom Linux-miljøet og selskapet BitMover, som utviklet BitKeeper. Da ble den gratis bruken for Linux-kjerneutviklerne avsluttet, og Linus Torvalds bestemte seg for å lage et nytt system: Git.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 50%" />
@@ -519,9 +517,6 @@ document.write(`
 </figure>
 <section id="kuriositet-gnu-og-linux">
 <h3>Kuriositet: GNU og Linux<a class="headerlink" href="#kuriositet-gnu-og-linux" title="Permalink to this heading">#</a></h3>
-<p>Målet var å bygge et komplett operativsystem, men GNU manglet én sentral komponent: kjernen (kernel).</p>
-<p>I 1991 utviklet Linus Torvalds Linux-kjernen. Da kunne GNU-verktøyene kombineres med Linux-kjernen, og resultatet ble det vi i dag vanligvis kaller Linux.</p>
-<p>Linux-kjernen ble utviklet av Linus Torvalds i 1991 og har pingvinen Tux (Torvalds UniX) som maskot, i Fig. <a class="reference internal" href="#fig-tux"><span class="std std-numref">Fig. 10</span></a>. Sammen med verktøy fra GNU-prosjektet danner Linux-kjernen grunnlaget for de fleste moderne Linux-distribusjoner.</p>
 <figure class="align-center" id="fig-tux">
 <a class="reference internal image-reference" href="../_images/Linux_mascot_tux.png"><img alt="../_images/Linux_mascot_tux.png" src="../_images/Linux_mascot_tux.png" style="width: 250px;" /></a>
 <figcaption>
@@ -588,29 +583,28 @@ git<span class="w"> </span>pull
 </pre></div>
 </div>
 </section>
-</section>
 <section id="opprette-et-git-repo-i-git-bash">
-<h1>Opprette et Git-repo i Git Bash<a class="headerlink" href="#opprette-et-git-repo-i-git-bash" title="Permalink to this heading">#</a></h1>
+<h2>Opprette et Git-repo i Git Bash<a class="headerlink" href="#opprette-et-git-repo-i-git-bash" title="Permalink to this heading">#</a></h2>
 <section id="ga-til-onsket-mappe">
-<h2>1. Gå til ønsket mappe<a class="headerlink" href="#ga-til-onsket-mappe" title="Permalink to this heading">#</a></h2>
+<h3>1. Gå til ønsket mappe<a class="headerlink" href="#ga-til-onsket-mappe" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/c/repos
 </pre></div>
 </div>
 </section>
 <section id="opprett-en-ny-mappe">
-<h2>2. Opprett en ny mappe<a class="headerlink" href="#opprett-en-ny-mappe" title="Permalink to this heading">#</a></h2>
+<h3>2. Opprett en ny mappe<a class="headerlink" href="#opprett-en-ny-mappe" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>power-system-data
 </pre></div>
 </div>
 </section>
 <section id="ga-inn-i-mappen">
-<h2>3. Gå inn i mappen<a class="headerlink" href="#ga-inn-i-mappen" title="Permalink to this heading">#</a></h2>
+<h3>3. Gå inn i mappen<a class="headerlink" href="#ga-inn-i-mappen" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>power-system-data
 </pre></div>
 </div>
 </section>
 <section id="opprett-git-repo">
-<h2>4. Opprett Git-repo<a class="headerlink" href="#opprett-git-repo" title="Permalink to this heading">#</a></h2>
+<h3>4. Opprett Git-repo<a class="headerlink" href="#opprett-git-repo" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
 </pre></div>
 </div>
@@ -620,39 +614,39 @@ git<span class="w"> </span>pull
 </div>
 </section>
 <section id="opprett-en-readme-fil">
-<h2>5. Opprett en README-fil<a class="headerlink" href="#opprett-en-readme-fil" title="Permalink to this heading">#</a></h2>
+<h3>5. Opprett en README-fil<a class="headerlink" href="#opprett-en-readme-fil" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"# Power System Data"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
 </pre></div>
 </div>
 </section>
 <section id="legg-filen-til-git">
-<h2>6. Legg filen til Git<a class="headerlink" href="#legg-filen-til-git" title="Permalink to this heading">#</a></h2>
+<h3>6. Legg filen til Git<a class="headerlink" href="#legg-filen-til-git" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>README.md
 </pre></div>
 </div>
 </section>
 <section id="lag-forste-commit">
-<h2>7. Lag første commit<a class="headerlink" href="#lag-forste-commit" title="Permalink to this heading">#</a></h2>
+<h3>7. Lag første commit<a class="headerlink" href="#lag-forste-commit" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Initial commit"</span>
 </pre></div>
 </div>
 </section>
 <section id="koble-til-github-valgfritt">
-<h2>8. Koble til GitHub (valgfritt)<a class="headerlink" href="#koble-til-github-valgfritt" title="Permalink to this heading">#</a></h2>
+<h3>8. Koble til GitHub (valgfritt)<a class="headerlink" href="#koble-til-github-valgfritt" title="Permalink to this heading">#</a></h3>
 <p>Opprett først et tomt repository på GitHub, og koble deretter til:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/brukernavn/power-system-data.git
 </pre></div>
 </div>
 </section>
 <section id="last-opp-til-github">
-<h2>9. Last opp til GitHub<a class="headerlink" href="#last-opp-til-github" title="Permalink to this heading">#</a></h2>
+<h3>9. Last opp til GitHub<a class="headerlink" href="#last-opp-til-github" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
 git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
 </section>
 <section id="nyttige-kommandoer">
-<h2>Nyttige kommandoer<a class="headerlink" href="#nyttige-kommandoer" title="Permalink to this heading">#</a></h2>
+<h3>Nyttige kommandoer<a class="headerlink" href="#nyttige-kommandoer" title="Permalink to this heading">#</a></h3>
 <p>Vis status:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
 </pre></div>
@@ -673,6 +667,7 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -740,7 +735,6 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Git</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-lisens">GNU lisens</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kuriositet-gnu-og-linux">Kuriositet: GNU og Linux</a></li>
 </ul>
@@ -752,23 +746,20 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-et-repo">6. Klon et repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-et-repo">7. Oppdater et repo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-git-pull">Hva gjør <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repo-i-git-bash">Opprette et Git-repo i Git Bash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repo">4. Opprett Git-repo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koble-til-github-valgfritt">8. Koble til GitHub (valgfritt)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-opp-til-github">9. Last opp til GitHub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nyttige-kommandoer">Nyttige kommandoer</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opprette-et-git-repo-i-git-bash">Opprette et Git-repo i Git Bash</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-til-onsket-mappe">1. Gå til ønsket mappe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-mappe">2. Opprett en ny mappe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-inn-i-mappen">3. Gå inn i mappen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-git-repo">4. Opprett Git-repo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-readme-fil">5. Opprett en README-fil</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legg-filen-til-git">6. Legg filen til Git</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-forste-commit">7. Lag første commit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koble-til-github-valgfritt">8. Koble til GitHub (valgfritt)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-opp-til-github">9. Last opp til GitHub</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyttige-kommandoer">Nyttige kommandoer</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
