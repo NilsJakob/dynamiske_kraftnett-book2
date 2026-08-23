@@ -18,7 +18,7 @@ parts:
     chapters:
       - file: 01_intro/digital
       - file: 01_intro/about330
-      - file: 01_intro/git
+      #- file: 01_intro/git
       - file: assignments/assignment1
 
   - caption: Tallgrunnlag
