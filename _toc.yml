@@ -25,6 +25,8 @@ parts:
     chapters:
       - file: 02_tallgrunnlag/repo
       - file: assignments/assignment2
+      - file: 02_tallgrunnlag/pd.read
+      - file: assignments/assignment3
 
   - caption: Analyse
     chapters:
