@@ -192,6 +192,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="repo.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pd.read.html">pd.read()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving: Analyser, lagre og versjonskontroller data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
 <ul class="nav bd-sidenav">
@@ -449,34 +451,26 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bias og varians</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utgangspunkt">Matematisk utgangspunkt</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-bias">Høy bias</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-varians">Høy varians</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bias-hat-f-x">[
-\text{Bias}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-bias">Høy bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-dekomponeringen">Bias-variance-dekomponeringen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Kobling til døgnlastmodellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-de-tre-komponentene">Hva betyr de tre komponentene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bias2">Bias²</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Varians</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stoy">Støy</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-var-hat-f-x">[
-\text{Var}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-varians">Høy varians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-dekomponeringen">Bias-variance-dekomponeringen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Sammenhengen mellom bias og varians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Kobling til døgnlastmodellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#l-t">[
-L(t)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-de-tre-komponentene">Hva betyr de tre komponentene?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias2">Bias²</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Varians</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stoy">Støy</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-varians-og-total-feil">Bias, varians og total feil</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Bias</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Varians</a></li>
@@ -1034,9 +1028,10 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 <section id="kobling-til-entso-e-eksemplet">
 <h3>Kobling til ENTSO-E-eksemplet<a class="headerlink" href="#kobling-til-entso-e-eksemplet" title="Permalink to this heading">#</a></h3>
 <p>Når vi modellerer døgnlast med en enkel modell som</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 \text{Last}(t)=\text{grunnlast}+\text{morgentopp}+\text{kveldstopp},
-]</p>
+\]</div>
 <p>ligger vi relativt langt mot venstre i figuren.</p>
 <p>Modellen er enkel å forstå og forklare, men den vil ikke kunne beskrive alle variasjonene i de virkelige ENTSO-E-dataene.</p>
 <p>Hvis vi derimot legger til stadig flere topper, parametere og justeringer for å få perfekt samsvar med ett bestemt døgn, beveger vi oss mot høyre i figuren og risikerer overtilpasning.</p>
@@ -1061,9 +1056,10 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 </ul>
 <p>Eksempel:</p>
 <p>Hvis vi modellerer døgnlasten med kun én sinuskurve,</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 L(t)=A+B\sin(t),
-]</p>
+\]</div>
 <p>vil modellen ofte være for enkel til å beskrive både morgen- og kveldstoppen i de observerte dataene. Modellen har da høy bias.</p>
 </section>
 <section id="varians">
@@ -1122,9 +1118,10 @@ L(t)=A+B\sin(t),
 <section id="kobling-til-dognlastmodellen">
 <h3>Kobling til døgnlastmodellen<a class="headerlink" href="#kobling-til-dognlastmodellen" title="Permalink to this heading">#</a></h3>
 <p>Når vi modellerer belastningen som</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 \text{Last}(t)=\text{grunnlast}+\text{morgentopp}+\text{kveldstopp},
-]</p>
+\]</div>
 <p>må vi gjøre en avveining:</p>
 <ul class="simple">
 <li><p>En svært enkel modell gir høy bias fordi den ikke fanger alle mønstrene i lastdataene.</p></li>
@@ -1142,38 +1139,39 @@ L(t)=A+B\sin(t),
 <section id="matematisk-utgangspunkt">
 <h3>Matematisk utgangspunkt<a class="headerlink" href="#matematisk-utgangspunkt" title="Permalink to this heading">#</a></h3>
 <p>Anta at vi ønsker å modellere en sammenheng</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 Y=f(X)+\varepsilon,
-]</p>
+\]</div>
 <p>der</p>
 <ul class="simple">
-<li><p>(f(X)) er den sanne sammenhengen,</p></li>
-<li><p>(\varepsilon) er tilfeldig støy med</p></li>
+<li><p>f(X) er den sanne sammenhengen,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span> er tilfeldig støy med</p></li>
 </ul>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 E[\varepsilon]=0
-]</p>
+\]</div>
 <p>og</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 \text{Var}(\varepsilon)=\sigma^2.
-]</p>
-<p>Vi bruker en modell (\hat{f}(X)) til å estimere den ukjente funksjonen (f(X)).</p>
+\]</div>
+<p>Vi bruker en modell <span class="math notranslate nohighlight">\(\hat{f}(X)\)</span> til å estimere den ukjente funksjonen f(X).</p>
 </section>
 <section id="id3">
 <h3>Bias<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>Bias beskriver den systematiske forskjellen mellom den sanne funksjonen og modellens forventede prediksjon:</p>
-</section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="text-bias-hat-f-x">
-<h1>[
-\text{Bias}(\hat{f}(x))<a class="headerlink" href="#text-bias-hat-f-x" title="Permalink to this heading">#</a></h1>
-<p>E[\hat{f}(x)] - f(x).
-]</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bias}(\hat{f}(x))
+=
+E[\hat{f}(x)] - f(x).
+\]</div>
 <p>Hvis bias er stor, vil modellen konsekvent over- eller underestimere den sanne verdien.</p>
 <p>Bias måler derfor hvor gode modellens grunnleggende antakelser er.</p>
 <section id="hoy-bias">
-<h2>Høy bias<a class="headerlink" href="#hoy-bias" title="Permalink to this heading">#</a></h2>
+<h4>Høy bias<a class="headerlink" href="#hoy-bias" title="Permalink to this heading">#</a></h4>
 <p>Høy bias oppstår ofte når modellen er for enkel.</p>
 <p>Eksempel:</p>
 <ul class="simple">
@@ -1187,24 +1185,24 @@ E[\varepsilon]=0
 <li><p>Systematiske feil</p></li>
 </ul>
 </section>
+</section>
 <section id="id4">
-<h2>Varians<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h3>Varians<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>Varians beskriver hvor mye modellen varierer dersom vi trener den på nye datasett fra samme prosess.</p>
 <p>Matematisk:</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="text-var-hat-f-x">
-<h1>[
-\text{Var}(\hat{f}(x))<a class="headerlink" href="#text-var-hat-f-x" title="Permalink to this heading">#</a></h1>
-<p>E\left[
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(\hat{f}(x))
+=
+E\left[
 \left(
 \hat{f}(x)-E[\hat{f}(x)]
 \right)^2
 \right].
-]</p>
+\]</div>
 <p>En modell med høy varians er svært følsom for små endringer i treningsdataene.</p>
 <section id="hoy-varians">
-<h2>Høy varians<a class="headerlink" href="#hoy-varians" title="Permalink to this heading">#</a></h2>
+<h4>Høy varians<a class="headerlink" href="#hoy-varians" title="Permalink to this heading">#</a></h4>
 <p>Høy varians oppstår ofte når modellen er svært kompleks.</p>
 <p>Eksempel:</p>
 <ul class="simple">
@@ -1219,8 +1217,9 @@ E[\varepsilon]=0
 <li><p>Dårlig generalisering til nye data</p></li>
 </ul>
 </section>
+</section>
 <section id="bias-variance-dekomponeringen">
-<h2>Bias-variance-dekomponeringen<a class="headerlink" href="#bias-variance-dekomponeringen" title="Permalink to this heading">#</a></h2>
+<h3>Bias-variance-dekomponeringen<a class="headerlink" href="#bias-variance-dekomponeringen" title="Permalink to this heading">#</a></h3>
 <p>For kvadratisk tap kan forventet prediksjonsfeil skrives som</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1244,7 +1243,7 @@ E
 </ol>
 </section>
 <section id="id5">
-<h2>Sammenhengen mellom bias og varians<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h3>Sammenhengen mellom bias og varians<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Når modellkompleksiteten øker:</p>
 <ul class="simple">
 <li><p>Bias reduseres.</p></li>
@@ -1258,21 +1257,20 @@ E
 <p>Dette skaper en avveining, kjent som <strong>bias-variance trade-off</strong>.</p>
 </section>
 <section id="id6">
-<h2>Kobling til døgnlastmodellen<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h3>Kobling til døgnlastmodellen<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>Anta at vi modellerer elektrisk belastning som</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="l-t">
-<h1>[
-L(t)<a class="headerlink" href="#l-t" title="Permalink to this heading">#</a></h1>
-<p>L_0
+<div class="math notranslate nohighlight">
+\[
+L(t)
+=
+L_0
 +
 A_1
 e^{-\frac{(t-\mu_1)^2}{2\sigma_1^2}}
 +
 A_2
 e^{-\frac{(t-\mu_2)^2}{2\sigma_2^2}}.
-]</p>
+\]</div>
 <p>Denne modellen består av en grunnlast og to Gauss-formede topper.</p>
 <ul class="simple">
 <li><p>Dersom modellen er for enkel, vil den ikke klare å beskrive alle variasjonene i ENTSO-E-dataene. Dette gir høy bias.</p></li>
@@ -1302,10 +1300,11 @@ e^{-\frac{(t-\mu_2)^2}{2\sigma_2^2}}.
 <li><p>Varians beskriver modellens følsomhet for endringer i dataene.</p></li>
 <li><p>Støy er variasjon som ikke kan forklares av modellen.</p></li>
 </ul>
+</section>
 <section id="hva-betyr-de-tre-komponentene">
-<h2>Hva betyr de tre komponentene?<a class="headerlink" href="#hva-betyr-de-tre-komponentene" title="Permalink to this heading">#</a></h2>
+<h3>Hva betyr de tre komponentene?<a class="headerlink" href="#hva-betyr-de-tre-komponentene" title="Permalink to this heading">#</a></h3>
 <section id="bias2">
-<h3>Bias²<a class="headerlink" href="#bias2" title="Permalink to this heading">#</a></h3>
+<h4>Bias²<a class="headerlink" href="#bias2" title="Permalink to this heading">#</a></h4>
 <p>Bias oppstår når modellen systematisk bommer på virkeligheten.</p>
 <p>Eksempel:</p>
 <div class="math notranslate nohighlight">
@@ -1329,7 +1328,7 @@ e^{-\frac{(t-\mu_2)^2}{2\sigma_2^2}}.
 <p>Bias skyldes ofte forenklede antagelser i modellen.</p>
 </section>
 <section id="id7">
-<h3>Varians<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h4>Varians<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <p>Varians beskriver hvor mye modellens prediksjoner endrer seg dersom modellen trenes på nye datasett.</p>
 <p>En intuitiv representasjon er</p>
 <div class="math notranslate nohighlight">
@@ -1341,7 +1340,7 @@ m
 <p>Stor varians betyr at modellen reagerer kraftig på små endringer i dataene.</p>
 </section>
 <section id="stoy">
-<h3>Støy<a class="headerlink" href="#stoy" title="Permalink to this heading">#</a></h3>
+<h4>Støy<a class="headerlink" href="#stoy" title="Permalink to this heading">#</a></h4>
 <p>Støy er variasjon som ikke kan forklares av modellen.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1361,19 +1360,22 @@ m
 </section>
 </section>
 <section id="eksempel">
-<h2>Eksempel<a class="headerlink" href="#eksempel" title="Permalink to this heading">#</a></h2>
+<h3>Eksempel<a class="headerlink" href="#eksempel" title="Permalink to this heading">#</a></h3>
 <p>Anta at den observerte lasten er</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 14000\ \text{MW}
-]</p>
+\]</div>
 <p>og modellen predikerer</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 13500\ \text{MW}.
-]</p>
+\]</div>
 <p>Feilen er da</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 500\ \text{MW}.
-]</p>
+\]</div>
 <p>Denne feilen kan skyldes:</p>
 <ul class="simple">
 <li><p>bias (modellen er for enkel),</p></li>
@@ -1381,6 +1383,7 @@ m
 <li><p>støy (tilfeldige variasjoner i belastningen).</p></li>
 </ul>
 <p>Dermed kan vi se på den totale prediksjonsfeilen som summen av disse tre bidragene.</p>
+</section>
 </section>
 <section id="bias-varians-og-total-feil">
 <h2>Bias, varians og total feil<a class="headerlink" href="#bias-varians-og-total-feil" title="Permalink to this heading">#</a></h2>
@@ -1703,34 +1706,26 @@ E\left[
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bias og varians</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utgangspunkt">Matematisk utgangspunkt</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-bias">Høy bias</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-varians">Høy varians</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bias-hat-f-x">[
-\text{Bias}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-bias">Høy bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-dekomponeringen">Bias-variance-dekomponeringen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Kobling til døgnlastmodellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-de-tre-komponentene">Hva betyr de tre komponentene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bias2">Bias²</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Varians</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stoy">Støy</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-var-hat-f-x">[
-\text{Var}(\hat{f}(x))</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoy-varians">Høy varians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-dekomponeringen">Bias-variance-dekomponeringen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Sammenhengen mellom bias og varians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Kobling til døgnlastmodellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#l-t">[
-L(t)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-de-tre-komponentene">Hva betyr de tre komponentene?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias2">Bias²</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Varians</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stoy">Støy</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-varians-og-total-feil">Bias, varians og total feil</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Bias</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Varians</a></li>
