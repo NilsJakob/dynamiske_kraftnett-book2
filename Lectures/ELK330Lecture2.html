@@ -194,7 +194,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
 <ul class="nav bd-sidenav">
@@ -681,87 +681,47 @@ push
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="git">
 <h1>Git<a class="headerlink" href="#git" title="Permalink to this heading">#</a></h1>
-<p>GitHub ble etablert i 2008 av Tom Preston-Werner, Chris Wanstrath, PJ Hyett og Scott Chacon, og bygger på Git for versjonskontroll og samarbeid. GitHub kjennetegnes ved logoen Mona the octocat, se <code class="xref std std-numref docutils literal notranslate"><span class="pre">githublogo</span></code>. GitHub desktop tilbyr et grafisk grensesnitt for Git. Ikke alle installasjoner av GitHub Desktop inkluderer Git. Det kan derfor være nødvendig å innstallere Git for windows for å få fullt utbytte av Git, som kommandolinjegrensesnitt.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><figure class="align-default" id="githublogo">
-<a class="reference internal image-reference" href="../_images/GitHub_Invertocat_Black.svg"><img alt="../_images/GitHub_Invertocat_Black.svg" src="../_images/GitHub_Invertocat_Black.svg" width="120px" /></a>
-<figcaption>
-<p><span class="caption-text">GitHubs Invertocat-logo.</span><a class="headerlink" href="#githublogo" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p><em>Kilde:</em> GitHub Brand Toolkit</p>
-<p><a class="reference external" href="https://brand.github.com/foundations/logo">https://brand.github.com/foundations/logo</a></p>
-</td>
-<td><p><strong>GitHub</strong></p>
-<p>GitHub er en nettbasert plattform som bygger på Git og gjør det mulig å lagre, dele og samarbeide om kode og dokumentasjon.</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p>GitHub ble etablert i 2008 av Tom Preston-Werner, Chris Wanstrath, PJ Hyett og Scott Chacon, og bygger på Git for versjonskontroll og samarbeid. GitHub kjennetegnes ved logoen Mona the octocat, se <a class="reference internal" href="../02_tallgrunnlag/repo.html#githublogo"><span class="std std-numref">Fig. 4</span></a>. GitHub desktop tilbyr et grafisk grensesnitt for Git. Ikke alle installasjoner av GitHub Desktop inkluderer Git. Det kan derfor være nødvendig å innstallere Git for windows for å få fullt utbytte av Git, som kommandolinjegrensesnitt.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/94abfd97c8bd2d70416e02be890ff9b59d6314afe1c7f53c9ce9a0fbe38f8f39.svg" src="../_images/94abfd97c8bd2d70416e02be890ff9b59d6314afe1c7f53c9ce9a0fbe38f8f39.svg" /></div>
 </div>
-<p>Linux-kjernen ble utviklet av Linus Torvalds i 1991 og har pingvinen Tux (Torvalds UniX) som maskot, i <code class="xref std std-numref docutils literal notranslate"><span class="pre">tux</span></code>.
-Git-logoen med den oransje diamanten, se <code class="xref std std-numref docutils literal notranslate"><span class="pre">gitlogo</span></code>, ble designet av Jason Long i 2012 som en del av en redesign av nettstedet <a class="reference external" href="https://git-scm.com/">git-scm.com</a>. På <a class="reference external" href="http://git-scm.com">git-scm.com</a> finner du alt om git. Den oransje diamanten er egentlig et stilisert symbol inspirert av Gits forgreningsmodell (branching). De hvite linjene og sirklene inne i diamanten representerer grener og sammenkoblinger i et Git-repositorium. Jason Long har selv forklart at konseptet var basert på Gits brancher og at han eksperimenterte med ulike rutenett før han landet på den endelige formen.
+<p>Linux-kjernen ble utviklet av Linus Torvalds i 1991 og har pingvinen Tux (Torvalds UniX) som maskot, i <a class="reference internal" href="../02_tallgrunnlag/repo.html#tux"><span class="std std-numref">Fig. 6</span></a>.
+Git-logoen med den oransje diamanten, se <a class="reference internal" href="../02_tallgrunnlag/repo.html#gitlogo"><span class="std std-numref">Fig. 5</span></a>, ble designet av Jason Long i 2012 som en del av en redesign av nettstedet <a class="reference external" href="https://git-scm.com/">git-scm.com</a>. På <a class="reference external" href="http://git-scm.com">git-scm.com</a> finner du alt om git. Den oransje diamanten er egentlig et stilisert symbol inspirert av Gits forgreningsmodell (branching). De hvite linjene og sirklene inne i diamanten representerer grener og sammenkoblinger i et Git-repositorium. Jason Long har selv forklart at konseptet var basert på Gits brancher og at han eksperimenterte med ulike rutenett før han landet på den endelige formen.
 <a class="reference external" href="https://git-scm.com/book/ms/v2/Getting-Started-A-Short-History-of-Git">Utviklingen av Git</a> sprang ut av en periode preget av både innovasjon og konflikt.
 Linux-kjerneprosjektet begynte å bruke BitKeeper i 2002. BitKeeper var et distribuert versjonskontrollsystem, men det var proprietær programvare. I 2005 oppstod det en konflikt mellom Linux-miljøet og selskapet BitMover, som utviklet BitKeeper. Da ble den gratis bruken for Linux-kjerneutviklerne avsluttet, og Linus Torvalds bestemte seg for å lage et nytt system: Git.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><figure class="align-default" id="gitlogo">
-<a class="reference internal image-reference" href="../_images/Git_icon.svg"><img alt="../_images/Git_icon.svg" src="../_images/Git_icon.svg" width="120px" /></a>
-<figcaption>
-<p><span class="caption-text">Git-logoen.</span><a class="headerlink" href="#gitlogo" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p><em>Kilde:</em> Jason Long (2012)</p>
-<p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:Git_icon.svg">https://commons.wikimedia.org/wiki/File:Git_icon.svg</a></p>
-</td>
-<td><figure class="align-default" id="tux">
-<a class="reference internal image-reference" href="../_images/Linux_mascot_tux.png"><img alt="../_images/Linux_mascot_tux.png" src="../_images/Linux_mascot_tux.png" style="width: 100px;" /></a>
-<figcaption>
-<p><span class="caption-text">Tux, Linux-maskoten.</span><a class="headerlink" href="#tux" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p><em>Kilde:</em> Larry Ewing (1996)</p>
-<p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:Linux_mascot_tux.png">https://commons.wikimedia.org/wiki/File:Linux_mascot_tux.png</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <p>Git Bash er et kommandolinjeprogram for Windows som inneholder Git og Bash. Bash står for <em>Bourne Again Shell</em> og gir tilgang til en rekke kommandoer som brukes til filhåndtering, programmering og versjonskontroll med Git.</p>
-<p>Hvis du allerede har Git installert, kan du sjekke om Git Bash er tilgjengelig ved å søke etter Git Bash i Start-menyen. Hvis Git Bash ikke finnes, installer eller oppdater Git for Windows fra <a class="reference external" href="https://gitforwindows.org/">https://gitforwindows.org/</a>, se <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-install_bash</span></code>. Da får du både Git og Git Bash.</p>
-<figure class="align-center" id="fig-install-bash">
-<a class="reference internal image-reference" href="../_images/install_bash.png"><img alt="../_images/install_bash.png" src="../_images/install_bash.png" style="width: 80%;" /></a>
-<figcaption>
-<p><span class="caption-text">Første steg i installasjonen av Git for Windows.</span><a class="headerlink" href="#fig-install-bash" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/69605dd4566bf68fc4cb6350eb09d99b138be84eef67d96d4c282717905c59f0.svg" src="../_images/69605dd4566bf68fc4cb6350eb09d99b138be84eef67d96d4c282717905c59f0.svg" /></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/3bba034f87cd342ddf7c9201774aa3b68baca6056cf7bfe8c017dc241ff1d50a.png" src="../_images/3bba034f87cd342ddf7c9201774aa3b68baca6056cf7bfe8c017dc241ff1d50a.png" />
+</div>
+</div>
+<p>Hvis du allerede har Git installert, kan du sjekke om Git Bash er tilgjengelig ved å søke etter Git Bash i Start-menyen. Hvis Git Bash ikke finnes, installer eller oppdater Git for Windows fra <a class="reference external" href="https://gitforwindows.org/">https://gitforwindows.org/</a>, se <a class="reference internal" href="../02_tallgrunnlag/repo.html#fig-install-bash"><span class="std std-numref">Fig. 7</span></a>. Da får du både Git og Git Bash.</p>
 <p>Klikk på Download, som laster ned installasjonsveiviseren.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/eb0534eebbb2206f60caab63c5b04178458a805723ddf090583559b42ca044b8.png" src="../_images/eb0534eebbb2206f60caab63c5b04178458a805723ddf090583559b42ca044b8.png" />
+</div>
+</div>
 <section id="gnu-lisens">
 <h2>GNU lisens<a class="headerlink" href="#gnu-lisens" title="Permalink to this heading">#</a></h2>
 <p>Bash er et kommandolinjegrensesnitt (Command Line Interface - CLI) som ble laget i 1989 av Brian Fox som en fri programvare-erstatning for Bourne Shell. Bash ble utviklet som en del av <em>GNU’s not unix</em> (GNU)-prosjektet startet av Richard Stallman i 1983 for å utvikle fri programvare.</p>
-<p>Installasjonsveiviseren for Git for Windows viser lisensvilkårene til GNU General Public Licence, i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-gitsetup</span></code>. Etter å ha gjennomgått informasjonen kan du fortsette ved å klikke Next.</p>
-<figure class="align-center" id="fig-gitsetup">
-<a class="reference internal image-reference" href="../_images/setup_bash.png"><img alt="../_images/setup_bash.png" src="../_images/setup_bash.png" style="width: 80%;" /></a>
-<figcaption>
-<p><span class="caption-text">Installasjonsveiviseren for Git</span><a class="headerlink" href="#fig-gitsetup" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>CLI er en måte å bruke et program på ved å skrive kommandoer i et tekstvindu i stedet for å klikke på knapper og menyer. I <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-gw1</span></code> er et eksempel på kommandoer brukt i Git Bash. Målet var å lage en gratis og fritt tilgjengelig versjon av den opprinnelige Bourne Shell, den klassiske Unix-skallen (sh) utviklet av Stephen Bourne på 1970-tallet.</p>
-<figure class="align-center" id="fig-gw1">
-<a class="reference internal image-reference" href="../_images/gw1.png"><img alt="../_images/gw1.png" src="../_images/gw1.png" style="width: 80%;" /></a>
-<figcaption>
-<p><span class="caption-text">Eksempel på kommandolinjegrensesnitt</span><a class="headerlink" href="#fig-gw1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p>Installasjonsveiviseren for Git for Windows viser lisensvilkårene til GNU General Public Licence. Etter å ha gjennomgått informasjonen kan du fortsette ved å klikke Next.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/532ab4444fe37b127725892233624c96df58ea95936cf5babc7c7306de08f30a.png" src="../_images/532ab4444fe37b127725892233624c96df58ea95936cf5babc7c7306de08f30a.png" />
+</div>
+</div>
+<p>CLI er en måte å bruke et program på ved å skrive kommandoer i et tekstvindu i stedet for å klikke på knapper og menyer. I figuren er et eksempel på kommandoer brukt i Git Bash. Målet var å lage en gratis og fritt tilgjengelig versjon av den opprinnelige Bourne Shell, den klassiske Unix-skallen (sh) utviklet av Stephen Bourne på 1970-tallet.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/5b826ebd7235dd4ea8ff06fa4174ebe56dc85c6f9c240dd13e94ee4d9c493237.png" src="../_images/5b826ebd7235dd4ea8ff06fa4174ebe56dc85c6f9c240dd13e94ee4d9c493237.png" />
+</div>
+</div>
 </section>
 <section id="last-ned-git-for-windows">
 <h2>1. Last ned Git for Windows<a class="headerlink" href="#last-ned-git-for-windows" title="Permalink to this heading">#</a></h2>
