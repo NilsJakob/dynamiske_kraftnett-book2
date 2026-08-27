@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Git &#8212; Dynamiske kraftnett</title>
+    <title>Hva er versjonskontroll? &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -188,7 +188,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Git</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hva er versjonskontroll?</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pd.read.html">pd.read()</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving: Analyser, lagre og versjonskontroller data</a></li>
@@ -390,7 +392,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Git</h1>
+    <h1>Hva er versjonskontroll?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -400,6 +402,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hva er versjonskontroll?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidslinje">Tidslinje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-trenger-vi-versjonskontroll">Hvorfor trenger vi versjonskontroll?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-tilbake-til-en-tidligere-versjon">Gå tilbake til en tidligere versjon</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#se-historikken">Se historikken</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#se-en-tidligere-versjon">Se en tidligere versjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gjenopprett-en-fil">Gjenopprett en fil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-siste-commit">Angre siste commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-en-commit-pa-en-trygg-mate">Angre en commit på en trygg måte</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsmaskin-analogien">Tidsmaskin-analogien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kommandoer-a-kjenne-til">Kommandoer å kjenne til</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-tilbake-til-tidligere-versjoner">Gå tilbake til tidligere versjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-analogien">Git-analogien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fordeler">Fordeler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisjon">Definisjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grunnleggende-git-arbeidsflyt">Grunnleggende Git-arbeidsflyt</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#git">Git</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-lisens">GNU lisens</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ned-git-for-windows">1. Last ned Git for Windows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-git-bash">3. Start Git Bash</a></li>
@@ -422,6 +448,9 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -432,7 +461,224 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="git">
+  <section class="tex2jax_ignore mathjax_ignore" id="hva-er-versjonskontroll">
+<h1>Hva er versjonskontroll?<a class="headerlink" href="#hva-er-versjonskontroll" title="Permalink to this heading">#</a></h1>
+<p><strong>Versjonskontroll</strong> er et system for å holde orden på endringer i filer over tid.</p>
+<p>Det gjør at man kan:</p>
+<ul class="simple">
+<li><p>se hva som er endret</p></li>
+<li><p>se hvem som gjorde endringen</p></li>
+<li><p>gå tilbake til tidligere versjoner</p></li>
+<li><p>samarbeide uten å overskrive hverandres arbeid</p></li>
+</ul>
+<section id="tidslinje">
+<h2>Tidslinje<a class="headerlink" href="#tidslinje" title="Permalink to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Versjon 1        Versjon 2        Versjon 3        Versjon 4
+Opprettet bok ─▶ Kapittel 1 ─▶ Rettet figur 2 ─▶ Lagt til slides
+                                                        │
+                                                        │ git push
+                                                        ▼
+                                                     GitHub
+</pre></div>
+</div>
+</section>
+<section id="hvorfor-trenger-vi-versjonskontroll">
+<h2>Hvorfor trenger vi versjonskontroll?<a class="headerlink" href="#hvorfor-trenger-vi-versjonskontroll" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>Versjonskontroll motvirker unødvendig redundans</p>
+</div></blockquote>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>rapport.docx
+rapport_ny.docx
+rapport_ny_ny.docx
+rapport_final.docx
+rapport_final2.docx
+rapport_final_final.docx
+</pre></div>
+</div>
+<p>Etter en stund vet ingen hvilken fil som egentlig er den riktige.</p>
+<p>Versjonskontroll løser dette ved å ha:</p>
+<ul class="simple">
+<li><p>én versjon av filene</p></li>
+<li><p>en historikk over alle endringer</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ga-tilbake-til-en-tidligere-versjon">
+<h1>Gå tilbake til en tidligere versjon<a class="headerlink" href="#ga-tilbake-til-en-tidligere-versjon" title="Permalink to this heading">#</a></h1>
+<p>En av de viktigste fordelene med versjonskontroll er at man kan hente frem tidligere versjoner av et prosjekt.</p>
+<section id="se-historikken">
+<h2>Se historikken<a class="headerlink" href="#se-historikken" title="Permalink to this heading">#</a></h2>
+<p>For å se tidligere versjoner bruker man:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<p>Eksempel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a1b2c3d  Lagt til notat i rapport
+e4f5g6h  Rettet figur 2
+i7j8k9l  Opprettet kapittel 1
+</pre></div>
+</div>
+<p>Hver commit representerer et øyeblikksbilde (<em>snapshot</em>) av prosjektet.</p>
+</section>
+<section id="se-en-tidligere-versjon">
+<h2>Se en tidligere versjon<a class="headerlink" href="#se-en-tidligere-versjon" title="Permalink to this heading">#</a></h2>
+<p>Hvis man ønsker å undersøke hvordan prosjektet så ut på et tidligere tidspunkt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>e4f5g6h
+</pre></div>
+</div>
+<p>Da åpnes prosjektet slik det så ut da denne versjonen ble lagret.</p>
+<p>For å gå tilbake til den nyeste versjonen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="gjenopprett-en-fil">
+<h2>Gjenopprett en fil<a class="headerlink" href="#gjenopprett-en-fil" title="Permalink to this heading">#</a></h2>
+<p>Hvis en enkelt fil er blitt ødelagt eller slettet, kan den hentes fra en tidligere versjon:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>restore<span class="w"> </span>--source<span class="o">=</span>e4f5g6h<span class="w"> </span>rapport.md
+</pre></div>
+</div>
+<p>Dette gjenoppretter filen <code class="docutils literal notranslate"><span class="pre">rapport.md</span></code> fra den valgte commiten.</p>
+</section>
+<section id="angre-siste-commit">
+<h2>Angre siste commit<a class="headerlink" href="#angre-siste-commit" title="Permalink to this heading">#</a></h2>
+<p>Hvis den siste commiten ikke skal beholdes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~1
+</pre></div>
+</div>
+<p>Før:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Versjon 1
+Versjon 2
+Versjon 3  ← HEAD
+</pre></div>
+</div>
+<p>Etter:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Versjon 1
+Versjon 2  ← HEAD
+</pre></div>
+</div>
+<blockquote>
+<div><p>Kommandoen sletter lokale endringer.</p>
+</div></blockquote>
+</section>
+<section id="angre-en-commit-pa-en-trygg-mate">
+<h2>Angre en commit på en trygg måte<a class="headerlink" href="#angre-en-commit-pa-en-trygg-mate" title="Permalink to this heading">#</a></h2>
+<p>Hvis endringene allerede er publisert på GitHub, er det ofte bedre å bruke:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>revert<span class="w"> </span>a1b2c3d
+</pre></div>
+</div>
+<p>Da oppretter Git en ny commit som opphever endringene fra den tidligere commiten.</p>
+<p>Historikken blir:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Versjon 1
+Versjon 2
+Versjon 3
+Versjon 4 (angrer versjon 3)
+</pre></div>
+</div>
+</section>
+<section id="tidsmaskin-analogien">
+<h2>Tidsmaskin-analogien<a class="headerlink" href="#tidsmaskin-analogien" title="Permalink to this heading">#</a></h2>
+<p>Git kan betraktes som en tidsmaskin for prosjektet:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>V1 ── V2 ── V3 ── V4
+        ▲
+        │
+   gå tilbake hit
+</pre></div>
+</div>
+<p>Man kan:</p>
+<ul class="simple">
+<li><p>se tidligere versjoner</p></li>
+<li><p>sammenligne versjoner</p></li>
+<li><p>hente tilbake gamle filer</p></li>
+<li><p>angre feil</p></li>
+<li><p>dokumentere utviklingen av prosjektet</p></li>
+</ul>
+</section>
+<section id="kommandoer-a-kjenne-til">
+<h2>Kommandoer å kjenne til<a class="headerlink" href="#kommandoer-a-kjenne-til" title="Permalink to this heading">#</a></h2>
+<p>For de fleste er det nok å kjenne til:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+git<span class="w"> </span>restore
+git<span class="w"> </span>revert
+</pre></div>
+</div>
+<p>Disse kommandoene gjør det mulig å finne, gjenopprette og angre tidligere endringer uten risiko for å miste hele prosjektet.</p>
+<section id="ga-tilbake-til-tidligere-versjoner">
+<h3>Gå tilbake til tidligere versjoner<a class="headerlink" href="#ga-tilbake-til-tidligere-versjoner" title="Permalink to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>rapport.docx
+      │
+      ▼
+
+Versjonskontroll
+      |
+      ▼
+
+v1 ── v2 ── v3 ── v4 ── v5
+ │               │
+ └───────────────┘
+   kan gå tilbake
+</pre></div>
+</div>
+</section>
+</section>
+<section id="git-analogien">
+<h2>Git-analogien<a class="headerlink" href="#git-analogien" title="Permalink to this heading">#</a></h2>
+<p>Git tar bilder (<em>snapshots</em>) av prosjektet underveis.</p>
+<p>For eksempel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Versjon 1: Opprettet boka
+Versjon 2: Lagt til kapittel 1
+Versjon 3: Rettet figur 2
+Versjon 4: Lagt til forelesningsslides
+</pre></div>
+</div>
+<p>Man kan når som helst gå tilbake til en tidligere versjon.</p>
+</section>
+<section id="eksempel">
+<h2>Eksempel<a class="headerlink" href="#eksempel" title="Permalink to this heading">#</a></h2>
+<p>Legger vi til noe i Git:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Added something to repo"</span>
+git<span class="w"> </span>push
+</pre></div>
+</div>
+<p>Dette betyr:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> velger hvilke endringer som skal lagres</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> oppretter en ny versjon</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> sender versjonen til GitHub</p></li>
+</ul>
+<p>Dermed blir alle endringer dokumentert og sporbare</p>
+</section>
+<section id="fordeler">
+<h2>Fordeler<a class="headerlink" href="#fordeler" title="Permalink to this heading">#</a></h2>
+<p>Versjonskontroll gjør det mulig å:</p>
+<ul class="simple">
+<li><p>unngå at arbeid går tapt</p></li>
+<li><p>eksperimentere uten å være redd for å ødelegge noe</p></li>
+<li><p>dokumentere utviklingen av et prosjekt</p></li>
+<li><p>samarbeide effektivt med andre</p></li>
+<li><p>publisere innhold automatisk gjennom verktøy som GitHub Actions</p></li>
+</ul>
+</section>
+<section id="definisjon">
+<h2>Definisjon<a class="headerlink" href="#definisjon" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>Versjonskontroll er systematisk lagring og sporing av endringer i filer, slik at man kan dokumentere, gjenfinne og samarbeide om utviklingen av et prosjekt.</p>
+</div></blockquote>
+</section>
+<section id="grunnleggende-git-arbeidsflyt">
+<h2>Grunnleggende Git-arbeidsflyt<a class="headerlink" href="#grunnleggende-git-arbeidsflyt" title="Permalink to this heading">#</a></h2>
+<p>For nybegynnere er det ofte nok å lære:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>clone
+pull
+add
+commit
+push
+</pre></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="git">
 <h1>Git<a class="headerlink" href="#git" title="Permalink to this heading">#</a></h1>
 <p>GitHub ble etablert i 2008 av Tom Preston-Werner, Chris Wanstrath, PJ Hyett og Scott Chacon, og bygger på Git for versjonskontroll og samarbeid. GitHub kjennetegnes ved logoen Mona the octocat, se <a class="reference internal" href="#githublogo"><span class="std std-numref">Fig. 4</span></a>. GitHub desktop tilbyr et grafisk grensesnitt for Git. Ikke alle installasjoner av GitHub Desktop inkluderer Git. Det kan derfor være nødvendig å innstallere Git for windows for å få fullt utbytte av Git, som kommandolinjegrensesnitt.</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -584,13 +830,13 @@ git<span class="w"> </span>pull
 </section>
 <section id="opprett-en-ny-mappe">
 <h3>2. Opprett en ny mappe<a class="headerlink" href="#opprett-en-ny-mappe" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>power-system-data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>dynamiske-kraftsystemer
 </pre></div>
 </div>
 </section>
 <section id="ga-inn-i-mappen">
 <h3>3. Gå inn i mappen<a class="headerlink" href="#ga-inn-i-mappen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>power-system-data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>dynamiske-kraftsystemer
 </pre></div>
 </div>
 </section>
@@ -606,7 +852,7 @@ git<span class="w"> </span>pull
 </section>
 <section id="opprett-en-readme-fil">
 <h3>5. Opprett en README-fil<a class="headerlink" href="#opprett-en-readme-fil" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"# Power System Data"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"# dynamiske-kraftsystemer"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
 </pre></div>
 </div>
 </section>
@@ -625,7 +871,7 @@ git<span class="w"> </span>pull
 <section id="koble-til-github-valgfritt">
 <h3>8. Koble til GitHub (valgfritt)<a class="headerlink" href="#koble-til-github-valgfritt" title="Permalink to this heading">#</a></h3>
 <p>Opprett først et tomt repository på GitHub, og koble deretter til:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/brukernavn/power-system-data.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/brukernavn/dynamiske-kraftsystemer.git
 </pre></div>
 </div>
 </section>
@@ -726,6 +972,30 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hva er versjonskontroll?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidslinje">Tidslinje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-trenger-vi-versjonskontroll">Hvorfor trenger vi versjonskontroll?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-tilbake-til-en-tidligere-versjon">Gå tilbake til en tidligere versjon</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#se-historikken">Se historikken</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#se-en-tidligere-versjon">Se en tidligere versjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gjenopprett-en-fil">Gjenopprett en fil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-siste-commit">Angre siste commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-en-commit-pa-en-trygg-mate">Angre en commit på en trygg måte</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsmaskin-analogien">Tidsmaskin-analogien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kommandoer-a-kjenne-til">Kommandoer å kjenne til</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-tilbake-til-tidligere-versjoner">Gå tilbake til tidligere versjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-analogien">Git-analogien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fordeler">Fordeler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisjon">Definisjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grunnleggende-git-arbeidsflyt">Grunnleggende Git-arbeidsflyt</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#git">Git</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-lisens">GNU lisens</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ned-git-for-windows">1. Last ned Git for Windows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-git-bash">3. Start Git Bash</a></li>
@@ -748,6 +1018,9 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
