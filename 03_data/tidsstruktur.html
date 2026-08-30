@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Tallbehandling i pandas &#8212; Dynamiske kraftnett</title>
+    <title>Internasjonal standard &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -65,11 +65,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '03_data/behandle_tall';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_data/tidsstruktur';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Under utvikling" href="../04_reprdag/under_utvikling.html" />
-    <link rel="prev" title="Øving 3: Analyser, lagre og versjonskontroller data" href="../assignments/assignment3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,6 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -197,8 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tallbehandling i pandas</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="behandle_tall.html">Tallbehandling i pandas</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
@@ -284,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F03_data/behandle_tall.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F03_data/tidsstruktur.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/03_data/behandle_tall.ipynb" target="_blank"
+      <li><a href="../_sources/03_data/tidsstruktur.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,7 +398,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tallbehandling i pandas</h1>
+    <h1>Internasjonal standard</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,18 +408,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallbehandling i pandas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Internasjonal standard</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
 </ul>
 
             </nav>
@@ -432,86 +428,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tallbehandling-i-pandas">
-<h1>Tallbehandling i pandas<a class="headerlink" href="#tallbehandling-i-pandas" title="Permalink to this heading">#</a></h1>
-<p>Pandas er et bibliotek i Python som brukes til å jobbe med data.</p>
-<p>Pandas er et sentralt verktøy for dataanalyse <span id="id1">[<a class="reference internal" href="../references.html#id8" title="Wes McKinney. Data structures for statistical computing in python. In Proceedings of the 9th Python in Science Conference, 51–56. 2010.">McK10</a>]</span>. NumPy brukes for numeriske beregninger <span id="id2">[<a class="reference internal" href="../references.html#id9" title="Charles R. Harris and others. Array programming with numpy. Nature, 585:357–362, 2020. doi:10.1038/s41586-020-2649-2.">H+20</a>]</span>. Pandas og numpy er noen av de mest brukte python-bibliotekene innen datavitenskap. Pandas er tilrettelagt for vektoriserte beregninger og åpner for flere muligheter for databehandling enn de grunneggende datatypene array og lister. Datastrukturen er et regneark med read-indekser og kolonnenavn <span id="id3">[<a class="reference internal" href="../references.html#id2" title="Finn Aakre Haugen and Marius Lysaker. Python for realfag. Fagbokforlaget, Bergen, 3 edition, 2023. ISBN 9788245046052.">HL23</a>]</span>.</p>
-<p>Den viktigste datastrukturen i pandas er <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, forkortet <code class="docutils literal notranslate"><span class="pre">df</span></code>, en tabell med rader og kolonner.</p>
-<figure class="align-default" id="fig-dataframe">
-<a class="reference internal image-reference" href="images/figur.png"><img alt="images/figur.png" src="images/figur.png" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Illustrasjon av strukturen i en Pandas DataFrame, basert på et eksempel fra <span id="id4">[<a class="reference internal" href="../references.html#id3" title="GeeksforGeeks. How to get column names in pandas dataframe. 2025. URL: https://www.geeksforgeeks.org/python/how-to-get-column-names-in-pandas-dataframe/ (visited on 2026-08-30).">GeeksforGeeks25</a>]</span>.</span><a class="headerlink" href="#fig-dataframe" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="komponenter">
-<h1>Komponenter<a class="headerlink" href="#komponenter" title="Permalink to this heading">#</a></h1>
-<p>Foruten <code class="docutils literal notranslate"><span class="pre">df</span></code>, er en annen viktig komponent i pandas; <code class="docutils literal notranslate"><span class="pre">series</span></code>.</p>
-<p>Hva brukes det til?</p>
-<ul class="simple">
-<li><p>lese inn data fra filer (CSV, Excel)</p></li>
-<li><p>rydde og strukturere data</p></li>
-<li><p>analysere tidsserier (som kraftforbruk)</p></li>
-<li><p>gjøre beregninger og statistikk</p></li>
-</ul>
-<p>Vi legger først inn data i en egen folder som vi kaller ‘data’</p>
-<p>og deretter leser vi den i pandas.</p>
-<p>Når vi skriver det på denne måten:</p>
-<p>df = pd.read_csv(“../data/load_data.csv”)</p>
-<p>../ betyr en mappe opp</p>
-<hr class="docutils" />
-<p>Tabellen under viser ulike filtyper som brukes til kraftsystemdata og på hvilken måte vi bruker de.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Filtype</p></th>
-<th class="head"><p>Format</p></th>
-<th class="head"><p>Beskrivelse</p></th>
-<th class="head"><p>Bruk i kraftsystemer</p></th>
-<th class="head"><p>Kilde</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CSV (.csv)</p></td>
-<td><p>Tekst</p></td>
-<td><p>Tabulære data lagret som tekst med skilletegn (kommaseparert)</p></td>
-<td><p>Måledata fra Statnett / ENTSO-E</p></td>
-<td><p>Pandas IO / CSV-standard <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/37122926/">1</a><a class="reference external" href="https://arxiv.org/html/2510.09698v1">2</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>Excel (.xlsx)</p></td>
-<td><p>Binær</p></td>
-<td><p>Regnearkformat med støtte for flere ark og metadata</p></td>
-<td><p>Rapportering og manuell analyse</p></td>
-<td><p>Pandas IO-dokumentasjon <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/37122926/">1</a></p></td>
-</tr>
-<tr class="row-even"><td><p>JSON (.json)</p></td>
-<td><p>Tekst</p></td>
-<td><p>Hierarkisk datastruktur (objekter/lister), ofte brukt i API-er</p></td>
-<td><p>Sanntidsdata / datakommunikasjon</p></td>
-<td><p>JSON som utvekslingsformat <a class="reference external" href="https://energifaktanorge.no/en/interactive-map-quick-downloads/quick-downloads/">3</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>Parquet (.parquet)</p></td>
-<td><p>Binær</p></td>
-<td><p>Kolonnebasert lagringsformat optimalisert for ytelse</p></td>
-<td><p>Store historiske datasett</p></td>
-<td><p>Data storage / performance <a class="reference external" href="https://publikasjoner.nve.no/rapport/2026/rapport2026_17.pdf">4</a></p></td>
-</tr>
-<tr class="row-even"><td><p>SQLite (.db/.sqlite)</p></td>
-<td><p>Binær</p></td>
-<td><p>Relasjonsdatabase lagret i én fil, støtter SQL-spørringer</p></td>
-<td><p>Strukturert lagring av tidsserier</p></td>
-<td><p>Pandas SQL interface <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/37122926/">1</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>Pickle (.pkl)</p></td>
-<td><p>Binær</p></td>
-<td><p>Serialisering av Python-objekter til binært format</p></td>
-<td><p>Midlertidig lagring i Python</p></td>
-<td><p>Python standard library <a class="reference external" href="https://energifaktanorge.no/en/interactive-map-quick-downloads/quick-downloads/">3</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="internasjonal-standard">
-<h2>Internasjonal standard<a class="headerlink" href="#internasjonal-standard" title="Permalink to this heading">#</a></h2>
+  <section id="internasjonal-standard">
+<h1>Internasjonal standard<a class="headerlink" href="#internasjonal-standard" title="Permalink to this heading">#</a></h1>
 <p>For å blant annet kunne behandle geografiske tidsforskjeller benyttes Coordinated Universal Time (UTC), en felles referansetid som aldri forandrer seg</p>
 <p>UTC brukes fordi:</p>
 <ul class="simple">
@@ -703,7 +621,7 @@ document.write(`
 </div>
 </section>
 <section id="hva-er-en-tidsserie">
-<h2>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h2>
+<h1>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h1>
 <p>I kraftsystemer jobber vi ofte med tidsserier:
 data som er målt over tid
 Eksempel:</p>
@@ -711,7 +629,7 @@ Eksempel:</p>
 <p>produksjon</p>
 <p>frekvens</p>
 <section id="viktig-datetimeindex">
-<h3>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h3>
+<h2>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h2>
 <p>En vanlig index er bare “labels”.
 Men DatetimeIndex gir deg tidsforståelse innebygd, som betyr at du kan hente ut tid direkte.</p>
 <ul class="simple">
@@ -814,7 +732,7 @@ Time(Local)
 </section>
 </section>
 <section id="fix-konverter-til-tall">
-<h2>FIX (konverter til tall)<a class="headerlink" href="#fix-konverter-til-tall" title="Permalink to this heading">#</a></h2>
+<h1>FIX (konverter til tall)<a class="headerlink" href="#fix-konverter-til-tall" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -858,7 +776,7 @@ Freq: D, Name: Consumption, dtype: float64
 </div>
 </section>
 <section id="motivasjon">
-<h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h2>
+<h1>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h1>
 <p>Hvorfor dette er viktig i dette kurset
 I dette kurset bruker vi pandas til å:</p>
 <ul class="simple">
@@ -869,12 +787,11 @@ I dette kurset bruker vi pandas til å:</p>
 </ul>
 </section>
 <section id="kobling-videre">
-<h2>Kobling videre<a class="headerlink" href="#kobling-videre" title="Permalink to this heading">#</a></h2>
+<h1>Kobling videre<a class="headerlink" href="#kobling-videre" title="Permalink to this heading">#</a></h1>
 <p>Når dataene er klare, kan vi:</p>
 <p>Lage en representativ døgnprofil
 glatte data (Gaussian-filter)
 analysere dynamikk (swing equation)</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -907,24 +824,6 @@ analysere dynamikk (swing equation)</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../assignments/assignment3.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Øving 3: Analyser, lagre og versjonskontroller data</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../04_reprdag/under_utvikling.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Under utvikling</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -941,18 +840,14 @@ analysere dynamikk (swing equation)</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallbehandling i pandas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Internasjonal standard</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
 </ul>
 
   </nav></div>
