@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Internasjonal standard &#8212; Dynamiske kraftnett</title>
+    <title>Tidsstruktur &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -198,7 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="behandle_tall.html">Tallbehandling i pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tallbehandling.html">Tallbehandling i pandas</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
@@ -398,7 +398,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Internasjonal standard</h1>
+    <h1>Tidsstruktur</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,16 +408,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Internasjonal standard</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -428,8 +427,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="internasjonal-standard">
-<h1>Internasjonal standard<a class="headerlink" href="#internasjonal-standard" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tidsstruktur">
+<h1>Tidsstruktur<a class="headerlink" href="#tidsstruktur" title="Permalink to this heading">#</a></h1>
+<p>Pandas hjelper oss med å strukturere indeks der radetikettene består av datoer eller tidspunkter. Dette er organisert i en egen klasse som heter DateTimeIndex. Med datetimeindex kan vi gjøre seleksjon, gruppering og analyse av tidsseriedata mye enklere og raskere.</p>
+<section id="internasjonal-standard">
+<h2>Internasjonal standard<a class="headerlink" href="#internasjonal-standard" title="Permalink to this heading">#</a></h2>
 <p>For å blant annet kunne behandle geografiske tidsforskjeller benyttes Coordinated Universal Time (UTC), en felles referansetid som aldri forandrer seg</p>
 <p>UTC brukes fordi:</p>
 <ul class="simple">
@@ -621,7 +623,7 @@ document.write(`
 </div>
 </section>
 <section id="hva-er-en-tidsserie">
-<h1>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h1>
+<h2>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h2>
 <p>I kraftsystemer jobber vi ofte med tidsserier:
 data som er målt over tid
 Eksempel:</p>
@@ -629,7 +631,7 @@ Eksempel:</p>
 <p>produksjon</p>
 <p>frekvens</p>
 <section id="viktig-datetimeindex">
-<h2>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h2>
+<h3>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h3>
 <p>En vanlig index er bare “labels”.
 Men DatetimeIndex gir deg tidsforståelse innebygd, som betyr at du kan hente ut tid direkte.</p>
 <ul class="simple">
@@ -732,7 +734,7 @@ Time(Local)
 </section>
 </section>
 <section id="fix-konverter-til-tall">
-<h1>FIX (konverter til tall)<a class="headerlink" href="#fix-konverter-til-tall" title="Permalink to this heading">#</a></h1>
+<h2>FIX (konverter til tall)<a class="headerlink" href="#fix-konverter-til-tall" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -776,7 +778,7 @@ Freq: D, Name: Consumption, dtype: float64
 </div>
 </section>
 <section id="motivasjon">
-<h1>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h1>
+<h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h2>
 <p>Hvorfor dette er viktig i dette kurset
 I dette kurset bruker vi pandas til å:</p>
 <ul class="simple">
@@ -787,11 +789,12 @@ I dette kurset bruker vi pandas til å:</p>
 </ul>
 </section>
 <section id="kobling-videre">
-<h1>Kobling videre<a class="headerlink" href="#kobling-videre" title="Permalink to this heading">#</a></h1>
+<h2>Kobling videre<a class="headerlink" href="#kobling-videre" title="Permalink to this heading">#</a></h2>
 <p>Når dataene er klare, kan vi:</p>
 <p>Lage en representativ døgnprofil
 glatte data (Gaussian-filter)
 analysere dynamikk (swing equation)</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -840,16 +843,15 @@ analysere dynamikk (swing equation)</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Internasjonal standard</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

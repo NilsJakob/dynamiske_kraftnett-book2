@@ -65,7 +65,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '03_data/behandle_tall';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_data/tallbehandling';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Under utvikling" href="../04_reprdag/under_utvikling.html" />
@@ -284,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F03_data/behandle_tall.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F03_data/tallbehandling.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/03_data/behandle_tall.ipynb" target="_blank"
+      <li><a href="../_sources/03_data/tallbehandling.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,17 +409,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallbehandling i pandas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a></li>
 </ul>
 
             </nav>
@@ -438,7 +428,7 @@ document.write(`
 <p>Pandas er et sentralt verktøy for dataanalyse <span id="id1">[<a class="reference internal" href="../references.html#id8" title="Wes McKinney. Data structures for statistical computing in python. In Proceedings of the 9th Python in Science Conference, 51–56. 2010.">McK10</a>]</span>. NumPy brukes for numeriske beregninger <span id="id2">[<a class="reference internal" href="../references.html#id9" title="Charles R. Harris and others. Array programming with numpy. Nature, 585:357–362, 2020. doi:10.1038/s41586-020-2649-2.">H+20</a>]</span>. Pandas og numpy er noen av de mest brukte python-bibliotekene innen datavitenskap. Pandas er tilrettelagt for vektoriserte beregninger og åpner for flere muligheter for databehandling enn de grunneggende datatypene array og lister. Datastrukturen er et regneark med read-indekser og kolonnenavn <span id="id3">[<a class="reference internal" href="../references.html#id2" title="Finn Aakre Haugen and Marius Lysaker. Python for realfag. Fagbokforlaget, Bergen, 3 edition, 2023. ISBN 9788245046052.">HL23</a>]</span>.</p>
 <p>Den viktigste datastrukturen i pandas er <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, forkortet <code class="docutils literal notranslate"><span class="pre">df</span></code>, en tabell med rader og kolonner.</p>
 <figure class="align-default" id="fig-dataframe">
-<a class="reference internal image-reference" href="images/figur.png"><img alt="images/figur.png" src="images/figur.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/creating_dataframe1.png"><img alt="../_images/creating_dataframe1.png" src="../_images/creating_dataframe1.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Illustrasjon av strukturen i en Pandas DataFrame, basert på et eksempel fra <span id="id4">[<a class="reference internal" href="../references.html#id3" title="GeeksforGeeks. How to get column names in pandas dataframe. 2025. URL: https://www.geeksforgeeks.org/python/how-to-get-column-names-in-pandas-dataframe/ (visited on 2026-08-30).">GeeksforGeeks25</a>]</span>.</span><a class="headerlink" href="#fig-dataframe" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -510,371 +500,6 @@ document.write(`
 </tbody>
 </table>
 </div>
-<section id="internasjonal-standard">
-<h2>Internasjonal standard<a class="headerlink" href="#internasjonal-standard" title="Permalink to this heading">#</a></h2>
-<p>For å blant annet kunne behandle geografiske tidsforskjeller benyttes Coordinated Universal Time (UTC), en felles referansetid som aldri forandrer seg</p>
-<p>UTC brukes fordi:</p>
-<ul class="simple">
-<li><p>ingen sommertid → ingen forvirring</p></li>
-<li><p>gjør data sammenlignbare globalt</p></li>
-<li><p>unngår feil i tidsserier</p></li>
-<li><p>standard i API-er, databaser og analyse</p></li>
-</ul>
-<p>I cellen under kaller vi på importerer vi datetime, timezone, fra datetme som er et begrep og en klasse i Python som brukes til å representere dato og tidspunkt</p>
-<p>Den inneholder:</p>
-<ul class="simple">
-<li><p>år: 2026</p></li>
-<li><p>måned: 1</p></li>
-<li><p>dag: 1</p></li>
-<li><p>time: 13</p></li>
-<li><p>minutt: 45</p></li>
-<li><p>sekund: 00</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">t</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-01 13:45:00
-</pre></div>
-</div>
-</div>
-</div>
-<p>Vi oppdager fort at denne typen å representere tid på ikke vil fungere fordi den ikke tar høyde for tidssoner eller normaltid/sommertid.</p>
-<p>Dette løses i timezone med å bruke utc:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
-
-<span class="n">utc_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">utc_now</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-05-27 12:16:50.789300+00:00
-</pre></div>
-</div>
-</div>
-</div>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Sted</p></th>
-<th class="head"><p>Tid</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>UTC</p></td>
-<td><p>12:00</p></td>
-</tr>
-<tr class="row-odd"><td><p>Norge (vinter)</p></td>
-<td><p>13:00 (UTC +1)</p></td>
-</tr>
-<tr class="row-even"><td><p>Norge (sommer)</p></td>
-<td><p>14:00 (UTC +2)</p></td>
-</tr>
-<tr class="row-odd"><td><p>New York</p></td>
-<td><p>07:00 (UTC −5)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/load_data.csv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Time(Local)</th>
-      <th>Production</th>
-      <th>Consumption</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>01.01.2026 00:00:00 +01:00</td>
-      <td>18448,59</td>
-      <td>16662,95</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>01.01.2026 01:00:00 +01:00</td>
-      <td>18693,66</td>
-      <td>14953,24</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>01.01.2026 02:00:00 +01:00</td>
-      <td>18639,68</td>
-      <td>14298,07</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>01.01.2026 03:00:00 +01:00</td>
-      <td>18502,66</td>
-      <td>13254,81</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>01.01.2026 04:00:00 +01:00</td>
-      <td>18458,45</td>
-      <td>12678,51</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>3354</th>
-      <td>20.05.2026 19:00:00 +02:00</td>
-      <td>13799,35</td>
-      <td>19331,51</td>
-    </tr>
-    <tr>
-      <th>3355</th>
-      <td>20.05.2026 20:00:00 +02:00</td>
-      <td>13857,89</td>
-      <td>20096,14</td>
-    </tr>
-    <tr>
-      <th>3356</th>
-      <td>20.05.2026 21:00:00 +02:00</td>
-      <td>13768,33</td>
-      <td>19944,19</td>
-    </tr>
-    <tr>
-      <th>3357</th>
-      <td>20.05.2026 22:00:00 +02:00</td>
-      <td>13646,36</td>
-      <td>19368,15</td>
-    </tr>
-    <tr>
-      <th>3358</th>
-      <td>20.05.2026 23:00:00 +02:00</td>
-      <td>12985,17</td>
-      <td>18385,77</td>
-    </tr>
-  </tbody>
-</table>
-<p>3359 rows × 3 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['Time(Local)', 'Production', 'Consumption'], dtype='object')
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="hva-er-en-tidsserie">
-<h2>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h2>
-<p>I kraftsystemer jobber vi ofte med tidsserier:
-data som er målt over tid
-Eksempel:</p>
-<p>last (MW)</p>
-<p>produksjon</p>
-<p>frekvens</p>
-<section id="viktig-datetimeindex">
-<h3>Viktig: DatetimeIndex<a class="headerlink" href="#viktig-datetimeindex" title="Permalink to this heading">#</a></h3>
-<p>En vanlig index er bare “labels”.
-Men DatetimeIndex gir deg tidsforståelse innebygd, som betyr at du kan hente ut tid direkte.</p>
-<ul class="simple">
-<li><p>df.index.hour</p></li>
-<li><p>df.index.day</p></li>
-<li><p>df.index.month</p></li>
-<li><p>df.index.year</p></li>
-</ul>
-<p>Dette er veldig nyttig når vi jobber med tidsserier</p>
-<p>For å analysere tidsserier setter vi tid som indeks:</p>
-<p>Selv med parse_dates, kan pandas feile hvis formatet er rart.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/load_data.csv"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    01.01.2026 00:00:00 +01:00
-1    01.01.2026 01:00:00 +01:00
-2    01.01.2026 02:00:00 +01:00
-3    01.01.2026 03:00:00 +01:00
-4    01.01.2026 04:00:00 +01:00
-Name: Time(Local), dtype: object
-&lt;class 'str'&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['Time(Local)', 'Production', 'Consumption'], dtype='object')
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">],</span>
-    <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">utc</span><span class="o">=</span><span class="kc">True</span>  
-<span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Time(Local)"</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s2">"Europe/Oslo"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['Production', 'Consumption'], dtype='object')
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Production Consumption
-Time(Local)                                     
-2026-01-01 00:00:00+01:00   18448,59    16662,95
-2026-01-01 01:00:00+01:00   18693,66    14953,24
-2026-01-01 02:00:00+01:00   18639,68    14298,07
-2026-01-01 03:00:00+01:00   18502,66    13254,81
-2026-01-01 04:00:00+01:00   18458,45    12678,51
-</pre></div>
-</div>
-</div>
-</div>
-<p>Første linje i dataene 18448,59 er norsk format: , = desimaltegn</p>
-<p>pandas har lest det som tekst</p>
-</section>
-</section>
-<section id="fix-konverter-til-tall">
-<h2>FIX (konverter til tall)<a class="headerlink" href="#fix-konverter-til-tall" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Production      object
-Consumption    float64
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<p>Da kan vi gjøre:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analyse</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"1D"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">analyse</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)
-2026-01-01 00:00:00+01:00    15464.587083
-2026-01-02 00:00:00+01:00    19360.323333
-2026-01-03 00:00:00+01:00    23015.297083
-2026-01-04 00:00:00+01:00    23660.607500
-2026-01-05 00:00:00+01:00    25149.064167
-Freq: D, Name: Consumption, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="motivasjon">
-<h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h2>
-<p>Hvorfor dette er viktig i dette kurset
-I dette kurset bruker vi pandas til å:</p>
-<ul class="simple">
-<li><p>lese ekte kraftsystemdata</p></li>
-<li><p>analysere lastprofiler</p></li>
-<li><p>finne mønstre i forbruk</p></li>
-<li><p>koble data til dynamiske modeller</p></li>
-</ul>
-</section>
-<section id="kobling-videre">
-<h2>Kobling videre<a class="headerlink" href="#kobling-videre" title="Permalink to this heading">#</a></h2>
-<p>Når dataene er klare, kan vi:</p>
-<p>Lage en representativ døgnprofil
-glatte data (Gaussian-filter)
-analysere dynamikk (swing equation)</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -942,17 +567,7 @@ analysere dynamikk (swing equation)</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallbehandling i pandas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-videre">Kobling videre</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a></li>
 </ul>
 
   </nav></div>
