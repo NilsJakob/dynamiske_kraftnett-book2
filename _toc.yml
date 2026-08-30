@@ -30,7 +30,8 @@ parts:
 
   - caption: Analyse
     chapters:
-      - file: 03_data/behandle_tall
+      - file: 03_data/tallbehandling
+      #- file: 03_data/tidsstruktur
 
   - caption: Representativ dag
     chapters:
