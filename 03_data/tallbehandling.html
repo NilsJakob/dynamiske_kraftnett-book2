@@ -416,7 +416,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">cumsum()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
 </ul>
 </li>
 </ul>
@@ -443,14 +445,7 @@ document.write(`
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Illustrasjon av strukturen i en Pandas DataFrame, basert på et eksempel fra <span id="id4">[<a class="reference internal" href="../references.html#id3" title="GeeksforGeeks. How to get column names in pandas dataframe. 2025. URL: https://www.geeksforgeeks.org/python/how-to-get-column-names-in-pandas-dataframe/ (visited on 2026-08-30).">GeeksforGeeks25</a>]</span>.</span><a class="headerlink" href="#fig-dataframe" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TEST CELL</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="s1">'../images/creating_dataframe1.png'</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/7e8986a0ac96ebe71cba716b6364954414ea416c6e580982072fde4a11248757.png" src="../_images/7e8986a0ac96ebe71cba716b6364954414ea416c6e580982072fde4a11248757.png" />
 </div>
@@ -493,9 +488,6 @@ document.write(`
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">'s1 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'df ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Data type of s1:'</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Data type of df:'</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -520,11 +512,12 @@ Data type of df: &lt;class 'pandas.core.frame.DataFrame'&gt;
 </div>
 </div>
 </div>
-<p>I eksemplet over benyttes pandas funksjonen <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>, som betyr å konkatinere eller slå sammen og returnere et Dataframe-objekt. Man kan slå i sammen langs alle akser. Når det angis <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>, betyr det at seriene skal slåes i sammen som kolonner.</p>
+<p>I eksemplet over benyttes pandas funksjonen <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>, som betyr å konkatinere eller slå sammen. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code> slår sammen rader ved å definere rad-akse (<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>), eller kolonne-akse (<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>)  og returnere et Dataframe-objekt.</p>
+<p>Eksemplet printer også ut datatypene: <code class="docutils literal notranslate"><span class="pre">type()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'Data type of s1:'</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Data type of df:'</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -537,10 +530,11 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Her ser du at alle tallene er lagret som float64, siden de inneholder desimaltall (2.0, 3.5, osv.). Dette er et godt eksempel på hvorfor datatyper er viktige i pandas: pandas vet at kolonnene inneholder numeriske verdier og kan derfor utføre matematiske operasjoner som gjennomsnitt, sum, minimum og maksimum direkte.</p>
+<p>Her ser du at alle tallene er lagret som float64, siden de inneholder desimaltall (2.0, 3.5, osv.). Dette er et godt eksempel på hvorfor datatyper er viktige i pandas: pandas vet at kolonnene inneholder numeriske verdier og kan derfor manipulere og utføre matematiske operasjoner som gjennomsnitt, sum, minimum og maksimum direkte.</p>
 <section id="manipulasjon-av-dataframe">
 <h2>Manipulasjon av dataframe<a class="headerlink" href="#manipulasjon-av-dataframe" title="Permalink to this heading">#</a></h2>
 <p>Vi velger ut noen viktige manipulasjoner vi kan gjøre på en <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> i eksempel 10.5 fra techteach videreført med samme tall fra forrige eksempel. Hele eksemplet finner du lenke til her: <a class="reference external" href="https://techteach.no/python/files/prog_datamanip_dataframe.py">10.5</a></p>
+<p>Utvalgte rader og kolonner med <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -554,10 +548,6 @@ dtype: object
 <span class="c1"># Select specific columns AND rows:</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'df2 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-
-<span class="c1"># Column x + column y is stored in new colunm named x+y:</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'x+y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'x-coor'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">'y-coor'</span><span class="p">]</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"df['x+y'] ="</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -573,30 +563,16 @@ df2 =
    x-coor  y-coor
 1     3.5     0.0
 2     6.2     3.3
-
-df['x+y'] =
-   x-coor  y-coor   x+y
-0     2.0    -1.0   1.0
-1     3.5     0.0   3.5
-2     6.2     3.3   9.5
-3     9.1     2.1  11.2
 </pre></div>
 </div>
 </div>
 </div>
-<p>Under vises hvordan man dropper utvalgte kolonner og rader, i tillegg til å gjøre om til <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">array</span></code>.</p>
+<p>Utføre addisjon med +operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete specific columns:</span>
-<span class="n">df3</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'x-coor'</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'df3 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-
-<span class="c1"># Delete spesific row:</span>
-<span class="n">df4</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-
-<span class="n">arr_from_df4</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'arr_from_df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">arr_from_df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Column x + column y is stored in new colunm named x+y:</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'x+y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'x-coor'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">'y-coor'</span><span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">"df['x+y'] ="</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -607,8 +583,26 @@ df['x+y'] =
 1     3.5     0.0   3.5
 2     6.2     3.3   9.5
 3     9.1     2.1  11.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Når vi bruker funksjon på et objekt som en <code class="docutils literal notranslate"><span class="pre">dateframe</span></code> eller <code class="docutils literal notranslate"><span class="pre">Series</span></code>, kaller vi det en metode.
+Under vises hvordan man vi bruker metoden <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> til å fjerne utvalgte kolonner og rader:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete specific columns:</span>
+<span class="n">df3</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'x-coor'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df3 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 
-df3 =
+<span class="c1"># Delete spesific row:</span>
+<span class="n">df4</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df3 =
    y-coor   x+y
 0    -1.0   1.0
 1     0.0   3.5
@@ -620,11 +614,15 @@ df4 =
 0     2.0    -1.0   1.0
 1     3.5     0.0   3.5
 3     9.1     2.1  11.2
-
-arr_from_df4 =
-[[ 2.  -1.   1. ]
- [ 3.5  0.   3.5]
- [ 9.1  2.1 11.2]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Gjøre om til <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">array</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_from_df4</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'arr_from_df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">arr_from_df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -632,7 +630,7 @@ arr_from_df4 =
 </section>
 <section id="mean">
 <h2>.mean()<a class="headerlink" href="#mean" title="Permalink to this heading">#</a></h2>
-<p>Gjennomsnitts-funksjonen på kolonner og rader:</p>
+<p>Gjennomsnitts-metoden på kolonner og rader:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean column wise:</span>
@@ -663,7 +661,7 @@ dtype: float64
 </section>
 <section id="id6">
 <h2>.mean()<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
-<p>Summasjons-funksjonen på kolonner og rader:</p>
+<p>Summasjons-metode på kolonner og rader:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calulate the sum column-wise:</span>
@@ -673,10 +671,6 @@ dtype: float64
 <span class="c1"># Calulate the sum row-wise:</span>
 <span class="n">sr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'sum row-wise ='</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="c1"># Cumulative sum column-wise:</span>
-<span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'cumulative sum column-wise ='</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -691,8 +685,24 @@ sum row-wise = 0     2.0
 2    19.0
 3    22.4
 dtype: float64 
-
-cumulative sum column-wise =    x-coor  y-coor   x+y
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cumsum">
+<h2>cumsum()<a class="headerlink" href="#cumsum" title="Permalink to this heading">#</a></h2>
+<p>Kummulativ-summeringsmetode:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cumulative sum column-wise:</span>
+<span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'cumulative sum column-wise ='</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative sum column-wise =    x-coor  y-coor   x+y
 0     2.0    -1.0   1.0
 1     5.5    -1.0   4.5
 2    11.7     2.3  14.0
@@ -704,16 +714,12 @@ cumulative sum column-wise =    x-coor  y-coor   x+y
 </section>
 <section id="sort">
 <h2>.sort()<a class="headerlink" href="#sort" title="Permalink to this heading">#</a></h2>
-<p>Sorterings-funksjonen og statistikk</p>
+<p>Sorterings-metode og statistikk</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort values in column x+y from largest to smallest:</span>
 <span class="nb">sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x+y'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'sorted large-small:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="c1"># Basic statsistics column-wise:</span>
-<span class="n">stat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'basic stats column-wise:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">stat</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -735,6 +741,19 @@ min    2.000000 -1.000000   1.000000
 50%    4.850000  1.050000   6.500000
 75%    6.925000  2.400000   9.925000
 max    9.100000  3.300000  11.200000 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="describe">
+<h2>.describe()<a class="headerlink" href="#describe" title="Permalink to this heading">#</a></h2>
+<p>Metoden gir en statistisk oppsummering av de numeriske kolonnene i en <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic statsistics column-wise:</span>
+<span class="n">stat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'basic stats column-wise:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">stat</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -877,7 +896,9 @@ max    9.100000  3.300000  11.200000
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">cumsum()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
 </ul>
 </li>
 </ul>
