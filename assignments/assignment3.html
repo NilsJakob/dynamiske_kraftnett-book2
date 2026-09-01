@@ -65,11 +65,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/assignment3';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tallbehandling i pandas" href="../03_data/tallbehandling.html" />
-    <link rel="prev" title="pd.read()" href="../02_tallgrunnlag/pd.read.html" />
+    <link rel="next" title="Under utvikling" href="../04_reprdag/under_utvikling.html" />
+    <link rel="prev" title="Tallbehandling i pandas" href="../03_data/tallbehandling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,19 +189,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="assignment2.html">Øving 2: Klon Git-repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
 
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
 <ul class="nav bd-sidenav">
@@ -408,7 +410,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bytt-arbeidskatalog">Bytt arbeidskatalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origin">origin</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bakgrunn">Bakgrunn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-les-inn-datasettet">Oppgave 1: Les inn datasettet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-beregn-manedlig-gjennomsnitt">Oppgave 2: Beregn månedlig gjennomsnitt</a></li>
@@ -416,7 +422,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-visualiser-resultatet">Oppgave 4: Visualiser resultatet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-bruk-git">Oppgave 5: Bruk Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon">Refleksjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fordypning">Fordypning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregn-ogsa">Beregn også:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a></li>
 </ul>
             </nav>
@@ -439,10 +445,53 @@ document.write(`
 <li><p>utføre en enkel analyse i Python,</p></li>
 <li><p>lagre resultater til en ny fil,</p></li>
 <li><p>bruke Git til å spore endringer,</p></li>
-<li><p>publisere resultater til GitHub.</p></li>
+<li><p>publisere resultater til eget repo på GitHub.</p></li>
 </ul>
+<p>Dere har allerede klonet power-system-data i forrige øving.</p>
+<ul class="simple">
+<li><p>Opprett et nytt, tomt GitHub-repo på egen konto med samme navn</p></li>
+<li><p>Deretter går dere inn i den eksisterende power-system-data-mappen</p></li>
+<li><p>bytter origin til deres eget repo</p></li>
+</ul>
+<p>Arbeidsflyten blir slik:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>remove<span class="w"> </span>origin
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/BRUKERNAVN/power-system-data.git
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Etter dette fungerer vanlig arbeidsflyt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Løst oppgave"</span>
+git<span class="w"> </span>push
+</pre></div>
+</div>
+<section id="bytt-arbeidskatalog">
+<h3>Bytt arbeidskatalog<a class="headerlink" href="#bytt-arbeidskatalog" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>power-system-data
+</pre></div>
+</div>
 </section>
-<hr class="docutils" />
+<section id="origin">
+<h3>origin<a class="headerlink" href="#origin" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">origin</span></code> girnavnet på GitHub-repoet man jobber mot.</p>
+<p>og fås ved kommandoen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>Resultatet viser hva origin faktisk peker til.
+Hvis du stå i det repoet som læreren (altså jeg, Nils Jakob) lagde må du fjerne deg fra det repoet og koble til versjonen på ditt eget repo, for å kunne publisere (pushe) til eget repo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fjern koblingen til lærerrepoet</span>
+git<span class="w"> </span>remote<span class="w"> </span>remove<span class="w"> </span>origin
+
+<span class="c1"># Koble til eget repo</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/BRUKERNAVN/power-system-data.git
+
+<span class="c1"># Publiser</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+</section>
 <section id="bakgrunn">
 <h2>Bakgrunn<a class="headerlink" href="#bakgrunn" title="Permalink to this heading">#</a></h2>
 <p>Repoet inneholder en tidsserie med forbruksdata i Norge:</p>
@@ -450,7 +499,7 @@ document.write(`
 </pre></div>
 </div>
 <p>Datasettet inneholder målinger for hele året 2025.</p>
-<p>Målet er å analysere datasettet og lagre resultatene i et eget område av repositoryet.</p>
+<p>Målet er å analysere datasettet og lagre resultatene i et eget område av repoet.</p>
 </section>
 <hr class="docutils" />
 <section id="oppgave-1-les-inn-datasettet">
@@ -556,9 +605,8 @@ git<span class="w"> </span>add<span class="w"> </span>results/manedlig_last_2025
 </ol>
 </section>
 <hr class="docutils" />
-<section id="fordypning">
-<h2>Fordypning<a class="headerlink" href="#fordypning" title="Permalink to this heading">#</a></h2>
-<p>Beregn også:</p>
+<section id="beregn-ogsa">
+<h2>Beregn også:<a class="headerlink" href="#beregn-ogsa" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>høyeste månedlige last,</p></li>
 <li><p>laveste månedlige last,</p></li>
@@ -572,7 +620,7 @@ git<span class="w"> </span>add<span class="w"> </span>results/manedlig_last_2025
 <hr class="docutils" />
 <section id="leveranse">
 <h2>Leveranse<a class="headerlink" href="#leveranse" title="Permalink to this heading">#</a></h2>
-<p>Etter at øvingen er gjennomført skal repositoriet inneholde:</p>
+<p>Etter at øvingen er gjennomført skal repoet inneholde:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>load/
 └── forbruk_2025.csv
 
@@ -583,6 +631,11 @@ results/
 </pre></div>
 </div>
 <p>samt én eller flere commits som dokumenterer arbeidet.</p>
+<p>legg ved skjermbilde av prosessen og kortfattet git log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</pre></div>
+</div>
+<p>Kod i <span class="math notranslate nohighlight">\(\LaTeX\)</span> og kompiler som <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>, med navnet øving3.</p>
 </section>
 </section>
 
@@ -617,20 +670,20 @@ results/
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../02_tallgrunnlag/pd.read.html"
+       href="../03_data/tallbehandling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">pd.read()</p>
+        <p class="prev-next-title">Tallbehandling i pandas</p>
       </div>
     </a>
     <a class="right-next"
-       href="../03_data/tallbehandling.html"
+       href="../04_reprdag/under_utvikling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tallbehandling i pandas</p>
+        <p class="prev-next-title">Under utvikling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -650,7 +703,11 @@ results/
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bytt-arbeidskatalog">Bytt arbeidskatalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origin">origin</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bakgrunn">Bakgrunn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-les-inn-datasettet">Oppgave 1: Les inn datasettet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-beregn-manedlig-gjennomsnitt">Oppgave 2: Beregn månedlig gjennomsnitt</a></li>
@@ -658,7 +715,7 @@ results/
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-visualiser-resultatet">Oppgave 4: Visualiser resultatet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-bruk-git">Oppgave 5: Bruk Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon">Refleksjon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fordypning">Fordypning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregn-ogsa">Beregn også:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a></li>
 </ul>
   </nav></div>
