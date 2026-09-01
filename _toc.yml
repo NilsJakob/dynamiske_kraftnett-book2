@@ -26,11 +26,12 @@ parts:
       - file: 02_tallgrunnlag/repo
       - file: assignments/assignment2
       - file: 02_tallgrunnlag/pd.read
-      - file: assignments/assignment3
+      
 
   - caption: Analyse
     chapters:
       - file: 03_data/tallbehandling
+      - file: assignments/assignment3
       #- file: 03_data/tidsstruktur
 
   - caption: Representativ dag
