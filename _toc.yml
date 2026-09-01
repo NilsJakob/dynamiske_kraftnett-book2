@@ -32,7 +32,7 @@ parts:
     chapters:
       - file: 03_data/tallbehandling
       - file: assignments/assignment3
-      #- file: 03_data/tidsstruktur
+      - file: 03_data/tidsstruktur
 
   - caption: Representativ dag
     chapters:
