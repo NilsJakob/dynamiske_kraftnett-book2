@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '03_data/tidsstruktur';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Under utvikling" href="../04_reprdag/under_utvikling.html" />
+    <link rel="prev" title="Øving 3: Analyser, lagre og versjonskontroller data" href="../assignments/assignment3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -129,8 +131,6 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -196,10 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tallbehandling.html">Tallbehandling i pandas</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tidsstruktur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
 <ul class="nav bd-sidenav">
@@ -408,7 +409,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
@@ -430,6 +434,17 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="tidsstruktur">
 <h1>Tidsstruktur<a class="headerlink" href="#tidsstruktur" title="Permalink to this heading">#</a></h1>
 <p>Pandas hjelper oss med å strukturere indeks der radetikettene består av datoer eller tidspunkter. Dette er organisert i en egen klasse som heter DateTimeIndex. Med datetimeindex kan vi gjøre seleksjon, gruppering og analyse av tidsseriedata mye enklere og raskere.</p>
+<p>Under er et eksempel på de fem første linjene av en <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> med DateTimeIndex.</p>
+<p>df.head(5)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           Production  Consumption
+Time(Local)
+2026-01-01 00:00:00+01:00    18448,59     16662,95
+2026-01-01 01:00:00+01:00    18693,66     14953,24
+2026-01-01 02:00:00+01:00    18639,68     14298,07
+2026-01-01 03:00:00+01:00    18502,66     13254,81
+2026-01-01 04:00:00+01:00    18458,45     12678,51
+</pre></div>
+</div>
 <p>Hva brukes det til?</p>
 <ul class="simple">
 <li><p>lese inn data fra filer (CSV, Excel)</p></li>
@@ -447,6 +462,60 @@ document.write(`
 <li><p>unngår feil i tidsserier</p></li>
 <li><p>standard i API-er, databaser og analyse</p></li>
 </ul>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="behov-for-tidsstandard">
+<h3>Behov for tidsstandard<a class="headerlink" href="#behov-for-tidsstandard" title="Permalink to this heading">#</a></h3>
+<p>Fram til midten av 1800-tallet hadde hver by sin tid definert av solen ved hjelp av et solur som i Areia Preta i Natal, Brasil som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-solur</span></code>. Før standardiseringen hadde hver plass hadde sin middeltid (mean-time).</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="03_data/images/solur_natal.jpg"><img alt="03_data/images/solur_natal.jpg" src="03_data/images/solur_natal.jpg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">name: fog-solur
+:alt: Solur ved Areia Preta i Natal, Brasil.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>Solur ved Areia Preta i Natal, Brasil. Foto: Patrick (2005), Wikimedia Commons, CC BY-SA 3.0.</p>
+</div>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/d318ff7714c18e77eb753bfae8d8974af56aeb196fe53e2263d9c3a5e3af7c17.png" src="../_images/d318ff7714c18e77eb753bfae8d8974af56aeb196fe53e2263d9c3a5e3af7c17.png" />
+</div>
+</div>
+<figure class="align-default" id="fig-setesdalsbanen">
+<a class="reference internal image-reference" href="images/setesdalsbanen_2022.jpg"><img alt="images/setesdalsbanen_2022.jpg" src="images/setesdalsbanen_2022.jpg" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Setesdalsbanen ved Grovane.</span><a class="headerlink" href="#fig-setesdalsbanen" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p><em>Kilde:</em> Even Harbo, «Setesdalsbanen 2022.jpg», Wikimedia Commons, CC BY-SA 4.0.</p>
+</div>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>Som vist i {numref}fig-bradshaw-1840, ble rutetabeller allerede i 1840 publisert for lange jernbanestrekninger som knyttet sammen byer med ulike lokale soltider. Dette bidro til innføringen av standardisert jernbanetid basert på Greenwich Mean Time (GMT).</p>
+<figure class="align-center" id="fig-bristol-clock">
+<a class="reference internal image-reference" href="../_images/exchangeclock.jpg"><img alt="../_images/exchangeclock.jpg" src="../_images/exchangeclock.jpg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Klokken på The Exchange i Bristol.</strong> Den ekstra minuttviseren viser Bristol Mean Time, som lå omtrent 11 minutter etter Greenwich Mean Time (GMT). Klokken illustrerer overgangsperioden da lokal soltid og standardisert jernbanetid eksisterte side om side. Foto: Rod Ward (2007), Public Domain, via Wikimedia Commons.</span><a class="headerlink" href="#fig-bristol-clock" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+</div>
+<figure class="align-center" id="fig-bradshaw-1840">
+<a class="reference internal image-reference" href="03_data/images/bradshaw_1840_timetable.png"><img alt="03_data/images/bradshaw_1840_timetable.png" src="03_data/images/bradshaw_1840_timetable.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text"><strong>Great Western Railway-rutetable fra Bradshaw’s Railway Companion (1840).</strong>
+Tabellen viser avganger mellom London, Reading og andre stasjoner langs Great Western Railway, samt forbindelser mellom Bristol og Bath. På denne tiden gikk britiske jernbaneselskaper gradvis over fra lokale soltider til standardisert «London Time» (Greenwich Mean Time, GMT) for å unngå forvirring i rutetabellene. Kilde: Bradshaw (1840).</span><a class="headerlink" href="#fig-bradshaw-1840" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/c717f89be0d8700d4bec47734219149198c168d32f4cfc4f957edc03823e3bff.png" src="../_images/c717f89be0d8700d4bec47734219149198c168d32f4cfc4f957edc03823e3bff.png" />
+</div>
+</div>
 <p>I cellen under kaller vi på importerer vi datetime, timezone, fra datetme som er et begrep og en klasse i Python som brukes til å representere dato og tidspunkt</p>
 <p>Den inneholder:</p>
 <ul class="simple">
@@ -516,105 +585,20 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/load_data.csv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
-<span class="n">df</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Time(Local)</th>
-      <th>Production</th>
-      <th>Consumption</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>01.01.2026 00:00:00 +01:00</td>
-      <td>18448,59</td>
-      <td>16662,95</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>01.01.2026 01:00:00 +01:00</td>
-      <td>18693,66</td>
-      <td>14953,24</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>01.01.2026 02:00:00 +01:00</td>
-      <td>18639,68</td>
-      <td>14298,07</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>01.01.2026 03:00:00 +01:00</td>
-      <td>18502,66</td>
-      <td>13254,81</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>01.01.2026 04:00:00 +01:00</td>
-      <td>18458,45</td>
-      <td>12678,51</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>3354</th>
-      <td>20.05.2026 19:00:00 +02:00</td>
-      <td>13799,35</td>
-      <td>19331,51</td>
-    </tr>
-    <tr>
-      <th>3355</th>
-      <td>20.05.2026 20:00:00 +02:00</td>
-      <td>13857,89</td>
-      <td>20096,14</td>
-    </tr>
-    <tr>
-      <th>3356</th>
-      <td>20.05.2026 21:00:00 +02:00</td>
-      <td>13768,33</td>
-      <td>19944,19</td>
-    </tr>
-    <tr>
-      <th>3357</th>
-      <td>20.05.2026 22:00:00 +02:00</td>
-      <td>13646,36</td>
-      <td>19368,15</td>
-    </tr>
-    <tr>
-      <th>3358</th>
-      <td>20.05.2026 23:00:00 +02:00</td>
-      <td>12985,17</td>
-      <td>18385,77</td>
-    </tr>
-  </tbody>
-</table>
-<p>3359 rows × 3 columns</p>
-</div></div></div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  Time(Local) Production Consumption
+0  01.01.2026 00:00:00 +01:00   18448,59    16662,95
+1  01.01.2026 01:00:00 +01:00   18693,66    14953,24
+2  01.01.2026 02:00:00 +01:00   18639,68    14298,07
+3  01.01.2026 03:00:00 +01:00   18502,66    13254,81
+4  01.01.2026 04:00:00 +01:00   18458,45    12678,51
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -628,6 +612,7 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="hva-er-en-tidsserie">
 <h2>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h2>
@@ -834,6 +819,24 @@ analysere dynamikk (swing equation)</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../assignments/assignment3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Øving 3: Analyser, lagre og versjonskontroller data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../04_reprdag/under_utvikling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Under utvikling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -850,7 +853,10 @@ analysere dynamikk (swing equation)</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
 </ul>
