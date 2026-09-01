@@ -418,8 +418,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#se-en-tidligere-versjon">Se en tidligere versjon</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gjenopprett-en-fil">Gjenopprett en fil</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-siste-commit">Angre siste commit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-en-commit-pa-en-trygg-mate">Angre en commit på en trygg måte</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsmaskin-analogien">Tidsmaskin-analogien</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kommandoer-a-kjenne-til">Kommandoer å kjenne til</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-tilbake-til-tidligere-versjoner">Gå tilbake til tidligere versjoner</a></li>
 </ul>
@@ -566,39 +564,6 @@ Versjon 2  ← HEAD
 <blockquote>
 <div><p>Kommandoen sletter lokale endringer.</p>
 </div></blockquote>
-</section>
-<section id="angre-en-commit-pa-en-trygg-mate">
-<h2>Angre en commit på en trygg måte<a class="headerlink" href="#angre-en-commit-pa-en-trygg-mate" title="Permalink to this heading">#</a></h2>
-<p>Hvis endringene allerede er publisert på GitHub, er det ofte bedre å bruke:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>revert<span class="w"> </span>a1b2c3d
-</pre></div>
-</div>
-<p>Da oppretter Git en ny commit som opphever endringene fra den tidligere commiten.</p>
-<p>Historikken blir:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Versjon 1
-Versjon 2
-Versjon 3
-Versjon 4 (angrer versjon 3)
-</pre></div>
-</div>
-</section>
-<section id="tidsmaskin-analogien">
-<h2>Tidsmaskin-analogien<a class="headerlink" href="#tidsmaskin-analogien" title="Permalink to this heading">#</a></h2>
-<p>Git kan betraktes som en tidsmaskin for prosjektet:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>V1 ── V2 ── V3 ── V4
-        ▲
-        │
-   gå tilbake hit
-</pre></div>
-</div>
-<p>Man kan:</p>
-<ul class="simple">
-<li><p>se tidligere versjoner</p></li>
-<li><p>sammenligne versjoner</p></li>
-<li><p>hente tilbake gamle filer</p></li>
-<li><p>angre feil</p></li>
-<li><p>dokumentere utviklingen av prosjektet</p></li>
-</ul>
 </section>
 <section id="kommandoer-a-kjenne-til">
 <h2>Kommandoer å kjenne til<a class="headerlink" href="#kommandoer-a-kjenne-til" title="Permalink to this heading">#</a></h2>
@@ -830,12 +795,14 @@ git<span class="w"> </span>pull
 <h2>Opprette et Git-repo i Git Bash<a class="headerlink" href="#opprette-et-git-repo-i-git-bash" title="Permalink to this heading">#</a></h2>
 <section id="ga-til-onsket-mappe">
 <h3>1. Gå til ønsket mappe<a class="headerlink" href="#ga-til-onsket-mappe" title="Permalink to this heading">#</a></h3>
+<p>Ved hjelp av <em>change directory</em> <code class="docutils literal notranslate"><span class="pre">cd</span></code> bytter man katalog:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/c/repos
 </pre></div>
 </div>
 </section>
 <section id="opprett-en-ny-mappe">
 <h3>2. Opprett en ny mappe<a class="headerlink" href="#opprett-en-ny-mappe" title="Permalink to this heading">#</a></h3>
+<p>Lager ny katalog ved <em>make directory</em> <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>dynamiske-kraftsystemer
 </pre></div>
 </div>
@@ -858,7 +825,17 @@ git<span class="w"> </span>pull
 </section>
 <section id="opprett-en-readme-fil">
 <h3>5. Opprett en README-fil<a class="headerlink" href="#opprett-en-readme-fil" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"# dynamiske-kraftsystemer"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+<p><code class="docutils literal notranslate"><span class="pre">echo</span></code> er en kommando som skriver tekst til terminalen:</p>
+<p>Denne kommansoen skriver tekst til terminalen og deignerer til fil</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"# Dynamiske kraftsystemer"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span></code>-kommando brukes til å sjekke innholdet</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>README.md
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Dynamiske kraftsystemer
 </pre></div>
 </div>
 </section>
@@ -883,10 +860,22 @@ git<span class="w"> </span>pull
 </section>
 <section id="last-opp-til-github">
 <h3>9. Last opp til GitHub<a class="headerlink" href="#last-opp-til-github" title="Permalink to this heading">#</a></h3>
+<p>Bytter navn på den nåværende branchen til main.</p>
+<p>branch = jobb med brancher.
+-M = tving omdøping (selv om main allerede finnes; master omdæpes til main).
+main = nytt navn på branchen.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
-git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
+<p>Dette aster opp branchen main til GitHub.</p>
+<p>push = send commits til GitHub.
+origin = navnet på GitHub-repoet.
+main = branchen som skal sendes.
+-u = husk koblingen mellom lokal main og GitHubs main.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>-u er en forkortelse for –set-upstream, og gjør at git husker koblingen mellom lokalt repo og repoet på GitHub.</p>
 </section>
 <section id="nyttige-kommandoer">
 <h3>Nyttige kommandoer<a class="headerlink" href="#nyttige-kommandoer" title="Permalink to this heading">#</a></h3>
@@ -988,8 +977,6 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#se-en-tidligere-versjon">Se en tidligere versjon</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gjenopprett-en-fil">Gjenopprett en fil</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-siste-commit">Angre siste commit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angre-en-commit-pa-en-trygg-mate">Angre en commit på en trygg måte</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidsmaskin-analogien">Tidsmaskin-analogien</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kommandoer-a-kjenne-til">Kommandoer å kjenne til</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ga-tilbake-til-tidligere-versjoner">Gå tilbake til tidligere versjoner</a></li>
 </ul>

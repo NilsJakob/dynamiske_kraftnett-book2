@@ -416,7 +416,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">cumsum()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
 </ul>
@@ -691,18 +691,19 @@ dtype: float64
 </div>
 </section>
 <section id="cumsum">
-<h2>cumsum()<a class="headerlink" href="#cumsum" title="Permalink to this heading">#</a></h2>
+<h2>.cumsum()<a class="headerlink" href="#cumsum" title="Permalink to this heading">#</a></h2>
 <p>Kummulativ-summeringsmetode:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cumulative sum column-wise:</span>
 <span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'cumulative sum column-wise ='</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'cumulative sum column-wise =</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative sum column-wise =    x-coor  y-coor   x+y
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative sum column-wise =
+    x-coor  y-coor   x+y
 0     2.0    -1.0   1.0
 1     5.5    -1.0   4.5
 2    11.7     2.3  14.0
@@ -836,7 +837,7 @@ max    9.100000  3.300000  11.200000
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">cumsum()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
 </ul>
