@@ -65,6 +65,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03_data/tidsstruktur';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -409,8 +411,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bruksomrade">Bruksområde</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utlegning">Matematisk utlegning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jernbanetid-railway-time">Jernbanetid (Railway time)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
@@ -435,6 +442,7 @@ document.write(`
 <h1>Tidsstruktur<a class="headerlink" href="#tidsstruktur" title="Permalink to this heading">#</a></h1>
 <p>Pandas hjelper oss med å strukturere indeks der radetikettene består av datoer eller tidspunkter. Dette er organisert i en egen klasse som heter DateTimeIndex. Med datetimeindex kan vi gjøre seleksjon, gruppering og analyse av tidsseriedata mye enklere og raskere.</p>
 <p>Under er et eksempel på de fem første linjene av en <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> med DateTimeIndex.</p>
+<p>Metoden .head() gir de første angitte antall reader, default er 5.</p>
 <p>df.head(5)</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           Production  Consumption
 Time(Local)
@@ -445,13 +453,18 @@ Time(Local)
 2026-01-01 04:00:00+01:00    18458,45     12678,51
 </pre></div>
 </div>
-<p>Hva brukes det til?</p>
+<section id="bruksomrade">
+<h2>Bruksområde<a class="headerlink" href="#bruksomrade" title="Permalink to this heading">#</a></h2>
+<p>DateTime Index er en klasse i pandas som brukes til å representere en indeks bestående av datoer og tidspunkter.</p>
 <ul class="simple">
-<li><p>lese inn data fra filer (CSV, Excel)</p></li>
+<li><p>spesialisert type Index i pandas,</p></li>
+<li><p>optimalisert for tidsseriedata (som kraftsystemdata)</p></li>
+<li><p>ekstra metoder som .year, .month, .day, tidsfiltrering, resampling osv.</p></li>
 <li><p>rydde og strukturere data</p></li>
-<li><p>analysere tidsserier (som kraftforbruk)</p></li>
 <li><p>gjøre beregninger og statistikk</p></li>
+<li><p>analysere tidsserier</p></li>
 </ul>
+</section>
 <section id="internasjonal-standard">
 <h2>Internasjonal standard<a class="headerlink" href="#internasjonal-standard" title="Permalink to this heading">#</a></h2>
 <p>For å blant annet kunne behandle geografiske tidsforskjeller benyttes Coordinated Universal Time (UTC), en felles referansetid som aldri forandrer seg</p>
@@ -466,15 +479,11 @@ Time(Local)
 </div>
 <section id="behov-for-tidsstandard">
 <h3>Behov for tidsstandard<a class="headerlink" href="#behov-for-tidsstandard" title="Permalink to this heading">#</a></h3>
-<p>Fram til midten av 1800-tallet hadde hver by sin tid definert av solen ved hjelp av et solur som i Areia Preta i Natal, Brasil som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-solur</span></code>. Før standardiseringen hadde hver plass hadde sin middeltid (mean-time).</p>
-<figure class="align-default" id="id1">
-<img alt="../_images/solur_natal.jpg" src="../_images/solur_natal.jpg" />
+<p>Fram til midten av 1800-tallet hadde hver by sin tid definert av solen ved hjelp av et solur som i Areia Preta i Natal, Brasil som vist i <a class="reference internal" href="#fig-solur"><span class="std std-numref">Fig. 12</span></a>. Før standardiseringen hadde hver plass hadde sin middeltid (<a class="reference external" href="https://www.rmg.co.uk/stories/time/greenwich-mean-time-gmt">mean-time</a>).</p>
+<figure class="align-center" id="fig-solur">
+<a class="reference internal image-reference" href="../_images/solur_natal.jpg"><img alt="../_images/solur_natal.jpg" src="../_images/solur_natal.jpg" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">width: 70%
-name: fig-solur</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-<div class="legend">
-<p>Solur ved Areia Preta i Natal, Brasil. Foto: Patrick (2005), Wikimedia Commons, CC BY-SA 3.0.</p>
-</div>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Solur ved Areia Preta i Natal, Brasil. Foto: Patrick (2005), Wikimedia Commons, CC BY-SA 3.0.</span><a class="headerlink" href="#fig-solur" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell tag_remove-input docutils container">
@@ -482,8 +491,85 @@ name: fig-solur</span><a class="headerlink" href="#id1" title="Permalink to this
 <img alt="../_images/d318ff7714c18e77eb753bfae8d8974af56aeb196fe53e2263d9c3a5e3af7c17.png" src="../_images/d318ff7714c18e77eb753bfae8d8974af56aeb196fe53e2263d9c3a5e3af7c17.png" />
 </div>
 </div>
+<section id="matematisk-utlegning">
+<h4>Matematisk utlegning<a class="headerlink" href="#matematisk-utlegning" title="Permalink to this heading">#</a></h4>
+<p>Jorden roterer én gang rundt sin egen akse på 24 timer, som tilsvarer en rotasjon på <span class="math notranslate nohighlight">\(360^\circ\)</span>. Sammenhengen mellom lengdegrad og tid kan derfor utledes som</p>
+<div class="math notranslate nohighlight">
+\[
+360^\circ \leftrightarrow 24 \text{ timer}.
+\]</div>
+<p>Det betyr at</p>
+<div class="math notranslate nohighlight">
+\[
+15^\circ \leftrightarrow 1 \text{ time},
+\]</div>
+<p>fordi</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{360^\circ}{24}=15^\circ.
+\]</div>
+<p>Siden én time er 60 minutter, får vi</p>
+<div class="math notranslate nohighlight">
+\[
+15^\circ \leftrightarrow 60 \text{ minutter}.
+\]</div>
+<p>Dividerer vi begge sider med 15, får vi</p>
+<div class="math notranslate nohighlight">
+\[
+1^\circ \leftrightarrow 4 \text{ minutter}.
+\]</div>
+<p>Dermed gjelder den generelle sammenhengen</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\Delta t = 4\,\Delta \lambda}
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> er tidsforskjellen i minutter,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta \lambda\)</span> er forskjellen i lengdegrad i grader.</p></li>
+</ul>
+<p>Greenwich ligger på nullmeridianen <span class="math notranslate nohighlight">\(0^\circ\)</span>, mens Bristol ligger omtrent <span class="math notranslate nohighlight">\(2.6^\circ\)</span> vest for Greenwich:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta \lambda = 2.6^\circ.
+\]</div>
+<p>Tidsforskjellen blir derfor</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta t
+=
+4 \cdot 2.6
+=
+10.4 \text{ minutter}.
+\]</div>
+<p>Altså ligger lokal soltid i Bristol omtrent 10 minutter etter Greenwich Mean Time (GMT):</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\text{Bristol Mean Time} \approx \text{GMT} - 10 \text{ minutter}}.
+\]</div>
+<p>Tilsvarende ligger Cardiff omtrent (3.2^\circ) vest for Greenwich:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta t
+=
+4 \cdot 3.2
+=
+12.8 \text{ minutter}
+\approx
+13 \text{ minutter}.
+\]</div>
+<p>Dermed får vi</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\text{Cardiff Mean Time} \approx \text{GMT} - 13 \text{ minutter}}.
+\]</div>
+<p>Dette forklarer hvorfor byer på ulike lengdegrader hadde forskjellige lokale soltider før innføringen av standardisert tid og Greenwich Mean Time (GMT).</p>
+</section>
+<section id="jernbanetid-railway-time">
+<h4>Jernbanetid (Railway time)<a class="headerlink" href="#jernbanetid-railway-time" title="Permalink to this heading">#</a></h4>
+<p>Etterhvert som jernbanenettet ble større og reisene lengre ble det mange lokale tider å holde styr på. For å holde styr på tidsforskjellene fikk man det standardiserte Railway time.</p>
 <figure class="align-default" id="fig-setesdalsbanen">
-<a class="reference internal image-reference" href="images/setesdalsbanen_2022.jpg"><img alt="images/setesdalsbanen_2022.jpg" src="images/setesdalsbanen_2022.jpg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/Setesdalsbanen_2022.jpg"><img alt="../_images/Setesdalsbanen_2022.jpg" src="../_images/Setesdalsbanen_2022.jpg" style="width: 70%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Setesdalsbanen ved Grovane.</span><a class="headerlink" href="#fig-setesdalsbanen" title="Permalink to this image">#</a></p>
 <div class="legend">
@@ -494,18 +580,12 @@ name: fig-solur</span><a class="headerlink" href="#id1" title="Permalink to this
 <div class="cell tag_remove-input docutils container">
 </div>
 <p>Som vist i {numref}fig-bradshaw-1840, ble rutetabeller allerede i 1840 publisert for lange jernbanestrekninger som knyttet sammen byer med ulike lokale soltider. Dette bidro til innføringen av standardisert jernbanetid basert på Greenwich Mean Time (GMT).</p>
-<figure class="align-center" id="fig-bristol-clock">
-<a class="reference internal image-reference" href="../_images/exchangeclock.jpg"><img alt="../_images/exchangeclock.jpg" src="../_images/exchangeclock.jpg" style="width: 70%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Klokken på The Exchange i Bristol.</strong> Den ekstra minuttviseren viser Bristol Mean Time, som lå omtrent 11 minutter etter Greenwich Mean Time (GMT). Klokken illustrerer overgangsperioden da lokal soltid og standardisert jernbanetid eksisterte side om side. Foto: Rod Ward (2007), Public Domain, via Wikimedia Commons.</span><a class="headerlink" href="#fig-bristol-clock" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 <div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-center" id="fig-bradshaw-1840">
-<a class="reference internal image-reference" href="03_data/images/bradshaw_1840_timetable.png"><img alt="03_data/images/bradshaw_1840_timetable.png" src="03_data/images/bradshaw_1840_timetable.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/bradshaw_1840_timetable.png"><img alt="../_images/bradshaw_1840_timetable.png" src="../_images/bradshaw_1840_timetable.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text"><strong>Great Western Railway-rutetable fra Bradshaw’s Railway Companion (1840).</strong>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Great Western Railway-rutetable fra Bradshaw’s Railway Companion (1840).</strong>
 Tabellen viser avganger mellom London, Reading og andre stasjoner langs Great Western Railway, samt forbindelser mellom Bristol og Bath. På denne tiden gikk britiske jernbaneselskaper gradvis over fra lokale soltider til standardisert «London Time» (Greenwich Mean Time, GMT) for å unngå forvirring i rutetabellene. Kilde: Bradshaw (1840).</span><a class="headerlink" href="#fig-bradshaw-1840" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -612,6 +692,7 @@ Tabellen viser avganger mellom London, Reading og andre stasjoner langs Great We
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="hva-er-en-tidsserie">
@@ -853,8 +934,13 @@ analysere dynamikk (swing equation)</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bruksomrade">Bruksområde</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utlegning">Matematisk utlegning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jernbanetid-railway-time">Jernbanetid (Railway time)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
