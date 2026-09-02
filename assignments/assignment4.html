@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Øving 2: Branch, Push, Pull og Merge med Git og GitHub &#8212; Dynamiske kraftnett</title>
+    <title>Øving 4: Fra lengdegrad til standardtid &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -399,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Øving 2: Branch, Push, Pull og Merge med Git og GitHub</h1>
+    <h1>Øving 4: Fra lengdegrad til standardtid</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,45 +409,55 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Øving 4: Fra lengdegrad til standardtid</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-opprette-en-branch-og-merge-den">Del 1: Opprette en branch og merge den</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-repositoryet">1. Klon repositoryet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-branch">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring">3. Gjør en endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagre-endringen-som-en-commit">4. Lagre endringen som en commit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bytt-tilbake-til-main">5. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-branchen">6. Merge branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#se-commit-historikken">7. Se commit-historikken</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-push-og-pull">Del 2: Push og Pull</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-endringer-til-github">1. Push endringer til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-ny-endring">3. Gjør en ny endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-endringen">4. Commit endringen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen-til-github">5. Push branchen til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hent-siste-versjon-fra-github">7. Hent siste versjon fra GitHub</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-lokal-tid-og-lengdegrad">Del 1: Lokal tid og lengdegrad</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1">Oppgave 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2">Oppgave 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3">Oppgave 3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-simuler-to-utviklere">Del 3: Simuler to utviklere</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-a">Student A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-b">Student B</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-opprette-en-tidsserie">Del 2: Opprette en tidsserie</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4">Oppgave 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5">Oppgave 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6">Oppgave 6</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-pull-request-pa-github">Del 4: Pull Request på GitHub</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring-og-commit-den">2. Gjør en endring og commit den</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen">3. Push branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-pull-request">4. Opprett en Pull Request</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-pull-requesten">5. Merge Pull Requesten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-ditt-lokale-repository">6. Oppdater ditt lokale repository</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-analyse-av-tidsserier">Del 3: Analyse av tidsserier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7">Oppgave 7</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levering">Levering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-netto">[
+P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-produksjon">P_{\text{produksjon}}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8">Oppgave 8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9">Oppgave 9</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-10">Oppgave 10</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-visualisering">Del 4: Visualisering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-11">Oppgave 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-12">Oppgave 12</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-kart-og-standardtid">Del 5: Kart og standardtid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-15">Oppgave 15</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-6-git">Del 6: Git</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-16">Oppgave 16</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filnavn">Filnavn</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -458,222 +468,367 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oving-2-branch-push-pull-og-merge-med-git-og-github">
-<h1>Øving 2: Branch, Push, Pull og Merge med Git og GitHub<a class="headerlink" href="#oving-2-branch-push-pull-og-merge-med-git-og-github" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="oving-4-fra-lengdegrad-til-standardtid">
+<h1>Øving 4: Fra lengdegrad til standardtid<a class="headerlink" href="#oving-4-fra-lengdegrad-til-standardtid" title="Permalink to this heading">#</a></h1>
 <section id="laeringsmal">
 <h2>Læringsmål<a class="headerlink" href="#laeringsmal" title="Permalink to this heading">#</a></h2>
 <p>Etter denne øvingen skal du kunne:</p>
 <ul class="simple">
-<li><p>Opprette og bytte mellom brancher</p></li>
-<li><p>Gjøre endringer og opprette commits</p></li>
-<li><p>Push endringer til GitHub</p></li>
-<li><p>Pull endringer fra GitHub</p></li>
-<li><p>Merge brancher</p></li>
-<li><p>Forstå hvordan Git brukes i samarbeid</p></li>
+<li><p>forklare sammenhengen mellom lengdegrad og lokal soltid</p></li>
+<li><p>beregne tidsforskjeller ut fra lengdegrader</p></li>
+<li><p>arbeide med <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code> i pandas</p></li>
+<li><p>utføre grunnleggende analyser av tidsserier</p></li>
+<li><p>visualisere tidsserier med matplotlib</p></li>
+<li><p>dokumentere arbeidet ved hjelp av Git</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="del-1-lokal-tid-og-lengdegrad">
+<h1>Del 1: Lokal tid og lengdegrad<a class="headerlink" href="#del-1-lokal-tid-og-lengdegrad" title="Permalink to this heading">#</a></h1>
+<p>Før innføringen av Greenwich Mean Time (GMT) brukte hver by sin egen lokale soltid.</p>
+<p>Bruk følgende informasjon:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>By</p></th>
+<th class="head text-right"><p>Lengdegrad</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cardiff</p></td>
+<td class="text-right"><p>-3.2°</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bristol</p></td>
+<td class="text-right"><p>-2.6°</p></td>
+</tr>
+<tr class="row-even"><td><p>Greenwich</p></td>
+<td class="text-right"><p>0.0°</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bergen</p></td>
+<td class="text-right"><p>5.3°</p></td>
+</tr>
+<tr class="row-even"><td><p>Oslo</p></td>
+<td class="text-right"><p>10.8°</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="oppgave-1">
+<h2>Oppgave 1<a class="headerlink" href="#oppgave-1" title="Permalink to this heading">#</a></h2>
+<p>Vis matematisk at</p>
+<p>[
+1^\circ \approx 4 \text{ minutter}.
+]</p>
+<p>Tips:</p>
+<p>Jorden roterer</p>
+<p>[
+360^\circ
+]</p>
+<p>på</p>
+<p>[
+24 \text{ timer}.
+]</p>
+</section>
+<hr class="docutils" />
+<section id="oppgave-2">
+<h2>Oppgave 2<a class="headerlink" href="#oppgave-2" title="Permalink to this heading">#</a></h2>
+<p>Bruk formelen</p>
+<p>[
+\Delta t = 4,\Delta\lambda
+]</p>
+<p>til å beregne tidsforskjellen mellom Greenwich og de øvrige byene.</p>
+<p>Presenter resultatet i en tabell.</p>
+<p>Eksempel:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>By</p></th>
+<th class="head text-right"><p>Lengdegrad</p></th>
+<th class="head text-right"><p>Lokal tid relativt til GMT</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bristol</p></td>
+<td class="text-right"><p>-2.6°</p></td>
+<td class="text-right"><p>GMT − 10 min</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cardiff</p></td>
+<td class="text-right"><p>-3.2°</p></td>
+<td class="text-right"><p>GMT − 13 min</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="oppgave-3">
+<h2>Oppgave 3<a class="headerlink" href="#oppgave-3" title="Permalink to this heading">#</a></h2>
+<p>Forklar med egne ord hvorfor ulike lokale tider kunne skape problemer for jernbanene.</p>
+<p>Svar med 100–200 ord.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="del-2-opprette-en-tidsserie">
+<h1>Del 2: Opprette en tidsserie<a class="headerlink" href="#del-2-opprette-en-tidsserie" title="Permalink to this heading">#</a></h1>
+<p>Opprett følgende datasett.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">"2026-01-01"</span><span class="p">,</span>
+    <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="s2">"H"</span><span class="p">,</span>
+    <span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Oslo"</span>
+<span class="p">)</span>
+
+<span class="n">hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+
+<span class="n">production</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">18500</span>
+    <span class="o">+</span> <span class="mi">800</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">hours</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">consumption</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">15000</span>
+    <span class="o">+</span> <span class="mi">2500</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">hours</span> <span class="o">-</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"Production"</span><span class="p">:</span> <span class="n">production</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+        <span class="s2">"Consumption"</span><span class="p">:</span> <span class="n">consumption</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">time</span>
+<span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Time(Local)"</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="oppgave-4">
+<h2>Oppgave 4<a class="headerlink" href="#oppgave-4" title="Permalink to this heading">#</a></h2>
+<p>Skriv ut de fem første radene:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Forklar:</p>
+<ul class="simple">
+<li><p>hva en <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code> er</p></li>
+<li><p>hvorfor tidsstempelet inneholder <code class="docutils literal notranslate"><span class="pre">+01:00</span></code></p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="del-1-opprette-en-branch-og-merge-den">
-<h2>Del 1: Opprette en branch og merge den<a class="headerlink" href="#del-1-opprette-en-branch-og-merge-den" title="Permalink to this heading">#</a></h2>
-<section id="klon-repositoryet">
-<h3>1. Klon repositoryet<a class="headerlink" href="#klon-repositoryet" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;repo-url&gt;
-<span class="nb">cd</span><span class="w"> </span>&lt;repo-navn&gt;
+<section id="oppgave-5">
+<h2>Oppgave 5<a class="headerlink" href="#oppgave-5" title="Permalink to this heading">#</a></h2>
+<p>Hva er tidspunktet i første rad?</p>
+<p>Skriv ut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Forklar resultatet.</p>
 </section>
-<section id="opprett-en-ny-branch">
-<h3>2. Opprett en ny branch<a class="headerlink" href="#opprett-en-ny-branch" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature-1
+<hr class="docutils" />
+<section id="oppgave-6">
+<h2>Oppgave 6<a class="headerlink" href="#oppgave-6" title="Permalink to this heading">#</a></h2>
+<p>Velg ut observasjonen klokken 03:00.</p>
+<p>Eksempel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2026-01-01 03:00"</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="gjor-en-endring">
-<h3>3. Gjør en endring<a class="headerlink" href="#gjor-en-endring" title="Permalink to this heading">#</a></h3>
-<p>Legg til en linje i en eksisterende fil eller opprett en ny fil.</p>
-</section>
-<section id="lagre-endringen-som-en-commit">
-<h3>4. Lagre endringen som en commit<a class="headerlink" href="#lagre-endringen-som-en-commit" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"La til feature 1"</span>
-</pre></div>
-</div>
-</section>
-<section id="bytt-tilbake-til-main">
-<h3>5. Bytt tilbake til main<a class="headerlink" href="#bytt-tilbake-til-main" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
-</pre></div>
-</div>
-</section>
-<section id="merge-branchen">
-<h3>6. Merge branchen<a class="headerlink" href="#merge-branchen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>feature-1
-</pre></div>
-</div>
-</section>
-<section id="se-commit-historikken">
-<h3>7. Se commit-historikken<a class="headerlink" href="#se-commit-historikken" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph
-</pre></div>
-</div>
-</section>
-<section id="oppgave">
-<h3>Oppgave<a class="headerlink" href="#oppgave" title="Permalink to this heading">#</a></h3>
-<p>Ta et skjermbilde av resultatet fra:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph
-</pre></div>
-</div>
+<p>Forklar resultatet.</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="del-2-push-og-pull">
-<h2>Del 2: Push og Pull<a class="headerlink" href="#del-2-push-og-pull" title="Permalink to this heading">#</a></h2>
-<section id="push-endringer-til-github">
-<h3>1. Push endringer til GitHub<a class="headerlink" href="#push-endringer-til-github" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+<section class="tex2jax_ignore mathjax_ignore" id="del-3-analyse-av-tidsserier">
+<h1>Del 3: Analyse av tidsserier<a class="headerlink" href="#del-3-analyse-av-tidsserier" title="Permalink to this heading">#</a></h1>
+<section id="oppgave-7">
+<h2>Oppgave 7<a class="headerlink" href="#oppgave-7" title="Permalink to this heading">#</a></h2>
+<p>Lag en ny kolonne:</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="p-text-netto">
+<h1>[
+P_{\text{netto}}<a class="headerlink" href="#p-text-netto" title="Permalink to this heading">#</a></h1>
+<section id="p-text-produksjon">
+<h2>P_{\text{produksjon}}<a class="headerlink" href="#p-text-produksjon" title="Permalink to this heading">#</a></h2>
+<p>P_{\text{forbruk}}
+]</p>
+<p>Eksempel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Netto"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">]</span>
+    <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="id1">
-<h3>2. Opprett en ny branch<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature-2
-</pre></div>
-</div>
-</section>
-<section id="gjor-en-ny-endring">
-<h3>3. Gjør en ny endring<a class="headerlink" href="#gjor-en-ny-endring" title="Permalink to this heading">#</a></h3>
-<p>Rediger en fil i repositoryet.</p>
-</section>
-<section id="commit-endringen">
-<h3>4. Commit endringen<a class="headerlink" href="#commit-endringen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"La til feature 2"</span>
-</pre></div>
-</div>
-</section>
-<section id="push-branchen-til-github">
-<h3>5. Push branchen til GitHub<a class="headerlink" href="#push-branchen-til-github" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature-2
-</pre></div>
-</div>
-</section>
-<section id="id2">
-<h3>6. Bytt tilbake til main<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
-</pre></div>
-</div>
-</section>
-<section id="hent-siste-versjon-fra-github">
-<h3>7. Hent siste versjon fra GitHub<a class="headerlink" href="#hent-siste-versjon-fra-github" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
-</pre></div>
-</div>
-</section>
 </section>
 <hr class="docutils" />
-<section id="del-3-simuler-to-utviklere">
-<h2>Del 3: Simuler to utviklere<a class="headerlink" href="#del-3-simuler-to-utviklere" title="Permalink to this heading">#</a></h2>
-<p>Denne delen gjennomføres i grupper på to studenter.</p>
-<p>Begge studentene kloner samme repository.</p>
-<section id="student-a">
-<h3>Student A<a class="headerlink" href="#student-a" title="Permalink to this heading">#</a></h3>
-<p>Legg til en linje i filen <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code>:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lagt til av Student A
-</pre></div>
-</div>
-<p>Deretter:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppdatering fra Student A"</span>
-git<span class="w"> </span>push
-</pre></div>
-</div>
-</section>
-<section id="student-b">
-<h3>Student B<a class="headerlink" href="#student-b" title="Permalink to this heading">#</a></h3>
-<p>Legg til en annen linje i samme fil:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lagt til av Student B
-</pre></div>
-</div>
-<p>Deretter:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppdatering fra Student B"</span>
-</pre></div>
-</div>
-<p>Prøv å hente siste versjon:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
-</pre></div>
-</div>
-<p>Dersom Git rapporterer en konflikt, må konflikten løses før arbeidet kan fortsette.</p>
-<p>Når konflikten er løst:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit
-git<span class="w"> </span>push
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="del-4-pull-request-pa-github">
-<h2>Del 4: Pull Request på GitHub<a class="headerlink" href="#del-4-pull-request-pa-github" title="Permalink to this heading">#</a></h2>
-<section id="id3">
-<h3>1. Opprett en ny branch<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>min-feature
-</pre></div>
-</div>
-</section>
-<section id="gjor-en-endring-og-commit-den">
-<h3>2. Gjør en endring og commit den<a class="headerlink" href="#gjor-en-endring-og-commit-den" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Lagde min feature"</span>
-</pre></div>
-</div>
-</section>
-<section id="push-branchen">
-<h3>3. Push branchen<a class="headerlink" href="#push-branchen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>min-feature
-</pre></div>
-</div>
-</section>
-<section id="opprett-en-pull-request">
-<h3>4. Opprett en Pull Request<a class="headerlink" href="#opprett-en-pull-request" title="Permalink to this heading">#</a></h3>
-<p>Gå til GitHub og opprett en Pull Request fra <code class="docutils literal notranslate"><span class="pre">min-feature</span></code> til <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
-</section>
-<section id="merge-pull-requesten">
-<h3>5. Merge Pull Requesten<a class="headerlink" href="#merge-pull-requesten" title="Permalink to this heading">#</a></h3>
-<p>Gjennomfør merge på GitHub.</p>
-</section>
-<section id="oppdater-ditt-lokale-repository">
-<h3>6. Oppdater ditt lokale repository<a class="headerlink" href="#oppdater-ditt-lokale-repository" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
-git<span class="w"> </span>pull
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="levering">
-<h2>Levering<a class="headerlink" href="#levering" title="Permalink to this heading">#</a></h2>
-<p>For å få godkjent øvingen skal du:</p>
-<ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Opprette minst to brancher</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Gjøre minst to commits</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Push’e endringer til GitHub</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Pull’e endringer fra GitHub</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Merge en branch inn i <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Opprette og merge en Pull Request</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Dokumentere resultatet med skjermbilder av relevante Git-kommandoer og GitHub-aktiviteter</p></li>
+<section id="oppgave-8">
+<h2>Oppgave 8<a class="headerlink" href="#oppgave-8" title="Permalink to this heading">#</a></h2>
+<p>Finn:</p>
+<ul class="simple">
+<li><p>maksimal produksjon</p></li>
+<li><p>minimal produksjon</p></li>
+<li><p>gjennomsnittlig produksjon</p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="refleksjonssporsmal">
-<h2>Refleksjonsspørsmål<a class="headerlink" href="#refleksjonssporsmal" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Hva er forskjellen mellom <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> og <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>?</p></li>
-<li><p>Hvorfor bruker man brancher i programvareutvikling?</p></li>
-<li><p>Hva er fordelen med Pull Requests?</p></li>
-<li><p>Hva er en merge-konflikt, og hvordan løses den?</p></li>
-<li><p>Hvordan bidrar Git og GitHub til samarbeid mellom utviklere?</p></li>
+<section id="oppgave-9">
+<h2>Oppgave 9<a class="headerlink" href="#oppgave-9" title="Permalink to this heading">#</a></h2>
+<p>Finn:</p>
+<ul class="simple">
+<li><p>maksimal nettoeffekt</p></li>
+<li><p>minimal nettoeffekt</p></li>
+</ul>
+<p>Når inntreffer disse verdiene?</p>
+</section>
+<hr class="docutils" />
+<section id="oppgave-10">
+<h2>Oppgave 10<a class="headerlink" href="#oppgave-10" title="Permalink to this heading">#</a></h2>
+<p>Beregn total produksjon:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Hva representerer resultatet?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="del-4-visualisering">
+<h1>Del 4: Visualisering<a class="headerlink" href="#del-4-visualisering" title="Permalink to this heading">#</a></h1>
+<section id="oppgave-11">
+<h2>Oppgave 11<a class="headerlink" href="#oppgave-11" title="Permalink to this heading">#</a></h2>
+<p>Lag en graf som viser:</p>
+<ul class="simple">
+<li><p>produksjon</p></li>
+<li><p>forbruk</p></li>
+</ul>
+<p>som funksjon av tid.</p>
+<p>Eksempel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">,</span> <span class="s2">"Consumption"</span><span class="p">],</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Krav:</p>
+<ul class="simple">
+<li><p>tittel</p></li>
+<li><p>aksetitler</p></li>
+<li><p>rutenett</p></li>
+<li><p>forklaringsboks</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="oppgave-12">
+<h2>Oppgave 12<a class="headerlink" href="#oppgave-12" title="Permalink to this heading">#</a></h2>
+<p>Lag en ny graf som viser:</p>
+<ul class="simple">
+<li><p>produksjon</p></li>
+<li><p>forbruk</p></li>
+<li><p>nettoeffekt</p></li>
+</ul>
+<p>i samme figur.</p>
+</section>
+<hr class="docutils" />
+<section id="oppgave-13">
+<h2>Oppgave 13<a class="headerlink" href="#oppgave-13" title="Permalink to this heading">#</a></h2>
+<p>Beskriv grafene.</p>
+<ul class="simple">
+<li><p>Når er produksjonen høyest?</p></li>
+<li><p>Når er forbruket høyest?</p></li>
+<li><p>Har produksjon og forbruk samme mønster?</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="del-5-kart-og-standardtid">
+<h1>Del 5: Kart og standardtid<a class="headerlink" href="#del-5-kart-og-standardtid" title="Permalink to this heading">#</a></h1>
+<p>Bruk kartet som viser:</p>
+<ul class="simple">
+<li><p>Cardiff Mean Time</p></li>
+<li><p>Bristol Mean Time</p></li>
+<li><p>Greenwich Mean Time</p></li>
+</ul>
+<p>med vertikale meridianer.</p>
+<section id="oppgave-14">
+<h2>Oppgave 14<a class="headerlink" href="#oppgave-14" title="Permalink to this heading">#</a></h2>
+<p>Forklar hvordan lengdegradene henger sammen med tidsforskjellen mellom:</p>
+<ul class="simple">
+<li><p>Cardiff og Greenwich</p></li>
+<li><p>Bristol og Greenwich</p></li>
+</ul>
+<p>Bruk beregninger.</p>
+</section>
+<hr class="docutils" />
+<section id="oppgave-15">
+<h2>Oppgave 15<a class="headerlink" href="#oppgave-15" title="Permalink to this heading">#</a></h2>
+<p>Når klokken er 12:00 i Greenwich:</p>
+<ul class="simple">
+<li><p>Hva er lokal tid i Bristol?</p></li>
+<li><p>Hva er lokal tid i Cardiff?</p></li>
+</ul>
+<p>Vis utregning.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="del-6-git">
+<h1>Del 6: Git<a class="headerlink" href="#del-6-git" title="Permalink to this heading">#</a></h1>
+<p>Arbeidet skal dokumenteres med Git.</p>
+<p>Opprett minst fem commits underveis.</p>
+<p>Forslag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppgave 1: lengdegrader"</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppgave 2: DatetimeIndex"</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppgave 3: tidsserieanalyse"</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppgave 4: visualisering"</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Oppgave 5: rapport"</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="oppgave-16">
+<h2>Oppgave 16<a class="headerlink" href="#oppgave-16" title="Permalink to this heading">#</a></h2>
+<p>Vis commit-historikken:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</pre></div>
+</div>
+<p>Eksempel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>3f2d1c4 Oppgave 5: rapport
+92ab0d1 Oppgave 4: visualisering
+5de2fa8 Oppgave 3: tidsserieanalyse
+f7d183a Oppgave 2: DatetimeIndex
+c8af001 Oppgave 1: lengdegrader
+</pre></div>
+</div>
+<p>Ta et skjermbilde av terminalen.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="leveranse">
+<h1>Leveranse<a class="headerlink" href="#leveranse" title="Permalink to this heading">#</a></h1>
+<p>Lever én PDF-fil som inneholder:</p>
+<ol class="arabic">
+<li><p>Besvarelse av alle oppgaver.</p></li>
+<li><p>Python-kode.</p></li>
+<li><p>Tabeller.</p></li>
+<li><p>Grafer.</p></li>
+<li><p>Kart.</p></li>
+<li><p>Skjermbilde av</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</pre></div>
+</div>
+</li>
+<li><p>En refleksjon på omtrent en halv side:</p>
+<ul class="simple">
+<li><p>Hva lærte du om tidsserier?</p></li>
+<li><p>Hva lærte du om Git?</p></li>
+<li><p>Hvorfor ble Greenwich Mean Time nødvendig?</p></li>
+</ul>
+</li>
 </ol>
+<section id="filnavn">
+<h2>Filnavn<a class="headerlink" href="#filnavn" title="Permalink to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>etternavn_fornavn_oving_standardtid.pdf
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -723,45 +878,55 @@ git<span class="w"> </span>pull
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Øving 4: Fra lengdegrad til standardtid</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-opprette-en-branch-og-merge-den">Del 1: Opprette en branch og merge den</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klon-repositoryet">1. Klon repositoryet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-ny-branch">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring">3. Gjør en endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagre-endringen-som-en-commit">4. Lagre endringen som en commit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bytt-tilbake-til-main">5. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-branchen">6. Merge branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#se-commit-historikken">7. Se commit-historikken</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-push-og-pull">Del 2: Push og Pull</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-endringer-til-github">1. Push endringer til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-ny-endring">3. Gjør en ny endring</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-endringen">4. Commit endringen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen-til-github">5. Push branchen til GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6. Bytt tilbake til main</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hent-siste-versjon-fra-github">7. Hent siste versjon fra GitHub</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-lokal-tid-og-lengdegrad">Del 1: Lokal tid og lengdegrad</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1">Oppgave 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2">Oppgave 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3">Oppgave 3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-simuler-to-utviklere">Del 3: Simuler to utviklere</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-a">Student A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-b">Student B</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-opprette-en-tidsserie">Del 2: Opprette en tidsserie</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4">Oppgave 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5">Oppgave 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6">Oppgave 6</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-pull-request-pa-github">Del 4: Pull Request på GitHub</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. Opprett en ny branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjor-en-endring-og-commit-den">2. Gjør en endring og commit den</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push-branchen">3. Push branchen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opprett-en-pull-request">4. Opprett en Pull Request</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-pull-requesten">5. Merge Pull Requesten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-ditt-lokale-repository">6. Oppdater ditt lokale repository</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-analyse-av-tidsserier">Del 3: Analyse av tidsserier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7">Oppgave 7</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levering">Levering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-netto">[
+P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-produksjon">P_{\text{produksjon}}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8">Oppgave 8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9">Oppgave 9</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-10">Oppgave 10</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-visualisering">Del 4: Visualisering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-11">Oppgave 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-12">Oppgave 12</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-kart-og-standardtid">Del 5: Kart og standardtid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-15">Oppgave 15</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-6-git">Del 6: Git</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-16">Oppgave 16</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filnavn">Filnavn</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

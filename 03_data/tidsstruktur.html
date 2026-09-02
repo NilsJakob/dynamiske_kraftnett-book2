@@ -413,15 +413,22 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bruksomrade">Bruksområde</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geografisk-informasjonssystem-gis">Geografisk informasjonssystem (GIS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bruksvilkar">Bruksvilkår</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utlegning">Matematisk utlegning</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jernbanetid-railway-time">Jernbanetid (Railway time)</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lage-datetime">Lage Datetime</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iloc">.iloc</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loc">.loc</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
@@ -486,9 +493,52 @@ Time(Local)
 <p><span class="caption-number">Fig. 12 </span><span class="caption-text">Solur ved Areia Preta i Natal, Brasil. Foto: Patrick (2005), Wikimedia Commons, CC BY-SA 3.0.</span><a class="headerlink" href="#fig-solur" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="geografisk-informasjonssystem-gis">
+<h3>Geografisk informasjonssystem (GIS)<a class="headerlink" href="#geografisk-informasjonssystem-gis" title="Permalink to this heading">#</a></h3>
+<p>GeoPandas er et Python-bibliotek for geografiske data. Det bygger på Pandas, Shapely og GeoJSON/Geo-spatiale formater, og gjør det mulig å analysere og visualisere geografiske objekter som punkter, linjer og polygoner.</p>
+<p>GIS står for Geografisk informasjonssystem (på engelsk Geographic Information System).</p>
+<p>I koden under lastes en <code class="docutils literal notranslate"><span class="pre">geodataframe</span></code> ved hjelp av biblioteket <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> brukes til å plotte kart og figurer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">"https://naturalearth.s3.amazonaws.com/"</span>
+    <span class="s2">"110m_cultural/ne_110m_admin_0_countries.zip"</span>
+<span class="p">)</span>
+
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Kartet hentes fra en nettjenesten <a class="reference external" href="https://www.naturalearthdata.com/">NaturalEarth</a> som tilbyr gratis karttjenester, i både vektor og raster(piksel)-format, se <a class="reference internal" href="#fig-map"><span class="std std-numref">Fig. 13</span></a>, driftet frivillige på GitHub-repoet <a class="reference external" href="https://github.com/nvkelso/natural-earth-vector">natural-earth-vector</a>. Kartdataene ligger i <a class="reference external" href="https://creativecommons.org/publicdomain/">public domain</a>, som betyr at hvem som helst kan kopiere, bruke, endre, dele og bruke kommersiellt.</p>
+<figure class="align-center" id="fig-map">
+<a class="reference internal image-reference" href="../_images/NEV-Logo-color.png"><img alt="../_images/NEV-Logo-color.png" src="../_images/NEV-Logo-color.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Natural Earth Map</span><a class="headerlink" href="#fig-map" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+</div>
+</section>
+<section id="bruksvilkar">
+<h3><a class="reference external" href="https://www.naturalearthdata.com/about/terms-of-use/">Bruksvilkår</a><a class="headerlink" href="#bruksvilkar" title="Permalink to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Terms of Use
+Public Domain All versions of Natural Earth raster + vector map data found on this website are in the public domain. You may use the maps in any manner, including modifying the content and design, electronic dissemination, and offset printing. The primary authors, Tom Patterson and Nathaniel Vaughn Kelso, and all other contributors renounce all financial claim to the maps and invites you to use them for personal, educational, and commercial purposes.
+
+No permission is needed to use Natural Earth. Crediting the authors is unnecessary.
+
+However, if you wish to cite the map data, simply use one of the following.
+
+Short text:
+Made with Natural Earth.
+
+Long text:
+Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.
+</pre></div>
+</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/d318ff7714c18e77eb753bfae8d8974af56aeb196fe53e2263d9c3a5e3af7c17.png" src="../_images/d318ff7714c18e77eb753bfae8d8974af56aeb196fe53e2263d9c3a5e3af7c17.png" />
+<img alt="../_images/fb6bc11da7469f56aa6f65bb0a7fcc66428f8db2e4da4d06061304d56270c165.png" src="../_images/fb6bc11da7469f56aa6f65bb0a7fcc66428f8db2e4da4d06061304d56270c165.png" />
 </div>
 </div>
 <section id="matematisk-utlegning">
@@ -571,7 +621,7 @@ Time(Local)
 <figure class="align-default" id="fig-setesdalsbanen">
 <a class="reference internal image-reference" href="../_images/Setesdalsbanen_2022.jpg"><img alt="../_images/Setesdalsbanen_2022.jpg" src="../_images/Setesdalsbanen_2022.jpg" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Setesdalsbanen ved Grovane.</span><a class="headerlink" href="#fig-setesdalsbanen" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Setesdalsbanen ved Grovane.</span><a class="headerlink" href="#fig-setesdalsbanen" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p><em>Kilde:</em> Even Harbo, «Setesdalsbanen 2022.jpg», Wikimedia Commons, CC BY-SA 4.0.</p>
 </div>
@@ -579,13 +629,13 @@ Time(Local)
 </figure>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p>Som vist i {numref}fig-bradshaw-1840, ble rutetabeller allerede i 1840 publisert for lange jernbanestrekninger som knyttet sammen byer med ulike lokale soltider. Dette bidro til innføringen av standardisert jernbanetid basert på Greenwich Mean Time (GMT).</p>
+<p>Som vist i <a class="reference internal" href="#fig-bradshaw-1840"><span class="std std-numref">Fig. 15</span></a>, ble rutetabeller allerede i 1840 publisert for lange jernbanestrekninger som knyttet sammen byer med ulike lokale soltider. Dette bidro til innføringen av standardisert jernbanetid basert på Greenwich Mean Time (GMT).</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-center" id="fig-bradshaw-1840">
 <a class="reference internal image-reference" href="../_images/bradshaw_1840_timetable.png"><img alt="../_images/bradshaw_1840_timetable.png" src="../_images/bradshaw_1840_timetable.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Great Western Railway-rutetable fra Bradshaw’s Railway Companion (1840).</strong>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text"><strong>Great Western Railway-rutetable fra Bradshaw’s Railway Companion (1840).</strong>
 Tabellen viser avganger mellom London, Reading og andre stasjoner langs Great Western Railway, samt forbindelser mellom Bristol og Bath. På denne tiden gikk britiske jernbaneselskaper gradvis over fra lokale soltider til standardisert «London Time» (Greenwich Mean Time, GMT) for å unngå forvirring i rutetabellene. Kilde: Bradshaw (1840).</span><a class="headerlink" href="#fig-bradshaw-1840" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -593,9 +643,13 @@ Tabellen viser avganger mellom London, Reading og andre stasjoner langs Great We
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/c717f89be0d8700d4bec47734219149198c168d32f4cfc4f957edc03823e3bff.png" src="../_images/c717f89be0d8700d4bec47734219149198c168d32f4cfc4f957edc03823e3bff.png" />
+<img alt="../_images/014e2a78406786ec1af9c9c561f9734e7bb9f39235134f402b05b742847fd7a6.png" src="../_images/014e2a78406786ec1af9c9c561f9734e7bb9f39235134f402b05b742847fd7a6.png" />
 </div>
 </div>
+</section>
+</section>
+<section id="lage-datetime">
+<h3>Lage Datetime<a class="headerlink" href="#lage-datetime" title="Permalink to this heading">#</a></h3>
 <p>I cellen under kaller vi på importerer vi datetime, timezone, fra datetme som er et begrep og en klasse i Python som brukes til å representere dato og tidspunkt</p>
 <p>Den inneholder:</p>
 <ul class="simple">
@@ -694,7 +748,6 @@ Tabellen viser avganger mellom London, Reading og andre stasjoner langs Great We
 </div>
 </section>
 </section>
-</section>
 <section id="hva-er-en-tidsserie">
 <h2>Hva er en tidsserie?<a class="headerlink" href="#hva-er-en-tidsserie" title="Permalink to this heading">#</a></h2>
 <p>I kraftsystemer jobber vi ofte med tidsserier:
@@ -719,6 +772,307 @@ Men DatetimeIndex gir deg tidsforståelse innebygd, som betyr at du kan hente ut
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/load_data.csv"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time(Local)</th>
+      <th>Production</th>
+      <th>Consumption</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01.01.2026 00:00:00 +01:00</td>
+      <td>18448,59</td>
+      <td>16662,95</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01.01.2026 01:00:00 +01:00</td>
+      <td>18693,66</td>
+      <td>14953,24</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01.01.2026 02:00:00 +01:00</td>
+      <td>18639,68</td>
+      <td>14298,07</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01.01.2026 03:00:00 +01:00</td>
+      <td>18502,66</td>
+      <td>13254,81</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01.01.2026 04:00:00 +01:00</td>
+      <td>18458,45</td>
+      <td>12678,51</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="iloc">
+<h4>.iloc<a class="headerlink" href="#iloc" title="Permalink to this heading">#</a></h4>
+<p>.iloc() metoden i pandas gjør det mulig å hente ut data basert på indeksnummer [rad,kolonne]</p>
+<p>Kolontegn betyr alle; slik at [:,1] er alle rader i kolonne 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)
+2026-01-01 00:00:00+01:00    16662,95
+2026-01-01 01:00:00+01:00    14953,24
+2026-01-01 02:00:00+01:00    14298,07
+2026-01-01 03:00:00+01:00    13254,81
+2026-01-01 04:00:00+01:00    12678,51
+                               ...   
+2026-05-20 19:00:00+02:00    19331,51
+2026-05-20 20:00:00+02:00    20096,14
+2026-05-20 21:00:00+02:00    19944,19
+2026-05-20 22:00:00+02:00    19368,15
+2026-05-20 23:00:00+02:00    18385,77
+Name: Consumption, Length: 3359, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>[2,:] er alle kolonner i rad 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Production     18639,68
+Consumption    14298,07
+Name: 2026-01-01 02:00:00+01:00, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="loc">
+<h3>.loc<a class="headerlink" href="#loc" title="Permalink to this heading">#</a></h3>
+<p>Den virkelige kraften til datetimeindex kommer med .loc-metoden.</p>
+<p>Vi kan hente ut hele datoer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2026-01-01"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>henter ut alle verdiene fra 1. januar 2026</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2026-01-01"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Production</th>
+      <th>Consumption</th>
+    </tr>
+    <tr>
+      <th>Time(Local)</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2026-01-01 00:00:00+01:00</th>
+      <td>18448,59</td>
+      <td>16662,95</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 01:00:00+01:00</th>
+      <td>18693,66</td>
+      <td>14953,24</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 02:00:00+01:00</th>
+      <td>18639,68</td>
+      <td>14298,07</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 03:00:00+01:00</th>
+      <td>18502,66</td>
+      <td>13254,81</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 04:00:00+01:00</th>
+      <td>18458,45</td>
+      <td>12678,51</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 05:00:00+01:00</th>
+      <td>18636,48</td>
+      <td>12706,47</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 06:00:00+01:00</th>
+      <td>18964,77</td>
+      <td>12967,66</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 07:00:00+01:00</th>
+      <td>19279,57</td>
+      <td>13289,36</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 08:00:00+01:00</th>
+      <td>19537,61</td>
+      <td>13593,11</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 09:00:00+01:00</th>
+      <td>19791,62</td>
+      <td>14009,36</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 10:00:00+01:00</th>
+      <td>20104,39</td>
+      <td>14417,61</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 11:00:00+01:00</th>
+      <td>20289,26</td>
+      <td>15096,71</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 12:00:00+01:00</th>
+      <td>20459,43</td>
+      <td>15274,79</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 13:00:00+01:00</th>
+      <td>20591,93</td>
+      <td>15438,74</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 14:00:00+01:00</th>
+      <td>20787,06</td>
+      <td>15905,07</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 15:00:00+01:00</th>
+      <td>20698,00</td>
+      <td>16701,68</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 16:00:00+01:00</th>
+      <td>20571,68</td>
+      <td>17356,46</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 17:00:00+01:00</th>
+      <td>20492,96</td>
+      <td>17827,26</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 18:00:00+01:00</th>
+      <td>20309,06</td>
+      <td>18362,00</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 19:00:00+01:00</th>
+      <td>20184,06</td>
+      <td>18243,72</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 20:00:00+01:00</th>
+      <td>19956,19</td>
+      <td>18017,53</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 21:00:00+01:00</th>
+      <td>19718,43</td>
+      <td>17380,07</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 22:00:00+01:00</th>
+      <td>19623,18</td>
+      <td>16740,26</td>
+    </tr>
+    <tr>
+      <th>2026-01-01 23:00:00+01:00</th>
+      <td>19814,06</td>
+      <td>15974,65</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>eller perioder</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2026-01"</span><span class="p">:</span><span class="s2">"2026-03"</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2026-01"</span><span class="p">:</span><span class="s2">"2026-03"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Production Consumption
+Time(Local)                                     
+2026-01-01 00:00:00+01:00   18448,59    16662,95
+2026-01-01 01:00:00+01:00   18693,66    14953,24
+2026-01-01 02:00:00+01:00   18639,68    14298,07
+2026-01-01 03:00:00+01:00   18502,66    13254,81
+2026-01-01 04:00:00+01:00   18458,45    12678,51
+...                              ...         ...
+2026-03-31 19:00:00+02:00   16791,66    23472,70
+2026-03-31 20:00:00+02:00   16981,86    22945,78
+2026-03-31 21:00:00+02:00   16816,44    21933,62
+2026-03-31 22:00:00+02:00   16511,72    21234,99
+2026-03-31 23:00:00+02:00   16147,08    20762,10
+
+[2159 rows x 2 columns]
 </pre></div>
 </div>
 </div>
@@ -849,6 +1203,191 @@ Freq: D, Name: Consumption, dtype: float64
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">,</span> <span class="s2">"Consumption"</span><span class="p">],</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Produksjon og forbruk"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Tid"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Effekt [MW]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/76bee00b7d025298a658aa1e67e0f97e017ca5af2ee326a85ebdc2b52223a430.png" src="../_images/76bee00b7d025298a658aa1e67e0f97e017ca5af2ee326a85ebdc2b52223a430.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">"2026-01-01"</span><span class="p">,</span>
+    <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="s2">"h"</span><span class="p">,</span>
+    <span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Oslo"</span>
+<span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+
+<span class="p">{</span>
+
+<span class="s2">"Production"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">17000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)),</span>
+
+<span class="s2">"Consumption"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">14000</span><span class="p">,</span> <span class="mi">18000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)),</span>
+
+<span class="p">},</span>
+
+<span class="n">index</span><span class="o">=</span><span class="n">time</span>
+
+<span class="p">)</span>
+
+<span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Time(Local)"</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex(['2026-01-01 00:00:00+01:00', '2026-01-01 01:00:00+01:00',
+               '2026-01-01 02:00:00+01:00', '2026-01-01 03:00:00+01:00',
+               '2026-01-01 04:00:00+01:00', '2026-01-01 05:00:00+01:00',
+               '2026-01-01 06:00:00+01:00', '2026-01-01 07:00:00+01:00',
+               '2026-01-01 08:00:00+01:00', '2026-01-01 09:00:00+01:00',
+               '2026-01-01 10:00:00+01:00', '2026-01-01 11:00:00+01:00',
+               '2026-01-01 12:00:00+01:00', '2026-01-01 13:00:00+01:00',
+               '2026-01-01 14:00:00+01:00', '2026-01-01 15:00:00+01:00',
+               '2026-01-01 16:00:00+01:00', '2026-01-01 17:00:00+01:00',
+               '2026-01-01 18:00:00+01:00', '2026-01-01 19:00:00+01:00',
+               '2026-01-01 20:00:00+01:00', '2026-01-01 21:00:00+01:00',
+               '2026-01-01 22:00:00+01:00', '2026-01-01 23:00:00+01:00'],
+              dtype='datetime64[ns, Europe/Oslo]', name='Time(Local)', freq='h')
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                           Production  Consumption
+Time(Local)                                       
+2026-01-01 00:00:00+01:00       17860        17385
+2026-01-01 01:00:00+01:00       18294        14021
+2026-01-01 02:00:00+01:00       18130        16300
+2026-01-01 03:00:00+01:00       18095        14747
+2026-01-01 04:00:00+01:00       18638        16904
+2026-01-01 05:00:00+01:00       19169        17632
+2026-01-01 06:00:00+01:00       17466        14474
+2026-01-01 07:00:00+01:00       18238        15082
+2026-01-01 08:00:00+01:00       17330        16558
+2026-01-01 09:00:00+01:00       18482        17753
+2026-01-01 10:00:00+01:00       19135        16047
+2026-01-01 11:00:00+01:00       19919        17547
+2026-01-01 12:00:00+01:00       17130        16747
+2026-01-01 13:00:00+01:00       18685        14975
+2026-01-01 14:00:00+01:00       17769        15806
+2026-01-01 15:00:00+01:00       19391        14189
+2026-01-01 16:00:00+01:00       18515        17005
+2026-01-01 17:00:00+01:00       19853        16734
+2026-01-01 18:00:00+01:00       19433        17005
+2026-01-01 19:00:00+01:00       18215        14562
+2026-01-01 20:00:00+01:00       17955        15899
+2026-01-01 21:00:00+01:00       19324        17638
+2026-01-01 22:00:00+01:00       18184        15267
+2026-01-01 23:00:00+01:00       17459        16879
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">,</span> <span class="s2">"Consumption"</span><span class="p">],</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Produksjon og forbruk"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Tid"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Effekt [MW]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c7f54a684d34065c11bc069bba1909872b7b10200beb3ad8b30f70bef7f08f42.png" src="../_images/c7f54a684d34065c11bc069bba1909872b7b10200beb3ad8b30f70bef7f08f42.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+
+<span class="n">aproduction</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">18500</span>
+    <span class="o">+</span> <span class="mi">800</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">hours</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">aconsumption</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">15000</span>
+    <span class="o">+</span> <span class="mi">2500</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">hours</span> <span class="o">-</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"Production"</span><span class="p">:</span> <span class="n">aproduction</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+        <span class="s2">"Consumption"</span><span class="p">:</span> <span class="n">aconsumption</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">time</span>
+<span class="p">)</span>
+
+<span class="n">df2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Time(Local)"</span>
+
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">,</span> <span class="s2">"Consumption"</span><span class="p">],</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Produksjon og forbruk"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Tid"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Effekt [MW]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/808df31bb8f11e4a007f2397568d780444da6b698d4c9c3e06b7962d42c457da.png" src="../_images/808df31bb8f11e4a007f2397568d780444da6b698d4c9c3e06b7962d42c457da.png" />
+</div>
+</div>
 </section>
 <section id="motivasjon">
 <h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h2>
@@ -936,15 +1475,22 @@ analysere dynamikk (swing equation)</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bruksomrade">Bruksområde</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internasjonal-standard">Internasjonal standard</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behov-for-tidsstandard">Behov for tidsstandard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geografisk-informasjonssystem-gis">Geografisk informasjonssystem (GIS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bruksvilkar">Bruksvilkår</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matematisk-utlegning">Matematisk utlegning</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jernbanetid-railway-time">Jernbanetid (Railway time)</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lage-datetime">Lage Datetime</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-tidsserie">Hva er en tidsserie?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-datetimeindex">Viktig: DatetimeIndex</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iloc">.iloc</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loc">.loc</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-konverter-til-tall">FIX (konverter til tall)</a></li>
