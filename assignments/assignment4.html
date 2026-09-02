@@ -65,9 +65,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/assignment4';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Under utvikling" href="../04_reprdag/under_utvikling.html" />
+    <link rel="prev" title="Tidsstruktur" href="../03_data/tidsstruktur.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -129,8 +133,6 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -196,11 +198,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 4: Fra lengdegrad til standardtid</a></li>
+
+
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
 <ul class="nav bd-sidenav">
@@ -443,11 +453,6 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-kart-og-standardtid">Del 5: Kart og standardtid</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-15">Oppgave 15</a></li>
-</ul>
-</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-6-git">Del 6: Git</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-16">Oppgave 16</a></li>
 </ul>
@@ -516,26 +521,30 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 <section id="oppgave-1">
 <h2>Oppgave 1<a class="headerlink" href="#oppgave-1" title="Permalink to this heading">#</a></h2>
 <p>Vis matematisk at</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 1^\circ \approx 4 \text{ minutter}.
-]</p>
+\]</div>
 <p>Tips:</p>
 <p>Jorden roterer</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 360^\circ
-]</p>
+\]</div>
 <p>på</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 24 \text{ timer}.
-]</p>
+\]</div>
 </section>
 <hr class="docutils" />
 <section id="oppgave-2">
 <h2>Oppgave 2<a class="headerlink" href="#oppgave-2" title="Permalink to this heading">#</a></h2>
 <p>Bruk formelen</p>
-<p>[
-\Delta t = 4,\Delta\lambda
-]</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta t = 4\,\Delta\lambda
+\]</div>
 <p>til å beregne tidsforskjellen mellom Greenwich og de øvrige byene.</p>
 <p>Presenter resultatet i en tabell.</p>
 <p>Eksempel:</p>
@@ -563,49 +572,17 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 <section id="oppgave-3">
 <h2>Oppgave 3<a class="headerlink" href="#oppgave-3" title="Permalink to this heading">#</a></h2>
 <p>Forklar med egne ord hvorfor ulike lokale tider kunne skape problemer for jernbanene.</p>
-<p>Svar med 100–200 ord.</p>
+<p>Svar med 50-100 ord.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="del-2-opprette-en-tidsserie">
 <h1>Del 2: Opprette en tidsserie<a class="headerlink" href="#del-2-opprette-en-tidsserie" title="Permalink to this heading">#</a></h1>
-<p>Opprett følgende datasett.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="n">time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
-    <span class="n">start</span><span class="o">=</span><span class="s2">"2026-01-01"</span><span class="p">,</span>
-    <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
-    <span class="n">freq</span><span class="o">=</span><span class="s2">"H"</span><span class="p">,</span>
-    <span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Oslo"</span>
-<span class="p">)</span>
-
-<span class="n">hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
-
-<span class="n">production</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="mi">18500</span>
-    <span class="o">+</span> <span class="mi">800</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">hours</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
-    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">consumption</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="mi">15000</span>
-    <span class="o">+</span> <span class="mi">2500</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">hours</span> <span class="o">-</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
-    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">"Production"</span><span class="p">:</span> <span class="n">production</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-        <span class="s2">"Consumption"</span><span class="p">:</span> <span class="n">consumption</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-    <span class="p">},</span>
-    <span class="n">index</span><span class="o">=</span><span class="n">time</span>
-<span class="p">)</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Time(Local)"</span>
-</pre></div>
-</div>
-<hr class="docutils" />
+<ul class="simple">
+<li><p>last ned <a class="reference external" href="https://raw.githubusercontent.com/NilsJakob/dynamiske_kraftnett-book2/refs/heads/main/data/load_data.csv">load_data.csv</a></p></li>
+<li><p>undersøk filen</p></li>
+<li><p>bruk riktig parameter til parse_dates=[] for å oprette tidsserie med DateTimeIndex</p></li>
+</ul>
 <section id="oppgave-4">
 <h2>Oppgave 4<a class="headerlink" href="#oppgave-4" title="Permalink to this heading">#</a></h2>
 <p>Skriv ut de fem første radene:</p>
@@ -637,9 +614,11 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 </pre></div>
 </div>
 <p>Forklar resultatet.</p>
-</section>
-</section>
 <hr class="docutils" />
+<p>Bruk .loc til å velge ut en lastprofil for et døgn (24 timer) fra midnatt til midnatt.</p>
+<p>plot profilen i matplotlib</p>
+</section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="del-3-analyse-av-tidsserier">
 <h1>Del 3: Analyse av tidsserier<a class="headerlink" href="#del-3-analyse-av-tidsserier" title="Permalink to this heading">#</a></h1>
 <section id="oppgave-7">
@@ -741,36 +720,6 @@ P_{\text{netto}}<a class="headerlink" href="#p-text-netto" title="Permalink to t
 </section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="del-5-kart-og-standardtid">
-<h1>Del 5: Kart og standardtid<a class="headerlink" href="#del-5-kart-og-standardtid" title="Permalink to this heading">#</a></h1>
-<p>Bruk kartet som viser:</p>
-<ul class="simple">
-<li><p>Cardiff Mean Time</p></li>
-<li><p>Bristol Mean Time</p></li>
-<li><p>Greenwich Mean Time</p></li>
-</ul>
-<p>med vertikale meridianer.</p>
-<section id="oppgave-14">
-<h2>Oppgave 14<a class="headerlink" href="#oppgave-14" title="Permalink to this heading">#</a></h2>
-<p>Forklar hvordan lengdegradene henger sammen med tidsforskjellen mellom:</p>
-<ul class="simple">
-<li><p>Cardiff og Greenwich</p></li>
-<li><p>Bristol og Greenwich</p></li>
-</ul>
-<p>Bruk beregninger.</p>
-</section>
-<hr class="docutils" />
-<section id="oppgave-15">
-<h2>Oppgave 15<a class="headerlink" href="#oppgave-15" title="Permalink to this heading">#</a></h2>
-<p>Når klokken er 12:00 i Greenwich:</p>
-<ul class="simple">
-<li><p>Hva er lokal tid i Bristol?</p></li>
-<li><p>Hva er lokal tid i Cardiff?</p></li>
-</ul>
-<p>Vis utregning.</p>
-</section>
-</section>
-<hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="del-6-git">
 <h1>Del 6: Git<a class="headerlink" href="#del-6-git" title="Permalink to this heading">#</a></h1>
 <p>Arbeidet skal dokumenteres med Git.</p>
@@ -810,7 +759,6 @@ c8af001 Oppgave 1: lengdegrader
 <li><p>Python-kode.</p></li>
 <li><p>Tabeller.</p></li>
 <li><p>Grafer.</p></li>
-<li><p>Kart.</p></li>
 <li><p>Skjermbilde av</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
 </pre></div>
@@ -826,7 +774,7 @@ c8af001 Oppgave 1: lengdegrader
 </ol>
 <section id="filnavn">
 <h2>Filnavn<a class="headerlink" href="#filnavn" title="Permalink to this heading">#</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>etternavn_fornavn_oving_standardtid.pdf
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>øving4.pdf
 </pre></div>
 </div>
 </section>
@@ -862,6 +810,24 @@ c8af001 Oppgave 1: lengdegrader
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../03_data/tidsstruktur.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tidsstruktur</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../04_reprdag/under_utvikling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Under utvikling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -910,11 +876,6 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-11">Oppgave 11</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-12">Oppgave 12</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-kart-og-standardtid">Del 5: Kart og standardtid</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-15">Oppgave 15</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-6-git">Del 6: Git</a><ul class="visible nav section-nav flex-column">
