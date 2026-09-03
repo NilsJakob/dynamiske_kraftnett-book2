@@ -1174,6 +1174,48 @@ Freq: D, Name: Consumption, dtype: float64
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analyse</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"ME"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">analyse</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)
+2025-12-31 00:00:00+00:00    16662.950000
+2026-01-31 00:00:00+00:00    23831.608185
+2026-02-28 00:00:00+00:00    20055.223557
+2026-03-31 00:00:00+00:00    16608.114866
+2026-04-30 00:00:00+00:00    14597.928236
+Freq: ME, Name: Consumption, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analyse</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"ME"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+<span class="n">analyse</span><span class="p">[</span><span class="s1">'Month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">analyse</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month_name</span><span class="p">(</span><span class="n">locale</span><span class="o">=</span><span class="s1">'nb_NO.UTF-8'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">analyse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            Consumption     Month
+Time(Local)                                      
+2025-12-31 00:00:00+00:00  16662.950000  Desember
+2026-01-31 00:00:00+00:00  23831.608185    Januar
+2026-02-28 00:00:00+00:00  20055.223557   Februar
+2026-03-31 00:00:00+00:00  16608.114866      Mars
+2026-04-30 00:00:00+00:00  14597.928236     April
+2026-05-31 00:00:00+00:00  14706.824749       Mai
+</pre></div>
+</div>
+</div>
+</div>
 <section id="plotte-i-python">
 <h3>Plotte i python<a class="headerlink" href="#plotte-i-python" title="Permalink to this heading">#</a></h3>
 <p>uten 1D</p>
@@ -1200,45 +1242,7 @@ Freq: D, Name: Consumption, dtype: float64
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST CELL</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">,</span> <span class="s2">"Consumption"</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Produksjon og forbruk"</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Tid"</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\plotting\_core.py:1030,</span> in <span class="ni">PlotAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1027</span>             <span class="n">label_name</span> <span class="o">=</span> <span class="n">label_kw</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span>
-<span class="g g-Whitespace">   </span><span class="mi">1028</span>             <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">label_name</span>
-<span class="ne">-&gt; </span><span class="mi">1030</span> <span class="k">return</span> <span class="n">plot_backend</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\plotting\_matplotlib\__init__.py:71,</span> in <span class="ni">plot</span><span class="nt">(data, kind, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span>         <span class="n">kwargs</span><span class="p">[</span><span class="s2">"ax"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="s2">"left_ax"</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">plot_obj</span> <span class="o">=</span> <span class="n">PLOT_CLASSES</span><span class="p">[</span><span class="n">kind</span><span class="p">](</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">71</span> <span class="n">plot_obj</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="n">plot_obj</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">return</span> <span class="n">plot_obj</span><span class="o">.</span><span class="n">result</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\plotting\_matplotlib\core.py:499,</span> in <span class="ni">MPLPlot.generate</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span> <span class="nd">@final</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">499</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_compute_plot_data</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="n">fig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_make_plot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\plotting\_matplotlib\core.py:698,</span> in <span class="ni">MPLPlot._compute_plot_data</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="c1"># no non-numeric frames or series allowed</span>
-<span class="g g-Whitespace">    </span><span class="mi">697</span> <span class="k">if</span> <span class="n">is_empty</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">698</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"no numeric data to plot"</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">numeric_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_convert_to_ndarray</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: no numeric data to plot
-</pre></div>
-</div>
+<img alt="../_images/32010631738f639e1abbcb63bd541c7fa01c7eb26f5575c7e2d35952a1c55bcf.png" src="../_images/32010631738f639e1abbcb63bd541c7fa01c7eb26f5575c7e2d35952a1c55bcf.png" />
 </div>
 </div>
 </section>
