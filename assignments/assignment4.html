@@ -210,7 +210,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
 <ul class="nav bd-sidenav">
@@ -437,11 +436,6 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-analyse-av-tidsserier">Del 3: Analyse av tidsserier</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7">Oppgave 7</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-netto">[
-P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-produksjon">P_{\text{produksjon}}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8">Oppgave 8</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9">Oppgave 9</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-10">Oppgave 10</a></li>
@@ -450,7 +444,7 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-visualisering">Del 4: Visualisering</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-11">Oppgave 11</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-12">Oppgave 12</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-6-git">Del 6: Git</a><ul class="visible nav section-nav flex-column">
@@ -624,15 +618,14 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 <section id="oppgave-7">
 <h2>Oppgave 7<a class="headerlink" href="#oppgave-7" title="Permalink to this heading">#</a></h2>
 <p>Lag en ny kolonne:</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="p-text-netto">
-<h1>[
-P_{\text{netto}}<a class="headerlink" href="#p-text-netto" title="Permalink to this heading">#</a></h1>
-<section id="p-text-produksjon">
-<h2>P_{\text{produksjon}}<a class="headerlink" href="#p-text-produksjon" title="Permalink to this heading">#</a></h2>
-<p>P_{\text{forbruk}}
-]</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\text{netto}}
+=
+P_{\text{produksjon}}
+-
+P_{\text{forbruk}}
+\]</div>
 <p>Eksempel:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Netto"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">"Production"</span><span class="p">]</span>
@@ -709,8 +702,8 @@ P_{\text{netto}}<a class="headerlink" href="#p-text-netto" title="Permalink to t
 <p>i samme figur.</p>
 </section>
 <hr class="docutils" />
-<section id="oppgave-13">
-<h2>Oppgave 13<a class="headerlink" href="#oppgave-13" title="Permalink to this heading">#</a></h2>
+<section id="oppgave-14">
+<h2>Oppgave 14<a class="headerlink" href="#oppgave-14" title="Permalink to this heading">#</a></h2>
 <p>Beskriv grafene.</p>
 <ul class="simple">
 <li><p>Når er produksjonen høyest?</p></li>
@@ -862,11 +855,6 @@ c8af001 Oppgave 1: lengdegrader
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-analyse-av-tidsserier">Del 3: Analyse av tidsserier</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7">Oppgave 7</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-netto">[
-P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-text-produksjon">P_{\text{produksjon}}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8">Oppgave 8</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9">Oppgave 9</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-10">Oppgave 10</a></li>
@@ -875,7 +863,7 @@ P_{\text{netto}}</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-visualisering">Del 4: Visualisering</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-11">Oppgave 11</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-12">Oppgave 12</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-6-git">Del 6: Git</a><ul class="visible nav section-nav flex-column">
