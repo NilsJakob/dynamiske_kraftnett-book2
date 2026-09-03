@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Tallbehandling i pandas &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/ELK330Lecture4';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: Fra lengdegrad til standardtid</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/under_utvikling.html">Under utvikling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2FLectures/ELK330Lecture4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Lectures/ELK330Lecture4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tallbehandling i pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallbehandling i pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akser-rader-og-kolonner">Akser - rader og kolonner</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utfore-addisjon">Utføre addisjon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kolonner-df-columns">Kolonner df.columns()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drop">drop()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sum">.sum()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selektivt">Selektivt</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tallbehandling-i-pandas">
+<h1>Tallbehandling i pandas<a class="headerlink" href="#tallbehandling-i-pandas" title="Permalink to this heading">#</a></h1>
+<p>Pandas er et bibliotek i Python som brukes til å jobbe med data.</p>
+<ul class="simple">
+<li><p>Pandas er et sentralt verktøy for dataanalyse.</p></li>
+<li><p>NumPy brukes for numeriske beregninger.</p></li>
+<li><p>Pandas og numpy er noen av de mest brukte python-bibliotekene innen datavitenskap. Pandas er tilrettelagt for vektoriserte beregninger og åpner for flere muligheter for databehandling enn de grunneggende datatypene array og lister. Datastrukturen er et regneark med read-indekser og kolonnenavn.</p></li>
+</ul>
+<p>Den viktigste datastrukturen i pandas er <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, forkortet <code class="docutils literal notranslate"><span class="pre">df</span></code>, en tabell med rader og kolonner.</p>
+<p>En dataframe består av rader og kolonnenavn, i henholdsvis akser 0 og 1.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/7e8986a0ac96ebe71cba716b6364954414ea416c6e580982072fde4a11248757.png" src="../_images/7e8986a0ac96ebe71cba716b6364954414ea416c6e580982072fde4a11248757.png" />
+</div>
+</div>
+<section id="akser-rader-og-kolonner">
+<h2>Akser - rader og kolonner<a class="headerlink" href="#akser-rader-og-kolonner" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>axis</p></th>
+<th class="head"><p>indikerer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>axis=0</p></td>
+<td><p>rad</p></td>
+</tr>
+<tr class="row-odd"><td><p>axis=1</p></td>
+<td><p>kolonne</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="komponenter">
+<h1>Komponenter<a class="headerlink" href="#komponenter" title="Permalink to this heading">#</a></h1>
+<p>Foruten <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>, er en annen viktig komponent i pandas; <code class="docutils literal notranslate"><span class="pre">series</span></code>.</p>
+<p>En <code class="docutils literal notranslate"><span class="pre">series</span></code> er en kolonne, mens <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> er en tabell med flere kolonner (<code class="docutils literal notranslate"><span class="pre">series</span></code>).</p>
+<p>Eksemplet under er hentet fra <em>Python for realfag’s</em> ressursside <a class="reference external" href="https://techteach.no/python/files/prog_pandas_create_series_dataframe.py">techteach</a>.</p>
+<p>I dette eksemplet lages først to <code class="docutils literal notranslate"><span class="pre">Series</span></code> som danner en <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Creating Series:</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">9.1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'x-coor'</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y-coor'</span><span class="p">)</span>
+
+<span class="c1"># Creating DataFrame: </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'s1 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s1 =
+0    2.0
+1    3.5
+2    6.2
+3    9.1
+Name: x-coor, dtype: float64
+
+df =
+   x-coor  y-coor
+0     2.0    -1.0
+1     3.5     0.0
+2     6.2     3.3
+3     9.1     2.1
+</pre></div>
+</div>
+</div>
+</div>
+<p>I eksemplet over benyttes pandas funksjonen <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>, som betyr å konkatinere eller slå sammen. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code> slår sammen rader ved å definere rad-akse (<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>), eller kolonne-akse (<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>)  og returnere et Dataframe-objekt.</p>
+<p>Eksemplet printer også ut datatypene: <code class="docutils literal notranslate"><span class="pre">type()</span></code>:</p>
+<p>I eksemplet over benyttes pandas-funksjonen pd.concat(), som brukes til å konkatenere eller slå sammen flere Series- eller DataFrame-objekter. Sammenkoblingen kan gjøres langs radaksen (axis=0) eller kolonneaksen (axis=1). Resultatet er et nytt DataFrame-objekt.</p>
+<p>Eksemplet skriver også ut objekttypene ved hjelp av funksjonen type():</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'Data type of s1:'</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Data type of df:'</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data type of s1: &lt;class 'pandas.core.series.Series'&gt;
+Data type of df: &lt;class 'pandas.core.frame.DataFrame'&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi ser at s1 er et Series-objekt, mens df er et DataFrame-objekt.
+En Series representerer én dataserie (én kolonne).
+En DataFrame representerer en todimensjonal tabell med rader og kolonner.</p>
+<p>Merk at type() viser objekttypen (Series eller DataFrame), ikke datatypen til verdiene.
+For å undersøke datatypene i kolonnene brukes df.dtypes,
+som i dette eksemplet viser at alle kolonnene er av typen float64.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x-coor    float64
+y-coor    float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her ser du at alle tallene er lagret som float64, siden de inneholder desimaltall (2.0, 3.5, osv.). Dette er et godt eksempel på hvorfor datatyper er viktige i pandas: pandas vet at kolonnene inneholder numeriske verdier og kan derfor manipulere og utføre matematiske operasjoner som gjennomsnitt, sum, minimum og maksimum direkte.</p>
+<section id="manipulasjon-av-dataframe">
+<h2>Manipulasjon av dataframe<a class="headerlink" href="#manipulasjon-av-dataframe" title="Permalink to this heading">#</a></h2>
+<p>Vi velger ut noen viktige manipulasjoner vi kan gjøre på en <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> i eksempel 10.5 fra techteach videreført med samme tall fra forrige eksempel. Hele eksemplet finner du lenke til her: <a class="reference external" href="https://techteach.no/python/files/prog_datamanip_dataframe.py">10.5</a></p>
+<p>Utvalgte rader og kolonner med <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>.</p>
+<p>.iloc() metoden i pandas gjør det mulig å hente ut data basert på indeksnummer [rad,kolonne]</p>
+<p>Kolontegn betyr alle; slik at [:,1] er alle rader i kolonne 2.</p>
+<p>[0, 1] = kolonne nummer 0 og kolonne nummer 1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Select specific columns</span>
+<span class="c1"># (first column is 0, second is 1 etc.):</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df1 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+
+<span class="c1"># Select specific columns AND rows:</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df2 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df1 =
+   x-coor  y-coor
+0     2.0    -1.0
+1     3.5     0.0
+2     6.2     3.3
+3     9.1     2.1
+
+df2 =
+   x-coor  y-coor
+1     3.5     0.0
+2     6.2     3.3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="utfore-addisjon">
+<h3>Utføre addisjon<a class="headerlink" href="#utfore-addisjon" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>med + operator</p></li>
+</ul>
+<p>Tilegne operasjonen en ny kolonne i dataframe</p>
+<ul class="simple">
+<li><p>df[‘navn’] = operasjon</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Column x + column y is stored in new colunm named x+y:</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'x+y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'x-coor'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">'y-coor'</span><span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">"df['x+y'] ="</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df['x+y'] =
+   x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     3.5     0.0   3.5
+2     6.2     3.3   9.5
+3     9.1     2.1  11.2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="kolonner-df-columns">
+<h2>Kolonner df.columns()<a class="headerlink" href="#kolonner-df-columns" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Index: Pandas sin spesielle datatype for rad- eller kolonneetiketter.</p></li>
+<li><p>[‘x-coor’, ‘y-coor’, ‘x+y’]: navnene på kolonnene.</p></li>
+<li><p>dtype=’object’: elementene er tekststrenger (strings).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['x-coor', 'y-coor', 'x+y'], dtype='object')
+</pre></div>
+</div>
+</div>
+</div>
+<p>Skrive kolonnenavn som liste:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['x-coor', 'y-coor', 'x+y']
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="drop">
+<h2>drop()<a class="headerlink" href="#drop" title="Permalink to this heading">#</a></h2>
+<p>Når vi bruker funksjon på et objekt som en <code class="docutils literal notranslate"><span class="pre">dateframe</span></code> eller <code class="docutils literal notranslate"><span class="pre">Series</span></code>, kaller vi det en metode.
+Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> til å fjerne utvalgte kolonner og rader.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete specific columns:</span>
+<span class="n">df3</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'x-coor'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df3 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+
+<span class="c1"># Delete spesific row:</span>
+<span class="n">df4</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df3 =
+   y-coor   x+y
+0    -1.0   1.0
+1     0.0   3.5
+2     3.3   9.5
+3     2.1  11.2
+
+df4 =
+   x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     3.5     0.0   3.5
+3     9.1     2.1  11.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Gjøre om til <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">array</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_from_df4</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'arr_from_df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">arr_from_df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arr_from_df4 =
+[[ 2.  -1.   1. ]
+ [ 3.5  0.   3.5]
+ [ 9.1  2.1 11.2]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mean">
+<h2>.mean()<a class="headerlink" href="#mean" title="Permalink to this heading">#</a></h2>
+<p>Gjennomsnitts-metoden på kolonner og rader:</p>
+<p>Kolonnevis gjennomsnitt (standard)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>er det samme som:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>axis=0 → beregning kolonnevis → legg resultatet som ny rad</p></li>
+<li><p>axis=1 → beregning radvis → legg resultatet som ny kolonne</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     3.5     0.0   3.5
+2     6.2     3.3   9.5
+3     9.1     2.1  11.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean column wise:</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'mean column-wise = </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="c1"># Calculate the mean row-wise:</span>
+<span class="n">mr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'mean row-wise =</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">mr</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean column-wise = 
+ x-coor    5.2
+y-coor    1.1
+x+y       6.3
+dtype: float64 
+
+mean row-wise =
+ 0    0.666667
+1    2.333333
+2    6.333333
+3    7.466667
+dtype: float64 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'x-coor'</span><span class="p">,</span> <span class="s1">'y-coor'</span><span class="p">,</span> <span class="s1">'x+y'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x-coor  y-coor      mean
+0     2.0    -1.0  0.666667
+1     3.5     0.0  2.333333
+2     6.2     3.3  6.333333
+3     9.1     2.1  7.466667
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sum">
+<h2>.sum()<a class="headerlink" href="#sum" title="Permalink to this heading">#</a></h2>
+<p>Summasjons-metode på kolonner og rader:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calulate the sum column-wise:</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sum column-wise ='</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="c1"># Calulate the sum row-wise:</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sum row-wise ='</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sum column-wise = x-coor    20.8
+y-coor     4.4
+x+y       25.2
+dtype: float64 
+
+sum row-wise = 0     2.0
+1     7.0
+2    19.0
+3    22.4
+dtype: float64 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cumsum">
+<h2>.cumsum()<a class="headerlink" href="#cumsum" title="Permalink to this heading">#</a></h2>
+<p>Kummulativ-summeringsmetode:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cumulative sum column-wise:</span>
+<span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'cumulative sum column-wise =</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative sum column-wise =
+    x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     5.5    -1.0   4.5
+2    11.7     2.3  14.0
+3    20.8     4.4  25.2 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sort">
+<h2>.sort()<a class="headerlink" href="#sort" title="Permalink to this heading">#</a></h2>
+<p>Sorterings-metode og statistikk</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort values in column x+y from largest to smallest:</span>
+<span class="nb">sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x+y'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sorted large-small:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sorted large-small:
+    x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     3.5     0.0   3.5
+2     6.2     3.3   9.5
+3     9.1     2.1  11.2 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="describe">
+<h2>.describe()<a class="headerlink" href="#describe" title="Permalink to this heading">#</a></h2>
+<p>Metoden gir en statistisk oppsummering av de numeriske kolonnene i en <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>For å få bedre plass kan tabeller transponeres med .T</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic statsistics column-wise:</span>
+<span class="n">stat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<span class="n">stat</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'count'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'basic stats column-wise:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">stat</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>basic stats column-wise:
+         mean       std  min    25%   50%    75%   max
+x-coor   5.2  3.127299  2.0  3.125  4.85  6.925   9.1
+y-coor   1.1  1.954482 -1.0 -0.250  1.05  2.400   3.3
+x+y      6.3  4.836666  1.0  2.875  6.50  9.925  11.2 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selektivt">
+<h2>Selektivt<a class="headerlink" href="#selektivt" title="Permalink to this heading">#</a></h2>
+<p>Man kan velge hva man ønsker å angi en nøstet liste [[liste]] til de elemntene man vil vise</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">stat</span> <span class="o">=</span> <span class="n">stat</span><span class="p">[[</span><span class="s1">'count'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">,</span> <span class="s1">'min'</span><span class="p">,</span> <span class="s1">'max'</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'basic selected stats column-wise:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">stat</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>basic selected stats column-wise:
+         count  mean       std  min   max
+x-coor    4.0   5.2  3.127299  2.0   9.1
+y-coor    4.0   1.1  1.954482 -1.0   3.3
+x+y       4.0   6.3  4.836666  1.0  11.2 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallbehandling i pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akser-rader-og-kolonner">Akser - rader og kolonner</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utfore-addisjon">Utføre addisjon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kolonner-df-columns">Kolonner df.columns()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drop">drop()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sum">.sum()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selektivt">Selektivt</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
