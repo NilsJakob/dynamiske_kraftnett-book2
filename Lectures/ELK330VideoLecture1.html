@@ -65,7 +65,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/ELK330Lecture4';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/ELK330VideoLecture1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -292,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2FLectures/ELK330Lecture4.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2FLectures/ELK330VideoLecture1.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -322,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/Lectures/ELK330Lecture4.ipynb" target="_blank"
+      <li><a href="../_sources/Lectures/ELK330VideoLecture1.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -454,15 +454,9 @@ document.write(`
 <li><p>Pandas er et sentralt verktøy for dataanalyse.</p></li>
 <li><p>Pandas og numpy er noen av de mest brukte python-bibliotekene innen datavitenskap.</p></li>
 <li><p>NumPy brukes for numeriske beregninger.</p></li>
-<li><p>Pandas er tilrettelagt for vektoriserte beregninger og åpner for flere muligheter for databehandling enn de grunneggende datatypene array og lister. Datastrukturen er et regneark med rad-indekser og kolonnenavn.</p></li>
+<li><p>Pandas passer for vektoriserte beregninger</p></li>
 </ul>
 <p>Den viktigste datastrukturen i pandas er <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, forkortet <code class="docutils literal notranslate"><span class="pre">df</span></code>, en tabell med rader og kolonner.</p>
-<p>En dataframe består av rader og kolonnenavn, i henholdsvis akser 0 og 1.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/7e8986a0ac96ebe71cba716b6364954414ea416c6e580982072fde4a11248757.png" src="../_images/7e8986a0ac96ebe71cba716b6364954414ea416c6e580982072fde4a11248757.png" />
-</div>
-</div>
 <section id="akser-rader-og-kolonner">
 <h2>Akser - rader og kolonner<a class="headerlink" href="#akser-rader-og-kolonner" title="Permalink to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -498,22 +492,20 @@ document.write(`
 <span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y-coor'</span><span class="p">)</span>
 
 <span class="c1"># Creating DataFrame: </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'s1 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'df ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'s1='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s1 =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s1=
 0    2.0
 1    3.5
 2    6.2
 3    9.1
 Name: x-coor, dtype: float64
-
-df =
+df=
    x-coor  y-coor
 0     2.0    -1.0
 1     3.5     0.0
@@ -534,12 +526,6 @@ df =
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data type of s1: &lt;class 'pandas.core.series.Series'&gt;
-Data type of df: &lt;class 'pandas.core.frame.DataFrame'&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Vi ser at s1 er et Series-objekt, mens df er et DataFrame-objekt.
 En Series representerer én dataserie (én kolonne).
@@ -553,22 +539,11 @@ som i dette eksemplet viser at alle kolonnene er av typen float64.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x-coor    float64
-y-coor    float64
-dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <p>Her ser du at alle tallene er lagret som float64, siden de inneholder desimaltall (2.0, 3.5, osv.). Dette er et godt eksempel på hvorfor datatyper er viktige i pandas: pandas vet at kolonnene inneholder numeriske verdier og kan derfor manipulere og utføre matematiske operasjoner som gjennomsnitt, sum, minimum og maksimum direkte.</p>
 <section id="manipulasjon-av-dataframe">
 <h2>Manipulasjon av dataframe<a class="headerlink" href="#manipulasjon-av-dataframe" title="Permalink to this heading">#</a></h2>
 <p>Vi velger ut noen viktige manipulasjoner vi kan gjøre på en <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> i eksempel 10.5 fra techteach videreført med samme tall fra forrige eksempel. Hele eksemplet finner du lenke til her: <a class="reference external" href="https://techteach.no/python/files/prog_datamanip_dataframe.py">10.5</a></p>
-<p>Utvalgte rader og kolonner med <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>.</p>
-<p>.iloc() metoden i pandas gjør det mulig å hente ut data basert på indeksnummer [rad,kolonne]</p>
-<p>Kolontegn betyr alle; slik at [:,1] er alle rader i kolonne 2.</p>
-<p>[0, 1] = kolonne nummer 0 og kolonne nummer 1</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -576,27 +551,25 @@ dtype: object
 
 <span class="c1"># Select specific columns</span>
 <span class="c1"># (first column is 0, second is 1 etc.):</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'df1 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df1='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 <span class="c1"># Select specific columns AND rows:</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'df2 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'df2='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Select specific columns</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># (first column is 0, second is 1 etc.):</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'df1 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># Select specific columns AND rows:</span>
-
-<span class="ne">NameError</span>: name 'df' is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df1=
+   x-coor  y-coor
+0     2.0    -1.0
+1     3.5     0.0
+2     6.2     3.3
+3     9.1     2.1
+df2=
+   x-coor  y-coor
+1     3.5     0.0
+2     6.2     3.3
 </pre></div>
 </div>
 </div>
@@ -613,14 +586,14 @@ dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Column x + column y is stored in new colunm named x+y:</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'x+y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'x-coor'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">'y-coor'</span><span class="p">]</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"df['x+y'] ="</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'x+y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'x-coor'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">'y-coor'</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"df['x+y']="</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df['x+y'] =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df['x+y']=
    x-coor  y-coor   x+y
 0     2.0    -1.0   1.0
 1     3.5     0.0   3.5
@@ -645,21 +618,11 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['x-coor', 'y-coor', 'x+y'], dtype='object')
-</pre></div>
-</div>
-</div>
 </div>
 <p>Skrive kolonnenavn som liste:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['x-coor', 'y-coor', 'x+y']
 </pre></div>
 </div>
 </div>
@@ -681,36 +644,12 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df3 =
-   y-coor   x+y
-0    -1.0   1.0
-1     0.0   3.5
-2     3.3   9.5
-3     2.1  11.2
-
-df4 =
-   x-coor  y-coor   x+y
-0     2.0    -1.0   1.0
-1     3.5     0.0   3.5
-3     9.1     2.1  11.2
-</pre></div>
-</div>
-</div>
 </div>
 <p>Gjøre om til <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">array</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_from_df4</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'arr_from_df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">arr_from_df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arr_from_df4 =
-[[ 2.  -1.   1. ]
- [ 3.5  0.   3.5]
- [ 9.1  2.1 11.2]]
 </pre></div>
 </div>
 </div>
@@ -737,58 +676,19 @@ df4 =
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x-coor  y-coor   x+y
-0     2.0    -1.0   1.0
-1     3.5     0.0   3.5
-2     6.2     3.3   9.5
-3     9.1     2.1  11.2
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean column wise:</span>
-<span class="n">mc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'mean column-wise = </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="c1"># Calculate the mean row-wise:</span>
-<span class="n">mr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'mean row-wise =</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">mr</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean column-wise = 
- x-coor    5.2
-y-coor    1.1
-x+y       6.3
-dtype: float64 
-
-mean row-wise =
- 0    0.666667
-1    2.333333
-2    6.333333
-3    7.466667
-dtype: float64 
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'x-coor'</span><span class="p">,</span> <span class="s1">'y-coor'</span><span class="p">,</span> <span class="s1">'x+y'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x-coor  y-coor      mean
-0     2.0    -1.0  0.666667
-1     3.5     0.0  2.333333
-2     6.2     3.3  6.333333
-3     9.1     2.1  7.466667
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -800,26 +700,9 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calulate the sum column-wise:</span>
-<span class="n">sc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'sum column-wise ='</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
 
 <span class="c1"># Calulate the sum row-wise:</span>
-<span class="n">sr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'sum row-wise ='</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sum column-wise = x-coor    20.8
-y-coor     4.4
-x+y       25.2
-dtype: float64 
-
-sum row-wise = 0     2.0
-1     7.0
-2    19.0
-3    22.4
-dtype: float64 
 </pre></div>
 </div>
 </div>
@@ -831,18 +714,6 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cumulative sum column-wise:</span>
-<span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'cumulative sum column-wise =</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative sum column-wise =
-    x-coor  y-coor   x+y
-0     2.0    -1.0   1.0
-1     5.5    -1.0   4.5
-2    11.7     2.3  14.0
-3    20.8     4.4  25.2 
 </pre></div>
 </div>
 </div>
@@ -854,18 +725,6 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort values in column x+y from largest to smallest:</span>
-<span class="nb">sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x+y'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'sorted large-small:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sorted large-small:
-    x-coor  y-coor   x+y
-0     2.0    -1.0   1.0
-1     3.5     0.0   3.5
-2     6.2     3.3   9.5
-3     9.1     2.1  11.2 
 </pre></div>
 </div>
 </div>
@@ -878,18 +737,6 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic statsistics column-wise:</span>
-<span class="n">stat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
-<span class="n">stat</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'count'</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'basic stats column-wise:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">stat</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>basic stats column-wise:
-         mean       std  min    25%   50%    75%   max
-x-coor   5.2  3.127299  2.0  3.125  4.85  6.925   9.1
-y-coor   1.1  1.954482 -1.0 -0.250  1.05  2.400   3.3
-x+y      6.3  4.836666  1.0  2.875  6.50  9.925  11.2 
 </pre></div>
 </div>
 </div>
@@ -898,26 +745,6 @@ x+y      6.3  4.836666  1.0  2.875  6.50  9.925  11.2
 <section id="selektivt">
 <h2>Selektivt<a class="headerlink" href="#selektivt" title="Permalink to this heading">#</a></h2>
 <p>Man kan velge hva man ønsker å angi en nøstet liste [[liste]] til de elemntene man vil vise</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
-
-<span class="n">stat</span> <span class="o">=</span> <span class="n">stat</span><span class="p">[[</span><span class="s1">'count'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">,</span> <span class="s1">'min'</span><span class="p">,</span> <span class="s1">'max'</span><span class="p">]]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'basic selected stats column-wise:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">stat</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>basic selected stats column-wise:
-         count  mean       std  min   max
-x-coor    4.0   5.2  3.127299  2.0   9.1
-y-coor    4.0   1.1  1.954482 -1.0   3.3
-x+y       4.0   6.3  4.836666  1.0  11.2 
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 
