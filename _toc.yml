@@ -37,12 +37,12 @@ parts:
 
   - caption: Representativ dag
     chapters:
-      - file: 04_reprdag/under_utvikling
-      #- file: 04_reprdag/repr_dag
+      - file: 04_reprdag/repr_dag
+      - file: 04_reprdag/treffsikkerhet
 
-  #- caption: Modellering
-    #chapters:
-      #- file: 02_tallgrunnlag/under_utvikling
+  - caption: Modellering
+    chapters:
+      - file: 05_modellering/under_utvikling
       #- file: 05_modellering/raw_medelling
 
   #- caption: Tidsserie
