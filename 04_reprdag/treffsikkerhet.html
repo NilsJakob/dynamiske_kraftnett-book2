@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Tallgrunnlag (Norge) &#8212; Dynamiske kraftnett</title>
+    <title>Treffsikkerhet &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -67,9 +67,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '02_tallgrunnlag/norske_data_slides';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_reprdag/treffsikkerhet';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Under utvikling" href="../05_modellering/under_utvikling.html" />
+    <link rel="prev" title="Data og modeller" href="repr_dag.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -132,8 +134,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -190,11 +190,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="repo.html">Hva er versjonskontroll?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pd.read.html">pd.read()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
@@ -212,8 +212,14 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Treffsikkerhet</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/under_utvikling.html">Under utvikling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/under_utvikling.html">Under utvikling</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
@@ -294,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F02_tallgrunnlag/norske_data_slides.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F04_reprdag/treffsikkerhet.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +330,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/02_tallgrunnlag/norske_data_slides.ipynb" target="_blank"
+      <li><a href="../_sources/04_reprdag/treffsikkerhet.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +414,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tallgrunnlag (Norge)</h1>
+    <h1>Treffsikkerhet</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,11 +424,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">Nøkkeltall for kraftsystemet (2025)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Treffsikkerhet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
@@ -512,48 +515,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tallgrunnlag-norge">
-<h1>Tallgrunnlag (Norge)<a class="headerlink" href="#tallgrunnlag-norge" title="Permalink to this heading">#</a></h1>
-<p>Vi ser på:</p>
-<ul class="simple">
-<li><p>Lastnivå</p></li>
-<li><p>Produksjon</p></li>
-<li><p>Variasjon over tid</p></li>
-</ul>
-<section id="nokkeltall-for-kraftsystemet-2025">
-<h2>Nøkkeltall for kraftsystemet (2025)<a class="headerlink" href="#nokkeltall-for-kraftsystemet-2025" title="Permalink to this heading">#</a></h2>
-<p>Basert på NVE rapporten: <a class="reference external" href="https://publikasjoner.nve.no/rapport/2026/rapport2026_17.pdf">Status og utvikling i kraftsystemet 2025-2030</a></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Variabel</p></th>
-<th class="head"><p>Verdi</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Produksjon</p></td>
-<td><p>ca. 161.8–162 TWh</p></td>
-</tr>
-<tr class="row-odd"><td><p>Forbruk</p></td>
-<td><p>ca. 138–139 TWh</p></td>
-</tr>
-<tr class="row-even"><td><p>Kraftoverskudd</p></td>
-<td><p>ca. 22–23 TWh</p></td>
-</tr>
-<tr class="row-odd"><td><p>Andel vannkraft</p></td>
-<td><p>~90 %</p></td>
-</tr>
-<tr class="row-even"><td><p>Andel vindkraft</p></td>
-<td><p>~8–9 %</p></td>
-</tr>
-<tr class="row-odd"><td><p>Andel sol</p></td>
-<td><p>~0.2 %</p></td>
-</tr>
-<tr class="row-even"><td><p>Fossil / termisk</p></td>
-<td><p>~1 %</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="treffsikkerhet">
+<h1>Treffsikkerhet<a class="headerlink" href="#treffsikkerhet" title="Permalink to this heading">#</a></h1>
+<p>Hvor trefsikker er modellen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
@@ -621,46 +585,46 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eddf5a19539b9e81028e94c044f2b7bc358ce7b98c812e58ddb172f494a32bd6.png" src="../_images/eddf5a19539b9e81028e94c044f2b7bc358ce7b98c812e58ddb172f494a32bd6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>API forespørsel sendt: 2026-08-21 10:55:30
-Forespurt intervall: 2026-08-20 00:00:00+02:00 -&gt; 2026-08-21 00:00:00+02:00
-Første målepunkt: 2026-08-20 00:00:00+02:00
-Siste målepunkt: 2026-08-20 23:45:00+02:00
-Analyserer siste komplette døgn: 2026-08-20
-Antall målepunkter: 95
-Hentet 95 målepunkter
+<img alt="../_images/5c994e65334863748eb5723baa10f7a5d76b1abb25055c8da0867f3a0d86e4c0.png" src="../_images/5c994e65334863748eb5723baa10f7a5d76b1abb25055c8da0867f3a0d86e4c0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>API forespørsel sendt: 2026-09-04 21:47:25
+Forespurt intervall: 2026-09-03 00:00:00+02:00 -&gt; 2026-09-04 00:00:00+02:00
+Første målepunkt: 2026-09-03 00:00:00+02:00
+Siste målepunkt: 2026-09-03 23:45:00+02:00
+Analyserer siste komplette døgn: 2026-09-03
+Antall målepunkter: 96
+Hentet 96 målepunkter
 Responstid: 0.00 sekunder
-                            Actual Load
-2026-08-20 00:00:00+02:00  12663.857500
-2026-08-20 01:00:00+02:00  12339.872500
-2026-08-20 02:00:00+02:00  12132.090000
-2026-08-20 03:00:00+02:00  11978.257500
-2026-08-20 04:00:00+02:00  11938.867500
-2026-08-20 05:00:00+02:00  12182.557500
-2026-08-20 06:00:00+02:00  12951.100000
-2026-08-20 07:00:00+02:00  13921.402500
-2026-08-20 08:00:00+02:00  14094.967500
-2026-08-20 09:00:00+02:00  14022.007500
-2026-08-20 10:00:00+02:00  13923.665000
-2026-08-20 11:00:00+02:00  13792.017500
-2026-08-20 12:00:00+02:00  13723.102500
-2026-08-20 13:00:00+02:00  13640.327500
-2026-08-20 14:00:00+02:00  13758.350000
-2026-08-20 15:00:00+02:00  13900.420000
-2026-08-20 16:00:00+02:00  14116.710000
-2026-08-20 17:00:00+02:00  14087.817500
-2026-08-20 18:00:00+02:00  14042.150000
-2026-08-20 19:00:00+02:00  14152.177500
-2026-08-20 20:00:00+02:00  14152.432500
-2026-08-20 21:00:00+02:00  14200.592500
-2026-08-20 22:00:00+02:00  14064.836667
-2026-08-20 23:00:00+02:00  13594.912500
+                           Actual Load
+2026-09-03 00:00:00+02:00   12316.2625
+2026-09-03 01:00:00+02:00   11976.9975
+2026-09-03 02:00:00+02:00   11705.5700
+2026-09-03 03:00:00+02:00   11550.2700
+2026-09-03 04:00:00+02:00   11590.6100
+2026-09-03 05:00:00+02:00   11872.4000
+2026-09-03 06:00:00+02:00   12661.3875
+2026-09-03 07:00:00+02:00   13515.6700
+2026-09-03 08:00:00+02:00   13712.9975
+2026-09-03 09:00:00+02:00   13485.3175
+2026-09-03 10:00:00+02:00   13418.9975
+2026-09-03 11:00:00+02:00   13330.4250
+2026-09-03 12:00:00+02:00   13270.7425
+2026-09-03 13:00:00+02:00   13216.6225
+2026-09-03 14:00:00+02:00   13323.4800
+2026-09-03 15:00:00+02:00   13460.2175
+2026-09-03 16:00:00+02:00   13720.1725
+2026-09-03 17:00:00+02:00   13745.3925
+2026-09-03 18:00:00+02:00   13718.2125
+2026-09-03 19:00:00+02:00   13840.6025
+2026-09-03 20:00:00+02:00   14060.2525
+2026-09-03 21:00:00+02:00   13982.9450
+2026-09-03 22:00:00+02:00   13606.7125
+2026-09-03 23:00:00+02:00   12871.5600
 </pre></div>
 </div>
 </div>
 </div>
 <section id="beregning-av-standardavvik">
-<h3>Beregning av standardavvik<a class="headerlink" href="#beregning-av-standardavvik" title="Permalink to this heading">#</a></h3>
+<h2>Beregning av standardavvik<a class="headerlink" href="#beregning-av-standardavvik" title="Permalink to this heading">#</a></h2>
 <p>Standardavviket er et mål på hvor mye observasjonene varierer rundt gjennomsnittet. Et stort standardavvik betyr at verdiene varierer mye, mens et lite standardavvik betyr at verdiene ligger nær gjennomsnittet.</p>
 <p>For en dataserie <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span> beregnes utvalgsstandardavviket som</p>
 <div class="math notranslate nohighlight">
@@ -691,7 +655,6 @@ Standardavvik = 800.7 MW
 </div>
 </div>
 </div>
-</section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="typisk-dognprofil-norge">
@@ -745,15 +708,40 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 <p>Ved å sammenligne modellen med observerte data kan vi undersøke hvor godt modellen beskriver virkeligheten og beregne mål som residualer, RMSE og forklaringsgrad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">morning_peak</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="mi">9</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">morning_peak</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(43.65040843761466)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2030.8559620505987
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+
+<span class="c1">#morning_peak = 2200 * np.exp(-0.5*((x-8)/2.5)**2)</span>
+<span class="c1">#evening_peak = 2300 * np.exp(-0.5*((x-20)/4.5)**2)</span>
+<span class="n">night_decline</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">base_load</span> <span class="o">=</span> <span class="mi">11900</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">night_decline</span><span class="o">+</span><span class="n">base_load</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Time"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Load"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Night Decline"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/09e61aefcf99d36d9ea8b68d456326884818951b5f175782882793dcf4c944de.png" src="../_images/09e61aefcf99d36d9ea8b68d456326884818951b5f175782882793dcf4c944de.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -763,13 +751,15 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 
-<span class="n">base_load</span> <span class="o">=</span> <span class="mi">11900</span>
+<span class="n">base_load</span> <span class="o">=</span> <span class="mi">11500</span>
 
-<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">2300</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mf">4.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">night_decline</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">2</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">1900</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">2350</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mf">4.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">model_load</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">base_load</span>
+    <span class="o">+</span> <span class="n">night_decline</span>
     <span class="o">+</span> <span class="n">morning_peak</span>
     <span class="o">+</span> <span class="n">evening_peak</span>
 <span class="p">)</span>
@@ -804,7 +794,7 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b6dff1e081c5cd876b4986e33642c3b79dfc5c10c365062a2d683b8a3891544d.png" src="../_images/b6dff1e081c5cd876b4986e33642c3b79dfc5c10c365062a2d683b8a3891544d.png" />
+<img alt="../_images/5aa09d570f4f03b338d7d9e97ef8d2e03ad1d951fdde54e6ef420cf0e22d302c.png" src="../_images/5aa09d570f4f03b338d7d9e97ef8d2e03ad1d951fdde54e6ef420cf0e22d302c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -925,7 +915,7 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 <figure class="align-default" id="fig-biasvariance">
 <a class="reference internal image-reference" href="../_images/bias_variance.svg"><img alt="../_images/bias_variance.svg" src="../_images/bias_variance.svg" width="900px" /></a>
 <figcaption>
-<p><span class="caption-text">Illustrasjon av overtilpasning og undertilpasning</span><a class="headerlink" href="#fig-biasvariance" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Illustrasjon av overtilpasning og undertilpasning</span><a class="headerlink" href="#fig-biasvariance" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1640,7 +1630,7 @@ E\left[
         },
         kernelOptions: {
             name: "python3",
-            path: "./02_tallgrunnlag"
+            path: "./04_reprdag"
         },
         predefinedOutput: true
     }
@@ -1657,6 +1647,24 @@ E\left[
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="repr_dag.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data og modeller</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../05_modellering/under_utvikling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Under utvikling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1673,11 +1681,8 @@ E\left[
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tallgrunnlag (Norge)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nokkeltall-for-kraftsystemet-2025">Nøkkeltall for kraftsystemet (2025)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Treffsikkerhet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#typisk-dognprofil-norge">Typisk døgnprofil (Norge)</a><ul class="visible nav section-nav flex-column">
