@@ -38,7 +38,7 @@ parts:
   - caption: Representativ dag
     chapters:
       - file: 04_reprdag/repr_dag
-      - file: 04_reprdag/treffsikkerhet
+      #- file: 04_reprdag/treffsikkerhet
 
   - caption: Modellering
     chapters:
