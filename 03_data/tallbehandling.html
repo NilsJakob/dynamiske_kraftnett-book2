@@ -427,11 +427,14 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-pandas-metoder">Video: Pandas-metoder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -603,6 +606,18 @@ df2 =
 </div>
 </div>
 </div>
+</section>
+<section id="video-pandas-metoder">
+<h2>Video: Pandas-metoder<a class="headerlink" href="#video-pandas-metoder" title="Permalink to this heading">#</a></h2>
+<p>Denne videoen viser hvordan man utøver ulike funskjoner på objekter som metode.</p>
+<iframe
+    width="560"
+    height="315"
+    src="rc="https://www.youtube.com/embed/xiBmif2O2nI""
+``
+    frameborder="0"
+    allowfullscreen>
+</iframe>
 <p>Når vi bruker funksjon på et objekt som en <code class="docutils literal notranslate"><span class="pre">dateframe</span></code> eller <code class="docutils literal notranslate"><span class="pre">Series</span></code>, kaller vi det en metode.
 Under vises hvordan man vi bruker metoden <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> til å fjerne utvalgte kolonner og rader:</p>
 <div class="cell docutils container">
@@ -651,9 +666,8 @@ df4 =
 </div>
 </div>
 </div>
-</section>
 <section id="mean">
-<h2>.mean()<a class="headerlink" href="#mean" title="Permalink to this heading">#</a></h2>
+<h3>.mean()<a class="headerlink" href="#mean" title="Permalink to this heading">#</a></h3>
 <p>Gjennomsnitts-metoden på kolonner og rader:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,7 +698,7 @@ dtype: float64
 </div>
 </section>
 <section id="id6">
-<h2>.mean()<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h3>.mean()<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>Summasjons-metode på kolonner og rader:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,7 +729,7 @@ dtype: float64
 </div>
 </section>
 <section id="cumsum">
-<h2>.cumsum()<a class="headerlink" href="#cumsum" title="Permalink to this heading">#</a></h2>
+<h3>.cumsum()<a class="headerlink" href="#cumsum" title="Permalink to this heading">#</a></h3>
 <p>Kummulativ-summeringsmetode:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -738,7 +752,7 @@ dtype: float64
 </div>
 </section>
 <section id="sort">
-<h2>.sort()<a class="headerlink" href="#sort" title="Permalink to this heading">#</a></h2>
+<h3>.sort()<a class="headerlink" href="#sort" title="Permalink to this heading">#</a></h3>
 <p>Sorterings-metode og statistikk</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,7 +775,7 @@ dtype: float64
 </div>
 </section>
 <section id="describe">
-<h2>.describe()<a class="headerlink" href="#describe" title="Permalink to this heading">#</a></h2>
+<h3>.describe()<a class="headerlink" href="#describe" title="Permalink to this heading">#</a></h3>
 <p>Metoden gir en statistisk oppsummering av de numeriske kolonnene i en <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,6 +800,7 @@ max    9.100000  3.300000  11.200000
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -860,11 +875,14 @@ max    9.100000  3.300000  11.200000
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter">Komponenter</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulasjon-av-dataframe">Manipulasjon av dataframe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-pandas-metoder">Video: Pandas-metoder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">.mean()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">.mean()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumsum">.cumsum()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort">.sort()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">.describe()</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
