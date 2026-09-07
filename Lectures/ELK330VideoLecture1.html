@@ -530,6 +530,12 @@ df=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data type of s1: &lt;class 'pandas.core.series.Series'&gt;
+Data type of df: &lt;class 'pandas.core.frame.DataFrame'&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Vi ser at s1 er et Series-objekt, mens df er et DataFrame-objekt.
 En Series representerer én dataserie (én kolonne).
@@ -540,6 +546,13 @@ som i dette eksemplet viser at alle kolonnene er av typen float64.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x-coor    float64
+y-coor    float64
+dtype: object
 </pre></div>
 </div>
 </div>
@@ -622,11 +635,21 @@ df2=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['x-coor', 'y-coor', 'x+y'], dtype='object')
+</pre></div>
+</div>
+</div>
 </div>
 <p>Skrive kolonnenavn som liste:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="s1">'x-coor'</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['x-coor', 'y-coor', 'x+y']
 </pre></div>
 </div>
 </div>
@@ -643,8 +666,24 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 <span class="nb">print</span><span class="p">(</span><span class="s1">'df3 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 
 <span class="c1"># Delete spesific row:</span>
-<span class="n">df4</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">df4</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df3 =
+   y-coor   x+y
+0    -1.0   1.0
+1     0.0   3.5
+2     3.3   9.5
+3     2.1  11.2
+
+df4 =
+   x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     3.5     0.0   3.5
+3     9.1     2.1  11.2
 </pre></div>
 </div>
 </div>
@@ -654,6 +693,14 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_from_df4</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'arr_from_df4 ='</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">arr_from_df4</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arr_from_df4 =
+[[ 2.  -1.   1. ]
+ [ 3.5  0.   3.5]
+ [ 9.1  2.1 11.2]]
 </pre></div>
 </div>
 </div>
@@ -680,19 +727,56 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean column wise:</span>
-
-<span class="c1"># Calculate the mean row-wise:</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     3.5     0.0   3.5
+2     6.2     3.3   9.5
+3     9.1     2.1  11.2
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean column wise:</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'mean column-wise </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">mc</span><span class="p">)</span>
+<span class="c1"># Calculate the mean row-wise:</span>
+<span class="n">mr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'mean rwo-wise </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">mr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean column-wise 
+ x-coor    5.2
+y-coor    1.1
+x+y       6.3
+dtype: float64
+mean rwo-wise 
+ 0    0.666667
+1    2.333333
+2    6.333333
+3    7.466667
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'x-coor'</span><span class="p">,</span> <span class="s1">'y-coor'</span><span class="p">,</span> <span class="s1">'x+y'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x-coor  y-coor      mean
+0     2.0    -1.0  0.666667
+1     3.5     0.0  2.333333
+2     6.2     3.3  6.333333
+3     9.1     2.1  7.466667
 </pre></div>
 </div>
 </div>
@@ -704,9 +788,27 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calulate the sum column-wise:</span>
-
+<span class="n">sc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sum column-wise </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">sc</span><span class="p">)</span>
 
 <span class="c1"># Calulate the sum row-wise:</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sum row-wise </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sum column-wise 
+ x-coor    20.8
+y-coor     4.4
+x+y       25.2
+dtype: float64
+sum row-wise 
+ 0     2.0
+1     7.0
+2    19.0
+3    22.4
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -718,6 +820,18 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cumulative sum column-wise:</span>
+<span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'cumulative sum column-wise </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">cc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative sum column-wise 
+    x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     5.5    -1.0   4.5
+2    11.7     2.3  14.0
+3    20.8     4.4  25.2
 </pre></div>
 </div>
 </div>
@@ -729,6 +843,18 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort values in column x+y from largest to smallest:</span>
+<span class="nb">sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x+y'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sorted values small - large </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sorted values small - large 
+    x-coor  y-coor   x+y
+0     2.0    -1.0   1.0
+1     3.5     0.0   3.5
+2     6.2     3.3   9.5
+3     9.1     2.1  11.2
 </pre></div>
 </div>
 </div>
@@ -741,6 +867,18 @@ Metoden <code class="docutils literal notranslate"><span class="pre">.drop()</sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic statsistics column-wise:</span>
+<span class="n">stat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<span class="n">stat</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'count'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'basic stats column-wise:</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span><span class="n">stat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>basic stats column-wise:
+         mean       std  min    25%   50%    75%   max
+x-coor   5.2  3.127299  2.0  3.125  4.85  6.925   9.1
+y-coor   1.1  1.954482 -1.0 -0.250  1.05  2.400   3.3
+x+y      6.3  4.836666  1.0  2.875  6.50  9.925  11.2
 </pre></div>
 </div>
 </div>
