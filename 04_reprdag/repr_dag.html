@@ -422,7 +422,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sjekke-dataene">Sjekke dataene</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hele-scriptet-og-plot">Hele scriptet og plot</a></li>
 </ul>
@@ -446,21 +449,79 @@ document.write(`
 <p>Dataene er lastet ned fra Statnetts side <a class="reference external" href="https://www.statnett.no/for-aktorer-i-kraftbransjen/tall-og-data-fra-kraftsystemet">Tall og data fra kraftsystemet</a> og viser timesbaserte verdier av produksjon og forbruk av elektrisk kraft fra 01.01.2026 til 20.05.2026.</p>
 <p>Tidligere har vi brukt numpy og pandas seperat, først numpy til å lage en typisk døgnprofil og deretter pandas til å lese data.</p>
 <p>Nå skal vi kombinere de til å finne en representativ dag i den angitte dataperioden fra 01.01.2026 til 20.05.2026.</p>
+<section id="sjekke-dataene">
+<h2>Sjekke dataene<a class="headerlink" href="#sjekke-dataene" title="Permalink to this heading">#</a></h2>
+<p>Vi må verfisere dataene, og bruker read_csv() funksjonen til pandas for å lese og deretter describe-metoden på dataframen df:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/load_data.csv'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       Time(Local) Production Consumption
+count                         3359       3359        3359
+unique                        3359       3355        3355
+top     20.05.2026 23:00:00 +02:00   18197,64    18346,12
+freq                             1          2           2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)    01.01.2026 00:00:00 +01:00
+Production                       18448,59
+Consumption                      16662,95
+Name: 0, dtype: object
+Time(Local)    20.05.2026 23:00:00 +02:00
+Production                       12985,17
+Consumption                      18385,77
+Name: 3358, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  Time(Local) Production Consumption
+0  01.01.2026 00:00:00 +01:00   18448,59    16662,95
+1  01.01.2026 01:00:00 +01:00   18693,66    14953,24
+2  01.01.2026 02:00:00 +01:00   18639,68    14298,07
+3  01.01.2026 03:00:00 +01:00   18502,66    13254,81
+4  01.01.2026 04:00:00 +01:00   18458,45    12678,51
+</pre></div>
+</div>
+</div>
+</div>
 <section id="litt-repetisjon">
-<h2>Litt repetisjon<a class="headerlink" href="#litt-repetisjon" title="Permalink to this heading">#</a></h2>
+<h3>Litt repetisjon<a class="headerlink" href="#litt-repetisjon" title="Permalink to this heading">#</a></h3>
 <p>Vi starter med å lese csv-filen med <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>. Gjør kolonnen <code class="docutils literal notranslate"><span class="pre">df['Time(Local)']</span></code>, som tidsindeks og leser formatet fra <code class="docutils literal notranslate"><span class="pre">.csv</span></code>-fila. Deretter setter <code class="docutils literal notranslate"><span class="pre">utc=True</span></code>, og setter indeks med <code class="docutils literal notranslate"><span class="pre">set_index()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/load_data.csv"</span><span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"Time(UTC)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">"Time(Local)"</span><span class="p">],</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%d</span><span class="s2">.%m.%Y %H:%M:%S %z"</span><span class="p">,</span>
     <span class="n">utc</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Time(Local)"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Time(UTC)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -473,13 +534,31 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Production Consumption
-Time(Local)                                     
-2025-12-31 23:00:00+00:00   18448,59    16662,95
-2026-01-01 00:00:00+00:00   18693,66    14953,24
-2026-01-01 01:00:00+00:00   18639,68    14298,07
-2026-01-01 02:00:00+00:00   18502,66    13254,81
-2026-01-01 03:00:00+00:00   18458,45    12678,51
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                          Time(Local) Production Consumption
+Time(UTC)                                                                   
+2025-12-31 23:00:00+00:00  01.01.2026 00:00:00 +01:00   18448,59    16662,95
+2026-01-01 00:00:00+00:00  01.01.2026 01:00:00 +01:00   18693,66    14953,24
+2026-01-01 01:00:00+00:00  01.01.2026 02:00:00 +01:00   18639,68    14298,07
+2026-01-01 02:00:00+00:00  01.01.2026 03:00:00 +01:00   18502,66    13254,81
+2026-01-01 03:00:00+00:00  01.01.2026 04:00:00 +01:00   18458,45    12678,51
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2026-03-29 00:00"</span><span class="p">:</span><span class="s2">"2026-03-29 04:00"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                          Time(Local) Production Consumption
+Time(UTC)                                                                   
+2026-03-29 00:00:00+00:00  29.03.2026 01:00:00 +01:00   15901,94    14367,04
+2026-03-29 01:00:00+00:00  29.03.2026 03:00:00 +02:00   15777,03    14486,69
+2026-03-29 02:00:00+00:00  29.03.2026 04:00:00 +02:00   15830,73    15263,96
+2026-03-29 03:00:00+00:00  29.03.2026 05:00:00 +02:00   15859,24    15227,20
+2026-03-29 04:00:00+00:00  29.03.2026 06:00:00 +02:00   15958,54    15611,91
 </pre></div>
 </div>
 </div>
@@ -492,7 +571,8 @@ Time(Local)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Production     object
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)    object
+Production     object
 Consumption    object
 dtype: object
 </pre></div>
@@ -513,13 +593,13 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Production  Consumption
-Time(Local)                                      
-2025-12-31 23:00:00+00:00   18448,59     16662.95
-2026-01-01 00:00:00+00:00   18693,66     14953.24
-2026-01-01 01:00:00+00:00   18639,68     14298.07
-2026-01-01 02:00:00+00:00   18502,66     13254.81
-2026-01-01 03:00:00+00:00   18458,45     12678.51
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                          Time(Local) Production  Consumption
+Time(UTC)                                                                    
+2025-12-31 23:00:00+00:00  01.01.2026 00:00:00 +01:00   18448,59     16662.95
+2026-01-01 00:00:00+00:00  01.01.2026 01:00:00 +01:00   18693,66     14953.24
+2026-01-01 01:00:00+00:00  01.01.2026 02:00:00 +01:00   18639,68     14298.07
+2026-01-01 02:00:00+00:00  01.01.2026 03:00:00 +01:00   18502,66     13254.81
+2026-01-01 03:00:00+00:00  01.01.2026 04:00:00 +01:00   18458,45     12678.51
 </pre></div>
 </div>
 </div>
@@ -531,13 +611,15 @@ Time(Local)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Production      object
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)     object
+Production      object
 Consumption    float64
 dtype: object
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="index-datetime">
 <h2>Index - datetime<a class="headerlink" href="#index-datetime" title="Permalink to this heading">#</a></h2>
@@ -554,11 +636,17 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Production  Consumption        date  year
-Time(Local)                                                        
-2025-12-31 23:00:00+00:00   18448,59     16662.95  2025-12-31  2025
-2026-01-01 00:00:00+00:00   18693,66     14953.24  2026-01-01  2026
-2026-01-01 01:00:00+00:00   18639,68     14298.07  2026-01-01  2026
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                          Time(Local) Production  Consumption  \
+Time(UTC)                                                                       
+2025-12-31 23:00:00+00:00  01.01.2026 00:00:00 +01:00   18448,59     16662.95   
+2026-01-01 00:00:00+00:00  01.01.2026 01:00:00 +01:00   18693,66     14953.24   
+2026-01-01 01:00:00+00:00  01.01.2026 02:00:00 +01:00   18639,68     14298.07   
+
+                                 date  year  
+Time(UTC)                                    
+2025-12-31 23:00:00+00:00  2025-12-31  2025  
+2026-01-01 00:00:00+00:00  2026-01-01  2026  
+2026-01-01 01:00:00+00:00  2026-01-01  2026  
 </pre></div>
 </div>
 </div>
@@ -570,7 +658,7 @@ Time(Local)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(UTC)
 1     23831.608185
 2     20055.223557
 3     16608.114866
@@ -589,7 +677,7 @@ Name: Consumption, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(UTC)
 April       14597.928236
 December    16662.950000
 February    20055.223557
@@ -614,6 +702,23 @@ Name: Consumption, dtype: float64
 </div>
 </div>
 <p>Vi har nå fått en egen kolonne som gir oss datoen eksplisitt. Deretter kan vi gruppere data etter dato og samle alle “Consumption”-verdier per dag i en liste.</p>
+<figure class="align-default" id="fig-dailyload">
+<a class="reference internal image-reference" href="../_images/daily_load_profile.svg"><img alt="../_images/daily_load_profile.svg" src="../_images/daily_load_profile.svg" width="900px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Illustrasjon av omgjøring fra tidsserie til døgnprofil</span><a class="headerlink" href="#fig-dailyload" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"../images/daily_load_profile.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c11d9a52ce9de56485a3f2efbfe484e04b1e36f42c5aa0e152495652f2e42c3a.svg" src="../_images/c11d9a52ce9de56485a3f2efbfe484e04b1e36f42c5aa0e152495652f2e42c3a.svg" /></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'date'</span><span class="p">)[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
@@ -679,6 +784,29 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[list([14953.24, 14298.07, 13254.81, 12678.51, 12706.47, 12967.66, 13289.36, 13593.11, 14009.36, 14417.61, 15096.71, 15274.79, 15438.74, 15905.07, 16701.68, 17356.46, 17827.26, 18362.0, 18243.72, 18017.53, 17380.07, 16740.26, 15974.65, 14821.37])
+ list([13826.33, 12743.11, 12786.86, 12647.35, 12850.44, 14353.17, 16450.39, 18967.05, 20141.75, 20267.21, 19592.5, 20247.72, 20332.97, 21395.35, 23500.14, 24447.04, 24701.44, 24840.75, 24320.26, 23539.46, 23506.18, 22675.59, 21693.33, 22115.9])]
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="fig-vstack">
+<a class="reference internal image-reference" href="../_images/vstack.svg"><img alt="../_images/vstack.svg" src="../_images/vstack.svg" width="900px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Illustrasjon av omgjøring til vstack</span><a class="headerlink" href="#fig-vstack" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"../images/vstack.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1a30e8dc55f835d9f8c6a1582f6dfc555d4af9e7d53062f53e5640ccfb9e06e5.svg" src="../_images/1a30e8dc55f835d9f8c6a1582f6dfc555d4af9e7d53062f53e5640ccfb9e06e5.svg" /></div>
 </div>
 <p>Numpy funksjonen <code class="docutils literal notranslate"><span class="pre">.vstack()</span></code> stacker verdiene vertikalt i en 2D matrise med shape = (antall dager, antall observasjoner per dag)</p>
 <div class="cell docutils container">
@@ -690,6 +818,17 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14953.24 14298.07 13254.81 12678.51 12706.47 12967.66 13289.36 13593.11
+  14009.36 14417.61 15096.71 15274.79 15438.74 15905.07 16701.68 17356.46
+  17827.26 18362.   18243.72 18017.53 17380.07 16740.26 15974.65 14821.37]
+ [13826.33 12743.11 12786.86 12647.35 12850.44 14353.17 16450.39 18967.05
+  20141.75 20267.21 19592.5  20247.72 20332.97 21395.35 23500.14 24447.04
+  24701.44 24840.75 24320.26 23539.46 23506.18 22675.59 21693.33 22115.9 ]]
+(139, 24)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -697,10 +836,27 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[14953.24, 14298.07, 13254.81, 12678.51, 12706.47, 12967.66,
+        13289.36, 13593.11, 14009.36, 14417.61, 15096.71, 15274.79,
+        15438.74, 15905.07, 16701.68, 17356.46, 17827.26, 18362.  ,
+        18243.72, 18017.53, 17380.07, 16740.26, 15974.65, 14821.37],
+       [13826.33, 12743.11, 12786.86, 12647.35, 12850.44, 14353.17,
+        16450.39, 18967.05, 20141.75, 20267.21, 19592.5 , 20247.72,
+        20332.97, 21395.35, 23500.14, 24447.04, 24701.44, 24840.75,
+        24320.26, 23539.46, 23506.18, 22675.59, 21693.33, 22115.9 ]])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">16662.95</span><span class="o">+</span><span class="mf">14821.37</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15742.16
 </pre></div>
 </div>
 </div>
@@ -712,20 +868,53 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gjennomsnittsdøgn</span>
-<span class="n">mean_profile</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14389.785 13520.59  13020.835 12662.93  12778.455 13660.415 14869.875
+ 16280.08  17075.555 17342.41  17344.605 17761.255 17885.855 18650.21
+ 20100.91  20901.75  21264.35  21601.375 21281.99  20778.495 20443.125
+ 19707.925 18833.99  18468.635]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gjennomsnittsdøgn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">mean_profile</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_profile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16715.29992806 16432.40964029 16349.35467626 16655.29366906
+ 17545.94517986 18641.48215827 19226.61942446 18832.43647482
+ 18068.35971223 17419.37215827 16878.60251799 16578.19884892
+ 16476.75884892 16712.09215827 17403.12438849 18799.89697842
+ 20426.45956835 21425.88374101 21501.0942446  20912.04071942
+ 20100.58064748 19087.41043165 17901.82748201 17088.99280576]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d995a69a50&gt;]
+</pre></div>
+</div>
+<img alt="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" src="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">mean_profile</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1762.05992806, -2134.33964029, -3094.54467626, -3976.78366906,
+       -4839.47517986, -5673.82215827, -5937.25942446, -5239.32647482,
+       -4058.99971223, -3001.76215827, -1781.89251799, -1303.40884892,
+       -1038.01884892,  -807.02215827,  -701.44438849, -1443.43697842,
+       -2599.19956835, -3063.88374101, -3257.3742446 , -2894.51071942,
+       -2720.51064748, -2347.15043165, -1927.17748201, -2267.62280576])
 </pre></div>
 </div>
 </div>
@@ -737,11 +926,21 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([15586.15856527, 18624.93192142])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ex_dist</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([15586.15856527, 18624.93192142, 25149.33506703, 27562.65299844])
 </pre></div>
 </div>
 </div>
@@ -754,6 +953,12 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d997c6a6b0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/62739b8c6d7c5641624c900effb490dbec6786992afbcd3b67007979bb45c5f8.png" src="../_images/62739b8c6d7c5641624c900effb490dbec6786992afbcd3b67007979bb45c5f8.png" />
+</div>
 </div>
 <p>Vi bruker numpys <code class="docutils literal notranslate"><span class="pre">argmin()</span></code> funksjon til å gi oss raden (altså det spesifikke) døgnet med den minste euklidske avstand til gjennomsnittet</p>
 <div class="cell docutils container">
@@ -762,11 +967,21 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(91)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Så kan Datetimeindex gi oss nøyaktig dato</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2026, 4, 2)
 </pre></div>
 </div>
 </div>
@@ -896,7 +1111,10 @@ Name: Consumption, dtype: object
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sjekke-dataene">Sjekke dataene</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hele-scriptet-og-plot">Hele scriptet og plot</a></li>
 </ul>

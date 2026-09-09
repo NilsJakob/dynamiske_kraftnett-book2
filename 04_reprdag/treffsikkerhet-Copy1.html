@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '04_reprdag/treffsikkerhet';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_reprdag/treffsikkerhet-Copy1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -298,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F04_reprdag/treffsikkerhet.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F04_reprdag/treffsikkerhet-Copy1.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -328,7 +328,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/04_reprdag/treffsikkerhet.ipynb" target="_blank"
+      <li><a href="../_sources/04_reprdag/treffsikkerhet-Copy1.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -518,6 +518,604 @@ document.write(`
 <p>Hvor trefsikker er modellen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://api.elhub.no/energy-data/v0/price-areas"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"CONSUMPTION_PER_GROUP_MBA_HOUR"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1">#print(r.status_code)</span>
+<span class="c1">#print(r.text)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="c1">#print(r.text[:1000])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="s2">"../images/elhubAPIdocs.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c9fa418cb15712b0a7c87d5b7bac4a7e86d8a23b3f104f4718b897eee2bf0d17.png" src="../_images/c9fa418cb15712b0a7c87d5b7bac4a7e86d8a23b3f104f4718b897eee2bf0d17.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"https://api.elhub.no/energy-data/v0/price-areas"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"CONSUMPTION_PER_GROUP_MBA_HOUR"</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">area</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]:</span>
+    <span class="n">observations</span> <span class="o">=</span> <span class="n">area</span><span class="p">[</span><span class="s2">"attributes"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="s2">"consumptionPerGroupMbaHour"</span><span class="p">,</span>
+        <span class="p">[]</span>
+    <span class="p">)</span>
+
+    <span class="n">rows</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   startTime                    endTime priceArea  \
+0  2026-08-08T17:00:00+02:00  2026-08-08T18:00:00+02:00       NO1   
+1  2026-08-08T18:00:00+02:00  2026-08-08T19:00:00+02:00       NO1   
+2  2026-08-08T19:00:00+02:00  2026-08-08T20:00:00+02:00       NO1   
+3  2026-08-08T20:00:00+02:00  2026-08-08T21:00:00+02:00       NO1   
+4  2026-08-08T21:00:00+02:00  2026-08-08T22:00:00+02:00       NO1   
+
+  consumptionGroup  quantityKwh            lastUpdatedTime  meteringPointCount  
+0            cabin    67638.870  2026-08-22T17:52:56+02:00              111179  
+1            cabin    70722.800  2026-08-22T17:52:56+02:00              111179  
+2            cabin    69999.510  2026-08-22T17:52:56+02:00              111179  
+3            cabin    67058.580  2026-08-22T17:52:56+02:00              111179  
+4            cabin    64574.445  2026-08-22T17:52:56+02:00              111179  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"https://api.elhub.no/energy-data/v0/price-areas"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"CONSUMPTION_PER_GROUP_MBA_HOUR"</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">area</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">area</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span>
+        <span class="n">area</span><span class="p">[</span><span class="s2">"attributes"</span><span class="p">][</span><span class="s2">"eic"</span><span class="p">]</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* *
+NO1 10YNO-1--------2
+NO2 10YNO-2--------T
+NO3 10YNO-3--------J
+NO4 10YNO-4--------9
+NO5 10Y1001A1001A48H
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"https://api.elhub.no/energy-data/v0/municipalities"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"CONSUMPTION_PER_GROUP_MUNICIPALITY_HOUR"</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">municipalities</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">item</span><span class="p">[</span><span class="s2">"attributes"</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">municipalities</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['*', 'Ukjent tilhørighet', 'Oslo', 'Eigersund', 'Stavanger', 'Haugesund', 'Sandnes', 'Sokndal', 'Lund', 'Bjerkreim', 'Hå', 'Klepp', 'Time', 'Gjesdal', 'Sola', 'Randaberg', 'Strand', 'Hjelmeland', 'Suldal', 'Sauda']
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"https://api.elhub.no/energy-data/v0/grid-areas"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"CONSUMPTION_PER_GROUP_MGA_HOUR"</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50Y-0Z1EKQEJIW-P
+50Y-7FS806KF24QR
+50Y-8E5D7BRHEGPN
+50Y-AABJ1ZGH7DNR
+50Y-CC8CR1D9AVRE
+50Y-DNIYJ0PY0-73
+50Y-Q5-R1AYXMAY0
+50Y-QFBCAF1Y2L6K
+50Y-Z0QKQEJIWZ1Z
+50Y003TZ2AXX811M
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"https://api.elhub.no/energy-data/v0/price-areas"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"CONSUMPTION_PER_GROUP_MBA_HOUR"</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">areas</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">item</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">areas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['*', 'NO1', 'NO2', 'NO3', 'NO4', 'NO5']
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"startTime"</span><span class="p">,</span> <span class="s2">"priceArea"</span><span class="p">])</span>
+      <span class="p">[</span><span class="s2">"quantityKwh"</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">load</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   startTime priceArea  quantityKwh
+0  2026-08-08T17:00:00+02:00       NO1  2646637.570
+1  2026-08-08T17:00:00+02:00       NO2  3624778.863
+2  2026-08-08T17:00:00+02:00       NO3  2781978.652
+3  2026-08-08T17:00:00+02:00       NO4  1871628.405
+4  2026-08-08T17:00:00+02:00       NO5  2093155.201
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"startTime"</span><span class="p">)</span>
+      <span class="p">[</span><span class="s2">"quantityKwh"</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">load</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">load</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">load</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex(['2026-08-08 17:00:00+02:00', '2026-08-08 18:00:00+02:00',
+               '2026-08-08 19:00:00+02:00', '2026-08-08 20:00:00+02:00',
+               '2026-08-08 21:00:00+02:00', '2026-08-08 22:00:00+02:00',
+               '2026-08-08 23:00:00+02:00', '2026-08-09 00:00:00+02:00',
+               '2026-08-09 01:00:00+02:00', '2026-08-09 02:00:00+02:00',
+               ...
+               '2026-09-06 14:00:00+02:00', '2026-09-06 15:00:00+02:00',
+               '2026-09-06 16:00:00+02:00', '2026-09-06 17:00:00+02:00',
+               '2026-09-06 18:00:00+02:00', '2026-09-06 19:00:00+02:00',
+               '2026-09-06 20:00:00+02:00', '2026-09-06 21:00:00+02:00',
+               '2026-09-06 22:00:00+02:00', '2026-09-06 23:00:00+02:00'],
+              dtype='datetime64[ns, UTC+02:00]', name='startTime', length=703, freq=None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">area</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">area</span><span class="p">[</span><span class="s2">"attributes"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"consumptionPerGroupMbaHour"</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">obs</span><span class="p">[</span><span class="s2">"consumptionGroup"</span><span class="p">])</span>
+
+<span class="nb">sorted</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['cabin', 'household', 'primary', 'secondary', 'tertiary']
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable         Type        Data/Info
+--------------------------------------
+Image            type        &lt;class 'IPython.core.display.Image'&gt;
+area             dict        n=3
+areas            list        n=6
+data             dict        n=3
+display          function    &lt;function display at 0x000002CDEF901510&gt;
+item             dict        n=4
+json             module      &lt;module 'json' from 'C:\\&lt;...&gt;\lib\\json\\__init__.py'&gt;
+municipalities   list        n=361
+params           dict        n=1
+pd               module      &lt;module 'pandas' from 'C:&lt;...&gt;es\\pandas\\__init__.py'&gt;
+r                Response    &lt;Response [200]&gt;
+requests         module      &lt;module 'requests' from '&lt;...&gt;\\requests\\__init__.py'&gt;
+url              str         https://api.elhub.no/energy-data/v0/price-areas
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"https://api.elhub.no/energy-data/v0/price-areas"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"CONSUMPTION_PER_GROUP_MBA_HOUR"</span><span class="p">,</span>
+        <span class="s2">"startDate"</span><span class="p">:</span> <span class="s2">"2026-08-01"</span><span class="p">,</span>
+        <span class="s2">"endDate"</span><span class="p">:</span> <span class="s2">"2026-08-02"</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['*', 'NO1', 'NO2', 'NO3', 'NO4', 'NO5']
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">area</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]:</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="n">area</span><span class="p">[</span><span class="s2">"attributes"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">"consumptionPerGroupMbaHour"</span><span class="p">,</span>
+            <span class="p">[]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(600, 7)
+['startTime', 'endTime', 'priceArea', 'consumptionGroup', 'quantityKwh', 'lastUpdatedTime', 'meteringPointCount']
+                   startTime                    endTime priceArea  \
+0  2026-08-01T00:00:00+02:00  2026-08-01T01:00:00+02:00       NO1   
+1  2026-08-01T01:00:00+02:00  2026-08-01T02:00:00+02:00       NO1   
+2  2026-08-01T02:00:00+02:00  2026-08-01T03:00:00+02:00       NO1   
+3  2026-08-01T03:00:00+02:00  2026-08-01T04:00:00+02:00       NO1   
+4  2026-08-01T04:00:00+02:00  2026-08-01T05:00:00+02:00       NO1   
+
+  consumptionGroup  quantityKwh            lastUpdatedTime  meteringPointCount  
+0            cabin    60997.150  2026-08-15T18:46:23+02:00              111177  
+1            cabin    55801.180  2026-08-15T18:46:23+02:00              111177  
+2            cabin    52910.887  2026-08-15T18:46:23+02:00              111177  
+3            cabin    51678.773  2026-08-15T18:46:23+02:00              111177  
+4            cabin    50843.164  2026-08-15T18:46:23+02:00              111177  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"startTime"</span><span class="p">,</span> <span class="s2">"priceArea"</span><span class="p">])[</span><span class="s2">"quantityKwh"</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">load</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">])</span>
+
+<span class="n">load</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>startTime</th>
+      <th>priceArea</th>
+      <th>quantityKwh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2026-08-01 00:00:00+02:00</td>
+      <td>NO1</td>
+      <td>2276484.884</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2026-08-01 00:00:00+02:00</td>
+      <td>NO2</td>
+      <td>3311418.193</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2026-08-01 00:00:00+02:00</td>
+      <td>NO3</td>
+      <td>2640243.137</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2026-08-01 00:00:00+02:00</td>
+      <td>NO4</td>
+      <td>1881188.904</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2026-08-01 00:00:00+02:00</td>
+      <td>NO5</td>
+      <td>1665729.755</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no1</span> <span class="o">=</span> <span class="n">load</span><span class="p">[</span><span class="n">load</span><span class="p">[</span><span class="s2">"priceArea"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"NO1"</span><span class="p">]</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no1</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">],</span> <span class="n">no1</span><span class="p">[</span><span class="s2">"quantityKwh"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"NO1 Consumption"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"kWh"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b9251d23cb69dc8e3ca1cd5afae10f16841f49052a17cd01ea5e88b4d7baa69e.png" src="../_images/b9251d23cb69dc8e3ca1cd5afae10f16841f49052a17cd01ea5e88b4d7baa69e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"consumptionGroup"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['cabin', 'household', 'primary', 'secondary', 'tertiary']
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">])</span>
+
+<span class="n">total_no</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"startTime"</span><span class="p">)[</span><span class="s2">"quantityKwh"</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total_no</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>startTime
+2026-08-01 00:00:00+02:00    1.177506e+07
+2026-08-01 01:00:00+02:00    1.145810e+07
+2026-08-01 02:00:00+02:00    1.125470e+07
+2026-08-01 03:00:00+02:00    1.110904e+07
+2026-08-01 04:00:00+02:00    1.104426e+07
+Name: quantityKwh, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">total_no</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">total_no</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Total electricity consumption in Norway"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"kWh"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/86c24a2681ae3d3c84ee06d2da88e06ddeaec5985ba5de5963cd855212c891e7.png" src="../_images/86c24a2681ae3d3c84ee06d2da88e06ddeaec5985ba5de5963cd855212c891e7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_no_mwh</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"startTime"</span><span class="p">)[</span><span class="s2">"quantityKwh"</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+      <span class="o">/</span> <span class="mi">1000</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">total_no_mwh</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">total_no_mwh</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Total electricity consumption in Norway"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"MWh"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/66e9b12b494f83b9bda30b82d90c0338a740979a5b9a27c905857b8ceed55780.png" src="../_images/66e9b12b494f83b9bda30b82d90c0338a740979a5b9a27c905857b8ceed55780.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">load</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">])</span>
+
+<span class="n">no1</span> <span class="o">=</span> <span class="n">load</span><span class="p">[</span><span class="n">load</span><span class="p">[</span><span class="s2">"priceArea"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"NO1"</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no1</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">],</span>
+         <span class="n">no1</span><span class="p">[</span><span class="s2">"quantityKwh"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Forbruk NO1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"kWh"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">load</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">no1</span> <span class="o">=</span> <span class="n">load</span><span class="p">[</span><span class="n">load</span><span class="p">[</span><span class="s2">"priceArea"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"NO1"</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name 'load' is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -583,40 +1181,94 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cbbb6355b7907750e630048cc32603a5f68cdc030852721fbd9b6c32f986ba1a.png" src="../_images/cbbb6355b7907750e630048cc32603a5f68cdc030852721fbd9b6c32f986ba1a.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>API forespørsel sendt: 2026-09-09 14:19:14
-Forespurt intervall: 2026-09-08 00:00:00+02:00 -&gt; 2026-09-09 00:00:00+02:00
-Første målepunkt: 2026-09-08 00:00:00+02:00
-Siste målepunkt: 2026-09-08 23:45:00+02:00
-Analyserer siste komplette døgn: 2026-09-08
-Antall målepunkter: 96
-Hentet 96 målepunkter
-Responstid: 0.00 sekunder
-                           Actual Load
-2026-09-08 00:00:00+02:00   12011.2925
-2026-09-08 01:00:00+02:00   11660.4475
-2026-09-08 02:00:00+02:00   11481.5525
-2026-09-08 03:00:00+02:00   11426.4800
-2026-09-08 04:00:00+02:00   11400.6550
-2026-09-08 05:00:00+02:00   11624.9575
-2026-09-08 06:00:00+02:00   12444.1100
-2026-09-08 07:00:00+02:00   13540.9600
-2026-09-08 08:00:00+02:00   13875.6100
-2026-09-08 09:00:00+02:00   13771.9975
-2026-09-08 10:00:00+02:00   13459.5825
-2026-09-08 11:00:00+02:00   13333.8175
-2026-09-08 12:00:00+02:00   13224.0125
-2026-09-08 13:00:00+02:00   13347.2400
-2026-09-08 14:00:00+02:00   13462.9300
-2026-09-08 15:00:00+02:00   13654.8450
-2026-09-08 16:00:00+02:00   13817.3525
-2026-09-08 17:00:00+02:00   13774.2650
-2026-09-08 18:00:00+02:00   13861.3050
-2026-09-08 19:00:00+02:00   13950.1800
-2026-09-08 20:00:00+02:00   14086.1575
-2026-09-08 21:00:00+02:00   13892.1900
-2026-09-08 22:00:00+02:00   13476.7575
-2026-09-08 23:00:00+02:00   12877.5075
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">start</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">end</span> <span class="o">=</span> <span class="n">today</span>
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="n">load</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_load</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">country_code</span><span class="o">=</span><span class="s2">"NO"</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">end</span><span class="o">=</span><span class="n">end</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">load_hourly</span> <span class="o">=</span> <span class="n">load</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"h"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\decorators.py:129,</span> in <span class="ni">year_limited.&lt;locals&gt;.year_wrapper</span><span class="nt">(start, end, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">for</span> <span class="n">_start</span><span class="p">,</span> <span class="n">_end</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">129</span>         <span class="n">frame</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">_end</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>         <span class="k">if</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">!=</span> <span class="s1">'_query_unavailability'</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>             <span class="c1"># Due to partial matching func may return data indexed by</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>             <span class="c1"># timestamps outside _start and _end. In order to avoid</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>             <span class="c1"># If there are repeating records in a single frame (e.g. due</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>             <span class="c1"># to corrections) then the result will also have them.</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>             <span class="k">if</span> <span class="n">is_first_frame</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:1483,</span> in <span class="ni">EntsoePandasClient.query_load</span><span class="nt">(self, country_code, start, end)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1471</span><span class="w"> </span><span class="sd">"""</span>
+<span class="g g-Whitespace">   </span><span class="mi">1472</span><span class="sd"> Parameters</span>
+<span class="g g-Whitespace">   </span><span class="mi">1473</span><span class="sd"> ----------</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1480</span><span class="sd"> pd.DataFrame</span>
+<span class="g g-Whitespace">   </span><span class="mi">1481</span><span class="sd"> """</span>
+<span class="g g-Whitespace">   </span><span class="mi">1482</span> <span class="n">area</span> <span class="o">=</span> <span class="n">lookup_area</span><span class="p">(</span><span class="n">country_code</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1483</span> <span class="n">text</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">EntsoePandasClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">query_load</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1484</span>     <span class="n">country_code</span><span class="o">=</span><span class="n">area</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1486</span> <span class="n">df</span> <span class="o">=</span> <span class="n">parse_loads</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">process_type</span><span class="o">=</span><span class="s1">'A16'</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1487</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">tz</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:301,</span> in <span class="ni">EntsoeRawClient.query_load</span><span class="nt">(self, country_code, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span> <span class="n">area</span> <span class="o">=</span> <span class="n">lookup_area</span><span class="p">(</span><span class="n">country_code</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="s1">'documentType'</span><span class="p">:</span> <span class="s1">'A65'</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span>     <span class="s1">'processType'</span><span class="p">:</span> <span class="s1">'A16'</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span>     <span class="s1">'outBiddingZone_Domain'</span><span class="p">:</span> <span class="n">area</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="s1">'out_Domain'</span><span class="p">:</span> <span class="n">area</span><span class="o">.</span><span class="n">code</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span> <span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">301</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_request</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span> <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\decorators.py:24,</span> in <span class="ni">retry.&lt;locals&gt;.retry_wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">retry_count</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">24</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="c1"># Apart from common (ConnectionError and gaierror) errors, in certain</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="c1"># cases (e.g. with scheduled commercial exchanges), the connection with</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="c1"># ENTSO-e's can break with a RemoteDisconnected exception</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">gaierror</span><span class="p">,</span> <span class="n">RemoteDisconnected</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:135,</span> in <span class="ni">EntsoeRawClient._base_request</span><span class="nt">(self, params, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>             <span class="n">allowed</span> <span class="o">=</span> <span class="n">error_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)[</span><span class="o">-</span><span class="mi">30</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>             <span class="k">raise</span> <span class="n">PaginationError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>                 <span class="sa">f</span><span class="s2">"The API is limited to </span><span class="si">{</span><span class="n">allowed</span><span class="si">}</span><span class="s2"> elements per "</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>                 <span class="sa">f</span><span class="s2">"request. This query requested for </span><span class="si">{</span><span class="n">requested</span><span class="si">}</span><span class="s2"> "</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>                 <span class="sa">f</span><span class="s2">"documents and cannot be fulfilled as is."</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">135</span>     <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="c1"># ENTSO-E has changed their server to also respond with 200 if there is no data but all parameters are valid</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="c1"># this means we need to check the contents for this error even when status code 200 is returned</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># to prevent parsing the full response do a text matching instead of full parsing</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># also only do this when response type content is text and not for example a zip file</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'content-type'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'application/xml'</span><span class="p">,</span> <span class="s1">'text/xml'</span><span class="p">]:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:109,</span> in <span class="ni">EntsoeRawClient._base_request</span><span class="nt">(self, params, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>                             <span class="n">proxies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proxies</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">109</span>     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\models.py:1167,</span> in <span class="ni">Response.raise_for_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1162</span>     <span class="n">http_error_msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1163</span>         <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> Server Error: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2"> for url: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span>
+<span class="g g-Whitespace">   </span><span class="mi">1164</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1166</span> <span class="k">if</span> <span class="n">http_error_msg</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1167</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">http_error_msg</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: 404 Client Error: Not Found for url: https://web-api.tp.entsoe.eu/api?documentType=A65&amp;processType=A16&amp;outBiddingZone_Domain=10YNO-0--------C&amp;out_Domain=10YNO-0--------C&amp;securityToken=46f44dd0-dbfc-4b66-90c7-4f022872ae7f&amp;periodStart=202609062200&amp;periodEnd=202609072200
 </pre></div>
 </div>
 </div>
@@ -642,12 +1294,114 @@ Responstid: 0.00 sekunder
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-01 00:00:00+02:00    78.13
-2025-09-01 01:00:00+02:00    77.50
-2025-09-01 02:00:00+02:00    75.49
-2025-09-01 03:00:00+02:00    72.02
-2025-09-01 04:00:00+02:00    75.07
-Freq: h, dtype: float64
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2025-09-01"</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Brussels"</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">end</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2025-09-02"</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Europe/Brussels"</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">prices</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_day_ahead_prices</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="s2">"NO_2"</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">end</span><span class="o">=</span><span class="n">end</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="nb">print</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:1298,</span> in <span class="ni">EntsoePandasClient.query_day_ahead_prices</span><span class="nt">(self, country_code, start, end, resolution)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1296</span> <span class="n">area</span> <span class="o">=</span> <span class="n">lookup_area</span><span class="p">(</span><span class="n">country_code</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1297</span> <span class="c1"># we do here extra days at start and end to fix issue 187</span>
+<span class="ne">-&gt; </span><span class="mi">1298</span> <span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query_day_ahead_prices</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1299</span>     <span class="n">area</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1300</span>     <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="o">-</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1301</span>     <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="o">+</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1302</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1303</span> <span class="n">series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">tz</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1304</span> <span class="n">series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">before</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\decorators.py:129,</span> in <span class="ni">year_limited.&lt;locals&gt;.year_wrapper</span><span class="nt">(start, end, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">for</span> <span class="n">_start</span><span class="p">,</span> <span class="n">_end</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">129</span>         <span class="n">frame</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">_end</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>         <span class="k">if</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">!=</span> <span class="s1">'_query_unavailability'</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>             <span class="c1"># Due to partial matching func may return data indexed by</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>             <span class="c1"># timestamps outside _start and _end. In order to avoid</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>             <span class="c1"># If there are repeating records in a single frame (e.g. due</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>             <span class="c1"># to corrections) then the result will also have them.</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>             <span class="k">if</span> <span class="n">is_first_frame</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\decorators.py:72,</span> in <span class="ni">documents_limited.&lt;locals&gt;.decorator.&lt;locals&gt;.documents_wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4800</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>         <span class="n">frame</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>         <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">except</span> <span class="n">NoMatchingDataError</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:1317,</span> in <span class="ni">EntsoePandasClient._query_day_ahead_prices</span><span class="nt">(self, area, start, end, offset)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1310</span> <span class="nd">@year_limited</span>
+<span class="g g-Whitespace">   </span><span class="mi">1311</span> <span class="nd">@documents_limited</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1312</span> <span class="k">def</span><span class="w"> </span><span class="nf">_query_day_ahead_prices</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1315</span>         <span class="n">end</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1316</span>         <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1317</span>     <span class="n">text</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">EntsoePandasClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">query_day_ahead_prices</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1318</span>         <span class="n">area</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1319</span>         <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1320</span>         <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1321</span>         <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1322</span>         <span class="n">sequence</span><span class="o">=</span><span class="mi">1</span> <span class="k">if</span> <span class="n">area</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'DE_LU'</span><span class="p">,</span> <span class="s1">'AT'</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1323</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1324</span>     <span class="n">series_all</span> <span class="o">=</span> <span class="n">parse_prices</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1326</span>     <span class="c1"># This function should only return SDAC prices, which have a fixed defined resolution</span>
+<span class="g g-Whitespace">   </span><span class="mi">1327</span>     <span class="c1"># before 2025-10-01 its 60min, after 15min</span>
+<span class="g g-Whitespace">   </span><span class="mi">1328</span>     <span class="c1"># this is aligned on businessday in timezone Europe/Amsterdam</span>
+<span class="g g-Whitespace">   </span><span class="mi">1329</span>     <span class="c1"># some zones already publish in different resolution.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1330</span>     <span class="c1"># for secondary auctions published on entsoe, use the query_day_ahead_prices_local function</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:192,</span> in <span class="ni">EntsoeRawClient.query_day_ahead_prices</span><span class="nt">(self, country_code, start, end, offset, sequence)</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span> <span class="k">if</span> <span class="n">sequence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="n">params</span><span class="p">[</span><span class="s1">'classificationSequence_AttributeInstanceComponent.position'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sequence</span>
+<span class="ne">--&gt; </span><span class="mi">192</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_request</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\decorators.py:24,</span> in <span class="ni">retry.&lt;locals&gt;.retry_wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">retry_count</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">24</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="c1"># Apart from common (ConnectionError and gaierror) errors, in certain</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="c1"># cases (e.g. with scheduled commercial exchanges), the connection with</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="c1"># ENTSO-e's can break with a RemoteDisconnected exception</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">gaierror</span><span class="p">,</span> <span class="n">RemoteDisconnected</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:135,</span> in <span class="ni">EntsoeRawClient._base_request</span><span class="nt">(self, params, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>             <span class="n">allowed</span> <span class="o">=</span> <span class="n">error_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)[</span><span class="o">-</span><span class="mi">30</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>             <span class="k">raise</span> <span class="n">PaginationError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>                 <span class="sa">f</span><span class="s2">"The API is limited to </span><span class="si">{</span><span class="n">allowed</span><span class="si">}</span><span class="s2"> elements per "</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>                 <span class="sa">f</span><span class="s2">"request. This query requested for </span><span class="si">{</span><span class="n">requested</span><span class="si">}</span><span class="s2"> "</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>                 <span class="sa">f</span><span class="s2">"documents and cannot be fulfilled as is."</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">135</span>     <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="c1"># ENTSO-E has changed their server to also respond with 200 if there is no data but all parameters are valid</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="c1"># this means we need to check the contents for this error even when status code 200 is returned</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># to prevent parsing the full response do a text matching instead of full parsing</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># also only do this when response type content is text and not for example a zip file</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'content-type'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'application/xml'</span><span class="p">,</span> <span class="s1">'text/xml'</span><span class="p">]:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:109,</span> in <span class="ni">EntsoeRawClient._base_request</span><span class="nt">(self, params, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>                             <span class="n">proxies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proxies</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">109</span>     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\models.py:1167,</span> in <span class="ni">Response.raise_for_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1162</span>     <span class="n">http_error_msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1163</span>         <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> Server Error: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2"> for url: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span>
+<span class="g g-Whitespace">   </span><span class="mi">1164</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1166</span> <span class="k">if</span> <span class="n">http_error_msg</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1167</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">http_error_msg</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: 404 Client Error: Not Found for url: https://web-api.tp.entsoe.eu/api?documentType=A44&amp;in_Domain=10YNO-2--------T&amp;out_Domain=10YNO-2--------T&amp;offset=0&amp;contract_MarketAgreement.type=A01&amp;securityToken=293de206-2682-4b12-a0bf-19a8a0aa04ce&amp;periodStart=202508302200&amp;periodEnd=202509022200
 </pre></div>
 </div>
 </div>
