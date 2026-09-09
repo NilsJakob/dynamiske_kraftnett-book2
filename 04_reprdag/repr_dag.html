@@ -427,7 +427,15 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-to-datetime">pd.to_datetime()</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format">Format</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grupper-de-daglige-verdiene">Grupper de daglige verdiene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomsnittsdogn">Gjennomsnittsdøgn</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hele-scriptet-og-plot">Hele scriptet og plot</a></li>
 </ul>
             </nav>
@@ -483,7 +491,7 @@ til et vertikalt oppsett av hver døgnprofil, se <code class="xref std std-numre
 </section>
 <section id="sjekke-dataene">
 <h2>Sjekke dataene<a class="headerlink" href="#sjekke-dataene" title="Permalink to this heading">#</a></h2>
-<p>Vi må verfisere dataene, og bruker read_csv() funksjonen til pandas for å lese og deretter describe-metoden på dataframen df:</p>
+<p>Vi verfiserer dataene, og bruker read_csv() funksjonen til pandas for å lese og deretter describe-metoden på dataframen df:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -502,6 +510,7 @@ freq                             1          2           2
 </div>
 </div>
 </div>
+<p>Vi kan sjekke startid og sluttid ned iloc-metoden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -541,7 +550,54 @@ Name: 3358, dtype: object
 </div>
 <section id="litt-repetisjon">
 <h3>Litt repetisjon<a class="headerlink" href="#litt-repetisjon" title="Permalink to this heading">#</a></h3>
-<p>Vi starter med å lese csv-filen med <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>. Gjør kolonnen <code class="docutils literal notranslate"><span class="pre">df['Time(Local)']</span></code>, som tidsindeks og leser formatet fra <code class="docutils literal notranslate"><span class="pre">.csv</span></code>-fila. Deretter setter <code class="docutils literal notranslate"><span class="pre">utc=True</span></code>, og setter indeks med <code class="docutils literal notranslate"><span class="pre">set_index()</span></code>.</p>
+<p>Vi starter med å lese csv-filen med <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>. Vi lager kolonnen <code class="docutils literal notranslate"><span class="pre">df['Time(UTC)']</span></code> med <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code>. Vi vet formatet fra da vi leste pd.read_csv() og setter <code class="docutils literal notranslate"><span class="pre">utc=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%d</span><span class="s2">.%m.%Y %H:%M:%S %z"</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>og setter</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">utc</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pd-to-datetime">
+<h2>pd.to_datetime()<a class="headerlink" href="#pd-to-datetime" title="Permalink to this heading">#</a></h2>
+<p>pd.to_datetime() ofte et av de første stegene i tidsserieanalyse med Pandas.</p>
+<p>Når en tidskolonne er konvertert til datetime kan du:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kode</p></th>
+<th class="head"><p>Forklaring</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc[&quot;2026-09-09&quot;]</span></code></p></td>
+<td><p># velg dato</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.resample(&quot;1H&quot;).mean()</span></code></p></td>
+<td><p># grupper per time</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.index.year</span></code></p></td>
+<td><p># hent år</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.index.month</span></code></p></td>
+<td><p># hent måned</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="format">
+<h3>Format<a class="headerlink" href="#format" title="Permalink to this heading">#</a></h3>
+<p>Når <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> kjøres med <code class="docutils literal notranslate"><span class="pre">utc=True</span></code>, blir tidsstemplene i <code class="docutils literal notranslate"><span class="pre">df['Time(Local)']</span></code> konvertert til <strong>UTC (Coordinated Universal Time)</strong>. Resultatet er en <em>timezone-aware</em> datetime-kolonne. Dersom tidsstemplene inneholder tidssoneinformasjon, for eksempel +02:00, blir tidspunktet automatisk omregnet til UTC (+00:00).</p>
+<p>For eksempel at lokal tid:</p>
+<div class="highlight-pyhton notranslate"><div class="highlight"><pre><span></span>2026-01-01 12:00:00+02:00
+</pre></div>
+</div>
+<p>konvertert til UTC:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>Den nye kolonnen <code class="docutils literal notranslate"><span class="pre">df['Time(UTC)']</span></code> brukes deretter som indeks ved hjelp av metoden <code class="docutils literal notranslate"><span class="pre">set_index()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -558,7 +614,7 @@ Name: 3358, dtype: object
 </div>
 </div>
 </div>
-<p>Det gir oss føkgende dataframe:</p>
+<p>Det gir oss følgende dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -577,6 +633,7 @@ Time(UTC)
 </div>
 </div>
 </div>
+<p>Med <code class="docutils literal notranslate"><span class="pre">DateTimeIndex</span></code> blir det lettere å håndtere overgang fra sommertid til vintertid</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2026-03-29 00:00"</span><span class="p">:</span><span class="s2">"2026-03-29 04:00"</span><span class="p">])</span>
@@ -595,22 +652,7 @@ Time(UTC)
 </div>
 </div>
 </div>
-<p>Men tabellen leses fortsatt som object</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(Local)    object
-Production     object
-Consumption    object
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
+<p>Etter konvertering til <code class="docutils literal notranslate"><span class="pre">DateTimeIndex</span></code> leses tabellens datatyper fortsatt som objekter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Consumption"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -663,6 +705,7 @@ dtype: object
 <span class="n">df</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span>
 
 <span class="n">df</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -683,56 +726,6 @@ Time(UTC)
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(UTC)
-1     23831.608185
-2     20055.223557
-3     16608.114866
-4     14597.928236
-5     14706.824749
-12    16662.950000
-Name: Consumption, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month_name</span><span class="p">())</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(UTC)
-April       14597.928236
-December    16662.950000
-February    20055.223557
-January     23831.608185
-March       16608.114866
-May         14706.824749
-Name: Consumption, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'h'
-</pre></div>
-</div>
-</div>
-</div>
 <p>Vi har nå fått en egen kolonne som gir oss datoen eksplisitt. Deretter kan vi gruppere data etter dato og samle alle “Consumption”-verdier per dag i en liste.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/daily_load_profile.svg"><img alt="../_images/daily_load_profile.svg" src="../_images/daily_load_profile.svg" width="900px" /></a>
@@ -742,6 +735,29 @@ Name: Consumption, dtype: float64
 </figure>
 <div class="cell tag_remove-input docutils container">
 </div>
+<section id="grupper-de-daglige-verdiene">
+<h3>Grupper de daglige verdiene<a class="headerlink" href="#grupper-de-daglige-verdiene" title="Permalink to this heading">#</a></h3>
+<p>Tidligere har vi brukt <code class="docutils literal notranslate"><span class="pre">.resample()</span></code>-metoden til å gruppere etter faste tidsintervaller</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analyse_måned</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"ME"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">analyse_måned</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time(UTC)
+2025-12-31 00:00:00+00:00    16662.950000
+2026-01-31 00:00:00+00:00    23831.608185
+2026-02-28 00:00:00+00:00    20055.223557
+2026-03-31 00:00:00+00:00    16608.114866
+2026-04-30 00:00:00+00:00    14597.928236
+Freq: ME, Name: Consumption, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nå skal vi bruke <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code>-metoden til å gruppere på <code class="docutils literal notranslate"><span class="pre">date</span></code>-kolonnen vi lagde med <code class="docutils literal notranslate"><span class="pre">DateTimeIndex</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'date'</span><span class="p">)[</span><span class="s1">'Consumption'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
@@ -760,6 +776,167 @@ Name: Consumption, dtype: object
 </div>
 </div>
 </div>
+<p>Men vent! Ikke alle verdiene har 24 timers døgnprofiler. La oss sjekk hvilke <code class="docutils literal notranslate"><span class="pre">daily</span></code> som ikke inneholder (<code class="docutils literal notranslate"><span class="pre">!=</span></code>) 24 verdier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">incomplete_days</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">daily</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">24</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">incomplete_days</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([2025-12-31, 2026-05-20], dtype='object', name='date')
+</pre></div>
+</div>
+</div>
+</div>
+<p>DateTimeIndex gjør det lett å sjekke disse tidsrommene nærmere:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'2025-12-31'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time(Local)</th>
+      <th>Production</th>
+      <th>Consumption</th>
+      <th>date</th>
+      <th>year</th>
+    </tr>
+    <tr>
+      <th>Time(UTC)</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-12-31 23:00:00+00:00</th>
+      <td>01.01.2026 00:00:00 +01:00</td>
+      <td>18448,59</td>
+      <td>16662.95</td>
+      <td>2025-12-31</td>
+      <td>2025</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'2026-05-19 20'</span><span class="p">:</span><span class="s1">'2026-05-20 01'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time(Local)</th>
+      <th>Production</th>
+      <th>Consumption</th>
+      <th>date</th>
+      <th>year</th>
+    </tr>
+    <tr>
+      <th>Time(UTC)</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2026-05-19 20:00:00+00:00</th>
+      <td>19.05.2026 22:00:00 +02:00</td>
+      <td>13941,80</td>
+      <td>17396.93</td>
+      <td>2026-05-19</td>
+      <td>2026</td>
+    </tr>
+    <tr>
+      <th>2026-05-19 21:00:00+00:00</th>
+      <td>19.05.2026 23:00:00 +02:00</td>
+      <td>13479,56</td>
+      <td>15295.22</td>
+      <td>2026-05-19</td>
+      <td>2026</td>
+    </tr>
+    <tr>
+      <th>2026-05-19 22:00:00+00:00</th>
+      <td>20.05.2026 00:00:00 +02:00</td>
+      <td>12920,64</td>
+      <td>14881.17</td>
+      <td>2026-05-19</td>
+      <td>2026</td>
+    </tr>
+    <tr>
+      <th>2026-05-19 23:00:00+00:00</th>
+      <td>20.05.2026 01:00:00 +02:00</td>
+      <td>12626,67</td>
+      <td>14265.45</td>
+      <td>2026-05-19</td>
+      <td>2026</td>
+    </tr>
+    <tr>
+      <th>2026-05-20 00:00:00+00:00</th>
+      <td>20.05.2026 02:00:00 +02:00</td>
+      <td>12444,24</td>
+      <td>13891.66</td>
+      <td>2026-05-20</td>
+      <td>2026</td>
+    </tr>
+    <tr>
+      <th>2026-05-20 01:00:00+00:00</th>
+      <td>20.05.2026 03:00:00 +02:00</td>
+      <td>12215,32</td>
+      <td>13679.98</td>
+      <td>2026-05-20</td>
+      <td>2026</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p>Vi får tilbake en pandas Series hvor hver verdi er en Python-liste</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -777,7 +954,7 @@ Name: Consumption, dtype: object
 </div>
 </div>
 </div>
-<p>Beholder kun komplette døgnlastprofiler, kun de seriene som har 24 timesverdier</p>
+<p>Beholder kun komplette døgnlastprofiler, kun de seriene som har (<code class="docutils literal notranslate"><span class="pre">daily.apply(len)</span> <span class="pre">==</span> <span class="pre">24</span></code>) 24 timesverdier</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily</span> <span class="o">=</span> <span class="n">daily</span><span class="p">[</span><span class="n">daily</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span><span class="p">]</span>
@@ -800,7 +977,7 @@ Name: Consumption, dtype: object
 </div>
 </div>
 </div>
-<p>Vi gjør om til matriseverdier ved <code class="docutils literal notranslate"><span class="pre">.values</span></code></p>
+<p>Vi gjør om til matriseverdier ved <code class="docutils literal notranslate"><span class="pre">.values</span></code>-attributtet som returnerer et <code class="docutils literal notranslate"><span class="pre">numpy.array()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">daily</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
@@ -822,7 +999,7 @@ Name: Consumption, dtype: object
 </figure>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p>Numpy funksjonen <code class="docutils literal notranslate"><span class="pre">.vstack()</span></code> stacker verdiene vertikalt i en 2D matrise med shape = (antall dager, antall observasjoner per dag)</p>
+<p>Numpy funksjonen <code class="docutils literal notranslate"><span class="pre">.vstack()</span></code> stacker verdiene vertikalt i en 2D matrise med shape = (antall dager, antall observasjoner per dag). Nå er hver rad én døgnprofil og hver kolonne én time i døgnet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Konverter til array</span>
@@ -865,12 +1042,37 @@ Name: Consumption, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">16662.95</span><span class="o">+</span><span class="mf">14821.37</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">14953.24</span><span class="o">+</span><span class="mf">13826.33</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15742.16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14389.785
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(14389.785)
+</pre></div>
+</div>
+</div>
+</div>
+<p>eller</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(14389.785)
 </pre></div>
 </div>
 </div>
@@ -891,6 +1093,10 @@ Name: Consumption, dtype: object
 </div>
 </div>
 </div>
+</section>
+<section id="gjennomsnittsdogn">
+<h3>Gjennomsnittsdøgn<a class="headerlink" href="#gjennomsnittsdogn" title="Permalink to this heading">#</a></h3>
+<p>Vi finner gjennomsnittsdøgnet, og gjenomsnittsdøgnprofil</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gjennomsnittsdøgn</span>
@@ -910,7 +1116,7 @@ Name: Consumption, dtype: object
  20100.58064748 19087.41043165 17901.82748201 17088.99280576]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1c63b218e20&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1734c364a30&gt;]
 </pre></div>
 </div>
 <img alt="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" src="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" />
@@ -933,7 +1139,7 @@ Name: Consumption, dtype: object
 </div>
 </div>
 </div>
-<p>Vi bruker en Euklids distanse <span class="math notranslate nohighlight">\(\sqrt{x^2_1+x^2_s+...+x^2_n}\)</span> for å finne hvert døgns absolutte avstand til gjennomsnittet</p>
+<p>Vi bruker en Euklids distanse <span class="math notranslate nohighlight">\(\sqrt{x^2_1+x^2_s+...+x^2_n}\)</span> for å finne hvert døgns absolutte avstand til gjennomsnittet. np.linalg.norm() måler lengden til en vektor. Her finner vi lengden hver døgnprofil ligger fra gjennomsnittsprofilen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -946,43 +1152,34 @@ Name: Consumption, dtype: object
 </div>
 </div>
 </div>
+<p>Vi finner avstand for hver døgnprofil og plotter dette. Siden <code class="docutils literal notranslate"><span class="pre">daily.index</span></code> er en <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code>, kan Matplotlib automatisk forstå at x-aksen representerer datoer og vise måneder og år på en fornuftig måte.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ex_dist</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">dist_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Avstand"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([15586.15856527, 18624.93192142, 25149.33506703, 27562.65299844])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">-----------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">           </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dist_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dist_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Avstand"</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 'distances' is not defined
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finn dag med minst avvik (minste norm)</span>
-<span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1c63d4521d0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/62739b8c6d7c5641624c900effb490dbec6786992afbcd3b67007979bb45c5f8.png" src="../_images/62739b8c6d7c5641624c900effb490dbec6786992afbcd3b67007979bb45c5f8.png" />
 </div>
 </div>
 <p>Vi bruker numpys <code class="docutils literal notranslate"><span class="pre">argmin()</span></code> funksjon til å gi oss raden (altså det spesifikke) døgnet med den minste euklidske avstand til gjennomsnittet</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(91)
 </pre></div>
 </div>
 </div>
@@ -994,12 +1191,8 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2026, 4, 2)
-</pre></div>
 </div>
-</div>
-</div>
+</section>
 </section>
 <section id="hele-scriptet-og-plot">
 <h2>Hele scriptet og plot<a class="headerlink" href="#hele-scriptet-og-plot" title="Permalink to this heading">#</a></h2>
@@ -1033,11 +1226,6 @@ Name: Consumption, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Representativ dag: 2026-04-02
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1054,9 +1242,6 @@ Name: Consumption, dtype: object
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/f5319eefde3792179d6f23ec71862bd87a3bdcb3ec5a9d73b8bb6bae64a59de0.png" src="../_images/f5319eefde3792179d6f23ec71862bd87a3bdcb3ec5a9d73b8bb6bae64a59de0.png" />
 </div>
 </div>
 </section>
@@ -1131,7 +1316,15 @@ Name: Consumption, dtype: object
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-to-datetime">pd.to_datetime()</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format">Format</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-datetime">Index - datetime</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grupper-de-daglige-verdiene">Grupper de daglige verdiene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomsnittsdogn">Gjennomsnittsdøgn</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hele-scriptet-og-plot">Hele scriptet og plot</a></li>
 </ul>
   </nav></div>
