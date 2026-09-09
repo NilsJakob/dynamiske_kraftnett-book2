@@ -422,6 +422,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datadrevet-modell">Datadrevet modell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sjekke-dataene">Sjekke dataene</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
 </ul>
@@ -448,7 +449,38 @@ document.write(`
 </ul>
 <p>Dataene er lastet ned fra Statnetts side <a class="reference external" href="https://www.statnett.no/for-aktorer-i-kraftbransjen/tall-og-data-fra-kraftsystemet">Tall og data fra kraftsystemet</a> og viser timesbaserte verdier av produksjon og forbruk av elektrisk kraft fra 01.01.2026 til 20.05.2026.</p>
 <p>Tidligere har vi brukt numpy og pandas seperat, først numpy til å lage en typisk døgnprofil og deretter pandas til å lese data.</p>
-<p>Nå skal vi kombinere de til å finne en representativ dag i den angitte dataperioden fra 01.01.2026 til 20.05.2026.</p>
+<p>Nå skal vi kombinere de til å finne en representativ dag, se <a class="reference internal" href="#fig-repr-day"><span class="std std-numref">Fig. 16</span></a>, i den angitte dataperioden fra 01.01.2026 til 20.05.2026.</p>
+<figure class="align-default" id="fig-repr-day">
+<a class="reference internal image-reference" href="../_images/representative_day.svg"><img alt="../_images/representative_day.svg" src="../_images/representative_day.svg" width="900px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Representativ dag for datasettet</span><a class="headerlink" href="#fig-repr-day" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="datadrevet-modell">
+<h2>Datadrevet modell<a class="headerlink" href="#datadrevet-modell" title="Permalink to this heading">#</a></h2>
+<p>Representativ dag modellen er en datadrevet modell, fordi den er laget på bakrgrunn av et tallgrunnlag som vi tallbehandler inn i en modell.</p>
+<p>Vi kombinerer pandas og numpy funksjoner for å klare dette.</p>
+<p>Først gjør vi om fra tidsserie til døgnprofil i pandas som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-dailyload</span></code>, og deretter
+til et vertikalt oppsett av hver døgnprofil, se <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-vstack</span></code>, ved hjelp av numpy biblioteket.</p>
+<figure class="align-default" id="fig-dailyload">
+<a class="reference internal image-reference" href="../_images/daily_load_profile.svg"><img alt="../_images/daily_load_profile.svg" src="../_images/daily_load_profile.svg" width="900px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Illustrasjon av omgjøring fra tidsserie til døgnprofil</span><a class="headerlink" href="#fig-dailyload" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-vstack">
+<a class="reference internal image-reference" href="../_images/vstack.svg"><img alt="../_images/vstack.svg" src="../_images/vstack.svg" width="900px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Illustrasjon av omgjøring fra horisontalt til vertikalt oppsett</span><a class="headerlink" href="#fig-vstack" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+</section>
 <section id="sjekke-dataene">
 <h2>Sjekke dataene<a class="headerlink" href="#sjekke-dataene" title="Permalink to this heading">#</a></h2>
 <p>Vi må verfisere dataene, og bruker read_csv() funksjonen til pandas for å lese og deretter describe-metoden på dataframen df:</p>
@@ -702,22 +734,13 @@ Name: Consumption, dtype: float64
 </div>
 </div>
 <p>Vi har nå fått en egen kolonne som gir oss datoen eksplisitt. Deretter kan vi gruppere data etter dato og samle alle “Consumption”-verdier per dag i en liste.</p>
-<figure class="align-default" id="fig-dailyload">
+<figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/daily_load_profile.svg"><img alt="../_images/daily_load_profile.svg" src="../_images/daily_load_profile.svg" width="900px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Illustrasjon av omgjøring fra tidsserie til døgnprofil</span><a class="headerlink" href="#fig-dailyload" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Illustrasjon av omgjøring fra tidsserie til døgnprofil</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"../images/daily_load_profile.svg"</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/c11d9a52ce9de56485a3f2efbfe484e04b1e36f42c5aa0e152495652f2e42c3a.svg" src="../_images/c11d9a52ce9de56485a3f2efbfe484e04b1e36f42c5aa0e152495652f2e42c3a.svg" /></div>
+<div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -791,22 +814,13 @@ Name: Consumption, dtype: object
 </div>
 </div>
 </div>
-<figure class="align-default" id="fig-vstack">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/vstack.svg"><img alt="../_images/vstack.svg" src="../_images/vstack.svg" width="900px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Illustrasjon av omgjøring til vstack</span><a class="headerlink" href="#fig-vstack" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Illustrasjon av omgjøring til vstack</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"../images/vstack.svg"</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/1a30e8dc55f835d9f8c6a1582f6dfc555d4af9e7d53062f53e5640ccfb9e06e5.svg" src="../_images/1a30e8dc55f835d9f8c6a1582f6dfc555d4af9e7d53062f53e5640ccfb9e06e5.svg" /></div>
+<div class="cell tag_remove-input docutils container">
 </div>
 <p>Numpy funksjonen <code class="docutils literal notranslate"><span class="pre">.vstack()</span></code> stacker verdiene vertikalt i en 2D matrise med shape = (antall dager, antall observasjoner per dag)</p>
 <div class="cell docutils container">
@@ -896,7 +910,7 @@ Name: Consumption, dtype: object
  20100.58064748 19087.41043165 17901.82748201 17088.99280576]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d995a69a50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1c63b218e20&gt;]
 </pre></div>
 </div>
 <img alt="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" src="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" />
@@ -954,7 +968,7 @@ Name: Consumption, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d997c6a6b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1c63d4521d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/62739b8c6d7c5641624c900effb490dbec6786992afbcd3b67007979bb45c5f8.png" src="../_images/62739b8c6d7c5641624c900effb490dbec6786992afbcd3b67007979bb45c5f8.png" />
@@ -1036,6 +1050,7 @@ Name: Consumption, dtype: object
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"MW"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Representativ dag: </span><span class="si">{</span><span class="n">rep_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'</span><span class="si">%d</span><span class="s1">.%m.%Y'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1111,6 +1126,7 @@ Name: Consumption, dtype: object
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datadrevet-modell">Datadrevet modell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sjekke-dataene">Sjekke dataene</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#litt-repetisjon">Litt repetisjon</a></li>
 </ul>
