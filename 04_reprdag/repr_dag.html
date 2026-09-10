@@ -470,8 +470,8 @@ document.write(`
 <h2>Datadrevet modell<a class="headerlink" href="#datadrevet-modell" title="Permalink to this heading">#</a></h2>
 <p>Representativ dag modellen er en datadrevet modell, fordi den er laget på bakrgrunn av et tallgrunnlag som vi tallbehandler inn i en modell.</p>
 <p>Vi kombinerer pandas og numpy funksjoner for å klare dette.</p>
-<p>Først gjør vi om fra tidsserie til døgnprofil i pandas som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-dailyload</span></code>, og deretter
-til et vertikalt oppsett av hver døgnprofil, se <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-vstack</span></code>, ved hjelp av numpy biblioteket.</p>
+<p>Først gjør vi om fra tidsserie til døgnprofil i pandas som vist i <a class="reference internal" href="#fig-dailyload"><span class="std std-numref">Fig. 17</span></a>, og deretter
+til et vertikalt oppsett av hver døgnprofil, se <a class="reference internal" href="#fig-vstack"><span class="std std-numref">Fig. 18</span></a>, ved hjelp av numpy biblioteket.</p>
 <figure class="align-default" id="fig-dailyload">
 <a class="reference internal image-reference" href="../_images/daily_load_profile.svg"><img alt="../_images/daily_load_profile.svg" src="../_images/daily_load_profile.svg" width="900px" /></a>
 <figcaption>
@@ -1116,7 +1116,7 @@ Name: Consumption, dtype: object
  20100.58064748 19087.41043165 17901.82748201 17088.99280576]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1734c364a30&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1f78de72320&gt;]
 </pre></div>
 </div>
 <img alt="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" src="../_images/e4071538d57ee8c8bd79fc75ca434c36acb395fd11a527e0bc662ed506c7ba00.png" />
@@ -1155,6 +1155,13 @@ Name: Consumption, dtype: object
 <p>Vi finner avstand for hver døgnprofil og plotter dette. Siden <code class="docutils literal notranslate"><span class="pre">daily.index</span></code> er en <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code>, kan Matplotlib automatisk forstå at x-aksen representerer datoer og vise måneder og år på en fornuftig måte.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">mean_profile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
 <span class="n">dist_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -1164,16 +1171,7 @@ Name: Consumption, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">-----------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dist_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">daily</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dist_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Avstand"</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name 'distances' is not defined
-</pre></div>
-</div>
+<img alt="../_images/145ea9fec076fa62b4d4851f3075f39f3f11dd9992e79a3d5c4232e92ff32a55.png" src="../_images/145ea9fec076fa62b4d4851f3075f39f3f11dd9992e79a3d5c4232e92ff32a55.png" />
 </div>
 </div>
 <p>Vi bruker numpys <code class="docutils literal notranslate"><span class="pre">argmin()</span></code> funksjon til å gi oss raden (altså det spesifikke) døgnet med den minste euklidske avstand til gjennomsnittet</p>
