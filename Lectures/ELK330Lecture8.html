@@ -1,0 +1,1277 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Modell treffsikkerhet &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/ELK330Lecture8';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/under_utvikling.html">Under utvikling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2FLectures/ELK330Lecture8.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Lectures/ELK330Lecture8.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modell treffsikkerhet</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modell treffsikkerhet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-og-varians">Bias og varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varians">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenhengen-mellom-bias-og-varians">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-representativ-dag">Kobling til representativ dag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-av-dognlast">Modellering av døgnlast</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basert-pa-observasjonene-kan-vi-estimere">Basert på observasjonene kan vi estimere:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotter-kurvene">Plotter kurvene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellere-topper">Modellere topper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-med-natten">Hva med natten?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generell-form">Generell form</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#begrensninger-ved-modellen">Begrensninger ved modellen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diskusjon-modellering-av-elektrisk-belastning">Diskusjon: Modellering av elektrisk belastning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-systematiske-feil">1. Bias (systematiske feil)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#residualer">2. Residualer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellens-antakelser">3. Modellens antakelser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalisering">4. Generalisering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellkompleksitet">5. Modellkompleksitet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overtilpasning-og-undertilpasning">6. Overtilpasning og undertilpasning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidens-betydning">7. Tidens betydning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistikk-i-praksis">8. Statistikk i praksis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bias-variance trade-off</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#den-sanne-f-x">Den sanne <span class="math notranslate nohighlight">\(f(x)\)</span></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modell-treffsikkerhet">
+<h1>Modell treffsikkerhet<a class="headerlink" href="#modell-treffsikkerhet" title="Permalink to this heading">#</a></h1>
+<p>Hvor trefsikker er modellen. I dette kapitteletskal vi gå litt videre med modellering av data og anslå hvor godt modellen treffer</p>
+<section id="bias-og-varians">
+<h2>Bias og varians<a class="headerlink" href="#bias-og-varians" title="Permalink to this heading">#</a></h2>
+<p>Bias og varians er to sentrale begreper innen statistisk modellering og maskinlæring. De beskriver to ulike typer feil som kan oppstå når vi bruker en modell til å beskrive eller predikere data, som vist i <a class="reference internal" href="../04_reprdag/treffsikkerhet.html#fig-biasvaracc"><span class="std std-numref">Fig. 21</span></a>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/4ba20b3a68ce713ba5725d60cae98decb739d6ecf4b74126bb48170f9e314db6.svg" src="../_images/4ba20b3a68ce713ba5725d60cae98decb739d6ecf4b74126bb48170f9e314db6.svg" /></div>
+</div>
+<section id="bias">
+<h3>Bias<a class="headerlink" href="#bias" title="Permalink to this heading">#</a></h3>
+<p>Bias er den systematiske feilen i modellen.</p>
+<p>En modell med høy bias er ofte for enkel og klarer ikke å beskrive de viktigste mønstrene i dataene. Modellen gjør de samme feilene om og om igjen.</p>
+<p>Høy bias fører ofte til:</p>
+<ul class="simple">
+<li><p>undertilpasning (underfitting),</p></li>
+<li><p>dårlig ytelse på både treningsdata og testdata,</p></li>
+<li><p>systematiske avvik mellom modell og virkelighet.</p></li>
+</ul>
+<p>Eksempel:</p>
+<p>Hvis vi modellerer døgnlasten med kun én sinuskurve,</p>
+<div class="math notranslate nohighlight">
+\[
+L(t)=A+B\sin(t),
+\]</div>
+<p>vil modellen ofte være for enkel til å beskrive både morgen- og kveldstoppen i de observerte dataene. Modellen har da høy bias.</p>
+</section>
+<section id="varians">
+<h3>Varians<a class="headerlink" href="#varians" title="Permalink to this heading">#</a></h3>
+<p>Varians beskriver hvor følsom modellen er for endringer i datasettet.</p>
+<p>En modell med høy varians tilpasser seg treningsdataene svært godt, men reagerer kraftig på små endringer i dataene.</p>
+<p>Høy varians fører ofte til:</p>
+<ul class="simple">
+<li><p>overtilpasning (overfitting),</p></li>
+<li><p>svært god ytelse på treningsdata,</p></li>
+<li><p>dårlig generalisering til nye data.</p></li>
+</ul>
+<p>Eksempel:</p>
+<p>Hvis vi lager en svært kompleks modell som passer perfekt til ett bestemt døgn med ENTSO-E-data, kan modellen begynne å tilpasse seg tilfeldige variasjoner og målefeil. Modellen fungerer da dårlig når vi prøver å bruke den på neste døgn.</p>
+</section>
+<section id="sammenhengen-mellom-bias-og-varians">
+<h3>Sammenhengen mellom bias og varians<a class="headerlink" href="#sammenhengen-mellom-bias-og-varians" title="Permalink to this heading">#</a></h3>
+<p>Det er ofte en avveining mellom bias og varians:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modelltype</p></th>
+<th class="head"><p>Bias</p></th>
+<th class="head"><p>Varians</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Enkel modell</p></td>
+<td><p>Høy</p></td>
+<td><p>Lav</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kompleks modell</p></td>
+<td><p>Lav</p></td>
+<td><p>Høy</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Når modellkompleksiteten øker:</p>
+<ul class="simple">
+<li><p>Bias reduseres.</p></li>
+<li><p>Variansen øker.</p></li>
+</ul>
+<p>Målet er å finne en balanse mellom de to.</p>
+</section>
+<section id="bias-variance-trade-off">
+<h3>Bias-variance trade-off<a class="headerlink" href="#bias-variance-trade-off" title="Permalink to this heading">#</a></h3>
+<p>Den beste modellen er ofte ikke den enkleste eller den mest kompliserte.</p>
+<p>En god modell:</p>
+<ul class="simple">
+<li><p>beskriver de viktigste strukturene i dataene,</p></li>
+<li><p>unngår å lære tilfeldige variasjoner,</p></li>
+<li><p>generaliserer godt til nye observasjoner.</p></li>
+</ul>
+<p>Dette punktet kalles ofte den optimale balansen mellom bias og varians.</p>
+</section>
+<section id="kobling-til-representativ-dag">
+<h3>Kobling til representativ dag<a class="headerlink" href="#kobling-til-representativ-dag" title="Permalink to this heading">#</a></h3>
+<p>Når vi modellerer belastningen må vi gjøre en avveining:</p>
+<ul class="simple">
+<li><p>En svært enkel modell gir høy bias fordi den ikke fanger alle mønstrene i lastdataene.</p></li>
+<li><p>En svært komplisert modell gir høy varians fordi den tilpasser seg ett bestemt døgn for godt.</p></li>
+</ul>
+<p>Målet er å finne en modell som beskriver hovedtrekkene i belastningskurven samtidig som den fungerer godt på nye døgn med andre værforhold, sesonger og forbruksmønstre.</p>
+<blockquote>
+<div><p>En modell med høy bias lærer for lite av dataene. En modell med høy varians lærer for mye av dataene. En god modell lærer akkurat nok.</p>
+</div></blockquote>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">21</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">start</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">end</span> <span class="o">=</span> <span class="n">today</span>
+<span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">load</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_load</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">country_code</span><span class="o">=</span><span class="s2">"NO"</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">end</span><span class="o">=</span><span class="n">end</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">load_hourly</span> <span class="o">=</span> <span class="n">load</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"h"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\decorators.py:202,</span> in <span class="ni">month_limited.&lt;locals&gt;.month_wrapper</span><span class="nt">(start, end, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span> <span class="k">for</span> <span class="n">_start</span><span class="p">,</span> <span class="n">_end</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">202</span>         <span class="n">frame</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">_end</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="k">except</span> <span class="n">NoMatchingDataError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>             <span class="sa">f</span><span class="s2">"NoMatchingDataError: between </span><span class="si">{</span><span class="n">_start</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">_end</span><span class="si">}</span><span class="s2">"</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>         <span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:1483,</span> in <span class="ni">EntsoePandasClient.query_load</span><span class="nt">(self, country_code, start, end)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1471</span><span class="w"> </span><span class="sd">"""</span>
+<span class="g g-Whitespace">   </span><span class="mi">1472</span><span class="sd"> Parameters</span>
+<span class="g g-Whitespace">   </span><span class="mi">1473</span><span class="sd"> ----------</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1480</span><span class="sd"> pd.DataFrame</span>
+<span class="g g-Whitespace">   </span><span class="mi">1481</span><span class="sd"> """</span>
+<span class="g g-Whitespace">   </span><span class="mi">1482</span> <span class="n">area</span> <span class="o">=</span> <span class="n">lookup_area</span><span class="p">(</span><span class="n">country_code</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1483</span> <span class="n">text</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">EntsoePandasClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">query_load</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1484</span>     <span class="n">country_code</span><span class="o">=</span><span class="n">area</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1486</span> <span class="n">df</span> <span class="o">=</span> <span class="n">parse_loads</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">process_type</span><span class="o">=</span><span class="s1">'A16'</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1487</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">tz</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:301,</span> in <span class="ni">EntsoeRawClient.query_load</span><span class="nt">(self, country_code, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span> <span class="n">area</span> <span class="o">=</span> <span class="n">lookup_area</span><span class="p">(</span><span class="n">country_code</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="s1">'documentType'</span><span class="p">:</span> <span class="s1">'A65'</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span>     <span class="s1">'processType'</span><span class="p">:</span> <span class="s1">'A16'</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span>     <span class="s1">'outBiddingZone_Domain'</span><span class="p">:</span> <span class="n">area</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="s1">'out_Domain'</span><span class="p">:</span> <span class="n">area</span><span class="o">.</span><span class="n">code</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span> <span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">301</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_request</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span> <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\decorators.py:24,</span> in <span class="ni">retry.&lt;locals&gt;.retry_wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">retry_count</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">24</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="c1"># Apart from common (ConnectionError and gaierror) errors, in certain</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="c1"># cases (e.g. with scheduled commercial exchanges), the connection with</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="c1"># ENTSO-e's can break with a RemoteDisconnected exception</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">gaierror</span><span class="p">,</span> <span class="n">RemoteDisconnected</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:135,</span> in <span class="ni">EntsoeRawClient._base_request</span><span class="nt">(self, params, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>             <span class="n">allowed</span> <span class="o">=</span> <span class="n">error_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)[</span><span class="o">-</span><span class="mi">30</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>             <span class="k">raise</span> <span class="n">PaginationError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>                 <span class="sa">f</span><span class="s2">"The API is limited to </span><span class="si">{</span><span class="n">allowed</span><span class="si">}</span><span class="s2"> elements per "</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>                 <span class="sa">f</span><span class="s2">"request. This query requested for </span><span class="si">{</span><span class="n">requested</span><span class="si">}</span><span class="s2"> "</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>                 <span class="sa">f</span><span class="s2">"documents and cannot be fulfilled as is."</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">135</span>     <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="c1"># ENTSO-E has changed their server to also respond with 200 if there is no data but all parameters are valid</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="c1"># this means we need to check the contents for this error even when status code 200 is returned</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># to prevent parsing the full response do a text matching instead of full parsing</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># also only do this when response type content is text and not for example a zip file</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'content-type'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'application/xml'</span><span class="p">,</span> <span class="s1">'text/xml'</span><span class="p">]:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\entsoe\entsoe.py:109,</span> in <span class="ni">EntsoeRawClient._base_request</span><span class="nt">(self, params, start, end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>                             <span class="n">proxies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proxies</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">109</span>     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\models.py:1167,</span> in <span class="ni">Response.raise_for_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1162</span>     <span class="n">http_error_msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1163</span>         <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> Server Error: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2"> for url: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span>
+<span class="g g-Whitespace">   </span><span class="mi">1164</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1166</span> <span class="k">if</span> <span class="n">http_error_msg</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1167</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">http_error_msg</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: 527 Server Error: status code 527 for url: https://web-api.tp.entsoe.eu/api?documentType=A65&amp;processType=A16&amp;outBiddingZone_Domain=10YNO-0--------C&amp;out_Domain=10YNO-0--------C&amp;securityToken=293de206-2682-4b12-a0bf-19a8a0aa04ce&amp;periodStart=202609082200&amp;periodEnd=202609092200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"entsoe_curve.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ExpatError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"entsoe_curve.svg"</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\IPython\core\display.py:364,</span> in <span class="ni">DisplayObject.__init__</span><span class="nt">(self, data, url, filename, metadata)</span>
+<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
+<span class="g g-Whitespace">    </span><span class="mi">361</span> <span class="c1"># because of @data.setter methods in</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span> <span class="c1"># subclasses ensure url and filename are set</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span> <span class="c1"># before assigning to self.data</span>
+<span class="ne">--&gt; </span><span class="mi">364</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span> <span class="k">if</span> <span class="n">metadata</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span>     <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\IPython\core\display.py:535,</span> in <span class="ni">SVG.data</span><span class="nt">(self, svg)</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span> <span class="c1"># parse into dom object</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="kn">from</span><span class="w"> </span><span class="nn">xml.dom</span><span class="w"> </span><span class="kn">import</span> <span class="n">minidom</span>
+<span class="ne">--&gt; </span><span class="mi">535</span> <span class="n">x</span> <span class="o">=</span> <span class="n">minidom</span><span class="o">.</span><span class="n">parseString</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span> <span class="c1"># get svg tag (should be 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">537</span> <span class="n">found_svg</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s1">'svg'</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\xml\dom\minidom.py:2000,</span> in <span class="ni">parseString</span><span class="nt">(string, parser)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1998</span> <span class="k">if</span> <span class="n">parser</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1999</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">xml.dom</span><span class="w"> </span><span class="kn">import</span> <span class="n">expatbuilder</span>
+<span class="ne">-&gt; </span><span class="mi">2000</span>     <span class="k">return</span> <span class="n">expatbuilder</span><span class="o">.</span><span class="n">parseString</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2001</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2002</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">xml.dom</span><span class="w"> </span><span class="kn">import</span> <span class="n">pulldom</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\xml\dom\expatbuilder.py:925,</span> in <span class="ni">parseString</span><span class="nt">(string, namespaces)</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">924</span>     <span class="n">builder</span> <span class="o">=</span> <span class="n">ExpatBuilder</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">925</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">parseString</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\xml\dom\expatbuilder.py:223,</span> in <span class="ni">ExpatBuilder.parseString</span><span class="nt">(self, string)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="n">parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getParser</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">223</span>     <span class="n">parser</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_setup_subset</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">except</span> <span class="n">ParseEscape</span><span class="p">:</span>
+
+<span class="ne">ExpatError</span>: syntax error: line 1, column 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="beregning-av-standardavvik">
+<h3>Beregning av standardavvik<a class="headerlink" href="#beregning-av-standardavvik" title="Permalink to this heading">#</a></h3>
+<p>Standardavviket er et mål på hvor mye observasjonene varierer rundt gjennomsnittet. Et stort standardavvik betyr at verdiene varierer mye, mens et lite standardavvik betyr at verdiene ligger nær gjennomsnittet.</p>
+<p>For en dataserie <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span> beregnes utvalgsstandardavviket som</p>
+<div class="math notranslate nohighlight">
+\[
+s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> er observasjonene,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span> er gjennomsnittet,</p></li>
+<li><p>n er antall observasjoner.</p></li>
+</ul>
+<p>I Python kan standardavviket for lastdata beregnes med:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">load_hourly</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">load_hourly</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Gjennomsnitt = </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> MW"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Standardavvik = </span><span class="si">{</span><span class="n">std</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> MW"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gjennomsnitt = 13296.2 MW
+Standardavvik = 847.2 MW
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modellering-av-dognlast">
+<h2>Modellering av døgnlast<a class="headerlink" href="#modellering-av-dognlast" title="Permalink to this heading">#</a></h2>
+<p>Tidsserien viser en typisk døgnprofil for elektrisk belastning:</p>
+<ul class="simple">
+<li><p>Lavest last om natten, rundt kl. 03-05.</p></li>
+<li><p>Kraftig økning om morgenen.</p></li>
+<li><p>En tydelig topp på formiddagen.</p></li>
+<li><p>Et mindre fall midt på dagen.</p></li>
+<li><p>En ny topp om kvelden.</p></li>
+<li><p>Avtakende last utover natten.</p></li>
+</ul>
+<p>For å beskrive dette mønsteret kan vi bruke en modell som består av en grunnlast og to Gauss-kurver:</p>
+<div class="math notranslate nohighlight">
+\[
+L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
++A_2\exp\left(-\frac{(t-\mu_2)^2}{2\sigma_2^2}\right)
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_0\)</span> er grunnlasten,</p></li>
+<li><p><span class="math notranslate nohighlight">\(A_1\)</span> og <span class="math notranslate nohighlight">\(A_2\)</span> er høyden på toppene,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_1\)</span> og <span class="math notranslate nohighlight">\(\mu_2\)</span> er tidspunktet for toppene,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_1\)</span> og <span class="math notranslate nohighlight">\(\sigma_2\)</span> beskriver bredden på toppene i timer (t).</p></li>
+</ul>
+<section id="basert-pa-observasjonene-kan-vi-estimere">
+<h3>Basert på observasjonene kan vi estimere:<a class="headerlink" href="#basert-pa-observasjonene-kan-vi-estimere" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Grunnlast: ca. 11 900 MW</p></li>
+<li><p>Morgentopp: ca. 2 200 MW ved kl. 08</p></li>
+<li><p>Kveldstopp: ca. 2 300 MW ved kl. 20</p></li>
+</ul>
+<p>I Python kan modellen skrives som:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">base_load</span> <span class="o">=</span> <span class="mi">11900</span>
+
+<span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">2300</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mf">4.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">model_load</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base_load</span>
+    <span class="o">+</span> <span class="n">morning_peak</span>
+    <span class="o">+</span> <span class="n">evening_peak</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Ved å sammenligne modellen med observerte data kan vi undersøke hvor godt modellen beskriver virkeligheten og beregne mål som residualer, RMSE og forklaringsgrad.</p>
+</section>
+</section>
+<section id="plotter-kurvene">
+<h2>Plotter kurvene<a class="headerlink" href="#plotter-kurvene" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/d067d1ecd4b257ec69edea18215dfa2a9fd76b3ec2fd53222709e1460cc8516f.png" src="../_images/d067d1ecd4b257ec69edea18215dfa2a9fd76b3ec2fd53222709e1460cc8516f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"load_curve.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ba970625a32c99469e3c8be273c93c9f66a404a65c3dfc4d22a6ffba8dd5f478.svg" src="../_images/ba970625a32c99469e3c8be273c93c9f66a404a65c3dfc4d22a6ffba8dd5f478.svg" /></div>
+</div>
+</section>
+<section id="modellere-topper">
+<h2>Modellere topper<a class="headerlink" href="#modellere-topper" title="Permalink to this heading">#</a></h2>
+<p>Vi modellerer bredden på toppen ved å modifisere standardavviket. Her blir standardavviket i timer (t).</p>
+<p>Grunnlasten (L) er 11500 MW.</p>
+<p>Vi kan også se hvordan standardavviket påvirker peak-verdien:</p>
+<ul class="simple">
+<li><p>Lite standardavvik (<span class="math notranslate nohighlight">\(\sigma = 1\)</span>)</p></li>
+</ul>
+<p>Vi kan se nærmere på et lite standardavviket i timene rundt morgentoppen (peak=8):</p>
+<ul class="simple">
+<li><p>ved t=7</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="mi">7</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">morning_peak</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1941.49318568611
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Lite standardavvik (<span class="math notranslate nohighlight">\(\sigma = 1\)</span>)</p></li>
+</ul>
+<p>Vi kan se nærmere på et lite standardavviket i timene rundt morgentoppen (peak=8):</p>
+<ul class="simple">
+<li><p>ved t=10</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="mi">10</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">morning_peak</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1334.3674513677936
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotter morgentoppen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/f4bae325e4468e4c7de49d38a8a11b3ea130d4e4f6fe9f00553ce00106541b8f.png" src="../_images/f4bae325e4468e4c7de49d38a8a11b3ea130d4e4f6fe9f00553ce00106541b8f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"morning_curve.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/45bfe3ff15a5ba4814cdff5d717c6e42e25f8b7d9706bdd6aa64b7c0055944c3.svg" src="../_images/45bfe3ff15a5ba4814cdff5d717c6e42e25f8b7d9706bdd6aa64b7c0055944c3.svg" /></div>
+</div>
+<ul class="simple">
+<li><p>Større standardavvik (<span class="math notranslate nohighlight">\(\sigma = 2.5\)</span>)</p></li>
+</ul>
+<p>Vi ser på bredden rundt toppen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="mi">19</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evening_peak</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2156.4370812748616
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evening_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="mi">23</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evening_peak</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1837.5944651047985
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotter kveldstoppen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morning_peak</span> <span class="o">=</span> <span class="mi">2200</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/abda301091a4dfd34944b9a8830e2f90040fb19ca8836789f57523bb97d9c641.png" src="../_images/abda301091a4dfd34944b9a8830e2f90040fb19ca8836789f57523bb97d9c641.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"evening_curve.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f0f5c7ab7600f8d60148d0c79d3fbf78f81287e287b8132b77d195397933aee3.svg" src="../_images/f0f5c7ab7600f8d60148d0c79d3fbf78f81287e287b8132b77d195397933aee3.svg" /></div>
+</div>
+</section>
+<section id="hva-med-natten">
+<h2>Hva med natten?<a class="headerlink" href="#hva-med-natten" title="Permalink to this heading">#</a></h2>
+<p>Hei vent! Vi har glemt å modellere natten.</p>
+<p>Når vi nå kjenner til hvordan vi kan modifisere modellen ved gausskurver.</p>
+<div class="math notranslate nohighlight">
+\[
+L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
++A_2\exp\left(-\frac{(t-\mu_2)^2}{2\sigma_2^2}\right)
+\]</div>
+<section id="generell-form">
+<h3>Generell form<a class="headerlink" href="#generell-form" title="Permalink to this heading">#</a></h3>
+<p>Uttrykket på gebnerell form</p>
+<div class="math notranslate nohighlight">
+\[ L(t) = L_0 + \sum_{i=1}^{n} A_i \exp\!\left( -\frac{(t-\mu_i)^2} {2\sigma_i^2} \right)\]</div>
+<p>Utvides til å inkludere enda en modifikasjon:</p>
+<div class="math notranslate nohighlight">
+\[ L(t) = L_0 + A_{\text{natt}} \exp\!\left(-\frac{(t-\mu_{\text{natt}})^2}{2\sigma_{\text{natt}}^2}\right)
++ A_{\text{morgen}} \exp\!\left(-\frac{(t-\mu_{\text{morgen}})^2}{2\sigma_{\text{morgen}}^2}\right)
++ A_{\text{kveld}} \exp\!\left(-\frac{(t-\mu_{\text{kveld}})^2}{2\sigma_{\text{kveld}}^2}\right).
+\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/09e61aefcf99d36d9ea8b68d456326884818951b5f175782882793dcf4c944de.png" src="../_images/09e61aefcf99d36d9ea8b68d456326884818951b5f175782882793dcf4c944de.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/b5942392580c2f4c33eb98e612b9cd779d5f7f1055b0c717193b4d0d42056c02.png" src="../_images/b5942392580c2f4c33eb98e612b9cd779d5f7f1055b0c717193b4d0d42056c02.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"modell_curve.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a1819c59114832d94517afb93398599d8dd4ecbcc88242f576f4a6359ce12dca.svg" src="../_images/a1819c59114832d94517afb93398599d8dd4ecbcc88242f576f4a6359ce12dca.svg" /></div>
+</div>
+</section>
+</section>
+<section id="hva-ser-vi">
+<h2>Hva ser vi?<a class="headerlink" href="#hva-ser-vi" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Morgenpeak rundt kl. 08</p></li>
+<li><p>Kveldspeak rundt kl. 18</p></li>
+<li><p>Lav last om natten</p></li>
+</ul>
+<section id="begrensninger-ved-modellen">
+<h3>Begrensninger ved modellen<a class="headerlink" href="#begrensninger-ved-modellen" title="Permalink to this heading">#</a></h3>
+<p>Modellen ble utviklet for å beskrive et bestemt døgns belastningsprofil. Når modellen sammenlignes med nye observasjoner fra ENTSO-E, vil man se at den ikke treffer perfekt. Dette illustrerer at alle modeller er forenklinger av virkeligheten.</p>
+<p>Dersom modellen brukes på flere døgn gjennom året, vil avvikene ofte øke. Lasten påvirkes blant annet av temperatur, ukedag, sesong, ferier og økonomisk aktivitet, faktorer som ikke er inkludert i modellen.</p>
+<p>En slik sammenligning viser hvordan en modell kan være nyttig for å beskrive hovedtrekkene i dataene, samtidig som den inneholder systematiske skjevheter (bias) og tilfeldige avvik (residualer).</p>
+</section>
+</section>
+<section id="diskusjon-modellering-av-elektrisk-belastning">
+<h2>Diskusjon: Modellering av elektrisk belastning<a class="headerlink" href="#diskusjon-modellering-av-elektrisk-belastning" title="Permalink to this heading">#</a></h2>
+<p>Ved å sammenligne en enkel modell med oppdaterte data fra ENTSO-E kan vi undersøke hvor godt modellen beskriver virkeligheten. Dette gir flere interessante problemstillinger innen statistikk og dataanalyse.</p>
+<section id="bias-systematiske-feil">
+<h3>1. Bias (systematiske feil)<a class="headerlink" href="#bias-systematiske-feil" title="Permalink to this heading">#</a></h3>
+<p>Bias oppstår når modellen systematisk overvurderer eller undervurderer belastningen.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Er modellen gjennomgående for høy eller for lav?</p></li>
+<li><p>Er avvikene størst om natten, dagen eller kvelden?</p></li>
+<li><p>Hva kan være årsaken til systematiske feil?</p></li>
+</ul>
+</section>
+<section id="residualer">
+<h3>2. Residualer<a class="headerlink" href="#residualer" title="Permalink to this heading">#</a></h3>
+<p>Residualen er forskjellen mellom observert verdi og modellert verdi:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Residual} = \text{Observert verdi} - \text{Modellverdi}
+\]</div>
+<p>Residualene inneholder informasjon om hva modellen ikke klarer å forklare.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Er residualene tilfeldig fordelt?</p></li>
+<li><p>Finnes det mønstre i residualene?</p></li>
+<li><p>Hvilke faktorer kan forklare residualene?</p></li>
+</ul>
+</section>
+<section id="modellens-antakelser">
+<h3>3. Modellens antakelser<a class="headerlink" href="#modellens-antakelser" title="Permalink to this heading">#</a></h3>
+<p>Modellen antar at belastningen kan beskrives ved hjelp av en grunnlast og to Gauss-formede topper.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Er dette en rimelig beskrivelse av virkeligheten?</p></li>
+<li><p>Hvilke deler av kurven beskrives godt?</p></li>
+<li><p>Hvilke deler beskrives dårlig?</p></li>
+</ul>
+</section>
+<section id="generalisering">
+<h3>4. Generalisering<a class="headerlink" href="#generalisering" title="Permalink to this heading">#</a></h3>
+<p>Modellen er utviklet på bakgrunn av ett bestemt døgn.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Fungerer modellen like godt neste dag?</p></li>
+<li><p>Fungerer modellen om vinteren?</p></li>
+<li><p>Hvordan påvirker ukedager og helger modellens kvalitet?</p></li>
+</ul>
+</section>
+<section id="modellkompleksitet">
+<h3>5. Modellkompleksitet<a class="headerlink" href="#modellkompleksitet" title="Permalink to this heading">#</a></h3>
+<p>En enkel modell er lett å forstå, men kan gi store avvik. En mer kompleks modell kan gi bedre tilpasning.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Hvor mange komponenter bør modellen inneholde?</p></li>
+<li><p>Når blir modellen for kompleks?</p></li>
+<li><p>Hva er fordeler og ulemper med en enkel modell?</p></li>
+</ul>
+</section>
+<section id="overtilpasning-og-undertilpasning">
+<h3>6. Overtilpasning og undertilpasning<a class="headerlink" href="#overtilpasning-og-undertilpasning" title="Permalink to this heading">#</a></h3>
+<p>En modell kan være for enkel eller for spesialisert.</p>
+<ul class="simple">
+<li><p><strong>Undertilpasning (underfitting):</strong> Modellen er for enkel og klarer ikke å beskrive viktige mønstre.</p></li>
+<li><p><strong>Overtilpasning (overfitting):</strong> Modellen tilpasses ett datasett svært godt, men fungerer dårlig på nye data.</p></li>
+</ul>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Hvilke tegn tyder på undertilpasning?</p></li>
+<li><p>Hvilke tegn tyder på overtilpasning?</p></li>
+<li><p>Hvordan kan vi teste modellens evne til å generalisere?</p></li>
+</ul>
+<figure class="align-default" id="fig-biasvariance">
+<a class="reference internal image-reference" href="../_images/bias_variance.svg"><img alt="../_images/bias_variance.svg" src="../_images/bias_variance.svg" width="900px" /></a>
+<figcaption>
+<p><span class="caption-text">Illustrasjon av overtilpasning og undertilpasning</span><a class="headerlink" href="#fig-biasvariance" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/ec90c4a8d1e9c42d87afd69fba222af57721058291e28e9fb1e316a9d3056b5f.svg" src="../_images/ec90c4a8d1e9c42d87afd69fba222af57721058291e28e9fb1e316a9d3056b5f.svg" /></div>
+</div>
+</section>
+<section id="tidens-betydning">
+<h3>7. Tidens betydning<a class="headerlink" href="#tidens-betydning" title="Permalink to this heading">#</a></h3>
+<p>Dataene hentes automatisk fra ENTSO-E hver gang notatboken eller Jupyter Book bygges.</p>
+<p><strong>Diskusjonsspørsmål:</strong></p>
+<ul class="simple">
+<li><p>Hvordan endres belastningskurven fra dag til dag?</p></li>
+<li><p>Er modellen fortsatt relevant etter en uke?</p></li>
+<li><p>Hva skjer dersom vi sammenligner sommer- og vinterdata?</p></li>
+</ul>
+</section>
+<section id="statistikk-i-praksis">
+<h3>8. Statistikk i praksis<a class="headerlink" href="#statistikk-i-praksis" title="Permalink to this heading">#</a></h3>
+<p>Sammenligningen mellom modell og virkelige data illustrerer et sentralt prinsipp i statistikk:</p>
+<blockquote>
+<div><p>Alle modeller er feil, men noen modeller er nyttige.</p>
+</div></blockquote>
+<p>Målet er ikke nødvendigvis å få en perfekt modell, men å utvikle en modell som forklarer de viktigste trekkene i dataene og samtidig gir innsikt i fenomenet som studeres.</p>
+</section>
+</section>
+<section id="id1">
+<h2>Bias-variance trade-off<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Når vi sammenligner modellen med observerte lastdata, ser vi at modellen ikke treffer perfekt. Dette er normalt og illustrerer et sentralt prinsipp innen statistikk og maskinlæring: bias-variance trade-off.</p>
+<p>En svært enkel modell vil ofte ha høy bias. Modellen klarer da ikke å beskrive viktige mønstre i dataene og vil systematisk gjøre feil.</p>
+<p>En svært kompleks modell vil ofte ha høy varians. Modellen tilpasser seg treningsdataene svært godt, men presterer dårlig på nye observasjoner.</p>
+<p>Målet er å finne en modell med passende kompleksitet som gir god generalisering til nye data.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="refleksjonssporsmal">
+<h3>Refleksjonsspørsmål<a class="headerlink" href="#refleksjonssporsmal" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Er Gauss-modellen vår altfor enkel?</p></li>
+<li><p>Hvilke mønstre i lastdataene klarer modellen ikke å beskrive?</p></li>
+<li><p>Hva ville skjedd dersom vi la til flere topper eller flere parametere?</p></li>
+<li><p>Ville modellen blitt bedre, eller risikerer vi overtilpasning?</p></li>
+<li><p>Er modellen som ble utviklet basert på ett døgn fortsatt relevant en uke senere?</p></li>
+<li><p>Hvordan påvirkes modellen av temperatur, årstid og ukedag?</p></li>
+</ul>
+<p>I statistikk er målet ofte ikke å finne en perfekt modell, men en modell som beskriver de viktigste trekkene i dataene på en robust måte.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="den-sanne-f-x">
+<h1>Den sanne <span class="math notranslate nohighlight">\(f(x)\)</span><a class="headerlink" href="#den-sanne-f-x" title="Permalink to this heading">#</a></h1>
+<p>Husk at den sanne <span class="math notranslate nohighlight">\(f(x)\)</span> eksisterer alltid alt annet er støy (<span class="math notranslate nohighlight">\(\varepsilon\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[y= f(x) + \varepsilon\]</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modell treffsikkerhet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-og-varians">Bias og varians</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varians">Varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenhengen-mellom-bias-og-varians">Sammenhengen mellom bias og varians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-representativ-dag">Kobling til representativ dag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-av-dognlast">Modellering av døgnlast</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basert-pa-observasjonene-kan-vi-estimere">Basert på observasjonene kan vi estimere:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotter-kurvene">Plotter kurvene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellere-topper">Modellere topper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-med-natten">Hva med natten?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generell-form">Generell form</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ser-vi">Hva ser vi?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#begrensninger-ved-modellen">Begrensninger ved modellen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diskusjon-modellering-av-elektrisk-belastning">Diskusjon: Modellering av elektrisk belastning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-systematiske-feil">1. Bias (systematiske feil)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#residualer">2. Residualer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellens-antakelser">3. Modellens antakelser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalisering">4. Generalisering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modellkompleksitet">5. Modellkompleksitet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overtilpasning-og-undertilpasning">6. Overtilpasning og undertilpasning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidens-betydning">7. Tidens betydning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistikk-i-praksis">8. Statistikk i praksis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bias-variance trade-off</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjonssporsmal">Refleksjonsspørsmål</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#den-sanne-f-x">Den sanne <span class="math notranslate nohighlight">\(f(x)\)</span></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
