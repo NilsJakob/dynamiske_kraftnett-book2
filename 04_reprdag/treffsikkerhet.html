@@ -215,6 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="repr_dag.html">Data og modeller</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modell treffsikkerhet</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
 <ul class="nav bd-sidenav">
@@ -423,6 +424,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modell treffsikkerhet</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-og-varians">Bias og varians</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varians">Varians</a></li>
@@ -462,6 +464,10 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#den-sanne-f-x">Den sanne <span class="math notranslate nohighlight">\(f(x)\)</span></a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -477,7 +483,7 @@ document.write(`
 <p>Hvor trefsikker er modellen. I dette kapitteletskal vi gå litt videre med modellering av data og anslå hvor godt modellen treffer</p>
 <section id="bias-og-varians">
 <h2>Bias og varians<a class="headerlink" href="#bias-og-varians" title="Permalink to this heading">#</a></h2>
-<p>Bias og varians er to sentrale begreper innen statistisk modellering og maskinlæring. De beskriver to ulike typer feil som kan oppstå når vi bruker en modell til å beskrive eller predikere data, som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">figbiasvaracc</span></code>.</p>
+<p>Bias og varians er to sentrale begreper innen statistisk modellering og maskinlæring. De beskriver to ulike typer feil som kan oppstå når vi bruker en modell til å beskrive eller predikere data, som vist i <a class="reference internal" href="#fig-biasvaracc"><span class="std std-numref">Fig. 21</span></a>.</p>
 <figure class="align-default" id="fig-biasvaracc">
 <a class="reference internal image-reference" href="../_images/bias_var_accuracy.svg"><img alt="../_images/bias_var_accuracy.svg" src="../_images/bias_var_accuracy.svg" width="900px" /></a>
 <figcaption>
@@ -486,14 +492,12 @@ document.write(`
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from IPython.display import SVG, display</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="s2">"../images/bias_var_accuracy.svg"</span><span class="p">))</span>
+<span class="c1">#display(SVG("../images/bias_var_accuracy.svg"))</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/4ba20b3a68ce713ba5725d60cae98decb739d6ecf4b74126bb48170f9e314db6.svg" src="../_images/4ba20b3a68ce713ba5725d60cae98decb739d6ecf4b74126bb48170f9e314db6.svg" /></div>
 </div>
 <section id="bias">
 <h3>Bias<a class="headerlink" href="#bias" title="Permalink to this heading">#</a></h3>
@@ -674,7 +678,7 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 <li><p><span class="math notranslate nohighlight">\(L_0\)</span> er grunnlasten,</p></li>
 <li><p><span class="math notranslate nohighlight">\(A_1\)</span> og <span class="math notranslate nohighlight">\(A_2\)</span> er høyden på toppene,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mu_1\)</span> og <span class="math notranslate nohighlight">\(\mu_2\)</span> er tidspunktet for toppene,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\sigma_1\)</span> og <span class="math notranslate nohighlight">\(\sigma_2\)</span> beskriver bredden på toppene.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_1\)</span> og <span class="math notranslate nohighlight">\(\sigma_2\)</span> beskriver bredden på toppene i timer (t).</p></li>
 </ul>
 <section id="basert-pa-observasjonene-kan-vi-estimere">
 <h3>Basert på observasjonene kan vi estimere:<a class="headerlink" href="#basert-pa-observasjonene-kan-vi-estimere" title="Permalink to this heading">#</a></h3>
@@ -968,22 +972,28 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 <li><p>Hvordan påvirkes modellen av temperatur, årstid og ukedag?</p></li>
 </ul>
 <p>I statistikk er målet ofte ikke å finne en perfekt modell, men en modell som beskriver de viktigste trekkene i dataene på en robust måte.</p>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
 </section>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="den-sanne-f-x">
+<h1>Den sanne <span class="math notranslate nohighlight">\(f(x)\)</span><a class="headerlink" href="#den-sanne-f-x" title="Permalink to this heading">#</a></h1>
+<p>Husk at den sanne <span class="math notranslate nohighlight">\(f(x)\)</span> eksisterer alltid alt annet er støy (<span class="math notranslate nohighlight">\(\varepsilon\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[y= f(x) + \varepsilon\]</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1050,6 +1060,7 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modell treffsikkerhet</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-og-varians">Bias og varians</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varians">Varians</a></li>
@@ -1089,6 +1100,10 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#den-sanne-f-x">Den sanne <span class="math notranslate nohighlight">\(f(x)\)</span></a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
