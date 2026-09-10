@@ -39,6 +39,7 @@ parts:
     chapters:
       - file: 04_reprdag/repr_dag
       - file: 04_reprdag/treffsikkerhet
+      - file: assignments/assignment5
 
   - caption: Modellering
     chapters:
