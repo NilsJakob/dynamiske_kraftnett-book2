@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Digitalisering &#8212; Dynamiske kraftnett</title>
+    <title>Øving 5: Modellering med Gauss &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -65,11 +65,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '01_intro/digital';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/assignment5';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Om ELK330" href="about330.html" />
-    <link rel="prev" title="Timeplan ELK330" href="../01_forord/timetable.html" />
+    <link rel="next" title="Under utvikling" href="../05_modellering/under_utvikling.html" />
+    <link rel="prev" title="Modell treffsikkerhet" href="../04_reprdag/treffsikkerhet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,18 +182,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Digitalisering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about330.html">Om ELK330</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jupyter_book.html">Jupyter Bok</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment2.html">Øving 2: Klon Git-repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
 
 </ul>
@@ -199,9 +201,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment4.html">Øving 4: DateTimeIndex</a></li>
 
 
 
@@ -210,11 +212,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 5: Modellering med Gauss</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
 <ul class="nav bd-sidenav">
@@ -299,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F01_intro/digital.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2Fassignments/assignment5.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -329,7 +331,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/01_intro/digital.ipynb" target="_blank"
+      <li><a href="../_sources/assignments/assignment5.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -413,7 +415,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Digitalisering</h1>
+    <h1>Øving 5: Modellering med Gauss</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -423,7 +425,33 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kraftsystemdata">Kraftsystemdata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-den-generelle-modellen">Oppgave 1: Den generelle modellen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-lastdata">Oppgave 2: Lastdata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#krav">Krav</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-modellering">Oppgave 3: Modellering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anbefaling">Anbefaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-git">Oppgave 4: Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Krav</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-dokumentasjon">Oppgave 5: Dokumentasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modell">Modell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultater">Resultater</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-logg">Git-logg</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kildehenvisning">Kildehenvisning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6-kritisk-vurdering">Oppgave 6: Kritisk vurdering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7-bias-varians-avveining">Oppgave 7: Bias-varians-avveining</a></li>
 </ul>
             </nav>
         </div>
@@ -435,37 +463,186 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="digitalisering">
-<h1>Digitalisering<a class="headerlink" href="#digitalisering" title="Permalink to this heading">#</a></h1>
-<section id="kraftsystemdata">
-<h2>Kraftsystemdata<a class="headerlink" href="#kraftsystemdata" title="Permalink to this heading">#</a></h2>
-<p>Eksperter på kraftsystemdata annerkjenner de <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1364032118304283">3D’ene</a> (Dekarbonisering, Desentralisering og Digitalisering) som pådrivere for systemforandringer i kraftnettet. Disse og andre <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2214629621003236#b0140">D’frames</a> er analytiske rammer til å forstå trender som styrer store komplekse forandringer i det framtidige kraftnettet. Kraftsystemdata legger frem de underliggende dataen som beskriver selve forandringen. Et dilemma er strømbehovet til komplekse <a class="reference external" href="https://www.europower.no/digitalisering/ingen-kunstig-intelligens-uten-barekraft-slik-kan-vi-toyle-stromforbruket/2-1-1665594">ki-algoritmer som skal optmalisere strømbruken</a>.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html">
-        <iframe
-            width="100%"
-            height="600"
-            src="https://ourworldindata.org/grapher/data-centers-share-electricity-demand?tab=discrete-bar&time=latest&country=CHN~USA~OWID_WRL~IEA_AFR~IEA_EUR~IEA_MEA~IEA_CSA"
-            frameborder="0"
-            allowfullscreen
-            
-        ></iframe>
-        </div></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="oving-5-modellering-med-gauss">
+<h1>Øving 5: Modellering med Gauss<a class="headerlink" href="#oving-5-modellering-med-gauss" title="Permalink to this heading">#</a></h1>
+<section id="laeringsmal">
+<h2>Læringsmål<a class="headerlink" href="#laeringsmal" title="Permalink to this heading">#</a></h2>
+<p>Etter øvingen skal du kunne:</p>
+<ul class="simple">
+<li><p>bruke en generell Gauss-modell til å beskrive døgnprofil,</p></li>
+<li><p>implementere modellen i Python,</p></li>
+<li><p>lete opp lastdata fra kilde (<strong>Les: en for deg ‘ny’ kilde</strong>)</p></li>
+<li><p>tilpasse modellen til observerte data,</p></li>
+<li><p>bruke Git til å dokumentere arbeidsprosessen,</p></li>
+<li><p>diskutere modellvalg ved hjelp av bias-varians-avveiningen.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="oppgave-1-den-generelle-modellen">
+<h2>Oppgave 1: Den generelle modellen<a class="headerlink" href="#oppgave-1-den-generelle-modellen" title="Permalink to this heading">#</a></h2>
+<p>Vi antar at belastningen kan beskrives som</p>
+<div class="math notranslate nohighlight">
+\[ L(t) = L_0 + \sum_{i=1}^{n} A_i \exp\!\left(-\frac{(t-\mu_i)^2}{2\sigma_i^2}\right).
+\]</div>
+<p>Der:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_0\)</span> er grunnlasten,</p></li>
+<li><p><span class="math notranslate nohighlight">\(A_i\)</span> er amplituden til komponent <span class="math notranslate nohighlight">\(i\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_i\)</span> er tidspunktet for topp,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_i\)</span> er bredden på komponenten.</p></li>
+</ul>
+<section id="oppgaver">
+<h3>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Forklar med egne ord hvordan parameterne <span class="math notranslate nohighlight">\(A_i\)</span>, <span class="math notranslate nohighlight">\(\mu_i\)</span> og <span class="math notranslate nohighlight">\(\sigma_i\)</span> påvirker kurven.</p></li>
+<li><p>Implementer modellen i Python.</p></li>
+<li><p>Eksperimenter med parameterverdiene og dokumenter observasjonene.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="oppgave-2-lastdata">
+<h2>Oppgave 2: Lastdata<a class="headerlink" href="#oppgave-2-lastdata" title="Permalink to this heading">#</a></h2>
+<p>Finn en døgnprofil for elektrisk belastning fra en valgfri, offentlig tilgjengelig kilde.</p>
+<section id="krav">
+<h3>Krav<a class="headerlink" href="#krav" title="Permalink to this heading">#</a></h3>
+<p>Oppgi:</p>
+<ul class="simple">
+<li><p>datakilde,</p></li>
+<li><p>dato,</p></li>
+<li><p>lenke til datasettet.</p></li>
+</ul>
+<p>Eksempler på kilder:</p>
+<ul class="simple">
+<li><p>SSB</p></li>
+<li><p>Elhub</p></li>
+<li><p>Nord Pool</p></li>
+<li><p>Open Power System Data</p></li>
+<li><p>andre åpne datasett</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="oppgave-3-modellering">
+<h2>Oppgave 3: Modellering<a class="headerlink" href="#oppgave-3-modellering" title="Permalink to this heading">#</a></h2>
+<p>Bruk den generelle modellen til å beskrive den valgte døgnprofilen.</p>
+<section id="anbefaling">
+<h3>Anbefaling<a class="headerlink" href="#anbefaling" title="Permalink to this heading">#</a></h3>
+<p>Start og dokumenter med tre komponenter:</p>
+<ul class="simple">
+<li><p>nattperiode,</p></li>
+<li><p>morgentopp,</p></li>
+<li><p>kveldstopp.</p></li>
+</ul>
+<p>Du står fritt til å bruke flere eller færre komponenter dersom dette gir en bedre modell.</p>
+</section>
+<section id="leveranse">
+<h3>Leveranse<a class="headerlink" href="#leveranse" title="Permalink to this heading">#</a></h3>
+<p>Vis:</p>
+<ul class="simple">
+<li><p>den endelige ligningen,</p></li>
+<li><p>parameterverdiene,</p></li>
+<li><p>et plott med observerte data,</p></li>
+<li><p>et plott med modellert kurve,</p></li>
+<li><p>et plott der begge vises samtidig.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="oppgave-4-git">
+<h2>Oppgave 4: Git<a class="headerlink" href="#oppgave-4-git" title="Permalink to this heading">#</a></h2>
+<p>Alt arbeid skal versjonskontrolleres i Git.</p>
+<section id="id1">
+<h3>Krav<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Repo skal inneholde:</p>
+<ul class="simple">
+<li><p>Python-kode</p></li>
+<li><p>datafil(er)</p></li>
+<li><p>figurer som genereres i analysen</p></li>
+<li><p>README</p></li>
+</ul>
+<p>Du skal gjøre flere commits underveis og skrive meningsfulle commit-meldinger.</p>
+<p>Eksempler:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Import load data"</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Implement Gaussian load model with 3 components"</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Tune evening peak"</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Add bias variance discussion"</span>
+</pre></div>
 </div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html">
-        <iframe
-            width="100%"
-            height="600"
-            src="https://ourworldindata.org/grapher/energy-consumption-by-source-and-country?stackMode=absolute&country=~NOR&tab=chart"
-            frameborder="0"
-            allowfullscreen
-            
-        ></iframe>
-        </div></div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="oppgave-5-dokumentasjon">
+<h2>Oppgave 5: Dokumentasjon<a class="headerlink" href="#oppgave-5-dokumentasjon" title="Permalink to this heading">#</a></h2>
+<p>Skriv en kort rapport i <span class="math notranslate nohighlight">\(\LaTeX\)</span></p>
+<section id="modell">
+<h3>Modell<a class="headerlink" href="#modell" title="Permalink to this heading">#</a></h3>
+<p>Beskrivelse av modellen og parameterne.</p>
+</section>
+<section id="resultater">
+<h3>Resultater<a class="headerlink" href="#resultater" title="Permalink to this heading">#</a></h3>
+<p>Figurer som viser:</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="k">\includegraphics</span><span class="na">[width=\textwidth]</span><span class="nb">{</span>load<span class="nb">_</span>data.png<span class="nb">}</span>
+</pre></div>
 </div>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="k">\includegraphics</span><span class="na">[width=\textwidth]</span><span class="nb">{</span>model<span class="nb">_</span>fit.png<span class="nb">}</span>
+</pre></div>
+</div>
+</section>
+<section id="git-logg">
+<h3>Git-logg<a class="headerlink" href="#git-logg" title="Permalink to this heading">#</a></h3>
+<p>Eksporter git-loggen og inkluder den som figur eller skjermbilde:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</pre></div>
+</div>
+<p>Eksempel:</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="k">\includegraphics</span><span class="na">[width=\textwidth]</span><span class="nb">{</span>git<span class="nb">_</span>log.png<span class="nb">}</span>
+</pre></div>
+</div>
+</section>
+<section id="kildehenvisning">
+<h3>Kildehenvisning<a class="headerlink" href="#kildehenvisning" title="Permalink to this heading">#</a></h3>
+<p>Oppgi hvilken datakilde som er brukt.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="oppgave-6-kritisk-vurdering">
+<h2>Oppgave 6: Kritisk vurdering<a class="headerlink" href="#oppgave-6-kritisk-vurdering" title="Permalink to this heading">#</a></h2>
+<p>Diskuter modellens styrker og svakheter.</p>
+<p>Stikkord:</p>
+<ul class="simple">
+<li><p>Hvilke deler av døgnkurven beskrives godt?</p></li>
+<li><p>Hvilke deler beskrives dårlig?</p></li>
+<li><p>Er toppene symmetriske?</p></li>
+<li><p>Hvordan påvirkes modellen av vær og sesong?</p></li>
+<li><p>Hva ville skjedd dersom flere Gauss-komponenter ble lagt til?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="oppgave-7-bias-varians-avveining">
+<h2>Oppgave 7: Bias-varians-avveining<a class="headerlink" href="#oppgave-7-bias-varians-avveining" title="Permalink to this heading">#</a></h2>
+<p>Vi antar at det finnes en ukjent sann sammenheng</p>
+<div class="math notranslate nohighlight">
+\[
+y=f(x)+\varepsilon,
+\]</div>
+<p>og at modellen vår er</p>
+<div class="math notranslate nohighlight">
+\[
+\hat f(x).
+\]</div>
+<p>Diskuter:</p>
+<ol class="arabic simple">
+<li><p>Hva representerer <span class="math notranslate nohighlight">\(f(x)\)</span>?</p></li>
+<li><p>Hva representerer <span class="math notranslate nohighlight">\(\hat f(x)\)</span></p></li>
+<li><p>Hva skjer dersom modellen har for få komponenter?</p></li>
+<li><p>Hva skjer dersom modellen har svært mange komponenter?</p></li>
+<li><p>Hvor mener du at din modell befinner seg på skalaen mellom høy bias og høy varians?</p></li>
+</ol>
+<p>Avslutt med å kommentere utsagnet:</p>
+<blockquote>
+<div><p>En modell med høy bias lærer for lite av dataene. En modell med høy varians lærer for mye av dataene. En god modell lærer akkurat nok.</p>
+</div></blockquote>
 </section>
 </section>
 
@@ -482,7 +659,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./01_intro"
+            path: "./assignments"
         },
         predefinedOutput: true
     }
@@ -500,20 +677,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../01_forord/timetable.html"
+       href="../04_reprdag/treffsikkerhet.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Timeplan ELK330</p>
+        <p class="prev-next-title">Modell treffsikkerhet</p>
       </div>
     </a>
     <a class="right-next"
-       href="about330.html"
+       href="../05_modellering/under_utvikling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Om ELK330</p>
+        <p class="prev-next-title">Under utvikling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -533,7 +710,33 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kraftsystemdata">Kraftsystemdata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-den-generelle-modellen">Oppgave 1: Den generelle modellen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-lastdata">Oppgave 2: Lastdata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#krav">Krav</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-modellering">Oppgave 3: Modellering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anbefaling">Anbefaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leveranse">Leveranse</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-git">Oppgave 4: Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Krav</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-dokumentasjon">Oppgave 5: Dokumentasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modell">Modell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultater">Resultater</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-logg">Git-logg</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kildehenvisning">Kildehenvisning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6-kritisk-vurdering">Oppgave 6: Kritisk vurdering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7-bias-varians-avveining">Oppgave 7: Bias-varians-avveining</a></li>
 </ul>
   </nav></div>
 

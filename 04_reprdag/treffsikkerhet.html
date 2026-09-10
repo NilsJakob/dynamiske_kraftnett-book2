@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '04_reprdag/treffsikkerhet';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Under utvikling" href="../05_modellering/under_utvikling.html" />
+    <link rel="next" title="Øving 5: Modellering med Gauss" href="../assignments/assignment5.html" />
     <link rel="prev" title="Data og modeller" href="repr_dag.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -216,6 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="repr_dag.html">Data og modeller</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modell treffsikkerhet</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
 <ul class="nav bd-sidenav">
@@ -431,6 +432,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenhengen-mellom-bias-og-varians">Sammenhengen mellom bias og varians</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-representativ-dag">Kobling til representativ dag</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-lastprofil">Kobling til lastprofil</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
 </ul>
 </li>
@@ -574,10 +578,15 @@ L(t)=A+B\sin(t),
 <blockquote>
 <div><p>En modell med høy bias lærer for lite av dataene. En modell med høy varians lærer for mye av dataene. En god modell lærer akkurat nok.</p>
 </div></blockquote>
+</section>
+</section>
+<section id="kobling-til-lastprofil">
+<h2>Kobling til lastprofil<a class="headerlink" href="#kobling-til-lastprofil" title="Permalink to this heading">#</a></h2>
+<p>Vi kjenner lastprofil fra observerte data som fra API-kallet tul ENTSO-E.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/98ccd3d673982c0b23a2ad0e2d99701287e0e0341f3a2eee3fed633566e6185b.png" src="../_images/98ccd3d673982c0b23a2ad0e2d99701287e0e0341f3a2eee3fed633566e6185b.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>API forespørsel sendt: 2026-09-10 07:17:52
+<img alt="../_images/c557ef220f229486f7feee3abd238ed4314143072b54c023fc8b4330c8a06543.png" src="../_images/c557ef220f229486f7feee3abd238ed4314143072b54c023fc8b4330c8a06543.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>API forespørsel sendt: 2026-09-10 13:48:39
 Forespurt intervall: 2026-09-09 00:00:00+02:00 -&gt; 2026-09-10 00:00:00+02:00
 Første målepunkt: 2026-09-09 00:00:00+02:00
 Siste målepunkt: 2026-09-09 23:45:00+02:00
@@ -585,36 +594,10 @@ Analyserer siste komplette døgn: 2026-09-09
 Antall målepunkter: 95
 Hentet 95 målepunkter
 Responstid: 0.00 sekunder
-                           Actual Load
-2026-09-09 00:00:00+02:00   12385.2350
-2026-09-09 01:00:00+02:00   12038.5450
-2026-09-09 02:00:00+02:00   11849.4800
-2026-09-09 03:00:00+02:00   11771.1350
-2026-09-09 04:00:00+02:00   11790.4625
-2026-09-09 05:00:00+02:00   12037.3675
-2026-09-09 06:00:00+02:00   12895.2600
-2026-09-09 07:00:00+02:00   13745.6450
-2026-09-09 08:00:00+02:00   13973.7650
-2026-09-09 09:00:00+02:00   13758.2950
-2026-09-09 10:00:00+02:00   13639.4925
-2026-09-09 11:00:00+02:00   13582.8550
-2026-09-09 12:00:00+02:00   13483.2750
-2026-09-09 13:00:00+02:00   13323.0050
-2026-09-09 14:00:00+02:00   13395.2475
-2026-09-09 15:00:00+02:00   13695.6675
-2026-09-09 16:00:00+02:00   13865.1075
-2026-09-09 17:00:00+02:00   13882.4925
-2026-09-09 18:00:00+02:00   13992.7800
-2026-09-09 19:00:00+02:00   14156.1950
-2026-09-09 20:00:00+02:00   14400.0100
-2026-09-09 21:00:00+02:00   14256.8475
-2026-09-09 22:00:00+02:00   13889.6625
-2026-09-09 23:00:00+02:00   13300.2900
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 <section id="beregning-av-standardavvik">
 <h3>Beregning av standardavvik<a class="headerlink" href="#beregning-av-standardavvik" title="Permalink to this heading">#</a></h3>
 <p>Standardavviket er et mål på hvor mye observasjonene varierer rundt gjennomsnittet. Et stort standardavvik betyr at verdiene varierer mye, mens et lite standardavvik betyr at verdiene ligger nær gjennomsnittet.</p>
@@ -1029,11 +1012,11 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
       </div>
     </a>
     <a class="right-next"
-       href="../05_modellering/under_utvikling.html"
+       href="../assignments/assignment5.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Under utvikling</p>
+        <p class="prev-next-title">Øving 5: Modellering med Gauss</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1060,6 +1043,9 @@ L(t)=L_0+A_1\exp\left(-\frac{(t-\mu_1)^2}{2\sigma_1^2}\right)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenhengen-mellom-bias-og-varians">Sammenhengen mellom bias og varians</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-representativ-dag">Kobling til representativ dag</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-lastprofil">Kobling til lastprofil</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-standardavvik">Beregning av standardavvik</a></li>
 </ul>
 </li>
