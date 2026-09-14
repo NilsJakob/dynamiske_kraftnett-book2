@@ -1,0 +1,994 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Integrering av fornybar energi &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05_modellering/int_IBR';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Om Power Factory" href="../11_powerfactory/about_pf.html" />
+    <link rel="prev" title="Øving 5: Modellering med Gauss" href="../assignments/assignment5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Integrering av fornybar energi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F05_modellering/int_IBR.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/05_modellering/int_IBR.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Integrering av fornybar energi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-og-simulering">Modellering og simulering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reversibel-effektflyt">Reversibel effektflyt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibr">IBR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kall-pa-statistikken">Kall på statistikken</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endrede-tilsig">Endrede tilsig</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fyllingsgrad-pa-1-2-3">Fyllingsgrad på 1,2,3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vannmagasinstatistikk">Vannmagasinstatistikk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-og-eksport">Import og eksport</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="integrering-av-fornybar-energi">
+<h1>Integrering av fornybar energi<a class="headerlink" href="#integrering-av-fornybar-energi" title="Permalink to this heading">#</a></h1>
+<p>Når vi tar for oss integrasjon av fornybar energi i distribusjonsnettet, fokuser vi på hvordan vi skal koble strømkilder som sol og vind til kraftnettet. Som beskrevet i 3D (De tre D’ene; Dekarboniseering, Digitalisering, Desentralisering) rammeverket og FN’s visjon om <a class="reference external" href="https://fn.no/om-fn/fns-baerekraftsmaal/ren-energi-til-alle">ren energi for alle</a> er vi forpliktet til å sikre tilgang til pålitelig, bærekraftig og moderne energi for alle. Andelen ren energi er høy i Norge på grunn av vannkraften, men er avhengig av mengde vann som tilsig til vannmagasinene. Sol- og vindkraft er viktige bidrag for å oppnå bærekraftsmålene i tilegg har de større grad av skalerbarhet enn vannkraft. Men sol- og vindkraftens intermittente (periodevis, dvs. ujevn produksjon) natur kompliserer de dynamiske forholdene i kraftnettet.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="modellering-og-simulering">
+<h2>Modellering og simulering<a class="headerlink" href="#modellering-og-simulering" title="Permalink to this heading">#</a></h2>
+<p>Vi må derfor simulere tilstander som kan oppstå for å kunne analysere integreringen av fornybare energikilder på nettet. De kjente transmisjonslinjemodellene må da utvides til å ta opp i seg dynamiske forandringer i nettet. De tradisjonelle metodene (<span class="math notranslate nohighlight">\(\pi\)</span>-metoden) modellerer vanligvis enveis effektflyt. Med skalerbar lokal produksjon kan strømmen tidvis gå motsatt vei:</p>
+<ul class="simple">
+<li><p>solceller</p></li>
+<li><p>vindkraft</p></li>
+<li><p>batterier</p></li>
+<li><p>elbiler med V2G (Vehicle-to-Grid)</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" src="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" /></div>
+</div>
+<section id="reversibel-effektflyt">
+<h3>Reversibel effektflyt<a class="headerlink" href="#reversibel-effektflyt" title="Permalink to this heading">#</a></h3>
+<p>Den reversible effektflyten fra større andel distribuert produksjon kan gi høyere lokale spenninger, endrede kortslutningsforhold og komplisere vernkoordineringen. Vi må derfor ha noen simuleringsverktøy for å analysere disse forholdene.</p>
+</section>
+<section id="ibr">
+<h3>IBR<a class="headerlink" href="#ibr" title="Permalink to this heading">#</a></h3>
+<p>Sol- og Vinkraft er ogse basert på invertering (vekselretting) av signalet fra DC til AC og kalles derfor Inverter Based Resources (IBR). Dette skjer med kraftelektronikk og vil si at mister inertian som den roterende masse bidrar med.</p>
+</section>
+<section id="pandapower">
+<h3>Pandapower<a class="headerlink" href="#pandapower" title="Permalink to this heading">#</a></h3>
+<p>Pandapower kombinerer <a class="reference external" href="https://pandas.pydata.org/docs/">pandas</a> biblioteket med kraftflytsolveren <a class="reference external" href="https://pypower.readthedocs.io/en/latest/index.html">PYPOWER</a>. Den muliggjør løsnig på problemer tilknyttet reversibel effektflyt.</p>
+</section>
+<section id="kall-pa-statistikken">
+<h3>Kall på statistikken<a class="headerlink" href="#kall-pa-statistikken" title="Permalink to this heading">#</a></h3>
+<p>For å vise problemstillingens aktualitet gjør vi et API-kall til statistikkbanken til Statistisk SentralByrå (SSB). Kilden er SSBs <a class="reference external" href="https://www.ssb.no/statbank/table/08307">tabell 08307</a>. <code class="docutils literal notranslate"><span class="pre">requests</span></code> henter dataene og <code class="docutils literal notranslate"><span class="pre">pyjstat</span></code> leser, tolker og deretter bygger en tabellstruktur. Vi skal be python sende en post forespørsel til SSB (requests.post(url, json=query).text) i en query som bruker JSON-kode, der SSB returnerer svaret i et JASON-stat-format.</p>
+<p>Først importeres bibliotek:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyjstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyjstat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hvilke metadata inneholder tabellen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"https://data.ssb.no/api/v0/no/table/08307"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Tittel:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">"title"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tittel:
+08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh), etter statistikkvariabel og år
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kilden er SSBs <a class="reference external" href="https://www.ssb.no/statbank/table/08307">tabell 08307</a> gir statistikkvariablene <code class="docutils literal notranslate"><span class="pre">[&quot;VindKraft,</span> <span class="pre">&quot;Solkraft&quot;]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TABLE</span> <span class="o">=</span> <span class="s2">"08307"</span>
+<span class="n">VARIABLES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"VindKraft"</span><span class="p">,</span> <span class="s2">"Solkraft"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Et <code class="docutils literal notranslate"><span class="pre">query</span></code> bestemmer hvilke data som skal hentes og <code class="docutils literal notranslate"><span class="pre">response</span></code> hvordan dataene returneres. I <code class="docutils literal notranslate"><span class="pre">ContentsCode</span></code> finner vi flere statistikkvariabler <code class="docutils literal notranslate"><span class="pre">selection</span></code> velger verdiene det skal filtreres på <code class="docutils literal notranslate"><span class="pre">filter:item</span></code>angir de eksakte verdiene, som velges i <code class="docutils literal notranslate"><span class="pre">VARIABLES</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"query"</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"ContentsCode"</span><span class="p">,</span>
+        <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
+            <span class="s2">"values"</span><span class="p">:</span> <span class="n">VARIABLES</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">"response"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"format"</span><span class="p">:</span> <span class="s2">"json-stat2"</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi kaller opp nettstedet og ber <code class="docutils literal notranslate"><span class="pre">pyjstat</span></code> lese <code class="docutils literal notranslate"><span class="pre">df</span></code> og returnere tabell:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://data.ssb.no/api/v0/en/table/</span><span class="si">{</span><span class="n">TABLE</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pyjstat</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+    <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"dataframe"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df.pivot</span></code>gjør om til bredt format, og vi indekserer på år <code class="docutils literal notranslate"><span class="pre">index:year</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_wide</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"year"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"contents"</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"value"</span>
+<span class="p">)</span>
+
+<span class="n">df_wide</span> <span class="o">=</span> <span class="n">df_wide</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">"Wind power production"</span><span class="p">:</span> <span class="s2">"Vind"</span><span class="p">,</span>
+    <span class="s2">"Solar power production"</span><span class="p">:</span> <span class="s2">"Sol"</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| year   |   Sol |   Vind |
+|:-------|------:|-------:|
+| 2019   |   nan |   5525 |
+| 2020   |    25 |   9911 |
+| 2021   |    33 |  11768 |
+| 2022   |    63 |  14810 |
+| 2023   |   165 |  13965 |
+| 2024   |   251 |  14545 |
+| 2025   |   348 |  13899 |
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-sol-vind">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Sol- og vindkraftproduksjon i Norge (GWh)</span><a class="headerlink" href="#tab-sol-vind" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>År</p></th>
+<th class="head text-right"><p>Sol</p></th>
+<th class="head text-right"><p>Vind</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>2019</p></td>
+<td class="text-right"><p>NaN</p></td>
+<td class="text-right"><p>5525</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2020</p></td>
+<td class="text-right"><p>25</p></td>
+<td class="text-right"><p>9911</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>2021</p></td>
+<td class="text-right"><p>33</p></td>
+<td class="text-right"><p>11768</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2022</p></td>
+<td class="text-right"><p>63</p></td>
+<td class="text-right"><p>14810</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>2023</p></td>
+<td class="text-right"><p>165</p></td>
+<td class="text-right"><p>13965</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2024</p></td>
+<td class="text-right"><p>251</p></td>
+<td class="text-right"><p>14545</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>2025</p></td>
+<td class="text-right"><p>348</p></td>
+<td class="text-right"><p>13899</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/397bbd7eb45227fbe8310d0a32756ba5cface6cd1e63886a2295c49cf1d0d092.png" src="../_images/397bbd7eb45227fbe8310d0a32756ba5cface6cd1e63886a2295c49cf1d0d092.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df_wide</span><span class="p">[</span><span class="n">df_wide</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="mi">2019</span><span class="p">][[</span><span class="s2">"Sol"</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Solkraftproduksjon"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"GWh"</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span>
+    <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">"Kilde: SSB Statistikkbanken API, tabell 08307. "</span>
+    <span class="sa">f</span><span class="s2">"Hentet </span><span class="si">{</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="si">:</span><span class="s2">%d.%m.%Y</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">ha</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ddbb1faebbc2bea6aea0e4942c733e59616555ce8679628e5c74c4ca2b1f7941.png" src="../_images/ddbb1faebbc2bea6aea0e4942c733e59616555ce8679628e5c74c4ca2b1f7941.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kilde: SSB Statistikkbanken, tabell 08307
+https://www.ssb.no/statbank/table/08307
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="endrede-tilsig">
+<h3>Endrede tilsig<a class="headerlink" href="#endrede-tilsig" title="Permalink to this heading">#</a></h3>
+<p>Norge har 1600 vannkraftverk og omtrent 1200 innsjøer regulert til kraftproduksjon, som gjør det mulig å lagre kraft innenfor reguleringsintervallene lavest regulerte vannstand (LRV) og høyest regulerte vannstand (HRV). Blåsjø er norges største regulerte vannmagasin med reguleringshøyde på 125 m og et magasinvolum på 3105 millioner kubikk som tilsvarer et energipotensial på 7,8 TWh.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<img src="https://media.snl.no/media/15532/standard_800px-Mauvoisin_dam.jpg" width="600">
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Blåsjø (omtrentlige koordinater)</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="mf">6.85</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">59.37</span>
+
+<span class="c1"># Verdier</span>
+<span class="n">HRV</span> <span class="o">=</span> <span class="mi">1055</span>
+<span class="n">LRV</span> <span class="o">=</span> <span class="mi">930</span>
+
+<span class="c1"># Verdenskart</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">"https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip"</span><span class="p">)</span>
+
+<span class="c1">#print(world.columns)</span>
+<span class="n">norway</span> <span class="o">=</span> <span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="p">[</span><span class="s2">"ADMIN"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Norway"</span><span class="p">]</span>
+
+<span class="c1"># Figur med to paneler</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">"width_ratios"</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
+<span class="p">)</span>
+
+<span class="c1"># ------------------</span>
+<span class="c1"># Kart</span>
+<span class="c1"># ------------------</span>
+
+<span class="n">norway</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"lightgray"</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"black"</span>
+<span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">80</span>
+<span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s2">"Blåsjø"</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">),</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">textcoords</span><span class="o">=</span><span class="s2">"offset points"</span>
+<span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Blåsjø"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="c1"># ------------------</span>
+<span class="c1"># HRV / LRV</span>
+<span class="c1"># ------------------</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="s2">"Blåsjø"</span><span class="p">,</span>
+    <span class="n">HRV</span> <span class="o">-</span> <span class="mi">705</span><span class="p">,</span>
+    <span class="n">bottom</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span>
+<span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span>
+    <span class="mi">1050</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"HRV </span><span class="si">{</span><span class="n">HRV</span><span class="si">}</span><span class="s2"> moh."</span>
+<span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span>
+    <span class="n">LRV</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"LRV </span><span class="si">{</span><span class="n">LRV</span><span class="si">}</span><span class="s2"> moh."</span>
+<span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Høyde (moh.)"</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Reguleringsintervall"</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">1075</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span>
+    <span class="mf">0.01</span><span class="p">,</span>
+    <span class="mf">0.01</span><span class="p">,</span>
+    <span class="s2">"Kilde: Blåsjø reguleres mellom HRV 1055 moh. og LRV 930 moh."</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d0b1474e6e1c2da415bd069a522e45f3e54e0ce8c1e93be014bedc387c1a233f.png" src="../_images/d0b1474e6e1c2da415bd069a522e45f3e54e0ce8c1e93be014bedc387c1a233f.png" />
+</div>
+</div>
+</section>
+<section id="fyllingsgrad-pa-1-2-3">
+<h3>Fyllingsgrad på 1,2,3<a class="headerlink" href="#fyllingsgrad-pa-1-2-3" title="Permalink to this heading">#</a></h3>
+<p>Hver uke samler <a class="reference external" href="https://webfileservice.nve.no/API/PublishedFiles/Download/64edbe40-b965-4c90-a114-88162ffff454/201903383/3435075">NVE</a> vannstandsmålinger fra de 489 viktigste vannmagasinene, og publiserer de i sitt API. Det totale volumet er 56000 millioner kubikk som tilsvarer 87 TWh.</p>
+<p>For hvert magasin summeres energiekvivalentene, hvor mye energi som produseres per kubikk som går igjennom kraftverket (<span class="math notranslate nohighlight">\(kWh/m^3\)</span>) og multipliseres med fyllingsvolumet:
+$<span class="math notranslate nohighlight">\(E_{M1} = V_{M1}\,(e_{K1}+e_{K2})\)</span>$</p>
+<p>der:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E_{M1}\)</span> = energiinnhold (GWh)</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{M1}\)</span> = fyllingsvolum (mill. m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(e_{K1}, e_{K2}\)</span> = energiekvivalenter (GWh/mill. m³)</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/2e2c8715b6e0cdc3e89731228b870ca8dfea86fc01c02c47f4fe7eb92154c21b.png" src="../_images/2e2c8715b6e0cdc3e89731228b870ca8dfea86fc01c02c47f4fe7eb92154c21b.png" />
+</div>
+</div>
+<p>Energiinnholdet summeres og deles på det totale energiinnnholdet og slik finner man fyllingsgraden:</p>
+<div class="math notranslate nohighlight">
+\[\text{Fyllingsgrad} = \frac{\sum E_{M_i,\text{uke }j}} {\sum E_{M_i,\text{maks}}}\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/c56a5eb261552f16a240201461975d54158998a0ad79a154c4b48b01d977af54.png" src="../_images/c56a5eb261552f16a240201461975d54158998a0ad79a154c4b48b01d977af54.png" />
+</div>
+</div>
+<p>Vannstandsmålinger samles hver uke og publiseres onsdager kl. 13</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/d5859c9c4fa484f55b5fc8d87f2166810389cbb64d5b7f3a95f8d1844651529e.png" src="../_images/d5859c9c4fa484f55b5fc8d87f2166810389cbb64d5b7f3a95f8d1844651529e.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="vannmagasinstatistikk">
+<h2>Vannmagasinstatistikk<a class="headerlink" href="#vannmagasinstatistikk" title="Permalink to this heading">#</a></h2>
+<p>Ved å følge utviklingen fra uke til uke og sammenligne med historiske tidsseriedata fra de 20 siste årene kan man kontrollere tilsigsenergien og opprettholde forsyningssikkerhet.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/c23d730773b45e6f03eebcaa9efc6a35579fefdd373c2fc06b5ac700c178034a.png" src="../_images/c23d730773b45e6f03eebcaa9efc6a35579fefdd373c2fc06b5ac700c178034a.png" />
+</div>
+</div>
+<section id="import-og-eksport">
+<h3>Import og eksport<a class="headerlink" href="#import-og-eksport" title="Permalink to this heading">#</a></h3>
+<p>Tilsigsenergien modereres også av utveksling av energi gjennom internasjonale kraftforbindelser.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/78e231f9c85f8b319e57f3753b07cd98099d0210ae4c230bbf289e9ca57f5f9f.png" src="../_images/78e231f9c85f8b319e57f3753b07cd98099d0210ae4c230bbf289e9ca57f5f9f.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>Statistikkbanken til SSB i tabell 08307 inneholder også statistikkvariablene import og eksport og vi gjør et nytt kall til APi-et mot disse verdiene.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"query"</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"ContentsCode"</span><span class="p">,</span>
+        <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
+            <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Import"</span><span class="p">,</span> <span class="s2">"Eksport"</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">"response"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"format"</span><span class="p">:</span> <span class="s2">"json-stat2"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Fra 2000 til i dag eksporterte vi i gjenomsnitt 18299 GWh og importerte 8698 GWh.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_wide</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2000"</span><span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>contents
+Eksport    18299.884615
+Import      8698.846154
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/4cc3961d73ee66ef88b09cb71df67da92f47f95360cafa686360dfe412267bed.png" src="../_images/4cc3961d73ee66ef88b09cb71df67da92f47f95360cafa686360dfe412267bed.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./05_modellering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../assignments/assignment5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Øving 5: Modellering med Gauss</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../11_powerfactory/about_pf.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Om Power Factory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-og-simulering">Modellering og simulering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reversibel-effektflyt">Reversibel effektflyt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibr">IBR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kall-pa-statistikken">Kall på statistikken</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endrede-tilsig">Endrede tilsig</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fyllingsgrad-pa-1-2-3">Fyllingsgrad på 1,2,3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vannmagasinstatistikk">Vannmagasinstatistikk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-og-eksport">Import og eksport</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
