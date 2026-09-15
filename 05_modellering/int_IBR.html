@@ -427,9 +427,17 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-og-simulering">Modellering og simulering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reversibel-effektflyt">Reversibel effektflyt</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibr">IBR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibr">IBR</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vindkraft">Vindkraft</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solkraft">Solkraft</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-conv">P_{conv}</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kall-pa-statistikken">Kall på statistikken</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norsk-sol-og-vindkraft">Norsk sol- og vindkraft</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endrede-tilsig">Endrede tilsig</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fyllingsgrad-pa-1-2-3">Fyllingsgrad på 1,2,3</a></li>
 </ul>
@@ -477,18 +485,70 @@ document.write(`
 <section id="ibr">
 <h3>IBR<a class="headerlink" href="#ibr" title="Permalink to this heading">#</a></h3>
 <p>Sol- og Vindkraft er også basert på invertering (vekselretting) av signalet fra DC til AC og kalles derfor Inverter Based Resources (IBR). Omformingen skjer med kraftelektronikk uten inertian som den roterende masse bidrar med.</p>
-<p>Selv om Vindtubiner roterer må signalet først likerettes også vekselrettes i en operasjon som kalles back-to-back (rygg-mot-rygg) som illustrert i <a class="reference internal" href="#fig-wind-converter"><span class="std std-numref">Fig. 24</span></a>. Dette brukes fordi kraften som genereres i turbin <span class="math notranslate nohighlight">\(P_{gen}\)</span></p>
+<section id="vindkraft">
+<h4>Vindkraft<a class="headerlink" href="#vindkraft" title="Permalink to this heading">#</a></h4>
+<p>Selv om Vindtubiner roterer må signalet først likerettes (AC/DC) også vekselrettes (DC/DC) i en operasjon som kalles back-to-back (rygg-mot-rygg) som illustrert i <a class="reference internal" href="#fig-wind-converter"><span class="std std-numref">Fig. 24</span></a>. DC-linken fungerer som et energilager med liten kapasitet som stabiliserer likespenningen mellom omformerne. Den frikobler generatorsiden fra nettsiden slik at generatoren kan operere med variabel frekvens, mens inverteren leverer en kontrollert spenning med 50 Hz til nettet.</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" src="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" /></div>
 </div>
 <figure class="align-default" id="fig-wind-converter">
 <img alt="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" src="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" /><figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Back-to-back omformer for vindturbin.</span><a class="headerlink" href="#fig-wind-converter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Begge omformerne genererer PWM-signaler som gir høyfrekvente effektpulser. Momentant kan effekten på generatorsiden og nettsiden være forskjellig:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{gen}(t) \neq P_{nett}(t)
+\]</div>
+<p>Selv om middelverdien over tid er den samme må DC-linken absorbere differansen mellom effekten inn og ut:</p>
+<div class="math notranslate nohighlight">
+\[
+P_C = P_{gen} - P_{nett}
+\]</div>
+<p>hvor <span class="math notranslate nohighlight">\(P_C\)</span> er effekten som til enhver tid lagres eller frigjøres av DC-link-kondensatoren.
+Energien i kondensatoren varierer dermed i henhold til:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dE}{dt}=P_C
+\]</div>
+<p>Den lagrede energien i DC-linken er gitt ved:</p>
+<div class="math notranslate nohighlight">
+\[
+E=\frac{1}{2}CV_{dc}^{2}
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p>E er lagret energi [J]</p></li>
+<li><p>C er kapasitansen [F]</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{dc}\)</span> er DC-linkspenningen [V]</p></li>
+</ul>
+<p>Hvis kondensatoren er for liten, vil energiinnholdet variere merkbart, noe som fører til spenningssvingninger i DC-linken.
+DC-linkens hovedoppgave er derfor å fungere som en energibuffer som glatter ut effekt- og spenningsrippel mellom de to PWM-omformerne og opprettholder en mest mulig konstant DC-spenning.</p>
 </section>
+<section id="solkraft">
+<h4>Solkraft<a class="headerlink" href="#solkraft" title="Permalink to this heading">#</a></h4>
+<p>For at solkraften skal kunne integreres på net må den inverteres (vekselretter) i en inverter, som i <a class="reference internal" href="#fig-pv-inverter"><span class="std std-numref">Fig. 25</span></a>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/50c6ea97ffd9f2635d3820a5639a80bd90918150d0a9b709317a2b8812c3f959.svg" src="../_images/50c6ea97ffd9f2635d3820a5639a80bd90918150d0a9b709317a2b8812c3f959.svg" /></div>
+</div>
+<figure class="align-default" id="fig-pv-inverter">
+<img alt="../_images/50c6ea97ffd9f2635d3820a5639a80bd90918150d0a9b709317a2b8812c3f959.svg" src="../_images/50c6ea97ffd9f2635d3820a5639a80bd90918150d0a9b709317a2b8812c3f959.svg" /><figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Omforming i en solcelle</span><a class="headerlink" href="#fig-pv-inverter" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>DC-DC omformeren holder spennigsnivået stabilt, selv om det er fluktuerende solinnstråling på solcellen. Kondensatoren lagrer energi i DC-linken før det stabile signalet vekselrettes til nettet. Spolen L glatter ut PWM-generert strømrippel fra inverteren, reduserer harmoniske som sendes ut på nettet og gjør det mulig å regulere aktiv og reaktiv effekt på en kontrollert måte. Det fungerer som det viktigste filterelementet mellom VSC-en og kraftnettet.</p>
+</section>
+</section>
+<section id="p-conv">
+<h3>P_{conv}<a class="headerlink" href="#p-conv" title="Permalink to this heading">#</a></h3>
+<p>Det er nyttig å kunne modellere tapene i omforming av signaler. Omformertapene kan modelleres som <span class="math notranslate nohighlight">\(P_{conv}\)</span></p>
 <section id="pandapower">
-<h3>Pandapower<a class="headerlink" href="#pandapower" title="Permalink to this heading">#</a></h3>
+<h4>Pandapower<a class="headerlink" href="#pandapower" title="Permalink to this heading">#</a></h4>
 <p>Pandapower kombinerer <a class="reference external" href="https://pandas.pydata.org/docs/">pandas</a> biblioteket med kraftflytsolveren <a class="reference external" href="https://pypower.readthedocs.io/en/latest/index.html">PYPOWER</a>. Den muliggjør løsnig på problemer tilknyttet reversibel effektflyt.</p>
+</section>
 </section>
 <section id="kall-pa-statistikken">
 <h3>Kall på statistikken<a class="headerlink" href="#kall-pa-statistikken" title="Permalink to this heading">#</a></h3>
@@ -576,20 +636,11 @@ document.write(`
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| year   |   Sol |   Vind |
-|:-------|------:|-------:|
-| 2019   |   nan |   5525 |
-| 2020   |    25 |   9911 |
-| 2021   |    33 |  11768 |
-| 2022   |    63 |  14810 |
-| 2023   |   165 |  13965 |
-| 2024   |   251 |  14545 |
-| 2025   |   348 |  13899 |
-</pre></div>
 </div>
-</div>
-</div>
+</section>
+<section id="norsk-sol-og-vindkraft">
+<h3>Norsk sol- og vindkraft<a class="headerlink" href="#norsk-sol-og-vindkraft" title="Permalink to this heading">#</a></h3>
+<p>API-kallet kan genereres som en dataframe som gir historiske tall, som vist i <a class="reference internal" href="#tab-sol-vind"><span class="std std-numref">Table 2</span></a>, over sol og vindkraftproduksjonen i Norge.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-sol-vind">
 <caption><span class="caption-number">Table 2 </span><span class="caption-text">Sol- og vindkraftproduksjon i Norge (GWh)</span><a class="headerlink" href="#tab-sol-vind" title="Permalink to this table">#</a></caption>
 <thead>
@@ -630,14 +681,21 @@ document.write(`
 </tbody>
 </table>
 </div>
+<p>Vi plotter dataene som synliggjør den historiske utviklingen av sol- og vindkraft i <a class="reference internal" href="#fig-sol-vind"><span class="std std-numref">Fig. 26</span></a>.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<figure class="align-default" id="fig-sol-vind">
+<a class="reference internal image-reference" href="05_modellering/{glue:figure}fig-sol-vind"><img alt="05_modellering/{glue:figure}fig-sol-vind" src="05_modellering/{glue:figure}fig-sol-vind" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Produksjon av sol- og vindkraft i Norge.</span><a class="headerlink" href="#fig-sol-vind" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>Kilde: SSB Statistikkbanken API, tabell 08307.</p>
+</div>
+</figcaption>
+</figure>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/397bbd7eb45227fbe8310d0a32756ba5cface6cd1e63886a2295c49cf1d0d092.png" src="../_images/397bbd7eb45227fbe8310d0a32756ba5cface6cd1e63886a2295c49cf1d0d092.png" />
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/ddbb1faebbc2bea6aea0e4942c733e59616555ce8679628e5c74c4ca2b1f7941.png" src="../_images/ddbb1faebbc2bea6aea0e4942c733e59616555ce8679628e5c74c4ca2b1f7941.png" />
+<img alt="../_images/9653888ea428547a0e1c040b51b77a6a936956bb4293e80a6ce4dd05f57c0d6e.png" src="../_images/9653888ea428547a0e1c040b51b77a6a936956bb4293e80a6ce4dd05f57c0d6e.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -658,7 +716,7 @@ https://www.ssb.no/statbank/table/08307
 <div class="output text_html">
 <img src="https://media.snl.no/media/15532/standard_800px-Mauvoisin_dam.jpg" width="600">
 </div><figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Blåsjø.</span><a class="headerlink" href="#fig-mauvoisin" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Blåsjø.</span><a class="headerlink" href="#fig-mauvoisin" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell tag_remove-input docutils container">
@@ -704,12 +762,12 @@ $<span class="math notranslate nohighlight">\(E_{M1} = V_{M1}\,(e_{K1}+e_{K2})\)
 <p>Ved å følge utviklingen fra uke til uke og sammenligne med historiske tidsseriedata fra de 20 siste årene kan man kontrollere tilsigsenergien og opprettholde forsyningssikkerhet.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/c23d730773b45e6f03eebcaa9efc6a35579fefdd373c2fc06b5ac700c178034a.png" src="../_images/c23d730773b45e6f03eebcaa9efc6a35579fefdd373c2fc06b5ac700c178034a.png" />
+<img alt="../_images/066a262689b94eb62c45f032dfb3f3ded13c32d663d52d3816b5970df6fc11eb.png" src="../_images/066a262689b94eb62c45f032dfb3f3ded13c32d663d52d3816b5970df6fc11eb.png" />
 </div>
 </div>
 <section id="import-og-eksport">
 <h3>Import og eksport<a class="headerlink" href="#import-og-eksport" title="Permalink to this heading">#</a></h3>
-<p>Tilsigsenergien modereres også av utveksling av energi gjennom internasjonale kraftforbindelser.</p>
+<p>Tilsigsenergien modereres også av utveksling av energi gjennom internasjonale kraftforbindelser. HVDC forbindelsene fasiliteres av back-to-back slik at synkronområder isoleres.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/78e231f9c85f8b319e57f3753b07cd98099d0210ae4c230bbf289e9ca57f5f9f.png" src="../_images/78e231f9c85f8b319e57f3753b07cd98099d0210ae4c230bbf289e9ca57f5f9f.png" />
@@ -823,9 +881,17 @@ dtype: float64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-og-simulering">Modellering og simulering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reversibel-effektflyt">Reversibel effektflyt</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibr">IBR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibr">IBR</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vindkraft">Vindkraft</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solkraft">Solkraft</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-conv">P_{conv}</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kall-pa-statistikken">Kall på statistikken</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norsk-sol-og-vindkraft">Norsk sol- og vindkraft</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endrede-tilsig">Endrede tilsig</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fyllingsgrad-pa-1-2-3">Fyllingsgrad på 1,2,3</a></li>
 </ul>
