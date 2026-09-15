@@ -456,7 +456,7 @@ document.write(`
 </div>
 <section id="modellering-og-simulering">
 <h2>Modellering og simulering<a class="headerlink" href="#modellering-og-simulering" title="Permalink to this heading">#</a></h2>
-<p>Vi må derfor simulere tilstander som kan oppstå for å kunne analysere integreringen av fornybare energikilder på nettet. De kjente transmisjonslinjemodellene må da utvides til å ta opp i seg dynamiske forandringer i nettet, som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-revers-flyt</span></code>. De tradisjonelle metodene (<span class="math notranslate nohighlight">\(\pi\)</span>-metoden) modellerer vanligvis enveis effektflyt. Med skalerbar lokal produksjon kan strømmen tidvis gå motsatt vei:</p>
+<p>Vi må derfor simulere tilstander som kan oppstå for å kunne analysere integreringen av fornybare energikilder på nettet. De kjente transmisjonslinjemodellene må da utvides til å ta opp i seg dynamiske forandringer i nettet, som vist i <a class="reference internal" href="#fig-revers-flyt"><span class="std std-numref">Fig. 23</span></a>. De tradisjonelle metodene (<span class="math notranslate nohighlight">\(\pi\)</span>-metoden) modellerer vanligvis enveis effektflyt. Med skalerbar lokal produksjon kan strømmen tidvis gå motsatt vei:</p>
 <ul class="simple">
 <li><p>solceller</p></li>
 <li><p>vindkraft</p></li>
@@ -465,6 +465,11 @@ document.write(`
 </ul>
 <div class="cell tag_remove-input docutils container">
 </div>
+<figure class="align-default" id="fig-revers-flyt">
+<img alt="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" src="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" /><figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Reversibel effektflyt på noder med PV-produksjon</span><a class="headerlink" href="#fig-revers-flyt" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="reversibel-effektflyt">
 <h3>Reversibel effektflyt<a class="headerlink" href="#reversibel-effektflyt" title="Permalink to this heading">#</a></h3>
 <p>Den reversible effektflyten fra større andel distribuert produksjon kan gi høyere lokale spenninger, endrede kortslutningsforhold og komplisere vernkoordineringen. Vi må derfor ha noen simuleringsverktøy for å analysere disse forholdene.</p>
@@ -472,12 +477,12 @@ document.write(`
 <section id="ibr">
 <h3>IBR<a class="headerlink" href="#ibr" title="Permalink to this heading">#</a></h3>
 <p>Sol- og Vindkraft er også basert på invertering (vekselretting) av signalet fra DC til AC og kalles derfor Inverter Based Resources (IBR). Omformingen skjer med kraftelektronikk uten inertian som den roterende masse bidrar med.</p>
-<p>Selv om Vindtubiner roterer må signalet først likerettes også vekselrettes i en operasjon som kalles back-to-back (rygg-mot-rygg) som illustrert i <a class="reference internal" href="#fig-wind-converter"><span class="std std-numref">Fig. 23</span></a>. Dette brukes fordi kraften som genereres i turbin <span class="math notranslate nohighlight">\(P_{gen}\)</span></p>
+<p>Selv om Vindtubiner roterer må signalet først likerettes også vekselrettes i en operasjon som kalles back-to-back (rygg-mot-rygg) som illustrert i <a class="reference internal" href="#fig-wind-converter"><span class="std std-numref">Fig. 24</span></a>. Dette brukes fordi kraften som genereres i turbin <span class="math notranslate nohighlight">\(P_{gen}\)</span></p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-default" id="fig-wind-converter">
 <img alt="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" src="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" /><figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Back-to-back omformer for vindturbin.</span><a class="headerlink" href="#fig-wind-converter" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Back-to-back omformer for vindturbin.</span><a class="headerlink" href="#fig-wind-converter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -653,7 +658,7 @@ https://www.ssb.no/statbank/table/08307
 <div class="output text_html">
 <img src="https://media.snl.no/media/15532/standard_800px-Mauvoisin_dam.jpg" width="600">
 </div><figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Blåsjø.</span><a class="headerlink" href="#fig-mauvoisin" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Blåsjø.</span><a class="headerlink" href="#fig-mauvoisin" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell tag_remove-input docutils container">
