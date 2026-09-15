@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="844" height="232" viewBox="0 0 844 232">
+
+  <!-- Bakgrunn -->
+  <rect width="844" height="232" fill="#e8e8e8"/>
+
+  <!-- Enkel vindturbin -->
+  <g transform="translate(90,116)">
+    <!-- Nav -->
+    <circle cx="0" cy="0" r="12" fill="white" stroke="green" stroke-width="4"/>
+
+    <!-- Mast -->
+    <line x1="0" y1="12" x2="0" y2="90" stroke="green" stroke-width="6"/>
+
+    <!-- Blader -->
+    <line x1="0" y1="0" x2="-35" y2="-55" stroke="green" stroke-width="8" stroke-linecap="round"/>
+
+    <line x1="0" y1="0" x2="45" y2="0" stroke="green" stroke-width="8" stroke-linecap="round"/>
+
+    <line x1="0" y1="0" x2="-15" y2="55" stroke="green" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Trefaseledere fra turbin -->
+  <line x1="102" y1="70" x2="235" y2="70" stroke="red" stroke-width="3"/>
+
+  <line x1="102" y1="122" x2="235" y2="122" stroke="#d8d800" stroke-width="3"/>
+
+  <line x1="102" y1="174" x2="235" y2="174" stroke="blue" stroke-width="3"/>
+
+  <!-- Omformer 1 -->
+  <rect x="235" y="35" width="135" height="170" fill="#89AADF" stroke="#5F79A6" stroke-width="3"/>
+
+  <!-- Refleks -->
+  <line x1="245" y1="200" x2="365" y2="40" stroke="white" stroke-width="4" opacity="0.35"/>
+
+  <!-- AC-symbol -->
+  <path d="M255 82            C265 68, 275 68, 285 82            C295 96, 305 96, 315 82" fill="none" stroke="#FFD9B5" stroke-width="8"/>
+
+  <!-- DC-symbol -->
+  <rect x="298" y="125" width="44" height="8" fill="#FFF4A5" stroke="#B8B080"/>
+
+  <rect x="298" y="138" width="44" height="8" fill="#FFF4A5" stroke="#B8B080"/>
+
+  <!-- DC-link -->
+  <line x1="370" y1="70" x2="495" y2="70" stroke="black" stroke-width="3"/>
+
+  <line x1="370" y1="190" x2="495" y2="190" stroke="black" stroke-width="3"/>
+
+  <!-- Kondensator -->
+  <line x1="432" y1="70" x2="432" y2="108" stroke="black" stroke-width="4"/>
+
+  <line x1="420" y1="108" x2="444" y2="108" stroke="black" stroke-width="4"/>
+
+  <line x1="420" y1="118" x2="444" y2="118" stroke="black" stroke-width="4"/>
+
+  <line x1="432" y1="118" x2="432" y2="190" stroke="black" stroke-width="4"/>
+
+  <!-- Omformer 2 -->
+  <rect x="495" y="35" width="135" height="170" fill="#89AADF" stroke="#5F79A6" stroke-width="3"/>
+
+  <!-- Refleks -->
+  <line x1="505" y1="200" x2="625" y2="40" stroke="white" stroke-width="4" opacity="0.35"/>
+
+  <!-- DC-symbol -->
+  <rect x="515" y="58" width="44" height="8" fill="#FFF4A5" stroke="#B8B080"/>
+
+  <rect x="515" y="71" width="44" height="8" fill="#FFF4A5" stroke="#B8B080"/>
+
+  <!-- AC-symbol -->
+  <path d="M560 145            C570 131, 580 131, 590 145            C600 159, 610 159, 620 145" fill="none" stroke="#FFD9B5" stroke-width="8"/>
+
+  <!-- Trefaseledere til nett -->
+  <line x1="630" y1="70" x2="770" y2="70" stroke="red" stroke-width="3"/>
+
+  <line x1="630" y1="122" x2="770" y2="122" stroke="#d8d800" stroke-width="3"/>
+
+  <line x1="630" y1="174" x2="770" y2="174" stroke="blue" stroke-width="3"/>
+
+  <!-- Grid-symbol -->
+  <line x1="720" y1="40" x2="720" y2="200" stroke="black" stroke-width="3"/>
+
+  <!-- Vertikal tekst -->
+  <text x="730" y="60" font-family="Times New Roman" font-size="22" font-weight="bold">
+    P_grid
+  </text>
+
+ <!-- Vertikal tekst -->
+  <text x="160" y="60" font-family="Times New Roman" font-size="22" font-weight="bold">
+    P_gen
+  </text>
+
+</svg>

@@ -218,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modellering</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Integrering av fornybar energi</a></li>
 </ul>
@@ -451,12 +451,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="integrering-av-fornybar-energi">
 <h1>Integrering av fornybar energi<a class="headerlink" href="#integrering-av-fornybar-energi" title="Permalink to this heading">#</a></h1>
-<p>Når vi tar for oss integrasjon av fornybar energi i distribusjonsnettet, fokuser vi på hvordan vi skal koble strømkilder som sol og vind til kraftnettet. Som beskrevet i 3D (De tre D’ene; Dekarboniseering, Digitalisering, Desentralisering) rammeverket og FN’s visjon om <a class="reference external" href="https://fn.no/om-fn/fns-baerekraftsmaal/ren-energi-til-alle">ren energi for alle</a> er vi forpliktet til å sikre tilgang til pålitelig, bærekraftig og moderne energi for alle. Andelen ren energi er høy i Norge på grunn av vannkraften, men er avhengig av mengde vann som tilsig til vannmagasinene. Sol- og vindkraft er viktige bidrag for å oppnå bærekraftsmålene i tilegg har de større grad av skalerbarhet enn vannkraft. Men sol- og vindkraftens intermittente (periodevis, dvs. ujevn produksjon) natur kompliserer de dynamiske forholdene i kraftnettet.</p>
+<p>Når vi tar for oss integrasjon av fornybar energi i distribusjonsnettet, fokuser vi på hvordan vi skal koble strømkilder som sol og vind til kraftnettet. Som beskrevet i 3D (De tre D’ene; Dekarboniseering, Digitalisering, Desentralisering) rammeverket og FN’s visjon om <a class="reference external" href="https://fn.no/om-fn/fns-baerekraftsmaal/ren-energi-til-alle">ren energi for alle</a> er vi forpliktet til å sikre tilgang til pålitelig, bærekraftig og moderne energi for alle. Andelen ren energi er høy i Norge på grunn av vannkraften, men er avhengig av mengde vann som tilsig til vannmagasinene. Sol- og vindkraft er viktige bidrag for å oppnå bærekraftsmålene i tilegg har de større grad av skalerbarhet enn vannkraft. Men sol- og vindkraftens intermittente (periodevis, dvs. ujevn produksjon) natur kompliserer de dynamiske forholdene og stabiliteten i kraftnettet.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <section id="modellering-og-simulering">
 <h2>Modellering og simulering<a class="headerlink" href="#modellering-og-simulering" title="Permalink to this heading">#</a></h2>
-<p>Vi må derfor simulere tilstander som kan oppstå for å kunne analysere integreringen av fornybare energikilder på nettet. De kjente transmisjonslinjemodellene må da utvides til å ta opp i seg dynamiske forandringer i nettet. De tradisjonelle metodene (<span class="math notranslate nohighlight">\(\pi\)</span>-metoden) modellerer vanligvis enveis effektflyt. Med skalerbar lokal produksjon kan strømmen tidvis gå motsatt vei:</p>
+<p>Vi må derfor simulere tilstander som kan oppstå for å kunne analysere integreringen av fornybare energikilder på nettet. De kjente transmisjonslinjemodellene må da utvides til å ta opp i seg dynamiske forandringer i nettet, som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-revers-flyt</span></code>. De tradisjonelle metodene (<span class="math notranslate nohighlight">\(\pi\)</span>-metoden) modellerer vanligvis enveis effektflyt. Med skalerbar lokal produksjon kan strømmen tidvis gå motsatt vei:</p>
 <ul class="simple">
 <li><p>solceller</p></li>
 <li><p>vindkraft</p></li>
@@ -473,7 +473,214 @@ document.write(`
 </section>
 <section id="ibr">
 <h3>IBR<a class="headerlink" href="#ibr" title="Permalink to this heading">#</a></h3>
-<p>Sol- og Vinkraft er ogse basert på invertering (vekselretting) av signalet fra DC til AC og kalles derfor Inverter Based Resources (IBR). Dette skjer med kraftelektronikk og vil si at mister inertian som den roterende masse bidrar med.</p>
+<p>Sol- og Vindkraft er også basert på invertering (vekselretting) av signalet fra DC til AC og kalles derfor Inverter Based Resources (IBR). Omformingen skjer med kraftelektronikk uten inertian som den roterende masse bidrar med.</p>
+<p>Selv om Vindtubiner roterer må signalet først likerettes også vekselrettes i en operasjon som kalles back-to-back (rygg-mot-rygg) som illustrert i <a class="reference internal" href="#fig-wind-converter"><span class="std std-numref">Fig. 23</span></a>. Dette brukes fordi kraften som genereres i turbin <span class="math notranslate nohighlight">\(P_gen\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;svg xmlns="http://www.w3.org/2000/svg"</span>
+<span class="s2">     width="844" height="232"</span>
+<span class="s2">     viewBox="0 0 844 232"&gt;</span>
+
+<span class="s2">  &lt;!-- Bakgrunn --&gt;</span>
+<span class="s2">  &lt;rect width="844" height="232" fill="#e8e8e8"/&gt;</span>
+
+<span class="s2">  &lt;!-- Enkel vindturbin --&gt;</span>
+<span class="s2">  &lt;g transform="translate(90,116)"&gt;</span>
+<span class="s2">    &lt;!-- Nav --&gt;</span>
+<span class="s2">    &lt;circle cx="0" cy="0"</span>
+<span class="s2">            r="12"</span>
+<span class="s2">            fill="white"</span>
+<span class="s2">            stroke="green"</span>
+<span class="s2">            stroke-width="4"/&gt;</span>
+
+<span class="s2">    &lt;!-- Mast --&gt;</span>
+<span class="s2">    &lt;line x1="0" y1="12"</span>
+<span class="s2">          x2="0" y2="90"</span>
+<span class="s2">          stroke="green"</span>
+<span class="s2">          stroke-width="6"/&gt;</span>
+
+<span class="s2">    &lt;!-- Blader --&gt;</span>
+<span class="s2">    &lt;line x1="0" y1="0"</span>
+<span class="s2">          x2="-35" y2="-55"</span>
+<span class="s2">          stroke="green"</span>
+<span class="s2">          stroke-width="8"</span>
+<span class="s2">          stroke-linecap="round"/&gt;</span>
+
+<span class="s2">    &lt;line x1="0" y1="0"</span>
+<span class="s2">          x2="45" y2="0"</span>
+<span class="s2">          stroke="green"</span>
+<span class="s2">          stroke-width="8"</span>
+<span class="s2">          stroke-linecap="round"/&gt;</span>
+
+<span class="s2">    &lt;line x1="0" y1="0"</span>
+<span class="s2">          x2="-15" y2="55"</span>
+<span class="s2">          stroke="green"</span>
+<span class="s2">          stroke-width="8"</span>
+<span class="s2">          stroke-linecap="round"/&gt;</span>
+<span class="s2">  &lt;/g&gt;</span>
+
+<span class="s2">  &lt;!-- Trefaseledere fra turbin --&gt;</span>
+<span class="s2">  &lt;line x1="102" y1="70"  x2="235" y2="70"</span>
+<span class="s2">        stroke="red" stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="102" y1="122" x2="235" y2="122"</span>
+<span class="s2">        stroke="#d8d800" stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="102" y1="174" x2="235" y2="174"</span>
+<span class="s2">        stroke="blue" stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Omformer 1 --&gt;</span>
+<span class="s2">  &lt;rect x="235" y="35"</span>
+<span class="s2">        width="135" height="170"</span>
+<span class="s2">        fill="#89AADF"</span>
+<span class="s2">        stroke="#5F79A6"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Refleks --&gt;</span>
+<span class="s2">  &lt;line x1="245" y1="200"</span>
+<span class="s2">        x2="365" y2="40"</span>
+<span class="s2">        stroke="white"</span>
+<span class="s2">        stroke-width="4"</span>
+<span class="s2">        opacity="0.35"/&gt;</span>
+
+<span class="s2">  &lt;!-- AC-symbol --&gt;</span>
+<span class="s2">  &lt;path d="M255 82</span>
+<span class="s2">           C265 68, 275 68, 285 82</span>
+<span class="s2">           C295 96, 305 96, 315 82"</span>
+<span class="s2">        fill="none"</span>
+<span class="s2">        stroke="#FFD9B5"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;!-- DC-symbol --&gt;</span>
+<span class="s2">  &lt;rect x="298" y="125" width="44" height="8"</span>
+<span class="s2">        fill="#FFF4A5" stroke="#B8B080"/&gt;</span>
+
+<span class="s2">  &lt;rect x="298" y="138" width="44" height="8"</span>
+<span class="s2">        fill="#FFF4A5" stroke="#B8B080"/&gt;</span>
+
+<span class="s2">  &lt;!-- DC-link --&gt;</span>
+<span class="s2">  &lt;line x1="370" y1="70"</span>
+<span class="s2">        x2="495" y2="70"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="370" y1="190"</span>
+<span class="s2">        x2="495" y2="190"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Kondensator --&gt;</span>
+<span class="s2">  &lt;line x1="432" y1="70"</span>
+<span class="s2">        x2="432" y2="108"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="4"/&gt;</span>
+
+<span class="s2">  &lt;line x1="420" y1="108"</span>
+<span class="s2">        x2="444" y2="108"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="4"/&gt;</span>
+
+<span class="s2">  &lt;line x1="420" y1="118"</span>
+<span class="s2">        x2="444" y2="118"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="4"/&gt;</span>
+
+<span class="s2">  &lt;line x1="432" y1="118"</span>
+<span class="s2">        x2="432" y2="190"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="4"/&gt;</span>
+
+<span class="s2">  &lt;!-- Omformer 2 --&gt;</span>
+<span class="s2">  &lt;rect x="495" y="35"</span>
+<span class="s2">        width="135" height="170"</span>
+<span class="s2">        fill="#89AADF"</span>
+<span class="s2">        stroke="#5F79A6"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Refleks --&gt;</span>
+<span class="s2">  &lt;line x1="505" y1="200"</span>
+<span class="s2">        x2="625" y2="40"</span>
+<span class="s2">        stroke="white"</span>
+<span class="s2">        stroke-width="4"</span>
+<span class="s2">        opacity="0.35"/&gt;</span>
+
+<span class="s2">  &lt;!-- DC-symbol --&gt;</span>
+<span class="s2">  &lt;rect x="515" y="58" width="44" height="8"</span>
+<span class="s2">        fill="#FFF4A5" stroke="#B8B080"/&gt;</span>
+
+<span class="s2">  &lt;rect x="515" y="71" width="44" height="8"</span>
+<span class="s2">        fill="#FFF4A5" stroke="#B8B080"/&gt;</span>
+
+<span class="s2">  &lt;!-- AC-symbol --&gt;</span>
+<span class="s2">  &lt;path d="M560 145</span>
+<span class="s2">           C570 131, 580 131, 590 145</span>
+<span class="s2">           C600 159, 610 159, 620 145"</span>
+<span class="s2">        fill="none"</span>
+<span class="s2">        stroke="#FFD9B5"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;!-- Trefaseledere til nett --&gt;</span>
+<span class="s2">  &lt;line x1="630" y1="70"</span>
+<span class="s2">        x2="770" y2="70"</span>
+<span class="s2">        stroke="red"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="630" y1="122"</span>
+<span class="s2">        x2="770" y2="122"</span>
+<span class="s2">        stroke="#d8d800"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="630" y1="174"</span>
+<span class="s2">        x2="770" y2="174"</span>
+<span class="s2">        stroke="blue"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Grid-symbol --&gt;</span>
+<span class="s2">  &lt;line x1="720" y1="40"</span>
+<span class="s2">        x2="720" y2="200"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Vertikal tekst --&gt;</span>
+<span class="s2">  &lt;text x="730"</span>
+<span class="s2">        y="60"</span>
+<span class="s2">        font-family="Times New Roman"</span>
+<span class="s2">        font-size="22"</span>
+<span class="s2">        font-weight="bold"</span>
+<span class="s2">        &gt;</span>
+<span class="s2">    P_grid</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2"> &lt;!-- Vertikal tekst --&gt;</span>
+<span class="s2">  &lt;text x="160"</span>
+<span class="s2">        y="60"</span>
+<span class="s2">        font-family="Times New Roman"</span>
+<span class="s2">        font-size="22"</span>
+<span class="s2">        font-weight="bold"</span>
+<span class="s2">        &gt;</span>
+<span class="s2">    P_gen</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">&lt;/svg&gt;</span>
+<span class="s2">"""</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">"wind_converter"</span><span class="p">,</span> <span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" src="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" /></div>
+</div>
+<figure class="align-default" id="fig-wind-converter">
+<img alt="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" src="../_images/7ab79fd16d81ade4384dd9c60eda0057d9e6e058f23bcea9cb039ad2bdf8074a.svg" /><figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Back-to-back omformer for vindturbin.</span><a class="headerlink" href="#fig-wind-converter" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="pandapower">
 <h3>Pandapower<a class="headerlink" href="#pandapower" title="Permalink to this heading">#</a></h3>
@@ -626,7 +833,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df_wide</span><span class="p">[</span><span class="n">df_wide</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="mi">2019</span><span class="p">][[</span><span class="s2">"Sol"</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df_wide</span><span class="p">[</span><span class="n">df_wide</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="mi">2019</span><span class="p">][[</span><span class="s2">"Sol"</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
     <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span>
 <span class="p">)</span>
@@ -663,14 +871,18 @@ https://www.ssb.no/statbank/table/08307
 <h3>Endrede tilsig<a class="headerlink" href="#endrede-tilsig" title="Permalink to this heading">#</a></h3>
 <p>Norge har 1600 vannkraftverk og omtrent 1200 innsjøer regulert til kraftproduksjon, som gjør det mulig å lagre kraft innenfor reguleringsintervallene lavest regulerte vannstand (LRV) og høyest regulerte vannstand (HRV). Blåsjø er norges største regulerte vannmagasin med reguleringshøyde på 125 m og et magasinvolum på 3105 millioner kubikk som tilsvarer et energipotensial på 7,8 TWh.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
+</div>
+<figure class="align-default" id="fig-mauvoisin">
 <div class="output text_html">
 <img src="https://media.snl.no/media/15532/standard_800px-Mauvoisin_dam.jpg" width="600">
-</div></div>
-</div>
+</div><figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Blåsjø.</span><a class="headerlink" href="#fig-mauvoisin" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Blåsjø (omtrentlige koordinater)</span>
