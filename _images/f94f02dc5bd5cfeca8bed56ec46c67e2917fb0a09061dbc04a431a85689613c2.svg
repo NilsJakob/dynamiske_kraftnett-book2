@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="450">
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="black"/>
+    </marker>
+  </defs>
+
+  <!-- Tittel -->
+  <text x="300" y="40" font-size="28" font-weight="bold">
+    Pandapower-komponenter
+  </text>
+
+<!-- create_empty_network -->
+
+<rect x="25" y="50" width="320" height="60" fill="white" stroke="black" stroke-width="2"/>
+
+<text x="35" y="70" font-family="monospace" font-size="18">
+net = pp.create_empty_network()
+</text>
+
+<text x="35" y="100" font-size="16">
+Oppretter tom nettmodell
+</text>
+
+  <!-- Nettdiagram -->
+
+  <!-- Busser -->
+  <line x1="150" y1="180" x2="150" y2="250" stroke="gray" stroke-width="8"/>
+
+  <line x1="450" y1="180" x2="450" y2="250" stroke="gray" stroke-width="8"/>
+
+  <line x1="750" y1="180" x2="750" y2="250" stroke="gray" stroke-width="8"/>
+
+  <!-- Linjer -->
+  <line x1="150" y1="215" x2="450" y2="215" stroke="black" stroke-width="3"/>
+
+  <line x1="450" y1="215" x2="750" y2="215" stroke="black" stroke-width="3"/>
+
+  <!-- Effektpiler -->
+  <line x1="250" y1="195" x2="350" y2="195" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <line x1="560" y1="195" x2="660" y2="195" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Grid -->
+  <text x="110" y="150" font-size="22">
+    Grid
+  </text>
+
+  <!-- Bus labels -->
+  <text x="125" y="280" font-size="20">
+    b0
+  </text>
+
+  <text x="425" y="280" font-size="20">
+    b1
+  </text>
+
+  <text x="725" y="280" font-size="20">
+    b2
+  </text>
+
+  <!-- Last 1 -->
+  <line x1="450" y1="215" x2="450" y2="300" stroke="black" stroke-width="2"/>
+
+  <line x1="450" y1="300" x2="520" y2="300" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="540" y="307" font-size="18">
+    Load1 = 50 kW
+  </text>
+
+  <!-- Last 2 -->
+  <line x1="750" y1="215" x2="750" y2="350" stroke="black" stroke-width="2"/>
+
+  <line x1="750" y1="350" x2="820" y2="350" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="840" y="357" font-size="18">
+    Load2 = 15 kW
+  </text>
+
+  <!-- PV -->
+  <line x1="750" y1="215" x2="750" y2="110" stroke="black" stroke-width="2"/>
+
+  <line x1="680" y1="110" x2="750" y2="110" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="560" y="117" font-size="18">
+    PV = 0 kW
+  </text>
+
+  <!-- Kodebokser -->
+
+  <rect x="20" y="330" width="250" height="90" fill="white" stroke="black"/>
+
+  <text x="35" y="365" font-family="monospace" font-size="16">
+pp.create_ext_grid(net,b0)
+  </text>
+
+  <rect x="300" y="330" width="250" height="90" fill="white" stroke="black"/>
+
+  <text x="315" y="365" font-family="monospace" font-size="16">
+pp.create_load(...)
+  </text>
+
+  <text x="315" y="390" font-family="monospace" font-size="16">
+bus=b1
+  </text>
+
+  <rect x="600" y="330" width="250" height="90" fill="white" stroke="black"/>
+
+  <text x="615" y="365" font-family="monospace" font-size="16">
+pp.create_sgen(...)
+  </text>
+
+  <text x="615" y="390" font-family="monospace" font-size="16">
+bus=b2
+  </text>
+
+</svg>

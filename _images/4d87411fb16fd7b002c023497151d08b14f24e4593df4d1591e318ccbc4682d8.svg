@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260">
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="black"/>
+    </marker>
+  </defs>
+
+  <!-- Busser -->
+
+  <line x1="60" y1="70" x2="60" y2="130" stroke="gray" stroke-width="8"/>
+
+  <line x1="380" y1="70" x2="380" y2="130" stroke="gray" stroke-width="8"/>
+
+  <line x1="700" y1="70" x2="700" y2="130" stroke="gray" stroke-width="8"/>
+
+  <!-- Linjer -->
+
+  <line x1="60" y1="100" x2="380" y2="100" stroke="black" stroke-width="3"/>
+
+  <line x1="380" y1="100" x2="700" y2="100" stroke="black" stroke-width="3"/>
+
+  <!-- Effektflyt -->
+
+  <line x1="160" y1="85" x2="290" y2="85" stroke="black" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="175" y="65" font-size="20">
+        65 kW
+  </text>
+
+  <line x1="500" y1="85" x2="610" y2="85" stroke="black" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="515" y="65" font-size="20">
+        15 kW
+  </text>
+
+  <!-- Grid -->
+
+  <text x="25" y="45" font-size="22">
+        Grid
+  </text>
+
+  <!-- Bus-navn -->
+
+  <text x="340" y="45" font-size="22">
+        Bus 1
+  </text>
+
+  <text x="660" y="45" font-size="22">
+        Bus 2
+  </text>
+
+  <!-- Last 1 -->
+
+  <line x1="380" y1="100" x2="380" y2="150" stroke="black" stroke-width="2"/>
+
+  <line x1="380" y1="150" x2="460" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="470" y="157" font-size="20">
+        Load1 = 50 kW
+  </text>
+
+  <!-- Last 2 -->
+
+  <line x1="700" y1="100" x2="700" y2="190" stroke="black" stroke-width="2"/>
+
+  <line x1="700" y1="190" x2="760" y2="190" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="760" y="197" font-size="20">
+        Load2 = 15 kW
+  </text>
+
+  <!-- Spenninger -->
+
+  <text x="5" y="190" font-size="20">
+        V₀ = 1.000 pu
+  </text>
+
+  <text x="320" y="190" font-size="20">
+        V₁ = 0.985 pu
+  </text>
+
+  <text x="640" y="230" font-size="20">
+        V₂ = 0.981 pu
+  </text>
+
+</svg>

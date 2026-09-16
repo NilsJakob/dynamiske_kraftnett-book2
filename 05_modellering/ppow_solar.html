@@ -731,51 +731,16 @@ document.write(`
 </section>
 <section id="datablad">
 <h3>Datablad<a class="headerlink" href="#datablad" title="Permalink to this heading">#</a></h3>
-<p>Databladene gir viktig informasjon som gir cellen dens elektriske karakteristikk, basert på testene. I <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-datablad</span></code> vises et utsnitt fra databladet til referansepanelet LR5-66HPH-505M. Dette databladet dekker familien av Longi 66 HPH 495-515.</p>
+<p>Databladene gir viktig informasjon som gir cellen dens elektriske karakteristikk, basert på testene. I <a class="reference internal" href="#fig-datablad"><span class="std std-numref">Fig. 31</span></a> vises et utsnitt fra databladet til referansepanelet LR5-66HPH-505M. Dette databladet dekker familien av Longi 66 HPH 495-515.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">-------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">     </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"images/datablad.png"</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\matplotlib\pyplot.py:2614,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2610</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2611</span> <span class="k">def</span><span class="w"> </span><span class="nf">imread</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2612</span>         <span class="n">fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">BinaryIO</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">2613</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2614</span>     <span class="k">return</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\matplotlib\image.py:1520,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1513</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1514</span>     <span class="c1"># Pillow doesn't handle URLs directly.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1515</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1516</span>         <span class="s2">"Please open the URL for reading and pass the "</span>
-<span class="g g-Whitespace">   </span><span class="mi">1517</span>         <span class="s2">"result to Pillow, e.g. with "</span>
-<span class="g g-Whitespace">   </span><span class="mi">1518</span>         <span class="s2">"``np.array(PIL.Image.open(urllib.request.urlopen(url)))``."</span>
-<span class="g g-Whitespace">   </span><span class="mi">1519</span>         <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1520</span> <span class="k">with</span> <span class="n">img_open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1521</span>     <span class="k">return</span> <span class="p">(</span><span class="n">_pil_png_to_float_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1522</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span><span class="p">)</span> <span class="k">else</span>
-<span class="g g-Whitespace">   </span><span class="mi">1523</span>             <span class="n">pil_to_array</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\PIL\ImageFile.py:138,</span> in <span class="ni">ImageFile.__init__</span><span class="nt">(self, fp, filename)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="n">DeferredError</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">if</span> <span class="n">is_path</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="c1"># filename</span>
-<span class="ne">--&gt; </span><span class="mi">138</span>     <span class="bp">self</span><span class="o">.</span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_exclusive_fp</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: 'images/datablad.png'
-</pre></div>
 </div>
-</div>
-</div>
+<figure class="align-default" id="fig-datablad">
+<a class="reference internal image-reference" href="../_images/4183e5cc6f1561ae7cb7e2e19518c187afc59b3420c62a9666d25bb812162b42.png"><img alt="../_images/4183e5cc6f1561ae7cb7e2e19518c187afc59b3420c62a9666d25bb812162b42.png" src="../_images/4183e5cc6f1561ae7cb7e2e19518c187afc59b3420c62a9666d25bb812162b42.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Solcellemodulens elektriske karakteristikk basert på tester.
+``</span><a class="headerlink" href="#fig-datablad" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="effektivitet-eta">
 <h3>Effektivitet <span class="math notranslate nohighlight">\(\eta\)</span><a class="headerlink" href="#effektivitet-eta" title="Permalink to this heading">#</a></h3>
@@ -868,6 +833,13 @@ P_{Wp}
 <p>Det finnes geografisk informasjonssystem for solenergi som PVVGIS (Photovoltaic Geographical Information System). PVGIS benytter solgeometri, satellittbaserte strålingsdata og meteorologiske datasett til å estimere lokal solinnstråling. Metoden kan sammenlignes med romlig interpolasjon mellom observasjonspunkter, men inkluderer i tillegg fysiske modeller for solens bane og atmosfærisk påvirkning. PVGIS benyttes til å generere tidsserier for innstråling og temperatur basert på anleggets geografiske lokasjon. Disse dataene brukes videre til å estimere effekt- og energiproduksjonen fra solcelleanlegget.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
+<figure class="align-default" id="fig-pvgis">
+<a class="reference internal image-reference" href="../_images/8e99d8c157dcfdb75aceaabcdf19cfc52d0466e3038fb36babf7f9736ab1aceb.png"><img alt="../_images/8e99d8c157dcfdb75aceaabcdf19cfc52d0466e3038fb36babf7f9736ab1aceb.png" src="../_images/8e99d8c157dcfdb75aceaabcdf19cfc52d0466e3038fb36babf7f9736ab1aceb.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">PVGIS startside.
+``</span><a class="headerlink" href="#fig-pvgis" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Importere bibliotek</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,9 +849,16 @@ P_{Wp}
 </div>
 </div>
 </div>
-<p>Informasjon om ytelse og panelhelning hentes fra datablader, se <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-van-der-valk</span></code>.</p>
+<p>Informasjon om ytelse og panelhelning hentes fra datablader, se <a class="reference internal" href="#fig-van-der-valk"><span class="std std-numref">Fig. 33</span></a>.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
+<figure class="align-default" id="fig-van-der-valk">
+<a class="reference internal image-reference" href="../_images/177b2a606109e8ac0de1653e2be52d679a4144455eeebe053b77c664b49c645e.png"><img alt="../_images/177b2a606109e8ac0de1653e2be52d679a4144455eeebe053b77c664b49c645e.png" src="../_images/177b2a606109e8ac0de1653e2be52d679a4144455eeebe053b77c664b49c645e.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Datablad montering.
+``</span><a class="headerlink" href="#fig-van-der-valk" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>PVGIS sitt seriescalc-API, versjon 5.3, henter tidsserier for solinnstråling og meteorologiske data for anleggets lokasjon. Anlegget ble modellert med en installert effekt på 26,73 kWp (peakpower), et antatt systemtap på 14 % (loss), panelhelning på 15<span class="math notranslate nohighlight">\(^{\circ}\)</span> (angle), se numref og sørvendt orientering (aspect=0). Selv om anlegget består av flere orienteringer, benytter vi her en forenklet representasjon for å generere en samlet produksjonsprofil. Gjør en request på data som returneres som <code class="docutils literal notranslate"><span class="pre">.json</span></code>. Lager datatabell som <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,6 +885,17 @@ P_{Wp}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['time', 'G(i)', 'H_sun', 'T2m', 'WS10m', 'Int'], dtype='object')
+            time  G(i)  H_sun   T2m  WS10m  Int
+0  20050101:0011   0.0    0.0 -2.56   2.41  0.0
+1  20050101:0111   0.0    0.0 -2.49   2.55  0.0
+2  20050101:0211   0.0    0.0 -2.10   2.48  0.0
+3  20050101:0311   0.0    0.0 -1.56   2.21  0.0
+4  20050101:0411   0.0    0.0 -1.04   2.34  0.0
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -916,6 +906,17 @@ P_{Wp}
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"time"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     G(i)  H_sun   T2m  WS10m  Int
+time                                              
+2005-01-01 00:00:00   0.0    0.0 -2.56   2.41  0.0
+2005-01-01 01:00:00   0.0    0.0 -2.49   2.55  0.0
+2005-01-01 02:00:00   0.0    0.0 -2.10   2.48  0.0
+2005-01-01 03:00:00   0.0    0.0 -1.56   2.21  0.0
+2005-01-01 04:00:00   0.0    0.0 -1.04   2.34  0.0
 </pre></div>
 </div>
 </div>
@@ -948,10 +949,59 @@ P_{Wp}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     p_kw
+time                     
+2005-01-01 00:00:00   0.0
+2005-01-01 01:00:00   0.0
+2005-01-01 02:00:00   0.0
+2005-01-01 03:00:00   0.0
+2005-01-01 04:00:00   0.0
+...                   ...
+2023-12-31 19:00:00   0.0
+2023-12-31 20:00:00   0.0
+2023-12-31 21:00:00   0.0
+2023-12-31 22:00:00   0.0
+2023-12-31 23:00:00   0.0
+
+[166536 rows x 1 columns]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'G(i)'</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'2005-07-15'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time
+2005-07-15 00:00:00      0.00
+2005-07-15 01:00:00      0.00
+2005-07-15 02:00:00      0.00
+2005-07-15 03:00:00      0.00
+2005-07-15 04:00:00     48.37
+2005-07-15 05:00:00     16.85
+2005-07-15 06:00:00     54.51
+2005-07-15 07:00:00     55.51
+2005-07-15 08:00:00    139.76
+2005-07-15 09:00:00    128.85
+2005-07-15 10:00:00    148.68
+2005-07-15 11:00:00    150.66
+2005-07-15 12:00:00    222.02
+2005-07-15 13:00:00    164.54
+2005-07-15 14:00:00    159.58
+2005-07-15 15:00:00    211.45
+2005-07-15 16:00:00    153.66
+2005-07-15 17:00:00    200.76
+2005-07-15 18:00:00     78.88
+2005-07-15 19:00:00     45.23
+2005-07-15 20:00:00      7.87
+2005-07-15 21:00:00      0.00
+2005-07-15 22:00:00      0.00
+2005-07-15 23:00:00      0.00
+Name: G(i), dtype: float64
 </pre></div>
 </div>
 </div>
@@ -976,6 +1026,8 @@ P_{Wp}
 </ul>
 <hr class="docutils" />
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/e949683b20435418ff95e45da89e3155df6181ba9db112bdee6963ffaa1160ce.svg" src="../_images/e949683b20435418ff95e45da89e3155df6181ba9db112bdee6963ffaa1160ce.svg" /></div>
 </div>
 </section>
 </section>
@@ -1206,522 +1258,17 @@ V_2=
 =0.981
 \]</div>
 <hr class="docutils" />
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
-
-<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
-<span class="s2">&lt;svg width="900" height="260"</span>
-<span class="s2">     xmlns="http://www.w3.org/2000/svg"&gt;</span>
-
-<span class="s2">  &lt;defs&gt;</span>
-<span class="s2">    &lt;marker id="arrow"</span>
-<span class="s2">            markerWidth="10"</span>
-<span class="s2">            markerHeight="10"</span>
-<span class="s2">            refX="9"</span>
-<span class="s2">            refY="3"</span>
-<span class="s2">            orient="auto"&gt;</span>
-<span class="s2">      &lt;path d="M0,0 L10,3 L0,6 z"</span>
-<span class="s2">            fill="black"/&gt;</span>
-<span class="s2">    &lt;/marker&gt;</span>
-<span class="s2">  &lt;/defs&gt;</span>
-
-<span class="s2">  &lt;!-- Busser --&gt;</span>
-
-<span class="s2">  &lt;line x1="60" y1="70"</span>
-<span class="s2">        x2="60" y2="130"</span>
-<span class="s2">        stroke="gray"</span>
-<span class="s2">        stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="70"</span>
-<span class="s2">        x2="380" y2="130"</span>
-<span class="s2">        stroke="gray"</span>
-<span class="s2">        stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;line x1="700" y1="70"</span>
-<span class="s2">        x2="700" y2="130"</span>
-<span class="s2">        stroke="gray"</span>
-<span class="s2">        stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;!-- Linjer --&gt;</span>
-
-<span class="s2">  &lt;line x1="60" y1="100"</span>
-<span class="s2">        x2="380" y2="100"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"/&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="100"</span>
-<span class="s2">        x2="700" y2="100"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"/&gt;</span>
-
-<span class="s2">  &lt;!-- Effektflyt --&gt;</span>
-
-<span class="s2">  &lt;line x1="160" y1="85"</span>
-<span class="s2">        x2="290" y2="85"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"</span>
-<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
-
-<span class="s2">  &lt;text x="175" y="65"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        65 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;line x1="500" y1="85"</span>
-<span class="s2">        x2="610" y2="85"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"</span>
-<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
-
-<span class="s2">  &lt;text x="515" y="65"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        15 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Grid --&gt;</span>
-
-<span class="s2">  &lt;text x="25" y="45"</span>
-<span class="s2">        font-size="22"&gt;</span>
-<span class="s2">        Grid</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Bus-navn --&gt;</span>
-
-<span class="s2">  &lt;text x="340" y="45"</span>
-<span class="s2">        font-size="22"&gt;</span>
-<span class="s2">        Bus 1</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="660" y="45"</span>
-<span class="s2">        font-size="22"&gt;</span>
-<span class="s2">        Bus 2</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Last 1 --&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="100"</span>
-<span class="s2">        x2="380" y2="150"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"/&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="150"</span>
-<span class="s2">        x2="460" y2="150"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;text x="470" y="157"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        Load1 = 50 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Last 2 --&gt;</span>
-
-<span class="s2">  &lt;line x1="700" y1="100"</span>
-<span class="s2">        x2="700" y2="190"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"/&gt;</span>
-
-<span class="s2">  &lt;line x1="700" y1="190"</span>
-<span class="s2">        x2="760" y2="190"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;text x="760" y="197"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        Load2 = 15 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Spenninger --&gt;</span>
-
-<span class="s2">  &lt;text x="5" y="190"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        V₀ = 1.000 pu</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="320" y="190"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        V₁ = 0.985 pu</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="640" y="230"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        V₂ = 0.981 pu</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">&lt;/svg&gt;</span>
-<span class="s2">"""</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">))</span>
-</pre></div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/4d87411fb16fd7b002c023497151d08b14f24e4593df4d1591e318ccbc4682d8.svg" src="../_images/4d87411fb16fd7b002c023497151d08b14f24e4593df4d1591e318ccbc4682d8.svg" /></div>
 </div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/4d87411fb16fd7b002c023497151d08b14f24e4593df4d1591e318ccbc4682d8.svg" src="../_images/4d87411fb16fd7b002c023497151d08b14f24e4593df4d1591e318ccbc4682d8.svg" /></div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
-
-<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
-<span class="s2">&lt;svg width="900" height="260"</span>
-<span class="s2">     xmlns="http://www.w3.org/2000/svg"&gt;</span>
-
-<span class="s2">  &lt;defs&gt;</span>
-<span class="s2">    &lt;marker id="arrow"</span>
-<span class="s2">            markerWidth="10"</span>
-<span class="s2">            markerHeight="10"</span>
-<span class="s2">            refX="9"</span>
-<span class="s2">            refY="3"</span>
-<span class="s2">            orient="auto"&gt;</span>
-<span class="s2">      &lt;path d="M0,0 L10,3 L0,6 z"</span>
-<span class="s2">            fill="black"/&gt;</span>
-<span class="s2">    &lt;/marker&gt;</span>
-<span class="s2">  &lt;/defs&gt;</span>
-
-<span class="s2">  &lt;!-- Busser --&gt;</span>
-
-<span class="s2">  &lt;line x1="60" y1="70"</span>
-<span class="s2">        x2="60" y2="130"</span>
-<span class="s2">        stroke="gray"</span>
-<span class="s2">        stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="70"</span>
-<span class="s2">        x2="380" y2="130"</span>
-<span class="s2">        stroke="gray"</span>
-<span class="s2">        stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;line x1="700" y1="70"</span>
-<span class="s2">        x2="700" y2="130"</span>
-<span class="s2">        stroke="gray"</span>
-<span class="s2">        stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;!-- Linjer --&gt;</span>
-
-<span class="s2">  &lt;line x1="60" y1="100"</span>
-<span class="s2">        x2="380" y2="100"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"/&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="100"</span>
-<span class="s2">        x2="700" y2="100"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"/&gt;</span>
-
-<span class="s2">  &lt;!-- Effektflyt --&gt;</span>
-
-<span class="s2">  &lt;line x1="160" y1="85"</span>
-<span class="s2">        x2="290" y2="85"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"</span>
-<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
-
-<span class="s2">  &lt;text x="175" y="65"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        65 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;line x1="500" y1="85"</span>
-<span class="s2">        x2="610" y2="85"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="3"</span>
-<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
-
-<span class="s2">  &lt;text x="515" y="65"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        15 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Grid --&gt;</span>
-
-<span class="s2">  &lt;text x="25" y="45"</span>
-<span class="s2">        font-size="22"&gt;</span>
-<span class="s2">        Grid</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Bus-navn --&gt;</span>
-
-<span class="s2">  &lt;text x="340" y="45"</span>
-<span class="s2">        font-size="22"&gt;</span>
-<span class="s2">        Bus 1</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="660" y="45"</span>
-<span class="s2">        font-size="22"&gt;</span>
-<span class="s2">        Bus 2</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Last 1 --&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="100"</span>
-<span class="s2">        x2="380" y2="150"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"/&gt;</span>
-
-<span class="s2">  &lt;line x1="380" y1="150"</span>
-<span class="s2">        x2="460" y2="150"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;text x="470" y="157"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        Load1 = 50 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Last 2 --&gt;</span>
-
-<span class="s2">  &lt;line x1="700" y1="100"</span>
-<span class="s2">        x2="700" y2="190"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"/&gt;</span>
-
-<span class="s2">  &lt;line x1="700" y1="190"</span>
-<span class="s2">        x2="760" y2="190"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;text x="760" y="197"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        Load2 = 15 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Spenninger --&gt;</span>
-
-<span class="s2">  &lt;text x="5" y="190"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        V₀ = 1.000 pu</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="320" y="190"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        V₁ = 0.985 pu</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="640" y="230"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">        V₂ = 0.981 pu</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">&lt;/svg&gt;</span>
-<span class="s2">"""</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
-
-<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
-<span class="s2">&lt;svg width="1000" height="450"</span>
-<span class="s2">     xmlns="http://www.w3.org/2000/svg"&gt;</span>
-
-<span class="s2">  &lt;defs&gt;</span>
-<span class="s2">    &lt;marker id="arrow"</span>
-<span class="s2">      markerWidth="10"</span>
-<span class="s2">      markerHeight="10"</span>
-<span class="s2">      refX="9"</span>
-<span class="s2">      refY="3"</span>
-<span class="s2">      orient="auto"&gt;</span>
-<span class="s2">      &lt;path d="M0,0 L10,3 L0,6 z" fill="black"/&gt;</span>
-<span class="s2">    &lt;/marker&gt;</span>
-<span class="s2">  &lt;/defs&gt;</span>
-
-<span class="s2">  &lt;!-- Tittel --&gt;</span>
-<span class="s2">  &lt;text x="300" y="40"</span>
-<span class="s2">        font-size="28"</span>
-<span class="s2">        font-weight="bold"&gt;</span>
-<span class="s2">    Pandapower-komponenter</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">&lt;!-- create_empty_network --&gt;</span>
-
-<span class="s2">&lt;rect x="25"</span>
-<span class="s2">      y="50"</span>
-<span class="s2">      width="320"</span>
-<span class="s2">      height="60"</span>
-<span class="s2">      fill="white"</span>
-<span class="s2">      stroke="black"</span>
-<span class="s2">      stroke-width="2"/&gt;</span>
-
-<span class="s2">&lt;text x="35"</span>
-<span class="s2">      y="70"</span>
-<span class="s2">      font-family="monospace"</span>
-<span class="s2">      font-size="18"&gt;</span>
-<span class="s2">net = pp.create_empty_network()</span>
-<span class="s2">&lt;/text&gt;</span>
-
-<span class="s2">&lt;text x="35"</span>
-<span class="s2">      y="100"</span>
-<span class="s2">      font-size="16"&gt;</span>
-<span class="s2">Oppretter tom nettmodell</span>
-<span class="s2">&lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Nettdiagram --&gt;</span>
-
-<span class="s2">  &lt;!-- Busser --&gt;</span>
-<span class="s2">  &lt;line x1="150" y1="180" x2="150" y2="250"</span>
-<span class="s2">        stroke="gray" stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;line x1="450" y1="180" x2="450" y2="250"</span>
-<span class="s2">        stroke="gray" stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;line x1="750" y1="180" x2="750" y2="250"</span>
-<span class="s2">        stroke="gray" stroke-width="8"/&gt;</span>
-
-<span class="s2">  &lt;!-- Linjer --&gt;</span>
-<span class="s2">  &lt;line x1="150" y1="215" x2="450" y2="215"</span>
-<span class="s2">        stroke="black" stroke-width="3"/&gt;</span>
-
-<span class="s2">  &lt;line x1="450" y1="215" x2="750" y2="215"</span>
-<span class="s2">        stroke="black" stroke-width="3"/&gt;</span>
-
-<span class="s2">  &lt;!-- Effektpiler --&gt;</span>
-<span class="s2">  &lt;line x1="250" y1="195"</span>
-<span class="s2">        x2="350" y2="195"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;line x1="560" y1="195"</span>
-<span class="s2">        x2="660" y2="195"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;!-- Grid --&gt;</span>
-<span class="s2">  &lt;text x="110" y="150"</span>
-<span class="s2">        font-size="22"&gt;</span>
-<span class="s2">    Grid</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Bus labels --&gt;</span>
-<span class="s2">  &lt;text x="125" y="280"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">    b0</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="425" y="280"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">    b1</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="725" y="280"</span>
-<span class="s2">        font-size="20"&gt;</span>
-<span class="s2">    b2</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Last 1 --&gt;</span>
-<span class="s2">  &lt;line x1="450" y1="215"</span>
-<span class="s2">        x2="450" y2="300"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"/&gt;</span>
-
-<span class="s2">  &lt;line x1="450" y1="300"</span>
-<span class="s2">        x2="520" y2="300"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;text x="540" y="307"</span>
-<span class="s2">        font-size="18"&gt;</span>
-<span class="s2">    Load1 = 50 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Last 2 --&gt;</span>
-<span class="s2">  &lt;line x1="750" y1="215"</span>
-<span class="s2">        x2="750" y2="350"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"/&gt;</span>
-
-<span class="s2">  &lt;line x1="750" y1="350"</span>
-<span class="s2">        x2="820" y2="350"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;text x="840" y="357"</span>
-<span class="s2">        font-size="18"&gt;</span>
-<span class="s2">    Load2 = 15 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- PV --&gt;</span>
-<span class="s2">  &lt;line x1="750" y1="215"</span>
-<span class="s2">        x2="750" y2="110"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"/&gt;</span>
-
-<span class="s2">  &lt;line x1="680" y1="110"</span>
-<span class="s2">        x2="750" y2="110"</span>
-<span class="s2">        stroke="black"</span>
-<span class="s2">        stroke-width="2"</span>
-<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
-
-<span class="s2">  &lt;text x="560" y="117"</span>
-<span class="s2">        font-size="18"&gt;</span>
-<span class="s2">    PV = 0 kW</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Kodebokser --&gt;</span>
-
-<span class="s2">  &lt;rect x="20" y="330"</span>
-<span class="s2">        width="250"</span>
-<span class="s2">        height="90"</span>
-<span class="s2">        fill="white"</span>
-<span class="s2">        stroke="black"/&gt;</span>
-
-<span class="s2">  &lt;text x="35" y="365"</span>
-<span class="s2">        font-family="monospace"</span>
-<span class="s2">        font-size="16"&gt;</span>
-<span class="s2">pp.create_ext_grid(net,b0)</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;rect x="300" y="330"</span>
-<span class="s2">        width="250"</span>
-<span class="s2">        height="90"</span>
-<span class="s2">        fill="white"</span>
-<span class="s2">        stroke="black"/&gt;</span>
-
-<span class="s2">  &lt;text x="315" y="365"</span>
-<span class="s2">        font-family="monospace"</span>
-<span class="s2">        font-size="16"&gt;</span>
-<span class="s2">pp.create_load(...)</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="315" y="390"</span>
-<span class="s2">        font-family="monospace"</span>
-<span class="s2">        font-size="16"&gt;</span>
-<span class="s2">bus=b1</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;rect x="600" y="330"</span>
-<span class="s2">        width="250"</span>
-<span class="s2">        height="90"</span>
-<span class="s2">        fill="white"</span>
-<span class="s2">        stroke="black"/&gt;</span>
-
-<span class="s2">  &lt;text x="615" y="365"</span>
-<span class="s2">        font-family="monospace"</span>
-<span class="s2">        font-size="16"&gt;</span>
-<span class="s2">pp.create_sgen(...)</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">  &lt;text x="615" y="390"</span>
-<span class="s2">        font-family="monospace"</span>
-<span class="s2">        font-size="16"&gt;</span>
-<span class="s2">bus=b2</span>
-<span class="s2">  &lt;/text&gt;</span>
-
-<span class="s2">&lt;/svg&gt;</span>
-<span class="s2">"""</span>
-<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/f94f02dc5bd5cfeca8bed56ec46c67e2917fb0a09061dbc04a431a85689613c2.svg" src="../_images/f94f02dc5bd5cfeca8bed56ec46c67e2917fb0a09061dbc04a431a85689613c2.svg" /></div>
 </div>
 </section>
 </section>
@@ -1895,6 +1442,24 @@ V_2=
 
 
 <span class="c1">#plt.show()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bus-spenninger
+0    1.000000
+1    0.984357
+2    0.991444
+Name: vm_pu, dtype: float64
+
+Effekt fra nettet
+0    0.053518
+Name: p_mw, dtype: float64
+
+Effektflyt i linjer
+   p_from_mw
+0   0.053518
+1  -0.001312
 </pre></div>
 </div>
 </div>
