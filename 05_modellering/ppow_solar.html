@@ -1,0 +1,2066 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Soldata &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05_modellering/ppow_solar';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Om Power Factory" href="../11_powerfactory/about_pf.html" />
+    <link rel="prev" title="Integrering av fornybar energi" href="int_IBR.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Soldata</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F05_modellering/ppow_solar.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/05_modellering/ppow_solar.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Soldata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Soldata</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#innstallert-effekt">Innstallert effekt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverterkapasitet">Inverterkapasitet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paneltester">Paneltester</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datablad">Datablad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effektivitet-eta">Effektivitet <span class="math notranslate nohighlight">\(\eta\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkel-modell">Enkel Modell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utvidet-modell">Utvidet modell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geografisk-informasjonssystem-for-solenergi">Geografisk informasjonssystem for solenergi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nettmodell">Nettmodell</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleks-effekt-i-lastene">Kompleks effekt i lastene</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ved-b1">Last ved b1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ved-b2">Last ved b2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#total-kompleks-effekt">Total kompleks effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tilsynelatende-effekt">Tilsynelatende effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#effektfaktor">Effektfaktor</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strom-fra-nettet">Strøm fra nettet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kabelimpedanser">Kabelimpedanser</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strom-i-kabel-2">Strøm i kabel 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsfall-i-kabel-2">Spenningsfall i kabel 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strom-i-kabel-1">Strøm i kabel 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsfall-i-kabel-1">Spenningsfall i kabel 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenning-pa-bus-b1">Spenning på bus b1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenning-pa-bus-b2">Spenning på bus b2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#per-unit-spenninger">Per-unit spenninger</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-b0">Bus b0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-b1">Bus b1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-b2">Bus b2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-pandapower">Hva gjør Pandapower?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neste-steg-solkraft">Neste steg: Solkraft</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="soldata">
+<h1>Soldata<a class="headerlink" href="#soldata" title="Permalink to this heading">#</a></h1>
+<p>Med økt andel omformerbaserte ressurser (IBR-er), og flere tilfeller av systemkollaps (<a class="reference external" href="https://www.aer.gov.au/publications/reports/compliance/investigation-report-south-australias-2016-state-wide-blackout">South Australia Blackout</a>, <a class="reference external" href="https://www.nerc.com/globalassets/programs/bpsa/alerts/2023/nerc-alert-r-2023-03-14-01-level-2---inverter-based-resource-performance-issues.pdf">Odessa Disturbance</a>, <a class="reference external" href="https://www.wecc.org/sites/default/files/documents/progress_report/2025/Inverter-Based%20Resource%20Disturbances%20in%20the%20Western%20Interconnection%2011.5.2025.pdf">Western Interconnection Disturbances</a>, <a class="reference external" href="https://www.entsoe.eu/publications/blackout/28-april-2025-iberian-blackout/">Iberia Blackout</a>) stiller nye krav til spenningsregulering og systemstabilitet. For å bli beslutningsdyktige på integrering av fornybar energi i distribusjonsnettet observerer og analyseres data i forskningsanlegg. Et slikt er USN’s solcelleanlegg multivariate data monitoreres, se <a class="reference internal" href="#fig-solcelleanlegg"><span class="std std-numref">Fig. 28</span></a>. Det ble satt opp våren 2024 og har samlet data siden august 2024. Data er tilgjengelig fra <a class="reference external" href="https://github.com/USN-Porsgrunn-Smart-Grid-LAB">USN Porsgrunn Smart Grid LAB</a> på github.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<figure class="align-default" id="fig-solcelleanlegg">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/USN-Porsgrunn-Smart-Grid-LAB/Solardata/main/images/IMG_1187.JPG"/></div><figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Nord-/Øst-vendte referansepanel (Longi) ved solcelleanlegget ved USN Porsgrunn.</span><a class="headerlink" href="#fig-solcelleanlegg" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="innstallert-effekt">
+<h2>Innstallert effekt<a class="headerlink" href="#innstallert-effekt" title="Permalink to this heading">#</a></h2>
+<p>Solcelleanlegets 54 paneler leverer samlet effekt på 23,76 kWp. Informasjon fra produsentens datablad er gitt i <code class="xref std std-numref docutils literal notranslate"><span class="pre">tab-paneler</span></code>. Tester gjort av panelprodusenten under standardforhold (<strong>Standard Test Conditions - STC</strong>), der Effekten, <span class="math notranslate nohighlight">\(P\)</span>, er en funksjon av normert innstråling, <span class="math notranslate nohighlight">\(G\)</span>, temperatur, <span class="math notranslate nohighlight">\(T_c\)</span> og luftmasse <span class="math notranslate nohighlight">\(AM\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[P_{Wp}=P(G=1000\,\mathrm{W/m^2},\,T_c=25^\circ\mathrm{C},\,AM=1.5)\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Paneltype</th>
+      <th>Antall</th>
+      <th>Effekt per modul (Wp)</th>
+      <th>Sum (kWp)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Longi LR5-66HPH-505</td>
+      <td>44</td>
+      <td>505</td>
+      <td>22.22</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>JA Solar JAM72S20-455/MR</td>
+      <td>4</td>
+      <td>455</td>
+      <td>1.82</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>REC 420AA Pure-R</td>
+      <td>2</td>
+      <td>420</td>
+      <td>0.84</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Longi Onyx LR4-60HTB-380M</td>
+      <td>2</td>
+      <td>380</td>
+      <td>0.76</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sunova SS-BG545-72MDH</td>
+      <td>2</td>
+      <td>545</td>
+      <td>1.09</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="inverterkapasitet">
+<h2>Inverterkapasitet<a class="headerlink" href="#inverterkapasitet" title="Permalink to this heading">#</a></h2>
+<p>Inverterkapasiteten, i <code class="xref std std-numref docutils literal notranslate"><span class="pre">tab-inverter</span></code>, gir blant annet informasjon om hvor mye spenningsregulering som inverteren er kapabel til å levere, <a class="reference internal" href="#fig-kap-kurve"><span class="std std-numref">Fig. 29</span></a>.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<figure class="align-default" id="fig-kap-kurve">
+<a class="reference internal image-reference" href="../_images/1874cd0120feb853ba6c97f0121b857da6f2365eaf3ada2fb3950cb3b3f4c66a.png"><img alt="../_images/1874cd0120feb853ba6c97f0121b857da6f2365eaf3ada2fb3950cb3b3f4c66a.png" src="../_images/1874cd0120feb853ba6c97f0121b857da6f2365eaf3ada2fb3950cb3b3f4c66a.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Kapabilitetskurve inverter</span><a class="headerlink" href="#fig-kap-kurve" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="paneltester">
+<h3>Paneltester<a class="headerlink" href="#paneltester" title="Permalink to this heading">#</a></h3>
+<p>Forskjellige måter å <a class="reference external" href="https://global.apsystems.com/wp-content/uploads/2020/10/APsystems-STC-vs-PTC-18SEPT2020-Rev-5.pdf">teste pv-panel</a> på inkluderer laboratorietest STC (Standard Test Conditions) som brukes for å angi solcellemodulens merkeeffekt (Wp). Dette representerer nær optimale forhold. PTC (PVUSA Test Conditions) representerer mer realistiske driftsforhold med 20 °C lufttemperatur og 1 m/s vind. Effekten målt under PTC er derfor vanligvis lavere enn STC-effekten. NOCT (Nominal Operating Cell Temperature) beskriver forventet celletemperatur under normale utendørs driftsforhold. Denne verdien brukes ofte i modeller for å estimere celletemperatur og temperaturtap, se <a class="reference internal" href="#tbl-pv-conditions"><span class="std std-numref">Fig. 30</span></a>.</p>
+<p>Når solinnstråling absorberes av solcellene, omdannes bare en del av energien til elektrisitet. Resten blir til varme, noe som øker celletemperaturen. En høyere celletemperatur vil normalt redusere modulens effekt og virkningsgrad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+
+<span class="n">df_standards</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"Parameter"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"Innstråling"</span><span class="p">,</span>
+        <span class="s2">"Lufttemperatur"</span><span class="p">,</span>
+        <span class="s2">"Celletemperatur"</span><span class="p">,</span>
+        <span class="s2">"Vindhastighet"</span><span class="p">,</span>
+        <span class="s2">"Luftmasse"</span><span class="p">,</span>
+        <span class="s2">"Formål"</span><span class="p">,</span>
+        <span class="s2">"Realisme"</span>
+    <span class="p">],</span>
+    <span class="s2">"STC"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"1000 W/m²"</span><span class="p">,</span>
+        <span class="s2">"Typisk 0–2 °C"</span><span class="p">,</span>
+        <span class="s2">"25 °C"</span><span class="p">,</span>
+        <span class="s2">"-"</span><span class="p">,</span>
+        <span class="s2">"AM 1.5"</span><span class="p">,</span>
+        <span class="s2">"Bestemme merkeeffekt (Wp)"</span><span class="p">,</span>
+        <span class="s2">"Ideelle forhold"</span>
+    <span class="p">],</span>
+    <span class="s2">"PTC"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"1000 W/m²"</span><span class="p">,</span>
+        <span class="s2">"20 °C"</span><span class="p">,</span>
+        <span class="s2">"-"</span><span class="p">,</span>
+        <span class="s2">"1 m/s"</span><span class="p">,</span>
+        <span class="s2">"AM 1.5"</span><span class="p">,</span>
+        <span class="s2">"Ytelse under realistiske forhold"</span><span class="p">,</span>
+        <span class="s2">"Mer realistisk"</span>
+    <span class="p">],</span>
+    <span class="s2">"NOCT"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"800 W/m²"</span><span class="p">,</span>
+        <span class="s2">"20 °C"</span><span class="p">,</span>
+        <span class="s2">"45 °C ± 3 °C"</span><span class="p">,</span>
+        <span class="s2">"1 m/s"</span><span class="p">,</span>
+        <span class="s2">"AM 1.5"</span><span class="p">,</span>
+        <span class="s2">"Estimere celletemperatur"</span><span class="p">,</span>
+        <span class="s2">"Typiske driftsforhold"</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">"pv_conditions"</span><span class="p">,</span> <span class="n">df_standards</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="tbl-pv-conditions">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>STC</th>
+      <th>PTC</th>
+      <th>NOCT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Innstråling</td>
+      <td>1000 W/m²</td>
+      <td>1000 W/m²</td>
+      <td>800 W/m²</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Lufttemperatur</td>
+      <td>Typisk 0–2 °C</td>
+      <td>20 °C</td>
+      <td>20 °C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Celletemperatur</td>
+      <td>25 °C</td>
+      <td>-</td>
+      <td>45 °C ± 3 °C</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Vindhastighet</td>
+      <td>-</td>
+      <td>1 m/s</td>
+      <td>1 m/s</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Luftmasse</td>
+      <td>AM 1.5</td>
+      <td>AM 1.5</td>
+      <td>AM 1.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Formål</td>
+      <td>Bestemme merkeeffekt (Wp)</td>
+      <td>Ytelse under realistiske forhold</td>
+      <td>Estimere celletemperatur</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Realisme</td>
+      <td>Ideelle forhold</td>
+      <td>Mer realistisk</td>
+      <td>Typiske driftsforhold</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Sammenligning av STC, PTC og NOCT for solcellemoduler.</span><a class="headerlink" href="#tbl-pv-conditions" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="datablad">
+<h3>Datablad<a class="headerlink" href="#datablad" title="Permalink to this heading">#</a></h3>
+<p>Databladene gir viktig informasjon som gir cellen dens elektriske karakteristikk, basert på testene. I <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-datablad</span></code> vises et utsnitt fra databladet til referansepanelet LR5-66HPH-505M. Dette databladet dekker familien av Longi 66 HPH 495-515.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">-------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">     </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"images/datablad.png"</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\matplotlib\pyplot.py:2614,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2610</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2611</span> <span class="k">def</span><span class="w"> </span><span class="nf">imread</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2612</span>         <span class="n">fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">BinaryIO</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">2613</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2614</span>     <span class="k">return</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\matplotlib\image.py:1520,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1513</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1514</span>     <span class="c1"># Pillow doesn't handle URLs directly.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1515</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1516</span>         <span class="s2">"Please open the URL for reading and pass the "</span>
+<span class="g g-Whitespace">   </span><span class="mi">1517</span>         <span class="s2">"result to Pillow, e.g. with "</span>
+<span class="g g-Whitespace">   </span><span class="mi">1518</span>         <span class="s2">"``np.array(PIL.Image.open(urllib.request.urlopen(url)))``."</span>
+<span class="g g-Whitespace">   </span><span class="mi">1519</span>         <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1520</span> <span class="k">with</span> <span class="n">img_open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1521</span>     <span class="k">return</span> <span class="p">(</span><span class="n">_pil_png_to_float_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1522</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span><span class="p">)</span> <span class="k">else</span>
+<span class="g g-Whitespace">   </span><span class="mi">1523</span>             <span class="n">pil_to_array</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\PIL\ImageFile.py:138,</span> in <span class="ni">ImageFile.__init__</span><span class="nt">(self, fp, filename)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="n">DeferredError</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">if</span> <span class="n">is_path</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="c1"># filename</span>
+<span class="ne">--&gt; </span><span class="mi">138</span>     <span class="bp">self</span><span class="o">.</span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_exclusive_fp</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: 'images/datablad.png'
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="effektivitet-eta">
+<h3>Effektivitet <span class="math notranslate nohighlight">\(\eta\)</span><a class="headerlink" href="#effektivitet-eta" title="Permalink to this heading">#</a></h3>
+<p>Modulens virkningsgrad er også oppgit i databladet for Longi-66HPH-505M er modul effektiviteten oppgitt til å være 21.3 % (Modul Efficiency).</p>
+<p>Virkningsgraden til en solcelle bestemmer hvor stor andel av den innfallende solenergien som omdannes til nyttbar elektrisk energi. Virkningsgraden <span class="math notranslate nohighlight">\(\eta\)</span> kan beregnes fra den maksimale effekten <span class="math notranslate nohighlight">\(P_m\)</span> som følger:</p>
+<div class="math notranslate nohighlight">
+\[
+\eta
+=
+\frac{P_m}{G \cdot A}
+\cdot 100\%
+\]</div>
+<p>der:</p>
+<ul class="simple">
+<li><p>(\eta) = virkningsgrad [%]</p></li>
+<li><p>(P_m) = maksimal elektrisk effekt [W]</p></li>
+<li><p>(G) = solinnstråling [W/m²]</p></li>
+<li><p>(A) = solcelleareal [m²]</p></li>
+</ul>
+<p>Den maksimale effekten kan uttrykkes som produktet av spenning og strøm ved maksimal effektpunkt (Maximum Power Point, MPP):</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = U_{MPP} \cdot I_{MPP}
+\]</div>
+<p>Virkningsgraden kan derfor skrives som:</p>
+<div class="math notranslate nohighlight">
+\[
+\eta
+=
+\frac{U_{MPP} \cdot I_{MPP}}
+{G \cdot A}
+\cdot 100\%
+\]</div>
+<p>Alternativt kan virkningsgraden uttrykkes ved hjelp av tomgangsspenningen <span class="math notranslate nohighlight">\(U_{oc}\)</span>, kortslutningsstrømmen <span class="math notranslate nohighlight">\(I_{sc}\)</span> og fyllfaktoren <span class="math notranslate nohighlight">\(FF\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\eta
+=
+\frac{U_{oc} \cdot I_{sc} \cdot FF}
+{G \cdot A}
+\cdot 100\%
+\]</div>
+<p>hvor:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U_{MPP}\)</span> = spenning ved maksimal effektpunkt [V]</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{MPP}\)</span> = strøm ved maksimal effektpunkt [A]</p></li>
+<li><p><span class="math notranslate nohighlight">\(U_{oc}\)</span> = tomgangsspenning [V]</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{sc}\)</span> = kortslutningsstrøm [A]</p></li>
+<li><p><span class="math notranslate nohighlight">\(FF\)</span> = fyllfaktor (<em>Fill Factor</em>)</p></li>
+</ul>
+<p><span id="id1">[<a class="reference internal" href="../references.html#id15" title="Waldemar Kuczynski and Katarzyna Chliszcz. Energy and exergy analysis of photovoltaic panels in northern poland. Renewable and Sustainable Energy Reviews, 174:113138, 2023. URL: https://www.sciencedirect.com/science/article/pii/S136403212201019X, doi:https://doi.org/10.1016/j.rser.2022.113138.">KC23</a>]</span></p>
+</section>
+</section>
+<section id="enkel-modell">
+<h2>Enkel Modell<a class="headerlink" href="#enkel-modell" title="Permalink to this heading">#</a></h2>
+<p>Den enkleste solcellemodellen skalerer effekten lineært med innstrålingen. Mer avanserte modeller korrigerer i tillegg for celletemperatur og solgeometri. Temperatur påvirker virkningsgraden, mens solgeometrien bestemmer hvor stor del av solinnstrålingen som faktisk treffer panelplanet. Dermed oppnås en mer realistisk beregning av solkraftproduksjonen gjennom året.</p>
+<div class="math notranslate nohighlight">
+\[P_{Wp}=P(G=1000\,\mathrm{W/m^2},\,T_c=25^\circ\mathrm{C},\,AM=1.5)\]</div>
+<p>Den enkleste solcellemodellen antar at den produserte effekten er proporsjonal med innstrålingen. Dette gir en lineær sammenheng mellom innstråling og effekt:</p>
+<div class="math notranslate nohighlight">
+\[
+P = P_{Wp}\frac{G}{G_{STC}}
+\]</div>
+<p>der <span class="math notranslate nohighlight">\(P_{Wp}\)</span> er modulens nominelle effekt ved standard testbetingelser (STC):</p>
+<div class="math notranslate nohighlight">
+\[
+P_{Wp}
+=
+P(G=1000\,\mathrm{W/m^2},
+T_c=25^\circ\mathrm{C},
+AM=1.5)
+\]</div>
+<section id="utvidet-modell">
+<h3>Utvidet modell<a class="headerlink" href="#utvidet-modell" title="Permalink to this heading">#</a></h3>
+<p>Mer avanserte modeller korrigerer i tillegg for celletemperatur og solgeometri. Temperatur påvirker panelvirkningsgraden, mens solgeometrien bestemmer hvor stor del av solinnstrålingen som faktisk treffer panelplanet. Dermed oppnås en mer realistisk beregning av solkraftproduksjonen gjennom året.</p>
+<p>Den enkle modellen kan utvides ved å ta hensyn til celletemperaturen:</p>
+<div class="math notranslate nohighlight">
+\[
+P =
+P_{Wp}
+\frac{G}{G_{STC}}
+\left[1+\gamma(T_c-25)\right]
+\]</div>
+<p>der <span class="math notranslate nohighlight">\(\gamma\)</span> er temperaturkoeffisienten til solcellemodulen, typisk negativ for silisiumbaserte solceller.</p>
+<p>Modellen beskriver hvordan effekten påvirkes både av innstrålingen og av celletemperaturen. Økt innstråling gir høyere effekt, mens høyere celletemperatur vanligvis reduserer virkningsgraden og dermed effekten.</p>
+<p>Modellen er fortsatt lineær med hensyn til innstrålingen <span class="math notranslate nohighlight">\(G\)</span>, men inkluderer nå en temperaturkorreksjon som gjør den mer realistisk enn den enkle STC-modellen.</p>
+</section>
+<section id="geografisk-informasjonssystem-for-solenergi">
+<h3>Geografisk informasjonssystem for solenergi<a class="headerlink" href="#geografisk-informasjonssystem-for-solenergi" title="Permalink to this heading">#</a></h3>
+<p>Det finnes geografisk informasjonssystem for solenergi som PVVGIS (Photovoltaic Geographical Information System). PVGIS benytter solgeometri, satellittbaserte strålingsdata og meteorologiske datasett til å estimere lokal solinnstråling. Metoden kan sammenlignes med romlig interpolasjon mellom observasjonspunkter, men inkluderer i tillegg fysiske modeller for solens bane og atmosfærisk påvirkning. PVGIS benyttes til å generere tidsserier for innstråling og temperatur basert på anleggets geografiske lokasjon. Disse dataene brukes videre til å estimere effekt- og energiproduksjonen fra solcelleanlegget.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>Importere bibliotek</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Informasjon om ytelse og panelhelning hentes fra datablader, se <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-van-der-valk</span></code>.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>PVGIS sitt seriescalc-API, versjon 5.3, henter tidsserier for solinnstråling og meteorologiske data for anleggets lokasjon. Anlegget ble modellert med en installert effekt på 26,73 kWp (peakpower), et antatt systemtap på 14 % (loss), panelhelning på 15<span class="math notranslate nohighlight">\(^{\circ}\)</span> (angle), se numref og sørvendt orientering (aspect=0). Selv om anlegget består av flere orienteringer, benytter vi her en forenklet representasjon for å generere en samlet produksjonsprofil. Gjør en request på data som returneres som <code class="docutils literal notranslate"><span class="pre">.json</span></code>. Lager datatabell som <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="mf">59.137337</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="mf">9.671440</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"https://re.jrc.ec.europa.eu/api/v5_3/seriescalc"</span>
+    <span class="sa">f</span><span class="s2">"?lat=</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">"</span>
+    <span class="sa">f</span><span class="s2">"&amp;lon=</span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">"</span>
+    <span class="sa">f</span><span class="s2">"&amp;peakpower=26.73"</span>
+    <span class="sa">f</span><span class="s2">"&amp;loss=14"</span>
+    <span class="sa">f</span><span class="s2">"&amp;angle=12"</span>
+    <span class="sa">f</span><span class="s2">"&amp;aspect=0"</span>
+    <span class="sa">f</span><span class="s2">"&amp;outputformat=json"</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"outputs"</span><span class="p">][</span><span class="s2">"hourly"</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"time"</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"%Y%m</span><span class="si">%d</span><span class="s2">:%H%M"</span><span class="p">)</span>
+<span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="s2">"h"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"time"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## import pandas as pd</span>
+
+<span class="n">P_wp</span> <span class="o">=</span> <span class="mf">26.73</span>         <span class="c1"># kWp</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.004</span>       <span class="c1"># 1/°C</span>
+<span class="n">NOCT</span> <span class="o">=</span> <span class="mi">45</span>            <span class="c1"># °C</span>
+
+
+<span class="n">df</span><span class="p">[</span><span class="s2">"Tc"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"T2m"</span><span class="p">]</span>
+    <span class="o">+</span> <span class="p">((</span><span class="n">NOCT</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span> <span class="o">/</span> <span class="mi">800</span><span class="p">)</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"G(i)"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">"p_kw"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">P_wp</span>
+    <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"G(i)"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"Tc"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">25</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">"p_kw"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"p_kw"</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pv_profile</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">"p_kw"</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pv_profile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'G(i)'</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'2005-07-15'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://pandapower.readthedocs.io/en/latest/index.html#">pandapower_docs</a>
+<a class="reference external" href="https://pandapower.readthedocs.io/en/v1.4.2/getting_started/tutorials.html">pandapower_tutorial</a></p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pandapower">
+<h1>Pandapower<a class="headerlink" href="#pandapower" title="Permalink to this heading">#</a></h1>
+<section id="nettmodell">
+<h2>Nettmodell<a class="headerlink" href="#nettmodell" title="Permalink to this heading">#</a></h2>
+<p>Data:</p>
+<ul class="simple">
+<li><p>Spenning: 400 V trefase</p></li>
+<li><p>Kabel 1: 100 m</p></li>
+<li><p>Kabel 2: 100 m</p></li>
+<li><p>r = 0.642 Ω/km</p></li>
+<li><p>x = 0.083 Ω/km</p></li>
+<li><p>PV-produksjon = 0 kW</p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell tag_remove-input docutils container">
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kompleks-effekt-i-lastene">
+<h1>Kompleks effekt i lastene<a class="headerlink" href="#kompleks-effekt-i-lastene" title="Permalink to this heading">#</a></h1>
+<section id="last-ved-b1">
+<h2>Last ved b1<a class="headerlink" href="#last-ved-b1" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+S_1 = 50 + j10 \; kVA
+\]</div>
+</section>
+<section id="last-ved-b2">
+<h2>Last ved b2<a class="headerlink" href="#last-ved-b2" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+S_2 = 15 + j3 \; kVA
+\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="total-kompleks-effekt">
+<h1>Total kompleks effekt<a class="headerlink" href="#total-kompleks-effekt" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+S_{tot}=S_1+S_2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_{tot}=(50+15)+j(10+3)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{S_{tot}=65+j13\;kVA}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tilsynelatende-effekt">
+<h1>Tilsynelatende effekt<a class="headerlink" href="#tilsynelatende-effekt" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+|S|=\sqrt{65^2+13^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{|S|=66.3\;kVA}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="effektfaktor">
+<h1>Effektfaktor<a class="headerlink" href="#effektfaktor" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+\cos\varphi=
+\frac{65}{66.3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\cos\varphi=0.981}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="strom-fra-nettet">
+<h1>Strøm fra nettet<a class="headerlink" href="#strom-fra-nettet" title="Permalink to this heading">#</a></h1>
+<p>For et trefasesystem:</p>
+<div class="math notranslate nohighlight">
+\[
+S=\sqrt{3}UI
+\]</div>
+<p>Dermed:</p>
+<div class="math notranslate nohighlight">
+\[
+I=
+\frac{|S|}{\sqrt3\,U}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+I=
+\frac{66300}{\sqrt3\cdot400}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{I=95.7\;A}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="kabelimpedanser">
+<h1>Kabelimpedanser<a class="headerlink" href="#kabelimpedanser" title="Permalink to this heading">#</a></h1>
+<p>Fra Pandapower-modellen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">length_km</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">r_ohm_per_km</span> <span class="o">=</span> <span class="mf">0.642</span>
+<span class="n">x_ohm_per_km</span> <span class="o">=</span> <span class="mf">0.083</span>
+</pre></div>
+</div>
+<p>For hver kabel:</p>
+<div class="math notranslate nohighlight">
+\[
+R = 0.1\cdot0.642
+=0.0642\;\Omega
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X = 0.1\cdot0.083
+=0.0083\;\Omega
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="strom-i-kabel-2">
+<h1>Strøm i kabel 2<a class="headerlink" href="#strom-i-kabel-2" title="Permalink to this heading">#</a></h1>
+<p>Kabel 2 forsyner kun last ved b2.</p>
+<div class="math notranslate nohighlight">
+\[
+S_2=15+j3\;kVA
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|S_2|=
+\sqrt{15^2+3^2}
+=15.3\;kVA
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+I_2=
+\frac{15300}{\sqrt3\cdot400}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{I_2=22.1\;A}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="spenningsfall-i-kabel-2">
+<h1>Spenningsfall i kabel 2<a class="headerlink" href="#spenningsfall-i-kabel-2" title="Permalink to this heading">#</a></h1>
+<p>Forenklet beregning:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta V_2=RI_2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta V_2=
+0.0642\cdot22.1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\Delta V_2=1.42\;V}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="strom-i-kabel-1">
+<h1>Strøm i kabel 1<a class="headerlink" href="#strom-i-kabel-1" title="Permalink to this heading">#</a></h1>
+<p>Kabel 1 forsyner begge laster.</p>
+<div class="math notranslate nohighlight">
+\[
+I_1=95.7\;A
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="spenningsfall-i-kabel-1">
+<h1>Spenningsfall i kabel 1<a class="headerlink" href="#spenningsfall-i-kabel-1" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+\Delta V_1=RI_1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta V_1=
+0.0642\cdot95.7
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\Delta V_1=6.14\;V}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="spenning-pa-bus-b1">
+<h1>Spenning på bus b1<a class="headerlink" href="#spenning-pa-bus-b1" title="Permalink to this heading">#</a></h1>
+<p>Slack-buss:</p>
+<div class="math notranslate nohighlight">
+\[
+V_0=400\;V
+\]</div>
+<p>Dermed:</p>
+<div class="math notranslate nohighlight">
+\[
+V_1=400-6.14
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{V_1=393.9\;V}
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="spenning-pa-bus-b2">
+<h1>Spenning på bus b2<a class="headerlink" href="#spenning-pa-bus-b2" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+V_2=393.9-1.42
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{V_2=392.4\;V}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="per-unit-spenninger">
+<h1>Per-unit spenninger<a class="headerlink" href="#per-unit-spenninger" title="Permalink to this heading">#</a></h1>
+<section id="bus-b0">
+<h2>Bus b0<a class="headerlink" href="#bus-b0" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+V_0=1.000\;pu
+\]</div>
+</section>
+<section id="bus-b1">
+<h2>Bus b1<a class="headerlink" href="#bus-b1" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+V_1=
+\frac{393.9}{400}
+=0.985
+\]</div>
+</section>
+<section id="bus-b2">
+<h2>Bus b2<a class="headerlink" href="#bus-b2" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+V_2=
+\frac{392.4}{400}
+=0.981
+\]</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;svg width="900" height="260"</span>
+<span class="s2">     xmlns="http://www.w3.org/2000/svg"&gt;</span>
+
+<span class="s2">  &lt;defs&gt;</span>
+<span class="s2">    &lt;marker id="arrow"</span>
+<span class="s2">            markerWidth="10"</span>
+<span class="s2">            markerHeight="10"</span>
+<span class="s2">            refX="9"</span>
+<span class="s2">            refY="3"</span>
+<span class="s2">            orient="auto"&gt;</span>
+<span class="s2">      &lt;path d="M0,0 L10,3 L0,6 z"</span>
+<span class="s2">            fill="black"/&gt;</span>
+<span class="s2">    &lt;/marker&gt;</span>
+<span class="s2">  &lt;/defs&gt;</span>
+
+<span class="s2">  &lt;!-- Busser --&gt;</span>
+
+<span class="s2">  &lt;line x1="60" y1="70"</span>
+<span class="s2">        x2="60" y2="130"</span>
+<span class="s2">        stroke="gray"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="70"</span>
+<span class="s2">        x2="380" y2="130"</span>
+<span class="s2">        stroke="gray"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;line x1="700" y1="70"</span>
+<span class="s2">        x2="700" y2="130"</span>
+<span class="s2">        stroke="gray"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;!-- Linjer --&gt;</span>
+
+<span class="s2">  &lt;line x1="60" y1="100"</span>
+<span class="s2">        x2="380" y2="100"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="100"</span>
+<span class="s2">        x2="700" y2="100"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Effektflyt --&gt;</span>
+
+<span class="s2">  &lt;line x1="160" y1="85"</span>
+<span class="s2">        x2="290" y2="85"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"</span>
+<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
+
+<span class="s2">  &lt;text x="175" y="65"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        65 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;line x1="500" y1="85"</span>
+<span class="s2">        x2="610" y2="85"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"</span>
+<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
+
+<span class="s2">  &lt;text x="515" y="65"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        15 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Grid --&gt;</span>
+
+<span class="s2">  &lt;text x="25" y="45"</span>
+<span class="s2">        font-size="22"&gt;</span>
+<span class="s2">        Grid</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Bus-navn --&gt;</span>
+
+<span class="s2">  &lt;text x="340" y="45"</span>
+<span class="s2">        font-size="22"&gt;</span>
+<span class="s2">        Bus 1</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="660" y="45"</span>
+<span class="s2">        font-size="22"&gt;</span>
+<span class="s2">        Bus 2</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Last 1 --&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="100"</span>
+<span class="s2">        x2="380" y2="150"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="150"</span>
+<span class="s2">        x2="460" y2="150"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;text x="470" y="157"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        Load1 = 50 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Last 2 --&gt;</span>
+
+<span class="s2">  &lt;line x1="700" y1="100"</span>
+<span class="s2">        x2="700" y2="190"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;line x1="700" y1="190"</span>
+<span class="s2">        x2="760" y2="190"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;text x="760" y="197"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        Load2 = 15 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Spenninger --&gt;</span>
+
+<span class="s2">  &lt;text x="5" y="190"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        V₀ = 1.000 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="320" y="190"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        V₁ = 0.985 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="640" y="230"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        V₂ = 0.981 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">&lt;/svg&gt;</span>
+<span class="s2">"""</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;svg width="900" height="260"</span>
+<span class="s2">     xmlns="http://www.w3.org/2000/svg"&gt;</span>
+
+<span class="s2">  &lt;defs&gt;</span>
+<span class="s2">    &lt;marker id="arrow"</span>
+<span class="s2">            markerWidth="10"</span>
+<span class="s2">            markerHeight="10"</span>
+<span class="s2">            refX="9"</span>
+<span class="s2">            refY="3"</span>
+<span class="s2">            orient="auto"&gt;</span>
+<span class="s2">      &lt;path d="M0,0 L10,3 L0,6 z"</span>
+<span class="s2">            fill="black"/&gt;</span>
+<span class="s2">    &lt;/marker&gt;</span>
+<span class="s2">  &lt;/defs&gt;</span>
+
+<span class="s2">  &lt;!-- Busser --&gt;</span>
+
+<span class="s2">  &lt;line x1="60" y1="70"</span>
+<span class="s2">        x2="60" y2="130"</span>
+<span class="s2">        stroke="gray"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="70"</span>
+<span class="s2">        x2="380" y2="130"</span>
+<span class="s2">        stroke="gray"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;line x1="700" y1="70"</span>
+<span class="s2">        x2="700" y2="130"</span>
+<span class="s2">        stroke="gray"</span>
+<span class="s2">        stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;!-- Linjer --&gt;</span>
+
+<span class="s2">  &lt;line x1="60" y1="100"</span>
+<span class="s2">        x2="380" y2="100"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="100"</span>
+<span class="s2">        x2="700" y2="100"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Effektflyt --&gt;</span>
+
+<span class="s2">  &lt;line x1="160" y1="85"</span>
+<span class="s2">        x2="290" y2="85"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"</span>
+<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
+
+<span class="s2">  &lt;text x="175" y="65"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        65 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;line x1="500" y1="85"</span>
+<span class="s2">        x2="610" y2="85"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"</span>
+<span class="s2">        marker-end="url(#arrow)" /&gt;</span>
+
+<span class="s2">  &lt;text x="515" y="65"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        15 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Grid --&gt;</span>
+
+<span class="s2">  &lt;text x="25" y="45"</span>
+<span class="s2">        font-size="22"&gt;</span>
+<span class="s2">        Grid</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Bus-navn --&gt;</span>
+
+<span class="s2">  &lt;text x="340" y="45"</span>
+<span class="s2">        font-size="22"&gt;</span>
+<span class="s2">        Bus 1</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="660" y="45"</span>
+<span class="s2">        font-size="22"&gt;</span>
+<span class="s2">        Bus 2</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Last 1 --&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="100"</span>
+<span class="s2">        x2="380" y2="150"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;line x1="380" y1="150"</span>
+<span class="s2">        x2="460" y2="150"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;text x="470" y="157"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        Load1 = 50 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Last 2 --&gt;</span>
+
+<span class="s2">  &lt;line x1="700" y1="100"</span>
+<span class="s2">        x2="700" y2="190"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;line x1="700" y1="190"</span>
+<span class="s2">        x2="760" y2="190"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;text x="760" y="197"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        Load2 = 15 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Spenninger --&gt;</span>
+
+<span class="s2">  &lt;text x="5" y="190"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        V₀ = 1.000 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="320" y="190"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        V₁ = 0.985 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="640" y="230"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">        V₂ = 0.981 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">&lt;/svg&gt;</span>
+<span class="s2">"""</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;svg width="1000" height="450"</span>
+<span class="s2">     xmlns="http://www.w3.org/2000/svg"&gt;</span>
+
+<span class="s2">  &lt;defs&gt;</span>
+<span class="s2">    &lt;marker id="arrow"</span>
+<span class="s2">      markerWidth="10"</span>
+<span class="s2">      markerHeight="10"</span>
+<span class="s2">      refX="9"</span>
+<span class="s2">      refY="3"</span>
+<span class="s2">      orient="auto"&gt;</span>
+<span class="s2">      &lt;path d="M0,0 L10,3 L0,6 z" fill="black"/&gt;</span>
+<span class="s2">    &lt;/marker&gt;</span>
+<span class="s2">  &lt;/defs&gt;</span>
+
+<span class="s2">  &lt;!-- Tittel --&gt;</span>
+<span class="s2">  &lt;text x="300" y="40"</span>
+<span class="s2">        font-size="28"</span>
+<span class="s2">        font-weight="bold"&gt;</span>
+<span class="s2">    Pandapower-komponenter</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">&lt;!-- create_empty_network --&gt;</span>
+
+<span class="s2">&lt;rect x="25"</span>
+<span class="s2">      y="50"</span>
+<span class="s2">      width="320"</span>
+<span class="s2">      height="60"</span>
+<span class="s2">      fill="white"</span>
+<span class="s2">      stroke="black"</span>
+<span class="s2">      stroke-width="2"/&gt;</span>
+
+<span class="s2">&lt;text x="35"</span>
+<span class="s2">      y="70"</span>
+<span class="s2">      font-family="monospace"</span>
+<span class="s2">      font-size="18"&gt;</span>
+<span class="s2">net = pp.create_empty_network()</span>
+<span class="s2">&lt;/text&gt;</span>
+
+<span class="s2">&lt;text x="35"</span>
+<span class="s2">      y="100"</span>
+<span class="s2">      font-size="16"&gt;</span>
+<span class="s2">Oppretter tom nettmodell</span>
+<span class="s2">&lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Nettdiagram --&gt;</span>
+
+<span class="s2">  &lt;!-- Busser --&gt;</span>
+<span class="s2">  &lt;line x1="150" y1="180" x2="150" y2="250"</span>
+<span class="s2">        stroke="gray" stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;line x1="450" y1="180" x2="450" y2="250"</span>
+<span class="s2">        stroke="gray" stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;line x1="750" y1="180" x2="750" y2="250"</span>
+<span class="s2">        stroke="gray" stroke-width="8"/&gt;</span>
+
+<span class="s2">  &lt;!-- Linjer --&gt;</span>
+<span class="s2">  &lt;line x1="150" y1="215" x2="450" y2="215"</span>
+<span class="s2">        stroke="black" stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;line x1="450" y1="215" x2="750" y2="215"</span>
+<span class="s2">        stroke="black" stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Effektpiler --&gt;</span>
+<span class="s2">  &lt;line x1="250" y1="195"</span>
+<span class="s2">        x2="350" y2="195"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;line x1="560" y1="195"</span>
+<span class="s2">        x2="660" y2="195"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;!-- Grid --&gt;</span>
+<span class="s2">  &lt;text x="110" y="150"</span>
+<span class="s2">        font-size="22"&gt;</span>
+<span class="s2">    Grid</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Bus labels --&gt;</span>
+<span class="s2">  &lt;text x="125" y="280"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">    b0</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="425" y="280"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">    b1</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="725" y="280"</span>
+<span class="s2">        font-size="20"&gt;</span>
+<span class="s2">    b2</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Last 1 --&gt;</span>
+<span class="s2">  &lt;line x1="450" y1="215"</span>
+<span class="s2">        x2="450" y2="300"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;line x1="450" y1="300"</span>
+<span class="s2">        x2="520" y2="300"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;text x="540" y="307"</span>
+<span class="s2">        font-size="18"&gt;</span>
+<span class="s2">    Load1 = 50 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Last 2 --&gt;</span>
+<span class="s2">  &lt;line x1="750" y1="215"</span>
+<span class="s2">        x2="750" y2="350"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;line x1="750" y1="350"</span>
+<span class="s2">        x2="820" y2="350"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;text x="840" y="357"</span>
+<span class="s2">        font-size="18"&gt;</span>
+<span class="s2">    Load2 = 15 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- PV --&gt;</span>
+<span class="s2">  &lt;line x1="750" y1="215"</span>
+<span class="s2">        x2="750" y2="110"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;line x1="680" y1="110"</span>
+<span class="s2">        x2="750" y2="110"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"</span>
+<span class="s2">        marker-end="url(#arrow)"/&gt;</span>
+
+<span class="s2">  &lt;text x="560" y="117"</span>
+<span class="s2">        font-size="18"&gt;</span>
+<span class="s2">    PV = 0 kW</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Kodebokser --&gt;</span>
+
+<span class="s2">  &lt;rect x="20" y="330"</span>
+<span class="s2">        width="250"</span>
+<span class="s2">        height="90"</span>
+<span class="s2">        fill="white"</span>
+<span class="s2">        stroke="black"/&gt;</span>
+
+<span class="s2">  &lt;text x="35" y="365"</span>
+<span class="s2">        font-family="monospace"</span>
+<span class="s2">        font-size="16"&gt;</span>
+<span class="s2">pp.create_ext_grid(net,b0)</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;rect x="300" y="330"</span>
+<span class="s2">        width="250"</span>
+<span class="s2">        height="90"</span>
+<span class="s2">        fill="white"</span>
+<span class="s2">        stroke="black"/&gt;</span>
+
+<span class="s2">  &lt;text x="315" y="365"</span>
+<span class="s2">        font-family="monospace"</span>
+<span class="s2">        font-size="16"&gt;</span>
+<span class="s2">pp.create_load(...)</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="315" y="390"</span>
+<span class="s2">        font-family="monospace"</span>
+<span class="s2">        font-size="16"&gt;</span>
+<span class="s2">bus=b1</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;rect x="600" y="330"</span>
+<span class="s2">        width="250"</span>
+<span class="s2">        height="90"</span>
+<span class="s2">        fill="white"</span>
+<span class="s2">        stroke="black"/&gt;</span>
+
+<span class="s2">  &lt;text x="615" y="365"</span>
+<span class="s2">        font-family="monospace"</span>
+<span class="s2">        font-size="16"&gt;</span>
+<span class="s2">pp.create_sgen(...)</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text x="615" y="390"</span>
+<span class="s2">        font-family="monospace"</span>
+<span class="s2">        font-size="16"&gt;</span>
+<span class="s2">bus=b2</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">&lt;/svg&gt;</span>
+<span class="s2">"""</span>
+<span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="hva-gjor-pandapower">
+<h1>Hva gjør Pandapower?<a class="headerlink" href="#hva-gjor-pandapower" title="Permalink to this heading">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>og sammenligner med:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">res_line</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">res_ext_grid</span>
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="neste-steg-solkraft">
+<h1>Neste steg: Solkraft<a class="headerlink" href="#neste-steg-solkraft" title="Permalink to this heading">#</a></h1>
+<p>Når studentene forstår dette eksemplet kan PV-produksjon legges til:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">sgen</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">pv</span><span class="p">,</span> <span class="s1">'p_mw'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.04</span>
+</pre></div>
+</div>
+<p>Da kan vi undersøke:</p>
+<ul class="simple">
+<li><p>Hvordan strømmer endres</p></li>
+<li><p>Hvordan spenninger endres</p></li>
+<li><p>Redusert nettimport</p></li>
+<li><p>Revers effektflyt</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandapower</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandapower.plotting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plot</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Opprett nett</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_empty_network</span><span class="p">()</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Busser</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">b0</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">vn_kv</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Trafo"</span><span class="p">,</span>
+    <span class="n">geodata</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">b1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">vn_kv</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Load"</span><span class="p">,</span>
+    <span class="n">geodata</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">b2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">vn_kv</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"PV"</span><span class="p">,</span>
+    <span class="n">geodata</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Nettstasjon</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_ext_grid</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">b0</span><span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Linjer</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">line1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_line_from_parameters</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span>
+    <span class="n">length_km</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">r_ohm_per_km</span><span class="o">=</span><span class="mf">0.642</span><span class="p">,</span>
+    <span class="n">x_ohm_per_km</span><span class="o">=</span><span class="mf">0.083</span><span class="p">,</span>
+    <span class="n">c_nf_per_km</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">max_i_ka</span><span class="o">=</span><span class="mf">0.2</span>
+<span class="p">)</span>
+
+<span class="n">line2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_line_from_parameters</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span>
+    <span class="n">length_km</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">r_ohm_per_km</span><span class="o">=</span><span class="mf">0.642</span><span class="p">,</span>
+    <span class="n">x_ohm_per_km</span><span class="o">=</span><span class="mf">0.083</span><span class="p">,</span>
+    <span class="n">c_nf_per_km</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">max_i_ka</span><span class="o">=</span><span class="mf">0.2</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Last</span>
+<span class="c1"># --------------------------------------------------</span>
+
+
+<span class="c1"># Last ved Bus1</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">b1</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mf">0.050</span><span class="p">,</span>   <span class="c1"># 50 kW</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Load1"</span>
+<span class="p">)</span>
+
+<span class="c1"># Last ved Bus2</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">b2</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mf">0.015</span><span class="p">,</span>   <span class="c1"># 15 kW</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Load2"</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># PV-anlegg 44 kWp</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">pv</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_sgen</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">b2</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mf">0.021</span><span class="p">,</span> <span class="c1">#</span>
+    <span class="n">q_mvar</span> <span class="o">=</span><span class="mf">0.11</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"PV"</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Lastflyt</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">numba</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Resultater</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Bus-spenninger"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span><span class="o">.</span><span class="n">vm_pu</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Effekt fra nettet"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_ext_grid</span><span class="o">.</span><span class="n">p_mw</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Effektflyt i linjer"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_line</span><span class="p">[[</span><span class="s2">"p_from_mw"</span><span class="p">]])</span>
+
+<span class="c1">#print('nett',net.load)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Plott nett</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="c1">#plt.figure(figsize=(8,3))</span>
+
+<span class="c1">#plot.simple_plot(</span>
+<span class="c1">#    net,</span>
+<span class="c1">#    bus_size=1,</span>
+<span class="c1">#    line_width=2,</span>
+<span class="c1">#    plot_loads=True,</span>
+<span class="c1">#    plot_sgens=True</span>
+<span class="c1">#)</span>
+
+
+<span class="c1">#plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./05_modellering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="int_IBR.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Integrering av fornybar energi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../11_powerfactory/about_pf.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Om Power Factory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Soldata</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#innstallert-effekt">Innstallert effekt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverterkapasitet">Inverterkapasitet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paneltester">Paneltester</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datablad">Datablad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effektivitet-eta">Effektivitet <span class="math notranslate nohighlight">\(\eta\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkel-modell">Enkel Modell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utvidet-modell">Utvidet modell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geografisk-informasjonssystem-for-solenergi">Geografisk informasjonssystem for solenergi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nettmodell">Nettmodell</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleks-effekt-i-lastene">Kompleks effekt i lastene</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ved-b1">Last ved b1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-ved-b2">Last ved b2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#total-kompleks-effekt">Total kompleks effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tilsynelatende-effekt">Tilsynelatende effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#effektfaktor">Effektfaktor</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strom-fra-nettet">Strøm fra nettet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kabelimpedanser">Kabelimpedanser</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strom-i-kabel-2">Strøm i kabel 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsfall-i-kabel-2">Spenningsfall i kabel 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strom-i-kabel-1">Strøm i kabel 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningsfall-i-kabel-1">Spenningsfall i kabel 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenning-pa-bus-b1">Spenning på bus b1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spenning-pa-bus-b2">Spenning på bus b2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#per-unit-spenninger">Per-unit spenninger</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-b0">Bus b0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-b1">Bus b1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-b2">Bus b2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-pandapower">Hva gjør Pandapower?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neste-steg-solkraft">Neste steg: Solkraft</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
