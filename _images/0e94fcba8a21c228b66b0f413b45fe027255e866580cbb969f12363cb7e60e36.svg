@@ -57,7 +57,7 @@
   <line x1="380" y1="150" x2="460" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
 
   <text x="470" y="157" font-size="20">
-        Last 1
+        S_1 = 50 + j10
   </text>
 
   <!-- Last 2 -->
@@ -67,7 +67,7 @@
   <line x1="700" y1="150" x2="760" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
 
   <text x="760" y="157" font-size="20">
-        Last 2
+       S_2 = 15 + j3
   </text>
 
 <!-- PV -->
