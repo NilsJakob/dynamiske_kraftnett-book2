@@ -532,21 +532,6 @@ document.write(`
     <span class="s2">"Sum (kWp)"</span><span class="p">:</span> <span class="p">[</span><span class="mf">22.22</span><span class="p">,</span> <span class="mf">1.82</span><span class="p">,</span> <span class="mf">0.84</span><span class="p">,</span> <span class="mf">0.76</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">]</span>
 <span class="p">})</span>
 
-<span class="c1"># Lag figur</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
-
-<span class="n">tab</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">table</span><span class="p">(</span>
-    <span class="n">cellText</span><span class="o">=</span><span class="n">df_paneler</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-    <span class="n">colLabels</span><span class="o">=</span><span class="n">df_paneler</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-    <span class="n">loc</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span>
-    <span class="n">cellLoc</span><span class="o">=</span><span class="s2">"center"</span>
-<span class="p">)</span>
-
-<span class="n">tab</span><span class="o">.</span><span class="n">auto_set_font_size</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">tab</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">tab</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
-
 
 <span class="n">glue</span><span class="p">(</span><span class="s2">"paneltabell"</span><span class="p">,</span> <span class="n">df_paneler</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -556,15 +541,11 @@ document.write(`
 </div>
 </div>
 <figure class="align-default" id="tab-paneler">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'|    | Paneltype                 |   Antall |   Effekt per modul (Wp) |   Sum (kWp) |\n|---:|:--------------------------|---------:|------------------------:|------------:|\n|  0 | Longi LR5-66HPH-505       |       44 |                     505 |       22.22 |\n|  1 | JA Solar JAM72S20-455/MR  |        4 |                     455 |        1.82 |\n|  2 | REC 420AA Pure-R          |        2 |                     420 |        0.84 |\n|  3 | Longi Onyx LR4-60HTB-380M |        2 |                     380 |        0.76 |\n|  4 | Sunova SS-BG545-72MDH     |        2 |                     545 |        1.09 |'
-</pre></div>
-</div>
+<img alt="../_images/3c0c9cd8b5b2e1134c2e39d6d4adff343c349e2071fb030a2a352209ce1dec45.png" src="../_images/3c0c9cd8b5b2e1134c2e39d6d4adff343c349e2071fb030a2a352209ce1dec45.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Sammenligning av STC, PTC og NOCT for solcellemoduler.</span><a class="headerlink" href="#tab-paneler" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Installerte paneltyper</span><a class="headerlink" href="#tab-paneler" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="cell tag_remove-input docutils container">
-</div>
 </section>
 <section id="inverterkapasitet">
 <h2>Inverterkapasitet<a class="headerlink" href="#inverterkapasitet" title="Permalink to this heading">#</a></h2>
