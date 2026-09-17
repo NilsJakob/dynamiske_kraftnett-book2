@@ -515,75 +515,6 @@ document.write(`
 \[P_{Wp}=P(G=1000\,\mathrm{W/m^2},\,T_c=25^\circ\mathrm{C},\,AM=1.5)\]</div>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p>```<span class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Paneltype</th>
-      <th>Antall</th>
-      <th>Effekt per modul (Wp)</th>
-      <th>Sum (kWp)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Longi LR5-66HPH-505</td>
-      <td>44</td>
-      <td>505</td>
-      <td>22.22</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>JA Solar JAM72S20-455/MR</td>
-      <td>4</td>
-      <td>455</td>
-      <td>1.82</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>REC 420AA Pure-R</td>
-      <td>2</td>
-      <td>420</td>
-      <td>0.84</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Longi Onyx LR4-60HTB-380M</td>
-      <td>2</td>
-      <td>380</td>
-      <td>0.76</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Sunova SS-BG545-72MDH</td>
-      <td>2</td>
-      <td>545</td>
-      <td>1.09</td>
-    </tr>
-  </tbody>
-</table>
-</div></span>
-:name: tab-paneler</p>
-<hr class="docutils" />
-<p>Installerte paneltyper</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </section>
 <section id="inverterkapasitet">
 <h2>Inverterkapasitet<a class="headerlink" href="#inverterkapasitet" title="Permalink to this heading">#</a></h2>
@@ -1254,7 +1185,7 @@ V_2=
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="neste-steg-solkraft">
 <h1>Neste steg: Solkraft<a class="headerlink" href="#neste-steg-solkraft" title="Permalink to this heading">#</a></h1>
-<p>Når studentene forstår dette eksemplet kan PV-produksjon legges til:</p>
+<p>PV-produksjon legges til:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">sgen</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">pv</span><span class="p">,</span> <span class="s1">'p_mw'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.04</span>
 </pre></div>
 </div>
