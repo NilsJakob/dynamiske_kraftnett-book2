@@ -45,6 +45,7 @@ parts:
     chapters:
       - file: 05_modellering/int_IBR
       - file: 05_modellering/ppow_solar
+      - file: assignments/assignment6
 
   #- caption: Tidsserie
     #chapters:
