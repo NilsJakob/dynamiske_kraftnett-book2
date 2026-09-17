@@ -485,33 +485,7 @@ z_{pu}</a></li>
 <p>Solcelleanlegets 54 paneler leverer samlet effekt på 23,76 kWp. Informasjon fra produsentens datablad er gitt i <a class="reference internal" href="#tab-paneler"><span class="std std-numref">Fig. 29</span></a>. Tester gjort av panelprodusenten under standardforhold (<strong>Standard Test Conditions - STC</strong>), der Effekten, <span class="math notranslate nohighlight">\(P\)</span>, er en funksjon av normert innstråling, <span class="math notranslate nohighlight">\(G\)</span>, temperatur, <span class="math notranslate nohighlight">\(T_c\)</span> og luftmasse <span class="math notranslate nohighlight">\(AM\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[P_{Wp}=P(G=1000\,\mathrm{W/m^2},\,T_c=25^\circ\mathrm{C},\,AM=1.5)\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="n">df_paneler</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">"Paneltype"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">"Longi LR5-66HPH-505"</span><span class="p">,</span>
-        <span class="s2">"JA Solar JAM72S20-455/MR"</span><span class="p">,</span>
-        <span class="s2">"REC 420AA Pure-R"</span><span class="p">,</span>
-        <span class="s2">"Longi Onyx LR4-60HTB-380M"</span><span class="p">,</span>
-        <span class="s2">"Sunova SS-BG545-72MDH"</span>
-    <span class="p">],</span>
-    <span class="s2">"Antall"</span><span class="p">:</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-    <span class="s2">"Effekt per modul (Wp)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">505</span><span class="p">,</span> <span class="mi">455</span><span class="p">,</span> <span class="mi">420</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">545</span><span class="p">],</span>
-    <span class="s2">"Sum (kWp)"</span><span class="p">:</span> <span class="p">[</span><span class="mf">22.22</span><span class="p">,</span> <span class="mf">1.82</span><span class="p">,</span> <span class="mf">0.84</span><span class="p">,</span> <span class="mf">0.76</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">]</span>
-<span class="p">})</span>
-
-
-<span class="n">glue</span><span class="p">(</span><span class="s2">"paneltabell"</span><span class="p">,</span> <span class="n">df_paneler</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-default" id="tab-paneler">
 <div class="output text_html"><div>
