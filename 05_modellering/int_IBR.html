@@ -228,6 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
@@ -555,7 +556,10 @@ DC-linkens hovedoppgave er derfor å fungere som en energibuffer som glatter ut 
 </section>
 <section id="kall-pa-statistikken">
 <h3>Kall på statistikken<a class="headerlink" href="#kall-pa-statistikken" title="Permalink to this heading">#</a></h3>
-<p>For å vise problemstillingens aktualitet gjør vi et API-kall til statistikkbanken til Statistisk SentralByrå (SSB). Kilden er SSBs <a class="reference external" href="https://www.ssb.no/statbank/table/08307">tabell 08307</a>. <code class="docutils literal notranslate"><span class="pre">requests</span></code> henter dataene og <code class="docutils literal notranslate"><span class="pre">pyjstat</span></code> leser, tolker og deretter bygger en tabellstruktur. Vi skal be python sende en post forespørsel til SSB (requests.post(url, json=query).text) i en query som bruker JSON-kode, der SSB returnerer svaret i et JASON-stat-format.</p>
+<p>Statistisk sentralbyrå tilbyr mye forskjellig statistikk i <a class="reference external" href="https://www.ssb.no/statbank/">statistikkkbanken</a>.
+For å vise problemstillingens aktualitet gjør vi et API-kall til statistikkbanken til Statistisk SentralByrå (SSB).  <code class="docutils literal notranslate"><span class="pre">requests</span></code> henter dataene og <code class="docutils literal notranslate"><span class="pre">pyjstat</span></code> leser, tolker og deretter bygger en tabellstruktur. Vi skal be python sende en post forespørsel til SSB (requests.post(url, json=query).text) i en query som bruker JSON-kode, der SSB returnerer svaret i et JASON-stat-format.</p>
+<p>Inne i statistikkbanken finner vi en tabell som sier <em>08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh), etter år.</em></p>
+<p>Kilden er SSBs <a class="reference external" href="https://www.ssb.no/statbank/table/08307">tabell 08307</a>.</p>
 <p>Først importeres bibliotek:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -583,16 +587,88 @@ DC-linkens hovedoppgave er derfor å fungere som en energibuffer som glatter ut 
 </div>
 </div>
 </div>
-<p>Kilden er SSBs <a class="reference external" href="https://www.ssb.no/statbank/table/08307">tabell 08307</a> gir statistikkvariablene <code class="docutils literal notranslate"><span class="pre">[&quot;VindKraft,</span> <span class="pre">&quot;Solkraft&quot;]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TABLE</span> <span class="o">=</span> <span class="s2">"08307"</span>
-<span class="n">VARIABLES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"VindKraft"</span><span class="p">,</span> <span class="s2">"Solkraft"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Et <code class="docutils literal notranslate"><span class="pre">query</span></code> bestemmer hvilke data som skal hentes og <code class="docutils literal notranslate"><span class="pre">response</span></code> hvordan dataene returneres. I <code class="docutils literal notranslate"><span class="pre">ContentsCode</span></code> finner vi flere statistikkvariabler <code class="docutils literal notranslate"><span class="pre">selection</span></code> velger verdiene det skal filtreres på <code class="docutils literal notranslate"><span class="pre">filter:item</span></code>angir de eksakte verdiene, som velges i <code class="docutils literal notranslate"><span class="pre">VARIABLES</span></code>:</p>
+<p>Et <code class="docutils literal notranslate"><span class="pre">query</span></code> bestemmer hvilke data som skal hentes og <code class="docutils literal notranslate"><span class="pre">response</span></code> hvordan dataene returneres. I <code class="docutils literal notranslate"><span class="pre">ContentsCode</span></code> finner vi flere statistikkvariabler <code class="docutils literal notranslate"><span class="pre">selection</span></code> velger verdiene det skal filtreres på <code class="docutils literal notranslate"><span class="pre">filter:item</span></code>angir de eksakte verdiene, som velges i <code class="docutils literal notranslate"><span class="pre">VARIABLES</span></code>. Før vi kan gjøre det må vi finne de riktige kodene. De ligger i metadata, som er data om data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/v0/no/table/08307/"</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">"variables"</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Kode: </span><span class="si">{</span><span class="n">var</span><span class="p">[</span><span class="s1">'code'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tekst: </span><span class="si">{</span><span class="n">var</span><span class="p">[</span><span class="s1">'text'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Antall verdier: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="s1">'values'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kode: ContentsCode
+Tekst: statistikkvariabel
+Antall verdier: 12
+
+Kode: Tid
+Tekst: år
+Antall verdier: 68
+</pre></div>
+</div>
+</div>
+</div>
+<p>Altså 12 statistikkvariabler. La oss se nermære på de:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">"variables"</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">var</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"ContentsCode"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="s2">"valueTexts"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['Produksjon i alt', 'Vannkraftproduksjon', 'Vindkraftproduksjon', 'Solkraftproduksjon', 'Varmekraftproduksjon', 'Import', 'Eksport', 'Bruttoforbruk', 'Forbruk i kraftstasjonene (-2019)', 'Pumpekraftforbruk', 'Tap og statistisk differanse', 'Nettoforbruk']
+</pre></div>
+</div>
+</div>
+</div>
+<p>Da velger vi ut sol- og vindkraft som variabler:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VARIABLES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"VindKraft"</span><span class="p">,</span> <span class="s2">"Solkraft"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I JSON-stat-baserte API-er (som SSB), er strukturen for en spørring ofte:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>query = {
+    "query": [
+        {
+            "code": "...",
+            "selection": {
+                "filter": "...",
+                "values": [...]
+            }
+        }
+    ],
+    "response": {
+        "format": "json-stat2"
+    }
+}
+</pre></div>
+</div>
+<p>Nå vet vi:
+Det du må finne ut er:</p>
+<ul class="simple">
+<li><p>Hvilke dimensjoner finnes? (code)</p></li>
+<li><p>Hvilke verdier finnes innen hver dimensjon? (values)</p></li>
+<li><p>Hvilket filter skal brukes? (ofte “item”)</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
