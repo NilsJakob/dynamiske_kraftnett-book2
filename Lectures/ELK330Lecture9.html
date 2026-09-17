@@ -226,6 +226,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
@@ -465,8 +467,6 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="integrering-av-fornybar-energi">
 <h1>Integrering av fornybar energi<a class="headerlink" href="#integrering-av-fornybar-energi" title="Permalink to this heading">#</a></h1>
 <p>Når vi tar for oss integrasjon av fornybar energi i distribusjonsnettet, fokuser vi på hvordan vi skal koble strømkilder som sol og vind til kraftnettet. Som beskrevet i 3D (De tre D’ene; Dekarboniseering, Digitalisering, Desentralisering) rammeverket og FN’s visjon om <a class="reference external" href="https://fn.no/om-fn/fns-baerekraftsmaal/ren-energi-til-alle">ren energi for alle</a> er vi forpliktet til å sikre tilgang til pålitelig, bærekraftig og moderne energi for alle. Andelen ren energi er høy i Norge på grunn av vannkraften, men er avhengig av mengde vann som tilsig til vannmagasinene. Sol- og vindkraft er viktige bidrag for å oppnå bærekraftsmålene i tilegg har de større grad av skalerbarhet enn vannkraft. Men sol- og vindkraftens intermittente (periodevis, dvs. ujevn produksjon) natur kompliserer de dynamiske forholdene og stabiliteten i kraftnettet.</p>
-<div class="cell tag_remove-input docutils container">
-</div>
 <section id="modellering-og-simulering">
 <h2>Modellering og simulering<a class="headerlink" href="#modellering-og-simulering" title="Permalink to this heading">#</a></h2>
 <p>Vi må derfor simulere tilstander som kan oppstå for å kunne analysere integreringen av fornybare energikilder på nettet. De kjente transmisjonslinjemodellene må da utvides til å ta opp i seg dynamiske forandringer i nettet, som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-revers-flyt</span></code>. De tradisjonelle metodene (<span class="math notranslate nohighlight">\(\pi\)</span>-metoden) modellerer vanligvis enveis effektflyt. Med skalerbar lokal produksjon kan strømmen tidvis gå motsatt vei:</p>
@@ -477,6 +477,8 @@ document.write(`
 <li><p>elbiler med V2G (Vehicle-to-Grid)</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" src="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" /></div>
 </div>
 <figure class="align-default" id="fig-revers-flyt">
 <img alt="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" src="../_images/7adf21962e56e179a6555615027550aeb5909e3471b9d987ca7078001e7c1083.svg" /><figcaption>
@@ -532,7 +534,7 @@ DC-linkens hovedoppgave er derfor å fungere som en energibuffer som glatter ut 
 </section>
 <section id="solkraft">
 <h4>Solkraft<a class="headerlink" href="#solkraft" title="Permalink to this heading">#</a></h4>
-<p>For at solkraften skal kunne integreres på net må den inverteres (vekselretter) i en inverter, som i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-pv-inverter</span></code>.</p>
+<p>For at solkraften skal kunne integreres på net må den inverteres (vekselretter) i en inverter, som i tabell.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-default" id="fig-pv-inverter">
@@ -682,7 +684,7 @@ DC-linkens hovedoppgave er derfor å fungere som en energibuffer som glatter ut 
 </tbody>
 </table>
 </div>
-<p>Vi plotter dataene som synliggjør den historiske utviklingen av sol- og vindkraft i <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-sol-vind</span></code>.</p>
+<p>Vi plotter dataene som synliggjør den historiske utviklingen av sol- og vindkraft.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-default" id="fig-sol-vind">
@@ -712,6 +714,10 @@ https://www.ssb.no/statbank/table/08307
 <h3>Endrede tilsig<a class="headerlink" href="#endrede-tilsig" title="Permalink to this heading">#</a></h3>
 <p>Norge har 1600 vannkraftverk og omtrent 1200 innsjøer regulert til kraftproduksjon, som gjør det mulig å lagre kraft innenfor reguleringsintervallene lavest regulerte vannstand (LRV) og høyest regulerte vannstand (HRV). Blåsjø er norges største regulerte vannmagasin med reguleringshøyde på 125 m og et magasinvolum på 3105 millioner kubikk som tilsvarer et energipotensial på 7,8 TWh.</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<img src="https://media.snl.no/media/15532/standard_800px-Mauvoisin_dam.jpg" width="600">
+</div></div>
 </div>
 <figure class="align-default" id="fig-mauvoisin">
 <div class="output text_html">

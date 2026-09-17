@@ -226,6 +226,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
@@ -446,6 +448,32 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-solcelleproduksjon-i-python">Beregning av solcelleproduksjon i Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-av-bibliotek">Import av bibliotek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisjon-av-konstanter">Definisjon av konstanter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-wp"><code class="docutils literal notranslate"><span class="pre">P_wp</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma"><code class="docutils literal notranslate"><span class="pre">gamma</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noct"><code class="docutils literal notranslate"><span class="pre">NOCT</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-celletemperatur">Beregning av celletemperatur</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variabler">Variabler</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-effektproduksjon">Beregning av effektproduksjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-nominell-effekt">Del 1: Nominell effekt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-korrigering-for-solinnstraling">Del 2: Korrigering for solinnstråling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-temperaturkorreksjon">Del 3: Temperaturkorreksjon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel-pa-full-beregning">Eksempel på full beregning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fjerning-av-negative-effekter">Fjerning av negative effekter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprettelse-av-produksjonsprofil">Opprettelse av produksjonsprofil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utskrift-av-resultat">Utskrift av resultat</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nettmodell">Nettmodell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektdata">Effektdata</a></li>
@@ -905,6 +933,273 @@ time
 </div>
 </div>
 </div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="beregning-av-solcelleproduksjon-i-python">
+<h1>Beregning av solcelleproduksjon i Python<a class="headerlink" href="#beregning-av-solcelleproduksjon-i-python" title="Permalink to this heading">#</a></h1>
+<p>Denne koden beregner forventet effektproduksjon fra et solcelleanlegg basert på solinnstråling og temperaturdata.</p>
+<section id="import-av-bibliotek">
+<h2>Import av bibliotek<a class="headerlink" href="#import-av-bibliotek" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Importerer <strong>Pandas</strong>, et bibliotek for behandling av tabell- og tidsseriedata.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pd</span></code> brukes som en forkortelse for <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
+<li><p>Datasettet (<code class="docutils literal notranslate"><span class="pre">df</span></code>) antas å være en Pandas DataFrame.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="definisjon-av-konstanter">
+<h2>Definisjon av konstanter<a class="headerlink" href="#definisjon-av-konstanter" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">P_wp</span> <span class="o">=</span> <span class="mf">26.73</span>         <span class="c1"># kWp</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.004</span>       <span class="c1"># 1/°C</span>
+<span class="n">NOCT</span> <span class="o">=</span> <span class="mi">45</span>            <span class="c1"># °C</span>
+</pre></div>
+</div>
+<section id="p-wp">
+<h3><code class="docutils literal notranslate"><span class="pre">P_wp</span></code><a class="headerlink" href="#p-wp" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Solcelleanleggets nominelle effekt.</p></li>
+<li><p>Måles i <strong>kWp (kilowatt peak)</strong>.</p></li>
+<li><p>Verdien 26,73 kWp betyr at anlegget under standard testbetingelser kan levere opptil 26,73 kW.</p></li>
+</ul>
+</section>
+<section id="gamma">
+<h3><code class="docutils literal notranslate"><span class="pre">gamma</span></code><a class="headerlink" href="#gamma" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Temperaturkoeffisienten til solcellepanelene.</p></li>
+<li><p>Angir hvor mye effekten endres per grad over referansetemperaturen på 25 °C.</p></li>
+<li><p>Verdien <code class="docutils literal notranslate"><span class="pre">-0.004</span></code> betyr at effekten reduseres med 0,4 % per °C.</p></li>
+</ul>
+</section>
+<section id="noct">
+<h3><code class="docutils literal notranslate"><span class="pre">NOCT</span></code><a class="headerlink" href="#noct" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><em>Nominal Operating Cell Temperature</em>.</p></li>
+<li><p>Angir typisk celletemperatur ved:</p>
+<ul>
+<li><p>800 W/m² solinnstråling</p></li>
+<li><p>20 °C lufttemperatur</p></li>
+<li><p>moderat vind</p></li>
+</ul>
+</li>
+<li><p>Her antas NOCT å være 45 °C.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="beregning-av-celletemperatur">
+<h2>Beregning av celletemperatur<a class="headerlink" href="#beregning-av-celletemperatur" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Tc"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"T2m"</span><span class="p">]</span>
+    <span class="o">+</span> <span class="p">((</span><span class="n">NOCT</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span> <span class="o">/</span> <span class="mi">800</span><span class="p">)</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"G(i)"</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Det opprettes en ny kolonne <code class="docutils literal notranslate"><span class="pre">Tc</span></code> som representerer temperatur i solcellene.</p>
+<section id="variabler">
+<h3>Variabler<a class="headerlink" href="#variabler" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T2m</span></code>: lufttemperatur 2 meter over bakken (°C)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">G(i)</span></code>: solinnstråling på panelets flate (W/m²)</p></li>
+</ul>
+<p>Formelen som brukes er:</p>
+<div class="math notranslate nohighlight">
+\[
+T_c = T_{luft} + \frac{NOCT-20}{800}\cdot G
+\]</div>
+<p>For NOCT = 45 °C blir dette:</p>
+<div class="math notranslate nohighlight">
+\[
+T_c = T_{luft} + 0.03125 \cdot G
+\]</div>
+</section>
+<section id="eksempel">
+<h3>Eksempel<a class="headerlink" href="#eksempel" title="Permalink to this heading">#</a></h3>
+<p>For:</p>
+<ul class="simple">
+<li><p>Lufttemperatur = 15 °C</p></li>
+<li><p>Solinnstråling = 600 W/m²</p></li>
+</ul>
+<p>får vi:</p>
+<div class="math notranslate nohighlight">
+\[
+T_c = 15 + 0.03125 \cdot 600
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+T_c = 33.75^\circ C
+\]</div>
+<p>Cellene estimeres dermed til omtrent 34 °C.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="beregning-av-effektproduksjon">
+<h2>Beregning av effektproduksjon<a class="headerlink" href="#beregning-av-effektproduksjon" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"p_kw"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">P_wp</span>
+    <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"G(i)"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"Tc"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">25</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Det opprettes en ny kolonne <code class="docutils literal notranslate"><span class="pre">p_kw</span></code> som inneholder produsert effekt i kW.</p>
+<p>Formelen er:</p>
+<div class="math notranslate nohighlight">
+\[
+P = P_{wp}
+\times \frac{G}{1000}
+\times \left(1+\gamma(T_c-25)\right)
+\]</div>
+<section id="del-1-nominell-effekt">
+<h3>Del 1: Nominell effekt<a class="headerlink" href="#del-1-nominell-effekt" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">P_wp</span>
+</pre></div>
+</div>
+<p>Utgangspunktet er anleggets maksimale effekt:</p>
+<div class="math notranslate nohighlight">
+\[
+26.73\ \text{kW}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="del-2-korrigering-for-solinnstraling">
+<h3>Del 2: Korrigering for solinnstråling<a class="headerlink" href="#del-2-korrigering-for-solinnstraling" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"G(i)"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>Standard testbetingelser bruker 1000 W/m².</p>
+<p>Eksempler:</p>
+<ul class="simple">
+<li><p>1000 W/m² → faktor = 1,0</p></li>
+<li><p>800 W/m² → faktor = 0,8</p></li>
+<li><p>500 W/m² → faktor = 0,5</p></li>
+</ul>
+<p>Produksjonen skaleres omtrent lineært med innstrålingen.</p>
+</section>
+<hr class="docutils" />
+<section id="del-3-temperaturkorreksjon">
+<h3>Del 3: Temperaturkorreksjon<a class="headerlink" href="#del-3-temperaturkorreksjon" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"Tc"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Referansetemperaturen er 25 °C.</p>
+<p>Hvis celletemperaturen øker, reduseres effekten.</p>
+<p>Eksempel:</p>
+<div class="math notranslate nohighlight">
+\[
+T_c = 45^\circ C
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+1 + (-0.004)(45-25)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+1 - 0.08
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+0.92
+\]</div>
+<p>Panelet leverer da omtrent 92 % av nominell effekt.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="eksempel-pa-full-beregning">
+<h2>Eksempel på full beregning<a class="headerlink" href="#eksempel-pa-full-beregning" title="Permalink to this heading">#</a></h2>
+<p>Gitt:</p>
+<ul class="simple">
+<li><p>(P_{wp}=26.73) kWp</p></li>
+<li><p>(G=800) W/m²</p></li>
+<li><p>(T_c=35^\circ C)</p></li>
+</ul>
+<p>blir effekten:</p>
+<div class="math notranslate nohighlight">
+\[
+P = 26.73
+\times \frac{800}{1000}
+\times (1-0.004(35-25))
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P = 26.73
+\times 0.8
+\times 0.96
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P \approx 20.53\ \text{kW}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="fjerning-av-negative-effekter">
+<h2>Fjerning av negative effekter<a class="headerlink" href="#fjerning-av-negative-effekter" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"p_kw"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"p_kw"</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Funksjonen <code class="docutils literal notranslate"><span class="pre">clip()</span></code> setter alle verdier mindre enn 0 til 0.</p>
+<p>Eksempel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>5.1  -&gt; 5.1
+1.2  -&gt; 1.2
+-0.4 -&gt; 0
+</pre></div>
+</div>
+<p>Dette sikrer at modellen ikke returnerer fysisk umulige negative effektverdier.</p>
+</section>
+<hr class="docutils" />
+<section id="opprettelse-av-produksjonsprofil">
+<h2>Opprettelse av produksjonsprofil<a class="headerlink" href="#opprettelse-av-produksjonsprofil" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pv_profile</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">"p_kw"</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Det opprettes en ny DataFrame som kun inneholder effektkolonnen.</p>
+<p>Eksempel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       p_kw
+0      0.00
+1      3.42
+2     12.18
+3     19.54
+</pre></div>
+</div>
+<p>Denne kan brukes videre i simuleringer, energiberegninger eller eksporteres til fil.</p>
+</section>
+<hr class="docutils" />
+<section id="utskrift-av-resultat">
+<h2>Utskrift av resultat<a class="headerlink" href="#utskrift-av-resultat" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pv_profile</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Skriver produksjonsprofilen til skjermen.</p>
+<p>Eksempel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>        p_kw
+0      0.00
+1      0.15
+2      3.42
+3     11.87
+4     20.53
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="oppsummering">
+<h1>Oppsummering<a class="headerlink" href="#oppsummering" title="Permalink to this heading">#</a></h1>
+<p>Koden utfører følgende trinn:</p>
+<ol class="arabic simple">
+<li><p>Beregner celletemperaturen (<code class="docutils literal notranslate"><span class="pre">Tc</span></code>) fra lufttemperatur og solinnstråling.</p></li>
+<li><p>Beregner solcelleeffekten (<code class="docutils literal notranslate"><span class="pre">p_kw</span></code>) basert på:</p>
+<ul class="simple">
+<li><p>installert effekt (<code class="docutils literal notranslate"><span class="pre">P_wp</span></code>)</p></li>
+<li><p>solinnstråling (<code class="docutils literal notranslate"><span class="pre">G(i)</span></code>)</p></li>
+<li><p>temperaturtap (<code class="docutils literal notranslate"><span class="pre">gamma</span></code>)</p></li>
+</ul>
+</li>
+<li><p>Setter eventuelle negative effektverdier til 0.</p></li>
+<li><p>Oppretter en produksjonsprofil (<code class="docutils literal notranslate"><span class="pre">pv_profile</span></code>) som kan brukes i videre analyser av energiproduksjon.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## import pandas as pd</span>
@@ -1023,8 +1318,6 @@ Name: G(i), dtype: float64
 </figure>
 <p><a class="reference external" href="https://pandapower.readthedocs.io/en/latest/index.html#">pandapower_docs</a>
 <a class="reference external" href="https://pandapower.readthedocs.io/en/v1.4.2/getting_started/tutorials.html">pandapower_tutorial</a></p>
-</section>
-</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="pandapower">
 <h1>Pandapower<a class="headerlink" href="#pandapower" title="Permalink to this heading">#</a></h1>
@@ -1507,6 +1800,32 @@ tid
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-solcelleproduksjon-i-python">Beregning av solcelleproduksjon i Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-av-bibliotek">Import av bibliotek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisjon-av-konstanter">Definisjon av konstanter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-wp"><code class="docutils literal notranslate"><span class="pre">P_wp</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma"><code class="docutils literal notranslate"><span class="pre">gamma</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noct"><code class="docutils literal notranslate"><span class="pre">NOCT</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-celletemperatur">Beregning av celletemperatur</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variabler">Variabler</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-effektproduksjon">Beregning av effektproduksjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-nominell-effekt">Del 1: Nominell effekt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-korrigering-for-solinnstraling">Del 2: Korrigering for solinnstråling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-temperaturkorreksjon">Del 3: Temperaturkorreksjon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel-pa-full-beregning">Eksempel på full beregning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fjerning-av-negative-effekter">Fjerning av negative effekter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opprettelse-av-produksjonsprofil">Opprettelse av produksjonsprofil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utskrift-av-resultat">Utskrift av resultat</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandapower">Pandapower</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nettmodell">Nettmodell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektdata">Effektdata</a></li>
