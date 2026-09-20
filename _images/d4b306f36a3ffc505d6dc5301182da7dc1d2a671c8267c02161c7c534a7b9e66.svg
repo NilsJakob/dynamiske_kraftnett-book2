@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 320">
+  <rect width="100%" height="100%" fill="#dcdcdc"/>
+
+  <!-- Generator -->
+  <circle cx="70" cy="140" r="35" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M55 140 c5 -15 15 -15 20 0 s15 15 20 0" fill="none" stroke="black" stroke-width="2"/>
+  <text x="25" y="200" font-size="20">132 kV</text>
+
+  <!-- Reactance -->
+  <line x1="105" y1="140" x2="140" y2="140" stroke="black"/>
+  <path d="M140 140 q10 -25 20 0 q10 -25 20 0 q10 -25 20 0 q10 -25 20 0" fill="none" stroke="black" stroke-width="2"/>
+  <text x="150" y="115" font-size="18">j14Ω</text>
+
+  <!-- Transformer 1 -->
+  <line x1="250" y1="90" x2="250" y2="190" stroke="gray" stroke-width="6"/>
+  <path d="M270 110 q20 0 20 10 v10 q0 10 -20 10 q20 0 20 10 v10 q0 10 -20 10" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M330 110 q-20 0 -20 10 v10 q0 10 20 10 q-20 0 -20 10 v10 q0 10 20 10" fill="none" stroke="black" stroke-width="2"/>
+  <line x1="350" y1="90" x2="350" y2="190" stroke="gray" stroke-width="6"/>
+
+  <text x="260" y="220" font-size="18">132/33 kV</text>
+  <text x="295" y="252" font-size="18">50 MVA</text>
+  <text x="310" y="284" font-size="18">10%</text>
+
+  <!-- Bus -->
+  <line x1="350" y1="140" x2="650" y2="140" stroke="black"/>
+
+  <!-- Load L1 -->
+  <line x1="350" y1="70" x2="470" y2="70" stroke="black"/>
+  <polygon points="470,60 500,70 470,80" fill="black"/>
+  <text x="505" y="76" font-size="18">L1 = 30 + j14.5 MVA</text>
+
+  <!-- Line impedance -->
+  <text x="430" y="170" font-size="18">0.8 + j1Ω</text>
+
+  <!-- Transformer 2 -->
+  <line x1="650" y1="90" x2="650" y2="190" stroke="gray" stroke-width="6"/>
+  <path d="M670 110 q20 0 20 10 v10 q0 10 -20 10 q20 0 20 10 v10 q0 10 -20 10" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M730 110 q-20 0 -20 10 v10 q0 10 20 10 q-20 0 -20 10 v10 q0 10 20 10" fill="none" stroke="black" stroke-width="2"/>
+  <line x1="790" y1="90" x2="790" y2="190" stroke="gray" stroke-width="6"/>
+
+  <text x="665" y="220" font-size="18">33/6.6 kV</text>
+  <text x="700" y="252" font-size="18">25 MVA</text>
+  <text x="710" y="284" font-size="18">6%</text>
+
+  <!-- Load L2 -->
+  <line x1="790" y1="140" x2="930" y2="140" stroke="black"/>
+  <polygon points="930,130 960,140 930,150" fill="black"/>
+  <text x="820" y="175" font-size="18">L2 = 20 + j6.5 MVA</text>
+</svg>

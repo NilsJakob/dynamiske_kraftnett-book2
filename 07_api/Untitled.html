@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>API kall &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07_api/Untitled';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F07_api/Untitled.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/07_api/Untitled.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>API kall</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="api-kall">
+<h1>API kall<a class="headerlink" href="#api-kall" title="Permalink to this heading">#</a></h1>
+<p>Vet vi at vi skal ha noe fra SSBs statistikkbank, så vi åpner siden</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">webbrowser</span>
+
+<span class="c1">#webbrowser.open("https://www.ssb.no/statbank/")</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#webbrowser.open("https://www.ssb.no/api")</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>pip install requests</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/pxwebapi/v2/tables"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'language': 'no', 'tables': [{'id': '13760', 'label': '13760: Arbeidsstyrken, sysselsatte, arbeidsledige og utførte ukeverk, etter kjønn og alder. Brudd- og sesongjusterte tall 2006M01-2026M07', 'description': '', 'sortCode': '0000000020', 'updated': '2026-08-25T06:00:00Z', 'firstPeriod': '2006M01', 'lastPeriod': '2026M07', 'category': 'public', 'variableNames': ['kjønn', 'alder', 'type justering', 'statistikkvariabel', 'måned'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Monthly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13760?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13760?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13760/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13760/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '14483', 'label': '14483: Personer, etter arbeidsstyrkestatus, kjønn og alder. Brudd- og sesongjusterte tall 2009K1-2026K2', 'description': '', 'sortCode': '0000000045', 'updated': '2026-08-17T06:00:00Z', 'firstPeriod': '2009K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['kjønn', 'alder', 'type justering', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14483?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14483?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14483/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14483/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '13618', 'label': '13618: Personer, etter arbeidsstyrkestatus, kjønn og alder. Bruddjusterte tall 2009-2025', 'description': '', 'sortCode': '0000000050', 'updated': '2026-02-11T07:00:00Z', 'firstPeriod': '2009', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13618?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13618?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13618/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13618/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '13619', 'label': '13619: Personer, etter arbeidsstyrkestatus, kjønn og alder. Bruddjusterte tall 2009K1-2026K2', 'description': '', 'sortCode': '0000000060', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '2009K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9729', 'label': 'Sammenlignbare tidsserier', 'sortCode': '0000100000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13619?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13619?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13619/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13619/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '05110', 'label': '05110: Personer, etter arbeidsstyrkestatus, kjønn og alder 1988K2-2026K2', 'description': '', 'sortCode': '0000100110', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '1988K2', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05110?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05110?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05110/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05110/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '14714', 'label': '14714: Innvandrere, etter arbeidsstyrkestatus, landbakgrunn, kjønn og alder 2021K1-2026K2', 'description': '', 'sortCode': '0000100120', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '2021K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'landbakgrunn', 'kjønn', 'alder', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14714?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14714?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14714/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14714/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '14715', 'label': '14715: Innvandrere, etter arbeidsstyrkestatus, landbakgrunn, kjønn og alder 2021-2025', 'description': '', 'sortCode': '0000100120', 'updated': '2026-03-23T07:00:00Z', 'firstPeriod': '2021', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'landbakgrunn', 'kjønn', 'alder', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14715?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14715?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14715/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14715/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '05111', 'label': '05111: Personer, etter arbeidsstyrkestatus, kjønn og alder 1972-2025', 'description': '', 'sortCode': '0000100120', 'updated': '2026-02-11T07:00:00Z', 'firstPeriod': '1972', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05111?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05111?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05111/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/05111/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '14077', 'label': '14077: Personer, etter arbeidsstyrkestatus, kjønn, alder og utdanningsstatus 2021K1-2026K2', 'description': '', 'sortCode': '0000100145', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '2021K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'utdanningsstatus', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14077?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14077?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14077/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14077/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '14090', 'label': '14090: Personer, etter arbeidsstyrkestatus, kjønn, alder og utdanningsstatus 2021-2025', 'description': '', 'sortCode': '0000100146', 'updated': '2026-06-23T06:00:00Z', 'firstPeriod': '2021', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'utdanningsstatus', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14090?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14090?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14090/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/14090/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '13784', 'label': '13784: Personer, etter arbeidsstyrkestatus, kjønn, alder og utdanningsnivå 2021K1-2026K2', 'description': '', 'sortCode': '0000100150', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '2021K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'utdanningsnivå', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13784?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13784?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13784/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13784/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '13785', 'label': '13785: Personer, etter arbeidsstyrkestatus, kjønn, alder og utdanningsnivå 2021-2025', 'description': '', 'sortCode': '0000100160', 'updated': '2026-02-11T07:00:00Z', 'firstPeriod': '2021', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['arbeidsstyrkestatus', 'kjønn', 'alder', 'utdanningsnivå', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13785?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13785?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13785/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13785/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '03777', 'label': '03777: Personer i arbeidsstyrken, etter kjønn og alder 1972K1-2026K2', 'description': '', 'sortCode': '0000100170', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '1972K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['alder', 'kjønn', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03777?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03777?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03777/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03777/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '03780', 'label': '03780: Personer i arbeidsstyrken, etter kjønn og alder 1972-2025', 'description': '', 'sortCode': '0000100180', 'updated': '2026-02-11T07:00:00Z', 'firstPeriod': '1972', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['alder', 'kjønn', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03780?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03780?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03780/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/03780/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '11433', 'label': '11433: Strømmer mellom arbeidsstyrkestatuser, etter kjønn. Sesongjusterte tall 2006K2-2026K2', 'description': '', 'sortCode': '0000100190', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '2006K2', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['endring i arbeidsstyrkestatus', 'kjønn', 'type justering', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9728', 'label': 'Arbeidsstyrken', 'sortCode': '0000100100'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/11433?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/11433?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/11433/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/11433/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '08518', 'label': '08518: Arbeidsledige, etter kjønn og alder 1972K1-2026K2', 'description': '', 'sortCode': '0000200100', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '1972K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['kjønn', 'alder', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08518?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08518?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08518/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08518/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '08517', 'label': '08517: Arbeidsledige, etter kjønn og alder 1972-2025', 'description': '', 'sortCode': '0000200110', 'updated': '2026-02-11T07:00:00Z', 'firstPeriod': '1972', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['kjønn', 'alder', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08517?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08517?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08517/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08517/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '04552', 'label': '04552: Arbeidsledige, etter kjønn og søkingens varighet (1 000 personer) 1996K1-2026K2', 'description': '', 'sortCode': '0000200140', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '1996K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['kjønn', 'søkingens varighet', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04552?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04552?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04552/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04552/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '04553', 'label': '04553: Arbeidsledige, etter kjønn og søkingens varighet (1 000 personer) 1996-2025', 'description': '', 'sortCode': '0000200150', 'updated': '2026-02-11T07:00:00Z', 'firstPeriod': '1996', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['kjønn', 'søkingens varighet', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Annual', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04553?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04553?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04553/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/04553/data?lang=no&amp;outputFormat=json-stat2'}]}, {'id': '13891', 'label': '13891: Arbeidsledige, etter kjønn, hovedsakelig virksomhet og alder 2021K1-2026K2', 'description': '', 'sortCode': '0000200154', 'updated': '2026-08-13T06:00:00Z', 'firstPeriod': '2021K1', 'lastPeriod': '2026K2', 'category': 'public', 'variableNames': ['kjønn', 'hovedsakelig virksomhet', 'alder', 'statistikkvariabel', 'kvartal'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'al', 'timeUnit': 'Quarterly', 'paths': [[{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al03', 'label': 'Arbeidsledighet', 'sortCode': '0000002'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000003'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'al', 'label': 'Arbeid og lønn', 'sortCode': '0000001'}, {'id': 'al06', 'label': 'Sysselsetting', 'sortCode': '0000005'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000006'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}], [{'id': 'in', 'label': 'Innvandring og innvandrere', 'sortCode': '0000042'}, {'id': 'in01', 'label': 'Arbeid og lønn', 'sortCode': '0000043'}, {'id': 'aku', 'label': 'Arbeidskraftundersøkelsen', 'sortCode': '0000044'}, {'id': 'SBMENU9727', 'label': 'Arbeidsledige og undersysselsatte', 'sortCode': '0000200000'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13891?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13891?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13891/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/13891/data?lang=no&amp;outputFormat=json-stat2'}]}], 'page': {'pageNumber': 1, 'pageSize': 20, 'totalElements': 3780, 'totalPages': 189, 'links': [{'rel': 'next', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&amp;pagesize=20&amp;pageNumber=2'}, {'rel': 'last', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&amp;pagesize=20&amp;pageNumber=189'}]}, 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&amp;pagesize=20&amp;pageNumber=1'}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys(['language', 'tables', 'page', 'links'])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s1">'links'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{'rel': 'self',
+  'hreflang': 'no',
+  'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&amp;pagesize=20&amp;pageNumber=1'}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/pxwebapi/v2/tables/08308"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'language': 'no', 'id': '08308', 'label': '08308: Produksjon av elektrisk kraft, etter krafttype (GWh) (F) 2006-2025', 'description': '', 'sortCode': '0000000340', 'updated': '2026-05-08T06:00:00Z', 'firstPeriod': '2006', 'lastPeriod': '2025', 'category': 'public', 'variableNames': ['region', 'statistikkvariabel', 'år'], 'source': 'Statistisk sentralbyrå', 'subjectCode': 'ei', 'timeUnit': 'Annual', 'paths': [[{'id': 'ei', 'label': 'Energi og industri', 'sortCode': '0000030'}, {'id': 'ei01', 'label': 'Energi', 'sortCode': '0000031'}, {'id': 'elektrisitet', 'label': 'Elektrisitet', 'sortCode': '0000032'}, {'id': 'SBMENU4249', 'label': 'Tilgang og bruk av elektrisitet', 'sortCode': '0000000300'}], [{'id': 'sv', 'label': 'Svalbard', 'sortCode': '0000093'}, {'id': 'sv04', 'label': 'Næringsliv og teknologi', 'sortCode': '0000098'}, {'id': 'elektrisitet', 'label': 'Elektrisitet', 'sortCode': '0000099'}, {'id': 'SBMENU4249', 'label': 'Tilgang og bruk av elektrisitet', 'sortCode': '0000000300'}]], 'links': [{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308/data?lang=no&amp;outputFormat=json-stat2'}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys(['language', 'id', 'label', 'description', 'sortCode', 'updated', 'firstPeriod', 'lastPeriod', 'category', 'variableNames', 'source', 'subjectCode', 'timeUnit', 'paths', 'links'])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"variableNames"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['region', 'statistikkvariabel', 'år']
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'links'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{'rel': 'self', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308?lang=no'}, {'rel': 'alternate', 'hreflang': 'en', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308?lang=en'}, {'rel': 'metadata', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308/metadata?lang=no'}, {'rel': 'data', 'hreflang': 'no', 'href': 'https://data.ssb.no/api/pxwebapi/v2/tables/08308/data?lang=no&amp;outputFormat=json-stat2'}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">"links"</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="p">[</span><span class="s2">"rel"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="p">[</span><span class="s2">"href"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self
+https://data.ssb.no/api/pxwebapi/v2/tables/08308?lang=no
+
+alternate
+https://data.ssb.no/api/pxwebapi/v2/tables/08308?lang=en
+
+metadata
+https://data.ssb.no/api/pxwebapi/v2/tables/08308/metadata?lang=no
+
+data
+https://data.ssb.no/api/pxwebapi/v2/tables/08308/data?lang=no&amp;outputFormat=json-stat2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/pxwebapi/v2/tables/08308/metadata?lang=no"</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'link'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">"dimension"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">"dimension"</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">"dimension"</span><span class="p">][</span><span class="s2">"ContentsCode"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">"dimension"</span><span class="p">][</span><span class="s2">"ContentsCode"</span><span class="p">][</span><span class="s2">"category"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">"dimension"</span><span class="p">][</span><span class="s2">"ContentsCode"</span><span class="p">][</span><span class="s2">"category"</span><span class="p">][</span><span class="s2">"label"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/pxwebapi/v2/tables/08308/data?lang=no&amp;outputFormat=json-stat2"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys(['version', 'class', 'label', 'source', 'updated', 'note', 'role', 'id', 'size', 'dimension', 'extension', 'value', 'status'])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./07_api"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

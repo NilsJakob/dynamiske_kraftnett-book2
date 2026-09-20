@@ -230,6 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
@@ -445,6 +449,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kall-pa-statistikken">Kall på statistikken</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utvikle-query">Utvikle query</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norsk-sol-og-vindkraft">Norsk sol- og vindkraft</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endrede-tilsig">Endrede tilsig</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fyllingsgrad-pa-1-2-3">Fyllingsgrad på 1,2,3</a></li>
@@ -560,12 +567,49 @@ DC-linkens hovedoppgave er derfor å fungere som en energibuffer som glatter ut 
 For å vise problemstillingens aktualitet gjør vi et API-kall til statistikkbanken til Statistisk SentralByrå (SSB).  <code class="docutils literal notranslate"><span class="pre">requests</span></code> henter dataene og <code class="docutils literal notranslate"><span class="pre">pyjstat</span></code> leser, tolker og deretter bygger en tabellstruktur. Vi skal be python sende en post forespørsel til SSB (requests.post(url, json=query).text) i en query som bruker JSON-kode, der SSB returnerer svaret i et JASON-stat-format.</p>
 <p>Inne i statistikkbanken finner vi en tabell som sier <em>08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh), etter år.</em></p>
 <p>Kilden er SSBs <a class="reference external" href="https://www.ssb.no/statbank/table/08307">tabell 08307</a>.</p>
-<p>Først importeres bibliotek:</p>
+</section>
+</section>
+<section id="utvikle-query">
+<h2>Utvikle query<a class="headerlink" href="#utvikle-query" title="Permalink to this heading">#</a></h2>
+<p>Vi bruker metadata (data om datene) tl å utvikle en query, eller en spørring mot databasen.</p>
+<p>Først importeres biblioteket request og det bruker vi til å sjekke om vi får kontakt med nettstedet eller databasen</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pyjstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyjstat</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/v0/no/table/08307"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<p>Metoden .json() gir oss innholdet i repsonsen. Dette er metadata som gir dat om dataen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'title': '08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh), etter statistikkvariabel og år', 'variables': [{'code': 'ContentsCode', 'text': 'statistikkvariabel', 'values': ['ProdTotal', 'VannKraft', 'VindKraft', 'Solkraft', 'VarmeKraft', 'Import', 'Eksport', 'Bruttoforbruk', 'ForbrukKraftStasj', 'Pumpekraftforbruk', 'TapStatistDiff', 'Nettoforbruk'], 'valueTexts': ['Produksjon i alt', 'Vannkraftproduksjon', 'Vindkraftproduksjon', 'Solkraftproduksjon', 'Varmekraftproduksjon', 'Import', 'Eksport', 'Bruttoforbruk', 'Forbruk i kraftstasjonene (-2019)', 'Pumpekraftforbruk', 'Tap og statistisk differanse', 'Nettoforbruk']}, {'code': 'Tid', 'text': 'år', 'values': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'valueTexts': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'time': True}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
 </pre></div>
 </div>
 </div>
@@ -716,7 +760,6 @@ Det du må finne ut er:</p>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
-</section>
 <section id="norsk-sol-og-vindkraft">
 <h3>Norsk sol- og vindkraft<a class="headerlink" href="#norsk-sol-og-vindkraft" title="Permalink to this heading">#</a></h3>
 <p>API-kallet kan genereres som en dataframe som gir historiske tall, som vist i <code class="xref std std-numref docutils literal notranslate"><span class="pre">tab-sol-vind</span></code>, over sol og vindkraftproduksjonen i Norge.</p>
@@ -764,7 +807,7 @@ Det du må finne ut er:</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-default" id="fig-sol-vind">
-<a class="reference internal image-reference" href="../_images/da52557a49799eec1ce5b36fd0d8162ce996e1cffaa63e32e2b7463a450f952f.png"><img alt="../_images/da52557a49799eec1ce5b36fd0d8162ce996e1cffaa63e32e2b7463a450f952f.png" src="../_images/da52557a49799eec1ce5b36fd0d8162ce996e1cffaa63e32e2b7463a450f952f.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/4c5b6394ce8958bc3a8e99bb1b156938a528d22c9f9096209f4a5c330c49f45a.png"><img alt="../_images/4c5b6394ce8958bc3a8e99bb1b156938a528d22c9f9096209f4a5c330c49f45a.png" src="../_images/4c5b6394ce8958bc3a8e99bb1b156938a528d22c9f9096209f4a5c330c49f45a.png" style="width: 90%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Produksjon av sol- og vindkraft i Norge.</span><a class="headerlink" href="#fig-sol-vind" title="Permalink to this image">#</a></p>
 <div class="legend">
@@ -774,7 +817,7 @@ Det du må finne ut er:</p>
 </figure>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/9653888ea428547a0e1c040b51b77a6a936956bb4293e80a6ce4dd05f57c0d6e.png" src="../_images/9653888ea428547a0e1c040b51b77a6a936956bb4293e80a6ce4dd05f57c0d6e.png" />
+<img alt="../_images/e418b814a92e583c9f194c75342cb411fe6ec8fe4e3b329bfa04efd3f381c35d.png" src="../_images/e418b814a92e583c9f194c75342cb411fe6ec8fe4e3b329bfa04efd3f381c35d.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -841,7 +884,7 @@ $<span class="math notranslate nohighlight">\(E_{M1} = V_{M1}\,(e_{K1}+e_{K2})\)
 <p>Ved å følge utviklingen fra uke til uke og sammenligne med historiske tidsseriedata fra de 20 siste årene kan man kontrollere tilsigsenergien og opprettholde forsyningssikkerhet.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/066a262689b94eb62c45f032dfb3f3ded13c32d663d52d3816b5970df6fc11eb.png" src="../_images/066a262689b94eb62c45f032dfb3f3ded13c32d663d52d3816b5970df6fc11eb.png" />
+<img alt="../_images/af977826d1d8ceee2451e16bccb552d9e843c8fb14493ac476dbe3349ad2bb4a.png" src="../_images/af977826d1d8ceee2451e16bccb552d9e843c8fb14493ac476dbe3349ad2bb4a.png" />
 </div>
 </div>
 <section id="import-og-eksport">
@@ -970,6 +1013,9 @@ dtype: float64
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kall-pa-statistikken">Kall på statistikken</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utvikle-query">Utvikle query</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norsk-sol-og-vindkraft">Norsk sol- og vindkraft</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endrede-tilsig">Endrede tilsig</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fyllingsgrad-pa-1-2-3">Fyllingsgrad på 1,2,3</a></li>
