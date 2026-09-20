@@ -52,10 +52,10 @@ parts:
       #- file: 02_tallgrunnlag/under_utvikling
       #- file: 06_tidsserie/tidsserie
 
-  #- caption: Application Programming Interface
-    #chapters:
+  - caption: Application Programming Interface
+    chapters:
       #- file: 02_tallgrunnlag/under_utvikling
-      #- file: 07_api/api
+      - file: 07_api/API_SSB_tabell
 
   #- caption: Stabilitet
     #chapters:
