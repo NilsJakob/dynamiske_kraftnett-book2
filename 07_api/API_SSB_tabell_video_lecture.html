@@ -65,11 +65,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '07_api/API_SSB_tabell';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07_api/API_SSB_tabell_video_lecture';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Om Power Factory" href="../11_powerfactory/about_pf.html" />
-    <link rel="prev" title="Øving 6: Modellering av soldata" href="../assignments/assignment6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,6 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -229,8 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Application Programming Interface</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="API_SSB_tabell.html">Application Programming Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
 <ul class="nav bd-sidenav">
@@ -311,7 +311,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F07_api/API_SSB_tabell.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F07_api/API_SSB_tabell_video_lecture.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,7 +341,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/07_api/API_SSB_tabell.ipynb" target="_blank"
+      <li><a href="../_sources/07_api/API_SSB_tabell_video_lecture.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -436,14 +436,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fordelen-med-api">Fordelen med API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-opprette-et-dataframe">Video: Opprette et DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-api">REST API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-object-notation">Javascript Object Notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-endepunkt">API endepunkt</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-api">Open API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lager-sporring-query">Lager spørring (query)</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-api">REST API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-object-notation">Javascript Object Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-endepunkt">API endepunkt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-api">Open API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lager-sporring-query">Lager spørring (query)</a></li>
 </ul>
             </nav>
         </div>
@@ -461,22 +458,14 @@ document.write(`
 <p>Et API muliggjør kommunikasjon mellom servere.</p>
 <section id="fordelen-med-api">
 <h2>Fordelen med API<a class="headerlink" href="#fordelen-med-api" title="Permalink to this heading">#</a></h2>
-<p>Med API kan du lage spørringer som henter oppdaterte tall. API gjør det lettere å hente tall for videre analyse.</p>
+<p>Med API kan du lage spørringer som henter oppdaterte tall.</p>
+<p>API-et gir dynamiske data.</p>
+<p>API gjør det lettere å hente tall for videre analyse.</p>
 <p>Det er mer fleksibelt og mer avansert enn å laste ned data fra et brukergrensensittet bestemt av den som har laget nettsiden.</p>
 <p>Det er lettere å tilpasse akkurat de data du trenger, og så lenge det er kontakt mellom deg (klient) og nettstedet (server) har du tilgang til dataene uten å måtte lagre lokalt.</p>
 </section>
-<section id="video-opprette-et-dataframe">
-<h2>Video: Opprette et DataFrame<a class="headerlink" href="#video-opprette-et-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Denne videoen viser hvordan man finner fram til et API-query</p>
-<iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/watch?v=bq9nSWfIYCE&t=13s"
-``
-    frameborder="0"
-    allowfullscreen>
-</iframe><section id="rest-api">
-<h3>REST API<a class="headerlink" href="#rest-api" title="Permalink to this heading">#</a></h3>
+<section id="rest-api">
+<h2>REST API<a class="headerlink" href="#rest-api" title="Permalink to this heading">#</a></h2>
 <p>En Representational State Transfer (<a class="reference external" href="https://en.wikipedia.org/wiki/REST">REST</a>) er en programvare-arkitektur som definerer kommunikasjon i et nettverk mellom <em>client</em> og <em>server</em> i et nettverk. Kommunikasjonen skjer gjennom et regelverk; hypertekstoverføringsprotokoll, Hyper Text Transfer Protocol (HTTP).</p>
 <p>Forespørsler skjer gjennom <code class="docutils literal notranslate"><span class="pre">request</span></code> biblioteket som lar deg benytte en hypertekstoverføringsprotokoll i python miljøet.</p>
 <p>Pythons <a class="reference external" href="https://pypi.org/project/requests/">requests</a> er et brukervennlig bibliotek som
@@ -486,14 +475,9 @@ tilgjengelig for intallasjon på Pypi:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://usn.no"</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s1">'https://usn.no'</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
 </pre></div>
 </div>
 </div>
@@ -501,21 +485,16 @@ tilgjengelig for intallasjon på Pypi:</p>
 <p>Satus kode 200 vil si at siden eksisterer og vi har kontakt. Alt ligger til rette for å dele data mellom deg (klienten) og nettstedet (server).</p>
 </section>
 <section id="javascript-object-notation">
-<h3>Javascript Object Notation<a class="headerlink" href="#javascript-object-notation" title="Permalink to this heading">#</a></h3>
+<h2>Javascript Object Notation<a class="headerlink" href="#javascript-object-notation" title="Permalink to this heading">#</a></h2>
 <p>Standard formatet for overføring av tekst i nettverk er Javascript Object Notation (JSON). Det er lett å forstå både for mennesker og maskiner og er filformatet som brukes i databaser og API. JSON lagrer data i nøkkel-verdi par, ikke ulikt python dictionary, som en samling dataelementer av forskjellig datatype, der datene indekseres med nøkkel i form av en tekststreng. Se ressursiden til <em>Python for realfag</em> <a class="reference external" href="https://techteach.no/python/">TechTeach</a>, oppgave <a class="reference external" href="https://techteach.no/python/files/pannekaker.py">3.11</a>.</p>
 <p>JSON nøkkel er alltid et string objekt, innelukket i en krøllparantes og alltid med dobbelt anførselstegn <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>. Verdiene som korresponderer til nøkkelen kan være hvilken som helst <a class="reference external" href="https://www.geeksforgeeks.org/python/python-data-types/">data type</a>, nøstet JSON, eller andre sekvens data.</p>
 <p>For å lese JSON i python bruker vi python-bibliotekt <a class="reference external" href="https://www.geeksforgeeks.org/python/python-json/"><code class="docutils literal notranslate"><span class="pre">json</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s1">'{"language": "Python", "version": 3.11}'</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">'{"language":"Python", "version": 3.11}'</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'language': 'Python', 'version': 3.11}
 </pre></div>
 </div>
 </div>
@@ -535,18 +514,10 @@ tilgjengelig for intallasjon på Pypi:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is JSON &lt;class 'str'&gt; {"id":"09", "name": "Nitin", "department":"Finance"}
-Now convert from JSON to Python
-Converted to Python &lt;class 'dict'&gt;
-{'id': '09', 'name': 'Nitin', 'department': 'Finance'}
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="api-endepunkt">
-<h3>API endepunkt<a class="headerlink" href="#api-endepunkt" title="Permalink to this heading">#</a></h3>
+<h2>API endepunkt<a class="headerlink" href="#api-endepunkt" title="Permalink to this heading">#</a></h2>
 <p>Også når vi aksesserer apiet får vi gyldig status, fordi vi klarer å oppnå kontakt med nettstedet. Men vi får feilmelidng fordi nettstedet ikke inneholder <code class="docutils literal notranslate"><span class="pre">.json()</span></code>. Det er derimor en html side. Selv om vi skriver inn</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">"https://data.ssb.no/api"</span>
 </pre></div>
@@ -558,7 +529,6 @@ Converted to Python &lt;class 'dict'&gt;
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api"</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
-<span class="c1">#print(response.json())</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
 
@@ -573,19 +543,9 @@ Converted to Python &lt;class 'dict'&gt;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
-Feilemelding: requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
-text/html;charset=utf-8
-</pre></div>
-</div>
-</div>
 </div>
 <p>For å få kontakt med den informasjonen API-et inneholder må vi nå endepunktsURL (endpoint). Nettstedet <a class="reference external" href="https://data.norge.no/nb/about">Data.norge.no</a> har oversikt over data fra norsk offentlig sektor, med en egen datakatalog over API-er</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/72f5b6d1623d1ad1f8106e802e55cd5e1c1973e0931e2cde3c035e794e80e4e1.png" src="../_images/72f5b6d1623d1ad1f8106e802e55cd5e1c1973e0931e2cde3c035e794e80e4e1.png" />
-</div>
 </div>
 <p>Alle API-ene i katalogen følger standard for beskrivelse av datasett, datatjenester og datakataloger (<a class="reference external" href="https://data.norge.no/specification/dcat-ap-no">DCAT-AP-NO</a>) der endepunktsURL er standardinformasjon.</p>
 <div class="highlight-note notranslate"><div class="highlight"><pre><span></span>En datatjeneste
@@ -594,19 +554,13 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/fb70b778d184a4670dbd054665409cbe629d0490839788424450a35b32cfbf7a.png" src="../_images/fb70b778d184a4670dbd054665409cbe629d0490839788424450a35b32cfbf7a.png" />
-</div>
 </div>
 <p>Et søk etter <a class="reference external" href="https://data.norge.no/nb/data-services/4c525f0a-f10d-3bcc-a67e-ee3fbbfd6ccc/api-lag-egne-datasett-fra-ssbs-statistikkbank-pxwebapi?tab=overview">statistikkbanken</a> her gir endepunktsURL til datatabeller</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/5128303064c50bb29e5e7b2693034f35bcdd90fdf9ac2ea048c69cf8065d9c13.png" src="../_images/5128303064c50bb29e5e7b2693034f35bcdd90fdf9ac2ea048c69cf8065d9c13.png" />
-</div>
 </div>
 </section>
 <section id="open-api">
-<h3>Open API<a class="headerlink" href="#open-api" title="Permalink to this heading">#</a></h3>
+<h2>Open API<a class="headerlink" href="#open-api" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://swagger.io/docs/specification/v3_0/about/">OpenAPI</a> er en standardisert beskrivelse av et API, som kommer med en egen <a class="reference external" href="https://swagger.io/specification/v3.2/#openapi-description-structure">dokumentasjon</a> Swagger UI er et verktøy som viser denne beskrivelsen som en interaktiv nettside. På <a class="reference external" href="https://data.ssb.no/api/pxwebapi/v2/index.html">SSB’s swagger</a> kan man teste ut forskjellige <code class="docutils literal notranslate"><span class="pre">.get</span></code>forespørsler. En blank forespørsel gir endpunktsURL for alle tabeller.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">ssb</span><span class="o">.</span><span class="n">no</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">pxwebapi</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">tables</span>
 </pre></div>
@@ -615,7 +569,7 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 
-<span class="n">Image</span><span class="p">(</span><span class="s2">"../images/swagger.png"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">"../images/swagger.png"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1400</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -626,148 +580,91 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/v0/no"</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
-[{'dbid': 'table', 'text': 'Statistikkbanken etter emne'}]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Med pandas kan man få ut tabellen som en lesbar ‘dataframe’, som i dette tilfellet er tabellen over tabeller:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-
-<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/v0/no/table"</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id type                            text
-0  al    l                  Arbeid og lønn
-1  bf    l            Bank og finansmarked
-2  vf    l  Bedrifter, foretak og regnskap
-3  be    l                      Befolkning
-4  bb    l          Bygg, bolig og eiendom
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="n">api_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/v0/no/table/08307"</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'title': '08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh), etter statistikkvariabel og år', 'variables': [{'code': 'ContentsCode', 'text': 'statistikkvariabel', 'values': ['ProdTotal', 'VannKraft', 'VindKraft', 'Solkraft', 'VarmeKraft', 'Import', 'Eksport', 'Bruttoforbruk', 'ForbrukKraftStasj', 'Pumpekraftforbruk', 'TapStatistDiff', 'Nettoforbruk'], 'valueTexts': ['Produksjon i alt', 'Vannkraftproduksjon', 'Vindkraftproduksjon', 'Solkraftproduksjon', 'Varmekraftproduksjon', 'Import', 'Eksport', 'Bruttoforbruk', 'Forbruk i kraftstasjonene (-2019)', 'Pumpekraftforbruk', 'Tap og statistisk differanse', 'Nettoforbruk']}, {'code': 'Tid', 'text': 'år', 'values': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'valueTexts': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'time': True}]}
-</pre></div>
-</div>
-</div>
-</div>
-<p>Metoden .json() gir oss innholdet i repsonsen. Dette er metadata som gir data om dataen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'title': '08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh), etter statistikkvariabel og år', 'variables': [{'code': 'ContentsCode', 'text': 'statistikkvariabel', 'values': ['ProdTotal', 'VannKraft', 'VindKraft', 'Solkraft', 'VarmeKraft', 'Import', 'Eksport', 'Bruttoforbruk', 'ForbrukKraftStasj', 'Pumpekraftforbruk', 'TapStatistDiff', 'Nettoforbruk'], 'valueTexts': ['Produksjon i alt', 'Vannkraftproduksjon', 'Vindkraftproduksjon', 'Solkraftproduksjon', 'Varmekraftproduksjon', 'Import', 'Eksport', 'Bruttoforbruk', 'Forbruk i kraftstasjonene (-2019)', 'Pumpekraftforbruk', 'Tap og statistisk differanse', 'Nettoforbruk']}, {'code': 'Tid', 'text': 'år', 'values': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'valueTexts': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'time': True}]}
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="lager-sporring-query">
-<h3>Lager spørring (query)<a class="headerlink" href="#lager-sporring-query" title="Permalink to this heading">#</a></h3>
-<p>Vi definerer en spørring <code class="docutils literal notranslate"><span class="pre">query</span></code> i form av en liste ( [ ] ) og bestemmer hvordan vi vil ha svaret <code class="docutils literal notranslate"><span class="pre">response</span></code> i form av en dictionary ( { } ).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"query"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"ContentsCode"</span><span class="p">,</span>
-            <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
-                <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"VindKraft"</span><span class="p">,</span> <span class="s2">"Solkraft"</span><span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"Tid"</span><span class="p">,</span>
-            <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
-                <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"*"</span><span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">"response"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"format"</span><span class="p">:</span> <span class="s2">"json-stat2"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/v0/no/table/08307"</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s1">'https://data.ssb.no/api/v0/no/table/08307'</span>
 
 <span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"query"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"ContentsCode"</span><span class="p">,</span>
-            <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
-                <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"VindKraft"</span><span class="p">,</span> <span class="s2">"Solkraft"</span><span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"Tid"</span><span class="p">,</span>
-            <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
-                <span class="c1">#'filter': 'all',</span>
-                <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s1">'2021'</span><span class="p">,</span><span class="s1">'2022'</span><span class="p">,</span><span class="s1">'2023'</span><span class="p">,</span><span class="s2">"2024"</span><span class="p">,</span> <span class="s2">"2025"</span><span class="p">]</span>
-                <span class="c1">#'values':['*']</span>
-            <span class="p">}</span>
+    <span class="p">{</span>
+        <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"ContentsCode"</span><span class="p">,</span>
+        <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
+            <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"VindKraft"</span><span class="p">,</span> <span class="s2">"Solkraft"</span><span class="p">]</span>
         <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"Tid"</span><span class="p">,</span>
+        <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"filter"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
+            <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s1">'2021'</span><span class="p">,</span> <span class="s1">'2022'</span><span class="p">,</span> <span class="s1">'2023'</span><span class="p">,</span> <span class="s1">'2024'</span><span class="p">,</span> <span class="s1">'2025'</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s2">"response"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"response"</span><span class="p">:{</span>
         <span class="s2">"format"</span><span class="p">:</span> <span class="s2">"json-stat2"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+
+<span class="c1">#print(response.status_code)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
-{'version': '2.0', 'class': 'dataset', 'label': '08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh), etter statistikkvariabel og år', 'source': 'Statistisk sentralbyrå', 'updated': '2026-05-08T06:00:00Z', 'role': {'time': ['Tid'], 'metric': ['ContentsCode']}, 'id': ['ContentsCode', 'Tid'], 'size': [2, 5], 'dimension': {'ContentsCode': {'label': 'statistikkvariabel', 'category': {'index': {'VindKraft': 0, 'Solkraft': 1}, 'label': {'VindKraft': 'Vindkraftproduksjon', 'Solkraft': 'Solkraftproduksjon'}, 'unit': {'VindKraft': {'base': 'GWh', 'decimals': 0}, 'Solkraft': {'base': 'GWh', 'decimals': 0}}}, 'extension': {'elimination': False, 'refperiod': {'VindKraft': 'Hele kalenderåret', 'Solkraft': 'Hele kalenderåret'}, 'show': 'value', 'measuringType': {'VindKraft': 'Flow', 'Solkraft': 'Flow'}, 'priceType': {'VindKraft': 'NotApplicable', 'Solkraft': 'NotApplicable'}, 'adjustment': {'VindKraft': 'None', 'Solkraft': 'None'}}}, 'Tid': {'label': 'år', 'category': {'index': {'2021': 0, '2022': 1, '2023': 2, '2024': 3, '2025': 4}, 'label': {'2021': '2021', '2022': '2022', '2023': '2023', '2024': '2024', '2025': '2025'}}, 'extension': {'elimination': False, 'show': 'code'}}}, 'extension': {'px': {'infofile': 'None', 'tableid': '08307', 'decimals': 0, 'official-statistics': True, 'aggregallowed': True, 'copyright': False, 'language': 'no', 'contents': '08307: Produksjon, import, eksport og forbruk av elektrisk kraft (GWh),', 'descriptiondefault': False, 'heading': ['ContentsCode', 'Tid'], 'stub': [], 'matrix': 'VindKraft', 'subject-code': 'ei', 'subject-area': 'Energi og industri'}, 'discontinued': None, 'contact': [{'name': 'Magne Holstad', 'organization': 'Statistisk sentralbyrå', 'phone': '40 90 23 42', 'mail': 'gnh@ssb.no', 'raw': 'Magne Holstad, Statistisk sentralbyrå# +47 40 90 23 42#gnh@ssb.no'}, {'name': 'Thomas Aanensen', 'organization': 'Statistisk sentralbyrå', 'phone': '40 90 23 48', 'mail': 'tre@ssb.no', 'raw': 'Thomas Aanensen, Statistisk sentralbyrå# +47 40 90 23 48#tre@ssb.no'}]}, 'value': [11768, 14810, 13965, 14545, 13899, 33, 63, 165, 251, 348]}
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\models.py:1116,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1115</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1116</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1117</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">"""Return the Python representation of ``s`` (a ``str`` instance</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> """</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">"Expecting value"</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 2 column 1 (char 1)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">29</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="c1">#print(response.status_code)</span>
+<span class="ne">---&gt; </span><span class="mi">29</span> <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\models.py:1120,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1116</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1117</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+<span class="ne">-&gt; </span><span class="mi">1120</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 2 column 1 (char 1)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Biblioteket pyjstat lager om til <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>, som vi kan burke DateTimeIndex på.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyjstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyjstat</span>
@@ -781,107 +678,114 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    statistikkvariabel    år  value
-0  Vindkraftproduksjon  2021  11768
-1  Vindkraftproduksjon  2022  14810
-2  Vindkraftproduksjon  2023  13965
-3  Vindkraftproduksjon  2024  14545
-4  Vindkraftproduksjon  2025  13899
-5   Solkraftproduksjon  2021     33
-6   Solkraftproduksjon  2022     63
-7   Solkraftproduksjon  2023    165
-8   Solkraftproduksjon  2024    251
-9   Solkraftproduksjon  2025    348
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">pyjstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyjstat</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dataset</span> <span class="o">=</span> <span class="n">pyjstat</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'dataframe'</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pyjstat\pyjstat.py:866,</span> in <span class="ni">Dataset.write</span><span class="nt">(self, output, naming, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>     <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="bp">cls</span><span class="o">=</span><span class="n">NumpyEncoder</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="k">elif</span> <span class="n">output</span> <span class="o">==</span> <span class="s1">'dataframe'</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">866</span>     <span class="k">return</span> <span class="n">from_json_stat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">naming</span><span class="o">=</span><span class="n">naming</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Allowed arguments are 'jsonstat' or 'dataframe'"</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pyjstat\pyjstat.py:441,</span> in <span class="ni">from_json_stat</span><span class="nt">(datasets, naming, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">439</span>         <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">440</span>             <span class="n">js_dict</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">441</span>             <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">generate_df</span><span class="p">(</span><span class="n">js_dict</span><span class="p">,</span> <span class="n">naming</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span> <span class="k">return</span> <span class="n">results</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pyjstat\pyjstat.py:392,</span> in <span class="ni">generate_df</span><span class="nt">(js_dict, naming, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">376</span><span class="w"> </span><span class="sd">"""Decode JSON-stat dict into pandas.DataFrame object.</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="sd"> Helper method that should be called inside from_json_stat().</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">390</span><span class="sd"> """</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">392</span> <span class="n">dimensions</span><span class="p">,</span> <span class="n">dim_names</span> <span class="o">=</span> <span class="n">get_dimensions</span><span class="p">(</span><span class="n">js_dict</span><span class="p">,</span> <span class="n">naming</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span> <span class="n">values</span> <span class="o">=</span> <span class="n">get_values</span><span class="p">(</span><span class="n">js_dict</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span> <span class="n">output</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">category</span> <span class="o">+</span> <span class="p">[</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span>                        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span>
+<span class="g g-Whitespace">    </span><span class="mi">396</span>                        <span class="nb">enumerate</span><span class="p">(</span><span class="n">get_df_row</span><span class="p">(</span><span class="n">dimensions</span><span class="p">,</span> <span class="n">naming</span><span class="p">))])</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pyjstat\pyjstat.py:185,</span> in <span class="ni">get_dimensions</span><span class="nt">(js_dict, naming)</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span> <span class="n">dimensions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="n">dim_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">185</span> <span class="k">if</span> <span class="n">check_version_2</span><span class="p">(</span><span class="n">js_dict</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="n">dimension_dict</span> <span class="o">=</span> <span class="n">js_dict</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pyjstat\pyjstat.py:121,</span> in <span class="ni">check_version_2</span><span class="nt">(dataset)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">def</span><span class="w"> </span><span class="nf">check_version_2</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="w">     </span><span class="sd">"""Check for json-stat version.</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span><span class="sd">     Check if json-stat version attribute exists and is equal or greater</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span><span class="sd">     """</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'version'</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mf">2.0</span> \
+<span class="ne">--&gt; </span><span class="mi">121</span>             <span class="k">if</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'version'</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>         <span class="k">if</span> <span class="s1">'id'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>             <span class="c1"># Some datasets claim to be 2.0, but don't have version 2 structure.</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>             <span class="k">return</span> <span class="kc">False</span>
+
+<span class="ne">AttributeError</span>: 'str' object has no attribute 'get'
+</pre></div>
+</div>
+</div>
+</div>
+<p>Med pandas kan man få ut tabellen som en lesbar ‘dataframe’, som i dette tilfellet er tabellen over tabeller:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s1">'https://data.ssb.no/api/v0/no/table'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="s2">"år"</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="s2">"statistikkvariabel"</span><span class="p">,</span>
-    <span class="n">values</span><span class="o">=</span><span class="s2">"value"</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>statistikkvariabel  Solkraftproduksjon  Vindkraftproduksjon
-år                                                         
-2021                                33                11768
-2022                                63                14810
-2023                               165                13965
-2024                               251                14545
-2025                               348                13899
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s1">'https://data.ssb.no/api/v0/no/table/08307'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Metoden .json() gir oss innholdet i repsonsen. Dette er metadata som gir data om dataen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">reponse</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lager-sporring-query">
+<h2>Lager spørring (query)<a class="headerlink" href="#lager-sporring-query" title="Permalink to this heading">#</a></h2>
+<p>Vi definerer en spørring <code class="docutils literal notranslate"><span class="pre">query</span></code> i form av en liste ( [ ] ) og bestemmer hvordan vi vil ha svaret <code class="docutils literal notranslate"><span class="pre">response</span></code> i form av en dictionary ( { } ).</p>
+<p>Biblioteket pyjstat lager om til <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>, som vi kan burke DateTimeIndex på.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>statistikkvariabel</th>
-      <th>Solkraftproduksjon</th>
-      <th>Vindkraftproduksjon</th>
-    </tr>
-    <tr>
-      <th>år</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2021</th>
-      <td>33</td>
-      <td>11768</td>
-    </tr>
-    <tr>
-      <th>2022</th>
-      <td>63</td>
-      <td>14810</td>
-    </tr>
-    <tr>
-      <th>2023</th>
-      <td>165</td>
-      <td>13965</td>
-    </tr>
-    <tr>
-      <th>2024</th>
-      <td>251</td>
-      <td>14545</td>
-    </tr>
-    <tr>
-      <th>2025</th>
-      <td>348</td>
-      <td>13899</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -890,22 +794,11 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='år'&gt;
-</pre></div>
-</div>
-<img alt="../_images/e74562fce17f765b859d26b373afad7504467c012a535150842d5576f6bc4301.png" src="../_images/e74562fce17f765b859d26b373afad7504467c012a535150842d5576f6bc4301.png" />
-</div>
 </div>
 <p>I metadataen ser vi verider</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
 </pre></div>
 </div>
 </div>
@@ -916,11 +809,6 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['title', 'variables']
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -928,20 +816,10 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'variables'</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -953,23 +831,11 @@ SKAL alltid beskrives med opplysninger om utgiveren av datatjenesten og kontaktp
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'code': 'ContentsCode', 'text': 'statistikkvariabel', 'values': ['ProdTotal', 'VannKraft', 'VindKraft', 'Solkraft', 'VarmeKraft', 'Import', 'Eksport', 'Bruttoforbruk', 'ForbrukKraftStasj', 'Pumpekraftforbruk', 'TapStatistDiff', 'Nettoforbruk'], 'valueTexts': ['Produksjon i alt', 'Vannkraftproduksjon', 'Vindkraftproduksjon', 'Solkraftproduksjon', 'Varmekraftproduksjon', 'Import', 'Eksport', 'Bruttoforbruk', 'Forbruk i kraftstasjonene (-2019)', 'Pumpekraftforbruk', 'Tap og statistisk differanse', 'Nettoforbruk']}
-{'code': 'Tid', 'text': 'år', 'values': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'valueTexts': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'], 'time': True}
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"variables"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"variables"</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys(['code', 'text', 'values', 'valueTexts'])
-dict_keys(['code', 'text', 'values', 'valueTexts', 'time'])
 </pre></div>
 </div>
 </div>
@@ -980,17 +846,6 @@ dict_keys(['code', 'text', 'values', 'valueTexts', 'time'])
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Kode: </span><span class="si">{</span><span class="n">var</span><span class="p">[</span><span class="s1">'code'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tekst: </span><span class="si">{</span><span class="n">var</span><span class="p">[</span><span class="s1">'text'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Antall verdier: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="s1">'values'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kode: ContentsCode
-Tekst: statistikkvariabel
-Antall verdier: 12
-
-Kode: Tid
-Tekst: år
-Antall verdier: 68
 </pre></div>
 </div>
 </div>
@@ -1007,13 +862,7 @@ Antall verdier: 68
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'ContentsCode': ['ProdTotal', 'VannKraft', 'VindKraft', 'Solkraft', 'VarmeKraft', 'Import', 'Eksport', 'Bruttoforbruk', 'ForbrukKraftStasj', 'Pumpekraftforbruk', 'TapStatistDiff', 'Nettoforbruk'], 'Tid': ['1950', '1955', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']}
-</pre></div>
 </div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -1047,24 +896,6 @@ Antall verdier: 68
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../assignments/assignment6.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Øving 6: Modellering av soldata</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../11_powerfactory/about_pf.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Om Power Factory</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1082,14 +913,11 @@ Antall verdier: 68
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fordelen-med-api">Fordelen med API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-opprette-et-dataframe">Video: Opprette et DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-api">REST API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-object-notation">Javascript Object Notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-endepunkt">API endepunkt</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-api">Open API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lager-sporring-query">Lager spørring (query)</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-api">REST API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-object-notation">Javascript Object Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-endepunkt">API endepunkt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-api">Open API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lager-sporring-query">Lager spørring (query)</a></li>
 </ul>
   </nav></div>
 

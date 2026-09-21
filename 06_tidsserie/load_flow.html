@@ -453,43 +453,386 @@ document.write(`
 <div class="cell_output docutils container">
 <img alt="../_images/d4b306f36a3ffc505d6dc5301182da7dc1d2a671c8267c02161c7c534a7b9e66.svg" src="../_images/d4b306f36a3ffc505d6dc5301182da7dc1d2a671c8267c02161c7c534a7b9e66.svg" /></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.29</span> <span class="o">*</span> <span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.499999999999998
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandapower</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pp</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Først må vi se hvilke verdier vi har her:</p>
 <ul class="simple">
+<li><p>Systembase: S_base er 50 MVA</p></li>
 <li><p>Et ekstern nett på 132 kV</p></li>
 <li><p>tilhørende <span class="math notranslate nohighlight">\(X_s\)</span> = j14</p></li>
 <li><p>50 Mva trafo på 0.1</p></li>
 <li><p>25 MVA trafo på 0.06</p></li>
+<li><p>Linje 0.8 + j1</p></li>
+<li><p>L1 30 + j14.5 MVA</p></li>
+<li><p>L2 20 + j6.5 MVA</p></li>
 <li><p>P,Q, bus på 20 + j6.5 MVA</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandapower</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create empty net</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_empty_network</span><span class="p">(</span><span class="n">sn_mva</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>bus0: generatorens interne spenning E</p></li>
+<li><p>bus1: terminalspenning V</p></li>
+<li><p>Ext_grid = hold intern spenning til 1 pu</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z_base</span> <span class="o">=</span> <span class="mi">132</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">50</span>
+<span class="n">Z_base</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>348.48
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create empty net</span>
-<span class="n">net</span> <span class="o">=</span> <span class="n">create_empty_network</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_pu_gen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="mi">14</span><span class="o">/</span><span class="n">Z_base</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z_pu_gen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0402
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_pu_line</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.8</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">33</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">z_pu_line</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.03673094582185491+0.04591368227731864j)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bus0</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">bus1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">132</span><span class="p">)</span>
+
+<span class="n">Grid</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_ext_grid</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="n">bus0</span><span class="p">,</span> <span class="n">vm_pu</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Grid Connection"</span><span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">bus0</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="n">z_pu_gen</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(0)
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://pandapower.readthedocs.io/en/latest/std_types/manage.html">https://pandapower.readthedocs.io/en/latest/std_types/manage.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create buses</span>
-<span class="n">bus1</span> <span class="o">=</span> <span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">132.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 1"</span><span class="p">)</span>
-<span class="n">bus2</span> <span class="o">=</span> <span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 2"</span><span class="p">)</span>
-<span class="n">bus3</span> <span class="o">=</span> <span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 3"</span><span class="p">)</span>
+<span class="n">bus1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">132.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 1"</span><span class="p">)</span>
+<span class="n">bus2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus2"</span><span class="p">)</span>
+<span class="n">bus3</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus3"</span><span class="p">)</span>
+<span class="n">bus4</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">6.6</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Bus4'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pp.available_std_types(net, element="trafo")</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">std_types</span><span class="p">[</span><span class="s2">"trafo"</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys(['160 MVA 380/110 kV', '100 MVA 220/110 kV', '63 MVA 110/20 kV', '40 MVA 110/20 kV', '25 MVA 110/20 kV', '63 MVA 110/10 kV', '40 MVA 110/10 kV', '25 MVA 110/10 kV', '0.25 MVA 20/0.4 kV', '0.4 MVA 20/0.4 kV', '0.63 MVA 20/0.4 kV', '0.25 MVA 10/0.4 kV', '0.4 MVA 10/0.4 kV', '0.63 MVA 10/0.4 kV'])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_transformer_from_parameters</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">hv_bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span>
+    <span class="n">lv_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">vn_hv_kv</span><span class="o">=</span><span class="mi">132</span><span class="p">,</span>
+    <span class="n">vn_lv_kv</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span>
+    <span class="n">vk_percent</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">vkr_percent</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">pfe_kw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">i0_percent</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">'trafo1'</span>
+<span class="p">)</span>
+
+<span class="n">T2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_transformer_from_parameters</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">hv_bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span>
+    <span class="n">lv_bus</span><span class="o">=</span><span class="n">bus4</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">vn_hv_kv</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span>
+    <span class="n">vn_lv_kv</span><span class="o">=</span><span class="mf">6.6</span><span class="p">,</span>
+    <span class="n">vk_percent</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+     <span class="n">vkr_percent</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">pfe_kw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">i0_percent</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">'trafo2'</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://pandapower.readthedocs.io/en/latest/elements/trafo.html">https://pandapower.readthedocs.io/en/latest/elements/trafo.html</a></p>
+<p>Oversikt over standardtyper:</p>
+<p><a class="reference external" href="https://pandapower.readthedocs.io/en/latest/std_types.html">https://pandapower.readthedocs.io/en/latest/std_types.html</a></p>
+<p>Håndtering av standardtyper:</p>
+<p><a class="reference external" href="https://pandapower.readthedocs.io/en/latest/std_types/manage.html">https://pandapower.readthedocs.io/en/latest/std_types/manage.html</a></p>
+<p><a class="reference external" href="https://pandapower.readthedocs.io/en/latest/elements/line.html">https://pandapower.readthedocs.io/en/latest/elements/line.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pp.available_std_types(net, element="line")</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create branch elements</span>
+<span class="n">Line</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.037</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.166</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
 
 <span class="c1">#create bus elements</span>
-<span class="n">create_ext_grid</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span> <span class="n">vm_pu</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Grid Connection"</span><span class="p">)</span>
-<span class="n">create_load</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span> <span class="n">p_mw</span><span class="o">=</span><span class="mf">0.100</span><span class="p">,</span> <span class="n">q_mvar</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Load"</span><span class="p">)</span>
+<span class="n">Load1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span> <span class="n">p_mw</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">q_mvar</span><span class="o">=</span><span class="mf">14.5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Load1"</span><span class="p">)</span>
+<span class="n">Load2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="n">bus4</span><span class="p">,</span> <span class="n">p_mw</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">q_mvar</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Load2"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s2">"bfsw"</span><span class="p">,</span>
+    <span class="n">max_iteration</span><span class="o">=</span><span class="mi">40</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c1">#create branch elements</span>
-<span class="n">trafo</span> <span class="o">=</span> <span class="n">create_transformer</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">hv_bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span> <span class="n">lv_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span> <span class="n">std_type</span><span class="o">=</span><span class="s2">"0.5 MVA 132/33 kV"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Trafo"</span><span class="p">)</span>
-<span class="n">line</span> <span class="o">=</span> <span class="n">create_line</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">from_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span> <span class="n">to_bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span> <span class="n">length_km</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">std_type</span><span class="o">=</span><span class="s2">"NAYY 4x50 SE"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Line"</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vm_pu</th>
+      <th>va_degree</th>
+      <th>p_mw</th>
+      <th>q_mvar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">converged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandapower</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pp</span>
+
+<span class="c1"># create network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_empty_network</span><span class="p">(</span><span class="n">sn_mva</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># buses</span>
+<span class="n">bus1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 1"</span><span class="p">)</span>
+<span class="n">bus2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 2"</span><span class="p">)</span>
+<span class="n">bus3</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 3"</span><span class="p">)</span>
+
+<span class="c1"># slack bus (V1 = 1∠0)</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_ext_grid</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span>
+    <span class="n">vm_pu</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">va_degree</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="c1"># generator reactance j0.14 pu</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.14</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
+
+<span class="c1"># line impedance 0.037 + j0.166 pu</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.037</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.166</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
+
+<span class="c1"># load at bus 2</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mf">0.60</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mf">0.29</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"L1"</span>
+<span class="p">)</span>
+
+<span class="c1"># load at bus 3</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mf">0.38</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mf">0.125</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"L2"</span>
+<span class="p">)</span>
+
+<span class="c1"># load flow</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s2">"bfsw"</span><span class="p">,</span>
+    <span class="n">max_iteration</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+
+<span class="c1"># results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span><span class="p">[[</span><span class="s2">"vm_pu"</span><span class="p">,</span> <span class="s2">"va_degree"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      vm_pu  va_degree
+0  1.000000   0.000000
+1  0.920275  -8.641634
+2  0.878228 -12.789255
 </pre></div>
 </div>
 </div>
