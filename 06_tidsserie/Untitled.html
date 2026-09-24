@@ -1,0 +1,2275 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Oppgave: Lastflytanalyse med Newton-Raphson &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06_tidsserie/Untitled';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F06_tidsserie/Untitled.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/06_tidsserie/Untitled.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Oppgave: Lastflytanalyse med Newton-Raphson</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oppgave: Lastflytanalyse med Newton-Raphson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bussdata">Bussdata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-1-slack-buss">Bus 1 (Slack-buss)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-2-pq-buss">Bus 2 (PQ-buss)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-3-pq-buss">Bus 3 (PQ-buss)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linjedata">Linjedata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h">h)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i">i)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losningsforslag">Løsningsforslag</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sett-opp-nettets-y-bus-matrise">a) Sett opp nettets Y-bus-matrise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-klassifiser-bussene">b) Klassifiser bussene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-beregn-effektverdier-ved-flat-start">c) Beregn effektverdier ved flat start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aktiv-effekt-ved-buss-2">Aktiv effekt ved buss 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aktiv-effekt-ved-buss-3">Aktiv effekt ved buss 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaktiv-effekt-ved-buss-2">Reaktiv effekt ved buss 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaktiv-effekt-ved-buss-3">Reaktiv effekt ved buss 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-bestem-residualvektoren">d) Bestem residualvektoren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-jacobian-ved-flat-start">e) Jacobian ved flat start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-los">f) Løs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vinkelkorreksjoner">Vinkelkorreksjoner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningskorreksjoner">Spenningskorreksjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-forste-newton-raphson-iterasjon">g) Første Newton-Raphson-iterasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-vinkler">Oppdater vinkler</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-spenninger">Oppdater spenninger</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-konklusjon">h) Konklusjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-raphson-lastflyt-med-3-bussystem">Newton-Raphson Lastflyt med 3-Bussystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nettverk">Nettverk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bussdata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slack-buss">Slack-buss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-pa-buss-2">Last på buss 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-pa-buss-3">Last på buss 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intuisjonen-bak-newton-raphson">Intuisjonen bak Newton-Raphson</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1-flat-start">Steg 1: Flat Start</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linjeadmittanser">Linjeadmittanser</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mellom-buss-1-og-2">Mellom buss 1 og 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mellom-buss-1-og-3">Mellom buss 1 og 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mellom-buss-2-og-3">Mellom buss 2 og 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#y-bus">Y-bus</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">[
+Y_{bus}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-aktiv-effekt">Beregning av aktiv effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-k">[
+P_k</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aktiv-effekt-mismatch">Aktiv effekt-mismatch</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-2">[
+\Delta P_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-3">[
+\Delta P_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-reaktiv-effekt">Beregning av reaktiv effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-k">[
+Q_k</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-k-sum-n-1-n-v-n-left-g-kn-sin-delta-k-delta-n">V_k
+\sum_{n=1}^{N}
+V_n
+\left(
+G_{kn}\sin(\delta_k-\delta_n)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">[
+Q_k</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-q2">Beregning av Q₂</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-2">[
+Q_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-q-2">[
+\Delta Q_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">-0.20-(-0.20)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-q3">Beregning av Q₃</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-3">[
+Q_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-3-calc">[
+Q_3^{calc}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Beregning av ΔQ₃</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-3-spec">[
+Q_3^{spec}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">[
+Q_3^{calc}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-q-3">[
+\Delta Q_3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Q_3^{spec}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mismatch-vektoren">Mismatch-vektoren</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobimatrisen">Jacobimatrisen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#h-matrisen-ved-flat-start">H-matrisen ved flat start</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-kommer-tallene-fra">Hvor kommer tallene fra?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning">Fysisk tolkning</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="oppgave-lastflytanalyse-med-newton-raphson">
+<h1>Oppgave: Lastflytanalyse med Newton-Raphson<a class="headerlink" href="#oppgave-lastflytanalyse-med-newton-raphson" title="Permalink to this heading">#</a></h1>
+<p>Betrakt kraftnettet vist i figuren nedenfor.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       Bus 1                           Bus 3
+         |                               |
+         |-------- j0.4 pu --------------|
+         |                               |
+         |                               |
+         +----                       ----+
+              \                     /
+               \                   /
+                \                 /
+                 \               /
+                  \             /
+                   \           /
+                    \         /
+                     \       /
+               =================
+                    Bus 2
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
+
+<span class="s2">&lt;svg width="900" height="500" xmlns="http://www.w3.org/2000/svg"&gt;</span>
+
+<span class="s2">  &lt;style&gt;</span>
+<span class="s2">    .bus { stroke:black; stroke-width:5; }</span>
+<span class="s2">    .line { stroke:black; stroke-width:2.5; fill:none; }</span>
+<span class="s2">    .label { font-family:Arial, sans-serif; font-size:16px; }</span>
+<span class="s2">    .small { font-family:Arial, sans-serif; font-size:14px; }</span>
+<span class="s2">  &lt;/style&gt;</span>
+
+<span class="s2">  &lt;!-- BUS 1 --&gt;</span>
+<span class="s2">  &lt;line class="bus" x1="150" y1="70" x2="150" y2="150"/&gt;</span>
+<span class="s2">  &lt;text class="label" x="125" y="175"&gt;Bus 1&lt;/text&gt;</span>
+<span class="s2">  &lt;text class="small" x="80" y="195"&gt;Slack&lt;/text&gt;</span>
+<span class="s2">  &lt;text class="small" x="55" y="215"&gt;V = 1.04∠0°&lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- BUS 3 --&gt;</span>
+<span class="s2">  &lt;line class="bus" x1="750" y1="70" x2="750" y2="150"/&gt;</span>
+<span class="s2">  &lt;text class="label" x="725" y="175"&gt;Bus 3&lt;/text&gt;</span>
+<span class="s2">  &lt;text class="small" x="685" y="195"&gt;P = -0.6 pu&lt;/text&gt;</span>
+<span class="s2">  &lt;text class="small" x="675" y="215"&gt;Q = -0.25 pu&lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- BUS 2 --&gt;</span>
+<span class="s2">  &lt;line class="bus" x1="360" y1="360" x2="540" y2="360"/&gt;</span>
+<span class="s2">  &lt;text class="label" x="430" y="390"&gt;Bus 2&lt;/text&gt;</span>
+<span class="s2">  &lt;text class="small" x="390" y="412"&gt;P = -0.5 pu&lt;/text&gt;</span>
+<span class="s2">  &lt;text class="small" x="390" y="432"&gt;Q = -0.2 pu&lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Top branch stubs --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="150" y1="100" x2="220" y2="100"/&gt;</span>
+<span class="s2">  &lt;line class="line" x1="680" y1="100" x2="750" y2="100"/&gt;</span>
+
+<span class="s2">  &lt;!-- Top branch --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="220" y1="100" x2="680" y2="100"/&gt;</span>
+<span class="s2">  &lt;text class="label" x="425" y="85"&gt;j0.4 pu&lt;/text&gt;</span>
+
+<span class="s2">  &lt;!-- Left lower branch --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="150" y1="130" x2="220" y2="130"/&gt;</span>
+<span class="s2">  &lt;line class="line" x1="220" y1="130" x2="400" y2="360"/&gt;</span>
+
+<span class="s2">  &lt;!-- Right lower branch --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="680" y1="130" x2="750" y2="130"/&gt;</span>
+<span class="s2">  &lt;line class="line" x1="500" y1="360" x2="680" y2="130"/&gt;</span>
+
+<span class="s2">  &lt;!-- Impedance labels --&gt;</span>
+<span class="s2">  &lt;text class="label" x="260" y="245"&gt;j0.2 pu&lt;/text&gt;</span>
+<span class="s2">  &lt;text class="label" x="565" y="245"&gt;j0.25 pu&lt;/text&gt;</span>
+
+<span class="s2">&lt;/svg&gt;</span>
+<span class="s2">"""</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">"last_flyt"</span><span class="p">,</span> <span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8a0f20c03a03764108334d1d02eb7e0f7065e1d025ac6c0ad84cf9144274fa3d.svg" src="../_images/8a0f20c03a03764108334d1d02eb7e0f7065e1d025ac6c0ad84cf9144274fa3d.svg" /></div>
+</div>
+<p>Data er gitt på en base på <strong>100 MVA</strong>.</p>
+<section id="bussdata">
+<h2>Bussdata<a class="headerlink" href="#bussdata" title="Permalink to this heading">#</a></h2>
+<section id="bus-1-slack-buss">
+<h3>Bus 1 (Slack-buss)<a class="headerlink" href="#bus-1-slack-buss" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+V_1 = 1.04 \angle 0^\circ \text{ pu}
+\]</div>
+</section>
+<section id="bus-2-pq-buss">
+<h3>Bus 2 (PQ-buss)<a class="headerlink" href="#bus-2-pq-buss" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P_2 = -0.50 \text{ pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Q_2 = -0.20 \text{ pu}
+\]</div>
+</section>
+<section id="bus-3-pq-buss">
+<h3>Bus 3 (PQ-buss)<a class="headerlink" href="#bus-3-pq-buss" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P_3 = -0.60 \text{ pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Q_3 = -0.25 \text{ pu}
+\]</div>
+</section>
+</section>
+<section id="linjedata">
+<h2>Linjedata<a class="headerlink" href="#linjedata" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fra buss</p></th>
+<th class="head"><p>Til buss</p></th>
+<th class="head"><p>Serieimpedans (pu)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>(j0.2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>(j0.4)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>(j0.25)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Anta at alle linjer er tapsfrie ((R=0)).</p>
+</section>
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<section id="a">
+<h3>a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h3>
+<p>Sett opp nettets Y-bus-matrise.</p>
+</section>
+<section id="b">
+<h3>b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h3>
+<p>Klassifiser hver buss som Slack-, PV- eller PQ-buss.</p>
+</section>
+<section id="c">
+<h3>c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h3>
+<p>Anta flat start: <span class="math notranslate nohighlight">\(V_2^{(0)} = 1\angle0^\circ\)</span>, <span class="math notranslate nohighlight">\( V_3^{(0)} = 1\angle0^\circ\)</span></p>
+<p>Beregn de aktive og reaktive effektene ved buss 2 og buss 3.</p>
+</section>
+<section id="d">
+<h3>d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h3>
+<p>Bestem mismatch-vektoren</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Delta=
+\begin{bmatrix}
+\Delta P_2\\
+\Delta P_3\\
+\Delta Q_2\\
+\Delta Q_3
+\end{bmatrix}
+\end{split}\]</div>
+<p>for første iterasjon.</p>
+</section>
+<section id="e">
+<h3>e)<a class="headerlink" href="#e" title="Permalink to this heading">#</a></h3>
+<p>Utled Newton-Raphson-Jacobianen</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+J=
+\begin{bmatrix}
+\frac{\partial P}{\partial \delta}
+&amp;
+\frac{\partial P}{\partial V}
+\\
+\frac{\partial Q}{\partial \delta}
+&amp;
+\frac{\partial Q}{\partial V}
+\end{bmatrix}
+\end{split}\]</div>
+<p>og evaluer den ved flat start.</p>
+</section>
+<section id="f">
+<h3>f)<a class="headerlink" href="#f" title="Permalink to this heading">#</a></h3>
+<p>Løs ligningssystemet</p>
+<div class="math notranslate nohighlight">
+\[
+J\Delta x=\Delta
+\]</div>
+<p>for korreksjonsvektoren</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Delta x=
+\begin{bmatrix}
+\Delta\delta_2\\
+\Delta\delta_3\\
+\Delta V_2\\
+\Delta V_3
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="g">
+<h3>g)<a class="headerlink" href="#g" title="Permalink to this heading">#</a></h3>
+<p>Bestem de oppdaterte spenningsestimatene; <span class="math notranslate nohighlight">\(V_2^{(1)}\)</span> og <span class="math notranslate nohighlight">\(V_3^{(1)}\)</span> etter første Newton-Raphson-iterasjon.</p>
+</section>
+<section id="h">
+<h3>h)<a class="headerlink" href="#h" title="Permalink to this heading">#</a></h3>
+<p>Fortsett iterasjonene til maksimal mismatch er mindre enn</p>
+<div class="math notranslate nohighlight">
+\[
+10^{-6}
+\]</div>
+<p>pu.</p>
+</section>
+<section id="i">
+<h3>i)<a class="headerlink" href="#i" title="Permalink to this heading">#</a></h3>
+<p>Verifiser sluttresultatet ved hjelp av pandapower.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="losningsforslag">
+<h1>Løsningsforslag<a class="headerlink" href="#losningsforslag" title="Permalink to this heading">#</a></h1>
+<section id="a-sett-opp-nettets-y-bus-matrise">
+<h2>a) Sett opp nettets Y-bus-matrise<a class="headerlink" href="#a-sett-opp-nettets-y-bus-matrise" title="Permalink to this heading">#</a></h2>
+<p>Gitte impedanser:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_{12}=j0.2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Z_{13}=j0.4
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Z_{23}=j0.25
+\]</div>
+<p>Admittansene blir:</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{12}=\frac{1}{j0.2}=-j5
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{13}=\frac{1}{j0.4}=-j2.5
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{23}=\frac{1}{j0.25}=-j4
+\]</div>
+<p>Y-bus-matrisen er:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y=
+\begin{bmatrix}
+-j7.5 &amp; j5 &amp; j2.5\\
+j5 &amp; -j9 &amp; j4\\
+j2.5 &amp; j4 &amp; -j6.5
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="b-klassifiser-bussene">
+<h2>b) Klassifiser bussene<a class="headerlink" href="#b-klassifiser-bussene" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Buss</p></th>
+<th class="head"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Slack</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>PQ</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>PQ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="c-beregn-effektverdier-ved-flat-start">
+<h2>c) Beregn effektverdier ved flat start<a class="headerlink" href="#c-beregn-effektverdier-ved-flat-start" title="Permalink to this heading">#</a></h2>
+<p>Startverdier:</p>
+<div class="math notranslate nohighlight">
+\[
+V_1=1.04\angle0^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(0)}=1.0\angle0^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_3^{(0)}=1.0\angle0^\circ
+\]</div>
+<p>Alle spenningsvinkler er null:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_1=\delta_2=\delta_3=0
+\]</div>
+<section id="aktiv-effekt-ved-buss-2">
+<h3>Aktiv effekt ved buss 2<a class="headerlink" href="#aktiv-effekt-ved-buss-2" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P_2
+=
+V_2
+\sum_{n=1}^{3}
+V_n
+\left[
+G_{2n}\cos(\delta_2-\delta_n)
++
+B_{2n}\sin(\delta_2-\delta_n)
+\right]
+\]</div>
+<p>Siden</p>
+<div class="math notranslate nohighlight">
+\[
+G_{2n}=0
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\sin(0)=0
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+P_2^{calc}=0
+\]</div>
+</section>
+<section id="aktiv-effekt-ved-buss-3">
+<h3>Aktiv effekt ved buss 3<a class="headerlink" href="#aktiv-effekt-ved-buss-3" title="Permalink to this heading">#</a></h3>
+<p>På samme måte:</p>
+<div class="math notranslate nohighlight">
+\[
+P_3^{calc}=0
+\]</div>
+</section>
+<section id="reaktiv-effekt-ved-buss-2">
+<h3>Reaktiv effekt ved buss 2<a class="headerlink" href="#reaktiv-effekt-ved-buss-2" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+Q_2
+=
+V_2
+\sum_{n=1}^{3}
+V_n
+\left[
+G_{2n}\sin(\delta_2-\delta_n)
+-
+B_{2n}\cos(\delta_2-\delta_n)
+\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+1
+\left[
+1.04(-5)+1(9)+1(-4)
+\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+-5.2+9-4
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+-0.20
+\]</div>
+<p>Dermed:</p>
+<div class="math notranslate nohighlight">
+\[
+Q_2^{calc}=-0.20
+\]</div>
+</section>
+<section id="reaktiv-effekt-ved-buss-3">
+<h3>Reaktiv effekt ved buss 3<a class="headerlink" href="#reaktiv-effekt-ved-buss-3" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+Q_3
+=
+1
+\left[
+1.04(-2.5)+1(-4)+1(6.5)
+\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+-2.6-4+6.5
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+-0.10
+\]</div>
+<p>Dermed:</p>
+<div class="math notranslate nohighlight">
+\[
+Q_3^{calc}=-0.10
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-bestem-residualvektoren">
+<h2>d) Bestem residualvektoren<a class="headerlink" href="#d-bestem-residualvektoren" title="Permalink to this heading">#</a></h2>
+<p>Spesifiserte effekter:</p>
+<div class="math notranslate nohighlight">
+\[
+P_2^{spec}=-0.50
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_3^{spec}=-0.60
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Q_2^{spec}=-0.20
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Q_3^{spec}=-0.25
+\]</div>
+<p>Residualene blir:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta P_2
+=
+P_2^{spec}-P_2^{calc}
+=
+-0.50-0
+=
+-0.50
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta P_3
+=
+P_3^{spec}-P_3^{calc}
+=
+-0.60-0
+=
+-0.60
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta Q_2
+=
+Q_2^{spec}-Q_2^{calc}
+=
+-0.20-(-0.20)
+=
+0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta Q_3
+=
+Q_3^{spec}-Q_3^{calc}
+=
+-0.25-(-0.10)
+=
+-0.15
+\]</div>
+<p>Residualvektoren blir:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+F(x)=
+\begin{bmatrix}
+-0.50\\
+-0.60\\
+0\\
+-0.15
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="e-jacobian-ved-flat-start">
+<h2>e) Jacobian ved flat start<a class="headerlink" href="#e-jacobian-ved-flat-start" title="Permalink to this heading">#</a></h2>
+<p>For et tapsfritt nett er</p>
+<div class="math notranslate nohighlight">
+\[
+G_{ij}=0
+\]</div>
+<p>og ved flat start:</p>
+<div class="math notranslate nohighlight">
+\[
+N=M=0
+\]</div>
+<p>Vi får:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H=
+\begin{bmatrix}
+9 &amp; -4\\
+-4 &amp; 6.5
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+L=
+\begin{bmatrix}
+9 &amp; -4\\
+-4 &amp; 6.5
+\end{bmatrix}
+\end{split}\]</div>
+<p>Dermed:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+J=
+\begin{bmatrix}
+9 &amp; -4 &amp; 0 &amp; 0\\
+-4 &amp; 6.5 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 9 &amp; -4\\
+0 &amp; 0 &amp; -4 &amp; 6.5
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="f-los">
+<h2>f) Løs<a class="headerlink" href="#f-los" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+J\Delta x
+=
+F(x)
+\]</div>
+<p>med</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Delta x=
+\begin{bmatrix}
+\Delta\delta_2\\
+\Delta\delta_3\\
+\Delta V_2\\
+\Delta V_3
+\end{bmatrix}
+\end{split}\]</div>
+<section id="vinkelkorreksjoner">
+<h3>Vinkelkorreksjoner<a class="headerlink" href="#vinkelkorreksjoner" title="Permalink to this heading">#</a></h3>
+<p>Løs</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+9 &amp; -4\\
+-4 &amp; 6.5
+\end{bmatrix}
+\begin{bmatrix}
+\Delta\delta_2\\
+\Delta\delta_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+-0.50\\
+-0.60
+\end{bmatrix}
+\end{split}\]</div>
+<p>gir</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta\delta_2
+=
+-0.146 \text{ rad}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta\delta_3
+=
+-0.182 \text{ rad}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="s1">'9,-4;-4,6.5'</span><span class="p">)</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6</span><span class="p">])</span>
+
+<span class="n">Inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Inv</span> <span class="o">@</span> <span class="n">v</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.133 -0.174]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spenningskorreksjoner">
+<h3>Spenningskorreksjoner<a class="headerlink" href="#spenningskorreksjoner" title="Permalink to this heading">#</a></h3>
+<p>Løs</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+9 &amp; -4\\
+-4 &amp; 6.5
+\end{bmatrix}
+\begin{bmatrix}
+\Delta V_2\\
+\Delta V_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+-0.15
+\end{bmatrix}
+\end{split}\]</div>
+<p>gir</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta V_2
+=
+-0.016
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta V_3
+=
+-0.033
+\]</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="s1">'9,-4;-4,6.5'</span><span class="p">)</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">])</span>
+
+<span class="n">Inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Inv</span> <span class="o">@</span> <span class="n">v</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.014 -0.032]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="g-forste-newton-raphson-iterasjon">
+<h2>g) Første Newton-Raphson-iterasjon<a class="headerlink" href="#g-forste-newton-raphson-iterasjon" title="Permalink to this heading">#</a></h2>
+<section id="oppdater-vinkler">
+<h3>Oppdater vinkler<a class="headerlink" href="#oppdater-vinkler" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\delta_2^{(1)}
+=
+0
++
+(-0.146)
+=
+-0.146 \text{ rad}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+-8.37^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta_3^{(1)}
+=
+0
++
+(-0.182)
+=
+-0.182 \text{ rad}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+-10.43^\circ
+\]</div>
+</section>
+<section id="oppdater-spenninger">
+<h3>Oppdater spenninger<a class="headerlink" href="#oppdater-spenninger" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(1)}
+=
+1.0-0.016
+=
+0.984
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_3^{(1)}
+=
+1.0-0.033
+=
+0.967
+\]</div>
+<p>Resultatet etter første iterasjon er:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+V_2^{(1)}
+=
+0.984\angle-8.37^\circ
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+V_3^{(1)}
+=
+0.967\angle-10.43^\circ
+}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="h-konklusjon">
+<h2>h) Konklusjon<a class="headerlink" href="#h-konklusjon" title="Permalink to this heading">#</a></h2>
+<p>Etter første iterasjon er residualene betydelig redusert. Newton-Raphson-prosessen fortsetter med:</p>
+<ol class="arabic simple">
+<li><p>Beregning av nye effektverdier.</p></li>
+<li><p>Oppbygging av ny residualvektor.</p></li>
+<li><p>Oppbygging av ny Jacobian.</p></li>
+<li><p>Løsning av</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+J\Delta x=F(x)
+\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Oppdatering av spenninger og vinkler.</p></li>
+</ol>
+<p>Prosessen gjentas til residualene er tilstrekkelig små og løsningen har konvergert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandapower</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pp</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Create network</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_empty_network</span><span class="p">(</span><span class="n">sn_mva</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Buses</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">bus1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">132</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 1"</span><span class="p">)</span>
+<span class="n">bus2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">132</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 2"</span><span class="p">)</span>
+<span class="n">bus3</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">132</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 3"</span><span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Slack bus</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_ext_grid</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span>
+    <span class="n">vm_pu</span><span class="o">=</span><span class="mf">1.04</span><span class="p">,</span>
+    <span class="n">va_degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Slack"</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Lines (modeled as impedances)</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">rtf_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xtf_pu</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Z12"</span>
+<span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">bus1</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">rtf_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xtf_pu</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Z13"</span>
+<span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">rtf_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xtf_pu</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Z23"</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Loads</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">bus2</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Load 2"</span>
+<span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">bus3</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Load 3"</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Run Newton-Raphson load flow</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"nr"</span><span class="p">)</span>
+
+
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Results</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Bus voltages"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span><span class="p">[[</span><span class="s2">"vm_pu"</span><span class="p">,</span> <span class="s2">"va_degree"</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Bus powers"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span><span class="p">[[</span><span class="s2">"p_mw"</span><span class="p">,</span> <span class="s2">"q_mvar"</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Branch flows"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_impedance</span><span class="p">[</span>
+    <span class="p">[</span><span class="s2">"p_from_mw"</span><span class="p">,</span> <span class="s2">"q_from_mvar"</span><span class="p">,</span>
+     <span class="s2">"p_to_mw"</span><span class="p">,</span> <span class="s2">"q_to_mvar"</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Converged:"</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">converged</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bus voltages
+      vm_pu  va_degree
+0  1.040000   0.000000
+1  0.972114  -7.563058
+2  0.950950 -10.125586
+
+Bus powers
+    p_mw     q_mvar
+0 -110.0 -66.702366
+1   50.0  20.000000
+2   60.0  25.000000
+
+Branch flows
+   p_from_mw  q_from_mvar    p_to_mw  q_to_mvar
+0  66.532404    39.698457 -66.532404 -28.599107
+1  43.467596    27.003909 -43.467596 -17.319578
+2  16.532404     8.599107 -16.532404  -7.680422
+
+Converged: True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">Ybus</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">Ybus</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 'Ybus' is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="newton-raphson-lastflyt-med-3-bussystem">
+<h1>Newton-Raphson Lastflyt med 3-Bussystem<a class="headerlink" href="#newton-raphson-lastflyt-med-3-bussystem" title="Permalink to this heading">#</a></h1>
+<section id="nettverk">
+<h2>Nettverk<a class="headerlink" href="#nettverk" title="Permalink to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>          X13 = 0.4
+     Bus1 -------- Bus3
+      | \            |
+      |  \           |
+      |   \          |
+X12=0.2    \         | X23=0.25
+      |      \       |
+      |       \      |
+      |        \     |
+     Bus2 ------------
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>Bussdata<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="slack-buss">
+<h3>Slack-buss<a class="headerlink" href="#slack-buss" title="Permalink to this heading">#</a></h3>
+<p>[
+V_1 = 1.04\angle 0^\circ
+]</p>
+</section>
+<section id="last-pa-buss-2">
+<h3>Last på buss 2<a class="headerlink" href="#last-pa-buss-2" title="Permalink to this heading">#</a></h3>
+<p>[
+P_2 = -0.50 ; pu
+]</p>
+<p>[
+Q_2 = -0.20 ; pu
+]</p>
+</section>
+<section id="last-pa-buss-3">
+<h3>Last på buss 3<a class="headerlink" href="#last-pa-buss-3" title="Permalink to this heading">#</a></h3>
+<p>[
+P_3 = -0.60 ; pu
+]</p>
+<p>[
+Q_3 = -0.25 ; pu
+]</p>
+<p>Alle effektverdier er gitt på en base på</p>
+<p>[
+S_{base}=100,MVA.
+]</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="intuisjonen-bak-newton-raphson">
+<h1>Intuisjonen bak Newton-Raphson<a class="headerlink" href="#intuisjonen-bak-newton-raphson" title="Permalink to this heading">#</a></h1>
+<p>Newton-Raphson prøver å finne spenninger og vinkler som gjør at nettet leverer akkurat den effekten som lastene krever.</p>
+<p>Prosedyren er:</p>
+<ol class="arabic simple">
+<li><p>Gjett spenninger og vinkler.</p></li>
+<li><p>Beregn hva nettet faktisk leverer.</p></li>
+<li><p>Sammenlign med ønsket effekt.</p></li>
+<li><p>Beregn feilen (mismatch).</p></li>
+<li><p>Korriger spenninger og vinkler.</p></li>
+<li><p>Gjenta til feilen er nær null.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="steg-1-flat-start">
+<h1>Steg 1: Flat Start<a class="headerlink" href="#steg-1-flat-start" title="Permalink to this heading">#</a></h1>
+<p>Startgjetningen er</p>
+<p>[
+V_2=1.0\angle0^\circ
+]</p>
+<p>[
+V_3=1.0\angle0^\circ
+]</p>
+<p>Dermed:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus 1 = 1.04∠0°
+Bus 2 = 1.00∠0°
+Bus 3 = 1.00∠0°
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="linjeadmittanser">
+<h1>Linjeadmittanser<a class="headerlink" href="#linjeadmittanser" title="Permalink to this heading">#</a></h1>
+<p>Linjene er rent reaktive.</p>
+<section id="mellom-buss-1-og-2">
+<h2>Mellom buss 1 og 2<a class="headerlink" href="#mellom-buss-1-og-2" title="Permalink to this heading">#</a></h2>
+<p>[
+z_{12}=j0.2
+]</p>
+<p>[
+y_{12}=\frac{1}{j0.2}=-j5
+]</p>
+</section>
+<section id="mellom-buss-1-og-3">
+<h2>Mellom buss 1 og 3<a class="headerlink" href="#mellom-buss-1-og-3" title="Permalink to this heading">#</a></h2>
+<p>[
+z_{13}=j0.4
+]</p>
+<p>[
+y_{13}=\frac{1}{j0.4}=-j2.5
+]</p>
+</section>
+<section id="mellom-buss-2-og-3">
+<h2>Mellom buss 2 og 3<a class="headerlink" href="#mellom-buss-2-og-3" title="Permalink to this heading">#</a></h2>
+<p>[
+z_{23}=j0.25
+]</p>
+<p>[
+y_{23}=\frac{1}{j0.25}=-j4
+]</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="y-bus">
+<h1>Y-bus<a class="headerlink" href="#y-bus" title="Permalink to this heading">#</a></h1>
+<p>Dermed blir</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>[
+Y_{bus}<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p>\begin{bmatrix}
+-j7.5 &amp; j5 &amp; j2.5\
+j5 &amp; -j9 &amp; j4\
+j2.5 &amp; j4 &amp; -j6.5
+\end{bmatrix}
+]</p>
+<p>Siden nettet er tapsfritt:</p>
+<p>[
+G=0
+]</p>
+<p>og</p>
+<p>[
+B=
+\begin{bmatrix}
+-7.5 &amp; 5 &amp; 2.5\
+5 &amp; -9 &amp; 4\
+2.5 &amp; 4 &amp; -6.5
+\end{bmatrix}
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="beregning-av-aktiv-effekt">
+<h1>Beregning av aktiv effekt<a class="headerlink" href="#beregning-av-aktiv-effekt" title="Permalink to this heading">#</a></h1>
+<p>Aktiv effekt er</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="p-k">
+<h1>[
+P_k<a class="headerlink" href="#p-k" title="Permalink to this heading">#</a></h1>
+<p>V_k
+\sum_{n=1}^{N}
+V_n
+\left(
+G_{kn}\cos(\delta_k-\delta_n)
++
+B_{kn}\sin(\delta_k-\delta_n)
+\right)
+]</p>
+<p>Ved flat start:</p>
+<p>[
+\delta_1=\delta_2=\delta_3=0
+]</p>
+<p>og</p>
+<p>[
+G_{kn}=0
+]</p>
+<p>Dermed</p>
+<p>[
+\sin(0)=0
+]</p>
+<p>slik at</p>
+<p>[
+P_2^{calc}=0
+]</p>
+<p>[
+P_3^{calc}=0.
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="aktiv-effekt-mismatch">
+<h1>Aktiv effekt-mismatch<a class="headerlink" href="#aktiv-effekt-mismatch" title="Permalink to this heading">#</a></h1>
+<p>For buss 2:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-p-2">
+<h1>[
+\Delta P_2<a class="headerlink" href="#delta-p-2" title="Permalink to this heading">#</a></h1>
+<p>P_2^{spec}-P_2^{calc}
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>[<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
+<p>-0.50-0
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>[<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
+<p>-0.50
+]</p>
+<p>For buss 3:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-p-3">
+<h1>[
+\Delta P_3<a class="headerlink" href="#delta-p-3" title="Permalink to this heading">#</a></h1>
+<p>P_3^{spec}-P_3^{calc}
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>[<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h1>
+<p>-0.60-0
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>[<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h1>
+<p>-0.60
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="beregning-av-reaktiv-effekt">
+<h1>Beregning av reaktiv effekt<a class="headerlink" href="#beregning-av-reaktiv-effekt" title="Permalink to this heading">#</a></h1>
+<p>Den generelle formelen er</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q-k">
+<h1>[
+Q_k<a class="headerlink" href="#q-k" title="Permalink to this heading">#</a></h1>
+<section id="v-k-sum-n-1-n-v-n-left-g-kn-sin-delta-k-delta-n">
+<h2>V_k
+\sum_{n=1}^{N}
+V_n
+\left(
+G_{kn}\sin(\delta_k-\delta_n)<a class="headerlink" href="#v-k-sum-n-1-n-v-n-left-g-kn-sin-delta-k-delta-n" title="Permalink to this heading">#</a></h2>
+<p>B_{kn}\cos(\delta_k-\delta_n)
+\right)
+]</p>
+<p>Ved flat start:</p>
+<p>[
+G_{kn}=0
+]</p>
+<p>[
+\cos(0)=1
+]</p>
+<p>slik at</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>[
+Q_k<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li></li>
+</ul>
+<p>V_k
+\sum_{n=1}^{N}
+V_n B_{kn}
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="beregning-av-q2">
+<h1>Beregning av Q₂<a class="headerlink" href="#beregning-av-q2" title="Permalink to this heading">#</a></h1>
+<p>Fra rad 2 i B-matrisen:</p>
+<p>[
+B_{21}=5
+]</p>
+<p>[
+B_{22}=-9
+]</p>
+<p>[
+B_{23}=4
+]</p>
+<p>Setter inn:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q-2">
+<h1>[
+Q_2<a class="headerlink" href="#q-2" title="Permalink to this heading">#</a></h1>
+<p>-1
+[
+1.04(5)
++
+1(-9)
++
+1(4)
+]
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
+<h1>[<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h1>
+<p>-(5.2-9+4)
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id9">
+<h1>[<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h1>
+<p>-0.20
+]</p>
+<p>Dermed</p>
+<p>[
+Q_2^{calc}=-0.20
+]</p>
+<p>og</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-q-2">
+<h1>[
+\Delta Q_2<a class="headerlink" href="#delta-q-2" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id10">
+<h1>-0.20-(-0.20)<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h1>
+<p>0
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="beregning-av-q3">
+<h1>Beregning av Q₃<a class="headerlink" href="#beregning-av-q3" title="Permalink to this heading">#</a></h1>
+<p>Fra rad 3 i B-matrisen:</p>
+<p>[
+B_{31}=2.5
+]</p>
+<p>[
+B_{32}=4
+]</p>
+<p>[
+B_{33}=-6.5
+]</p>
+<p>Setter inn:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q-3">
+<h1>[
+Q_3<a class="headerlink" href="#q-3" title="Permalink to this heading">#</a></h1>
+<p>-1
+[
+1.04(2.5)
++
+1(4)
++
+1(-6.5)
+]
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id11">
+<h1>[<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h1>
+<p>-(2.6+4-6.5)
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id12">
+<h1>[<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h1>
+<p>-0.10
+]</p>
+<p>Dermed</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q-3-calc">
+<h1>[
+Q_3^{calc}<a class="headerlink" href="#q-3-calc" title="Permalink to this heading">#</a></h1>
+<p>-0.10
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id13">
+<h1>Beregning av ΔQ₃<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h1>
+<p>Lasten krever</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q-3-spec">
+<h1>[
+Q_3^{spec}<a class="headerlink" href="#q-3-spec" title="Permalink to this heading">#</a></h1>
+<p>-0.25
+]</p>
+<p>Mens nettet leverer</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id14">
+<h1>[
+Q_3^{calc}<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h1>
+<p>-0.10
+]</p>
+<p>Dermed</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-q-3">
+<h1>[
+\Delta Q_3<a class="headerlink" href="#delta-q-3" title="Permalink to this heading">#</a></h1>
+<section id="id15">
+<h2>Q_3^{spec}<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<p>Q_3^{calc}
+]</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id16">
+<h1>[<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h1>
+<p>(-0.25)-(-0.10)
+]</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id17">
+<h1>[<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h1>
+<p>-0.15
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="mismatch-vektoren">
+<h1>Mismatch-vektoren<a class="headerlink" href="#mismatch-vektoren" title="Permalink to this heading">#</a></h1>
+<p>Første iterasjon gir derfor</p>
+<p>[
+\Delta P=
+\begin{bmatrix}
+-0.50\
+-0.60
+\end{bmatrix}
+]</p>
+<p>[
+\Delta Q=
+\begin{bmatrix}
+0\
+-0.15
+\end{bmatrix}
+]</p>
+<p>og samlet:</p>
+<p>[
+F=
+\begin{bmatrix}
+-0.50\
+-0.60\
+0\
+-0.15
+\end{bmatrix}
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="jacobimatrisen">
+<h1>Jacobimatrisen<a class="headerlink" href="#jacobimatrisen" title="Permalink to this heading">#</a></h1>
+<p>Newton-Raphson bruker</p>
+<p>[
+J=
+\begin{bmatrix}
+H &amp; N\
+M &amp; L
+\end{bmatrix}
+]</p>
+<p>hvor</p>
+<p>[
+H=
+\frac{\partial P}{\partial\delta}
+]</p>
+<p>[
+N=
+\frac{\partial P}{\partial V}
+]</p>
+<p>[
+M=
+\frac{\partial Q}{\partial\delta}
+]</p>
+<p>[
+L=
+\frac{\partial Q}{\partial V}
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="h-matrisen-ved-flat-start">
+<h1>H-matrisen ved flat start<a class="headerlink" href="#h-matrisen-ved-flat-start" title="Permalink to this heading">#</a></h1>
+<p>Når slack-bussen fjernes:</p>
+<p>[
+H=
+\begin{bmatrix}
+9 &amp; -4\
+-4 &amp; 6.5
+\end{bmatrix}
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="hvor-kommer-tallene-fra">
+<h1>Hvor kommer tallene fra?<a class="headerlink" href="#hvor-kommer-tallene-fra" title="Permalink to this heading">#</a></h1>
+<p>Fra susceptansmatrisen:</p>
+<p>[
+B=
+\begin{bmatrix}
+-7.5 &amp; 5 &amp; 2.5\
+5 &amp; -9 &amp; 4\
+2.5 &amp; 4 &amp; -6.5
+\end{bmatrix}
+]</p>
+<p>Off-diagonalene:</p>
+<p>[
+H_{23}=-B_{23}=-4
+]</p>
+<p>[
+H_{32}=-B_{32}=-4
+]</p>
+<p>Diagonalene:</p>
+<p>[
+H_{22}=5+4=9
+]</p>
+<p>[
+H_{33}=2.5+4=6.5
+]</p>
+<p>Dermed</p>
+<p>[
+H=
+\begin{bmatrix}
+9 &amp; -4\
+-4 &amp; 6.5
+\end{bmatrix}
+]</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="fysisk-tolkning">
+<h1>Fysisk tolkning<a class="headerlink" href="#fysisk-tolkning" title="Permalink to this heading">#</a></h1>
+<p>Når vi beregner</p>
+<p>[
+P^{calc}
+]</p>
+<p>og</p>
+<p>[
+Q^{calc}
+]</p>
+<p>spør vi egentlig:</p>
+<blockquote>
+<div><p>Hvis spenningene akkurat nå er slik vi har gjettet, hvor mye effekt klarer nettet faktisk å levere gjennom linjene og impedansene?</p>
+</div></blockquote>
+<p>For første gjetning (flat start) leverer nettet:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus 2:
+P = 0
+Q = -0.20
+
+Bus 3:
+P = 0
+Q = -0.10
+</pre></div>
+</div>
+<p>Mens lastene krever:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus 2:
+P = -0.50
+Q = -0.20
+
+Bus 3:
+P = -0.60
+Q = -0.25
+</pre></div>
+</div>
+<p>Det oppstår derfor mismatch som Newton-Raphson prøver å eliminere.</p>
+<p>Jacobianen brukes til å beregne hvilke endringer i:</p>
+<ul class="simple">
+<li><p>spenningsvinkler ((\delta))</p></li>
+<li><p>spenningsmagnituder ((V))</p></li>
+</ul>
+<p>som må til for at nettet skal levere riktig effekt.</p>
+<p>Dermed består Newton-Raphson av:</p>
+<ol class="arabic simple">
+<li><p>Gjett spenninger.</p></li>
+<li><p>Beregn hva nettet faktisk leverer.</p></li>
+<li><p>Sammenlign med ønsket effekt.</p></li>
+<li><p>Beregn mismatch.</p></li>
+<li><p>Korriger spenningene.</p></li>
+<li><p>Gjenta til mismatch ≈ 0.</p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./06_tidsserie"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oppgave: Lastflytanalyse med Newton-Raphson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bussdata">Bussdata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-1-slack-buss">Bus 1 (Slack-buss)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-2-pq-buss">Bus 2 (PQ-buss)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bus-3-pq-buss">Bus 3 (PQ-buss)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linjedata">Linjedata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h">h)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i">i)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losningsforslag">Løsningsforslag</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sett-opp-nettets-y-bus-matrise">a) Sett opp nettets Y-bus-matrise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-klassifiser-bussene">b) Klassifiser bussene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-beregn-effektverdier-ved-flat-start">c) Beregn effektverdier ved flat start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aktiv-effekt-ved-buss-2">Aktiv effekt ved buss 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aktiv-effekt-ved-buss-3">Aktiv effekt ved buss 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaktiv-effekt-ved-buss-2">Reaktiv effekt ved buss 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaktiv-effekt-ved-buss-3">Reaktiv effekt ved buss 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-bestem-residualvektoren">d) Bestem residualvektoren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-jacobian-ved-flat-start">e) Jacobian ved flat start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-los">f) Løs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vinkelkorreksjoner">Vinkelkorreksjoner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spenningskorreksjoner">Spenningskorreksjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-forste-newton-raphson-iterasjon">g) Første Newton-Raphson-iterasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-vinkler">Oppdater vinkler</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-spenninger">Oppdater spenninger</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-konklusjon">h) Konklusjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-raphson-lastflyt-med-3-bussystem">Newton-Raphson Lastflyt med 3-Bussystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nettverk">Nettverk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bussdata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slack-buss">Slack-buss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-pa-buss-2">Last på buss 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-pa-buss-3">Last på buss 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intuisjonen-bak-newton-raphson">Intuisjonen bak Newton-Raphson</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1-flat-start">Steg 1: Flat Start</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linjeadmittanser">Linjeadmittanser</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mellom-buss-1-og-2">Mellom buss 1 og 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mellom-buss-1-og-3">Mellom buss 1 og 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mellom-buss-2-og-3">Mellom buss 2 og 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#y-bus">Y-bus</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">[
+Y_{bus}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-aktiv-effekt">Beregning av aktiv effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-k">[
+P_k</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aktiv-effekt-mismatch">Aktiv effekt-mismatch</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-2">[
+\Delta P_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-3">[
+\Delta P_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-reaktiv-effekt">Beregning av reaktiv effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-k">[
+Q_k</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-k-sum-n-1-n-v-n-left-g-kn-sin-delta-k-delta-n">V_k
+\sum_{n=1}^{N}
+V_n
+\left(
+G_{kn}\sin(\delta_k-\delta_n)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">[
+Q_k</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-q2">Beregning av Q₂</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-2">[
+Q_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-q-2">[
+\Delta Q_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">-0.20-(-0.20)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-q3">Beregning av Q₃</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-3">[
+Q_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-3-calc">[
+Q_3^{calc}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Beregning av ΔQ₃</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-3-spec">[
+Q_3^{spec}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">[
+Q_3^{calc}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-q-3">[
+\Delta Q_3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Q_3^{spec}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">[</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mismatch-vektoren">Mismatch-vektoren</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobimatrisen">Jacobimatrisen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#h-matrisen-ved-flat-start">H-matrisen ved flat start</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-kommer-tallene-fra">Hvor kommer tallene fra?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning">Fysisk tolkning</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

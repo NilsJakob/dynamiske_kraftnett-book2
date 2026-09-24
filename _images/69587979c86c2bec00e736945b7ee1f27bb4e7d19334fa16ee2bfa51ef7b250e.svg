@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320">
+
+  <style>
+    .bus { stroke:black; stroke-width:4; }
+    .line { stroke:black; stroke-width:3; fill:none; }
+    .label { font-family:Arial, sans-serif; font-size:20px; }
+  </style>
+
+  <!-- Generator symbol -->
+  <circle cx="120" cy="140" r="35" fill="white" stroke="black" stroke-width="3"/>
+
+  <!-- Sine wave -->
+  <path d="M95 140            Q103 120 111 140            Q119 160 127 140            Q135 120 143 140" fill="none" stroke="black" stroke-width="2"/>
+
+  <!-- Connection to bus 1 -->
+  <line class="line" x1="155" y1="140" x2="220" y2="140"/>
+
+  <!-- Bus 1 -->
+  <line class="bus" x1="220" y1="100" x2="220" y2="180"/>
+
+  <!-- Line to impedance -->
+  <line class="line" x1="220" y1="140" x2="330" y2="140"/>
+
+  <!-- Impedance rectangle -->
+  <rect x="330" y="115" width="120" height="50" fill="white" stroke="black" stroke-width="3"/>
+
+  <!-- Line after impedance -->
+  <line class="line" x1="450" y1="140" x2="560" y2="140"/>
+
+  <!-- Bus 2 -->
+  <line class="bus" x1="560" y1="100" x2="560" y2="180"/>
+
+  <!-- Load arrow -->
+  <line class="line" x1="560" y1="140" x2="700" y2="140"/>
+
+  <polygon points="700,140 675,128 675,152" fill="black"/>
+
+  <!-- Labels -->
+  <text class="label" x="70" y="220">
+    Generator (Slack)
+  </text>
+
+  <text class="label" x="70" y="250">
+    V₁ = 1.0∠0°
+  </text>
+
+  <text class="label" x="205" y="90">
+    Bus 1
+  </text>
+
+  <text class="label" x="350" y="105">
+    Z = j0.1 pu
+  </text>
+
+  <text class="label" x="545" y="90">
+    Bus 2
+  </text>
+
+  <text class="label" x="730" y="120">
+    PQ Load
+  </text>
+
+  <text class="label" x="730" y="150">
+    P = 0.5 pu
+  </text>
+
+  <text class="label" x="730" y="180">
+    Q = 0.2 pu
+  </text>
+
+</svg>

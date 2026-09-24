@@ -1,0 +1,1007 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>2 bus load flow &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06_tidsserie/2bus_load_flowGSNR';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F06_tidsserie/2bus_load_flowGSNR.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/06_tidsserie/2bus_load_flowGSNR.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2 bus load flow</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2 bus load flow</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lastflytanalyse-for-2-buss-system">Lastflytanalyse for 2-buss-system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#systembeskrivelse">Systembeskrivelse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basisverdier">Basisverdier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#y-bus-matrise">Y-bus-matrise</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-a-gauss-seidel">Oppgave A: Gauss-Seidel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-start">Flat start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdateringsformel">Oppdateringsformel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-b-newton-raphson">Oppgave B: Newton-Raphson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilstandsvariabler">Tilstandsvariabler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektligninger">Effektligninger</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-c-pandapower">Oppgave C: Pandapower</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-d-digsilent-powerfactory">Oppgave D: DIgSILENT PowerFactory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forventet-laeringsutbytte">Forventet læringsutbytte</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bus-load-flow">
+<h1>2 bus load flow<a class="headerlink" href="#bus-load-flow" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lastflytanalyse-for-2-buss-system">
+<h1>Lastflytanalyse for 2-buss-system<a class="headerlink" href="#lastflytanalyse-for-2-buss-system" title="Permalink to this heading">#</a></h1>
+<section id="formal">
+<h2>Formål<a class="headerlink" href="#formal" title="Permalink to this heading">#</a></h2>
+<p>Denne oppgaven kan løses ved hjelp av:</p>
+<ol class="arabic simple">
+<li><p>Gauss-Seidel-metoden</p></li>
+<li><p>Newton-Raphson-metoden</p></li>
+<li><p>Pandapower</p></li>
+<li><p>DIgSILENT PowerFactory</p></li>
+</ol>
+<p>Målet er å sammenligne resultatene fra håndregning med resultatene fra programvare.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="systembeskrivelse">
+<h1>Systembeskrivelse<a class="headerlink" href="#systembeskrivelse" title="Permalink to this heading">#</a></h1>
+<p>En slack-buss forsyner en last gjennom en transmisjonslinje.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      Bus 1 (Slack)
+      V₁ = 1∠0°
+           |
+           |
+      Z = j0.1 pu
+           |
+           |
+      Bus 2 (PQ)
+      P = 0.5 pu
+      Q = 0.2 pu
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="basisverdier">
+<h1>Basisverdier<a class="headerlink" href="#basisverdier" title="Permalink to this heading">#</a></h1>
+<p>Velg følgende baseverdier:<span class="math notranslate nohighlight">\( S_{base}=100\text{ MVA}\)</span>, <span class="math notranslate nohighlight">\(V_{base}=11\text{ kV}\)</span></p>
+<p>Buss 1 (Slack); <span class="math notranslate nohighlight">\(V_1=1.0\angle0^\circ\)</span></p>
+<p>Buss 2 (PQ) Last: <span class="math notranslate nohighlight">\(P_2=-0.5\ pu\)</span>, <span class="math notranslate nohighlight">\(Q_2=-0.2\ pu\)</span></p>
+<p>Negativt fortegn betyr effektforbruk.</p>
+<p>Linjeimpedans:<span class="math notranslate nohighlight">\(Z_{12}=j0.1\ pu\)</span>, Admittans: <span class="math notranslate nohighlight">\(Y_{12}=\frac{1}{j0.1}=-j10\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320"&gt;</span>
+
+<span class="s2">  &lt;style&gt;</span>
+<span class="s2">    .bus { stroke:black; stroke-width:4; }</span>
+<span class="s2">    .line { stroke:black; stroke-width:3; fill:none; }</span>
+<span class="s2">    .label { font-family:Arial, sans-serif; font-size:20px; }</span>
+<span class="s2">  &lt;/style&gt;</span>
+
+<span class="s2">  &lt;!-- Generator symbol --&gt;</span>
+<span class="s2">  &lt;circle cx="120" cy="140" r="35"</span>
+<span class="s2">          fill="white" stroke="black" stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Sine wave --&gt;</span>
+<span class="s2">  &lt;path d="M95 140</span>
+<span class="s2">           Q103 120 111 140</span>
+<span class="s2">           Q119 160 127 140</span>
+<span class="s2">           Q135 120 143 140"</span>
+<span class="s2">        fill="none"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="2"/&gt;</span>
+
+<span class="s2">  &lt;!-- Connection to bus 1 --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="155" y1="140" x2="220" y2="140"/&gt;</span>
+
+<span class="s2">  &lt;!-- Bus 1 --&gt;</span>
+<span class="s2">  &lt;line class="bus" x1="220" y1="100" x2="220" y2="180"/&gt;</span>
+
+<span class="s2">  &lt;!-- Line to impedance --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="220" y1="140" x2="330" y2="140"/&gt;</span>
+
+<span class="s2">  &lt;!-- Impedance rectangle --&gt;</span>
+<span class="s2">  &lt;rect x="330" y="115"</span>
+<span class="s2">        width="120"</span>
+<span class="s2">        height="50"</span>
+<span class="s2">        fill="white"</span>
+<span class="s2">        stroke="black"</span>
+<span class="s2">        stroke-width="3"/&gt;</span>
+
+<span class="s2">  &lt;!-- Line after impedance --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="450" y1="140" x2="560" y2="140"/&gt;</span>
+
+<span class="s2">  &lt;!-- Bus 2 --&gt;</span>
+<span class="s2">  &lt;line class="bus" x1="560" y1="100" x2="560" y2="180"/&gt;</span>
+
+<span class="s2">  &lt;!-- Load arrow --&gt;</span>
+<span class="s2">  &lt;line class="line" x1="560" y1="140" x2="700" y2="140"/&gt;</span>
+
+<span class="s2">  &lt;polygon points="700,140 675,128 675,152"</span>
+<span class="s2">           fill="black"/&gt;</span>
+
+<span class="s2">  &lt;!-- Labels --&gt;</span>
+<span class="s2">  &lt;text class="label" x="70" y="220"&gt;</span>
+<span class="s2">    Generator (Slack)</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text class="label" x="70" y="250"&gt;</span>
+<span class="s2">    V₁ = 1.0∠0°</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text class="label" x="205" y="90"&gt;</span>
+<span class="s2">    Bus 1</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text class="label" x="350" y="105"&gt;</span>
+<span class="s2">    Z = j0.1 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text class="label" x="545" y="90"&gt;</span>
+<span class="s2">    Bus 2</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text class="label" x="730" y="120"&gt;</span>
+<span class="s2">    PQ Load</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text class="label" x="730" y="150"&gt;</span>
+<span class="s2">    P = 0.5 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">  &lt;text class="label" x="730" y="180"&gt;</span>
+<span class="s2">    Q = 0.2 pu</span>
+<span class="s2">  &lt;/text&gt;</span>
+
+<span class="s2">&lt;/svg&gt;</span>
+<span class="s2">"""</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">"last_flyt"</span><span class="p">,</span> <span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/69587979c86c2bec00e736945b7ee1f27bb4e7d19334fa16ee2bfa51ef7b250e.svg" src="../_images/69587979c86c2bec00e736945b7ee1f27bb4e7d19334fa16ee2bfa51ef7b250e.svg" /></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="y-bus-matrise">
+<h1>Y-bus-matrise<a class="headerlink" href="#y-bus-matrise" title="Permalink to this heading">#</a></h1>
+<p>For et 2-buss-system fås</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{bus}
+=
+\begin{bmatrix}
+Y_{11} &amp; Y_{12}\\
+Y_{21} &amp; Y_{22}
+\end{bmatrix}
+\end{split}\]</div>
+<p>hvor</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{11}=Y_{22}=-j10
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{12}=Y_{21}=j10
+\]</div>
+<p>Dermed</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{bus}
+=
+\begin{bmatrix}
+-j10 &amp; j10\\
+j10 &amp; -j10
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-a-gauss-seidel">
+<h1>Oppgave A: Gauss-Seidel<a class="headerlink" href="#oppgave-a-gauss-seidel" title="Permalink to this heading">#</a></h1>
+<section id="flat-start">
+<h2>Flat start<a class="headerlink" href="#flat-start" title="Permalink to this heading">#</a></h2>
+<p>Velg startverdien <span class="math notranslate nohighlight">\(V_2^{(0)}=1+j0\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="oppdateringsformel">
+<h2>Oppdateringsformel<a class="headerlink" href="#oppdateringsformel" title="Permalink to this heading">#</a></h2>
+<p>For PQ-buss 2: <span class="math notranslate nohighlight">\(V_2^{(r+1)}=\frac{1}{Y_{22}}\left[\frac{P_2-jQ_2}{\left(V_2^{(k)}\right)^*}-Y_{21}V_1\right]\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<p>a)Beregn første iterasjon; <span class="math notranslate nohighlight">\(V_2^{(1)}\)</span></p>
+<p>b)Beregn andre iterasjon; <span class="math notranslate nohighlight">\(V_2^{(2)}\)</span></p>
+<p>c) Fortsett iterasjonene til <span class="math notranslate nohighlight">\(|V_2^{(k+1)}-V_2^{(k)}|&lt;10^{-6}\)</span></p>
+<p>d) Bestem sluttverdiene |V_2| og <span class="math notranslate nohighlight">\(\delta_2\)</span></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-b-newton-raphson">
+<h1>Oppgave B: Newton-Raphson<a class="headerlink" href="#oppgave-b-newton-raphson" title="Permalink to this heading">#</a></h1>
+<section id="tilstandsvariabler">
+<h2>Tilstandsvariabler<a class="headerlink" href="#tilstandsvariabler" title="Permalink to this heading">#</a></h2>
+<p>Tilstandsvektoren er; <span class="math notranslate nohighlight">\(x =\begin{bmatrix}\delta_2\\V_2\end{bmatrix}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="effektligninger">
+<h2>Effektligninger<a class="headerlink" href="#effektligninger" title="Permalink to this heading">#</a></h2>
+<p>Aktiv effekt: <span class="math notranslate nohighlight">\(P_2=V_2V_1\left(G_{21}\cos\delta_2+B_{21}\sin\delta_2\right)+V_2^2G_{22}\)</span></p>
+<p>Reaktiv effekt: <span class="math notranslate nohighlight">\(Q_2=V_2V_1\left(G_{21}\sin\delta_2-B_{21}\cos\delta_2\right)-V_2^2B_{22}\)</span></p>
+</section>
+<section id="id1">
+<h2>Oppgaver<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>a) Utfør flat start <span class="math notranslate nohighlight">\(V_2^{(0)}=1\)</span>; <span class="math notranslate nohighlight">\(\delta_2^{(0)}=0\)</span></p>
+<p>b) Beregn; <span class="math notranslate nohighlight">\(P_{2,\text{calc}}\)</span> og <span class="math notranslate nohighlight">\(Q_{2,\text{calc}}\)</span></p>
+<p>c) Beregn mismatch-vektoren; <span class="math notranslate nohighlight">\(\Delta f = \begin{bmatrix} \Delta P_2\\ \Delta Q_2 \end{bmatrix}\)</span></p>
+<p>der <span class="math notranslate nohighlight">\(\Delta P_2 = P_{spec}-P_{calc}\)</span> og <span class="math notranslate nohighlight">\(\Delta Q_2 = Q_{spec}-Q_{calc}\)</span></p>
+<p>d) Sett opp Jacobian-matrisen; <span class="math notranslate nohighlight">\(J = \begin{bmatrix}\frac{\partial P_2}{\partial \delta_2} &amp; \frac{\partial P_2}{\partial V_2}\\\frac{\partial Q_2}{\partial \delta_2}&amp;\frac{\partial Q_2}{\partial V_2}\end{bmatrix}\)</span></p>
+<p>e) Løs; <span class="math notranslate nohighlight">\(J\Delta x = \Delta f\)</span></p>
+<p>f) Oppdater; <span class="math notranslate nohighlight">\(x^{(1)} = x^{(0)} + \Delta x\)</span></p>
+<hr class="docutils" />
+<p>g) Gjenta til konvergens.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-c-pandapower">
+<h1>Oppgave C: Pandapower<a class="headerlink" href="#oppgave-c-pandapower" title="Permalink to this heading">#</a></h1>
+<p>Bruk følgende script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandapower</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pp</span>
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_empty_network</span><span class="p">()</span>
+
+<span class="c1"># Busser</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 1"</span><span class="p">)</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bus 2"</span><span class="p">)</span>
+
+<span class="c1"># Slack</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_ext_grid</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">b1</span><span class="p">,</span>
+    <span class="n">vm_pu</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+
+<span class="c1"># Impedans</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">b1</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">b2</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+
+<span class="c1"># Last</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">b2</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+
+<span class="c1"># Lastflyt</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"nr"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="id2">
+<h2>Oppgaver<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>a) Kjør scriptet.</p>
+<p>b) Noter; |V_2| og <span class="math notranslate nohighlight">\(\delta_2\)</span></p>
+<p>c)Sammenlign resultatene med Newton-Raphson.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-d-digsilent-powerfactory">
+<h1>Oppgave D: DIgSILENT PowerFactory<a class="headerlink" href="#oppgave-d-digsilent-powerfactory" title="Permalink to this heading">#</a></h1>
+<p>Opprett følgende komponenter:</p>
+<p>Bus 1</p>
+<ul class="simple">
+<li><p>ElmTerm</p></li>
+<li><p>11 kV</p></li>
+</ul>
+<p>External Grid</p>
+<ul class="simple">
+<li><p>ElmXnet</p></li>
+<li><p>1.0 pu</p></li>
+</ul>
+<p>Linje</p>
+<ul class="simple">
+<li><p>ElmLne</p></li>
+</ul>
+<p>Impedans: <span class="math notranslate nohighlight">\(Z=j0.1\ pu\)</span></p>
+<p>Bus 2</p>
+<ul class="simple">
+<li><p>ElmTerm</p></li>
+<li><p>11 kV</p></li>
+</ul>
+<p>Last</p>
+<ul class="simple">
+<li><p>ElmLod <span class="math notranslate nohighlight">\(P=50\ MW\)</span> og <span class="math notranslate nohighlight">\(Q=20\ MVAr\)</span></p></li>
+</ul>
+<p>Lastflyt</p>
+<p>Velg:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Calculate → Load Flow
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="id3">
+<h2>Oppgaver<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>a)Kjør lastflyten.</p>
+<p>b) Noter; |V_2| og <span class="math notranslate nohighlight">\(\delta_2\)</span></p>
+<p>c) Sammenlign med:</p>
+<ul class="simple">
+<li><p>Gauss-Seidel</p></li>
+<li><p>Newton-Raphson</p></li>
+<li><p>Pandapower</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="forventet-laeringsutbytte">
+<h1>Forventet læringsutbytte<a class="headerlink" href="#forventet-laeringsutbytte" title="Permalink to this heading">#</a></h1>
+<p>Etter øvingen skal du kunne:</p>
+<ul class="simple">
+<li><p>etablere Y-bus-matrisen</p></li>
+<li><p>utføre Gauss-Seidel-lastflyt</p></li>
+<li><p>utføre Newton-Raphson-lastflyt</p></li>
+<li><p>forstå mismatch-vektoren</p></li>
+<li><p>forstå Jacobian-matrisen</p></li>
+<li><p>modellere samme nett i Pandapower</p></li>
+<li><p>modellere samme nett i PowerFactory</p></li>
+<li><p>verifisere håndregninger mot programvare</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandapower</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pp</span>
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_empty_network</span><span class="p">()</span>
+
+<span class="n">b1</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">create_bus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">vn_kv</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_ext_grid</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">vm_pu</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_impedance</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">from_bus</span><span class="o">=</span><span class="n">b1</span><span class="p">,</span>
+    <span class="n">to_bus</span><span class="o">=</span><span class="n">b2</span><span class="p">,</span>
+    <span class="n">rft_pu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xft_pu</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">sn_mva</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">create_load</span><span class="p">(</span>
+    <span class="n">net</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="n">b2</span><span class="p">,</span>
+    <span class="n">p_mw</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">q_mvar</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span>
+<span class="n">net</span><span class="p">,</span>
+<span class="n">algorithm</span><span class="o">=</span><span class="s2">"gs"</span><span class="p">,</span>
+<span class="n">max_iteration</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="n">init</span><span class="o">=</span><span class="s2">"flat"</span><span class="p">,</span>
+<span class="n">tolerance_mva</span><span class="o">=</span><span class="mf">1e-1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span><span class="p">)</span>
+
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span>
+<span class="n">net</span><span class="p">,</span>
+<span class="n">algorithm</span><span class="o">=</span><span class="s2">"nr"</span><span class="p">,</span>
+<span class="n">max_iteration</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">init</span><span class="o">=</span><span class="s2">"flat"</span><span class="p">,</span>
+<span class="n">tolerance_mva</span><span class="o">=</span><span class="mf">1e-1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">res_bus</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      vm_pu  va_degree  p_mw     q_mvar
+0  1.000000   0.000000 -50.0 -23.020833
+1  0.978258  -2.929737  50.0  20.000000
+      vm_pu  va_degree  p_mw     q_mvar
+0  1.000000   0.000000 -50.0 -23.030016
+1  0.978252  -2.929636  50.0  20.000000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./06_tidsserie"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2 bus load flow</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lastflytanalyse-for-2-buss-system">Lastflytanalyse for 2-buss-system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#systembeskrivelse">Systembeskrivelse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basisverdier">Basisverdier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#y-bus-matrise">Y-bus-matrise</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-a-gauss-seidel">Oppgave A: Gauss-Seidel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-start">Flat start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdateringsformel">Oppdateringsformel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-b-newton-raphson">Oppgave B: Newton-Raphson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilstandsvariabler">Tilstandsvariabler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektligninger">Effektligninger</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-c-pandapower">Oppgave C: Pandapower</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-d-digsilent-powerfactory">Oppgave D: DIgSILENT PowerFactory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forventet-laeringsutbytte">Forventet læringsutbytte</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500">
+
+  <!-- Bus B1 -->
+  <line x1="120" y1="120" x2="260" y2="120" stroke="black" stroke-width="3"/>
+
+  <!-- External Grid symbol -->
+  <line x1="190" y1="120" x2="190" y2="40" stroke="black" stroke-width="3"/>
+
+  <line x1="190" y1="40" x2="165" y2="5" stroke="black" stroke-width="2"/>
+  <line x1="190" y1="40" x2="190" y2="0" stroke="black" stroke-width="2"/>
+  <line x1="190" y1="40" x2="215" y2="5" stroke="black" stroke-width="2"/>
+
+  <!-- Cable -->
+  <line x1="190" y1="120" x2="190" y2="230" stroke="black" stroke-width="3"/>
+
+  <!-- Bus B2 -->
+  <line x1="120" y1="230" x2="260" y2="230" stroke="black" stroke-width="3"/>
+
+  <!-- Transformer -->
+  <line x1="190" y1="230" x2="190" y2="260" stroke="black" stroke-width="3"/>
+
+  <circle cx="190" cy="285" r="25" fill="none" stroke="black" stroke-width="2"/>
+  <circle cx="190" cy="315" r="25" fill="none" stroke="black" stroke-width="2"/>
+
+  <line x1="190" y1="340" x2="190" y2="390" stroke="black" stroke-width="3"/>
+
+  <!-- Bus B3 -->
+  <line x1="120" y1="390" x2="260" y2="390" stroke="black" stroke-width="3"/>
+
+  <!-- Load -->
+  <line x1="190" y1="390" x2="190" y2="425" stroke="black" stroke-width="3"/>
+
+  <polygon points="180,425 200,425 190,440" fill="black"/>
+
+  <!-- Labels -->
+  <text x="310" y="45" font-family="Arial" font-size="22">
+    External Grid
+  </text>
+
+  <text x="310" y="125" font-family="Arial" font-size="22">
+    B1 / 11 kV
+  </text>
+
+  <text x="310" y="185" font-family="Arial" font-size="22">
+    Cable 2000 m
+  </text>
+
+  <text x="310" y="235" font-family="Arial" font-size="22">
+    B2 / 11 kV
+  </text>
+
+  <text x="310" y="295" font-family="Arial" font-size="22">
+    Transformer
+  </text>
+
+  <text x="310" y="325" font-family="Arial" font-size="22">
+    100 kVA
+  </text>
+
+  <text x="310" y="355" font-family="Arial" font-size="22">
+    11 / 0.420 kV
+  </text>
+
+  <text x="310" y="395" font-family="Arial" font-size="22">
+    B3 / 420 V
+  </text>
+
+  <text x="260" y="440" font-family="Arial" font-size="22">
+    P=50 kW, Q=20 kVAr
+  </text>
+
+</svg>
