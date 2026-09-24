@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Timeplan ELK330 &#8212; Dynamiske kraftnett</title>
+    <title>LAB 1 &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -65,11 +65,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '01_forord/timetable';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'LAB/LAB1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Digitalisering" href="../01_intro/digital.html" />
-    <link rel="prev" title="Støttelitteratur ELK330" href="literature.html" />
+    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="prev" title="Installasjonsveiledning for PowerFactory" href="../11_powerfactory/install_pf_no.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,13 +173,13 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practical.html">Praktisk info</a></li>
-<li class="toctree-l1"><a class="reference internal" href="author.html">Om meg</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contacts.html">Kontakt meg</a></li>
-<li class="toctree-l1"><a class="reference internal" href="idea330.html">Fra idé til ELK330</a></li>
-<li class="toctree-l1"><a class="reference internal" href="literature.html">Støttelitteratur ELK330</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Timeplan ELK330</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
 <ul class="nav bd-sidenav">
@@ -233,11 +235,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">LAB 1</a></li>
 
 
 
@@ -319,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F01_forord/timetable.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2FLAB/LAB1.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -349,7 +351,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/01_forord/timetable.ipynb" target="_blank"
+      <li><a href="../_sources/LAB/LAB1.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -420,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -431,11 +435,41 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Timeplan ELK330</h1>
+    <h1>LAB 1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LAB 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastflytanalyse-for-2-buss-system-i-pandapower">Lastflytanalyse for 2-buss-system i pandapower</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#systembeskrivelse">Systembeskrivelse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basisverdier">Basisverdier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#y-bus-matrise">Y-bus-matrise</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-a-gauss-seidel">Oppgave A: Gauss-Seidel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-start">Flat start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdateringsformel">Oppdateringsformel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-b-pandapower">Oppgave B: Pandapower</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forventet-laeringsutbytte">Forventet læringsutbytte</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -445,14 +479,166 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="timeplan-elk330">
-<h1>Timeplan ELK330<a class="headerlink" href="#timeplan-elk330" title="Permalink to this heading">#</a></h1>
-<figure class="align-default" id="fig-timetable">
-<a class="reference internal image-reference" href="../_images/timetable.svg"><img alt="../_images/timetable.svg" src="../_images/timetable.svg" width="900px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Timeplan for ELK330 høsten 2026.</span><a class="headerlink" href="#fig-timetable" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1">
+<h1>LAB 1<a class="headerlink" href="#lab-1" title="Permalink to this heading">#</a></h1>
+<section id="lastflytanalyse-for-2-buss-system-i-pandapower">
+<h2>Lastflytanalyse for 2-buss-system i pandapower<a class="headerlink" href="#lastflytanalyse-for-2-buss-system-i-pandapower" title="Permalink to this heading">#</a></h2>
+<section id="formal">
+<h3>Formål<a class="headerlink" href="#formal" title="Permalink to this heading">#</a></h3>
+<p>Denne oppgaven kan løses ved hjelp av:</p>
+<ol class="arabic simple">
+<li><p>Gauss-Seidel-metoden</p></li>
+<li><p>Pandapower</p></li>
+<li><p>DIgSILENT PowerFactory</p></li>
+</ol>
+<p>Målet er å sammenligne resultatene fra håndregning med resultatene fra programvare.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="systembeskrivelse">
+<h1>Systembeskrivelse<a class="headerlink" href="#systembeskrivelse" title="Permalink to this heading">#</a></h1>
+<p>En slack-buss forsyner en last gjennom en transmisjonslinje.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      Bus 1 (Slack)
+      V₁ = 1∠0°
+           |
+           |
+      Z = 0.1+j0.5 pu
+           |
+           |
+      Bus 2 (PQ)
+      P = 0.3 pu
+      Q = 0.2 pu
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="basisverdier">
+<h1>Basisverdier<a class="headerlink" href="#basisverdier" title="Permalink to this heading">#</a></h1>
+<p>Velg følgende baseverdier:<span class="math notranslate nohighlight">\( S_{base}=100\text{ MVA}\)</span>, <span class="math notranslate nohighlight">\(V_{base}=11\text{ kV}\)</span></p>
+<p>Buss 1 (Slack); <span class="math notranslate nohighlight">\(V_1=1.0\angle0^\circ\)</span></p>
+<p>Buss 2 (PQ) Last: <span class="math notranslate nohighlight">\(P_2=-0.5\ pu\)</span>, <span class="math notranslate nohighlight">\(Q_2=-0.2\ pu\)</span></p>
+<p>Negativt fortegn betyr effektforbruk.</p>
+<p>Linjeimpedans:<span class="math notranslate nohighlight">\(Z_{12}=0.1 + j0.5\ pu\)</span></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/86d6a1c4e9b8c28887295b341fb2bd3be49d0300cda453ef4208127ad8dd75aa.svg" src="../_images/86d6a1c4e9b8c28887295b341fb2bd3be49d0300cda453ef4208127ad8dd75aa.svg" /></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="y-bus-matrise">
+<h1>Y-bus-matrise<a class="headerlink" href="#y-bus-matrise" title="Permalink to this heading">#</a></h1>
+<p>Bestem Y-bus matrise</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-a-gauss-seidel">
+<h1>Oppgave A: Gauss-Seidel<a class="headerlink" href="#oppgave-a-gauss-seidel" title="Permalink to this heading">#</a></h1>
+<section id="flat-start">
+<h2>Flat start<a class="headerlink" href="#flat-start" title="Permalink to this heading">#</a></h2>
+<p>Velg startverdien <span class="math notranslate nohighlight">\(V_2^{(0)}=1+j0\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="oppdateringsformel">
+<h2>Oppdateringsformel<a class="headerlink" href="#oppdateringsformel" title="Permalink to this heading">#</a></h2>
+<p>For PQ-buss 2: <span class="math notranslate nohighlight">\(V_2^{(r+1)}=\frac{1}{Y_{22}}\left[\frac{P_2-jQ_2}{\left(V_2^{(k)}\right)^*}-Y_{21}V_1\right]\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<p>a)Beregn første iterasjon; <span class="math notranslate nohighlight">\(V_2^{(1)}\)</span></p>
+<p>b)Beregn andre iterasjon; <span class="math notranslate nohighlight">\(V_2^{(2)}\)</span></p>
+<p>c) Fortsett 4 iterasjoner</p>
+<p>d) Bestem sluttverdiene |V_2| og <span class="math notranslate nohighlight">\(\delta_2\)</span></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-b-pandapower">
+<h1>Oppgave B: Pandapower<a class="headerlink" href="#oppgave-b-pandapower" title="Permalink to this heading">#</a></h1>
+<p>Bruk følgende script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import pandapower as pp
+
+net = pp.create_empty_network()
+
+# Busser
+b1 = pp.create_bus(net, vn_kv=?, name="Bus 1")
+b2 = pp.create_bus(net, vn_kv=?, name="Bus 2")
+
+# Slack
+pp.create_ext_grid(
+    net,
+    bus=b1,
+    vm_pu=1.0
+)
+
+# Impedans
+pp.create_impedance(
+    net,
+    from_bus=b1,
+    to_bus=b2,
+    rft_pu=?,
+    xft_pu=?,
+    sn_mva=100
+)
+
+# Last
+pp.create_load(
+    net,
+    bus=b2,
+    p_mw=30,
+    q_mvar=20
+)
+
+# Lastflyt
+pp.runpp(net, algorithm="nr")
+
+print(net.res_bus)
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="id1">
+<h2>Oppgaver<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>a) Kjør scriptet.</p>
+<p>b) Noter; |V_2| og <span class="math notranslate nohighlight">\(\delta_2\)</span></p>
+<p>c)Sammenlign resultatene med Newton-Raphson.</p>
+</section>
+<section id="id2">
+<h2>Oppgaver<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>a)Kjør lastflyten.</p>
+<p>b) Noter; |V_2| og <span class="math notranslate nohighlight">\(\delta_2\)</span></p>
+<p>c) Sammenlign med:</p>
+<ul class="simple">
+<li><p>Gauss-Seidel</p></li>
+<li><p>Newton-Raphson</p></li>
+<li><p>Pandapower</p></li>
+</ul>
+<p>d) Refleksjonsspørsmål/Sensitivitetsanalyse:</p>
+<ul class="simple">
+<li><p>Hvorfor blir spenningen på Buss 2 lavere enn spenningen på Slack-bussen?</p></li>
+<li><p>Hva forteller spenningsvinkelen på Buss 2 om effektflyten i systemet?</p></li>
+<li><p>Hvordan påvirker linjeimpedansen spenningsfallet i nettet?</p></li>
+<li><p>Hva skjer med spenningen på Buss 2 dersom linjeimpedansen dobles?</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="forventet-laeringsutbytte">
+<h1>Forventet læringsutbytte<a class="headerlink" href="#forventet-laeringsutbytte" title="Permalink to this heading">#</a></h1>
+<p>Etter øvingen skal du kunne:</p>
+<ul class="simple">
+<li><p>etablere Y-bus-matrisen</p></li>
+<li><p>utføre Gauss-Seidel-lastflyt</p></li>
+<li><p>modellere samme nett i Pandapower</p></li>
+<li><p>verifisere håndregninger mot programvare</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      vm_pu  va_degree       p_mw     q_mvar
+0  1.000000   0.000000 -31.776843 -29.273659
+1  0.832012  -8.962015  30.000000  20.000000
+     vm_pu  va_degree       p_mw     q_mvar
+0  1.00000   0.000000 -31.880879 -29.404395
+1  0.83133  -8.996316  30.000000  20.000000
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,7 +654,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./01_forord"
+            path: "./LAB"
         },
         predefinedOutput: true
     }
@@ -486,20 +672,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="literature.html"
+       href="../11_powerfactory/install_pf_no.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Støttelitteratur ELK330</p>
+        <p class="prev-next-title">Installasjonsveiledning for PowerFactory</p>
       </div>
     </a>
     <a class="right-next"
-       href="../01_intro/digital.html"
+       href="../references.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Digitalisering</p>
+        <p class="prev-next-title">Referanser</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -509,6 +695,43 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LAB 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastflytanalyse-for-2-buss-system-i-pandapower">Lastflytanalyse for 2-buss-system i pandapower</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#systembeskrivelse">Systembeskrivelse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basisverdier">Basisverdier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#y-bus-matrise">Y-bus-matrise</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-a-gauss-seidel">Oppgave A: Gauss-Seidel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-start">Flat start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdateringsformel">Oppdateringsformel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-b-pandapower">Oppgave B: Pandapower</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Oppgaver</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forventet-laeringsutbytte">Forventet læringsutbytte</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
