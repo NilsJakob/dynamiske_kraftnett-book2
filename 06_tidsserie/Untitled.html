@@ -595,68 +595,7 @@ Q_3^{calc}</a></li>
                     Bus 2
 </pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST CELL</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span>
-
-<span class="n">svg</span> <span class="o">=</span> <span class="s2">"""</span>
-
-<span class="s2">&lt;svg width="900" height="500" xmlns="http://www.w3.org/2000/svg"&gt;</span>
-
-<span class="s2">  &lt;style&gt;</span>
-<span class="s2">    .bus { stroke:black; stroke-width:5; }</span>
-<span class="s2">    .line { stroke:black; stroke-width:2.5; fill:none; }</span>
-<span class="s2">    .label { font-family:Arial, sans-serif; font-size:16px; }</span>
-<span class="s2">    .small { font-family:Arial, sans-serif; font-size:14px; }</span>
-<span class="s2">  &lt;/style&gt;</span>
-
-<span class="s2">  &lt;!-- BUS 1 --&gt;</span>
-<span class="s2">  &lt;line class="bus" x1="150" y1="70" x2="150" y2="150"/&gt;</span>
-<span class="s2">  &lt;text class="label" x="125" y="175"&gt;Bus 1&lt;/text&gt;</span>
-<span class="s2">  &lt;text class="small" x="80" y="195"&gt;Slack&lt;/text&gt;</span>
-<span class="s2">  &lt;text class="small" x="55" y="215"&gt;V = 1.04∠0°&lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- BUS 3 --&gt;</span>
-<span class="s2">  &lt;line class="bus" x1="750" y1="70" x2="750" y2="150"/&gt;</span>
-<span class="s2">  &lt;text class="label" x="725" y="175"&gt;Bus 3&lt;/text&gt;</span>
-<span class="s2">  &lt;text class="small" x="685" y="195"&gt;P = -0.6 pu&lt;/text&gt;</span>
-<span class="s2">  &lt;text class="small" x="675" y="215"&gt;Q = -0.25 pu&lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- BUS 2 --&gt;</span>
-<span class="s2">  &lt;line class="bus" x1="360" y1="360" x2="540" y2="360"/&gt;</span>
-<span class="s2">  &lt;text class="label" x="430" y="390"&gt;Bus 2&lt;/text&gt;</span>
-<span class="s2">  &lt;text class="small" x="390" y="412"&gt;P = -0.5 pu&lt;/text&gt;</span>
-<span class="s2">  &lt;text class="small" x="390" y="432"&gt;Q = -0.2 pu&lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Top branch stubs --&gt;</span>
-<span class="s2">  &lt;line class="line" x1="150" y1="100" x2="220" y2="100"/&gt;</span>
-<span class="s2">  &lt;line class="line" x1="680" y1="100" x2="750" y2="100"/&gt;</span>
-
-<span class="s2">  &lt;!-- Top branch --&gt;</span>
-<span class="s2">  &lt;line class="line" x1="220" y1="100" x2="680" y2="100"/&gt;</span>
-<span class="s2">  &lt;text class="label" x="425" y="85"&gt;j0.4 pu&lt;/text&gt;</span>
-
-<span class="s2">  &lt;!-- Left lower branch --&gt;</span>
-<span class="s2">  &lt;line class="line" x1="150" y1="130" x2="220" y2="130"/&gt;</span>
-<span class="s2">  &lt;line class="line" x1="220" y1="130" x2="400" y2="360"/&gt;</span>
-
-<span class="s2">  &lt;!-- Right lower branch --&gt;</span>
-<span class="s2">  &lt;line class="line" x1="680" y1="130" x2="750" y2="130"/&gt;</span>
-<span class="s2">  &lt;line class="line" x1="500" y1="360" x2="680" y2="130"/&gt;</span>
-
-<span class="s2">  &lt;!-- Impedance labels --&gt;</span>
-<span class="s2">  &lt;text class="label" x="260" y="245"&gt;j0.2 pu&lt;/text&gt;</span>
-<span class="s2">  &lt;text class="label" x="565" y="245"&gt;j0.25 pu&lt;/text&gt;</span>
-
-<span class="s2">&lt;/svg&gt;</span>
-<span class="s2">"""</span>
-
-<span class="n">glue</span><span class="p">(</span><span class="s2">"last_flyt"</span><span class="p">,</span> <span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/8a0f20c03a03764108334d1d02eb7e0f7065e1d025ac6c0ad84cf9144274fa3d.svg" src="../_images/8a0f20c03a03764108334d1d02eb7e0f7065e1d025ac6c0ad84cf9144274fa3d.svg" /></div>
 </div>
