@@ -467,6 +467,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forventet-laeringsutbytte">Forventet læringsutbytte</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss-seidel-for-2-buss-system">Gauss-Seidel for 2-buss-system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-1">Iterasjon 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-2">Iterasjon 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-3">Iterasjon 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-4">Iterasjon 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konvergert-losning">Konvergert løsning</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -517,7 +526,7 @@ document.write(`
 <h1>Basisverdier<a class="headerlink" href="#basisverdier" title="Permalink to this heading">#</a></h1>
 <p>Velg følgende baseverdier:<span class="math notranslate nohighlight">\( S_{base}=100\text{ MVA}\)</span>, <span class="math notranslate nohighlight">\(V_{base}=11\text{ kV}\)</span></p>
 <p>Buss 1 (Slack); <span class="math notranslate nohighlight">\(V_1=1.0\angle0^\circ\)</span></p>
-<p>Buss 2 (PQ) Last: <span class="math notranslate nohighlight">\(P_2=-0.5\ pu\)</span>, <span class="math notranslate nohighlight">\(Q_2=-0.2\ pu\)</span></p>
+<p>Buss 2 (PQ) Last: <span class="math notranslate nohighlight">\(P_2=-0.3\ pu\)</span>, <span class="math notranslate nohighlight">\(Q_2=-0.2\ pu\)</span></p>
 <p>Negativt fortegn betyr effektforbruk.</p>
 <p>Linjeimpedans:<span class="math notranslate nohighlight">\(Z_{12}=0.1 + j0.5\ pu\)</span></p>
 <div class="cell tag_remove-input docutils container">
@@ -629,16 +638,313 @@ print(net.res_bus)
 </ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      vm_pu  va_degree       p_mw     q_mvar
-0  1.000000   0.000000 -31.776843 -29.273659
-1  0.832012  -8.962015  30.000000  20.000000
-     vm_pu  va_degree       p_mw     q_mvar
-0  1.00000   0.000000 -31.880879 -29.404395
-1  0.83133  -8.996316  30.000000  20.000000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     vm_pu  va_degree       p_mw    q_mvar
+0  1.00000   0.000000 -31.881044 -29.40536
+1  0.83132  -8.996708  30.000000  20.00000
+dict_keys(['Ybus', 'Yf', 'Yt', 'branch_is', 'branch_dc_is', 'gen_is', 'DLF', 'buses_ord_bfs_nets', 'ac_slack_buses', 'svc_is', 'ssc_is', 'vsc_is', 'tcsc_is', 'source_dc_is', 'ref_gens'])
+      vm_pu  va_degree       p_mw     q_mvar
+0  1.000000    0.00000 -31.881081 -29.405406
+1  0.831319   -8.99672  30.000000  20.000000
+dict_keys(['Ybus', 'Yf', 'Yt', 'branch_is', 'branch_dc_is', 'gen_is', 'DLF', 'buses_ord_bfs_nets', 'ac_slack_buses', 'svc_is', 'ssc_is', 'vsc_is', 'tcsc_is', 'source_dc_is', 'ref_gens', 'Ybus_svc', 'Ybus_tcsc', 'Ybus_ssc', 'Ybus_vsc', 'Ybus_hvdc', 'tcsc_fb', 'tcsc_tb', 'J', 'Vm_it', 'Va_it', 'bus', 'gen', 'branch', 'svc', 'tcsc', 'ssc', 'vsc', 'baseMVA', 'V', 'pv', 'pq', 'ref', 'Sbus', 'r_theta_kelvin_per_mw', 'T'])
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"nr"</span><span class="p">,</span> <span class="n">v_debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">_ppc</span><span class="p">[</span><span class="s2">"internal"</span><span class="p">][</span><span class="s2">"Vm_it"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">_ppc</span><span class="p">[</span><span class="s2">"internal"</span><span class="p">][</span><span class="s2">"Va_it"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.         1.         1.         1.         1.        ]
+ [1.         0.86012033 0.8325081  0.83132163 0.83131937]]
+[[ 0.          0.          0.          0.          0.        ]
+ [-0.15       -0.15148186 -0.1566236  -0.15702138 -0.15702239]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">_ppc</span><span class="p">[</span><span class="s2">"internal"</span><span class="p">][</span><span class="s2">"J"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Compressed Sparse Row sparse matrix of dtype 'float64'
+	with 4 stored elements and shape (2, 2)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">J</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">_ppc</span><span class="p">[</span><span class="s2">"internal"</span><span class="p">][</span><span class="s2">"J"</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">J</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"ΔP₂"</span><span class="p">,</span> <span class="s2">"ΔQ₂"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Δδ₂"</span><span class="p">,</span> <span class="s2">"Δ|V₂|"</span><span class="p">]</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Δδ₂     Δ|V₂|
+ΔP₂  1.529028 -0.041130
+ΔQ₂ -0.565805  1.358118
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"gs"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"GS:"</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">runpp</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"nr"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"NR:"</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GS: 0.19351887702941895
+NR: 0.08149123191833496
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gauss-seidel-for-2-buss-system">
+<h1>Gauss-Seidel for 2-buss-system<a class="headerlink" href="#gauss-seidel-for-2-buss-system" title="Permalink to this heading">#</a></h1>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+V_1 = 1+j0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Z_{12}=0.1+j0.5
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{12}=\frac{1}{Z_{12}}
+=0.384615-j1.923077
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{22}=0.384615-j1.923077
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{21}=-0.384615+j1.923077
+\]</div>
+<p>Last:</p>
+<div class="math notranslate nohighlight">
+\[
+P_2=-0.3
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Q_2=-0.2
+\]</div>
+<p>Gauss-Seidel-formel:</p>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(r+1)}
+=
+\frac{1}{Y_{22}}
+\left[
+\frac{P_2-jQ_2}
+{(V_2^{(r)})^*}
+-
+Y_{21}V_1
+\right]
+\]</div>
+<p>Startverdi:</p>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(0)}=1+j0
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="iterasjon-1">
+<h2>Iterasjon 1<a class="headerlink" href="#iterasjon-1" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(1)}
+=
+\frac{1}{0.384615-j1.923077}
+\left[
+\frac{-0.3+j0.2}{1+j0}
+-
+(-0.384615+j1.923077)(1)
+\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+\frac{
+0.084615-j1.723077
+}
+{
+0.384615-j1.923077
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(1)}
+=
+0.8700-j0.1300
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="iterasjon-2">
+<h2>Iterasjon 2<a class="headerlink" href="#iterasjon-2" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+(V_2^{(1)})^*
+=
+0.8700+j0.1300
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(2)}
+=
+\frac{1}{0.384615-j1.923077}
+\left[
+\frac{-0.3+j0.2}
+{0.8700+j0.1300}
+-
+(-0.384615+j1.923077)
+\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+\frac{
+0.0950-j1.6489
+}
+{
+0.384615-j1.923077
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(2)}
+=
+0.8340-j0.1174
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="iterasjon-3">
+<h2>Iterasjon 3<a class="headerlink" href="#iterasjon-3" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+(V_2^{(2)})^*
+=
+0.8340+j0.1174
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(3)}
+=
+\frac{1}{0.384615-j1.923077}
+\left[
+\frac{-0.3+j0.2}
+{0.8340+j0.1174}
+-
+(-0.384615+j1.923077)
+\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+\frac{
+0.0797-j1.6357
+}
+{
+0.384615-j1.923077
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(3)}
+=
+0.8258-j0.1231
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="iterasjon-4">
+<h2>Iterasjon 4<a class="headerlink" href="#iterasjon-4" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+(V_2^{(3)})^*
+=
+0.8258+j0.1231
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(4)}
+=
+\frac{1}{0.384615-j1.923077}
+\left[
+\frac{-0.3+j0.2}
+{0.8258+j0.1231}
+-
+(-0.384615+j1.923077)
+\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+\frac{
+0.0773-j1.6304
+}
+{
+0.384615-j1.923077
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(4)}
+=
+0.8229-j0.1244
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="konvergert-losning">
+<h2>Konvergert løsning<a class="headerlink" href="#konvergert-losning" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+V_2
+=
+0.8211-j0.1300
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|V_2|
+=
+0.8313
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta_2
+=
+-8.997^\circ
+\]</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -709,6 +1015,15 @@ print(net.res_bus)
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forventet-laeringsutbytte">Forventet læringsutbytte</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss-seidel-for-2-buss-system">Gauss-Seidel for 2-buss-system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-1">Iterasjon 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-2">Iterasjon 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-3">Iterasjon 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasjon-4">Iterasjon 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konvergert-losning">Konvergert løsning</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
