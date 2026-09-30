@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg baseProfile='full' height='100.000000%' version='1.1' viewBox='0.000000 0.000000 1753.000000 1240.000000' width='100.000000%' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+
+
+  <defs>
+    <clipPath id='clipPath-01'>
+      <polygon points='0.000000 1240.157480, 0.000000 0.000000, 1753.937008 0.000000, 1753.937008 1240.157480' />
+    </clipPath>
+  </defs>
+
+  <g clip-path='url(#clipPath-01)'>
+    <g id='Page Layer'>
+      <polygon fill='#ffffff' points='0.500000 0.500000, 0.500000 1239.500000, 1752.500000 1239.500000, 1752.500000 0.500000' stroke='#808080' stroke-width='1.000000' />
+    </g>
+    <g id='Net elements'>
+      <g id='Grid\Load Area1.ElmLod'>
+        <polyline fill='none' points='749.500438 800.935057, 749.500438 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='749.500438 820.312221, 749.500438 800.905529' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='741.758286 820.312221, 757.242591 820.312221, 749.500438 839.692929, 741.758286 820.312221' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\External Grid.ElmXnet'>
+        <polyline fill='none' points='285.148178 258.366181, 285.148178 335.876020' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='285.148178 245.450827, 285.148178 258.395708' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='304.496484 245.450827, 265.799873 245.450827, 265.799873 219.608308, 304.496484 219.608308, 304.496484 245.450827' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='285.148178 245.450827, 265.799873 232.529568, 285.148178 219.608308, 304.496484 232.529568, 285.148178 245.450827' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='265.799873 245.450827, 304.496484 219.608308' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='265.799873 219.608308, 304.496484 245.450827' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Cable 3.ElmLne'>
+        <polyline fill='none' points='1342.839437 258.366181, 1213.852698 258.366181, 1213.852698 335.876020' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1342.839437 258.366181, 1471.826176 258.366181, 1471.826176 335.876020' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Cable 2.ElmLne'>
+        <polyline fill='none' points='942.980547 258.366181, 801.095134 258.366181, 801.095134 335.876020' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='942.980547 258.366181, 1084.865960 258.366181, 1084.865960 335.876020' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Load Area 2.ElmLod'>
+        <polyline fill='none' points='1110.663307 800.935057, 1110.663307 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1110.663307 820.312221, 1110.663307 800.905529' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1102.921155 820.312221, 1118.405460 820.312221, 1110.663307 839.692929, 1102.921155 820.312221' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Load Area 3.ElmLod'>
+        <polyline fill='none' points='1600.812915 800.935057, 1600.812915 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1600.812915 820.312221, 1600.812915 800.905529' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1593.070762 820.312221, 1608.555068 820.312221, 1600.812915 839.692929, 1593.070762 820.312221' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Cable 1.ElmLne'>
+        <polyline fill='none' points='568.919004 542.568925, 568.919004 826.771670, 388.337570 826.771670, 388.337570 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='568.919004 542.568925, 568.919004 258.366181, 697.905743 258.366181, 697.905743 335.876020' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T4.ElmTr2'>
+        <polyline fill='none' points='1549.218220 503.814006, 1549.218220 335.876020' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1549.218220 555.487232, 1549.218220 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1549.218220 503.784478, 1549.218220 505.367155' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1549.218220' cy='520.862922' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1549.218220' cy='538.438315' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1549.218220 555.516759, 1549.218220 553.934082' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T3.ElmTr2'>
+        <polyline fill='none' points='1162.258003 503.814006, 1162.258003 335.876020' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1162.258003 555.487232, 1162.258003 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1162.258003 503.784478, 1162.258003 505.367155' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1162.258003' cy='520.862922' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1162.258003' cy='538.438315' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='1162.258003 555.516759, 1162.258003 553.934082' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T2.ElmTr2'>
+        <polyline fill='none' points='723.703091 503.814006, 723.703091 335.876020' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='723.703091 555.487232, 723.703091 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='723.703091 503.784478, 723.703091 505.367155' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='723.703091' cy='520.862922' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='723.703091' cy='538.438315' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='723.703091 555.516759, 723.703091 553.934082' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T1.ElmTr2'>
+        <polyline fill='none' points='336.742874 465.059086, 336.742874 335.876020' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='336.742874 516.732312, 336.742874 723.425217' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='336.742874 465.029558, 336.742874 466.612235' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='336.742874' cy='482.108003' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='336.742874' cy='499.683396' fill='none' rx='15.507302' ry='15.530905' stroke='#000000' stroke-width='1.000000' />
+        <polyline fill='none' points='336.742874 516.761840, 336.742874 515.179163' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Substation(7)\Area 3 LV.ElmTerm'>
+        <polyline fill='none' points='1420.192121 723.425217, 1626.649622 723.425217' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\Substation(6)\Area 3 HV.ElmTerm'>
+        <polyline fill='none' points='1420.192121 335.876020, 1626.649622 335.876020' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\Substation(5)\Area 1 LV.ElmTerm'>
+        <polyline fill='none' points='1033.231995 723.425217, 1239.689496 723.425217' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\Substation(4)\Area 2 HV.ElmTerm'>
+        <polyline fill='none' points='1033.231995 335.876020, 1239.689496 335.876020' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\Substation(3)\Area 1 LV.ElmTerm'>
+        <polyline fill='none' points='646.271733 723.425217, 852.729234 723.425217' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\Substation(2)\Area 1 HV.ElmTerm'>
+        <polyline fill='none' points='646.271733 335.876020, 852.729234 335.876020' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\Substation(1)\LV Bus.ElmTerm'>
+        <polyline fill='none' points='207.716821 723.425217, 414.174322 723.425217' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\HV Bus\HV Bus.ElmTerm'>
+        <polyline fill='none' points='259.311516 335.876020, 465.769017 335.876020' stroke='#000000' stroke-width='2.582683' />
+      </g>
+      <g id='Grid\Load Area1.ElmLod::LineAttribs'>
+        <polygon fill='#000000' points='745.630836 740.219016, 745.630836 732.468032, 753.370041 732.468032, 753.370041 740.219016' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='749.500438' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\External Grid.ElmXnet::LineAttribs'>
+        <polygon fill='#000000' points='289.017781 319.082222, 289.017781 326.833206, 281.278576 326.833206, 281.278576 319.082222' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='285.148178' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Cable 3.ElmLne::LineAttribs'>
+        <polygon fill='#000000' points='1217.722301 319.082222, 1217.722301 326.833206, 1209.983096 326.833206, 1209.983096 319.082222' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1213.852698' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+        <polygon fill='#000000' points='1475.695778 319.082222, 1475.695778 326.833206, 1467.956574 326.833206, 1467.956574 319.082222' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1471.826176' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Cable 2.ElmLne::LineAttribs'>
+        <polygon fill='#000000' points='804.964736 319.082222, 804.964736 326.833206, 797.225532 326.833206, 797.225532 319.082222' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='801.095134' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+        <polygon fill='#000000' points='1088.735562 319.082222, 1088.735562 326.833206, 1080.996357 326.833206, 1080.996357 319.082222' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1084.865960' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Load Area 2.ElmLod::LineAttribs'>
+        <polygon fill='#000000' points='1106.793705 740.219016, 1106.793705 732.468032, 1114.532909 732.468032, 1114.532909 740.219016' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1110.663307' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Load Area 3.ElmLod::LineAttribs'>
+        <polygon fill='#000000' points='1596.943313 740.219016, 1596.943313 732.468032, 1604.682517 732.468032, 1604.682517 740.219016' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1600.812915' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Cable 1.ElmLne::LineAttribs'>
+        <polygon fill='#000000' points='384.467967 740.219016, 384.467967 732.468032, 392.207172 732.468032, 392.207172 740.219016' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='388.337570' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+        <polygon fill='#000000' points='701.775345 319.082222, 701.775345 326.833206, 694.036141 326.833206, 694.036141 319.082222' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='697.905743' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T4.ElmTr2::LineAttribs'>
+        <polygon fill='#000000' points='1545.348617 352.669819, 1545.348617 344.918835, 1553.087822 344.918835, 1553.087822 352.669819' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1549.218220' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+        <polygon fill='#000000' points='1553.087822 706.631419, 1553.087822 714.382403, 1545.348617 714.382403, 1545.348617 706.631419' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1549.218220' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T3.ElmTr2::LineAttribs'>
+        <polygon fill='#000000' points='1158.388401 352.669819, 1158.388401 344.918835, 1166.127605 344.918835, 1166.127605 352.669819' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1162.258003' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+        <polygon fill='#000000' points='1166.127605 706.631419, 1166.127605 714.382403, 1158.388401 714.382403, 1158.388401 706.631419' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='1162.258003' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T2.ElmTr2::LineAttribs'>
+        <polygon fill='#000000' points='719.833489 352.669819, 719.833489 344.918835, 727.572693 344.918835, 727.572693 352.669819' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='723.703091' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+        <polygon fill='#000000' points='727.572693 706.631419, 727.572693 714.382403, 719.833489 714.382403, 719.833489 706.631419' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='723.703091' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\T1.ElmTr2::LineAttribs'>
+        <polygon fill='#000000' points='332.873272 352.669819, 332.873272 344.918835, 340.612476 344.918835, 340.612476 352.669819' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='336.742874' cy='335.876020' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+        <polygon fill='#000000' points='340.612476 706.631419, 340.612476 714.382403, 332.873272 714.382403, 332.873272 706.631419' stroke='#000000' stroke-width='1.000000' />
+        <ellipse cx='336.742874' cy='723.425217' fill='#000000' rx='4.126986' ry='4.133268' stroke='#000000' stroke-width='1.000000' />
+      </g>
+    </g>
+    <g id='Labels'>
+      <g id='Grid\HV Bus\1.ElmBay::AdditionalTextBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='333.847893' y='318.003485'>1</text>
+      </g>
+      <g id='Grid\Substation(1)\1.ElmBay::AdditionalTextBox 1'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='333.847893' y='752.774897'>1</text>
+      </g>
+      <g id='Grid\Substation(2)\1.ElmBay::AdditionalTextBox 2'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='720.808110' y='318.003485'>1</text>
+      </g>
+      <g id='Grid\Substation(3)\1.ElmBay::AdditionalTextBox 3'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='720.808110' y='752.774897'>1</text>
+      </g>
+      <g id='Grid\Substation(4)\1.ElmBay::AdditionalTextBox 4'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1159.363022' y='318.003485'>1</text>
+      </g>
+      <g id='Grid\Substation(5)\1.ElmBay::AdditionalTextBox 5'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1159.363022' y='752.774897'>1</text>
+      </g>
+      <g id='Grid\Substation(6)\1.ElmBay::AdditionalTextBox 6'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1546.323239' y='318.003485'>1</text>
+      </g>
+      <g id='Grid\Substation(7)\1.ElmBay::AdditionalTextBox 7'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1546.323239' y='752.774897'>1</text>
+      </g>
+      <g id='Grid\Substation(1)\2.ElmBay::AdditionalTextBox 8'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='383.930114' y='705.552683'>2</text>
+      </g>
+      <g id='Grid\Substation(2)\2.ElmBay::AdditionalTextBox 9'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='693.498287' y='365.225700'>2</text>
+      </g>
+      <g id='Grid\Substation(7)\2.ElmBay::AdditionalTextBox 10'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1596.405459' y='705.552683'>2</text>
+      </g>
+      <g id='Grid\Substation(5)\3.ElmBay::AdditionalTextBox 11'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1106.294453' y='705.552683'>3</text>
+      </g>
+      <g id='Grid\Substation(2)\3.ElmBay::AdditionalTextBox 12'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='796.726280' y='365.225700'>3</text>
+      </g>
+      <g id='Grid\Substation(4)\2.ElmBay::AdditionalTextBox 13'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1080.458504' y='365.225700'>2</text>
+      </g>
+      <g id='Grid\Substation(4)\3.ElmBay::AdditionalTextBox 14'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1209.483844' y='365.225700'>3</text>
+      </g>
+      <g id='Grid\Substation(6)\2.ElmBay::AdditionalTextBox 15'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1467.418720' y='365.225700'>2</text>
+      </g>
+      <g id='Grid\HV Bus\2.ElmBay::AdditionalTextBox 16'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='280.740723' y='365.225700'>2</text>
+      </g>
+      <g id='Grid\Substation(3)\3.ElmBay::AdditionalTextBox 17'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='745.131584' y='705.552683'>3</text>
+      </g>
+      <g id='Grid\Load Area1.ElmLod::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='717.598218' y='859.982415'>Load Area1</text>
+      </g>
+      <g id='Grid\External Grid.ElmXnet::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='249.895966' y='196.784268'>External Gr..</text>
+      </g>
+      <g id='Grid\Cable 3.ElmLne::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='1277.431152' y='246.822937'>3x1x150mm2 Cu TSLE</text>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='1320.763041' y='234.245880'>Cable 3</text>
+      </g>
+      <g id='Grid\Cable 2.ElmLne::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='877.572261' y='246.822937'>3x1x150mm2 Cu TSLE</text>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='920.950209' y='234.245880'>Cable 2</text>
+      </g>
+      <g id='Grid\Load Area 2.ElmLod::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='1076.191019' y='859.982415'>Load Area 2</text>
+      </g>
+      <g id='Grid\Load Area 3.ElmLod::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' x='1566.294569' y='859.982415'>Load Area 3</text>
+      </g>
+      <g id='Grid\Cable 1.ElmLne::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,546.091155,608.076767)' x='546.091155' y='619.396118'>3x1x150mm2 Cu TSLE</text>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,533.533213,563.808629)' x='533.533213' y='575.127980'>Cable 1</text>
+      </g>
+      <g id='Grid\T4.ElmTr2::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,1495.056332,537.549914)' x='1495.056332' y='548.869265'>T4</text>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,1507.614274,537.549914)' x='1507.614274' y='548.869265'>T4</text>
+      </g>
+      <g id='Grid\T3.ElmTr2::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,1108.096115,537.568365)' x='1108.096115' y='548.887716'>T3</text>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,1120.654057,537.568365)' x='1120.654057' y='548.887716'>T3</text>
+      </g>
+      <g id='Grid\T2.ElmTr2::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,669.541203,537.522237)' x='669.541203' y='548.841587'>T2</text>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,682.099145,537.522237)' x='682.099145' y='548.841587'>T2</text>
+      </g>
+      <g id='Grid\T1.ElmTr2::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,282.580986,497.943152)' x='282.580986' y='509.262502'>T1</text>
+        <text fill='#000000' font-family='Arial' font-size='12.577056' text-anchor='start' transform='rotate(270.000000,295.138928,506.569211)' x='295.138928' y='517.888562'>T1(2)</text>
+      </g>
+      <g id='Grid\Substation(7)\Area 3 LV.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1350.529057' y='727.624532'>Area 3 LV</text>
+      </g>
+      <g id='Grid\Substation(6)\Area 3 HV.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='1348.142785' y='340.075335'>Area 3 HV</text>
+      </g>
+      <g id='Grid\Substation(5)\Area 1 LV.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='963.568930' y='727.624532'>Area 1 LV</text>
+      </g>
+      <g id='Grid\Substation(4)\Area 2 HV.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='961.182659' y='340.075335'>Area 2 HV</text>
+      </g>
+      <g id='Grid\Substation(3)\Area 1 LV.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='576.608669' y='727.624532'>Area 1 LV</text>
+      </g>
+      <g id='Grid\Substation(2)\Area 1 HV.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='574.222397' y='340.075335'>Area 1 HV</text>
+      </g>
+      <g id='Grid\Substation(1)\LV Bus.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='157.150950' y='727.624532'>LV Bus</text>
+      </g>
+      <g id='Grid\HV Bus\HV Bus.ElmTerm::NameBox 0'>
+        <text fill='#000000' font-family='Arial' font-size='14.373779' text-anchor='start' x='206.457632' y='340.075335'>HV Bus</text>
+      </g>
+    </g>
+    <g id='Results'>
+      <g id='Grid\Substation(7)\Area 3 LV.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='1420.231431 761.371660, 1460.814496 761.371660, 1460.814496 724.718524, 1420.231431 724.718524' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Substation(6)\Area 3 HV.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='1420.231431 373.822463, 1460.814496 373.822463, 1460.814496 337.169327, 1420.231431 337.169327' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Substation(5)\Area 1 LV.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='1033.271305 761.371660, 1073.854369 761.371660, 1073.854369 724.718524, 1033.271305 724.718524' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Substation(4)\Area 2 HV.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='1033.271305 373.822463, 1073.854369 373.822463, 1073.854369 337.169327, 1033.271305 337.169327' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Substation(3)\Area 1 LV.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='646.311043 761.371660, 686.894108 761.371660, 686.894108 724.718524, 646.311043 724.718524' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Substation(2)\Area 1 HV.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='646.311043 373.822463, 686.894108 373.822463, 686.894108 337.169327, 646.311043 337.169327' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\Substation(1)\LV Bus.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='207.756131 761.371660, 248.339195 761.371660, 248.339195 724.718524, 207.756131 724.718524' stroke='#000000' stroke-width='1.000000' />
+      </g>
+      <g id='Grid\HV Bus\HV Bus.ElmTerm::ResultBox 1'>
+        <polygon fill='#ffffff' points='259.350826 373.822463, 299.933891 373.822463, 299.933891 337.169327, 259.350826 337.169327' stroke='#000000' stroke-width='1.000000' />
+      </g>
+    </g>
+    <g id='Annotations'>
+      <g id='AnnotationElem 18'>
+        <text fill='#000000' font-family='Arial' font-size='18.897638' text-anchor='start' x='1263.185465' y='910.890540'>ELK330 Elektriske Installasjoner og Anlegg 2</text>
+        <text fill='#000000' font-family='Arial' font-size='18.897638' text-anchor='start' x='1428.581319' y='933.567705'>LAB2</text>
+        <text fill='#000000' font-family='Arial' font-size='18.897638' text-anchor='start' x='1451.505532' y='956.244871'></text>
+        <polygon fill='none' points='1255.694452 967.612217, 1647.316611 967.612217, 1647.316611 892.021666, 1255.694452 892.021666' stroke='#000000' stroke-width='1.000000' />
+      </g>
+    </g>
+  </g>
+  <polygon fill='#ffffff' points='1714.665354 307.812131, 1747.145669 307.812131, 1747.145669 932.345349, 1714.665354 932.345349' stroke='none' />
+  <text fill='#000000' font-family='Arial' font-size='23.622047' text-anchor='start' transform='rotate(90.000000,1742.716535,314.898745)' x='1742.716535' y='336.158588'>Created with DIgSILENT PowerFactory Education Licence</text>
+
+</svg>

@@ -70,6 +70,8 @@ parts:
       - file: 11_powerfactory/license_pf
       - file: 11_powerfactory/install_pf_no
       - file: LAB/LAB1
+      - file: 11_powerfactory/start_pf
+
   - caption: Referanser
     chapters:
       - file: references
