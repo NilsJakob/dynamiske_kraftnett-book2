@@ -72,6 +72,8 @@ parts:
       - file: LAB/LAB1
       - file: 11_powerfactory/start_pf
       - file: 11_powerfactory/modelling_pf
+      - file: LAB/LAB2
+      - file: LAB/LAB3
 
   - caption: Referanser
     chapters:
