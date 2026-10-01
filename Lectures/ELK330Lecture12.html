@@ -65,11 +65,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '11_powerfactory/start_pf';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/ELK330Lecture12';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modellering i Power Factory" href="modelling_pf.html" />
-    <link rel="prev" title="LAB 1" href="../LAB/LAB1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,6 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -233,10 +233,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="about_pf.html">Om Power Factory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license_pf.html">Vår lisens</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
 
 
@@ -244,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Oppstart Power Factory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2</a></li>
 
 
@@ -335,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F11_powerfactory/start_pf.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2FLectures/ELK330Lecture12.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -365,7 +365,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/11_powerfactory/start_pf.ipynb" target="_blank"
+      <li><a href="../_sources/Lectures/ELK330Lecture12.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -459,6 +459,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oppstart Power Factory</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter-i-powerfactory">Komponenter i PowerFactory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samleskinner-og-tilkoblingspunkter">Samleskinner og tilkoblingspunkter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brytere">Brytere</a></li>
@@ -472,6 +473,41 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#innsetting-av-komponenter-i-nettmodellen">Innsetting av komponenter i nettmodellen</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-i-power-factory">Modellering i Power Factory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilkoblingspunkter">Tilkoblingspunkter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kjor-lastflyt">Kjør lastflyt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyser-resultat">Analyser resultat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lab3">LAB3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elk330-early-stage-assessment-individuelt-prosjektforslag">ELK330 – Early Stage Assessment: Individuelt prosjektforslag</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#valg-av-prosjekt">Valg av prosjekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#innlevering">Innlevering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#krav-til-innhold">Krav til innhold</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosjekttittel">1. Prosjekttittel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problemstilling">2. Problemstilling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malsetting">3. Målsetting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faglig-bakgrunn-og-litteratursok">4. Faglig bakgrunn og litteratursøk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referanser">Referanser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planlagt-modellering">5. Planlagt modellering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planlagte-simuleringer">6. Planlagte simuleringer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon-rundt-modellen">7. Refleksjon rundt modellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomforingsplan">8. Gjennomføringsplan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellambisjon">9. Modellambisjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#formelle-krav">Formelle krav</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#onsket-innleveringsform">Ønsket innleveringsform</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#omfang">Omfang</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vurderingskriterier">Vurderingskriterier</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -624,10 +660,310 @@ document.write(`
 <h2>Innsetting av komponenter i nettmodellen<a class="headerlink" href="#innsetting-av-komponenter-i-nettmodellen" title="Permalink to this heading">#</a></h2>
 <p>Hver komponent kan velges fra <strong>tegneverktøyene (Drawing Tools)</strong> og deretter legges til modellen ved å klikke på ønsket plassering i Diagrammet.</p>
 <ul class="simple">
-<li><p>verktøykassen (Toolbox) i PowerFactory. I denne boken vil hvert verktøy bli introdusert og forklart i detalj.</p></li>
+<li><p>verktøykassen (Toolbox) i PowerFactory.</p></li>
 <li><p><strong>Seksjon 4</strong> viser selve nettverksdiagrammet (Grid Diagram), hvor komponentene plasseres og kobles sammen.</p></li>
 </ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/c4c402073abc576b7641d56af025ed66890b1d1f970d359422384120db2baa2d.png" src="../_images/c4c402073abc576b7641d56af025ed66890b1d1f970d359422384120db2baa2d.png" />
+</div>
+</div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modellering-i-power-factory">
+<h1>Modellering i Power Factory<a class="headerlink" href="#modellering-i-power-factory" title="Permalink to this heading">#</a></h1>
+<p>I denne delen presenteres en trinnvis modellering og stasjonær lastflytanalyse (load flow) av en enkel modell.</p>
+<p>Velg to <strong>Single Busbars</strong>, ett <strong>External Grid</strong> og én <strong>General Load</strong> fra tegneverktøyene for å tegne kraftsystemet</p>
+<p>Etter at samleskinnene er plassert, velges <strong>2-Winding Transformer</strong>, som deretter installeres i diagrammet for å fullføre modellen.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/8ff3ea93e02a4342370b43895ee4e41f68f9fc9f0424abfb08a6f048e492b686.png" src="../_images/8ff3ea93e02a4342370b43895ee4e41f68f9fc9f0424abfb08a6f048e492b686.png" />
+</div>
+</div>
+<section id="tilkoblingspunkter">
+<h2>Tilkoblingspunkter<a class="headerlink" href="#tilkoblingspunkter" title="Permalink to this heading">#</a></h2>
+<p>De blå markørene nederst i felt 2, 3 og 4 viser at disse feltene ikke er ferdig koblet til komponenter ennå.</p>
+<p>De fungerer som plassholdere hvor du senere kan koble:</p>
+<ul class="simple">
+<li><p>kabel</p></li>
+<li><p>linje</p></li>
+<li><p>transformator</p></li>
+<li><p>generator</p></li>
+<li><p>last</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/abc1678d9a82bd4159c159de3106c6647e3108c2354fc3aac7874ecb7fe07260.png" src="../_images/abc1678d9a82bd4159c159de3106c6647e3108c2354fc3aac7874ecb7fe07260.png" />
+</div>
+</div>
+<p>I PowerFactory er det etter opptegning av nettet obligatorisk å angi type og egenskaper for hver komponent. Dersom dette ikke gjøres, kan det oppstå feil ved senere analyser.</p>
+<p>For å gjøre dette dobbeltklikker du på samleskinnen som representerer lastsiden og endrer spenningsnivået til <strong>10 kV</strong>.</p>
+<p>Samleskinnen som knyttes til det eksterne nettet skal ha en nominell spenning på <strong>110 kV</strong>.</p>
+<p>Ved å dobbeltklikke på transformatoren åpnes egenskapsvinduet for transformatoren.</p>
+<p>Deretter velges <strong>New Project Type</strong>, og nytt vindu åpnes.</p>
+<p>Transformatorens type skal deretter defineres slik figuren viser, før du klikker <strong>OK</strong>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/3ee4a806de23243e5263479748383de28e064094dac412576b2fabc4c3bab888.png" src="../_images/3ee4a806de23243e5263479748383de28e064094dac412576b2fabc4c3bab888.png" />
+</div>
+</div>
+<p>“Den nominelle spenningen og/eller faseteknologien er endret. Vil du oppdatere nominell spenning/faseteknologi for alle interne terminaler i stasjonen ‘Substation(1)’?”</p>
+<p>Denne meldingen kommer når for eksempel har endret:</p>
+<p>samleskinnespenning fra 110 kV til 10 kV
+fasekonfigurasjon (1-fase, 3-fase osv.)
+spenningsnivå i en stasjon</p>
+<p>Velger du <code class="docutils literal notranslate"><span class="pre">Yes</span></code>vil PowerFactory tilby å oppdatere alle tilknyttede interne terminaler automatisk slik at hele stasjonen blir konsistent.</p>
+<p>Hva skjer hvis du velger <code class="docutils literal notranslate"><span class="pre">No</span></code>?</p>
+<p>Da beholder interne terminaler de gamle verdiene.</p>
+<p>Dette kan føre til:</p>
+<p>inkonsistente spenningsnivåer
+advarsler i load flow
+koblingsfeil
+transformatorfeil mellom HV- og LV-side
+problemer ved kortslutningsanalyser</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/93ee12abdee95266a30530ee65cc82c351b651ca387f1de0b61ca881b30cc2e8.png" src="../_images/93ee12abdee95266a30530ee65cc82c351b651ca387f1de0b61ca881b30cc2e8.png" />
+</div>
+</div>
+<p>Det er viktig å merke seg at transformatorens <strong>LV-side (lavspenningsside)</strong> og <strong>HV-side (høyspenningsside)</strong> må kobles til riktig samleskinne. Dersom tilkoblingen er feil, vil en feilmelding oppstå. Denne feilen kan rettes ved å velge <strong>Flip Connection</strong> i transformatorens egenskapsvindu.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/a1c62042838bc6e4350eeac152c389a0f1668a43b70420ec2d69d41c778d714b.png" src="../_images/a1c62042838bc6e4350eeac152c389a0f1668a43b70420ec2d69d41c778d714b.png" />
+</div>
+</div>
+<p>Som siste trinn dobbeltklikker du på komponenten <strong>General Load</strong> for å åpne egenskapsvinduet. Velg deretter fanen <strong>Load Flow</strong> i menyen på venstre side og angi aktivt effektforbruk til <strong>1 MW</strong>.</p>
+<p>Det er verdt å merke seg at det ikke er obligatorisk å definere egne typer for samleskinner og laster. For de fleste andre komponenter i PowerFactory er imidlertid denne typeangivelsen påkrevd.</p>
+<p>Når alle disse trinnene er gjennomført, er kraftsystemmodellen korrekt konfigurert og klar for videre analyser.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/3413f2c5dddb045fc0858e1749d888dc92bd505a81de71d7048beb6323514601.png" src="../_images/3413f2c5dddb045fc0858e1749d888dc92bd505a81de71d7048beb6323514601.png" />
+</div>
+</div>
+<section id="kjor-lastflyt">
+<h3>Kjør lastflyt<a class="headerlink" href="#kjor-lastflyt" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/d7cd4e2788cc44a75abe3be609242f3cff298427980091ad7b38529ced2ce334.png" src="../_images/d7cd4e2788cc44a75abe3be609242f3cff298427980091ad7b38529ced2ce334.png" />
+</div>
+</div>
+</section>
+<section id="analyser-resultat">
+<h3>Analyser resultat<a class="headerlink" href="#analyser-resultat" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/6a8928ac2ad60c573efffbc1693c4b8b5710b222ffab70e5e70a0ebef9b67943.png" src="../_images/6a8928ac2ad60c573efffbc1693c4b8b5710b222ffab70e5e70a0ebef9b67943.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lab3">
+<h1>LAB3<a class="headerlink" href="#lab3" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="elk330-early-stage-assessment-individuelt-prosjektforslag">
+<h1>ELK330 – Early Stage Assessment: Individuelt prosjektforslag<a class="headerlink" href="#elk330-early-stage-assessment-individuelt-prosjektforslag" title="Permalink to this heading">#</a></h1>
+<section id="formal">
+<h2>Formål<a class="headerlink" href="#formal" title="Permalink to this heading">#</a></h2>
+<p>Denne oppgaven skal sikre at studenten kommer tidlig i gang med prosjektarbeidet og mottar tilbakemelding på prosjektets faglige innhold, omfang og gjennomførbarhet.</p>
+<p>Prosjektforslaget skal samtidig gi trening i de samme arbeidsformene og dokumentasjonskravene som benyttes i den avsluttende prosjektrapporten.</p>
+<p>Oppgaven skal bidra til at studenten utvikler en tydelig plan for modellering, simulering, analyse og refleksjon før hovedprosjektet gjennomføres.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="valg-av-prosjekt">
+<h1>Valg av prosjekt<a class="headerlink" href="#valg-av-prosjekt" title="Permalink to this heading">#</a></h1>
+<p>Studenten kan velge å arbeide med en av de anbefalte prosjektretningene i emnet:</p>
+<ul class="simple">
+<li><p>Kortslutningsanalyse og vernkoordinering</p></li>
+<li><p>Integrering av IBR i distribusjonsnettet</p></li>
+</ul>
+<p>Studenten står også fritt til å foreslå et eget prosjekt.</p>
+<p>Egenvalgte prosjekter skal være relevante for ett eller flere av læringsutbyttene i ELK330 og ha et omfang som er gjennomførbart innenfor emnets rammer. Det forventes at prosjektet inneholder modellering, simulering og analyse av elektriske anlegg eller kraftsystemer.</p>
+<p>Ved tvil om prosjektets relevans eller omfang bør faglærer kontaktes tidlig i prosessen</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="innlevering">
+<h1>Innlevering<a class="headerlink" href="#innlevering" title="Permalink to this heading">#</a></h1>
+<p>Oppgaven er individuell.</p>
+<p>Besvarelsen skal skrives i <strong>LaTeX</strong> og leveres som <strong>PDF</strong> i Canvas.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="krav-til-innhold">
+<h1>Krav til innhold<a class="headerlink" href="#krav-til-innhold" title="Permalink to this heading">#</a></h1>
+<p>Prosjektforslaget skal inneholde følgende deler.</p>
+<section id="prosjekttittel">
+<h2>1. Prosjekttittel<a class="headerlink" href="#prosjekttittel" title="Permalink to this heading">#</a></h2>
+<p>En kort og presis tittel som beskriver prosjektets innhold.</p>
+</section>
+<section id="problemstilling">
+<h2>2. Problemstilling<a class="headerlink" href="#problemstilling" title="Permalink to this heading">#</a></h2>
+<p>Beskriv:</p>
+<ul class="simple">
+<li><p>hvilket problem som skal undersøkes</p></li>
+<li><p>hvorfor problemstillingen er relevant</p></li>
+<li><p>hvilke faglige spørsmål prosjektet skal besvare</p></li>
+</ul>
+</section>
+<section id="malsetting">
+<h2>3. Målsetting<a class="headerlink" href="#malsetting" title="Permalink to this heading">#</a></h2>
+<p>Beskriv:</p>
+<ul class="simple">
+<li><p>hovedmål</p></li>
+<li><p>delmål</p></li>
+<li><p>forventede resultater</p></li>
+</ul>
+</section>
+<section id="faglig-bakgrunn-og-litteratursok">
+<h2>4. Faglig bakgrunn og litteratursøk<a class="headerlink" href="#faglig-bakgrunn-og-litteratursok" title="Permalink to this heading">#</a></h2>
+<p>Presenter relevant teori og tidligere arbeid.</p>
+<p>Denne delen skal inneholde:</p>
+<ul class="simple">
+<li><p>beskrivelse av gjennomført litteratursøk</p></li>
+<li><p>relevante lærebøker</p></li>
+<li><p>vitenskapelige artikler</p></li>
+<li><p>rapporter, standarder eller teknisk dokumentasjon der dette er relevant</p></li>
+</ul>
+<p>Referanser skal håndteres ved hjelp av BibTeX og presenteres etter IEEE-standarden.</p>
+</section>
+<section id="referanser">
+<h2>Referanser<a class="headerlink" href="#referanser" title="Permalink to this heading">#</a></h2>
+<p>Det skal benyttes BibTeX for håndtering av referanser. Referanser og siteringer skal følge IEEE-stilen.</p>
+<p>IEEE-stilen benytter nummererte referanser i teksten og bruk pakken <code class="docutils literal notranslate"><span class="pre">hyperref</span></code>:</p>
+<blockquote>
+<div><p>Lastflytanalyse er et grunnleggende verktøy innen kraftsystemanalyse [1].</p>
+</div></blockquote>
+<blockquote>
+<div><p>Integrasjon av distribuert produksjon kan påvirke spenningsprofilen i distribusjonsnettet [2], [3].</p>
+</div></blockquote>
+<p>Referansene nummereres etter første forekomst i dokumentet og listes samlet i referanselisten.</p>
+<p>Eksempel på referanser:</p>
+<p>[1] O. I. Elgerd, <em>Electric Energy Systems Theory: An Introduction</em>. New York, NY, USA: McGraw-Hill, 1982.</p>
+<p>[2] P. Kundur, <em>Power System Stability and Control</em>. New York, NY, USA: McGraw-Hill, 1994.</p>
+<p>[3] IEEE Power &amp; Energy Society, “IEEE Recommended Practice for Industrial and Commercial Power System Analysis,” IEEE Std 3002.2-2018, 2018.</p>
+<p>Det forventes at studenten benytter relevante faglige kilder, som for eksempel:</p>
+<ul class="simple">
+<li><p>vitenskapelige artikler</p></li>
+<li><p>IEEE-standarder</p></li>
+<li><p>IEC-standarder</p></li>
+<li><p>lærebøker</p></li>
+<li><p>tekniske rapporter</p></li>
+<li><p>produsentdokumentasjon</p></li>
+</ul>
+<p>Bruk av generative KI-verktøy skal oppgis i henhold til emnets retningslinjer. KI-verktøy regnes normalt ikke som faglige primærkilder.</p>
+</section>
+<section id="planlagt-modellering">
+<h2>5. Planlagt modellering<a class="headerlink" href="#planlagt-modellering" title="Permalink to this heading">#</a></h2>
+<p>Beskriv:</p>
+<ul class="simple">
+<li><p>hvilken type kraftsystem som skal modelleres</p></li>
+<li><p>hvilke komponenter som skal inngå</p></li>
+<li><p>hvilke antakelser og forenklinger som planlegges</p></li>
+</ul>
+<p>Studenten skal diskutere hvordan modellen forventes å representere virkeligheten.</p>
+</section>
+<section id="planlagte-simuleringer">
+<h2>6. Planlagte simuleringer<a class="headerlink" href="#planlagte-simuleringer" title="Permalink to this heading">#</a></h2>
+<p>Beskriv:</p>
+<ul class="simple">
+<li><p>hvilke analyser som skal gjennomføres</p></li>
+<li><p>hvilke scenarioer som skal undersøkes</p></li>
+<li><p>hvilke resultater som forventes å være interessante</p></li>
+</ul>
+</section>
+<section id="refleksjon-rundt-modellen">
+<h2>7. Refleksjon rundt modellen<a class="headerlink" href="#refleksjon-rundt-modellen" title="Permalink to this heading">#</a></h2>
+<p>Diskuter kort:</p>
+<ul class="simple">
+<li><p>modellens underrepresentasjon</p></li>
+<li><p>modellens overrepresentasjon</p></li>
+</ul>
+<p>Diskusjonen skal knyttes til teorien om modeller og digitale modeller som er gjennomgått i emnet.</p>
+</section>
+<section id="gjennomforingsplan">
+<h2>8. Gjennomføringsplan<a class="headerlink" href="#gjennomforingsplan" title="Permalink to this heading">#</a></h2>
+<p>Beskriv:</p>
+<ul class="simple">
+<li><p>planlagte milepæler</p></li>
+<li><p>framdriftsplan</p></li>
+<li><p>forventet arbeidsinnsats</p></li>
+</ul>
+<p>Studenten skal estimere hvor mange timer som planlegges brukt på prosjektarbeidet fram mot innlevering av sluttrapporten.</p>
+<p>Estimert arbeidsinnsats skal begrunnes ut fra prosjektets omfang og faglige ambisjon.</p>
+</section>
+<section id="modellambisjon">
+<h2>9. Modellambisjon<a class="headerlink" href="#modellambisjon" title="Permalink to this heading">#</a></h2>
+<p>Med utgangspunkt i forelesningen om digitale modeller skal studenten reflektere over prosjektets planlagte nivå av:</p>
+<ul class="simple">
+<li><p>kompleksitet</p></li>
+<li><p>integrasjon</p></li>
+</ul>
+<p>Studenten skal begrunne hvor i disse dimensjonene prosjektet forventes å befinne seg og hvorfor.</p>
+<p>I refleksjonen bør følgende vurderes:</p>
+<ul class="simple">
+<li><p>antall komponenter og delsystemer som inngår i modellen</p></li>
+<li><p>detaljnivået i representasjonen</p></li>
+<li><p>graden av samspill mellom ulike tekniske systemer</p></li>
+<li><p>om modellen primært representerer et enkeltstående system eller et integrert kraftsystem</p></li>
+<li><p>hvilke konsekvenser modellvalgene kan ha for analysemulighetene og resultatene</p></li>
+</ul>
+<p>Denne vurderingen trenger ikke være omfattende, men skal vise at studenten har reflektert over modellens plassering med hensyn til integrasjon og kompleksitet.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="formelle-krav">
+<h1>Formelle krav<a class="headerlink" href="#formelle-krav" title="Permalink to this heading">#</a></h1>
+<p>Studenten skal demonstrere:</p>
+<ul class="simple">
+<li><p>bruk av LaTeX</p></li>
+<li><p>korrekt figur- og tabellnummerering</p></li>
+<li><p>korrekt kryssreferering</p></li>
+<li><p>bruk av hyperreferanser</p></li>
+<li><p>korrekt akademisk kildebruk</p></li>
+<li><p>bruk av BibTeX</p></li>
+</ul>
+<p>Besvarelsen skal kompileres uten feil som påvirker PDF-dokumentet.</p>
+<p>Alle figurer, tabeller, ligninger, referanser og hyperlenker skal være korrekt referert fra teksten.</p>
+<p>Følgende skal leveres:</p>
+<ul class="simple">
+<li><p>PDF-rapport</p></li>
+<li><p>LaTeX-kildekode</p></li>
+<li><p>BibTeX-fil</p></li>
+<li><p>lenke til Git-repositorium</p></li>
+<li><p>Git-logg som dokumenterer arbeidet fram til innlevering</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="onsket-innleveringsform">
+<h1>Ønsket innleveringsform<a class="headerlink" href="#onsket-innleveringsform" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Pdf i kodet i Latex</p></li>
+<li><p>Webside (jupyter book) basert på ferdigprodusert mal</p></li>
+</ul>
+<p>Merk at begge disse innleveringsformene bygger på</p>
+<ul class="simple">
+<li><p>LaTeX-kildekode kombinert med markdown</p></li>
+<li><p>BibTeX-fil</p></li>
+<li><p>lenke til Git-repositorium</p></li>
+<li><p>Git-logg som dokumenterer arbeidet fram til innlevering</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="omfang">
+<h1>Omfang<a class="headerlink" href="#omfang" title="Permalink to this heading">#</a></h1>
+<p>Prosjektforslaget skal normalt være på 1-3 sider eksklusive referanser og vedlegg.</p>
+<p>Studenten skal vise evne til å formulere et gjennomførbart prosjekt, begrunne faglige valg, identifisere aktuelle modellerings- og simuleringsaktiviteter, samt reflektere over modellens begrensninger.</p>
+<p>Det er kvaliteten på problemstillingen, planleggingen og den faglige refleksjonen som vurderes, ikke dokumentets lengde.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="vurderingskriterier">
+<h1>Vurderingskriterier<a class="headerlink" href="#vurderingskriterier" title="Permalink to this heading">#</a></h1>
+<p>Prosjektforslaget vurderes ut fra:</p>
+<ol class="arabic simple">
+<li><p>Faglig relevans.</p></li>
+<li><p>Tydelig problemstilling og målsetting.</p></li>
+<li><p>Kvalitet på litteratursøk og kildegrunnlag.</p></li>
+<li><p>Kvalitet på planlagt modellering og simulering.</p></li>
+<li><p>Refleksjon omkring modeller og modellbegrensninger.</p></li>
+<li><p>Begrunnelse for valgt nivå av integrasjon og kompleksitet.</p></li>
+<li><p>Realistisk vurdering av prosjektomfang og arbeidsinnsats.</p></li>
+<li><p>Struktur og kvalitet på dokumentasjonen.</p></li>
+<li><p>Korrekt bruk av LaTeX, BibTeX og Git.</p></li>
+</ol>
+<p>Tilbakemeldingen skal gi grunnlag for videre utvikling av prosjektet og den avsluttende</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -643,7 +979,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./11_powerfactory"
+            path: "./Lectures"
         },
         predefinedOutput: true
     }
@@ -660,24 +996,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../LAB/LAB1.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">LAB 1</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="modelling_pf.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modellering i Power Factory</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -694,6 +1012,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oppstart Power Factory</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponenter-i-powerfactory">Komponenter i PowerFactory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samleskinner-og-tilkoblingspunkter">Samleskinner og tilkoblingspunkter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brytere">Brytere</a></li>
@@ -707,6 +1026,41 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#innsetting-av-komponenter-i-nettmodellen">Innsetting av komponenter i nettmodellen</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-i-power-factory">Modellering i Power Factory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilkoblingspunkter">Tilkoblingspunkter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kjor-lastflyt">Kjør lastflyt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyser-resultat">Analyser resultat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lab3">LAB3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elk330-early-stage-assessment-individuelt-prosjektforslag">ELK330 – Early Stage Assessment: Individuelt prosjektforslag</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#valg-av-prosjekt">Valg av prosjekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#innlevering">Innlevering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#krav-til-innhold">Krav til innhold</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosjekttittel">1. Prosjekttittel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problemstilling">2. Problemstilling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malsetting">3. Målsetting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faglig-bakgrunn-og-litteratursok">4. Faglig bakgrunn og litteratursøk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referanser">Referanser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planlagt-modellering">5. Planlagt modellering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planlagte-simuleringer">6. Planlagte simuleringer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon-rundt-modellen">7. Refleksjon rundt modellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomforingsplan">8. Gjennomføringsplan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modellambisjon">9. Modellambisjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#formelle-krav">Formelle krav</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#onsket-innleveringsform">Ønsket innleveringsform</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#omfang">Omfang</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vurderingskriterier">Vurderingskriterier</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

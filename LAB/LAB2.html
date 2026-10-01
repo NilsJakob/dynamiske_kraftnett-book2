@@ -70,6 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'LAB/LAB2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LAB3" href="LAB3.html" />
+    <link rel="prev" title="Modellering i Power Factory" href="../11_powerfactory/modelling_pf.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,8 +133,6 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -235,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
@@ -248,6 +248,20 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">LAB 2</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="LAB3.html">LAB3</a></li>
+
+
+
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
 <ul class="nav bd-sidenav">
@@ -448,12 +462,42 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LAB 2</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-nettkonfigurasjon-25">3 OPPGAVE 1: NETTKONFIGURASJON (25 %)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-nettkonfigurasjon">3 OPPGAVE 1: NETTKONFIGURASJON</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netttopologi-og-navngiving">NETTTOPOLOGI OG NAVNGIVING</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformatordata">TRANSFORMATORDATA</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell-1-transformatordata">Tabell 1. Transformatordata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksternt-nett-external-grid">EKSTERNT NETT (EXTERNAL GRID)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastdata">LASTDATA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell-2-lastdata-for-de-tre-forsyningsomradene">Tabell 2: Lastdata for de tre forsyningsområdene</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kabler">KABLER</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merk">Merk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell-3-kabeldata">Tabell 3: Kabeldata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eksporter-modellen-din">EKSPORTER MODELLEN DIN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-lastflytanalyse">OPPGAVE 2 – LASTFLYTANALYSE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-kortslutningsanalyse">OPPGAVE 3 – KORTSLUTNINGSANALYSE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">a)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">b)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">c)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-av-nettdata">Endring av nettdata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">d)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-av-transformatorparametere">Endring av transformatorparametere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
 </ul>
 </li>
 </ul>
@@ -477,8 +521,8 @@ document.write(`
 <li><p>Et dokument som presenterer simuleringsresultatene for de ulike oppgavene.</p></li>
 </ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="oppgave-1-nettkonfigurasjon-25">
-<h1>3 OPPGAVE 1: NETTKONFIGURASJON (25 %)<a class="headerlink" href="#oppgave-1-nettkonfigurasjon-25" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-1-nettkonfigurasjon">
+<h1>3 OPPGAVE 1: NETTKONFIGURASJON<a class="headerlink" href="#oppgave-1-nettkonfigurasjon" title="Permalink to this heading">#</a></h1>
 <section id="netttopologi-og-navngiving">
 <h2>NETTTOPOLOGI OG NAVNGIVING<a class="headerlink" href="#netttopologi-og-navngiving" title="Permalink to this heading">#</a></h2>
 <p>Figur 1 viser topologien til nettet. Nettverket består av én krafttransformator <strong>132/11 kV (T1)</strong> og tre distribusjonstransformatorer <strong>11/0,230 kV</strong> som forsyner boliger med elektrisk energi.</p>
@@ -550,6 +594,273 @@ document.write(`
 </table>
 </div>
 </section>
+<section id="eksternt-nett-external-grid">
+<h3>EKSTERNT NETT (EXTERNAL GRID)<a class="headerlink" href="#eksternt-nett-external-grid" title="Permalink to this heading">#</a></h3>
+<p>I komponenten <strong>External Grid</strong>, gå til fanen <strong>«Short-Circuit Complete»</strong>, slik vist i figur 2.</p>
+<p>Endre følgende parametere:</p>
+<ul class="simple">
+<li><p>Maksimalt kortslutningsnivå <span class="math notranslate nohighlight">\(S''_{k,\text{max}}\)</span> til <strong>100 MVA</strong></p></li>
+<li><p>Minimalt kortslutningsnivå <span class="math notranslate nohighlight">\(S''_{k,\text{min}}\)</span> til <strong>60 MVA</strong></p></li>
+</ul>
+<p>Disse verdiene angir henholdsvis den høyeste og laveste tilgjengelige kortslutningsytelsen fra det overliggende nettet og benyttes ved kortslutningsberegninger i kraftsystemmodellen.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/1138458447201aecc67afb3922953ba561eddffb4f4ed5f90ae9d34ca549d71a.png" src="../_images/1138458447201aecc67afb3922953ba561eddffb4f4ed5f90ae9d34ca549d71a.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="lastdata">
+<h2>LASTDATA<a class="headerlink" href="#lastdata" title="Permalink to this heading">#</a></h2>
+<p>Fyll inn aktiv effekt og effektfaktor for de ulike lastene i systemet. Dataene for lastene er gitt i tabell 2 nedenfor.</p>
+<section id="tabell-2-lastdata-for-de-tre-forsyningsomradene">
+<h3>Tabell 2: Lastdata for de tre forsyningsområdene<a class="headerlink" href="#tabell-2-lastdata-for-de-tre-forsyningsomradene" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Last</p></th>
+<th class="head text-right"><p>Aktiv effekt [kW]</p></th>
+<th class="head text-right"><p>Effektfaktor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Lastområde 1</p></td>
+<td class="text-right"><p>150</p></td>
+<td class="text-right"><p>0,96 (induktiv)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lastområde 2</p></td>
+<td class="text-right"><p>400</p></td>
+<td class="text-right"><p>0,96 (induktiv)</p></td>
+</tr>
+<tr class="row-even"><td><p>Lastområde 3</p></td>
+<td class="text-right"><p>1500</p></td>
+<td class="text-right"><p>0,96 (induktiv)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kabler">
+<h2>KABLER<a class="headerlink" href="#kabler" title="Permalink to this heading">#</a></h2>
+<p>Legg inn kabellengde, resistans, reaktans og kapasitans i PowerFactory-modellen i henhold til dataene i tabell 3.</p>
+<p>Se <strong>Vedlegg 1</strong> for tekniske data for <strong>Draka-kabelen</strong>. Ved oppslag av kabeldata skal <strong>flat kabelkonfigurasjon (flat cable configuration)</strong> benyttes.</p>
+<section id="merk">
+<h3>Merk<a class="headerlink" href="#merk" title="Permalink to this heading">#</a></h3>
+<p>For å legge inn kabelens kapasitansverdi:</p>
+<ol class="arabic simple">
+<li><p>Åpne kabeltypen i PowerFactory.</p></li>
+<li><p>Gå til fanen <strong>«Load Flow»</strong>.</p></li>
+<li><p>Klikk på <strong>tannhjulsikonet (Gear Symbol)</strong>.</p></li>
+<li><p>Endre inndatatypen fra <strong>Susceptance B′</strong> til <strong>Capacitance C′</strong>, slik vist i figur 2.</p></li>
+<li><p>Legg deretter inn kapasitansverdien fra kabeldataene.</p></li>
+</ol>
+<p>Dette sikrer at kabelkapasitansen registreres direkte som kapasitans per lengdeenhet i modellen.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/803a6f692ef17ff680314ba052920efc566c7fc5f61a180912a7a0f185b81a5e.png" src="../_images/803a6f692ef17ff680314ba052920efc566c7fc5f61a180912a7a0f185b81a5e.png" />
+</div>
+</div>
+</section>
+<section id="tabell-3-kabeldata">
+<h3>Tabell 3: Kabeldata<a class="headerlink" href="#tabell-3-kabeldata" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kabel</p></th>
+<th class="head"><p>Mellom samleskinner</p></th>
+<th class="head"><p>Kabelmerke/-type</p></th>
+<th class="head"><p>Kabelegenskaper per km</p></th>
+<th class="head"><p>Lengde</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Kabel 1</p></td>
+<td><p>LV Bus og Area 1 HV</p></td>
+<td><p>TSLI 12/20 (24) kV Cu 3x1x150</p></td>
+<td><p>Se Vedlegg 1</p></td>
+<td><p>200 m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kabel 2</p></td>
+<td><p>Area 1 HV og Area 2 HV</p></td>
+<td><p>TSLI 12/20 (24) kV Cu 3x1x150</p></td>
+<td><p>Se Vedlegg 1</p></td>
+<td><p>2000 m</p></td>
+</tr>
+<tr class="row-even"><td><p>Kabel 3</p></td>
+<td><p>Area 2 HV og Area 3 HV</p></td>
+<td><p>TSLI 12/20 (24) kV Cu 3x1x150</p></td>
+<td><p>Se Vedlegg 1</p></td>
+<td><p>1000 m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Kabelegenskapene som skal legges inn for hver kabel er:</p>
+<ul class="simple">
+<li><p>Resistans (R) [Ω/km]</p></li>
+<li><p>Reaktans (X) [Ω/km]</p></li>
+<li><p>Kapasitans (C) [μF/km]</p></li>
+</ul>
+<p>Verdiene hentes fra <strong>Vedlegg 1</strong> for kabeltypen <strong>TSLI 12/20 (24) kV Cu 3x1x150</strong>.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="eksporter-modellen-din">
+<h1>EKSPORTER MODELLEN DIN<a class="headerlink" href="#eksporter-modellen-din" title="Permalink to this heading">#</a></h1>
+<p>Når alle nettkomponenter og tilhørende data er lagt inn, skal modellen eksporteres fra PowerFactory til en <strong>.pfd-fil (PowerFactory Data File)</strong>.</p>
+<p>Fremgangsmåte:</p>
+<ol class="arabic simple">
+<li><p>Velg <strong>File → Export → Data (*.pfd; *.dz)</strong>.</p></li>
+<li><p>Velg modellen du nettopp har opprettet.</p></li>
+<li><p>Klikk <strong>OK</strong>.</p></li>
+<li><p>PowerFactory vil spørre om prosjektet skal deaktiveres.</p></li>
+<li><p>Klikk <strong>Yes</strong>.</p></li>
+</ol>
+<p>Den eksporterte <strong>.pfd-filen</strong> skal leveres sammen med besvarelsen i Canvas.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-2-lastflytanalyse">
+<h1>OPPGAVE 2 – LASTFLYTANALYSE<a class="headerlink" href="#oppgave-2-lastflytanalyse" title="Permalink to this heading">#</a></h1>
+<p>I denne oppgaven skal du utføre lastflytberegninger (Load Flow / Power Flow) for å bestemme:</p>
+<ul class="simple">
+<li><p>Spenninger i nettet</p></li>
+<li><p>Effekttap i nettet</p></li>
+<li><p>Belastningsgrad for transformatoren</p></li>
+</ul>
+<section id="a">
+<h2>a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h2>
+<p>Utfør en lastflytanalyse i PowerFactory.</p>
+<p>Besvar oppgaven med et bilde av nettet der beregningsresultatene vises.</p>
+</section>
+<hr class="docutils" />
+<section id="b">
+<h2>b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h2>
+<p>Anta at du skal legge til en ekstra last på <strong>200 kW</strong> i systemet.</p>
+<p>Denne lasten kan kobles til enten:</p>
+<ul class="simple">
+<li><p>Area 1 (LV-siden)</p></li>
+<li><p>Area 2 (LV-siden)</p></li>
+<li><p>Area 3 (LV-siden)</p></li>
+</ul>
+<p>Hvor ville du plassert denne lasten?</p>
+<p>Begrunn svaret ditt.</p>
+<p><strong>Merk:</strong> Fjern den ekstra lasten etter at denne deloppgaven er gjennomført.</p>
+</section>
+<hr class="docutils" />
+<section id="c">
+<h2>c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h2>
+<p>Endre lengden på <strong>Kabel 1</strong> til <strong>16 000 m</strong>.</p>
+<p>Denne kabelverdien skal benyttes inntil annet blir oppgitt.</p>
+<p>Utfør deretter en ny lastflytanalyse og presenter resultatene på samme måte som i oppgave a).</p>
+<p>Vurder om kraftsystemet fortsatt har tilfredsstillende nettdrift.</p>
+<p>Begrunn svaret med utgangspunkt i spenningsnivåene på samleskinnene (busbarene).</p>
+</section>
+<hr class="docutils" />
+<section id="d">
+<h2>d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h2>
+<p>Hvor store aktive effekttap oppstår i nettet under simuleringen i oppgave 2 c)?</p>
+<p>Oppgi svaret i passende enhet (kW eller MW) og kommenter resultatet.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-3-kortslutningsanalyse">
+<h1>OPPGAVE 3 – KORTSLUTNINGSANALYSE<a class="headerlink" href="#oppgave-3-kortslutningsanalyse" title="Permalink to this heading">#</a></h1>
+<p>Ved utførelse av kortslutningsberegninger skal beregningsmetoden <strong>«Complete»</strong> benyttes.</p>
+<p>Denne beregningsmetoden velges før kortslutningsanalysen kjøres, slik vist i figuren under.</p>
+<p>Kortslutningsanalysen skal brukes til å bestemme strømmer og nettforhold ved feiltilstander, og resultatene skal analyseres i de påfølgende deloppgavene.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/b0cb2fb47a2578f4f464e3170aa0f5c7227e806fff3cfd56c63ec0a825702543.png" src="../_images/b0cb2fb47a2578f4f464e3170aa0f5c7227e806fff3cfd56c63ec0a825702543.png" />
+</div>
+</div>
+<p>Før kortslutningsanalysene utføres, skal lengden på <strong>Kabel 1</strong> endres tilbake til <strong>200 m</strong>.</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>a)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Beregn følgende for hver samleskinne (busbar) i nettet:</p>
+<ul class="simple">
+<li><p>Maksimal trefase kortslutningsstrøm</p></li>
+<li><p>Minimal trefase kortslutningsstrøm</p></li>
+</ul>
+<p>Bruk PowerFactory til å utføre beregningene.</p>
+<p>Besvar oppgaven med et skjermbilde som viser resultatene for alle samleskinnene.</p>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>b)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Forklar kort hvorfor kortslutningsverdiene er forskjellige mellom de ulike samleskinnene i nettet.</p>
+<p>Hint: Vurder avstanden til spenningskilden og den totale impedansen mellom feilstedet og nettet.</p>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>c)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Beregn kortslutningsytelsene i nettet manuelt ved hjelp av impedansmetoden.</p>
+<p>Resultatene skal presenteres i en tabell.</p>
+<p>Rapporten skal inneholde:</p>
+<ul class="simple">
+<li><p>Fremgangsmåte</p></li>
+<li><p>Nødvendige formler</p></li>
+<li><p>Mellomregninger</p></li>
+<li><p>Endelige resultater</p></li>
+</ul>
+<p>Sammenlign gjerne de manuelle beregningene med resultatene fra PowerFactory.</p>
+</section>
+<hr class="docutils" />
+<section id="endring-av-nettdata">
+<h2>Endring av nettdata<a class="headerlink" href="#endring-av-nettdata" title="Permalink to this heading">#</a></h2>
+<p>Endre kortslutningsytelsen i det eksterne nettet til:</p>
+<ul class="simple">
+<li><p>Maksimal kortslutningsytelse <span class="math notranslate nohighlight">\(S''_{k,\text{max}}\)</span> = <strong>1000 MVA</strong></p></li>
+<li><p>Minimal kortslutningsytelse <span class="math notranslate nohighlight">\(S''_{k,\text{min}}\)</span> = <strong>600 MVA</strong></p></li>
+</ul>
+<p>Disse verdiene skal benyttes i resten av oppgaven.</p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>d)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Utfør nye kortslutningsberegninger i PowerFactory.</p>
+<p>Bestem kortslutningsverdiene ved distribusjonstransformatorene med de oppdaterte verdiene for det eksterne nettet.</p>
+<p>Denne deloppgaven skal løses ved hjelp av datasimulering.</p>
+</section>
+<hr class="docutils" />
+<section id="e">
+<h2>e)<a class="headerlink" href="#e" title="Permalink to this heading">#</a></h2>
+<p>Sammenlign resultatene fra oppgave a) og oppgave d).</p>
+<p>Forklar kort hvorfor resultatene er forskjellige.</p>
+<p>Fokuser spesielt på hvordan endringen i tilgjengelig kortslutningsytelse i det eksterne nettet påvirker:</p>
+<ul class="simple">
+<li><p>Kortslutningsstrømmene</p></li>
+<li><p>Kortslutningsytelsene</p></li>
+<li><p>Nettets impedans sett fra feilstedet</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="endring-av-transformatorparametere">
+<h2>Endring av transformatorparametere<a class="headerlink" href="#endring-av-transformatorparametere" title="Permalink to this heading">#</a></h2>
+<p>Øk den interne transformatorreaktansen (kortslutningsspenningen) <span class="math notranslate nohighlight">\(u_k\)</span> for transformator <strong>T1</strong> til:</p>
+<div class="math notranslate nohighlight">
+\[
+u_k = 13\%
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="f">
+<h2>f)<a class="headerlink" href="#f" title="Permalink to this heading">#</a></h2>
+<p>Utfør kortslutningsberegningene på nytt etter at <span class="math notranslate nohighlight">\(u_k\)</span> er økt til 13 %.</p>
+<p>Presenter de nye resultatene.</p>
+</section>
+<hr class="docutils" />
+<section id="g">
+<h2>g)<a class="headerlink" href="#g" title="Permalink to this heading">#</a></h2>
+<p>Hvorfor er resultatene forskjellige fra resultatene i oppgave a)?</p>
+<p>Forklar kort hvordan en økning i transformatorens kortslutningsspenning <span class="math notranslate nohighlight">\(u_k\)</span> påvirker:</p>
+<ul class="simple">
+<li><p>Transformatorens impedans</p></li>
+<li><p>Kortslutningsstrømmen</p></li>
+<li><p>Kortslutningsytelsen i nettet</p></li>
+</ul>
+<p>Begrunn svaret med relevante kraftsystemteoretiske sammenhenger.</p>
 </section>
 </section>
 
@@ -583,6 +894,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../11_powerfactory/modelling_pf.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modellering i Power Factory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="LAB3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LAB3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -600,12 +929,42 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LAB 2</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-nettkonfigurasjon-25">3 OPPGAVE 1: NETTKONFIGURASJON (25 %)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-nettkonfigurasjon">3 OPPGAVE 1: NETTKONFIGURASJON</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netttopologi-og-navngiving">NETTTOPOLOGI OG NAVNGIVING</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformatordata">TRANSFORMATORDATA</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell-1-transformatordata">Tabell 1. Transformatordata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksternt-nett-external-grid">EKSTERNT NETT (EXTERNAL GRID)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastdata">LASTDATA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell-2-lastdata-for-de-tre-forsyningsomradene">Tabell 2: Lastdata for de tre forsyningsområdene</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kabler">KABLER</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merk">Merk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell-3-kabeldata">Tabell 3: Kabeldata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eksporter-modellen-din">EKSPORTER MODELLEN DIN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-lastflytanalyse">OPPGAVE 2 – LASTFLYTANALYSE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-kortslutningsanalyse">OPPGAVE 3 – KORTSLUTNINGSANALYSE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">a)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">b)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">c)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-av-nettdata">Endring av nettdata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">d)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-av-transformatorparametere">Endring av transformatorparametere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
 </ul>
 </li>
 </ul>
