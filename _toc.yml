@@ -57,13 +57,6 @@ parts:
       #- file: 02_tallgrunnlag/under_utvikling
       - file: 07_api/API_SSB_tabell
 
-  #- caption: Stabilitet
-    #chapters:
-      #- file: 02_tallgrunnlag/under_utvikling
-      #- file: 08_stability/stability
-      #- file: 09_gridradar/kraftsystemmålinger
-      #- file: 10_stabilityclass/stabilityclass
-
   - caption: Power Factory
     chapters: 
       - file: 11_powerfactory/about_pf
@@ -74,6 +67,13 @@ parts:
       - file: 11_powerfactory/modelling_pf
       - file: LAB/LAB2
       - file: LAB/LAB3
+
+  - caption: Stabilitet
+    chapters:
+      #- file: 02_tallgrunnlag/under_utvikling
+      - file: 10_stabilityclass/stability
+      - file: 10_stabilityclass/stabilityclass
+      - file: 10_stabilityclass/swingequation
 
   - caption: Referanser
     chapters:
