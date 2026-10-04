@@ -492,48 +492,28 @@ document.write(`
 <img alt="../_images/f529bb86d229d43a877ff85522bea7c2318d01064c10c57bf34a24b66ab2be25.png" src="../_images/f529bb86d229d43a877ff85522bea7c2318d01064c10c57bf34a24b66ab2be25.png" />
 </div>
 </div>
-<p>Rotorens likestrømseksitasjon skaper rotor-MMF-en ifølge Ampères lov</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Rotorens likestrømseksitasjon skaper rotor-MMF-en ifølge Ampères lov
+$<span class="math notranslate nohighlight">\(
 \oint \mathbf{H}\cdot d\mathbf{l}=N_fI_f,
-\]</div>
-<p>som for rotorviklingen kan skrives som</p>
-<div class="math notranslate nohighlight">
-\[
-F_r=N_fI_f.
-\]</div>
-<p><span class="math notranslate nohighlight">\(F_r\)</span> setter opp flukslinjene <span class="math notranslate nohighlight">\(\phi_r\)</span>. Magnetiske flukslinjer danner lukkede baner: $<span class="math notranslate nohighlight">\(\vec{\nabla} \cdot \mathbf{B} = 0\)</span>$</p>
+\)</span>$</p>
+<p>som for rotorviklingen kan skrives som <span class="math notranslate nohighlight">\(F_r=N_fI_f\)</span>. <span class="math notranslate nohighlight">\(F_r\)</span> setter opp flukslinjene <span class="math notranslate nohighlight">\(\phi_r\)</span>. Magnetiske flukslinjer danner lukkede baner: <span class="math notranslate nohighlight">\(\vec{\nabla} \cdot \mathbf{B} = 0\)</span></p>
 <p>Rotorfluksen <span class="math notranslate nohighlight">\(\Phi_r\)</span> følger den magnetiske kretsen gjennom rotorens nordpol <span class="math notranslate nohighlight">\((\mathcal{R}_{rp})\)</span>, luftgapet <span class="math notranslate nohighlight">\((\mathcal{R}_{g1})\)</span>, statorkjernen <span class="math notranslate nohighlight">\((\mathcal{R}_{s})\)</span>, det motsatte luftgapet <span class="math notranslate nohighlight">\((\mathcal{R}_{g2})\)</span> og tilbake til rotorens sydpol <span class="math notranslate nohighlight">\((\mathcal{R}_{sp})\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{R}_{tot} = \mathcal{R}_{rp} + \mathcal{R}_{g1} + \mathcal{R}_{s} + \mathcal{R}_{g2} + \mathcal{R}_{sp}\]</div>
-<p>Rotorfluksen er gitt ved den magnetiske kretsloven  $<span class="math notranslate nohighlight">\(\Phi_r = \frac{F_r}{\mathcal{R}_{tot}}, \)</span><span class="math notranslate nohighlight">\( hvor \)</span>F_r = N_f I_f$ er rotorens magnetomotoriske kraft (MMF).</p>
-<p>Rotor-MMF-en etablerer rotorfluksen</p>
-<div class="math notranslate nohighlight">
-\[
-\Phi_r \propto F_r,
-\]</div>
+<p>Rotorfluksen er gitt ved den magnetiske kretsloven <span class="math notranslate nohighlight">\(\Phi_r = \frac{F_r}{\mathcal{R}_{tot}}\)</span>, hvor <span class="math notranslate nohighlight">\(F_r = N_f I_f\)</span> er rotorens magnetomotoriske kraft (MMF). Rotor-MMF-en etablerer rotorfluksen <span class="math notranslate nohighlight">\(\Phi_r \propto F_r\)</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/c4fad88b9af82ff3877374b43e9aac0292a361f8186e98c44d7afac1b4f30844.png" src="../_images/c4fad88b9af82ff3877374b43e9aac0292a361f8186e98c44d7afac1b4f30844.png" />
 </div>
 </div>
-<p>Når <span class="math notranslate nohighlight">\(\phi_r\)</span> lukker sin bane, kobles statorviklingene til gjennom flukskoblingen <span class="math notranslate nohighlight">\(\lambda_r\)</span>. Ved rotasjon induseres den interne genererte spenningen <span class="math notranslate nohighlight">\(E\)</span> i henhold til Faradays lov</p>
+<p>Når <span class="math notranslate nohighlight">\(\phi_r\)</span> lukker sin bane, kobles statorviklingene til gjennom flukskoblingen <span class="math notranslate nohighlight">\(\lambda_r=N\cdot\Phi_r\)</span>.  Ved rotasjon induseres den interne genererte spenningen <span class="math notranslate nohighlight">\(E\)</span> i henhold til Faradays lov.</p>
 <div class="math notranslate nohighlight">
 \[
-E=-\frac{d\lambda_r}{dt}.
+E=\frac{d(N\cdot\Phi_r)}{dt}=-\frac{d\lambda_r}{dt}.
 \]</div>
-<div class="math notranslate nohighlight">
-\[
-E(t)
-=
--\frac{d\lambda_r}{dt}
-=
-\omega\Lambda_{\max}\sin(\omega t).
-\]</div>
-<p>der <span class="math notranslate nohighlight">\(\lambda\)</span> er hvor mye av fluksen <span class="math notranslate nohighlight">\(\Phi\)</span>, som faktisk kobler seg til viklingen; flukskoblingen.</p>
-<p>For sinusformede størrelser er den induserte spenningen i kvadratur med fluksen.</p>
-<p>Dermed <span class="math notranslate nohighlight">\(E\)</span> er <span class="math notranslate nohighlight">\(90^{\circ}\)</span> etter <span class="math notranslate nohighlight">\(F_r\)</span>.</p>
-<p>Sammenhengen kan oppsummeres som:
+<p>der <span class="math notranslate nohighlight">\(\lambda\)</span> er hvor mye av fluksen <span class="math notranslate nohighlight">\(\Phi\)</span>, som faktisk kobler seg til viklingen; flukskoblingen.
+For sinusformede størrelser er den induserte spenningen i kvadratur med fluksen.
+Dermed <span class="math notranslate nohighlight">\(E\)</span> er <span class="math notranslate nohighlight">\(90^{\circ}\)</span> etter <span class="math notranslate nohighlight">\(F_r\)</span>. Sammenhengen kan oppsummeres som:
 $<span class="math notranslate nohighlight">\(
 I_f \rightarrow F_r \rightarrow \Phi_r \rightarrow \lambda_r \rightarrow E.
 \)</span>$</p>
@@ -546,17 +526,8 @@ I_f \rightarrow F_r \rightarrow \Phi_r \rightarrow \lambda_r \rightarrow E.
 <section id="lasttilkobling">
 <h2>Lasttilkobling<a class="headerlink" href="#lasttilkobling" title="Permalink to this heading">#</a></h2>
 <p>Når generatoren belastes, flyter armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span> i statorviklingene. Ifølge Ampères lov etablerer strømmen en stator-MMF
-Når en last kobles til, flyter armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span>. Ifølge Ampères lov skaper denne strømmen et eget magnetfelt:
-$<span class="math notranslate nohighlight">\(
-F_s = N_a I_a,
-\)</span>$</p>
-<p>der <span class="math notranslate nohighlight">\(N_a\)</span> er det effektive antallet viklinger i armaturet. Størrelsen og retningen til <span class="math notranslate nohighlight">\(F_s\)</span> bestemmes derfor direkte av armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-F_s \propto I_a.
-\]</div>
-<p>Dette feltet påvirker rotorens hovedfelt. Denne påvirkningen kalles armaturreaksjon.</p>
-<p>Den resulterende MMF-en blir</p>
+Når en last kobles til, flyter armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span>. Ifølge Ampères lov skaper denne strømmen et eget magnetfelt: <span class="math notranslate nohighlight">\(F_s = N_a I_a\)</span>, der <span class="math notranslate nohighlight">\(N_a\)</span> er det effektive antallet viklinger i armaturet. Størrelsen og retningen til <span class="math notranslate nohighlight">\(F_s\)</span> bestemmes derfor direkte av armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span>, <span class="math notranslate nohighlight">\(F_s \propto I_a\)</span>. Dette feltet påvirker rotorens hovedfelt. Denne påvirkningen kalles armaturreaksjon.
+Den resulterende MMF-en blir</p>
 <div class="math notranslate nohighlight">
 \[
 F_{sr}=F_r+F_s.
@@ -569,38 +540,7 @@ F_{sr}=F_r+F_s.
 </section>
 <section id="armaturreaksjon">
 <h2>Armaturreaksjon<a class="headerlink" href="#armaturreaksjon" title="Permalink to this heading">#</a></h2>
-<p>Denne prosessen kalles <strong>armaturreaksjon</strong>, som er påvirkningen statorstrømmen har på generatorens hovedfelt.</p>
-<p>Armaturreaksjonen kan beskrives som</p>
-<div class="math notranslate nohighlight">
-\[
-I_a
-\rightarrow
-F_s
-\rightarrow
-F_{sr}.
-\]</div>
-<p>Det resulterende luftgapfeltet etablerer den resulterende fluksen</p>
-<div class="math notranslate nohighlight">
-\[
-\Phi_{sr}\propto F_{sr},
-\]</div>
-<p>og den tilhørende flukskoblingen</p>
-<div class="math notranslate nohighlight">
-\[
-\lambda_{sr}\propto \Phi_{sr}.
-\]</div>
-<p>Ifølge Faradays lov induserer denne flukskoblingen spenningen</p>
-<div class="math notranslate nohighlight">
-\[
-E_{sr}
-=
--\frac{d\lambda_{sr}}{dt},
-\]</div>
-<p>slik at</p>
-<div class="math notranslate nohighlight">
-\[
-E_{sr}\propto F_{sr}.
-\]</div>
+<p>Denne prosessen kalles <strong>armaturreaksjon</strong>, som er påvirkningen statorstrømmen har på generatorens hovedfelt. Armaturreaksjonen kan beskrives som <span class="math notranslate nohighlight">\(I_a\rightarrow F_s\rightarrow F_{sr}\)</span>. Det resulterende luftgapfeltet etablerer den resulterende fluksen <span class="math notranslate nohighlight">\(\Phi_{sr}\propto F_{sr}\)</span>, og den tilhørende flukskoblingen <span class="math notranslate nohighlight">\(\lambda_{sr}\propto \Phi_{sr}\)</span>. Ifølge Faradays lov induserer denne flukskoblingen spenningen <span class="math notranslate nohighlight">\(E_{sr} = -\frac{d\lambda_{sr}}{dt}\)</span>, slik at <span class="math notranslate nohighlight">\(E_{sr}\propto F_{sr}\)</span>.</p>
 <p>Sammenhengen kan oppsummeres som</p>
 <div class="math notranslate nohighlight">
 \[
@@ -630,22 +570,17 @@ E_{sr}.
 E_{ar}=jX_{ar}I_a,
 \]</div>
 <p>der <span class="math notranslate nohighlight">\(X_{ar}\)</span> er armaturreaksjonsreaktansen.</p>
-<p>Krefter som påvirker hverandre
-$<span class="math notranslate nohighlight">\(
-F_r \leftrightarrow E
-\)</span>$</p>
+<p>Statorstrømmen <span class="math notranslate nohighlight">\(I_a\)</span> skaper statorfeltet <span class="math notranslate nohighlight">\(F_s\)</span>. Dette feltet påvirker hovedfluksen i maskinen og endrer den resulterende flukskoblingen. I den elektriske ekvivalentmodellen representeres denne virkningen av spenningsfallet <span class="math notranslate nohighlight">\(E_{ar}=jX_{ar}I_a\)</span>.</p>
+<p>Den induserte spenningen i en vikling er generelt gitt av Faradays induksjonslov,</p>
 <div class="math notranslate nohighlight">
 \[
-F_s \leftrightarrow E_{ar}
+E=-N\frac{d\Phi}{dt}.
 \]</div>
-<div class="math notranslate nohighlight">
-\[
-F_{sr} \leftrightarrow E_{sr}.
-\]</div>
+<p>I synkronmaskinen etablerer rotorfeltet <span class="math notranslate nohighlight">\(F_r\)</span> hovedfluksen som kobler statorviklingene og induserer den interne elektromotoriske spenningen <span class="math notranslate nohighlight">\(E\)</span>. Samspillet mellom rotorfeltet <span class="math notranslate nohighlight">\(F_r\)</span> og statorfeltet <span class="math notranslate nohighlight">\(F_s\)</span> danner resultantfeltet <span class="math notranslate nohighlight">\(F_{sr}\)</span>, som bestemmer maskinens elektromagnetiske dreiemoment og effektoverføring.</p>
 <p>Dette leder til den velkjente synkronreaktansmodellen</p>
 <div class="math notranslate nohighlight">
 \[
-E = V_t + jX_sI_a,
+E=V_t+jX_sI_a,
 \]</div>
 <p>der</p>
 <div class="math notranslate nohighlight">
