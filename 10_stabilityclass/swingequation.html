@@ -1,0 +1,796 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Svingeligning &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_stabilityclass/swingequation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="prev" title="Klassifisering av stabilitet" href="stabilityclass.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Svingeligning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F10_stabilityclass/swingequation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/10_stabilityclass/swingequation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Svingeligning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stasjonaer-drift">Stasjonær drift</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotorvinkel-og-effektvinkel-ved-transient-stabilitet">Rotorvinkel og effektvinkel ved transient stabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ved-kortslutning">Ved kortslutning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektoverskudd">Effektoverskudd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-brukes-effektvinkelen-i-svingligningen">Hvorfor brukes effektvinkelen i svingligningen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forflytning">Forflytning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akselerasjonseffekten">Akselerasjonseffekten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Svingeligning</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="svingeligning">
+<h1>Svingeligning<a class="headerlink" href="#svingeligning" title="Permalink to this heading">#</a></h1>
+<p>Kraftsystemer utsettes kontinuerlig for forstyrrelser som inn- og utkobling av last, kortslutninger, linjeutfall og generatorutfall. Slike hendelser skaper en midlertidig ubalanse mellom den mekaniske effekten som tilføres generatoren og den elektriske effekten som leveres til nettet.</p>
+<p>Når denne balansen forstyrres, begynner rotorens lagrede kinetiske energi å endres. Rotoren kan enten akselerere eller bremse, noe som fører til at rotorvinkelen endrer seg over tid. Dersom rotorvinkelen blir for stor, kan generatoren miste synkronismen med resten av kraftsystemet.</p>
+<p>Svingligningen beskriver denne dynamikken. Den kobler sammen effektubalanse, rotorens treghet og endringen i rotorvinkelen. Dermed gir den et matematisk grunnlag for å analysere hvordan en generator reagerer på forstyrrelser.</p>
+<p>Svingligningen er derfor et av de viktigste verktøyene innen transient stabilitet. Den brukes til å avgjøre om en generator vil forbli synkron med nettet etter en feil, hvor raskt en feil må kobles ut, og hvordan systemets treghet påvirker stabiliteten.</p>
+<p>Med andre ord beskriver svingligningen hvordan energien i rotorens roterende masse påvirker generatorens evne til å opprettholde synkron drift etter en forstyrrelse.</p>
+<section id="stasjonaer-drift">
+<h2>Stasjonær drift<a class="headerlink" href="#stasjonaer-drift" title="Permalink to this heading">#</a></h2>
+<p>I normal stasjonær drift er den relative posisjonen mellom rotoraksen og aksen til det resulterende magnetfeltet konstant. Vinkelen mellom disse aksene kalles rotorvinkelen, <span class="math notranslate nohighlight">\(\delta_r\)</span>.</p>
+<p>Det resulterende magnetfeltet er den vektorielle summen av rotorfeltet <span class="math notranslate nohighlight">\(F_r\)</span> og statorfeltet <span class="math notranslate nohighlight">\(F_s\)</span> i luftgapet. Feltet representerer den elektromagnetiske koblingen mellom rotor og stator, og rotorvinkelen <span class="math notranslate nohighlight">\(\delta_r\)</span> måles som vinkelen mellom rotoraksen og aksen til dette resulterende feltet.</p>
+<p>Ved lett belastning er <span class="math notranslate nohighlight">\(F_s\)</span> liten, slik at det resulterende feltet nesten sammenfaller med rotorfeltet <span class="math notranslate nohighlight">\(F_r\)</span>. Ved høy belastning får statorfeltet større betydning, og den resulterende feltaksen flyttes.</p>
+<p>Så lenge den mekaniske effekten som tilføres generatoren er lik den elektriske effekten som avgis til nettet, forblir rotorvinkelen <span class="math notranslate nohighlight">\(\delta_r\)</span> konstant, og generatoren opererer synkront med kraftsystemet.</p>
+</section>
+<section id="rotorvinkel-og-effektvinkel-ved-transient-stabilitet">
+<h2>Rotorvinkel og effektvinkel ved transient stabilitet<a class="headerlink" href="#rotorvinkel-og-effektvinkel-ved-transient-stabilitet" title="Permalink to this heading">#</a></h2>
+<p>Rotorvinkelen <span class="math notranslate nohighlight">\(\delta_r\)</span> er vinkelen mellom rotorfeltet <span class="math notranslate nohighlight">\(F_r\)</span> og det resulterende luftgapfeltet <span class="math notranslate nohighlight">\(F_{sr}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\delta_r=\angle(F_r,F_{sr}).
+\]</div>
+<p>Effektvinkelen <span class="math notranslate nohighlight">\(\delta\)</span> er vinkelen mellom den interne spenningen <span class="math notranslate nohighlight">\(E\)</span> og terminalspenningen <span class="math notranslate nohighlight">\(V_t\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\delta=\angle(E,V_t).
+\]</div>
+<p>I stasjonær drift er</p>
+<div class="math notranslate nohighlight">
+\[
+P_m=P_e,
+\]</div>
+<p>slik at både <span class="math notranslate nohighlight">\(\delta_r\)</span> og <span class="math notranslate nohighlight">\(\delta\)</span> er konstante. Ved en kortslutning reduseres den elektriske effekten raskt <span class="math notranslate nohighlight">\(P_e \downarrow\)</span>,
+mens den mekaniske effekten fra turbinen i første omgang er tilnærmet konstant, <span class="math notranslate nohighlight">\(P_m \approx \text{konstant}\)</span>.</p>
+</section>
+<section id="ved-kortslutning">
+<h2>Ved kortslutning<a class="headerlink" href="#ved-kortslutning" title="Permalink to this heading">#</a></h2>
+<p>Ved en kortslutning reduseres den elektriske effekten raskt</p>
+<div class="math notranslate nohighlight">
+\[
+P_e \downarrow .
+\]</div>
+<p>Årsaken er at den elektriske effekten som overføres til nettet er avhengig av spenningen ved generatorens terminaler. Når det oppstår en kortslutning i nettet, faller terminalspenningen kraftig. Dermed reduseres generatorens evne til å overføre aktiv effekt til kraftsystemet.</p>
+<p>For en idealisert synkronmaskin er den elektriske effekten gitt av</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=\frac{EV_t}{X_s}\sin\delta.
+\]</div>
+<p>Under en kortslutning blir terminalspenningen svært liten,</p>
+<div class="math notranslate nohighlight">
+\[
+V_t \downarrow ,
+\]</div>
+<p>og dermed reduseres også den elektriske effekten</p>
+<div class="math notranslate nohighlight">
+\[
+P_e \downarrow .
+\]</div>
+<p>Den mekaniske effekten fra turbinen endres derimot svært lite de første øyeblikkene etter feilen,</p>
+<div class="math notranslate nohighlight">
+\[
+P_m \approx \text{konstant}.
+\]</div>
+</section>
+<section id="effektoverskudd">
+<h2>Effektoverskudd<a class="headerlink" href="#effektoverskudd" title="Permalink to this heading">#</a></h2>
+<p>Dermed oppstår et effektoverskudd</p>
+<div class="math notranslate nohighlight">
+\[
+P_a=P_m-P_e&gt;0,
+\]</div>
+<p>som akselererer rotoren.</p>
+<p>Den ekstra energien som turbinen tilfører kan ikke lenger overføres til nettet, men lagres midlertidig som kinetisk energi i den roterende massen. Rotoren begynner derfor å øke hastigheten, og rotorvinkelen vokser.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Kortslutning
+      ↓
+Vt faller
+      ↓
+Pe faller
+      ↓
+Pa = Pm − Pe &gt; 0
+      ↓
+Rotoren akselererer
+      ↓
+δr øker
+      ↓
+δ øker
+</pre></div>
+</div>
+<p>Transient stabilitet handler derfor om hvorvidt generatoren klarer å gjenvinne balansen mellom <span class="math notranslate nohighlight">\(P_m\)</span> og <span class="math notranslate nohighlight">\(P_e\)</span> før rotorvinkelen blir så stor at synkronismen går tapt. Transient stabilitet handler derfor om hvorvidt generatoren klarer å gjenvinne balansen mellom <span class="math notranslate nohighlight">\(P_m\)</span> og <span class="math notranslate nohighlight">\(P_e\)</span> før rotorvinkelen blir så stor at synkronismen går tapt.</p>
+<p>Når</p>
+<div class="math notranslate nohighlight">
+\[
+P_m&gt;P_e,
+\]</div>
+<p>oppstår en akselerasjonseffekt</p>
+<div class="math notranslate nohighlight">
+\[
+P_a=P_m-P_e.
+\]</div>
+</section>
+<section id="hvorfor-brukes-effektvinkelen-i-svingligningen">
+<h2>Hvorfor brukes effektvinkelen i svingligningen?<a class="headerlink" href="#hvorfor-brukes-effektvinkelen-i-svingligningen" title="Permalink to this heading">#</a></h2>
+<p>Den elektriske effekten i en synkronmaskin bestemmes av effektvinkelen</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=
+\frac{EV_t}{X_s}\sin\delta.
+\]</div>
+<p>Derfor uttrykkes svingligningen ved hjelp av (\delta)</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta}{dt^2}
+=
+P_m-P_e.
+\]</div>
+<p>Effektvinkelen (\delta) er derfor den naturlige tilstandsvariabelen i transientstabilitetsanalyser.</p>
+</section>
+<section id="forflytning">
+<h2>Forflytning<a class="headerlink" href="#forflytning" title="Permalink to this heading">#</a></h2>
+<p>Rotorfeltet <span class="math notranslate nohighlight">\(F_r\)</span> flytter seg da relativt til luftgapfeltet <span class="math notranslate nohighlight">\(F_{sr}\)</span>, og rotorvinkelen øker</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_r \uparrow.
+\]</div>
+<p>Siden den induserte spenningen <span class="math notranslate nohighlight">\(E\)</span> følger rotorfeltet,</p>
+<div class="math notranslate nohighlight">
+\[
+E \perp F_r,
+\]</div>
+<p>vil også <span class="math notranslate nohighlight">\(E\)</span> flytte seg. Dette fører til at effektvinkelen øker</p>
+<div class="math notranslate nohighlight">
+\[
+\delta \uparrow.
+\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/35300d38b03a83df2d41412581c85c5583f6c954fa5f59c8cd71e47923bd89ad.png" src="../_images/35300d38b03a83df2d41412581c85c5583f6c954fa5f59c8cd71e47923bd89ad.png" />
+</div>
+</div>
+</section>
+<section id="akselerasjonseffekten">
+<h2>Akselerasjonseffekten<a class="headerlink" href="#akselerasjonseffekten" title="Permalink to this heading">#</a></h2>
+<p>I stabil drift er det balanse mellom det mekaniske dreiemomentet fra turbinen og det elektromagnetiske dreiemomentet i generatoren</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_m = \tau_e
+\]</div>
+<p>Dersom en forstyrrelse oppstår, blir denne balansen brutt. Forskjellen mellom det mekaniske og det elektromagnetiske dreiemomentet kalles akselerasjonsmomentet</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_a = \tau_m - \tau_e
+\]</div>
+<p>Et positivt akselerasjonsmoment fører til at rotorhastigheten øker, mens et negativt akselerasjonsmoment fører til at rotorhastigheten reduseres.</p>
+<p>Den mekaniske effekten som tilføres fra turbinen er</p>
+<div class="math notranslate nohighlight">
+\[
+P_m=\tau_m\omega_m
+\]</div>
+<p>der (\omega_m) er rotorens mekaniske vinkelhastighet.</p>
+<p>Den elektromagnetiske effekten som overføres gjennom luftgapet er</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=\tau_e\omega_s
+\]</div>
+<p>der <span class="math notranslate nohighlight">\(\omega_s\)</span> er synkron vinkelhastighet.</p>
+<p>Siden synkronmaskinen normalt opererer nær synkron hastighet <span class="math notranslate nohighlight">\(\omega_m \approx \omega_s\)</span>, kan akselerasjonsmomentet uttrykkes som en akselerasjonseffekt</p>
+<div class="math notranslate nohighlight">
+\[
+P_a = P_m - P_e
+\]</div>
+<p>Når <span class="math notranslate nohighlight">\(P_m &gt; P_e\)</span>, akselererer rotoren og rotorvinkelen <span class="math notranslate nohighlight">\(\delta\)</span> øker. Når <span class="math notranslate nohighlight">\(P_m &lt; P_e\)</span>, retarderer rotoren og rotorvinkelen reduseres. Rotorens dynamiske bevegelse beskrives av svingeligningen</p>
+</section>
+<section id="id1">
+<h2>Svingeligning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+J\frac{d^2\theta_m}{dt^2}=T_m-T_e
+\]</div>
+<p>der <span class="math notranslate nohighlight">\(J\)</span> er rotorens treghetsmoment, <span class="math notranslate nohighlight">\(T_m\)</span> er mekanisk dreiemoment og <span class="math notranslate nohighlight">\(T_e\)</span> er elektromagnetisk dreiemoment.</p>
+<p>Uttrykt på effektform og i per unit skrives svingeligningen ofte som</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}\frac{d^2\delta}{dt^2}=P_m-P_e
+\]</div>
+<p>der <span class="math notranslate nohighlight">\(H\)</span> er treghetskonstanten, <span class="math notranslate nohighlight">\(\omega_s\)</span> er synkron vinkelhastighet, og <span class="math notranslate nohighlight">\(\delta\)</span> er rotorvinkelen målt i forhold til det synkront roterende referansesystemet.</p>
+<p>Svingeligningen er den grunnleggende ligningen for analyse av transient stabilitet. Den beskriver hvordan rotorvinkelen utvikler seg etter en forstyrrelse, og gjør det mulig å avgjøre om generatoren vil forbli i synkronisme med kraftsystemet eller miste synkronismen.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./10_stabilityclass"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="stabilityclass.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Klassifisering av stabilitet</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referanser</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stasjonaer-drift">Stasjonær drift</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotorvinkel-og-effektvinkel-ved-transient-stabilitet">Rotorvinkel og effektvinkel ved transient stabilitet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ved-kortslutning">Ved kortslutning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektoverskudd">Effektoverskudd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-brukes-effektvinkelen-i-svingligningen">Hvorfor brukes effektvinkelen i svingligningen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forflytning">Forflytning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akselerasjonseffekten">Akselerasjonseffekten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Svingeligning</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
