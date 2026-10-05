@@ -464,7 +464,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotorvinkel-og-effektvinkel-ved-transient-stabilitet">Rotorvinkel og effektvinkel ved transient stabilitet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ved-kortslutning">Ved kortslutning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektoverskudd">Effektoverskudd</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-brukes-effektvinkelen-i-svingligningen">Hvorfor brukes effektvinkelen i svingligningen?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forflytning">Forflytning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akselerasjonseffekten">Akselerasjonseffekten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Svingeligning</a></li>
@@ -566,8 +565,8 @@ Rotoren akselererer
 δ øker
 </pre></div>
 </div>
-<p>Transient stabilitet handler derfor om hvorvidt generatoren klarer å gjenvinne balansen mellom <span class="math notranslate nohighlight">\(P_m\)</span> og <span class="math notranslate nohighlight">\(P_e\)</span> før rotorvinkelen blir så stor at synkronismen går tapt. Transient stabilitet handler derfor om hvorvidt generatoren klarer å gjenvinne balansen mellom <span class="math notranslate nohighlight">\(P_m\)</span> og <span class="math notranslate nohighlight">\(P_e\)</span> før rotorvinkelen blir så stor at synkronismen går tapt.</p>
-<p>Når</p>
+<p>Transient stabilitet handler derfor om hvorvidt generatoren klarer å gjenvinne balansen mellom <span class="math notranslate nohighlight">\(P_m\)</span> og <span class="math notranslate nohighlight">\(P_e\)</span> før rotorvinkelen blir så stor at synkronismen går tapt.
+Når</p>
 <div class="math notranslate nohighlight">
 \[
 P_m&gt;P_e,
@@ -577,23 +576,6 @@ P_m&gt;P_e,
 \[
 P_a=P_m-P_e.
 \]</div>
-</section>
-<section id="hvorfor-brukes-effektvinkelen-i-svingligningen">
-<h2>Hvorfor brukes effektvinkelen i svingligningen?<a class="headerlink" href="#hvorfor-brukes-effektvinkelen-i-svingligningen" title="Permalink to this heading">#</a></h2>
-<p>Den elektriske effekten i en synkronmaskin bestemmes av effektvinkelen</p>
-<div class="math notranslate nohighlight">
-\[
-P_e=
-\frac{EV_t}{X_s}\sin\delta.
-\]</div>
-<p>Derfor uttrykkes svingligningen ved hjelp av (\delta)</p>
-<div class="math notranslate nohighlight">
-\[
-M\frac{d^2\delta}{dt^2}
-=
-P_m-P_e.
-\]</div>
-<p>Effektvinkelen (\delta) er derfor den naturlige tilstandsvariabelen i transientstabilitetsanalyser.</p>
 </section>
 <section id="forflytning">
 <h2>Forflytning<a class="headerlink" href="#forflytning" title="Permalink to this heading">#</a></h2>
@@ -631,32 +613,46 @@ E \perp F_r,
 \tau_a = \tau_m - \tau_e
 \]</div>
 <p>Et positivt akselerasjonsmoment fører til at rotorhastigheten øker, mens et negativt akselerasjonsmoment fører til at rotorhastigheten reduseres.</p>
-<p>Den mekaniske effekten som tilføres fra turbinen er</p>
-<div class="math notranslate nohighlight">
-\[
-P_m=\tau_m\omega_m
-\]</div>
-<p>der (\omega_m) er rotorens mekaniske vinkelhastighet.</p>
-<p>Den elektromagnetiske effekten som overføres gjennom luftgapet er</p>
-<div class="math notranslate nohighlight">
-\[
-P_e=\tau_e\omega_s
-\]</div>
-<p>der <span class="math notranslate nohighlight">\(\omega_s\)</span> er synkron vinkelhastighet.</p>
-<p>Siden synkronmaskinen normalt opererer nær synkron hastighet <span class="math notranslate nohighlight">\(\omega_m \approx \omega_s\)</span>, kan akselerasjonsmomentet uttrykkes som en akselerasjonseffekt</p>
-<div class="math notranslate nohighlight">
-\[
-P_a = P_m - P_e
-\]</div>
-<p>Når <span class="math notranslate nohighlight">\(P_m &gt; P_e\)</span>, akselererer rotoren og rotorvinkelen <span class="math notranslate nohighlight">\(\delta\)</span> øker. Når <span class="math notranslate nohighlight">\(P_m &lt; P_e\)</span>, retarderer rotoren og rotorvinkelen reduseres. Rotorens dynamiske bevegelse beskrives av svingeligningen</p>
+<p>Rotorens dynamiske bevegelse beskrives av svingeligningen</p>
 </section>
 <section id="id1">
 <h2>Svingeligning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Vi tar utgangspunkt i Newtons 2. lov for roterende systemer:</p>
 <div class="math notranslate nohighlight">
 \[
-J\frac{d^2\theta_m}{dt^2}=T_m-T_e
+J\frac{d^2\theta_m}{dt^2}=\tau_a = \tau_m-\tau_e
 \]</div>
-<p>der <span class="math notranslate nohighlight">\(J\)</span> er rotorens treghetsmoment, <span class="math notranslate nohighlight">\(T_m\)</span> er mekanisk dreiemoment og <span class="math notranslate nohighlight">\(T_e\)</span> er elektromagnetisk dreiemoment.</p>
+<p>der <span class="math notranslate nohighlight">\(J\)</span> er rotorens treghetsmoment, <span class="math notranslate nohighlight">\(\tau_m\)</span> er mekanisk dreiemoment og <span class="math notranslate nohighlight">\(\tau_e\)</span> er elektromagnetisk dreiemoment. <span class="math notranslate nohighlight">\(\theta_m\)</span> er rotorens vinkel relativ til stator som roterer på synkronhastighet, <span class="math notranslate nohighlight">\(\omega_{sm}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\theta_m = \omega_{sm}t + \delta_m\]</div>
+<p>der <span class="math notranslate nohighlight">\(\delta_m\)</span> er posisjonen til rotor ved t=0, før forstyrrelsen.
+Deriverer vi ligningen over får vi rotorens vinkelhastighet</p>
+<div class="math notranslate nohighlight">
+\[\omega_m = \frac{d\theta_m}{dt} = \omega_{sm}t + \frac{d\delta_m}{dt}\]</div>
+<p>Da er rotor akselerasjon den dobbeltderiverte</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d^2\theta_m}{dt^2} = \frac{d^2\delta_m}{dt^2}\]</div>
+<p>Vi kan da sette den dobbeltderiverte inn i Newtons 2. lov:</p>
+<div class="math notranslate nohighlight">
+\[J\frac{d\delta_m^2}{dt^2} = \tau_m - \tau_e\]</div>
+<p>og deretter multiplisere med rotorhastighet (<span class="math notranslate nohighlight">\(\omega_m\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[J\omega_m\frac{d\delta_m^2}{dt^2} = \omega_m\tau_m - \omega_m\tau_e\]</div>
+<p>Siden kraft er rotorhastighet ganger dreiemoment får vi et utrrykk med effekt:</p>
+<div class="math notranslate nohighlight">
+\[J\omega_m\frac{d\delta_m^2}{dt^2} = P_m - P_e\]</div>
+<p><span class="math notranslate nohighlight">\(J\omega_m\)</span> er treghetskonstanten (inertia constant) og blir ofte kalt M, som er relatert til kinetisk energi i roterende masse, <span class="math notranslate nohighlight">\(W_k\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[W_k = \frac{1}{2}J\omega_m^2 = \frac{1}{2}M\omega_m \]</div>
+<p>Deler vi Wk på systembasen får vi H som er treghetskonstanten per enhet:</p>
+<div class="math notranslate nohighlight">
+\[ H = \frac{\text{Kinetisk energi i MJ ved nominell hastighet}}{\text{Nominell effekt}} = \frac{W_k}{S_{N}} \]</div>
+<p>Vi får også <span class="math notranslate nohighlight">\(M = \frac{2W_k}{\omega_{m}}\)</span>. Selv om <span class="math notranslate nohighlight">\(M = J\omega_m\)</span> egentlig varierer med rotorhastigheten, er hastighetsavvikene under stabilitetsforløpet så små at vi setter <span class="math notranslate nohighlight">\(\omega_m \approx \omega_{sm}\)</span> og behandler M som en konstant: <span class="math notranslate nohighlight">\(M = \frac{2W_k}{\omega_{sm}}\)</span></p>
+<p>Da får vi en enklere ligning:</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta}{dt^2}=P_m-P_e
+\]</div>
 <p>Uttrykt på effektform og i per unit skrives svingeligningen ofte som</p>
 <div class="math notranslate nohighlight">
 \[
@@ -735,7 +731,6 @@ J\frac{d^2\theta_m}{dt^2}=T_m-T_e
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotorvinkel-og-effektvinkel-ved-transient-stabilitet">Rotorvinkel og effektvinkel ved transient stabilitet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ved-kortslutning">Ved kortslutning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effektoverskudd">Effektoverskudd</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-brukes-effektvinkelen-i-svingligningen">Hvorfor brukes effektvinkelen i svingligningen?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forflytning">Forflytning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akselerasjonseffekten">Akselerasjonseffekten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Svingeligning</a></li>
