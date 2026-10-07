@@ -622,36 +622,99 @@ E \perp F_r,
 \[
 J\frac{d^2\theta_m}{dt^2}=\tau_a = \tau_m-\tau_e
 \]</div>
-<p>der <span class="math notranslate nohighlight">\(J\)</span> er rotorens treghetsmoment, <span class="math notranslate nohighlight">\(\tau_m\)</span> er mekanisk dreiemoment og <span class="math notranslate nohighlight">\(\tau_e\)</span> er elektromagnetisk dreiemoment. <span class="math notranslate nohighlight">\(\theta_m\)</span> er rotorens vinkel relativ til stator som roterer på synkronhastighet, <span class="math notranslate nohighlight">\(\omega_{sm}\)</span>:</p>
+<p>der <span class="math notranslate nohighlight">\(J\)</span> er rotorens treghetsmoment, <span class="math notranslate nohighlight">\(\tau_m\)</span> er mekanisk dreiemoment og <span class="math notranslate nohighlight">\(\tau_e\)</span> er elektromagnetisk dreiemoment. <span class="math notranslate nohighlight">\(\tehta_m\)</span> er rotorens mekaniske vinkel målt i et stasjonært referansesystem. Denne kan uttrykkes som summen av den synkront roterende referansevinkelen <span class="math notranslate nohighlight">\(\omega_{sm}t og rotorens relative vinkel \)</span>\delta_m$.</p>
 <div class="math notranslate nohighlight">
 \[\theta_m = \omega_{sm}t + \delta_m\]</div>
-<p>der <span class="math notranslate nohighlight">\(\delta_m\)</span> er posisjonen til rotor ved t=0, før forstyrrelsen.
-Deriverer vi ligningen over får vi rotorens vinkelhastighet</p>
+<p>der <span class="math notranslate nohighlight">\(\delta_m\)</span> er rotorens mekaniske vinkel relativt til et referansesystem som roterer med synkronhastigheten <span class="math notranslate nohighlight">\(\omega_{sm}\)</span>.</p>
+<p>Deriverer vi ligningen over får vi rotorens vinkelhastighet</p>
 <div class="math notranslate nohighlight">
-\[\omega_m = \frac{d\theta_m}{dt} = \omega_{sm}t + \frac{d\delta_m}{dt}\]</div>
+\[\omega_m = \frac{d\theta_m}{dt} = \omega_{sm} + \frac{d\delta_m}{dt}\]</div>
 <p>Da er rotor akselerasjon den dobbeltderiverte</p>
 <div class="math notranslate nohighlight">
 \[ \frac{d^2\theta_m}{dt^2} = \frac{d^2\delta_m}{dt^2}\]</div>
 <p>Vi kan da sette den dobbeltderiverte inn i Newtons 2. lov:</p>
 <div class="math notranslate nohighlight">
-\[J\frac{d\delta_m^2}{dt^2} = \tau_m - \tau_e\]</div>
+\[J\frac{d^2\delta_m}{dt^2} = \tau_m - \tau_e\]</div>
 <p>og deretter multiplisere med rotorhastighet (<span class="math notranslate nohighlight">\(\omega_m\)</span>):</p>
 <div class="math notranslate nohighlight">
-\[J\omega_m\frac{d\delta_m^2}{dt^2} = \omega_m\tau_m - \omega_m\tau_e\]</div>
+\[J\omega_m\frac{d^2\delta_m}{dt^2} = \omega_m\tau_m - \omega_m\tau_e\]</div>
 <p>Siden kraft er rotorhastighet ganger dreiemoment får vi et utrrykk med effekt:</p>
 <div class="math notranslate nohighlight">
-\[J\omega_m\frac{d\delta_m^2}{dt^2} = P_m - P_e\]</div>
+\[J\omega_m\frac{d^2\delta_m}{dt^2} = P_m - P_e\]</div>
 <p><span class="math notranslate nohighlight">\(J\omega_m\)</span> er treghetskonstanten (inertia constant) og blir ofte kalt M, som er relatert til kinetisk energi i roterende masse, <span class="math notranslate nohighlight">\(W_k\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[W_k = \frac{1}{2}J\omega_m^2 = \frac{1}{2}M\omega_m \]</div>
 <p>Deler vi Wk på systembasen får vi H som er treghetskonstanten per enhet:</p>
 <div class="math notranslate nohighlight">
-\[ H = \frac{\text{Kinetisk energi i MJ ved nominell hastighet}}{\text{Nominell effekt}} = \frac{W_k}{S_{N}} \]</div>
-<p>Vi får også <span class="math notranslate nohighlight">\(M = \frac{2W_k}{\omega_{m}}\)</span>. Selv om <span class="math notranslate nohighlight">\(M = J\omega_m\)</span> egentlig varierer med rotorhastigheten, er hastighetsavvikene under stabilitetsforløpet så små at vi setter <span class="math notranslate nohighlight">\(\omega_m \approx \omega_{sm}\)</span> og behandler M som en konstant: <span class="math notranslate nohighlight">\(M = \frac{2W_k}{\omega_{sm}}\)</span></p>
+\[ H = \frac{\text{Kinetisk energi ved nominell hastighet [MJ]}}{\text{Nominell effekt [MVA]}} = \frac{W_k}{S_{b}} \]</div>
+<p>Vi får også <span class="math notranslate nohighlight">\(M = \frac{2W_k}{\omega_{m}}\)</span>. Selv om <span class="math notranslate nohighlight">\(M = J\omega_m\)</span> egentlig varierer med rotorhastigheten, er hastighetsavvikene under stabilitetsforløpet så små at vi setter <span class="math notranslate nohighlight">\(\omega_m \approx \omega_{sm}\)</span> og behandler M som en konstant: <span class="math notranslate nohighlight">\(M = \frac{2W_k}{\omega_{sm}}\)</span>. Merk at definisjonen av M varierer mellom lærebøker. Her brukes <span class="math notranslate nohighlight">\(M=J\omega_m\)</span></p>
 <p>Da får vi en enklere ligning:</p>
 <div class="math notranslate nohighlight">
 \[
-M\frac{d^2\delta}{dt^2}=P_m-P_e
+M\frac{d^2\delta_m}{dt^2}=P_m-P_e
+\]</div>
+<p>Her er lastvinkelen angitt i mekanisk lastvinkel <span class="math notranslate nohighlight">\(\delta_m\)</span>. Vi angir poltallet som p og får:</p>
+<div class="math notranslate nohighlight">
+\[\delta = \frac{p}{2}\delta_m \]</div>
+<p>Da får vi ligningen utrykt med elektriske grader som:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2}{p}M\frac{d^2\delta}{dt^2}=P_m-P_e
+\]</div>
+<p>Siden</p>
+<div class="math notranslate nohighlight">
+\[
+H=\frac{W_k}{S_b}
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+W_k=HS_b.
+\]</div>
+<p>Siden</p>
+<div class="math notranslate nohighlight">
+\[
+M=\frac{2W_k}{\omega_{sm}}
+\]</div>
+<p>kan vi skrive</p>
+<div class="math notranslate nohighlight">
+\[
+M=\frac{2HS_b}{\omega_{sm}}.
+\]</div>
+<p>Setter vi dette inn i svingeligningen</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2}{p}M\frac{d^2\delta}{dt^2}=P_m-P_e
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2}{p}\frac{2HS_b}{\omega_{sm}}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e.
+\]</div>
+<p>Dividerer vi hele ligningen på systembasen <span class="math notranslate nohighlight">\(S_b\)</span>, oppnås per-unit-formen</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2}{p}\frac{2H}{\omega_{sm}}
+\frac{d^2\delta}{dt^2}
+=
+P_{m,\mathrm{pu}}
+-
+P_{e,\mathrm{pu}}.
+\]</div>
+<p>Sammenhengen mellom elektrisk og mekanisk synkronhastighet er</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_s=\frac{p}{2}\omega_{sm},
+\]</div>
+<p>eller</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2}{p}\frac{1}{\omega_{sm}}
+=
+\frac{1}{\omega_s}.
 \]</div>
 <p>Uttrykt på effektform og i per unit skrives svingeligningen ofte som</p>
 <div class="math notranslate nohighlight">
