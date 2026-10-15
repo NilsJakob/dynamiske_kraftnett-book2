@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Øving 7: Kritisk klareringstidtid (Stevenson-type med to-port-data) &#8212; Dynamiske kraftnett</title>
+    <title>Øving 7 – Beregning av elektromekaniske konstanter &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Referanser" href="../references.html" />
-    <link rel="prev" title="Svingeligning" href="../10_stabilityclass/swingequation.html" />
+    <link rel="prev" title="LAB4 – Prosjektoppstart og prosjektplan" href="../LAB/LAB4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -261,7 +261,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stability.html">Stabilitet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/swingequation.html">Svingeligning</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 7: Kritisk klareringstidtid (Stevenson-type med to-port-data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
 <ul class="nav bd-sidenav">
@@ -451,7 +452,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Øving 7: Kritisk klareringstidtid (Stevenson-type med to-port-data)</h1>
+    <h1>Øving 7 – Beregning av elektromekaniske konstanter</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -461,18 +462,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i">(i)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii">(ii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii">(iii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iv">(iv)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v">(v)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi">(vi)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultatkontroll">Resultatkontroll</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fasit">Fasit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">(i)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">(ii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">(iii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">(iv)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">(v)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">(vi)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -484,150 +491,107 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oving-7-kritisk-klareringstidtid-stevenson-type-med-to-port-data">
-<h1>Øving 7: Kritisk klareringstidtid (Stevenson-type med to-port-data)<a class="headerlink" href="#oving-7-kritisk-klareringstidtid-stevenson-type-med-to-port-data" title="Permalink to this heading">#</a></h1>
-<p>En synkrongenerator leverer effekt til et uendelig sterkt nett gjennom et transmisjonssystem. Generatoren representeres ved den klassiske modellen.</p>
-<section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<p>Generatorspenning bak transient reaktans:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="oving-7-beregning-av-elektromekaniske-konstanter">
+<h1>Øving 7 – Beregning av elektromekaniske konstanter<a class="headerlink" href="#oving-7-beregning-av-elektromekaniske-konstanter" title="Permalink to this heading">#</a></h1>
+<section id="oppgave">
+<h2>Oppgave<a class="headerlink" href="#oppgave" title="Permalink to this heading">#</a></h2>
+<p>Betrakt en 2-polet, 50 Hz, 13,8 kV turbogenerator. Generatoren har merkedata på <strong>60 MVA</strong> og <strong>0,85 etterslepende effektfaktor (lagging)</strong>.</p>
+<p>Den synkrone maskinen har et treghetsmoment på</p>
 <div class="math notranslate nohighlight">
 \[
-E' = 1.15\ pu
+I = 4200\; 	ext{kg}\cdot	ext{m}^2
 \]</div>
-<p>Spenningen på det uendelig sterke nettet:</p>
-<div class="math notranslate nohighlight">
-\[
-V = 1.0\ pu
-\]</div>
-<p>Transient reaktans:</p>
-<div class="math notranslate nohighlight">
-\[
-X_d' = 0.25\ pu
-\]</div>
-<p>Transmisjonslinjens reaktans:</p>
-<div class="math notranslate nohighlight">
-\[
-X_L = 0.50\ pu
-\]</div>
-<p>Mekanisk innmatet effekt:</p>
-<div class="math notranslate nohighlight">
-\[
-P_m = 0.90\ pu
-\]</div>
-<p>Treghetskonstant:</p>
-<div class="math notranslate nohighlight">
-\[
-H = 5.0\ \text{MJ/MVA}
-\]</div>
-<p>Frekvens:</p>
-<div class="math notranslate nohighlight">
-\[
-f = 50\ \text{Hz}
-\]</div>
-<p>En trefase kortslutning oppstår ved generatorens terminaler. Under feilen antas</p>
-<div class="math notranslate nohighlight">
-\[
-P_e = 0
-\]</div>
-<p>Feilen fjernes ved kritisk clearingtid.</p>
+<section id="i">
+<h3>(i)<a class="headerlink" href="#i" title="Permalink to this heading">#</a></h3>
+<p>Beregn den mekaniske rotasjonshastigheten $<span class="math notranslate nohighlight">\((\omega_{mec,rpm})\)</span>$.</p>
 </section>
-<hr class="docutils" />
-<section id="oppgaver">
-<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
-<section id="a">
-<h3>a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h3>
-<p>Finn den totale overføringsreaktansen</p>
-<div class="math notranslate nohighlight">
-\[
-X = X_d' + X_L
-\]</div>
+<section id="ii">
+<h3>(ii)<a class="headerlink" href="#ii" title="Permalink to this heading">#</a></h3>
+<p>Beregn den synkrone vinkelhastigheten $<span class="math notranslate nohighlight">\((\omega_s)\)</span>$ i rad/s.</p>
 </section>
-<section id="b">
-<h3>b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h3>
-<p>Bestem maksimal overførbar effekt</p>
-<div class="math notranslate nohighlight">
-\[
-P_{\max}=\frac{E'V}{X}
-\]</div>
+<section id="iii">
+<h3>(iii)<a class="headerlink" href="#iii" title="Permalink to this heading">#</a></h3>
+<p>Beregn den kinetiske energien (KE) lagret ved synkron hastighet (MJ).</p>
 </section>
-<section id="c">
-<h3>c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h3>
-<p>Bestem initial rotorvinkel</p>
-<div class="math notranslate nohighlight">
-\[
-\delta_0=
-\sin^{-1}
-\left(
-\frac{P_m}{P_{\max}}
-\right)
-\]</div>
+<section id="iv">
+<h3>(iv)<a class="headerlink" href="#iv" title="Permalink to this heading">#</a></h3>
+<p>Beregn treghetskonstanten $<span class="math notranslate nohighlight">\(H\)</span>$ i MJ/MVA.</p>
 </section>
-<section id="d">
-<h3>d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h3>
-<p>Bestem den kritiske clearingvinkelen ved hjelp av</p>
-<div class="math notranslate nohighlight">
-\[
-\delta_{cr}
-=
-\cos^{-1}
-\left[
-(\pi-2\delta_0)\sin\delta_0
--\cos\delta_0
-\right]
-\]</div>
+<section id="v">
+<h3>(v)<a class="headerlink" href="#v" title="Permalink to this heading">#</a></h3>
+<p>Beregn treghetskonstanten $<span class="math notranslate nohighlight">\(H\)</span>$ i MJ/MW.</p>
 </section>
-<section id="e">
-<h3>e)<a class="headerlink" href="#e" title="Permalink to this heading">#</a></h3>
-<p>Beregn den synkrone vinkelhastigheten</p>
-<div class="math notranslate nohighlight">
-\[
-\omega_s = 2\pi f
-\]</div>
-</section>
-<section id="f">
-<h3>f)<a class="headerlink" href="#f" title="Permalink to this heading">#</a></h3>
-<p>Beregn rotorakselerasjonen under feilen</p>
-<div class="math notranslate nohighlight">
-\[
-\alpha=
-\frac{\omega_s}{2H}P_m
-\]</div>
-</section>
-<section id="g">
-<h3>g)<a class="headerlink" href="#g" title="Permalink to this heading">#</a></h3>
-<p>Bestem den kritiske clearingtiden</p>
-<div class="math notranslate nohighlight">
-\[
-t_{cr}
-=
-\sqrt{
-\frac{2(\delta_{cr}-\delta_0)}
-{\alpha}
-}
-\]</div>
+<section id="vi">
+<h3>(vi)<a class="headerlink" href="#vi" title="Permalink to this heading">#</a></h3>
+<p>Beregn momentumkonstanten $<span class="math notranslate nohighlight">\(M\)</span>$ i MJ·s per elektrisk grad.</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="resultatkontroll">
-<h2>Resultatkontroll<a class="headerlink" href="#resultatkontroll" title="Permalink to this heading">#</a></h2>
-<p>Hvis beregningene er riktige, skal du få omtrent:</p>
+<section id="fasit">
+<h2>Fasit<a class="headerlink" href="#fasit" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>(i)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
-P_{\max}\approx 1.53\ pu
+\omega_{mec} = rac{120f}{P} = rac{120\cdot 50}{2} = 3000\;	ext{rpm}
+\]</div>
+<p><strong>Svar:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{mec} = 3000.0\;	ext{rpm}
+\]</div>
+</section>
+<section id="id2">
+<h3>(ii)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\omega_s = 2\pi f = 2\pi \cdot 50 = 314.1593\;	ext{rad/s}
+\]</div>
+</section>
+<section id="id3">
+<h3>(iii)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+KE = rac{1}{2}I\omega_s^2
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\delta_0\approx 36^\circ
+KE = 207.2617\;	ext{MJ}
+\]</div>
+</section>
+<section id="id4">
+<h3>(iv)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+H = rac{KE}{S_{nom}}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\delta_{cr}\approx 90^\circ
+H = rac{207.2617}{60} = 3.4544\;	ext{MJ/MVA}
+\]</div>
+</section>
+<section id="id5">
+<h3>(v)<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P_{nom} = S_{nom}\cosarphi = 60\cdot0.85 = 51.00\;	ext{MW}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-t_{cr}\approx 0.26\ s
+H = rac{KE}{P_{nom}} = 4.0640\;	ext{MJ/MW}
 \]</div>
-<p><em>(Oppgitt kun som kontroll av mellom- og sluttsvar.)</em></p>
+</section>
+<section id="id6">
+<h3>(vi)<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+M = rac{S_{nom}H}{180f}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+M = 0.0230\;	ext{MJ}\cdot	ext{s/el.grad}
+\]</div>
+</section>
 </section>
 </section>
 
@@ -662,12 +626,12 @@ t_{cr}\approx 0.26\ s
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../10_stabilityclass/swingequation.html"
+       href="../LAB/LAB4.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Svingeligning</p>
+        <p class="prev-next-title">LAB4  – Prosjektoppstart og prosjektplan</p>
       </div>
     </a>
     <a class="right-next"
@@ -695,18 +659,24 @@ t_{cr}\approx 0.26\ s
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i">(i)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii">(ii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii">(iii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iv">(iv)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v">(v)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi">(vi)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultatkontroll">Resultatkontroll</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fasit">Fasit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">(i)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">(ii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">(iii)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">(iv)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">(v)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">(vi)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
