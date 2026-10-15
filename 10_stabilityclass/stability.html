@@ -460,8 +460,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning-av-mmf-og-spenningsvektorene">Fysisk tolkning av MMF- og spenningsvektorene</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasttilkobling">Lasttilkobling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behov">Behov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning-av-mmf-og-spenningsvektorene">Fysisk tolkning av MMF- og spenningsvektorene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lasttilkobling">Lasttilkobling</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#armaturreaksjon">Armaturreaksjon</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrisk-representasjon">Elektrisk representasjon</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#over-og-undereksitasjon">Over- og undereksitasjon</a></li>
@@ -480,13 +483,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="stabilitet">
 <h1>Stabilitet<a class="headerlink" href="#stabilitet" title="Permalink to this heading">#</a></h1>
-<p>Stabilitet er et kraftsystems evne til å motstå forstyrrelser og utvikle tilstrekkelige gjenopprettende krefter til å opprettholde en likevektstilstand. Et system er stabilt dersom synkronmaskinene forblir i synkronisme etter en forstyrrelse.</p>
-<p>Generelt deles kraftsystemstabilitet inn i to hovedkategorier: <strong>stasjonær stabilitet (steady-state stability)</strong> og <strong>transient stabilitet (transient stability)</strong>.</p>
-<p><strong>Stasjonær stabilitet</strong> beskriver systemets evne til å opprettholde synkronisme ved små og gradvise endringer i last eller produksjon, for eksempel ved langsomme effektendringer. I en utvidet betydning omfatter stasjonær stabilitet også <strong>dynamisk stabilitet</strong>. Dynamisk stabilitet beskriver systemets respons på små forstyrrelser som virker over lengre tid, der automatiske reguleringssystemer som spenningsregulatorer (AVR) og turbinregulatorer påvirker stabilitetsforløpet.</p>
-<p><strong>Transient stabilitet</strong> beskriver systemets evne til å opprettholde synkronisme etter store og plutselige forstyrrelser, som kortslutninger, utkobling av transmisjonslinjer eller bortfall av generatorer.</p>
+<p>Kraftsystemstabilitet er et kraftsystems evne til å opprettholde en tilstand av likevekt under normale driftsforhold og gjenvinne en akseptabel likevektstilstand etter en forstyrrelse. For synkrongeneratorbaserte systemer innebærer dette at generatorene forblir i synkronisme etter forstyrrelsen.</p>
+<p>Kraftsystemstabilitet deles tradisjonelt inn i tre hovedkategorier:</p>
+<p>Rotorvinkelstabilitet, som beskriver systemets evne til å opprettholde synkronisme mellom generatorene. Rotorvinkelstabilitet omfatter både småsignalstabilitet og transient stabilitet.
+Spenningsstabilitet, som beskriver systemets evne til å opprettholde akseptable spenningsnivåer i alle knutepunkter etter en forstyrrelse.
+Frekvensstabilitet, som beskriver systemets evne til å opprettholde balanse mellom produksjon og forbruk slik at frekvensen holdes innenfor akseptable grenser.</p>
+<p>Småsignalstabilitet beskriver systemets respons på små forstyrrelser, som mindre endringer i last eller produksjon, mens transient stabilitet beskriver systemets evne til å opprettholde synkronisme etter store og plutselige forstyrrelser, som kortslutninger, utkobling av transmisjonslinjer eller bortfall av generatorer.</p>
+<p>I moderne kraftsystemer med stor andel omformerbaserte energikilder, som vindkraft, solkraft og HVDC-anlegg, er det også vanlig å betrakte omformerstabilitet og resonansstabilitet som egne stabilitetskategorier, siden disse fenomenene ikke alltid beskrives tilstrekkelig gjennom den klassiske inndelingen.</p>
+<p><img alt="Stabilitetsdiagram" src="../_images/stabilitet_diagram.svg" /></p>
+<section id="behov">
+<h2>Behov<a class="headerlink" href="#behov" title="Permalink to this heading">#</a></h2>
 <p>Det er et økende behov for transientstabilitetsanalyser i moderne kraftsystemer på grunn av økende kompleksitet og høyere utnyttelsesgrad av nettet. Analysene brukes for å verifisere at kraftsystemet opprettholder synkronisme etter alvorlige feil og forstyrrelser. Resultatene er viktige ved planlegging av ny produksjon og transmisjon, samt ved fastsettelse av verninnstillinger, kritisk feilklareringstid, spenningsnivåer og maksimal overføringskapasitet</p>
 <section id="fysisk-tolkning-av-mmf-og-spenningsvektorene">
-<h2>Fysisk tolkning av MMF- og spenningsvektorene<a class="headerlink" href="#fysisk-tolkning-av-mmf-og-spenningsvektorene" title="Permalink to this heading">#</a></h2>
+<h3>Fysisk tolkning av MMF- og spenningsvektorene<a class="headerlink" href="#fysisk-tolkning-av-mmf-og-spenningsvektorene" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/f529bb86d229d43a877ff85522bea7c2318d01064c10c57bf34a24b66ab2be25.png" src="../_images/f529bb86d229d43a877ff85522bea7c2318d01064c10c57bf34a24b66ab2be25.png" />
@@ -526,7 +535,7 @@ I_f \rightarrow F_r \rightarrow \Phi_r \rightarrow \lambda_r \rightarrow E.
 </div>
 </section>
 <section id="lasttilkobling">
-<h2>Lasttilkobling<a class="headerlink" href="#lasttilkobling" title="Permalink to this heading">#</a></h2>
+<h3>Lasttilkobling<a class="headerlink" href="#lasttilkobling" title="Permalink to this heading">#</a></h3>
 <p>Når generatoren belastes, flyter armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span> i statorviklingene. Ifølge Ampères lov etablerer strømmen en stator-MMF
 Når en last kobles til, flyter armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span>. Ifølge Ampères lov skaper denne strømmen et eget magnetfelt: <span class="math notranslate nohighlight">\(F_s = N_a I_a\)</span>, der <span class="math notranslate nohighlight">\(N_a\)</span> er det effektive antallet viklinger i armaturet. Størrelsen og retningen til <span class="math notranslate nohighlight">\(F_s\)</span> bestemmes derfor direkte av armaturstrømmen <span class="math notranslate nohighlight">\(I_a\)</span>, <span class="math notranslate nohighlight">\(F_s \propto I_a\)</span>. Dette feltet påvirker rotorens hovedfelt. Denne påvirkningen kalles armaturreaksjon.
 Den resulterende MMF-en blir</p>
@@ -539,6 +548,7 @@ F_{sr}=F_r+F_s.
 <img alt="../_images/00438e3ecc426fddae15450b2a8d90b13fdd45ffcdbed91066127b966310a459.png" src="../_images/00438e3ecc426fddae15450b2a8d90b13fdd45ffcdbed91066127b966310a459.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="armaturreaksjon">
 <h2>Armaturreaksjon<a class="headerlink" href="#armaturreaksjon" title="Permalink to this heading">#</a></h2>
@@ -673,8 +683,11 @@ X_s=X_{ar}+X_l,
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning-av-mmf-og-spenningsvektorene">Fysisk tolkning av MMF- og spenningsvektorene</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasttilkobling">Lasttilkobling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behov">Behov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning-av-mmf-og-spenningsvektorene">Fysisk tolkning av MMF- og spenningsvektorene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lasttilkobling">Lasttilkobling</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#armaturreaksjon">Armaturreaksjon</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrisk-representasjon">Elektrisk representasjon</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#over-og-undereksitasjon">Over- og undereksitasjon</a></li>
