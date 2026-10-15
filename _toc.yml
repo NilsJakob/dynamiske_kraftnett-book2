@@ -74,6 +74,7 @@ parts:
       - file: 10_stabilityclass/stability
       - file: 10_stabilityclass/stabilityclass
       - file: 10_stabilityclass/swingequation
+      - file: assignments/assignment6
 
   - caption: Referanser
     chapters:
