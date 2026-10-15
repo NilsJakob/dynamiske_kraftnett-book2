@@ -263,6 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/swingequation.html">Svingeligning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
 <ul class="nav bd-sidenav">
@@ -462,25 +463,29 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Øving 7 – Beregning av elektromekaniske konstanter</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i">(i)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii">(ii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii">(iii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iv">(iv)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v">(v)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi">(vi)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fasit">Fasit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">(i)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">(ii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">(iii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">(iv)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">(v)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">(vi)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svar">Svar</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-mekanisk-rotasjonshastighet">a) Mekanisk rotasjonshastighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-synkron-vinkelhastighet">b) Synkron vinkelhastighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-kinetisk-energi">c) Kinetisk energi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-treghetskonstant-h-i-mj-mva">d) Treghetskonstant H i MJ/MVA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-treghetskonstant-h-i-mj-mw">e) Treghetskonstant H i MJ/MW</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-momentumkonstant-m">f) Momentumkonstant M</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -495,103 +500,142 @@ document.write(`
 <h1>Øving 7 – Beregning av elektromekaniske konstanter<a class="headerlink" href="#oving-7-beregning-av-elektromekaniske-konstanter" title="Permalink to this heading">#</a></h1>
 <section id="oppgave">
 <h2>Oppgave<a class="headerlink" href="#oppgave" title="Permalink to this heading">#</a></h2>
-<p>Betrakt en 2-polet, 50 Hz, 13,8 kV turbogenerator. Generatoren har merkedata på <strong>60 MVA</strong> og <strong>0,85 etterslepende effektfaktor (lagging)</strong>.</p>
-<p>Den synkrone maskinen har et treghetsmoment på</p>
+<p>Betrakt en <strong>4-polet, 50 Hz, 11 kV turbogenerator</strong>.</p>
+<p>Generatoren har følgende merkedata:</p>
 <div class="math notranslate nohighlight">
 \[
-I = 4200\; 	ext{kg}\cdot	ext{m}^2
+S_n = 52.0\ \text{MVA}
 \]</div>
-<section id="i">
-<h3>(i)<a class="headerlink" href="#i" title="Permalink to this heading">#</a></h3>
-<p>Beregn den mekaniske rotasjonshastigheten $<span class="math notranslate nohighlight">\((\omega_{mec,rpm})\)</span>$.</p>
+<div class="math notranslate nohighlight">
+\[
+\cos\varphi = 0.85
+\]</div>
+<p>Generatoren har en sylindrisk rotor med treghetsmoment</p>
+<div class="math notranslate nohighlight">
+\[
+I = 6500\ \text{kg}\cdot\text{m}^2
+\]</div>
+<section id="a">
+<h3>a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h3>
+<p>Beregn den mekaniske rotasjonshastigheten</p>
+<div class="math notranslate nohighlight">
+\[
+n_{mec}
+\]</div>
+<p>i rpm.</p>
 </section>
-<section id="ii">
-<h3>(ii)<a class="headerlink" href="#ii" title="Permalink to this heading">#</a></h3>
-<p>Beregn den synkrone vinkelhastigheten $<span class="math notranslate nohighlight">\((\omega_s)\)</span>$ i rad/s.</p>
+<hr class="docutils" />
+<section id="b">
+<h3>b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h3>
+<p>Beregn den synkrone vinkelhastigheten</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_s
+\]</div>
+<p>i rad/s.</p>
 </section>
-<section id="iii">
-<h3>(iii)<a class="headerlink" href="#iii" title="Permalink to this heading">#</a></h3>
-<p>Beregn den kinetiske energien (KE) lagret ved synkron hastighet (MJ).</p>
+<hr class="docutils" />
+<section id="c">
+<h3>c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h3>
+<p>Beregn den kinetiske energien lagret ved synkron hastighet.</p>
+<div class="math notranslate nohighlight">
+\[
+KE=\frac{1}{2}I\omega_s^2
+\]</div>
+<p>Svar i MJ.</p>
 </section>
-<section id="iv">
-<h3>(iv)<a class="headerlink" href="#iv" title="Permalink to this heading">#</a></h3>
-<p>Beregn treghetskonstanten $<span class="math notranslate nohighlight">\(H\)</span>$ i MJ/MVA.</p>
+<hr class="docutils" />
+<section id="d">
+<h3>d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h3>
+<p>Beregn treghetskonstanten</p>
+<div class="math notranslate nohighlight">
+\[
+H
+\]</div>
+<p>i MJ/MVA.</p>
 </section>
-<section id="v">
-<h3>(v)<a class="headerlink" href="#v" title="Permalink to this heading">#</a></h3>
-<p>Beregn treghetskonstanten $<span class="math notranslate nohighlight">\(H\)</span>$ i MJ/MW.</p>
+<hr class="docutils" />
+<section id="e">
+<h3>e)<a class="headerlink" href="#e" title="Permalink to this heading">#</a></h3>
+<p>Beregn treghetskonstanten</p>
+<div class="math notranslate nohighlight">
+\[
+H
+\]</div>
+<p>i MJ/MW.</p>
 </section>
-<section id="vi">
-<h3>(vi)<a class="headerlink" href="#vi" title="Permalink to this heading">#</a></h3>
-<p>Beregn momentumkonstanten $<span class="math notranslate nohighlight">\(M\)</span>$ i MJ·s per elektrisk grad.</p>
+<hr class="docutils" />
+<section id="f">
+<h3>f)<a class="headerlink" href="#f" title="Permalink to this heading">#</a></h3>
+<p>Beregn momentumkonstanten</p>
+<div class="math notranslate nohighlight">
+\[
+M
+\]</div>
+<p>i MJ·s per elektrisk grad.</p>
+<p>Bruk</p>
+<div class="math notranslate nohighlight">
+\[
+M=\frac{S_nH}{180f}
+\]</div>
+</section>
 </section>
 </section>
 <hr class="docutils" />
-<section id="fasit">
-<h2>Fasit<a class="headerlink" href="#fasit" title="Permalink to this heading">#</a></h2>
-<section id="id1">
-<h3>(i)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="svar">
+<h1>Svar<a class="headerlink" href="#svar" title="Permalink to this heading">#</a></h1>
+<section id="a-mekanisk-rotasjonshastighet">
+<h2>a) Mekanisk rotasjonshastighet<a class="headerlink" href="#a-mekanisk-rotasjonshastighet" title="Permalink to this heading">#</a></h2>
+<p><strong>Svar</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\omega_{mec} = rac{120f}{P} = rac{120\cdot 50}{2} = 3000\;	ext{rpm}
-\]</div>
-<p><strong>Svar:</strong></p>
-<div class="math notranslate nohighlight">
-\[
-\omega_{mec} = 3000.0\;	ext{rpm}
+\boxed{n_{mec}=1500.0\ \text{rpm}}
 \]</div>
 </section>
-<section id="id2">
-<h3>(ii)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="b-synkron-vinkelhastighet">
+<h2>b) Synkron vinkelhastighet<a class="headerlink" href="#b-synkron-vinkelhastighet" title="Permalink to this heading">#</a></h2>
+<p><strong>Svar</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\omega_s = 2\pi f = 2\pi \cdot 50 = 314.1593\;	ext{rad/s}
+\boxed{\omega_s=314.1593\ \text{rad/s}}
 \]</div>
 </section>
-<section id="id3">
-<h3>(iii)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="c-kinetisk-energi">
+<h2>c) Kinetisk energi<a class="headerlink" href="#c-kinetisk-energi" title="Permalink to this heading">#</a></h2>
+<p><strong>Svar</strong></p>
 <div class="math notranslate nohighlight">
 \[
-KE = rac{1}{2}I\omega_s^2
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-KE = 207.2617\;	ext{MJ}
+\boxed{KE=320.31\ \text{MJ}}
 \]</div>
 </section>
-<section id="id4">
-<h3>(iv)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="d-treghetskonstant-h-i-mj-mva">
+<h2>d) Treghetskonstant H i MJ/MVA<a class="headerlink" href="#d-treghetskonstant-h-i-mj-mva" title="Permalink to this heading">#</a></h2>
+<p><strong>Svar</strong></p>
 <div class="math notranslate nohighlight">
 \[
-H = rac{KE}{S_{nom}}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-H = rac{207.2617}{60} = 3.4544\;	ext{MJ/MVA}
+\boxed{H=6.16\ \text{MJ/MVA}}
 \]</div>
 </section>
-<section id="id5">
-<h3>(v)<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="e-treghetskonstant-h-i-mj-mw">
+<h2>e) Treghetskonstant H i MJ/MW<a class="headerlink" href="#e-treghetskonstant-h-i-mj-mw" title="Permalink to this heading">#</a></h2>
+<p><strong>Svar</strong></p>
 <div class="math notranslate nohighlight">
 \[
-P_{nom} = S_{nom}\cosarphi = 60\cdot0.85 = 51.00\;	ext{MW}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-H = rac{KE}{P_{nom}} = 4.0640\;	ext{MJ/MW}
+\boxed{H=7.25\ \text{MJ/MW}}
 \]</div>
 </section>
-<section id="id6">
-<h3>(vi)<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="f-momentumkonstant-m">
+<h2>f) Momentumkonstant M<a class="headerlink" href="#f-momentumkonstant-m" title="Permalink to this heading">#</a></h2>
+<p><strong>Svar</strong></p>
 <div class="math notranslate nohighlight">
 \[
-M = rac{S_{nom}H}{180f}
+\boxed{M=0.0356\ \text{MJ}\cdot\text{s/el.grad}}
 \]</div>
-<div class="math notranslate nohighlight">
-\[
-M = 0.0230\;	ext{MJ}\cdot	ext{s/el.grad}
-\]</div>
-</section>
 </section>
 </section>
 
@@ -659,25 +703,29 @@ M = 0.0230\;	ext{MJ}\cdot	ext{s/el.grad}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Øving 7 – Beregning av elektromekaniske konstanter</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave">Oppgave</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i">(i)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii">(ii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii">(iii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iv">(iv)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v">(v)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi">(vi)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fasit">Fasit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">(i)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">(ii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">(iii)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">(iv)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">(v)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">(vi)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svar">Svar</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-mekanisk-rotasjonshastighet">a) Mekanisk rotasjonshastighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-synkron-vinkelhastighet">b) Synkron vinkelhastighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-kinetisk-energi">c) Kinetisk energi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-treghetskonstant-h-i-mj-mva">d) Treghetskonstant H i MJ/MVA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-treghetskonstant-h-i-mj-mw">e) Treghetskonstant H i MJ/MW</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-momentumkonstant-m">f) Momentumkonstant M</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
