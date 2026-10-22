@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="220" viewBox="0 0 700 220">
+
+  <!-- Bus 1 -->
+  <line x1="40" y1="130" x2="125" y2="130" stroke="black" stroke-width="1.5"/>
+  <text x="80" y="150" font-size="20">1</text>
+
+  <!-- Generator -->
+  <circle cx="70" cy="50" r="27" fill="none" stroke="black" stroke-width="1.2"/>
+  <line x1="70" y1="77" x2="70" y2="130" stroke="black" stroke-width="1.2"/>
+
+  <!-- S1 -->
+  <text x="30" y="105" font-size="24">S₁</text>
+  <line x1="55" y1="80" x2="55" y2="118" stroke="black" stroke-width="1"/>
+  <polygon points="55,122 52,114 58,114" fill="black"/>
+
+  <!-- Line -->
+  <line x1="98" y1="103" x2="415" y2="103" stroke="black" stroke-width="1.5"/>
+  <line x1="98" y1="103" x2="98" y2="130" stroke="black" stroke-width="1.5"/>
+  <line x1="415" y1="103" x2="415" y2="130" stroke="black" stroke-width="1.5"/>
+
+  <!-- Impedance label -->
+  <text x="170" y="90" font-size="24">
+    Z<tspan baseline-shift="sub" font-size="16">12</tspan>
+    = 3.4848+j13.9392
+  </text>
+
+  <!-- Bus 2 -->
+  <line x1="375" y1="130" x2="457" y2="130" stroke="black" stroke-width="1.5"/>
+  <text x="355" y="136" font-size="20">2</text>
+
+  <!-- S2 -->
+  <text x="420" y="160" font-size="24">
+    S<tspan baseline-shift="sub" font-size="16">2</tspan>
+    = 80 MW + j30 Mvar
+  </text>
+
+  <line x1="415" y1="135" x2="415" y2="180" stroke="black" stroke-width="1"/>
+  <polygon points="415,184 412,176 418,176" fill="black"/>
+
+</svg>

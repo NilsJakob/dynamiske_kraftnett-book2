@@ -265,6 +265,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
 
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB5.html">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
@@ -758,7 +765,8 @@ Det du må finne ut er:</p>
 <p>Vi kaller opp nettstedet og ber <code class="docutils literal notranslate"><span class="pre">pyjstat</span></code> lese <code class="docutils literal notranslate"><span class="pre">df</span></code> og returnere tabell:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://data.ssb.no/api/v0/en/table/</span><span class="si">{</span><span class="n">TABLE</span><span class="si">}</span><span class="s2">"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyjstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyjstat</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://data.ssb.no/api/v0/en/table/</span><span class="si">{</span><span class="n">TABLE</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pyjstat</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
     <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -833,7 +841,7 @@ Det du må finne ut er:</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <figure class="align-default" id="fig-sol-vind">
-<a class="reference internal image-reference" href="../_images/4c5b6394ce8958bc3a8e99bb1b156938a528d22c9f9096209f4a5c330c49f45a.png"><img alt="../_images/4c5b6394ce8958bc3a8e99bb1b156938a528d22c9f9096209f4a5c330c49f45a.png" src="../_images/4c5b6394ce8958bc3a8e99bb1b156938a528d22c9f9096209f4a5c330c49f45a.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/75bec2de0e3ce16990c4d3c5431f597d5ebae8b1846ebbd65f8ea3174670fdfe.png"><img alt="../_images/75bec2de0e3ce16990c4d3c5431f597d5ebae8b1846ebbd65f8ea3174670fdfe.png" src="../_images/75bec2de0e3ce16990c4d3c5431f597d5ebae8b1846ebbd65f8ea3174670fdfe.png" style="width: 90%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Produksjon av sol- og vindkraft i Norge.</span><a class="headerlink" href="#fig-sol-vind" title="Permalink to this image">#</a></p>
 <div class="legend">
@@ -842,17 +850,8 @@ Det du må finne ut er:</p>
 </figcaption>
 </figure>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/e418b814a92e583c9f194c75342cb411fe6ec8fe4e3b329bfa04efd3f381c35d.png" src="../_images/e418b814a92e583c9f194c75342cb411fe6ec8fe4e3b329bfa04efd3f381c35d.png" />
-</div>
 </div>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kilde: SSB Statistikkbanken, tabell 08307
-https://www.ssb.no/statbank/table/08307
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="endrede-tilsig">
@@ -860,17 +859,7 @@ https://www.ssb.no/statbank/table/08307
 <p>Norge har 1600 vannkraftverk og omtrent 1200 innsjøer regulert til kraftproduksjon, som gjør det mulig å lagre kraft innenfor reguleringsintervallene lavest regulerte vannstand (LRV) og høyest regulerte vannstand (HRV). Blåsjø er norges største regulerte vannmagasin med reguleringshøyde på 125 m og et magasinvolum på 3105 millioner kubikk som tilsvarer et energipotensial på 7,8 TWh.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
-<figure class="align-default" id="fig-mauvoisin">
-<div class="output text_html">
-<img src="https://media.snl.no/media/15532/standard_800px-Mauvoisin_dam.jpg" width="600">
-</div><figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Blåsjø.</span><a class="headerlink" href="#fig-mauvoisin" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/d0b1474e6e1c2da415bd069a522e45f3e54e0ce8c1e93be014bedc387c1a233f.png" src="../_images/d0b1474e6e1c2da415bd069a522e45f3e54e0ce8c1e93be014bedc387c1a233f.png" />
-</div>
 </div>
 </section>
 <section id="fyllingsgrad-pa-1-2-3">
@@ -885,23 +874,14 @@ $<span class="math notranslate nohighlight">\(E_{M1} = V_{M1}\,(e_{K1}+e_{K2})\)
 <li><p><span class="math notranslate nohighlight">\(e_{K1}, e_{K2}\)</span> = energiekvivalenter (GWh/mill. m³)</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/2e2c8715b6e0cdc3e89731228b870ca8dfea86fc01c02c47f4fe7eb92154c21b.png" src="../_images/2e2c8715b6e0cdc3e89731228b870ca8dfea86fc01c02c47f4fe7eb92154c21b.png" />
-</div>
 </div>
 <p>Energiinnholdet summeres og deles på det totale energiinnnholdet og slik finner man fyllingsgraden:</p>
 <div class="math notranslate nohighlight">
 \[\text{Fyllingsgrad} = \frac{\sum E_{M_i,\text{uke }j}} {\sum E_{M_i,\text{maks}}}\]</div>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/c56a5eb261552f16a240201461975d54158998a0ad79a154c4b48b01d977af54.png" src="../_images/c56a5eb261552f16a240201461975d54158998a0ad79a154c4b48b01d977af54.png" />
-</div>
 </div>
 <p>Vannstandsmålinger samles hver uke og publiseres onsdager kl. 13</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/d5859c9c4fa484f55b5fc8d87f2166810389cbb64d5b7f3a95f8d1844651529e.png" src="../_images/d5859c9c4fa484f55b5fc8d87f2166810389cbb64d5b7f3a95f8d1844651529e.png" />
-</div>
 </div>
 </section>
 </section>
@@ -910,7 +890,7 @@ $<span class="math notranslate nohighlight">\(E_{M1} = V_{M1}\,(e_{K1}+e_{K2})\)
 <p>Ved å følge utviklingen fra uke til uke og sammenligne med historiske tidsseriedata fra de 20 siste årene kan man kontrollere tilsigsenergien og opprettholde forsyningssikkerhet.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/af977826d1d8ceee2451e16bccb552d9e843c8fb14493ac476dbe3349ad2bb4a.png" src="../_images/af977826d1d8ceee2451e16bccb552d9e843c8fb14493ac476dbe3349ad2bb4a.png" />
+<img alt="../_images/a632b224d59d0c5ac5bcb235ada7df29db689ddb118ed85c73c29f0a60c33923.png" src="../_images/a632b224d59d0c5ac5bcb235ada7df29db689ddb118ed85c73c29f0a60c33923.png" />
 </div>
 </div>
 <section id="import-og-eksport">
@@ -945,19 +925,8 @@ $<span class="math notranslate nohighlight">\(E_{M1} = V_{M1}\,(e_{K1}+e_{K2})\)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>contents
-Eksport    18299.884615
-Import      8698.846154
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/4cc3961d73ee66ef88b09cb71df67da92f47f95360cafa686360dfe412267bed.png" src="../_images/4cc3961d73ee66ef88b09cb71df67da92f47f95360cafa686360dfe412267bed.png" />
-</div>
 </div>
 </section>
 </section>

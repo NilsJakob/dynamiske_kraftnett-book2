@@ -1,0 +1,1078 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab5: Lastflyt i et enkelt kraftsystem &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'LAB/LAB5';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="prev" title="Øving 7 – Beregning av elektromekaniske konstanter" href="../assignments/assignment7.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/swingequation.html">Svingeligning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2FLAB/LAB5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/LAB/LAB5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab5: Lastflyt i et enkelt kraftsystem</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab5: Lastflyt i et enkelt kraftsystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-2-bussystem">Del 1: 2-bussystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systembeskrivelse">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-y-buss">Oppgave 1: Y-buss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-teoretisk-beregning">Oppgave 2: Teoretisk beregning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-effektflyt-og-linjetap">Oppgave 3: Effektflyt og linjetap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-lastflyt-i-powerfactory">Oppgave 4: Lastflyt i PowerFactory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-til-modellering">Tips til modellering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomforing">Gjennomføring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenligning">Sammenligning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-sammenligning">Oppgave 5: Sammenligning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-utvidelse-til-3-bussystem">Del 2: Utvidelse til 3-bussystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6-y-buss-for-3-bussystemet">Oppgave 6: Y-buss for 3-bussystemet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7-gauss-seidel-for-3-bussystemet">Oppgave 7: Gauss-Seidel for 3-bussystemet</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8-lastflytberegning">Oppgave 8: Lastflytberegning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9-refleksjon">Oppgave 9: Refleksjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#innlevering">Innlevering</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab5-lastflyt-i-et-enkelt-kraftsystem">
+<h1>Lab5: Lastflyt i et enkelt kraftsystem<a class="headerlink" href="#lab5-lastflyt-i-et-enkelt-kraftsystem" title="Permalink to this heading">#</a></h1>
+<section id="laeringsmal">
+<h2>Læringsmål<a class="headerlink" href="#laeringsmal" title="Permalink to this heading">#</a></h2>
+<p>Etter gjennomført lab skal du kunne:</p>
+<ul class="simple">
+<li><p>Modellere et kraftsystem ved hjelp av impedanser og Y-bussmatrise.</p></li>
+<li><p>Utføre lastflytberegninger i et 2-bussystem.</p></li>
+<li><p>Utvide modellen til et 3-bussystem.</p></li>
+<li><p>Sammenligne teoretiske beregninger med numeriske resultater.</p></li>
+<li><p>Analysere spenningsnivåer og effektflyt i nettet.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="del-1-2-bussystem">
+<h1>Del 1: 2-bussystem<a class="headerlink" href="#del-1-2-bussystem" title="Permalink to this heading">#</a></h1>
+<section id="systembeskrivelse">
+<h2>Systembeskrivelse<a class="headerlink" href="#systembeskrivelse" title="Permalink to this heading">#</a></h2>
+<p>Vi betrakter et enkelt distribusjonssystem bestående av:</p>
+<ul class="simple">
+<li><p>Buss 1: Slack-buss</p></li>
+<li><p>Buss 2: Lastbuss (PQ-buss)</p></li>
+</ul>
+<p>Data:</p>
+<div class="math notranslate nohighlight">
+\[
+V_1 = 1.00 \angle 0^\circ \ \text{p.u.}
+\]</div>
+<p>Linjeimpedans:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_{12}=0.02+j0.08 \ \text{p.u.}
+\]</div>
+<p>Last på buss 2:</p>
+<div class="math notranslate nohighlight">
+\[
+S_2 = 0.80 + j0.30 \ \text{p.u.}
+\]</div>
+<p>Baseeffekt:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{base}=100\ \text{MVA}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h2>Systembeskrivelse<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Vi betrakter et enkelt transmisjonssystem bestående av:</p>
+<ul class="simple">
+<li><p>Buss 1: Slack-buss</p></li>
+<li><p>Buss 2: Lastbuss (PQ-buss)</p></li>
+</ul>
+<p>Data:</p>
+<div class="math notranslate nohighlight">
+\[
+V_1 = 132 \angle 0^\circ \ \text{kV}
+\]</div>
+<p>Linjeimpedans:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_{12}=3.4848+j13.9392 \ \Omega
+\]</div>
+<p>Last på buss 2:</p>
+<div class="math notranslate nohighlight">
+\[
+S_2 = 80 + j30 \ \text{MVA}
+\]</div>
+<p><strong>Base</strong> Bruk</p>
+<div class="math notranslate nohighlight">
+\[
+V_{base}=132\ \text{kV}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+S_{base}=100\ \text{MVA}.
+\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/e8a6807234ab23c14b35c402615dec8e32f39400f5d1b3cbbd790adacd14dbf6.svg" src="../_images/e8a6807234ab23c14b35c402615dec8e32f39400f5d1b3cbbd790adacd14dbf6.svg" /></div>
+</div>
+</section>
+<section id="oppgave-1-y-buss">
+<h2>Oppgave 1: Y-buss<a class="headerlink" href="#oppgave-1-y-buss" title="Permalink to this heading">#</a></h2>
+<p>Bestem linjeadmittansen i per unit.</p>
+<div class="math notranslate nohighlight">
+\[
+y_{12}=\frac{1}{Z_{12}}
+\]</div>
+<p>og sett opp Y-bussmatrisen</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{bus}=
+\begin{bmatrix}
+Y_{11} &amp; Y_{12} \\
+Y_{21} &amp; Y_{22}
+\end{bmatrix}.
+\end{split}\]</div>
+</section>
+<section id="oppgave-2-teoretisk-beregning">
+<h2>Oppgave 2: Teoretisk beregning<a class="headerlink" href="#oppgave-2-teoretisk-beregning" title="Permalink to this heading">#</a></h2>
+<p>Utfør fire iterasjoner (opptil <span class="math notranslate nohighlight">\(V_2^{(3)}\)</span>) av Gauss-Seidel-metoden for å estimere spenningen i buss 2.</p>
+<p>Bruk startverdien</p>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(0)} = 1+j0.
+\]</div>
+</section>
+<section id="oppgave-3-effektflyt-og-linjetap">
+<h2>Oppgave 3: Effektflyt og linjetap<a class="headerlink" href="#oppgave-3-effektflyt-og-linjetap" title="Permalink to this heading">#</a></h2>
+<p>Etter flere Gauss-Seidel-iterasjoner har spenningen på buss 2 konvergert til</p>
+<div class="math notranslate nohighlight">
+\[ V_2 = 0.955 - j0.058 \text{ p.u.} \]</div>
+<p>Bestem:</p>
+<ol class="arabic simple">
+<li><p>Kompleks effekt fra buss 1 til buss 2,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+S_{12}.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Kompleks effekt fra buss 2 til buss 1,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+S_{21}.
+\]</div>
+<p>Vis alle mellomregninger.</p>
+<p><strong>Hint:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+I_{12}
+=
+\frac{V_1-V_2}{Z_{12}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+I_{21}
+=
+-I_{12}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_{12}
+=
+V_1 I_{12}^{*}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_{21}
+=
+V_2 I_{21}^{*}
+\]</div>
+<p>Linjetapet bestemmes fra</p>
+<div class="math notranslate nohighlight">
+\[
+S_{L12}
+=
+S_{12}+S_{21}.
+\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/0c368d0ff7277668ee352588eb36090e7ea005453a540ba646f7f1a57359c2b7.png" src="../_images/0c368d0ff7277668ee352588eb36090e7ea005453a540ba646f7f1a57359c2b7.png" />
+</div>
+</div>
+</section>
+<section id="oppgave-4-lastflyt-i-powerfactory">
+<h2>Oppgave 4: Lastflyt i PowerFactory<a class="headerlink" href="#oppgave-4-lastflyt-i-powerfactory" title="Permalink to this heading">#</a></h2>
+<p>Modeller systemet i DIgSILENT PowerFactory og utfør en lastflytberegning (Power Flow).</p>
+<section id="tips-til-modellering">
+<h3>Tips til modellering<a class="headerlink" href="#tips-til-modellering" title="Permalink to this heading">#</a></h3>
+<p>Opprett følgende elementer i PowerFactory:</p>
+<ul class="simple">
+<li><p><strong>Busbar</strong> (<em>ElmTerm</em>) for buss 1 (slack-buss)</p></li>
+<li><p><strong>Busbar</strong> (<em>ElmTerm</em>) for buss 2 (PQ-buss)</p></li>
+<li><p><strong>External Grid</strong> (<em>ElmXnet</em>) koblet til buss 1</p></li>
+<li><p><strong>Impedance</strong> (<em>ElmZpu</em>) mellom buss 1 og buss 2</p></li>
+<li><p><strong>Load</strong> (<em>ElmLod</em>) koblet til buss 2</p></li>
+</ul>
+</section>
+<section id="gjennomforing">
+<h3>Gjennomføring<a class="headerlink" href="#gjennomforing" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Opprett de to bussene.</p></li>
+<li><p>Koble en <strong>External Grid</strong> til buss 1.</p></li>
+<li><p>Legg inn lasten på buss 2.</p></li>
+<li><p>Opprett linjen mellom bussene.</p></li>
+<li><p>Angi linjens impedans.</p></li>
+<li><p>Kjør <strong>Load Flow</strong>.</p></li>
+</ol>
+<p>Registrer følgende resultater fra PowerFactory:</p>
+<ul class="simple">
+<li><p>Spenning ved buss 2</p></li>
+<li><p>Spenningsvinkel ved buss 2</p></li>
+<li><p>Aktiv effektflyt fra buss 1 til buss 2</p></li>
+<li><p>Reaktiv effektflyt fra buss 1 til buss 2</p></li>
+</ul>
+<p>Bruk de rapporterte effektflytene til å beregne:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{tap}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+Q_{tap}
+\]</div>
+<p>for linjen.</p>
+</section>
+<section id="sammenligning">
+<h3>Sammenligning<a class="headerlink" href="#sammenligning" title="Permalink to this heading">#</a></h3>
+<p>Sammenlign resultatene med de manuelle Gauss-Seidel-beregningene.</p>
+<p>Diskuter eventuelle forskjeller mellom resultatene.</p>
+</section>
+</section>
+<section id="oppgave-5-sammenligning">
+<h2>Oppgave 5: Sammenligning<a class="headerlink" href="#oppgave-5-sammenligning" title="Permalink to this heading">#</a></h2>
+<p>Sammenlign resultatet fra den manuelle beregningen med resultatet fra programvaren.</p>
+<p>Diskuter:</p>
+<ol class="arabic simple">
+<li><p>Hvorfor resultatene ikke nødvendigvis er identiske.</p></li>
+<li><p>Betydningen av flere iterasjoner.</p></li>
+<li><p>Hvorfor valg av startverdier kan påvirke konvergensen.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="del-2-utvidelse-til-3-bussystem">
+<h1>Del 2: Utvidelse til 3-bussystem<a class="headerlink" href="#del-2-utvidelse-til-3-bussystem" title="Permalink to this heading">#</a></h1>
+<section id="id2">
+<h2>Systembeskrivelse<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Systemet utvides med en tredje buss.</p>
+<ul class="simple">
+<li><p>Buss 1: Slack-buss</p></li>
+<li><p>Buss 2: Lastbuss (PQ)</p></li>
+<li><p>Buss 3: Lastbuss (PQ)</p></li>
+</ul>
+<p>Linjeimpedanser:</p>
+</section>
+<section id="id3">
+<h2>Systembeskrivelse<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Systemet utvides med en tredje buss.</p>
+<ul class="simple">
+<li><p>Buss 1: Slack-buss</p></li>
+<li><p>Buss 2: Lastbuss (PQ-buss)</p></li>
+<li><p>Buss 3: Lastbuss (PQ-buss)</p></li>
+</ul>
+<p>Linjeimpedanser:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_{12}=3.4848+j13.9392\ \Omega
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Z_{13}=1.7424+j8.7120\ \Omega
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Z_{23}=2.6136+j10.4544\ \Omega
+\]</div>
+<p>Lastdata:</p>
+<div class="math notranslate nohighlight">
+\[
+S_2=80+j30\ \text{MVA}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_3=50+j20\ \text{MVA}
+\]</div>
+<p>Nominell spenning:</p>
+<div class="math notranslate nohighlight">
+\[
+V_n=132\ \text{kV}
+\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/69a326f38aba127b0927b1a40760ec14d802b2739655ad30b057f63dc0bfa31c.svg" src="../_images/69a326f38aba127b0927b1a40760ec14d802b2739655ad30b057f63dc0bfa31c.svg" /></div>
+</div>
+</section>
+<section id="oppgave-6-y-buss-for-3-bussystemet">
+<h2>Oppgave 6: Y-buss for 3-bussystemet<a class="headerlink" href="#oppgave-6-y-buss-for-3-bussystemet" title="Permalink to this heading">#</a></h2>
+<p>Bestem linjeadmittansene per unit med samme baseverdier som i Del1.</p>
+<div class="math notranslate nohighlight">
+\[
+y_{12}=\frac{1}{Z_{12}},
+\qquad
+y_{13}=\frac{1}{Z_{13}},
+\qquad
+y_{23}=\frac{1}{Z_{23}}
+\]</div>
+<p>og konstruer Y-bussmatrisen</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{bus}=
+\begin{bmatrix}
+Y_{11} &amp; Y_{12} &amp; Y_{13}\\
+Y_{21} &amp; Y_{22} &amp; Y_{23}\\
+Y_{31} &amp; Y_{32} &amp; Y_{33}
+\end{bmatrix}.
+\end{split}\]</div>
+<section id="oppgave-7-gauss-seidel-for-3-bussystemet">
+<h3>Oppgave 7: Gauss-Seidel for 3-bussystemet<a class="headerlink" href="#oppgave-7-gauss-seidel-for-3-bussystemet" title="Permalink to this heading">#</a></h3>
+<section id="a">
+<h4>a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h4>
+<p>Bruk Gauss-Seidel-metoden og startverdiene</p>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(0)} = 1.0 + j0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_3^{(0)} = 1.0 + j0
+\]</div>
+<p>Bestem spenningene ved buss 2 og buss 3.</p>
+<p>Utfør <strong>to iterasjoner</strong> og vis alle mellomregninger.</p>
+<p>Bestem:</p>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(1)}, \; V_3^{(1)}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+V_2^{(2)}, \; V_3^{(2)}.
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="b">
+<h4>b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h4>
+<p>Anta at busspenningene etter flere iterasjoner konvergerer til</p>
+<div class="math notranslate nohighlight">
+\[
+V_2 = 0.968 - j0.043 \ \text{p.u.}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_3 = 0.977 - j0.032 \ \text{p.u.}
+\]</div>
+<p>(eventuellt noe justert for avrundinger)</p>
+<p>Bestem:</p>
+<ol class="arabic simple">
+<li><p>Kompleks effekt levert fra slack-bussen,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+S_1=P_1+jQ_1.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Kompleks effekt ved buss 2,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+S_2=P_2+jQ_2.
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Kompleks effekt ved buss 3,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+S_3=P_3+jQ_3.
+\]</div>
+</section>
+</section>
+</section>
+<section id="oppgave-8-lastflytberegning">
+<h2>Oppgave 8: Lastflytberegning<a class="headerlink" href="#oppgave-8-lastflytberegning" title="Permalink to this heading">#</a></h2>
+<p>Utvid Power Factory modellen til 3-buss.</p>
+<p>Bestem:</p>
+<ul class="simple">
+<li><p>Spenning ved alle busser</p></li>
+<li><p>Spenningsvinkel ved alle busser</p></li>
+<li><p>Aktiv effektflyt i alle linjer</p></li>
+<li><p>Reaktiv effektflyt i alle linjer</p></li>
+</ul>
+<p>Presenter resultatene i en oversiktlig tabell.</p>
+</section>
+<section id="oppgave-9-refleksjon">
+<h2>Oppgave 9: Refleksjon<a class="headerlink" href="#oppgave-9-refleksjon" title="Permalink to this heading">#</a></h2>
+<p>Besvar følgende spørsmål:</p>
+<ol class="arabic simple">
+<li><p>Hvilken buss får størst spenningsfall?</p></li>
+<li><p>Hvilken linje blir mest belastet?</p></li>
+<li><p>Hvordan påvirker økt last spenningsnivåene i nettet?</p></li>
+<li><p>Hvorfor er en slack-buss nødvendig i en lastflytberegning?</p></li>
+<li><p>Hvilke begrensninger har denne modellen sammenlignet med et reelt distribusjonsnett på Vestlandet?</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="innlevering">
+<h1>Innlevering<a class="headerlink" href="#innlevering" title="Permalink to this heading">#</a></h1>
+<p>Lever følgende:</p>
+<ol class="arabic simple">
+<li><p>Beregninger og utledninger.</p></li>
+<li><p>Oppsatt Y-bussmatrise.</p></li>
+<li><p>Enlinjeskjema.</p></li>
+<li><p>Resultattabeller fra simuleringene.</p></li>
+<li><p>Svar på refleksjonsspørsmålene.</p></li>
+</ol>
+<hr class="docutils" />
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./LAB"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../assignments/assignment7.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Øving 7 – Beregning av elektromekaniske konstanter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referanser</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab5: Lastflyt i et enkelt kraftsystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laeringsmal">Læringsmål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-2-bussystem">Del 1: 2-bussystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systembeskrivelse">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1-y-buss">Oppgave 1: Y-buss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2-teoretisk-beregning">Oppgave 2: Teoretisk beregning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3-effektflyt-og-linjetap">Oppgave 3: Effektflyt og linjetap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4-lastflyt-i-powerfactory">Oppgave 4: Lastflyt i PowerFactory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-til-modellering">Tips til modellering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomforing">Gjennomføring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sammenligning">Sammenligning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5-sammenligning">Oppgave 5: Sammenligning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-utvidelse-til-3-bussystem">Del 2: Utvidelse til 3-bussystem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Systembeskrivelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6-y-buss-for-3-bussystemet">Oppgave 6: Y-buss for 3-bussystemet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7-gauss-seidel-for-3-bussystemet">Oppgave 7: Gauss-Seidel for 3-bussystemet</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8-lastflytberegning">Oppgave 8: Lastflytberegning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9-refleksjon">Oppgave 9: Refleksjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#innlevering">Innlevering</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
