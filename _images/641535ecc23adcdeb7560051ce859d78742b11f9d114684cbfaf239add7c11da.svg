@@ -43,25 +43,25 @@
   <!-- Load at Bus 2 -->
   <line x1="680" y1="120" x2="750" y2="120" class="line"/>
   <polygon points="750,120 740,114 740,126" fill="black"/>
-  <text x="760" y="128" class="txt">400 MW</text>
+  <text x="760" y="128" class="txt">80 MW</text>
 
   <line x1="680" y1="155" x2="750" y2="155" class="line"/>
   <polygon points="750,155 740,149 740,161" fill="black"/>
-  <text x="760" y="163" class="txt">320 Mvar</text>
+  <text x="760" y="163" class="txt">30 Mvar</text>
 
   <!-- Bus 2 load label -->
-  <text x="625" y="200" class="txt">S₂ = 400 + j320 MVA</text>
+  <text x="625" y="200" class="txt">S₂ = 80 + j30 MVA</text>
 
   <!-- Load at Bus 3 -->
   <line x1="345" y1="410" x2="345" y2="485" class="line"/>
   <polygon points="345,485 339,473 351,473" fill="black"/>
-  <text x="280" y="525" class="txt">300 MW</text>
+  <text x="280" y="525" class="txt">50 MW</text>
 
   <line x1="495" y1="410" x2="495" y2="485" class="line"/>
   <polygon points="495,485 489,473 501,473" fill="black"/>
-  <text x="430" y="525" class="txt">270 Mvar</text>
+  <text x="430" y="525" class="txt">20 Mvar</text>
 
   <!-- Bus 3 load label -->
-  <text x="100" y="465" class="txt">S₃ = 300 + j270 MVA</text>
+  <text x="100" y="465" class="txt">S₃ = 50 + j20 MVA</text>
 
 </svg>
