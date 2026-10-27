@@ -1,0 +1,3558 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>BASERT PÅ KOTHARI &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_stabilityclass/SMIB1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swingequation.html">Svingeligning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB5.html">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F10_stabilityclass/SMIB1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/10_stabilityclass/SMIB1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>BASERT PÅ KOTHARI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">BASERT PÅ KOTHARI</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generell-metode-for-transientstabilitetsanalyse-av-smib-systemer">Generell metode for transientstabilitetsanalyse av SMIB-systemer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-1-modeller-prefault-nettverket">Trinn 1: Modellér prefault-nettverket</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-2-innfor-feilkoblingsbuss">Trinn 2: Innfør feilkoblingsbuss</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-3-modeller-feiltilstanden">Trinn 3: Modellér feiltilstanden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-4-modeller-feilklarering">Trinn 4: Modellér feilklarering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-5-analyser-stabilitet">Trinn 5: Analyser stabilitet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flytskjema">Flytskjema</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerisk-eksempel">Numerisk eksempel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-feil">Før feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#under-feil">Under feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#etter-feil">Etter feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#begrensninger">Begrensninger</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klassisk-maskinmodell">Klassisk maskinmodell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetriske-feil">Symmetriske feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smib-systemer">SMIB-systemer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#store-nett">Store nett</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hovedregel">Hovedregel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basert-pa-glover-and-overbye-example-11-3">BASERT PÅ GLOVER AND OVERBYE EXAMPLE 11.3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Generell metode for transientstabilitetsanalyse av SMIB-systemer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#grunnmodell">Grunnmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-1-prefault-analyse">Trinn 1: Prefault-analyse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Trinn 2: Innfør feilkoblingsbuss</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Trinn 3: Modellér feiltilstanden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Trinn 4: Modellér feilklarering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-a">Alternativ A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-b">Alternativ B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-5-postfault-analyse">Trinn 5: Postfault-analyse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-6-stabilitetsanalyse">Trinn 6: Stabilitetsanalyse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Flytskjema</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Numerisk eksempel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prefault">Prefault</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feiltilstanden">Feiltilstanden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#postfault">Postfault</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Begrensninger</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Klassisk maskinmodell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Symmetriske feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">SMIB-systemer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Store nett</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Hovedregel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#glover-and-overbye-example-11-7">GLOVER AND OVERBYE EXAMPLE 11.7</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-som-stabilitetsanalyse-i-smib-systemer">Euler-metoden som stabilitetsanalyse i SMIB-systemer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bakgrunn">Bakgrunn</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#foreslatt-faglig-progresjon">Foreslått faglig progresjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svingligningen">Svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrisk-effekt">Elektrisk effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden">Euler-metoden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitet-uten-like-areal-kriteriet">Stabilitet uten like-areal-kriteriet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabil-respons">Stabil respons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ustabil-respons">Ustabil respons</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-1-sammenligne-to-ryddetider">Alternativ 1: Sammenligne to ryddetider</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfelle-a">Tilfelle A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfelle-b">Tilfelle B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-2-starte-ved-feilklarering">Alternativ 2: Starte ved feilklarering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-3-bruke-akselerasjonseffekten">Alternativ 3: Bruke akselerasjonseffekten</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Under feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etter-feilklarering">Etter feilklarering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forslag-til-eksamensstruktur">Forslag til eksamensstruktur</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-a-lastflyt">Del A: Lastflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-b-nettverksreduksjon">Del B: Nettverksreduksjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-c-effektvinkelkurver">Del C: Effektvinkelkurver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-d-euler-metoden">Del D: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-e-stabilitetsvurdering">Del E: Stabilitetsvurdering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pedagogisk-fordel">Pedagogisk fordel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kothari-to-port-modell">KOTHARI TO-PORT-MODELL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-lastflyt-til-transientstabilitet-ved-bruk-av-kotharis-to-port-modell">Fra lastflyt til transientstabilitet ved bruk av Kotharis to-port-modell</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kotharis-stabilitetsmodell">Kotharis stabilitetsmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-port-modellen">To-port-modellen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#effektuttrykket">Effektuttrykket</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generell-effektvinkelkurve">Generell effektvinkelkurve</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tapslost-nett">Tapsløst nett</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rolle-til-kron-reduksjon">Rolle til Kron-reduksjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-av-feil">Modellering av feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prefault-fault-og-postfault">Prefault, Fault og Postfault</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Prefault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Under feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Etter feil</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#koblingen-til-svingligningen">Koblingen til svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Euler-metoden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitetsanalyse-uten-like-areal-kriteriet">Stabilitetsanalyse uten like-areal-kriteriet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bruk-av-powerfactory">Bruk av PowerFactory</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-bor-euler-metoden-anvendes">Hvor bør Euler-metoden anvendes?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Pedagogisk fordel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Forslag til eksamensstruktur</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Del A: Lastflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Del B: Nettverksreduksjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-c-effektvinkelkurve">Del C: Effektvinkelkurve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Del D: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-e-stabilitet">Del E: Stabilitet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Oppsummering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-power-factory">KOBLING TIL POWER FACTORY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-mellom-smib-euler-metoden-og-powerfactory">Kobling mellom SMIB, Euler-metoden og PowerFactory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#faglig-progresjon">Faglig progresjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kotharis-to-port-modell">Kotharis to-port-modell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning">Fysisk tolkning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Euler-metoden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-bruke-powerfactory">Hvorfor bruke PowerFactory?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-bor-euler-beregningen-utfores">Hvor bør Euler-beregningen utføres?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knekkpunktet">Knekkpunktet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bruk-av-powerfactory-plott">Bruk av PowerFactory-plott</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forslag-til-oppgave">Forslag til oppgave</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#betydningen-av-treghetskonstanten-h">Betydningen av treghetskonstanten H</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stor-treghet">Stor treghet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liten-treghet">Liten treghet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-observasjon">Viktig observasjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Tilfelle A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Tilfelle B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pedagogisk-bruk">Pedagogisk bruk</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-1">Scenario 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-2">Scenario 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Forslag til eksamensstruktur</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Del A: Lastflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Del B: Nettverksreduksjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-c-powerfactory">Del C: PowerFactory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Del D: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">Del E: Stabilitet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hovedide">Hovedidé</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-oppgave">LAB OPPGAVE</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-transient-stabilitet-i-et-smib-system">Oppgave: Transient stabilitet i et SMIB-system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">Formål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-powerfactory-simulering">Del 1: PowerFactory-simulering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1">Oppgave 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-velg-et-ustabilt-tilfelle">Del 2: Velg et ustabilt tilfelle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2">Oppgave 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-euler-metoden">Del 3: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3">Oppgave 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4">Oppgave 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon">Refleksjon</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="basert-pa-kothari">
+<h1>BASERT PÅ KOTHARI<a class="headerlink" href="#basert-pa-kothari" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="generell-metode-for-transientstabilitetsanalyse-av-smib-systemer">
+<h1>Generell metode for transientstabilitetsanalyse av SMIB-systemer<a class="headerlink" href="#generell-metode-for-transientstabilitetsanalyse-av-smib-systemer" title="Permalink to this heading">#</a></h1>
+<section id="formal">
+<h2>Formål<a class="headerlink" href="#formal" title="Permalink to this heading">#</a></h2>
+<p>Metoden bygger på én enkel hovedregel:</p>
+<blockquote>
+<div><p>Alle feil modelleres ved å innføre en feilkoblingsbuss i feilpunktet.</p>
+</div></blockquote>
+<p>Dermed kan samme framgangsmåte benyttes for:</p>
+<ul class="simple">
+<li><p>håndberegninger,</p></li>
+<li><p>nodeeliminasjon,</p></li>
+<li><p>Y-buss-metoder,</p></li>
+<li><p>like-areal-kriteriet,</p></li>
+<li><p>PowerFactory-simuleringer.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-1-modeller-prefault-nettverket">
+<h1>Trinn 1: Modellér prefault-nettverket<a class="headerlink" href="#trinn-1-modeller-prefault-nettverket" title="Permalink to this heading">#</a></h1>
+<p>Bestem systemets ekvivalente reaktans mellom generatorens interne spenning og infinite bus:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{pre}}
+=
+X_d' + X_t + X_{nett}
+\]</div>
+<p>Maksimal overførbar effekt blir</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{pre}}
+=
+\frac{E'V}{X_{\text{pre}}}
+\]</div>
+<p>og effektvinkelkurven</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{pre}}
+=
+P_{\max,\text{pre}}\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-2-innfor-feilkoblingsbuss">
+<h1>Trinn 2: Innfør feilkoblingsbuss<a class="headerlink" href="#trinn-2-innfor-feilkoblingsbuss" title="Permalink to this heading">#</a></h1>
+<p>Dersom feilen ligger på en linje, deles linjen i to deler.</p>
+<p>Før:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus 1 -------- Bus 2
+         x
+</pre></div>
+</div>
+<p>Etter:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus 1 --- Bus F --- Bus 2
+             |
+           Fault
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-3-modeller-feiltilstanden">
+<h1>Trinn 3: Modellér feiltilstanden<a class="headerlink" href="#trinn-3-modeller-feiltilstanden" title="Permalink to this heading">#</a></h1>
+<p>For en 3-fase kortslutning:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_f \approx 0
+\]</div>
+<p>Opprett nytt reaktansdiagram.</p>
+<p>Reduser deretter nettet mellom</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+\quad\text{og}\quad
+V
+\]</div>
+<p>for å finne</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{fault}}
+\]</div>
+<p>Maksimal overførbar effekt under feilen:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{fault}}
+=
+\frac{E'V}{X_{\text{fault}}}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-4-modeller-feilklarering">
+<h1>Trinn 4: Modellér feilklarering<a class="headerlink" href="#trinn-4-modeller-feilklarering" title="Permalink to this heading">#</a></h1>
+<p>Etter at feilen fjernes:</p>
+<ul class="simple">
+<li><p>enten gjenopprettes opprinnelig nett,</p></li>
+<li><p>eller den feilrammede linjen kobles ut.</p></li>
+</ul>
+<p>Finn da</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{post}}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{post}}
+=
+\frac{E'V}{X_{\text{post}}}
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}
+=
+P_{\max,\text{post}}\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-5-analyser-stabilitet">
+<h1>Trinn 5: Analyser stabilitet<a class="headerlink" href="#trinn-5-analyser-stabilitet" title="Permalink to this heading">#</a></h1>
+<p>Startvinkelen finnes fra</p>
+<div class="math notranslate nohighlight">
+\[
+P_m
+=
+P_{\max,\text{pre}}
+\sin\delta_0
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0
+=
+\sin^{-1}
+\left(
+\frac{P_m}
+     {P_{\max,\text{pre}}}
+\right)
+\]</div>
+<p>Bruk deretter:</p>
+<ul class="simple">
+<li><p>like-areal-kriteriet, eller</p></li>
+<li><p>svingligningen</p></li>
+</ul>
+<p>for å bestemme</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{cr}
+\]</div>
+<p>og eventuelt</p>
+<div class="math notranslate nohighlight">
+\[
+t_{cr}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="flytskjema">
+<h1>Flytskjema<a class="headerlink" href="#flytskjema" title="Permalink to this heading">#</a></h1>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                 START
+                    |
+                    v
+       Opprett prefault-nettverk
+                    |
+                    v
+              Finn Xpre
+                    |
+                    v
+           Beregn Pmax,pre
+                    |
+                    v
+             Oppstår feil?
+                    |
+                    v
+        Opprett feilkoblingsbuss
+                    |
+                    v
+        Legg inn kortslutning
+                    |
+                    v
+          Reduser feilnettverk
+                    |
+                    v
+             Finn Xfault
+                    |
+                    v
+          Beregn Pmax,fault
+                    |
+                    v
+           Klareres feilen?
+                    |
+                    v
+                  Ja
+                    |
+                    v
+      Oppdater postfault-nettverk
+                    |
+                    v
+              Finn Xpost
+                    |
+                    v
+           Beregn Pmax,post
+                    |
+                    v
+        Like-areal-kriterium
+          eller simulering
+                    |
+                    v
+       Bestem stabilitet
+                    |
+                    v
+                  SLUTT
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="numerisk-eksempel">
+<h1>Numerisk eksempel<a class="headerlink" href="#numerisk-eksempel" title="Permalink to this heading">#</a></h1>
+<p>Vi bruker et system tilsvarende Sadat/Kothari.</p>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>Generator:</p>
+<div class="math notranslate nohighlight">
+\[
+E' = 1.2\ pu
+\]</div>
+<p>Infinite bus:</p>
+<div class="math notranslate nohighlight">
+\[
+V = 1.0\ pu
+\]</div>
+<p>Transientreaktans:</p>
+<div class="math notranslate nohighlight">
+\[
+X_d'=0.3
+\]</div>
+<p>Transformator:</p>
+<div class="math notranslate nohighlight">
+\[
+X_t=0.2
+\]</div>
+<p>To parallelle linjer:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{L1}=X_{L2}=0.3
+\]</div>
+<p>Mekanisk effekt:</p>
+<div class="math notranslate nohighlight">
+\[
+P_m=0.8\ pu
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="for-feil">
+<h1>Før feil<a class="headerlink" href="#for-feil" title="Permalink to this heading">#</a></h1>
+<p>Parallellkobling:</p>
+<div class="math notranslate nohighlight">
+\[
+X_L
+=
+0.3||0.3
+=
+0.15
+\]</div>
+<p>Dermed</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{pre}}
+=
+0.3+0.2+0.15
+=
+0.65
+\]</div>
+<p>Maksimal effekt:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{pre}}
+=
+\frac{1.2 \times 1.0}{0.65}
+=
+1.846
+\ pu
+\]</div>
+<p>Effektvinkelkurve:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+1.846\sin\delta
+\]</div>
+<p>Startvinkel:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0
+=
+\sin^{-1}
+\left(
+\frac{0.8}{1.846}
+\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta_0
+=
+25.7^\circ
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="under-feil">
+<h1>Under feil<a class="headerlink" href="#under-feil" title="Permalink to this heading">#</a></h1>
+<p>Anta at feilen oppstår midt på én av linjene.</p>
+<p>Linjen deles:</p>
+<div class="math notranslate nohighlight">
+\[
+0.3
+=
+0.15+0.15
+\]</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus1 --0.15-- BusF --0.15-- Bus2
+                 |
+                Fault
+</pre></div>
+</div>
+<p>Etter nettverksreduksjon fås omtrent</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{fault}}
+=
+0.875
+\ pu
+\]</div>
+<p>Dermed</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{fault}}
+=
+\frac{1.2}{0.875}
+=
+1.371
+\ pu
+\]</div>
+<p>Effektvinkelkurven under feil blir</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{fault}}
+=
+1.371\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="etter-feil">
+<h1>Etter feil<a class="headerlink" href="#etter-feil" title="Permalink to this heading">#</a></h1>
+<p>Den feilrammede linjen kobles ut.</p>
+<p>Bare én linje gjenstår:</p>
+<div class="math notranslate nohighlight">
+\[
+X_L=0.3
+\]</div>
+<p>Dermed</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{post}}
+=
+0.3+0.2+0.3
+=
+0.8
+\]</div>
+<p>Maksimal effekt:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{post}}
+=
+\frac{1.2}{0.8}
+=
+1.5
+\ pu
+\]</div>
+<p>Postfault-kurven blir</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}
+=
+1.5\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="resultat">
+<h1>Resultat<a class="headerlink" href="#resultat" title="Permalink to this heading">#</a></h1>
+<p>Vi har nå tre effektvinkelkurver:</p>
+<p>Før feil:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+1.846\sin\delta
+\]</div>
+<p>Under feil:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+1.371\sin\delta
+\]</div>
+<p>Etter feil:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+1.5\sin\delta
+\]</div>
+<p>Disse tre kurvene brukes direkte i like-areal-kriteriet for å bestemme kritisk ryddetid og kritisk ryddevinkel.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="begrensninger">
+<h1>Begrensninger<a class="headerlink" href="#begrensninger" title="Permalink to this heading">#</a></h1>
+<section id="klassisk-maskinmodell">
+<h2>Klassisk maskinmodell<a class="headerlink" href="#klassisk-maskinmodell" title="Permalink to this heading">#</a></h2>
+<p>Generatoren representeres som</p>
+<div class="math notranslate nohighlight">
+\[
+E'\angle\delta
+\]</div>
+<p>bak</p>
+<div class="math notranslate nohighlight">
+\[
+X_d'
+\]</div>
+<p>AVR, governor og PSS neglisjeres.</p>
+</section>
+<hr class="docutils" />
+<section id="symmetriske-feil">
+<h2>Symmetriske feil<a class="headerlink" href="#symmetriske-feil" title="Permalink to this heading">#</a></h2>
+<p>Metoden egner seg primært for</p>
+<ul class="simple">
+<li><p>3-fase feil</p></li>
+<li><p>balanserte nett</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="smib-systemer">
+<h2>SMIB-systemer<a class="headerlink" href="#smib-systemer" title="Permalink to this heading">#</a></h2>
+<p>Like-areal-kriteriet fungerer direkte for SMIB.</p>
+<p>Multimaskinsystemer krever normalt:</p>
+<ul class="simple">
+<li><p>numerisk integrasjon,</p></li>
+<li><p>RMS-simulering,</p></li>
+<li><p>egenverdianalyse.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="store-nett">
+<h2>Store nett<a class="headerlink" href="#store-nett" title="Permalink to this heading">#</a></h2>
+<p>For større systemer blir det nødvendig å bruke:</p>
+<ul class="simple">
+<li><p>Y-buss,</p></li>
+<li><p>Kron-reduksjon,</p></li>
+<li><p>programvare som PowerFactory.</p></li>
+</ul>
+<p>Håndberegninger blir raskt upraktiske.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="hovedregel">
+<h1>Hovedregel<a class="headerlink" href="#hovedregel" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>Innfør alltid en feilkoblingsbuss i feilpunktet. Finn deretter nettverkets ekvivalente reaktans før feil, under feil og etter feil. Metoden er den samme for håndregning, nodeeliminasjon, like-areal-kriteriet og PowerFactory.</p>
+</div></blockquote>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="basert-pa-glover-and-overbye-example-11-3">
+<h1>BASERT PÅ GLOVER AND OVERBYE EXAMPLE 11.3<a class="headerlink" href="#basert-pa-glover-and-overbye-example-11-3" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Generell metode for transientstabilitetsanalyse av SMIB-systemer<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="id2">
+<h2>Formål<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Målet er å etablere én generell metode som kan brukes på alle SMIB-problemer:</p>
+<ul class="simple">
+<li><p>feil på en buss,</p></li>
+<li><p>feil i enden av en linje,</p></li>
+<li><p>feil midt på en linje,</p></li>
+<li><p>håndberegninger,</p></li>
+<li><p>Y-buss-metoder,</p></li>
+<li><p>nodeeliminasjon (Kron-reduksjon),</p></li>
+<li><p>PowerFactory-simuleringer.</p></li>
+</ul>
+<p>Metoden bygger på følgende hovedregel:</p>
+<blockquote>
+<div><p>Alle feil modelleres ved å innføre en feilkoblingsbuss (Fault Bus) i feilpunktet.</p>
+</div></blockquote>
+<p>Dermed brukes samme framgangsmåte uansett problemtype.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="grunnmodell">
+<h1>Grunnmodell<a class="headerlink" href="#grunnmodell" title="Permalink to this heading">#</a></h1>
+<p>Vi betrakter en synkrongenerator koblet til et uendelig nett gjennom en transformator og et transmisjonsnett.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E' ── Xd' ── Xt ── Nettverk ── V∞
+</pre></div>
+</div>
+<p>der</p>
+<ul class="simple">
+<li><p>(E’) = intern generatorspenning</p></li>
+<li><p>(X_d’) = transientreaktans</p></li>
+<li><p>(X_t) = transformatorreaktans</p></li>
+<li><p>(V_\infty) = infinite bus</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-1-prefault-analyse">
+<h1>Trinn 1: Prefault-analyse<a class="headerlink" href="#trinn-1-prefault-analyse" title="Permalink to this heading">#</a></h1>
+<p>Reduser nettverket mellom generatorens interne spenning og infinite bus.</p>
+<p>Bestem den ekvivalente reaktansen</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{pre}}
+\]</div>
+<p>Maksimal overførbar effekt er</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{pre}}
+=
+\frac{E'V_\infty}{X_{\text{pre}}}
+\]</div>
+<p>og effektvinkelkurven blir</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{pre}}
+=
+P_{\max,\text{pre}}\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>Trinn 2: Innfør feilkoblingsbuss<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
+<p>Hvis feilen ligger på en buss:</p>
+<ul class="simple">
+<li><p>bruk eksisterende buss.</p></li>
+</ul>
+<p>Hvis feilen ligger på en linje:</p>
+<ul class="simple">
+<li><p>del linjen i to deler,</p></li>
+<li><p>opprett en ny buss i feilpunktet.</p></li>
+</ul>
+<p>Eksempel:</p>
+<p>Før:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus 1 -------- Bus 2
+         ×
+</pre></div>
+</div>
+<p>Etter:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus 1 --- Bus F --- Bus 2
+             |
+          Fault
+</pre></div>
+</div>
+<p>Dermed behandles alle feil på identisk måte.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>Trinn 3: Modellér feiltilstanden<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
+<p>For en trefase kortslutning:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_f \approx 0
+\]</div>
+<p>Feilkoblingsbussen kobles mot jord:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus F
+  |
+  |
+ Ground
+</pre></div>
+</div>
+<p>Reduser deretter nettet på nytt.</p>
+<p>Bestem</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{fault}}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{fault}}
+=
+\frac{E'V_\infty}{X_{\text{fault}}}
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{fault}}
+=
+P_{\max,\text{fault}}\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>Trinn 4: Modellér feilklarering<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h1>
+<p>Når feilen fjernes, finnes to vanlige alternativer.</p>
+<section id="alternativ-a">
+<h2>Alternativ A<a class="headerlink" href="#alternativ-a" title="Permalink to this heading">#</a></h2>
+<p>Feilen fjernes og systemet går tilbake til opprinnelig nett.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Fault removed
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="alternativ-b">
+<h2>Alternativ B<a class="headerlink" href="#alternativ-b" title="Permalink to this heading">#</a></h2>
+<p>Feilen fjernes og den feilrammede linjen kobles ut.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Fault removed
+Faulted line disconnected
+</pre></div>
+</div>
+<p>Dette er den klassiske situasjonen i mange transientstabilitetsoppgaver.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-5-postfault-analyse">
+<h1>Trinn 5: Postfault-analyse<a class="headerlink" href="#trinn-5-postfault-analyse" title="Permalink to this heading">#</a></h1>
+<p>Reduser postfault-nettverket.</p>
+<p>Bestem</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{post}}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{post}}
+=
+\frac{E'V_\infty}{X_{\text{post}}}
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}
+=
+P_{\max,\text{post}}\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="trinn-6-stabilitetsanalyse">
+<h1>Trinn 6: Stabilitetsanalyse<a class="headerlink" href="#trinn-6-stabilitetsanalyse" title="Permalink to this heading">#</a></h1>
+<p>Bestem startvinkelen</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0
+=
+\sin^{-1}
+\left(
+\frac{P_m}
+{P_{\max,\text{pre}}}
+\right)
+\]</div>
+<p>Deretter benyttes</p>
+<ul class="simple">
+<li><p>like-areal-kriteriet,</p></li>
+<li><p>svingligningen,</p></li>
+<li><p>eller tidsdomeneanalyse</p></li>
+</ul>
+<p>for å bestemme stabiliteten.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>Flytskjema<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h1>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                 START
+                    |
+                    v
+      Opprett prefault-nettverk
+                    |
+                    v
+              Finn Xpre
+                    |
+                    v
+          Beregn Pmax,pre
+                    |
+                    v
+            Oppstår feil?
+                    |
+                    v
+      Opprett feilkoblingsbuss
+                    |
+                    v
+      Legg inn kortslutning
+                    |
+                    v
+        Reduser feilnettverk
+                    |
+                    v
+             Finn Xfault
+                    |
+                    v
+         Beregn Pmax,fault
+                    |
+                    v
+          Klareres feilen?
+                    |
+                    v
+                  Ja
+                    |
+                    v
+     Oppdater postfault-nettverk
+                    |
+                    v
+             Finn Xpost
+                    |
+                    v
+         Beregn Pmax,post
+                    |
+                    v
+       Like-areal-kriterium
+        eller simulering
+                    |
+                    v
+      Bestem stabilitet
+                    |
+                    v
+                  SLUTT
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>Numerisk eksempel<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h1>
+<p>Vi benytter systemet fra Sadat figur 11.4.</p>
+<section id="id8">
+<h2>Data<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>Generator:</p>
+<div class="math notranslate nohighlight">
+\[
+X_d' = 0.30
+\]</div>
+<p>Transformator:</p>
+<div class="math notranslate nohighlight">
+\[
+X_t = 0.10
+\]</div>
+<p>Øvre linje:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{12}=0.20
+\]</div>
+<p>Nedre linje:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{13}=0.10
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_{23}=0.20
+\]</div>
+<p>Infinite bus:</p>
+<div class="math notranslate nohighlight">
+\[
+V_\infty = 1.0
+\]</div>
+<p>Anta videre</p>
+<div class="math notranslate nohighlight">
+\[
+E' = 1.20
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = 1.0 \text{ pu}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="prefault">
+<h1>Prefault<a class="headerlink" href="#prefault" title="Permalink to this heading">#</a></h1>
+<p>Den nedre grenen gir</p>
+<div class="math notranslate nohighlight">
+\[
+X_{13}+X_{23}
+=
+0.10+0.20
+=
+0.30
+\]</div>
+<p>Parallellkoblingen blir</p>
+<div class="math notranslate nohighlight">
+\[
+X_N
+=
+0.20 \parallel 0.30
+=
+\frac{0.20\cdot0.30}
+     {0.20+0.30}
+=
+0.12
+\]</div>
+<p>Dermed</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{pre}}
+=
+0.30+0.10+0.12
+=
+0.52
+\text{ pu}
+\]</div>
+<p>Maksimal overførbar effekt:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{pre}}
+=
+\frac{1.20\cdot1.0}
+     {0.52}
+=
+2.31
+\text{ pu}
+\]</div>
+<p>Effektvinkelkurven er</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{pre}}
+=
+2.31\sin\delta
+\]</div>
+<p>Startvinkelen:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0
+=
+\sin^{-1}
+\left(
+\frac{1.0}
+     {2.31}
+\right)
+=
+25.6^\circ
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="feiltilstanden">
+<h1>Feiltilstanden<a class="headerlink" href="#feiltilstanden" title="Permalink to this heading">#</a></h1>
+<p>En trefase kortslutning oppstår på buss 3.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                Fault
+                  |
+                  |
+                  ⏚
+
+Bus1 ---- Bus3 ---- Bus2
+</pre></div>
+</div>
+<p>Buss 3 fungerer som feilkoblingsbuss.</p>
+<p>Nettverket reduseres på nytt for å finne</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{fault}}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{fault}}
+=
+\frac{E'V_\infty}
+     {X_{\text{fault}}}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="postfault">
+<h1>Postfault<a class="headerlink" href="#postfault" title="Permalink to this heading">#</a></h1>
+<p>Den nedre linjen kobles ut.</p>
+<p>Da gjenstår bare den øvre linjen:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus1 ----- X12 ----- Bus2
+</pre></div>
+</div>
+<p>Dermed</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{post}}
+=
+X_d'
++
+X_t
++
+X_{12}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{post}}
+=
+0.30+0.10+0.20
+=
+0.60
+\text{ pu}
+\]</div>
+<p>Maksimal effekt etter feilklarering:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{post}}
+=
+\frac{1.20}
+     {0.60}
+=
+2.0
+\text{ pu}
+\]</div>
+<p>Effektvinkelkurven blir</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}
+=
+2.0\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="oppsummering">
+<h1>Oppsummering<a class="headerlink" href="#oppsummering" title="Permalink to this heading">#</a></h1>
+<p>Vi har tre effektvinkelkurver:</p>
+<p>Før feil:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{pre}}
+=
+2.31\sin\delta
+\]</div>
+<p>Under feil:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{fault}}
+=
+P_{\max,\text{fault}}\sin\delta
+\]</div>
+<p>Etter feil:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}
+=
+2.0\sin\delta
+\]</div>
+<p>Disse tre kurvene brukes direkte i like-areal-kriteriet for å bestemme kritisk ryddevinkel og kritisk ryddetid.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id9">
+<h1>Begrensninger<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h1>
+<section id="id10">
+<h2>Klassisk maskinmodell<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<p>Generatoren representeres som</p>
+<div class="math notranslate nohighlight">
+\[
+E'\angle\delta
+\]</div>
+<p>bak en konstant transientreaktans</p>
+<div class="math notranslate nohighlight">
+\[
+X_d'
+\]</div>
+<p>AVR, PSS og governor inkluderes ikke.</p>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>Symmetriske feil<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<p>Metoden er primært utviklet for</p>
+<ul class="simple">
+<li><p>trefase kortslutninger</p></li>
+<li><p>balanserte nett</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>SMIB-systemer<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<p>Like-areal-kriteriet kan anvendes direkte.</p>
+<p>For multimaskinsystemer kreves som regel:</p>
+<ul class="simple">
+<li><p>numerisk integrasjon,</p></li>
+<li><p>RMS-simulering,</p></li>
+<li><p>småsignal- eller egenverdianalyse.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2>Store nett<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
+<p>For større systemer blir håndregning lite praktisk.</p>
+<p>Da benyttes vanligvis:</p>
+<ul class="simple">
+<li><p>Y-buss,</p></li>
+<li><p>Kron-reduksjon,</p></li>
+<li><p>PowerFactory,</p></li>
+<li><p>PSS®E,</p></li>
+<li><p>PSCAD.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id14">
+<h1>Hovedregel<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>Innfør alltid en feilkoblingsbuss i feilpunktet. Deretter analyseres systemet før feil, under feil og etter feil ved å redusere nettet mellom generatorens interne spenning og infinite bus. Den samme framgangsmåten kan benyttes i håndberegninger, Y-buss-analyse, nodeeliminasjon og PowerFactory.</p>
+</div></blockquote>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="glover-and-overbye-example-11-7">
+<h1>GLOVER AND OVERBYE EXAMPLE 11.7<a class="headerlink" href="#glover-and-overbye-example-11-7" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="euler-metoden-som-stabilitetsanalyse-i-smib-systemer">
+<h1>Euler-metoden som stabilitetsanalyse i SMIB-systemer<a class="headerlink" href="#euler-metoden-som-stabilitetsanalyse-i-smib-systemer" title="Permalink to this heading">#</a></h1>
+<section id="bakgrunn">
+<h2>Bakgrunn<a class="headerlink" href="#bakgrunn" title="Permalink to this heading">#</a></h2>
+<p>Tradisjonelt introduseres transientstabilitet gjennom like-areal-kriteriet og begrepene:</p>
+<ul class="simple">
+<li><p>kritisk ryddevinkel</p></li>
+<li><p>kritisk ryddetid</p></li>
+</ul>
+<p>For bachelorstudenter kan dette imidlertid gi en bratt læringskurve fordi man samtidig må håndtere:</p>
+<ul class="simple">
+<li><p>lastflyt</p></li>
+<li><p>nettverksreduksjon</p></li>
+<li><p>effektvinkelkurver</p></li>
+<li><p>svingligningen</p></li>
+<li><p>arealbetraktninger</p></li>
+</ul>
+<p>Et alternativ er å la studentene avgjøre stabilitet direkte ved hjelp av numerisk simulering av svingligningen med Euler-metoden.</p>
+<p>Dette gir en arbeidsflyt som ligger nærmere moderne analyseverktøy som PowerFactory.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="foreslatt-faglig-progresjon">
+<h1>Foreslått faglig progresjon<a class="headerlink" href="#foreslatt-faglig-progresjon" title="Permalink to this heading">#</a></h1>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lastflyt
+   ↓
+Intern generatorspenning E'
+   ↓
+Nettverksreduksjon
+(Kron-reduksjon)
+   ↓
+Prefault / Fault / Postfault
+   ↓
+Effektvinkelkurver
+   ↓
+Svingligningen
+   ↓
+Euler-metoden
+   ↓
+Stabilitetsvurdering
+</pre></div>
+</div>
+<p>Studentene trenger da ikke å lære like-areal-kriteriet for å kunne analysere transient stabilitet.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="svingligningen">
+<h1>Svingligningen<a class="headerlink" href="#svingligningen" title="Permalink to this heading">#</a></h1>
+<p>Vi benytter den klassiske maskinmodellen</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}
+=
+\omega
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}
+=
+\frac{\omega_s}{2H}
+\left(
+P_m-P_e
+\right)
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span> = rotorvinkel</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega\)</span> = relativ rotorhastighet</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_m\)</span> = mekanisk effekt</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_e\)</span> = elektrisk effekt</p></li>
+<li><p><span class="math notranslate nohighlight">\(H\)</span> = treghetskonstant</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega_s\)</span> = synkron vinkelhastighet</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="elektrisk-effekt">
+<h1>Elektrisk effekt<a class="headerlink" href="#elektrisk-effekt" title="Permalink to this heading">#</a></h1>
+<p>Etter nettverksreduksjon kan den elektriske effekten uttrykkes som</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+P_{\max}
+\sin\delta
+\]</div>
+<p>der</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+=
+\frac{E'V}{X}
+\]</div>
+<p>Det finnes normalt tre ulike effektvinkelkurver:</p>
+<p>Prefault:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{pre}}
+=
+P_{\max,\text{pre}}
+\sin\delta
+\]</div>
+<p>Under feil:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{fault}}
+=
+P_{\max,\text{fault}}
+\sin\delta
+\]</div>
+<p>Postfault:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}
+=
+P_{\max,\text{post}}
+\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="euler-metoden">
+<h1>Euler-metoden<a class="headerlink" href="#euler-metoden" title="Permalink to this heading">#</a></h1>
+<p>En enkel eksplisitt Euler-tilnærming gir</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{k+1}
+=
+\delta_k
++
+\Delta t\,\omega_k
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{k+1}
+=
+\omega_k
++
+\Delta t
+\frac{\omega_s}{2H}
+\left(
+P_m-P_e(\delta_k)
+\right)
+\]</div>
+<p>for hvert tidssteg.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="stabilitet-uten-like-areal-kriteriet">
+<h1>Stabilitet uten like-areal-kriteriet<a class="headerlink" href="#stabilitet-uten-like-areal-kriteriet" title="Permalink to this heading">#</a></h1>
+<p>I stedet for å beregne kritisk ryddevinkel analyseres den numeriske løsningen direkte.</p>
+<hr class="docutils" />
+<section id="stabil-respons">
+<h2>Stabil respons<a class="headerlink" href="#stabil-respons" title="Permalink to this heading">#</a></h2>
+<p>Hvis rotorhastigheten begynner å synke etter feilklarering</p>
+<div class="math notranslate nohighlight">
+\[
+\omega \rightarrow 0
+\]</div>
+<p>og rotorvinkelen nærmer seg en ny likevekt,</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+\rightarrow
+\delta_{eq}
+\]</div>
+<p>anses systemet som stabilt.</p>
+<p>Illustrasjon:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ω
+
+|
+|\
+| \
+|  \
+|   \____
+|
++---------------&gt; t
+</pre></div>
+</div>
+<p>Rotoren akselererer først og bremses deretter tilbake.</p>
+</section>
+<hr class="docutils" />
+<section id="ustabil-respons">
+<h2>Ustabil respons<a class="headerlink" href="#ustabil-respons" title="Permalink to this heading">#</a></h2>
+<p>Hvis</p>
+<div class="math notranslate nohighlight">
+\[
+\omega
+\]</div>
+<p>forblir positiv,</p>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+\]</div>
+<p>fortsetter å øke,</p>
+<p>oppnås ingen ny likevekt.</p>
+<p>Illustrasjon:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>δ
+
+|
+|       /
+|      /
+|     /
+|    /
+|   /
++---------------&gt; t
+</pre></div>
+</div>
+<p>Rotoren mister synkronismen med nettet.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="alternativ-1-sammenligne-to-ryddetider">
+<h1>Alternativ 1: Sammenligne to ryddetider<a class="headerlink" href="#alternativ-1-sammenligne-to-ryddetider" title="Permalink to this heading">#</a></h1>
+<p>En enkel eksamensoppgave kan være:</p>
+<section id="tilfelle-a">
+<h2>Tilfelle A<a class="headerlink" href="#tilfelle-a" title="Permalink to this heading">#</a></h2>
+<p>Feilen ryddes ved</p>
+<div class="math notranslate nohighlight">
+\[
+t_c = 0.15\,s
+\]</div>
+</section>
+<section id="tilfelle-b">
+<h2>Tilfelle B<a class="headerlink" href="#tilfelle-b" title="Permalink to this heading">#</a></h2>
+<p>Feilen ryddes ved</p>
+<div class="math notranslate nohighlight">
+\[
+t_c = 0.20\,s
+\]</div>
+<p>Studentene utfører Euler-integrasjon for begge tilfellene.</p>
+<p>Deretter vurderes:</p>
+<ul class="simple">
+<li><p>nærmer rotorhastigheten seg null?</p></li>
+<li><p>får vi en ny likevekt?</p></li>
+<li><p>eller fortsetter rotoren å akselerere?</p></li>
+</ul>
+<p>På denne måten kan stabilitet avgjøres uten kritisk ryddevinkel.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="alternativ-2-starte-ved-feilklarering">
+<h1>Alternativ 2: Starte ved feilklarering<a class="headerlink" href="#alternativ-2-starte-ved-feilklarering" title="Permalink to this heading">#</a></h1>
+<p>Dette reduserer regnearbeidet betydelig.</p>
+<p>I stedet for å integrere hele feilforløpet oppgis tilstanden ved feilklarering:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t_c)=110^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega(t_c)=0.45\,rad/s
+\]</div>
+<p>Studentene skal deretter beregne for eksempel 10 Euler-steg.</p>
+<p>Dette tester:</p>
+<ul class="simple">
+<li><p>svingligningen</p></li>
+<li><p>Euler-metoden</p></li>
+<li><p>forståelse av stabilitet</p></li>
+</ul>
+<p>uten at flere sider med manuelle beregninger kreves.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="alternativ-3-bruke-akselerasjonseffekten">
+<h1>Alternativ 3: Bruke akselerasjonseffekten<a class="headerlink" href="#alternativ-3-bruke-akselerasjonseffekten" title="Permalink to this heading">#</a></h1>
+<p>Definer</p>
+<div class="math notranslate nohighlight">
+\[
+P_a
+=
+P_m-P_e
+\]</div>
+<hr class="docutils" />
+<section id="id15">
+<h2>Under feil<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<p>Vanligvis er</p>
+<div class="math notranslate nohighlight">
+\[
+P_m &gt; P_e
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+P_a &gt; 0
+\]</div>
+<p>Generatoren akselererer.</p>
+</section>
+<hr class="docutils" />
+<section id="etter-feilklarering">
+<h2>Etter feilklarering<a class="headerlink" href="#etter-feilklarering" title="Permalink to this heading">#</a></h2>
+<p>Hvis</p>
+<div class="math notranslate nohighlight">
+\[
+P_e &gt; P_m
+\]</div>
+<p>oppnår vi</p>
+<div class="math notranslate nohighlight">
+\[
+P_a &lt; 0
+\]</div>
+<p>Generatoren bremser.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tolkning">
+<h1>Tolkning<a class="headerlink" href="#tolkning" title="Permalink to this heading">#</a></h1>
+<p>Studentene kan følge fortegnet til</p>
+<div class="math notranslate nohighlight">
+\[
+P_a
+\]</div>
+<p>for å forstå den fysiske utviklingen.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Feil:
+
+Pm &gt; Pe
+⇒ Pa &gt; 0
+⇒ Rotor akselererer
+
+Etter feilklarering:
+
+Pe &gt; Pm
+⇒ Pa &lt; 0
+⇒ Rotor bremses
+</pre></div>
+</div>
+<p>Dermed oppnås en intuitiv forståelse av transient stabilitet.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="forslag-til-eksamensstruktur">
+<h1>Forslag til eksamensstruktur<a class="headerlink" href="#forslag-til-eksamensstruktur" title="Permalink to this heading">#</a></h1>
+<section id="del-a-lastflyt">
+<h2>Del A: Lastflyt<a class="headerlink" href="#del-a-lastflyt" title="Permalink to this heading">#</a></h2>
+<p>Bestem</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+\]</div>
+<p>og strømmer i systemet.</p>
+</section>
+<hr class="docutils" />
+<section id="del-b-nettverksreduksjon">
+<h2>Del B: Nettverksreduksjon<a class="headerlink" href="#del-b-nettverksreduksjon" title="Permalink to this heading">#</a></h2>
+<p>Bestem</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{pre}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{fault}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{post}}
+\]</div>
+<p>ved hjelp av serie-/parallellreduksjon eller Kron-reduksjon.</p>
+</section>
+<hr class="docutils" />
+<section id="del-c-effektvinkelkurver">
+<h2>Del C: Effektvinkelkurver<a class="headerlink" href="#del-c-effektvinkelkurver" title="Permalink to this heading">#</a></h2>
+<p>Bestem</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{pre}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{fault}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_{\max,\text{post}}
+\]</div>
+<p>og skriv opp tilsvarende effektvinkeluttrykk.</p>
+</section>
+<hr class="docutils" />
+<section id="del-d-euler-metoden">
+<h2>Del D: Euler-metoden<a class="headerlink" href="#del-d-euler-metoden" title="Permalink to this heading">#</a></h2>
+<p>Løs svingligningen numerisk for et gitt antall tidssteg.</p>
+<p>Beregn:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_k
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega_k
+\]</div>
+<p>for hvert steg.</p>
+</section>
+<hr class="docutils" />
+<section id="del-e-stabilitetsvurdering">
+<h2>Del E: Stabilitetsvurdering<a class="headerlink" href="#del-e-stabilitetsvurdering" title="Permalink to this heading">#</a></h2>
+<p>Basert på utviklingen av:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t)
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega(t)
+\]</div>
+<p>avgjør om systemet ser ut til å være:</p>
+<ul class="simple">
+<li><p>stabilt</p></li>
+<li><p>marginalt stabilt</p></li>
+<li><p>ustabilt</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="pedagogisk-fordel">
+<h1>Pedagogisk fordel<a class="headerlink" href="#pedagogisk-fordel" title="Permalink to this heading">#</a></h1>
+<p>Denne framgangsmåten gir én sammenhengende arbeidsflyt:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lastflyt
+   ↓
+Intern generatorspenning
+   ↓
+Kron-reduksjon
+   ↓
+Prefault/Fault/Postfault
+   ↓
+Effektvinkelkurver
+   ↓
+Svingligning
+   ↓
+Euler-metoden
+   ↓
+Stabilitetsvurdering
+</pre></div>
+</div>
+<p>Studentene får dermed trening i:</p>
+<ul class="simple">
+<li><p>kraftsystemanalyse</p></li>
+<li><p>nettverksreduksjon</p></li>
+<li><p>numeriske metoder</p></li>
+<li><p>transient stabilitet</p></li>
+</ul>
+<p>uten at like-areal-kriteriet introduseres i første omgang.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kothari-to-port-modell">
+<h1>KOTHARI TO-PORT-MODELL<a class="headerlink" href="#kothari-to-port-modell" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fra-lastflyt-til-transientstabilitet-ved-bruk-av-kotharis-to-port-modell">
+<h1>Fra lastflyt til transientstabilitet ved bruk av Kotharis to-port-modell<a class="headerlink" href="#fra-lastflyt-til-transientstabilitet-ved-bruk-av-kotharis-to-port-modell" title="Permalink to this heading">#</a></h1>
+<section id="motivasjon">
+<h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this heading">#</a></h2>
+<p>I mange lærebøker behandles følgende temaer som separate emner:</p>
+<ul class="simple">
+<li><p>lastflyt</p></li>
+<li><p>nettverksreduksjon</p></li>
+<li><p>transientstabilitet</p></li>
+<li><p>like-areal-kriteriet</p></li>
+<li><p>numerisk integrasjon</p></li>
+</ul>
+<p>En alternativ tilnærming er å bruke Kotharis to-port-modell som en felles matematisk plattform gjennom hele emnet.</p>
+<p>Da oppnås følgende faglige progresjon:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lastflyt
+   ↓
+Intern generatorspenning E'
+   ↓
+Y-buss
+   ↓
+Kron-reduksjon
+   ↓
+To-port-modell
+   ↓
+Effektvinkelkurve
+   ↓
+Svingligning
+   ↓
+Euler-metoden
+   ↓
+Stabilitetsanalyse
+</pre></div>
+</div>
+<p>Denne arbeidsflyten ligger også nær hvordan moderne verktøy som PowerFactory gjennomfører transientstabilitetsberegninger.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="kotharis-stabilitetsmodell">
+<h1>Kotharis stabilitetsmodell<a class="headerlink" href="#kotharis-stabilitetsmodell" title="Permalink to this heading">#</a></h1>
+<p>Ved stabilitetsstudier erstattes det opprinnelige nettet med en redusert modell.</p>
+<p>Alle laster antas representert som ekvivalente admittanser, og hele nettet reduseres til en to-port mellom maskinen og resten av systemet.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E1'  ────── Stabilitetsnettverk ────── E2'
+</pre></div>
+</div>
+<p>For et SMIB-system representerer</p>
+<div class="math notranslate nohighlight">
+\[
+E_1' = E'
+\]</div>
+<p>generatorens interne spenning, mens</p>
+<div class="math notranslate nohighlight">
+\[
+E_2' = V_\infty
+\]</div>
+<p>representerer infinite bus.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="to-port-modellen">
+<h1>To-port-modellen<a class="headerlink" href="#to-port-modellen" title="Permalink to this heading">#</a></h1>
+<p>Etter Kron-reduksjon kan systemet beskrives med</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{Y}_{BUS}
+=
+\begin{bmatrix}
+Y_{11} &amp; Y_{12}\\
+Y_{21} &amp; Y_{22}
+\end{bmatrix}
+\end{split}\]</div>
+<p>der</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{12}=Y_{21}
+\]</div>
+<p>for et symmetrisk nett.</p>
+<p>Kompleks effekt ved buss 1 skrives</p>
+<div class="math notranslate nohighlight">
+\[
+S_1
+=
+P_1+jQ_1
+=
+E_1'I_1^{*}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="effektuttrykket">
+<h1>Effektuttrykket<a class="headerlink" href="#effektuttrykket" title="Permalink to this heading">#</a></h1>
+<p>Kothari viser at aktiv effekt ved buss 1 kan uttrykkes som</p>
+<div class="math notranslate nohighlight">
+\[
+P_1
+=
+|E_1'|^2 G_{11}
++
+|E_1'||E_2'||Y_{12}|
+\cos(\delta_1-\delta_2-\theta_{12})
+\]</div>
+<p>der</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{12}
+=
+|Y_{12}|\angle\theta_{12}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+G_{11}
+=
+\operatorname{Re}(Y_{11})
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="generell-effektvinkelkurve">
+<h1>Generell effektvinkelkurve<a class="headerlink" href="#generell-effektvinkelkurve" title="Permalink to this heading">#</a></h1>
+<p>Definer</p>
+<div class="math notranslate nohighlight">
+\[
+P_c
+=
+|E_1'|^2G_{11}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+=
+|E_1'||E_2'||Y_{12}|
+\]</div>
+<p>samt</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+=
+\delta_1-\delta_2
+\]</div>
+<p>Da kan effektuttrykket skrives</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+P_c+
+P_{\max}
+\cos(\delta-\theta_{12})
+\]</div>
+<p>Dette er den generelle effektvinkelkurven.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tapslost-nett">
+<h1>Tapsløst nett<a class="headerlink" href="#tapslost-nett" title="Permalink to this heading">#</a></h1>
+<p>For et tapsløst nett gjelder tilnærmet</p>
+<div class="math notranslate nohighlight">
+\[
+G_{11}\approx 0
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_{12}\approx 90^\circ
+\]</div>
+<p>Dermed fås</p>
+<div class="math notranslate nohighlight">
+\[
+P_c=0
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+P_{\max}\sin\delta
+\]</div>
+<p>som er den klassiske effektvinkelkurven som benyttes i de fleste SMIB-analyser.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="rolle-til-kron-reduksjon">
+<h1>Rolle til Kron-reduksjon<a class="headerlink" href="#rolle-til-kron-reduksjon" title="Permalink to this heading">#</a></h1>
+<p>Kron-reduksjonen er bindeleddet mellom lastflyt og transientstabilitet.</p>
+<p>Studentene kan starte med et ordinært nettverk:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Generator
+   |
+Transformer
+   |
+Bus 1
+ /   \
+Linje Linje
+ \   /
+Bus 2
+   |
+Infinite Bus
+</pre></div>
+</div>
+<p>og redusere dette til</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E'  ──────  Y12  ──────  V∞
+</pre></div>
+</div>
+<p>slik at hele nettverket beskrives ved noen få admittanser.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="modellering-av-feil">
+<h1>Modellering av feil<a class="headerlink" href="#modellering-av-feil" title="Permalink to this heading">#</a></h1>
+<p>Ved en feil innføres alltid en eksplisitt feilkoblingsbuss.</p>
+<p>Eksempel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bus1 ---- Bus3 ---- Bus2
+             |
+           Fault
+</pre></div>
+</div>
+<p>Dette gjør at samme metode kan brukes for</p>
+<ul class="simple">
+<li><p>håndregning</p></li>
+<li><p>Y-buss</p></li>
+<li><p>Kron-reduksjon</p></li>
+<li><p>PowerFactory</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="prefault-fault-og-postfault">
+<h1>Prefault, Fault og Postfault<a class="headerlink" href="#prefault-fault-og-postfault" title="Permalink to this heading">#</a></h1>
+<p>For hver driftstilstand beregnes en ny redusert to-port.</p>
+<section id="id16">
+<h2>Prefault<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<p>Finn</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{12,\text{pre}}
+\]</div>
+<p>og dermed</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{pre}}(\delta)
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h2>Under feil<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h2>
+<p>Finn</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{12,\text{fault}}
+\]</div>
+<p>og dermed</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{fault}}(\delta)
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h2>Etter feil<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<p>Finn</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{12,\text{post}}
+\]</div>
+<p>og dermed</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}(\delta)
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="koblingen-til-svingligningen">
+<h1>Koblingen til svingligningen<a class="headerlink" href="#koblingen-til-svingligningen" title="Permalink to this heading">#</a></h1>
+<p>Når effektvinkelkurven er kjent, kan den settes direkte inn i svingligningen.</p>
+<p>Rotorvinkel:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}
+=
+\omega
+\]</div>
+<p>Rotorhastighet:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}
+=
+\frac{\omega_s}{2H}
+\left(
+P_m-P_e
+\right)
+\]</div>
+<p>Her kommer all informasjon fra nettverket inn gjennom</p>
+<div class="math notranslate nohighlight">
+\[
+P_e(\delta)
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id19">
+<h1>Euler-metoden<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h1>
+<p>Svingligningen kan løses numerisk med Euler-metoden.</p>
+<p>Rotorvinkel:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{k+1}
+=
+\delta_k+\Delta t\,\omega_k
+\]</div>
+<p>Rotorhastighet:</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{k+1}
+=
+\omega_k+
+\Delta t
+\frac{\omega_s}{2H}
+\left(
+P_m-P_e(\delta_k)
+\right)
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="stabilitetsanalyse-uten-like-areal-kriteriet">
+<h1>Stabilitetsanalyse uten like-areal-kriteriet<a class="headerlink" href="#stabilitetsanalyse-uten-like-areal-kriteriet" title="Permalink to this heading">#</a></h1>
+<p>I stedet for å beregne kritisk ryddevinkel kan studentene analysere den numeriske løsningen direkte.</p>
+<p>Målet er å undersøke om:</p>
+<div class="math notranslate nohighlight">
+\[
+\omega \rightarrow 0
+\]</div>
+<p>og om rotorvinkelen nærmer seg en ny likevekt.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="bruk-av-powerfactory">
+<h1>Bruk av PowerFactory<a class="headerlink" href="#bruk-av-powerfactory" title="Permalink to this heading">#</a></h1>
+<p>PowerFactory kan brukes til å generere referanseforløp.</p>
+<p>Et typisk rotorvinkelplott kan vise:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>δ(t)
+</pre></div>
+</div>
+<p>og</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ω(t)
+</pre></div>
+</div>
+<p>etter en kortslutning.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="hvor-bor-euler-metoden-anvendes">
+<h1>Hvor bør Euler-metoden anvendes?<a class="headerlink" href="#hvor-bor-euler-metoden-anvendes" title="Permalink to this heading">#</a></h1>
+<p>Det er normalt lite interessant å starte ved</p>
+<div class="math notranslate nohighlight">
+\[
+t=0
+\]</div>
+<p>fordi systemet da ofte ligger nær stasjonær drift.</p>
+<p>Mer informasjon fås dersom Euler-integrasjonen starter rett etter feilklarering.</p>
+<p>Eksempel:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t_c)=105^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega(t_c)=0.42\;rad/s
+\]</div>
+<p>Disse verdiene kan leses av et PowerFactory-plott.</p>
+<p>Studentene kan deretter beregne de neste 5–10 Euler-stegene.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id20">
+<h1>Pedagogisk fordel<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h1>
+<p>I stedet for å bruke tid på lange tabeller før feilen blir interessant, fokuseres oppgaven på:</p>
+<ul class="simple">
+<li><p>svingligningen</p></li>
+<li><p>Euler-metoden</p></li>
+<li><p>fysisk tolkning</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id21">
+<h1>Forslag til eksamensstruktur<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h1>
+<section id="id22">
+<h2>Del A: Lastflyt<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h2>
+<p>Bestem generatorens interne spenning</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+\]</div>
+<p>ut fra lastflytdata.</p>
+</section>
+<hr class="docutils" />
+<section id="id23">
+<h2>Del B: Nettverksreduksjon<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h2>
+<p>Utfør Kron-reduksjon og bestem den reduserte to-port-modellen.</p>
+<p>Finn</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{12}
+\]</div>
+<p>eller ekvivalent reaktans.</p>
+</section>
+<hr class="docutils" />
+<section id="del-c-effektvinkelkurve">
+<h2>Del C: Effektvinkelkurve<a class="headerlink" href="#del-c-effektvinkelkurve" title="Permalink to this heading">#</a></h2>
+<p>Bestem</p>
+<div class="math notranslate nohighlight">
+\[
+P_e(\delta)
+\]</div>
+<p>for</p>
+<ul class="simple">
+<li><p>prefault</p></li>
+<li><p>fault</p></li>
+<li><p>postfault</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h2>Del D: Euler-metoden<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h2>
+<p>Ut fra oppgitte startverdier</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t_c)
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega(t_c)
+\]</div>
+<p>beregnes de neste tidsstegene.</p>
+</section>
+<hr class="docutils" />
+<section id="del-e-stabilitet">
+<h2>Del E: Stabilitet<a class="headerlink" href="#del-e-stabilitet" title="Permalink to this heading">#</a></h2>
+<p>Basert på utviklingen av</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega
+\]</div>
+<p>vurderes om generatoren:</p>
+<ul class="simple">
+<li><p>opprettholder synkron drift,</p></li>
+<li><p>nærmer seg en ny likevekt,</p></li>
+<li><p>eller mister synkronismen.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id25">
+<h1>Oppsummering<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h1>
+<p>Kotharis to-port-modell gir et naturlig bindeledd mellom:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Lastflyt}
+\rightarrow
+\text{Kron-reduksjon}
+\rightarrow
+\text{Effektvinkelkurve}
+\rightarrow
+\text{Svingligning}
+\rightarrow
+\text{Euler-metode}
+\rightarrow
+\text{Transientstabilitet}
+\]</div>
+<p>Dermed kan hele transientstabilitetstemaet bygges opp rundt én konsistent matematisk modell uten å introdusere like-areal-kriteriet i første omgang.</p>
+<p>Da blir Kotharis to-port-modell bindeleddet mellom lastflyt og Euler, mens PowerFactory fungerer som verifikasjon av de numeriske resultatene. Det er svært nær hvordan transientstabilitet analyseres i praksis.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kobling-til-power-factory">
+<h1>KOBLING TIL POWER FACTORY<a class="headerlink" href="#kobling-til-power-factory" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kobling-mellom-smib-euler-metoden-og-powerfactory">
+<h1>Kobling mellom SMIB, Euler-metoden og PowerFactory<a class="headerlink" href="#kobling-mellom-smib-euler-metoden-og-powerfactory" title="Permalink to this heading">#</a></h1>
+<section id="id26">
+<h2>Formål<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h2>
+<p>Målet er å knytte sammen:</p>
+<ul class="simple">
+<li><p>Lastflyt</p></li>
+<li><p>Nettverksreduksjon (Kron-reduksjon)</p></li>
+<li><p>Kotharis to-port-modell</p></li>
+<li><p>Effektvinkelkurver</p></li>
+<li><p>Svingligningen</p></li>
+<li><p>Euler-metoden</p></li>
+<li><p>PowerFactory</p></li>
+</ul>
+<p>i én sammenhengende arbeidsflyt.</p>
+<p>I stedet for å introdusere like-areal-kriteriet i første omgang kan transient stabilitet analyseres direkte gjennom numerisk integrasjon av svingligningen.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="faglig-progresjon">
+<h1>Faglig progresjon<a class="headerlink" href="#faglig-progresjon" title="Permalink to this heading">#</a></h1>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Lastflyt
+   ↓
+Intern generatorspenning E'
+   ↓
+Y-buss
+   ↓
+Kron-reduksjon
+   ↓
+To-port-modell
+   ↓
+Effektvinkelkurve Pe(δ)
+   ↓
+Svingligning
+   ↓
+Euler-metoden
+   ↓
+Transient stabilitet
+   ↓
+PowerFactory-verifikasjon
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="kotharis-to-port-modell">
+<h1>Kotharis to-port-modell<a class="headerlink" href="#kotharis-to-port-modell" title="Permalink to this heading">#</a></h1>
+<p>Etter nettverksreduksjon representeres systemet ved</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E'  ────── Stabilitetsnettverk ────── V∞
+</pre></div>
+</div>
+<p>eller matematisk</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{Y}_{BUS}
+=
+\begin{bmatrix}
+Y_{11} &amp; Y_{12} \\
+Y_{21} &amp; Y_{22}
+\end{bmatrix}
+\end{split}\]</div>
+<p>Aktiv effekt ved generatoren kan uttrykkes som</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+P_c
++
+P_{\max}
+\cos(\delta-\theta_{12})
+\]</div>
+<p>der</p>
+<div class="math notranslate nohighlight">
+\[
+P_c
+=
+|E'|^2G_{11}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+=
+|E'||V_\infty||Y_{12}|
+\]</div>
+<p>For et tapsløst nett fås</p>
+<div class="math notranslate nohighlight">
+\[
+P_c = 0
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+P_{\max}\sin\delta
+\]</div>
+<p>Dette er den klassiske effektvinkelkurven som brukes videre i transientstabiliteten.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id27">
+<h1>Svingligningen<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h1>
+<p>Når effektvinkelkurven er bestemt kan den settes inn i svingligningen.</p>
+<p>Rotorvinkel:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}
+=
+\omega
+\]</div>
+<p>Rotorhastighet:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}
+=
+\frac{\omega_s}{2H}
+\left(
+P_m-P_e
+\right)
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p>(P_m) = mekanisk effekt</p></li>
+<li><p>(P_e) = elektrisk effekt</p></li>
+<li><p>(H) = treghetskonstant</p></li>
+<li><p>(\omega_s) = synkron vinkelhastighet</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="fysisk-tolkning">
+<h1>Fysisk tolkning<a class="headerlink" href="#fysisk-tolkning" title="Permalink to this heading">#</a></h1>
+<p>Når</p>
+<div class="math notranslate nohighlight">
+\[
+P_m&gt;P_e
+\]</div>
+<p>oppnås</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}&gt;0
+\]</div>
+<p>Generatoren akselererer.</p>
+<hr class="docutils" />
+<p>Når</p>
+<div class="math notranslate nohighlight">
+\[
+P_m&lt;P_e
+\]</div>
+<p>oppnås</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}&lt;0
+\]</div>
+<p>Generatoren bremses.</p>
+<hr class="docutils" />
+<p>Definer akselerasjonseffekt</p>
+<div class="math notranslate nohighlight">
+\[
+P_a
+=
+P_m-P_e
+\]</div>
+<p>som gir:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Pa &gt; 0  → akselerasjon
+
+Pa &lt; 0  → retardasjon
+
+Pa = 0  → likevekt
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id28">
+<h1>Euler-metoden<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h1>
+<p>Svingligningen løses numerisk ved</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{k+1}
+=
+\delta_k
++
+\Delta t\,\omega_k
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{k+1}
+=
+\omega_k
++
+\Delta t
+\frac{\omega_s}{2H}
+\left(
+P_m-P_e(\delta_k)
+\right)
+\]</div>
+<p>Euler-metoden gir dermed rotorvinkel og rotorhastighet som funksjon av tid.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="hvorfor-bruke-powerfactory">
+<h1>Hvorfor bruke PowerFactory?<a class="headerlink" href="#hvorfor-bruke-powerfactory" title="Permalink to this heading">#</a></h1>
+<p>PowerFactory kan brukes til å generere referanseforløp for</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t)
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega(t)
+\]</div>
+<p>etter en feil.</p>
+<p>Studentene kan dermed:</p>
+<ol class="arabic simple">
+<li><p>Bygge modellen.</p></li>
+<li><p>Kjør simulering.</p></li>
+<li><p>Observere plottet.</p></li>
+<li><p>Utføre Euler-beregninger på utvalgte deler av responsen.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="hvor-bor-euler-beregningen-utfores">
+<h1>Hvor bør Euler-beregningen utføres?<a class="headerlink" href="#hvor-bor-euler-beregningen-utfores" title="Permalink to this heading">#</a></h1>
+<p>Det er lite pedagogisk verdi i å starte ved</p>
+<div class="math notranslate nohighlight">
+\[
+t=0
+\]</div>
+<p>siden systemet da ligger nær stasjonær drift.</p>
+<p>Tilsvarende er det lite interessant å beregne langt ute i et tydelig ustabilt forløp.</p>
+<p>Det mest interessante området er rundt det som kan kalles et <strong>knekkpunkt</strong>.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="knekkpunktet">
+<h1>Knekkpunktet<a class="headerlink" href="#knekkpunktet" title="Permalink to this heading">#</a></h1>
+<p>Knekkpunktet er området der systemets videre utvikling avgjøres.</p>
+<p>Typisk skjer dette kort tid etter at feilen er fjernet.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>δ
+
+|
+|                     Ustabil
+|                   /
+|                  /
+|                 /
+|                /
+|           *
+|         *
+|       *
+|     *
+|____*
+|
++---------------------------&gt; t
+
+     Knekkpunkt
+</pre></div>
+</div>
+<p>I dette området vet man ennå ikke om systemet vil:</p>
+<ul class="simple">
+<li><p>vende tilbake mot synkron drift,</p></li>
+<li><p>eller miste synkronismen.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="bruk-av-powerfactory-plott">
+<h1>Bruk av PowerFactory-plott<a class="headerlink" href="#bruk-av-powerfactory-plott" title="Permalink to this heading">#</a></h1>
+<p>Fra et PowerFactory-plott kan man lese av eksempelvis</p>
+<div class="math notranslate nohighlight">
+\[
+t_c=0.55\;s
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta=110^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega=0.42\;rad/s
+\]</div>
+<p>Disse brukes som startverdier i Euler-integrasjonen.</p>
+<p>Studentene trenger dermed ikke beregne hele feilforløpet.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="forslag-til-oppgave">
+<h1>Forslag til oppgave<a class="headerlink" href="#forslag-til-oppgave" title="Permalink to this heading">#</a></h1>
+<p>Anta at følgende verdier er hentet fra et PowerFactory-plott:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0 = 110^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega_0 = 0.42\;rad/s
+\]</div>
+<p>Videre er</p>
+<div class="math notranslate nohighlight">
+\[
+P_m=1.0
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+2.0\sin\delta
+\]</div>
+<p>Bruk Euler-metoden med</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta t=0.01\;s
+\]</div>
+<p>til å beregne de neste 10 tidsstegene.</p>
+<p>Kommentar:</p>
+<blockquote>
+<div><p>Formålet er ikke å regne mange steg, men å undersøke om generatoren beveger seg mot eller bort fra en stabil driftstilstand.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="betydningen-av-treghetskonstanten-h">
+<h1>Betydningen av treghetskonstanten H<a class="headerlink" href="#betydningen-av-treghetskonstanten-h" title="Permalink to this heading">#</a></h1>
+<p>Treghetskonstanten opptrer i</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}
+=
+\frac{\omega_s}{2H}
+(P_m-P_e)
+\]</div>
+<p>og har stor betydning for transient stabilitet.</p>
+<hr class="docutils" />
+<section id="stor-treghet">
+<h2>Stor treghet<a class="headerlink" href="#stor-treghet" title="Permalink to this heading">#</a></h2>
+<p>Hvis</p>
+<div class="math notranslate nohighlight">
+\[
+H
+=
+8
+\;s
+\]</div>
+<p>blir</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}
+\]</div>
+<p>relativt liten.</p>
+<p>Rotoren akselererer saktere.</p>
+</section>
+<hr class="docutils" />
+<section id="liten-treghet">
+<h2>Liten treghet<a class="headerlink" href="#liten-treghet" title="Permalink to this heading">#</a></h2>
+<p>Hvis</p>
+<div class="math notranslate nohighlight">
+\[
+H
+=
+3
+\;s
+\]</div>
+<p>blir</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}
+\]</div>
+<p>større.</p>
+<p>Rotoren akselererer raskere.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="viktig-observasjon">
+<h1>Viktig observasjon<a class="headerlink" href="#viktig-observasjon" title="Permalink to this heading">#</a></h1>
+<p>Samme:</p>
+<ul class="simple">
+<li><p>nettverk,</p></li>
+<li><p>feil,</p></li>
+<li><p>feilklareringstid,</p></li>
+</ul>
+<p>kan gi forskjellig stabilitetsrespons for ulike verdier av</p>
+<div class="math notranslate nohighlight">
+\[
+H
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="eksempel">
+<h1>Eksempel<a class="headerlink" href="#eksempel" title="Permalink to this heading">#</a></h1>
+<section id="id29">
+<h2>Tilfelle A<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+H=3
+\]</div>
+<p>Rotoren akselererer raskt og mister synkronismen.</p>
+</section>
+<hr class="docutils" />
+<section id="id30">
+<h2>Tilfelle B<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+H=8
+\]</div>
+<p>Rotoren akselererer langsommere og kan forbli stabil.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="pedagogisk-bruk">
+<h1>Pedagogisk bruk<a class="headerlink" href="#pedagogisk-bruk" title="Permalink to this heading">#</a></h1>
+<p>PowerFactory kan brukes til å generere to plott:</p>
+<section id="scenario-1">
+<h2>Scenario 1<a class="headerlink" href="#scenario-1" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+H=3
+\]</div>
+<p>Ustabil respons.</p>
+</section>
+<section id="scenario-2">
+<h2>Scenario 2<a class="headerlink" href="#scenario-2" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+H=8
+\]</div>
+<p>Stabil respons.</p>
+<p>Studentene kan deretter bruke Euler-metoden rundt knekkpunktet og vise matematisk hvorfor responsen blir forskjellig.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id31">
+<h1>Forslag til eksamensstruktur<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h1>
+<section id="id32">
+<h2>Del A: Lastflyt<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h2>
+<p>Bestem</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+\]</div>
+<p>for generatoren.</p>
+</section>
+<hr class="docutils" />
+<section id="id33">
+<h2>Del B: Nettverksreduksjon<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h2>
+<p>Utfør Kron-reduksjon og bestem</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{pre}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{fault}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_{e,\text{post}}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="del-c-powerfactory">
+<h2>Del C: PowerFactory<a class="headerlink" href="#del-c-powerfactory" title="Permalink to this heading">#</a></h2>
+<p>Studer rotorvinkelplottet.</p>
+<p>Identifiser området der systemets stabilitet avgjøres.</p>
+</section>
+<hr class="docutils" />
+<section id="id34">
+<h2>Del D: Euler-metoden<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h2>
+<p>Bruk oppgitte verdier for</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega
+\]</div>
+<p>fra knekkpunktet.</p>
+<p>Beregn de neste tidsstegene.</p>
+</section>
+<hr class="docutils" />
+<section id="id35">
+<h2>Del E: Stabilitet<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h2>
+<p>Vurder om</p>
+<div class="math notranslate nohighlight">
+\[
+\omega
+\rightarrow 0
+\]</div>
+<p>eller om</p>
+<div class="math notranslate nohighlight">
+\[
+\omega
+\]</div>
+<p>fortsetter å øke.</p>
+<p>Begrunn om systemet er:</p>
+<ul class="simple">
+<li><p>stabilt,</p></li>
+<li><p>marginalt stabilt,</p></li>
+<li><p>ustabilt.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="hovedide">
+<h1>Hovedidé<a class="headerlink" href="#hovedide" title="Permalink to this heading">#</a></h1>
+<p>I stedet for å bruke like-areal-kriteriet direkte kan studentene:</p>
+<ol class="arabic simple">
+<li><p>Finne (P_e(\delta)) ved hjelp av Kotharis to-port-modell.</p></li>
+<li><p>Bruke svingligningen.</p></li>
+<li><p>Løse ligningene numerisk med Euler-metoden.</p></li>
+<li><p>Sammenligne resultatene med PowerFactory.</p></li>
+<li><p>Undersøke hvordan treghetskonstanten (H) påvirker transient stabilitet.</p></li>
+</ol>
+<p>Dette gir en naturlig sammenheng mellom klassisk kraftsystemanalyse og moderne simulering.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lab-oppgave">
+<h1>LAB OPPGAVE<a class="headerlink" href="#lab-oppgave" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="oppgave-transient-stabilitet-i-et-smib-system">
+<h1>Oppgave: Transient stabilitet i et SMIB-system<a class="headerlink" href="#oppgave-transient-stabilitet-i-et-smib-system" title="Permalink to this heading">#</a></h1>
+<section id="id36">
+<h2>Formål<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h2>
+<p>I denne oppgaven skal du bruke PowerFactory og Euler-metoden til å undersøke hvordan treghetskonstanten (H) påvirker transient stabilitet.</p>
+</section>
+<hr class="docutils" />
+<section id="del-1-powerfactory-simulering">
+<h2>Del 1: PowerFactory-simulering<a class="headerlink" href="#del-1-powerfactory-simulering" title="Permalink to this heading">#</a></h2>
+<p>Du får utdelt en ferdig SMIB-modell i PowerFactory.</p>
+<p>Modellen inneholder:</p>
+<ul class="simple">
+<li><p>én synkrongenerator</p></li>
+<li><p>ett uendelig nett (Infinite Bus)</p></li>
+<li><p>en trefase kortslutning</p></li>
+<li><p>automatisk feilklarering</p></li>
+</ul>
+<section id="oppgave-1">
+<h3>Oppgave 1<a class="headerlink" href="#oppgave-1" title="Permalink to this heading">#</a></h3>
+<p>Kjør simuleringen for følgende verdier av treghetskonstanten:</p>
+<div class="math notranslate nohighlight">
+\[
+H = 2,\;4,\;6,\;8 \text{ s}
+\]</div>
+<p>For hver simulering skal du:</p>
+<ol class="arabic simple">
+<li><p>Plot rotorvinkelen (\delta(t)).</p></li>
+<li><p>Plot rotorhastigheten (\omega(t)).</p></li>
+<li><p>Vurdere om systemet er stabilt eller ustabilt.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="del-2-velg-et-ustabilt-tilfelle">
+<h2>Del 2: Velg et ustabilt tilfelle<a class="headerlink" href="#del-2-velg-et-ustabilt-tilfelle" title="Permalink to this heading">#</a></h2>
+<p>Velg én verdi av (H) som gir ustabil drift.</p>
+<p>Legg ved rotorvinkelplottet.</p>
+<section id="oppgave-2">
+<h3>Oppgave 2<a class="headerlink" href="#oppgave-2" title="Permalink to this heading">#</a></h3>
+<p>Forklar ut fra plottet hvorfor generatoren mister synkronismen.</p>
+<p>Hint:</p>
+<ul class="simple">
+<li><p>Hva skjer med rotorvinkelen?</p></li>
+<li><p>Hva skjer med rotorhastigheten?</p></li>
+<li><p>Nærmer systemet seg en ny likevekt?</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="del-3-euler-metoden">
+<h2>Del 3: Euler-metoden<a class="headerlink" href="#del-3-euler-metoden" title="Permalink to this heading">#</a></h2>
+<p>Velg et tidspunkt like etter feilklarering der plottet begynner å avvike tydelig fra stabil drift.</p>
+<p>Les av:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_0
+\]</div>
+<p>fra plottet.</p>
+<p>Anta at den elektriske effekten kan beskrives ved</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=P_{\max}\sin\delta
+\]</div>
+<p>og at</p>
+<div class="math notranslate nohighlight">
+\[
+P_m
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+\]</div>
+<p>er gitt.</p>
+<p>Bruk Euler-metoden:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{k+1}
+=
+\delta_k+\Delta t\,\omega_k
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega_{k+1}
+=
+\omega_k
++
+\Delta t
+\frac{\omega_s}{2H}
+\left(P_m-P_e(\delta_k)\right)
+\]</div>
+<p>med</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta t=0.01\,s
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="oppgave-3">
+<h2>Oppgave 3<a class="headerlink" href="#oppgave-3" title="Permalink to this heading">#</a></h2>
+<p>Beregn de neste fem tidsstegene og fyll ut tabellen.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Steg</p></th>
+<th class="head text-right"><p>(\delta) (rad)</p></th>
+<th class="head text-right"><p>(\omega) (rad/s)</p></th>
+<th class="head text-right"><p>(P_e) (pu)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="oppgave-4">
+<h2>Oppgave 4<a class="headerlink" href="#oppgave-4" title="Permalink to this heading">#</a></h2>
+<p>Sammenlign Euler-beregningene med PowerFactory-plottet.</p>
+<p>Diskuter:</p>
+<ol class="arabic simple">
+<li><p>Viser Euler-beregningene samme trend som simuleringen?</p></li>
+<li><p>Øker eller avtar rotorhastigheten?</p></li>
+<li><p>Hva forteller dette om systemets stabilitet?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="refleksjon">
+<h2>Refleksjon<a class="headerlink" href="#refleksjon" title="Permalink to this heading">#</a></h2>
+<p>Forklar med egne ord hvordan treghetskonstanten</p>
+<div class="math notranslate nohighlight">
+\[
+H
+\]</div>
+<p>påvirker svingligningen</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\omega}{dt}
+=
+\frac{\omega_s}{2H}
+\left(P_m-P_e\right)
+\]</div>
+<p>og hvorfor en større verdi av (H) ofte gir bedre transient stabilitet.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./10_stabilityclass"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">BASERT PÅ KOTHARI</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generell-metode-for-transientstabilitetsanalyse-av-smib-systemer">Generell metode for transientstabilitetsanalyse av SMIB-systemer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-1-modeller-prefault-nettverket">Trinn 1: Modellér prefault-nettverket</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-2-innfor-feilkoblingsbuss">Trinn 2: Innfør feilkoblingsbuss</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-3-modeller-feiltilstanden">Trinn 3: Modellér feiltilstanden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-4-modeller-feilklarering">Trinn 4: Modellér feilklarering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-5-analyser-stabilitet">Trinn 5: Analyser stabilitet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flytskjema">Flytskjema</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerisk-eksempel">Numerisk eksempel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-feil">Før feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#under-feil">Under feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#etter-feil">Etter feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#begrensninger">Begrensninger</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klassisk-maskinmodell">Klassisk maskinmodell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetriske-feil">Symmetriske feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smib-systemer">SMIB-systemer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#store-nett">Store nett</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hovedregel">Hovedregel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basert-pa-glover-and-overbye-example-11-3">BASERT PÅ GLOVER AND OVERBYE EXAMPLE 11.3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Generell metode for transientstabilitetsanalyse av SMIB-systemer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#grunnmodell">Grunnmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-1-prefault-analyse">Trinn 1: Prefault-analyse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Trinn 2: Innfør feilkoblingsbuss</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Trinn 3: Modellér feiltilstanden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Trinn 4: Modellér feilklarering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-a">Alternativ A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-b">Alternativ B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-5-postfault-analyse">Trinn 5: Postfault-analyse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trinn-6-stabilitetsanalyse">Trinn 6: Stabilitetsanalyse</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Flytskjema</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Numerisk eksempel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prefault">Prefault</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feiltilstanden">Feiltilstanden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#postfault">Postfault</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Begrensninger</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Klassisk maskinmodell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Symmetriske feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">SMIB-systemer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Store nett</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Hovedregel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#glover-and-overbye-example-11-7">GLOVER AND OVERBYE EXAMPLE 11.7</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-som-stabilitetsanalyse-i-smib-systemer">Euler-metoden som stabilitetsanalyse i SMIB-systemer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bakgrunn">Bakgrunn</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#foreslatt-faglig-progresjon">Foreslått faglig progresjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svingligningen">Svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrisk-effekt">Elektrisk effekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden">Euler-metoden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitet-uten-like-areal-kriteriet">Stabilitet uten like-areal-kriteriet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabil-respons">Stabil respons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ustabil-respons">Ustabil respons</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-1-sammenligne-to-ryddetider">Alternativ 1: Sammenligne to ryddetider</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfelle-a">Tilfelle A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfelle-b">Tilfelle B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-2-starte-ved-feilklarering">Alternativ 2: Starte ved feilklarering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-3-bruke-akselerasjonseffekten">Alternativ 3: Bruke akselerasjonseffekten</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Under feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etter-feilklarering">Etter feilklarering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forslag-til-eksamensstruktur">Forslag til eksamensstruktur</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-a-lastflyt">Del A: Lastflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-b-nettverksreduksjon">Del B: Nettverksreduksjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-c-effektvinkelkurver">Del C: Effektvinkelkurver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-d-euler-metoden">Del D: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-e-stabilitetsvurdering">Del E: Stabilitetsvurdering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pedagogisk-fordel">Pedagogisk fordel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kothari-to-port-modell">KOTHARI TO-PORT-MODELL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-lastflyt-til-transientstabilitet-ved-bruk-av-kotharis-to-port-modell">Fra lastflyt til transientstabilitet ved bruk av Kotharis to-port-modell</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivasjon">Motivasjon</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kotharis-stabilitetsmodell">Kotharis stabilitetsmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-port-modellen">To-port-modellen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#effektuttrykket">Effektuttrykket</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generell-effektvinkelkurve">Generell effektvinkelkurve</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tapslost-nett">Tapsløst nett</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rolle-til-kron-reduksjon">Rolle til Kron-reduksjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modellering-av-feil">Modellering av feil</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prefault-fault-og-postfault">Prefault, Fault og Postfault</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Prefault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Under feil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Etter feil</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#koblingen-til-svingligningen">Koblingen til svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Euler-metoden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitetsanalyse-uten-like-areal-kriteriet">Stabilitetsanalyse uten like-areal-kriteriet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bruk-av-powerfactory">Bruk av PowerFactory</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-bor-euler-metoden-anvendes">Hvor bør Euler-metoden anvendes?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Pedagogisk fordel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Forslag til eksamensstruktur</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Del A: Lastflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Del B: Nettverksreduksjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-c-effektvinkelkurve">Del C: Effektvinkelkurve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Del D: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-e-stabilitet">Del E: Stabilitet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Oppsummering</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-til-power-factory">KOBLING TIL POWER FACTORY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kobling-mellom-smib-euler-metoden-og-powerfactory">Kobling mellom SMIB, Euler-metoden og PowerFactory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Formål</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#faglig-progresjon">Faglig progresjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kotharis-to-port-modell">Kotharis to-port-modell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning">Fysisk tolkning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Euler-metoden</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-bruke-powerfactory">Hvorfor bruke PowerFactory?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-bor-euler-beregningen-utfores">Hvor bør Euler-beregningen utføres?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knekkpunktet">Knekkpunktet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bruk-av-powerfactory-plott">Bruk av PowerFactory-plott</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forslag-til-oppgave">Forslag til oppgave</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#betydningen-av-treghetskonstanten-h">Betydningen av treghetskonstanten H</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stor-treghet">Stor treghet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liten-treghet">Liten treghet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-observasjon">Viktig observasjon</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eksempel">Eksempel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Tilfelle A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Tilfelle B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pedagogisk-bruk">Pedagogisk bruk</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-1">Scenario 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-2">Scenario 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Forslag til eksamensstruktur</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Del A: Lastflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Del B: Nettverksreduksjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-c-powerfactory">Del C: PowerFactory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Del D: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">Del E: Stabilitet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hovedide">Hovedidé</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-oppgave">LAB OPPGAVE</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-transient-stabilitet-i-et-smib-system">Oppgave: Transient stabilitet i et SMIB-system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">Formål</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-powerfactory-simulering">Del 1: PowerFactory-simulering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1">Oppgave 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-velg-et-ustabilt-tilfelle">Del 2: Velg et ustabilt tilfelle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2">Oppgave 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-euler-metoden">Del 3: Euler-metoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3">Oppgave 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4">Oppgave 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksjon">Refleksjon</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
