@@ -1,0 +1,1117 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Fra kraftflyt til kraftvinkelligningen (SMIB) &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_stabilityclass/powerangleeq';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swingequation.html">Svingeligning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB5.html">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamisk modellering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12_dynmod/dynmod.html">Single Machine Infinite Bus (SMIB)</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F10_stabilityclass/powerangleeq.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/10_stabilityclass/powerangleeq.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fra kraftflyt til kraftvinkelligningen (SMIB)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Fra kraftflyt til kraftvinkelligningen (SMIB)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utgangspunkt-kraftflytligningen">1. Utgangspunkt: Kraftflytligningen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitetsmodell">2. Stabilitetsmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-portmodell">3. To-portmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tapsfritt-nett">4. Tapsfritt nett</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-cosinus-til-sinus">5. Fra cosinus til sinus</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definer-kraftvinkelen">6. Definer kraftvinkelen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#overgang-til-smib">7. Overgang til SMIB</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning">Fysisk tolkning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#smib">SMIB</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#totalreaktans">Totalreaktans</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fra-kraftflyt-til-kraftvinkelligningen-smib">
+<h1>Fra kraftflyt til kraftvinkelligningen (SMIB)<a class="headerlink" href="#fra-kraftflyt-til-kraftvinkelligningen-smib" title="Permalink to this heading">#</a></h1>
+<section id="utgangspunkt-kraftflytligningen">
+<h2>1. Utgangspunkt: Kraftflytligningen<a class="headerlink" href="#utgangspunkt-kraftflytligningen" title="Permalink to this heading">#</a></h2>
+<p>Vi starter med den komplekse effekten ved buss <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar S_k^{*}
+=
+P_k-jQ_k
+=
+\sum_{i=1}^{n}
+\bar Y_{ki}\,\bar V_i\,\bar V_k^{*}
+\]</div>
+<p>Skriver vi alle størrelser på polar form:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar Y_{ki}
+=
+|Y_{ki}|e^{j\theta_{ki}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\bar V_i
+=
+|V_i|e^{j\delta_i}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\bar V_k^{*}
+=
+|V_k|e^{-j\delta_k}
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+P_k-jQ_k
+=
+\sum_{i=1}^{n}
+|Y_{ki}||V_i||V_k|
+e^{j(\theta_{ki}+\delta_i-\delta_k)}
+\]</div>
+<p>Den reelle delen gir aktiv effekt:</p>
+<div class="math notranslate nohighlight">
+\[
+P_k
+=
+\sum_{i=1}^{n}
+|V_i||V_k||Y_{ki}|
+\cos(\theta_{ki}+\delta_i-\delta_k)
+\]</div>
+<p>Dette er den vanlige kraftflytligningen.</p>
+<p><img alt="Kraftsystemligning" src="../_images/power_flow_eq.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="stabilitetsmodell">
+<h1>2. Stabilitetsmodell<a class="headerlink" href="#stabilitetsmodell" title="Permalink to this heading">#</a></h1>
+<p>I transient stabilitet flyttes bussene fra terminalspenningene til de transiente interne EMF-ene.</p>
+<p>Vi erstatter derfor</p>
+<div class="math notranslate nohighlight">
+\[
+V_i \rightarrow E'_i
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+P_k
+=
+\sum_{i=1}^{n}
+|E'_i||E'_k||Y_{ki}|
+\cos(\theta_{ki}+\delta_i-\delta_k)
+\]</div>
+<p>hvor</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E'_i\)</span> er transient internspenning</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta_i\)</span> er rotorvinkelen</p></li>
+</ul>
+<p><img alt="Stabilitetsdiagram" src="../_images/generator_phasor_mmf.svg" /></p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="to-portmodell">
+<h1>3. To-portmodell<a class="headerlink" href="#to-portmodell" title="Permalink to this heading">#</a></h1>
+<p>Anta to maskiner:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E'₁∠δ₁  ---- jX ----  E'₂∠δ₂
+</pre></div>
+</div>
+<p>Da reduseres summen til</p>
+<div class="math notranslate nohighlight">
+\[
+P_1
+=
+|E'_1|^2|Y_{11}|
+\cos(\theta_{11})
++
+|E'_1||E'_2||Y_{21}|
+\cos(\theta_{21}+\delta_2-\delta_1)
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tapsfritt-nett">
+<h1>4. Tapsfritt nett<a class="headerlink" href="#tapsfritt-nett" title="Permalink to this heading">#</a></h1>
+<p>For klassisk transient stabilitet antar vi</p>
+<div class="math notranslate nohighlight">
+\[
+R \approx 0
+\]</div>
+<p>slik at nettet består av rene reaktanser.</p>
+<p>Transferreaktansen er</p>
+<div class="math notranslate nohighlight">
+\[
+jX
+\]</div>
+<p>og dermed</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{21}
+=
+-\frac{1}{jX}
+=
+\frac{j}{X}
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+|Y_{21}|=\frac{1}{X}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_{21}=90^\circ
+\]</div>
+<p>Videre er</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_{11}=-90^\circ
+\]</div>
+<p>og siden</p>
+<div class="math notranslate nohighlight">
+\[
+\cos(-90^\circ)=0
+\]</div>
+<p>forsvinner diagonal-leddet.</p>
+<p>Da står vi igjen med</p>
+<div class="math notranslate nohighlight">
+\[
+P_1
+=
+\frac{|E'_1||E'_2|}{X}
+\cos(90^\circ+\delta_2-\delta_1)
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="fra-cosinus-til-sinus">
+<h1>5. Fra cosinus til sinus<a class="headerlink" href="#fra-cosinus-til-sinus" title="Permalink to this heading">#</a></h1>
+<p>Bruk identiteten</p>
+<div class="math notranslate nohighlight">
+\[
+\cos(90^\circ-x)=\sin(x)
+\]</div>
+<p>med</p>
+<div class="math notranslate nohighlight">
+\[
+x=\delta_1-\delta_2
+\]</div>
+<p>Da får vi</p>
+<div class="math notranslate nohighlight">
+\[
+P_1
+=
+\frac{|E'_1||E'_2|}{X}
+\sin(\delta_1-\delta_2)
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="definer-kraftvinkelen">
+<h1>6. Definer kraftvinkelen<a class="headerlink" href="#definer-kraftvinkelen" title="Permalink to this heading">#</a></h1>
+<p>Definer den relative rotorvinkelen</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+=
+\delta_1-\delta_2
+\]</div>
+<p>Da blir uttrykket</p>
+<div class="math notranslate nohighlight">
+\[
+P_1
+=
+\frac{|E'_1||E'_2|}{X}
+\sin\delta
+\]</div>
+<p>Definer videre</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+=
+\frac{|E'_1||E'_2|}{X}
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+P=P_{\max}\sin\delta
+\]</div>
+<p>Dette er den generelle kraftvinkelligningen.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="overgang-til-smib">
+<h1>7. Overgang til SMIB<a class="headerlink" href="#overgang-til-smib" title="Permalink to this heading">#</a></h1>
+<p>En infinite bus modelleres som</p>
+<div class="math notranslate nohighlight">
+\[
+E'_2=V
+\]</div>
+<p>med konstant vinkel</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_2=0
+\]</div>
+<p>Systemet blir da</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E'∠δ  ---- jXtransfer ----  V∠0
+</pre></div>
+</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+=
+\delta_1
+\]</div>
+<p>og kraftvinkelligningen reduseres til</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{E'V}{X_{\text{transfer}}}
+\sin\delta
+\]</div>
+<p>hvor</p>
+<div class="math notranslate nohighlight">
+\[
+X_{\text{transfer}}
+=
+X_d' + X_{\text{nett}}
+\]</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="fysisk-tolkning">
+<h1>Fysisk tolkning<a class="headerlink" href="#fysisk-tolkning" title="Permalink to this heading">#</a></h1>
+<p>Kraftflyt:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Vt∠α ---- jXnett ---- V∠0
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+P
+=
+\frac{V_tV}{X_{\text{nett}}}
+\sin\alpha
+\]</div>
+<p>Stabilitet:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E'∠δ ---- j(Xd'+Xnett) ---- V∠0
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{E'V}
+     {X_d'+X_{\text{nett}}}
+\sin\delta
+\]</div>
+<p>Dermed kan kraftvinkelligningen ses som et spesialtilfelle av den ordinære kraftflytligningen når:</p>
+<ol class="arabic simple">
+<li><p>Bussene flyttes til de interne EMF-punktene <span class="math notranslate nohighlight">\(E'\)</span>.</p></li>
+<li><p>Nettet er tapsfritt.</p></li>
+<li><p>Systemet reduseres til to porter.</p></li>
+<li><p>Den ene porten gjøres til en infinite bus.
+```<strong>`</strong>````</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="smib">
+<h1>SMIB<a class="headerlink" href="#smib" title="Permalink to this heading">#</a></h1>
+<p><img alt="SMIB" src="../_images/smib.svg" /></p>
+<p>Vi skal i det følgende modellere en feil midt på den nederste av de to paralellinjene, med den hensikt og gjøre en transient stabilitetsanalyse av systemet. Vi har tre tenkte scenario:</p>
+<ol class="arabic simple">
+<li><p>Stabilt system</p></li>
+<li><p>Kortslutning</p></li>
+<li><p>Selektivitet</p></li>
+</ol>
+<p>Maskinen leverer 1 pu aktiv effekt og både terminalspenning <span class="math notranslate nohighlight">\(V_t\)</span> og infinite-bus spenning ,<span class="math notranslate nohighlight">\(V_{\infty}\)</span> er 1 pu. Alle reaktanser er omgjort til pu verdier på en felles systembase. Beregn kraftvinkelligning ved stabil drift</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">X_d</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">L1</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">L2</span> <span class="o">=</span> <span class="mf">0.4</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="n">L1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Ekvivalentreaktansen er:'</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s1">'per unit'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ekvivalentreaktansen er: 0.3 per unit
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"1∠</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1∠17.46°
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Re = </span><span class="si">{</span><span class="n">Vt</span><span class="o">.</span><span class="n">real</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Im = </span><span class="si">{</span><span class="n">Vt</span><span class="o">.</span><span class="n">imag</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Re = 0.9539
+Im = 0.3000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ia</span> <span class="o">=</span> <span class="p">(</span><span class="n">Vt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span>
+
+<span class="n">mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Ia</span><span class="p">)</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">Ia</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Vt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"I = </span><span class="si">{</span><span class="n">mag</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ∠ </span><span class="si">{</span><span class="n">angle</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9539392014169457+0.3j)
+I = 1.0117 ∠ 8.73°
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"I = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Ia</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">∠</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">Ia</span><span class="p">))</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"I = </span><span class="si">{</span><span class="n">Ia</span><span class="o">.</span><span class="n">real</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> + j</span><span class="si">{</span><span class="n">Ia</span><span class="o">.</span><span class="n">imag</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I = 1.0117∠8.73°
+I = 1.0000 + j0.1535
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E1</span> <span class="o">=</span> <span class="n">Vt</span> <span class="o">+</span> <span class="p">((</span><span class="n">Ia</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">X_d</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"E1 = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">E1</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">∠</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">E1</span><span class="p">))</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"E1 = </span><span class="si">{</span><span class="n">E1</span><span class="o">.</span><span class="n">real</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> + j</span><span class="si">{</span><span class="n">E1</span><span class="o">.</span><span class="n">imag</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E1 = 1.0500∠28.44°
+E1 = 0.9232 + j0.5000
+</pre></div>
+</div>
+</div>
+</div>
+<section id="totalreaktans">
+<h2>Totalreaktans<a class="headerlink" href="#totalreaktans" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tot</span> <span class="o">=</span> <span class="n">X</span><span class="o">+</span><span class="n">X_d</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Totalreaktansen er:'</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">X_tot</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s1">'per unit'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Totalreaktansen er: 0.5 per unit
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_e</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">E1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">X_tot</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">P_e</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1.05</span><span class="o">/</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">Pmax_ss</span> <span class="o">=</span> <span class="mf">2.10</span>
+<span class="n">Pmax_feil</span> <span class="o">=</span> <span class="mf">0.808</span>
+<span class="n">Pmax_L1</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">Pm</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">delta_deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">delta_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">)</span>
+
+<span class="n">Pe_ss</span> <span class="o">=</span> <span class="n">Pmax_ss</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_rad</span><span class="p">)</span>
+<span class="n">Pe_feil</span> <span class="o">=</span> <span class="n">Pmax_feil</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_rad</span><span class="p">)</span>
+<span class="n">Pe_L1</span> <span class="o">=</span> <span class="n">Pmax_L1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_rad</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe_ss</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_ess=2.10\sin\delta$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe_feil</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_eFeil=0.808\sin\delta$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe_L1</span><span class="p">,</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_eL1=1.5\sin\delta$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Pm</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_m=1.0$'</span><span class="p">)</span>
+
+<span class="c1"># Akselerasjon</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe</span><span class="p">,</span> <span class="n">Pm</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">Pm</span> <span class="o">&gt;</span> <span class="n">Pe</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">'limegreen'</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_m&gt;P_e$ (acceleration)'</span>
+<span class="p">)</span>
+
+<span class="c1"># Retardasjon</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe</span><span class="p">,</span> <span class="n">Pm</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">Pe</span> <span class="o">&gt;</span> <span class="n">Pm</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">'salmon'</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_e&gt;P_m$ (deceleration)'</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\delta$ (grader)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Effekt (p.u.)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Power-Angle Curve and Accelerating Power'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/80eb2139db3d346392c2bc2e8e90c8a3a7cb829dcc7950dab139dd0b02c1664c.png" src="../_images/80eb2139db3d346392c2bc2e8e90c8a3a7cb829dcc7950dab139dd0b02c1664c.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./10_stabilityclass"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Fra kraftflyt til kraftvinkelligningen (SMIB)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utgangspunkt-kraftflytligningen">1. Utgangspunkt: Kraftflytligningen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitetsmodell">2. Stabilitetsmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-portmodell">3. To-portmodell</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tapsfritt-nett">4. Tapsfritt nett</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-cosinus-til-sinus">5. Fra cosinus til sinus</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definer-kraftvinkelen">6. Definer kraftvinkelen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#overgang-til-smib">7. Overgang til SMIB</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-tolkning">Fysisk tolkning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#smib">SMIB</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#totalreaktans">Totalreaktans</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
