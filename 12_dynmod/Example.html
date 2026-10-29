@@ -1,0 +1,3310 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 14: Power System Stability &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '12_dynmod/Example';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/swingequation.html">Svingeligning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB5.html">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamisk modellering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dynmod.html">Single Machine Infinite Bus (SMIB)</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment8.html">Øving 8</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F12_dynmod/Example.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/12_dynmod/Example.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 14: Power System Stability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 14: Power System Stability</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stability-problem">14.1 THE STABILITY PROBLEM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-dynamics-and-the-swing-equation">14.2 ROTOR DYNAMICS AND THE SWING EQUATION</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-swing-equation-derivation">Summary of the Swing Equation Derivation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-modern-notation">Connection to Modern Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inertia-constant-h-and-the-swing-equation">Inertia Constant H and the Swing Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-inertia-constant">Definition of the Inertia Constant</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-m-and-h">Relationship Between M and H</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-unit-swing-equation">Per-Unit Swing Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-angle-in-electrical-radians">Rotor Angle in Electrical Radians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-angle-in-electrical-degrees">Rotor Angle in Electrical Degrees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special Cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hz-system">50 Hz System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">60 Hz System</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example">Worked Example</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-electrical-degrees">Solution Using Electrical Degrees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-electrical-radians">Solution Using Electrical Radians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-sections-14-2-and-14-3">Summary of Sections 14.2 and 14.3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swing-equation-as-two-first-order-equations">Swing Equation as Two First-Order Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-of-inertia-constant-to-a-common-system-base">Conversion of Inertia Constant to a Common System Base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-remarks">Practical Remarks</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-inertia-constants-and-example-14-1">Summary of Inertia Constants and Example 14.1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-inertia-constants">Typical Inertia Constants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-kinetic-energy">Rotational Kinetic Energy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-to-inertia-constant-h">Conversion to Inertia Constant H</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-practical-formula">Final Practical Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#significance">Significance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-generator-representation-in-stability-studies">Equivalent Generator Representation in Stability Studies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-swing-equations">Individual Swing Equations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-equivalent-inertia-constant">Example: Equivalent Inertia Constant</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-1">Unit 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-2">Unit 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-inertia-constant-on-a-common-base">Equivalent Inertia Constant on a Common Base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-formula">General Formula</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#coherent-machines-and-equivalent-inertia-constant">Coherent Machines and Equivalent Inertia Constant</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-result">Example Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coherent-machines">Coherent Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-stability-studies">Importance in Stability Studies</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#non-coherent-machines-and-relative-swing-equation">Non-Coherent Machines and Relative Swing Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-motion-of-two-machines">Relative Motion of Two Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Individual Swing Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-two-machine-form">Equivalent Two-Machine Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-mechanical-power">Weighted Mechanical Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-electrical-power">Weighted Electrical Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Physical Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Importance in Stability Studies</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-machine-relative-stability-and-infinite-bus-concept">Two-Machine Relative Stability and Infinite Bus Concept</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-motor-system">Generator-Motor System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-swing-equation">Relative Swing Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-as-a-relative-property">Stability as a Relative Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-stability-problems">Types of Stability Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-machine-against-an-infinite-bus">Case 1: Machine Against an Infinite Bus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-two-finite-inertia-machines">Case 2: Two Finite-Inertia Machines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-bus-concept">Infinite Bus Concept</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance">Importance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-power-angle-equation">14.4 The Power-Angle Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-acceleration-and-deceleration">Rotor Acceleration and Deceleration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerating-rotor">Accelerating Rotor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-operation">Steady-State Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decelerating-rotor">Decelerating Rotor</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-electrical-power">Importance of Electrical Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-to-the-classical-power-angle-relationship">Transition to the Classical Power-Angle Relationship</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-angle-equation-from-the-reduced-y-bus-network">Power-Angle Equation from the Reduced Y-Bus Network</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-two-bus-network">Reduced Two-Bus Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phasor-definitions">Phasor Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#active-and-reactive-power">Active and Reactive Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-rotor-angle">Relative Rotor Angle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-power-angle-form">Simplified Power-Angle Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-representation">Classical Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lossless-network-approximation">Lossless Network Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-swing-equation">Connection to the Swing Equation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-power-angle-equation">Classical Power-Angle Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-output-power">Electrical Output Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-power-angle-equation">General Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Lossless Network Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-transferable-power">Maximum Transferable Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14-3-determination-of-the-power-angle-equation">Example 14.3: Determination of the Power-Angle Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-description">Problem Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-result">General Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Importance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14-3-full-solution">Example 14.3 – Full Solution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#given-data">Given Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-equivalent-network-reactance">Step 1: Equivalent Network Reactance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determine-the-terminal-voltage-angle">Step 2: Determine the Terminal-Voltage Angle</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-angle-equation-derivation">Power-Angle Equation Derivation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#swing-equation-and-operating-point">Swing Equation and Operating Point</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14-4-three-phase-fault-at-point-p">Example 14.4 - Three-Phase Fault at Point P</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kron-reduction-nodeeliminasjon">Kron reduction (nodeeliminasjon)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#powerfactory-setup-for-transient-stability-analysis-stevenson-example-14-4">PowerFactory Setup for Transient Stability Analysis (Stevenson Example 14.4)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-model">1. Network Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-model">2. Generator Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-bus">3. Infinite Bus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-flow">4. Load Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prefault-power-angle-equation">5. Prefault Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-simulation">6. RMS Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-phase-fault">7. Three-Phase Fault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-clearing">8. Fault Clearing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-on-power-angle-equation">9. Fault-On Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerating-power">10. Accelerating Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-rotor-acceleration">11. Initial Rotor Acceleration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-clearing-time-cct">12. Critical Clearing Time (CCT)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">PowerFactory Setup for Transient Stability Analysis (Stevenson Example 14.4)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1. Network Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2. Generator Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3. Infinite Bus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4. Load Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. Prefault Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6. RMS Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7. Three-Phase Fault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">8. Fault Clearing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">9. Fault-On Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">10. Accelerating Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">11. Initial Rotor Acceleration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">12. Critical Clearing Time (CCT)</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-14-power-system-stability">
+<h1>Chapter 14: Power System Stability<a class="headerlink" href="#chapter-14-power-system-stability" title="Permalink to this heading">#</a></h1>
+<img src="images/1975-Stevenson-Elements-of-Power-System-Analysis-3rd-Ed.jpg" width="20%">
+<p>When ac generators were driven by reciprocating steam engines, one of the major problems in the operation of machinery was <em>hunting</em>. The periodic variations in the torque applied to the generators caused periodic variations in speed.</p>
+<p>The resulting periodic variations in voltage and frequency were transmitted to the motors connected to the system. Oscillations of the motors caused by the variations in voltage and frequency sometimes caused the motors to lose synchronism entirely if their natural frequency of oscillation coincided with the frequency of oscillation caused by the engines driving the generators.</p>
+<p>Damper windings were first used to minimize hunting by the damping action of the losses resulting from the currents induced in the damper windings by any relative motion between the rotor and the rotating field set up by the armature current.</p>
+<p>The use of turbines has reduced the problem of hunting, although it is still present where the prime mover is a diesel engine. Maintaining synchronism between the various parts of a power system becomes increasingly difficult, however, as the systems and interconnections between systems continue to grow.</p>
+<div style="display:flex; gap:20px;">
+<p><div style="text-align:center;">
+    <img src="images/1975-Stevenson-Elements-of-Power-System-Analysis-3rd-Ed.jpg" width="47%">
+    <p><b>(a)</b> Generator</p>
+  </div></p>
+<p><div style="text-align:center;">
+    <img src="../dynamiske_kraftnett-book2/images/fp_grainger.jpg" width="100%">
+    <p><b>(b)</b> Motor</p>
+  </div></p>
+</div>
+<section id="the-stability-problem">
+<h2>14.1 THE STABILITY PROBLEM<a class="headerlink" href="#the-stability-problem" title="Permalink to this heading">#</a></h2>
+<p>Power system stability may be defined as that property of the system which enables the synchronous machines of the system to respond to a disturbance from a normal operating condition so as to return to a condition where their operation is again normal.</p>
+<p>Stability studies are usually classified into three types depending upon the nature and order of magnitude of the disturbance. These are</p>
+<ul class="simple">
+<li><p><em>transient stability</em></p></li>
+<li><p><em>dynamic stability</em></p></li>
+<li><p><em>steady-state stability</em></p></li>
+</ul>
+<p>Today, transient stability studies constitute the major analytical approach to the study of power-system electromechanical dynamic behavior. Transient stability studies are aimed at determining if the system will remain in synchronism following <em>major</em> disturbances such as transmission system faults, sudden load changes, loss of generating units, or line switching. Such studies began more than 50 years ago but were then confined to consideration of the dynamic problems of not more than two machines. Present-day power systems are vast, heavily interconnected systems with many hundreds of machines which can dynamically interact through the medium of their extra-high voltage and ultra-high voltage networks. These machines have associated excitation systems and turbine-governing control systems which, in some but not all cases, must be modeled in order to properly reflect the correct dynamic response of the power system to certain system disturbances.</p>
+<p>Dynamic and steady-state stability studies are less extensive in scope and involve one or just a few machines undergoing slow or gradual changes in operating conditions. Therefore, dynamic and steady-state stability studies concern the stability of the locus of essentially steady-state operating points of the system. The distinction made between steady-state and dynamic stability studies is really artificial since the stability problems are the same in nature; they differ only in the degree of detail used to model the machines. In dynamic stability studies, the excitation system and turbine-governing system are represented along with synchronous machine models which provide for flux-linkage variation in the machine air-gap. Steady-state stability problems use a very simple generator model which treats the generator as a constant voltage source. The solution technique of steady-state and dynamic stability problems is to examine the stability of the system under incremental variations about an equilibrium point. The nonlinear differential and algebraic equations for the system can be replaced by a set of linear equations which are then solved by methods of linear analysis to determine whether the machine or machines will remain in synchronism following small changes from the operating point.</p>
+<p>Transient stability studies are much more commonly undertaken thereby reflecting their greater importance in practice. Such problems involve large disturbances which do not allow the linearization process to be used and the nonlinear differential and algebraic equations must be solved by direct methods or by iterative step-by-step procedures. Transient stability problems can be subdivided into first-swing and multiswing stability problems. First-swing stability is based on a reasonably simple generator model without representation of control systems. Usually the time period under study is the first second following a system fault. If the machines of the system are found to remain in synchronism within the first second, the system is said to be stable. Multiswing stability problems extend over a longer study period and therefore must consider effects of generator control systems which affect machine performance during the extended time period. Machine models of greater sophistication must be represented to reflect proper behavior.</p>
+<p>In all stability studies, the objective is to determine whether or not the rotors of the machines being perturbed return to constant speed operation. Obviously, this means that the rotor speeds must depart at least temporarily from synchronous speed. To facilitate computation, three fundamental assumptions are made in all stability studies:</p>
+<ol class="arabic simple">
+<li><p>Only synchronous frequency currents and voltages are considered in the stator windings and the power system. Consequently, dc offset currents and harmonic components are neglected.</p></li>
+<li><p>Symmetrical components are used in the representation of unbalanced faults.</p></li>
+<li><p>Generated voltage is considered unaffected by machine speed variations.</p></li>
+</ol>
+<p>These assumptions permit the use of phasor algebra for the transmission network and solution by load-flow techniques using 60-Hz parameters. Also, negative- and zero-sequence networks can be incorporated into the positive-sequence network at the fault point. As we shall see, three-phase balanced faults are generally considered. However, in some special studies, circuit-breaker clearing operations may be such that consideration of unbalanced conditions is unavoidable.</p>
+</section>
+<section id="rotor-dynamics-and-the-swing-equation">
+<h2>14.2 ROTOR DYNAMICS AND THE SWING EQUATION<a class="headerlink" href="#rotor-dynamics-and-the-swing-equation" title="Permalink to this heading">#</a></h2>
+<p>The equation governing the motion of the rotor of a synchronous machine is based on the elementary principle in dynamics which states that accelerating torque is the product of the moment of inertia of the rotor times its angular acceleration. In the MKS system of units, this equation can be written for the synchronous generator in the form</p>
+<div class="math notranslate nohighlight">
+\[
+J\frac{d^2\theta_m}{dt^2}=T_a=T_m-T_e
+\]</div>
+<p>where the symbols have the following meanings:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(J\)</span> : the total moment of inertia of the rotor masses, in kg-m²</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta_m\)</span> : the angular displacement of the rotor with respect to a stationary axis, in mechanical radians</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> : time, in seconds</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_m\)</span> : the mechanical or shaft torque supplied by the prime mover less retarding torque due to rotational losses, in N-m</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_e\)</span> : the net electrical or electromagnetic torque, in N-m</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_a\)</span> : the net accelerating torque, in N-m</p></li>
+</ul>
+<p>The mechanical torque <span class="math notranslate nohighlight">\(T_m\)</span> and the electrical torque <span class="math notranslate nohighlight">\(T_e\)</span> are considered positive for the synchronous generator which tends to accelerate the rotor in the positive <span class="math notranslate nohighlight">\(\theta_m\)</span> direction of rotation as shown in Fig. 14.1a. Under steady-state operation of the generator <span class="math notranslate nohighlight">\(T_m\)</span> and <span class="math notranslate nohighlight">\(T_e\)</span> are equal and the accelerating torque <span class="math notranslate nohighlight">\(T_a\)</span> is zero. In this case there is no acceleration or deceleration of the rotor masses and the resultant constant speed is the synchronous speed. The rotating masses which include the rotor of the generator and the prime mover are said to be in synchronism with the other machines operating at synchronous speed in the power system. The prime mover may be a hydro turbine or a steam turbine for which models of different levels of complexity exist to represent their effect on <span class="math notranslate nohighlight">\(T_m\)</span>. In this text <span class="math notranslate nohighlight">\(T_m\)</span> is considered constant at any given operating condition. This assumption is a fair one for generators even though input from the prime mover is controlled by governors. Governors do not act until after a change in speed is sensed and so are not considered effective during the time-period in which rotor dynamics are of interest in our stability studies here. The electrical torque <span class="math notranslate nohighlight">\(T_e\)</span> corresponds to the net air-gap power in the machine and thus accounts for the total output power of the generator plus <span class="math notranslate nohighlight">\(I^2R\)</span> losses in the armature winding. In the synchronous motor the direction of power flow is opposite to that in the generator. Accordingly, for a motor both <span class="math notranslate nohighlight">\(T_m\)</span> and <span class="math notranslate nohighlight">\(T_e\)</span> in Eq. (14.1) are reversed in sign as shown in Fig. 14.1b. <span class="math notranslate nohighlight">\(T_e\)</span> then corresponds to the air-gap power supplied by the electrical system to drive the rotor while <span class="math notranslate nohighlight">\(T_m\)</span> represents the counter-torque of the load and rotational losses tending to retard the rotor.</p>
+<img src="images/gra08351_1301.jpg" width="50%"><p>Since <span class="math notranslate nohighlight">\(\theta_m\)</span> is measured with respect to a stationary reference axis on the stator, it is an absolute measure of rotor angle. Consequently, it continuously increases with time even at constant synchronous speed. Since the rotor speed relative to synchronous speed is of interest it is more convenient to measure the rotor angular position with respect to a reference axis which rotates at synchronous speed. Therefore, we define</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_m = \omega_{sm} t + \delta_m
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_{sm}\)</span> is the synchronous speed of the machine in mechanical radians per second and <span class="math notranslate nohighlight">\(\delta_m\)</span> is the angular displacement of the rotor, in mechanical radians.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summary-of-the-swing-equation-derivation">
+<h1>Summary of the Swing Equation Derivation<a class="headerlink" href="#summary-of-the-swing-equation-derivation" title="Permalink to this heading">#</a></h1>
+<p>Starting from the rotor-angle definition</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_m = \omega_{sm} t + \delta_m
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta_m\)</span> is the absolute mechanical rotor angle,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega_{sm}\)</span> is the synchronous mechanical angular velocity,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta_m\)</span> is the rotor angle measured relative to a synchronously rotating reference frame.</p></li>
+</ul>
+<p>Differentiating with respect to time gives</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\theta_m}{dt}
+=
+\omega_{sm}
++
+\frac{d\delta_m}{dt}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\omega_{sm}\)</span> is constant,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\theta_m}{dt^2}
+=
+\frac{d^2\delta_m}{dt^2}
+\]</div>
+<p>Substituting into the rotor dynamic equation</p>
+<div class="math notranslate nohighlight">
+\[
+J\frac{d^2\theta_m}{dt^2}
+=
+T_m-T_e
+\]</div>
+<p>results in</p>
+<div class="math notranslate nohighlight">
+\[
+J\frac{d^2\delta_m}{dt^2}
+=
+T_m-T_e
+\]</div>
+<p>Define the rotor angular velocity as</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_m = \frac{d\theta_m}{dt}
+\]</div>
+<p>Using the relationship</p>
+<div class="math notranslate nohighlight">
+\[
+P=T\omega
+\]</div>
+<p>and multiplying the torque equation by <span class="math notranslate nohighlight">\(\omega_m\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[
+J\omega_m\frac{d^2\delta_m}{dt^2}
+=
+P_m-P_e
+=
+P_a
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_m\)</span> is the mechanical input power,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_e\)</span> is the electrical output power,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_a\)</span> is the accelerating power.</p></li>
+</ul>
+<p>Introducing the coefficient</p>
+<div class="math notranslate nohighlight">
+\[
+M = J\omega_m
+\]</div>
+<p>leads to the classical form</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta_m}{dt^2}
+=
+P_m-P_e
+\]</div>
+<p>This equation states that rotor acceleration is determined by the imbalance between mechanical input power and electrical output power.</p>
+<section id="connection-to-modern-notation">
+<h2>Connection to Modern Notation<a class="headerlink" href="#connection-to-modern-notation" title="Permalink to this heading">#</a></h2>
+<p>In modern power-system stability analysis, the swing equation is more commonly written as</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(H\)</span> is the inertia constant and <span class="math notranslate nohighlight">\(\omega_s\)</span> is the synchronous electrical angular velocity.</p>
+<p>The derivation above therefore represents the transition from Newton’s rotational dynamics to the classical swing equation used in transient stability studies.</p>
+</section>
+<section id="inertia-constant-h-and-the-swing-equation">
+<h2>Inertia Constant H and the Swing Equation<a class="headerlink" href="#inertia-constant-h-and-the-swing-equation" title="Permalink to this heading">#</a></h2>
+<section id="definition-of-the-inertia-constant">
+<h3>Definition of the Inertia Constant<a class="headerlink" href="#definition-of-the-inertia-constant" title="Permalink to this heading">#</a></h3>
+<p>The inertia constant is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+H = \frac{\text{stored kinetic energy at synchronous speed}}
+         {\text{machine rating}}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H\)</span> is the inertia constant (MJ/MVA)</p></li>
+<li><p>Stored kinetic energy is evaluated at synchronous speed</p></li>
+<li><p>Machine rating is the three-phase machine rating in MVA</p></li>
+</ul>
+</section>
+</section>
+<section id="relationship-between-m-and-h">
+<h2>Relationship Between M and H<a class="headerlink" href="#relationship-between-m-and-h" title="Permalink to this heading">#</a></h2>
+<p>The inertia coefficient <span class="math notranslate nohighlight">\(M\)</span> can be related to <span class="math notranslate nohighlight">\(H\)</span> through</p>
+<div class="math notranslate nohighlight">
+\[
+M = \frac{2H}{\omega_{sm}} S_{\text{mach}}
+\]</div>
+</section>
+<section id="per-unit-swing-equation">
+<h2>Per-Unit Swing Equation<a class="headerlink" href="#per-unit-swing-equation" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+P_a
+=
+P_m-P_e
+\]</div>
+</section>
+<section id="rotor-angle-in-electrical-radians">
+<h2>Rotor Angle in Electrical Radians<a class="headerlink" href="#rotor-angle-in-electrical-radians" title="Permalink to this heading">#</a></h2>
+<p>Using</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_s = 2\pi f
+\]</div>
+<p>we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{H}{\pi f}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+}
+\]</div>
+<p>when <span class="math notranslate nohighlight">\(\delta\)</span> is expressed in electrical radians.</p>
+</section>
+<section id="rotor-angle-in-electrical-degrees">
+<h2>Rotor Angle in Electrical Degrees<a class="headerlink" href="#rotor-angle-in-electrical-degrees" title="Permalink to this heading">#</a></h2>
+<p>The conversion between radians and degrees is</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{\text{rad}}
+=
+\frac{\pi}{180}
+\delta_{\text{deg}}
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta_{\text{rad}}}{dt^2}
+=
+\frac{\pi}{180}
+\frac{d^2\delta_{\text{deg}}}{dt^2}
+\]</div>
+<p>Substituting into the swing equation gives</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{H}{180f}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+}
+\]</div>
+<p>when <span class="math notranslate nohighlight">\(\delta\)</span> is expressed in electrical degrees.</p>
+</section>
+<section id="special-cases">
+<h2>Special Cases<a class="headerlink" href="#special-cases" title="Permalink to this heading">#</a></h2>
+<section id="hz-system">
+<h3>50 Hz System<a class="headerlink" href="#hz-system" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{H}{9000}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+}
+\]</div>
+</section>
+<section id="id1">
+<h3>60 Hz System<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{H}{10800}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+}
+\]</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="worked-example">
+<h1>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this heading">#</a></h1>
+<p>Assume a generator with</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H=5\text{ s}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f=50\text{ Hz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_m=1.0\)</span> pu</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_e=0.8\)</span> pu</p></li>
+</ul>
+<p>The accelerating power is</p>
+<div class="math notranslate nohighlight">
+\[
+P_a=P_m-P_e=1.0-0.8=0.2\text{ pu}
+\]</div>
+<section id="solution-using-electrical-degrees">
+<h2>Solution Using Electrical Degrees<a class="headerlink" href="#solution-using-electrical-degrees" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\frac{H}{180f}
+\frac{d^2\delta}{dt^2}
+=P_a
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{5}{180\cdot50}
+\frac{d^2\delta}{dt^2}=0.2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{5}{9000}
+\frac{d^2\delta}{dt^2}=0.2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}
+=0.2\frac{9000}{5}
+=360
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{d^2\delta}{dt^2}
+=360\;\text{electrical degrees/s}^2
+}
+\]</div>
+</section>
+<section id="solution-using-electrical-radians">
+<h2>Solution Using Electrical Radians<a class="headerlink" href="#solution-using-electrical-radians" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\frac{H}{\pi f}
+\frac{d^2\delta}{dt^2}
+=P_a
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{5}{50\pi}
+\frac{d^2\delta}{dt^2}=0.2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}
+=2\pi
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{d^2\delta}{dt^2}
+=6.283\;\text{rad/s}^2
+}
+\]</div>
+</section>
+<section id="verification">
+<h2>Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+6.283\frac{180}{\pi}=360
+\]</div>
+<p>The results are therefore consistent.</p>
+</section>
+<section id="physical-interpretation">
+<h2>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_m&gt;P_e\)</span> implies rotor acceleration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_m=P_e\)</span> implies constant speed.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_m&lt;P_e\)</span> implies rotor deceleration.</p></li>
+</ul>
+<p>In this example the mechanical input power exceeds the electrical output power, resulting in a positive accelerating power and an increasing rotor angle.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summary-of-sections-14-2-and-14-3">
+<h1>Summary of Sections 14.2 and 14.3<a class="headerlink" href="#summary-of-sections-14-2-and-14-3" title="Permalink to this heading">#</a></h1>
+<section id="swing-equation-as-two-first-order-equations">
+<h2>Swing Equation as Two First-Order Equations<a class="headerlink" href="#swing-equation-as-two-first-order-equations" title="Permalink to this heading">#</a></h2>
+<p>The swing equation is a second-order differential equation describing the rotor dynamics of a synchronous machine.</p>
+<p>For numerical solution and stability analysis, it is often written as two coupled first-order differential equations.</p>
+<p>The first equation relates rotor speed deviation to accelerating power:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}\frac{d\omega}{dt}=P_m-P_e
+\]</div>
+<p>The second equation relates the rotor angle to the speed deviation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}=\omega-\omega_s
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H\)</span> is the inertia constant,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega_s\)</span> is the synchronous speed,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega\)</span> is the rotor speed,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span> is the rotor angle,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_m\)</span> is the mechanical input power,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_e\)</span> is the electrical output power.</p></li>
+</ul>
+<p>Solving these equations yields the swing curve, which shows how rotor angle varies with time after a disturbance.</p>
+<p>Inspection of the swing curves of all machines in a power system indicates whether synchronism is maintained.</p>
+</section>
+<section id="conversion-of-inertia-constant-to-a-common-system-base">
+<h2>Conversion of Inertia Constant to a Common System Base<a class="headerlink" href="#conversion-of-inertia-constant-to-a-common-system-base" title="Permalink to this heading">#</a></h2>
+<p>In a multimachine stability study, all quantities must be expressed on a common MVA base.</p>
+<p>The inertia constant of an individual machine can be converted from machine base to system base using</p>
+<div class="math notranslate nohighlight">
+\[
+H_{\text{system}}
+=
+H_{\text{mach}}
+\frac{S_{\text{mach}}}{S_{\text{system}}}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_{\text{mach}}\)</span> is the inertia constant on machine base,</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{\text{system}}\)</span> is the inertia constant on system base,</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_{\text{mach}}\)</span> is the machine rating,</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_{\text{system}}\)</span> is the selected system base.</p></li>
+</ul>
+<p>This conversion ensures that all machine swing equations are expressed on the same per-unit base.</p>
+</section>
+<section id="practical-remarks">
+<h2>Practical Remarks<a class="headerlink" href="#practical-remarks" title="Permalink to this heading">#</a></h2>
+<p>The coefficient M is rarely used in modern practice.</p>
+<p>Most power-system stability studies use H because it varies over a narrower range and is easier to compare between machines.</p>
+<p>Manufacturers may also specify inertia data using WR^2, where W is the rotating weight and R is the radius of gyration. This quantity can be converted to the corresponding moment of inertia and then used to determine H.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summary-of-inertia-constants-and-example-14-1">
+<h1>Summary of Inertia Constants and Example 14.1<a class="headerlink" href="#summary-of-inertia-constants-and-example-14-1" title="Permalink to this heading">#</a></h1>
+<section id="typical-inertia-constants">
+<h2>Typical Inertia Constants<a class="headerlink" href="#typical-inertia-constants" title="Permalink to this heading">#</a></h2>
+<p>The page presents representative ranges of inertia constants H (MJ/MVA) for various synchronous machines.</p>
+<p>General observations:</p>
+<ul class="simple">
+<li><p>Steam turbine generators tend to have relatively large inertia constants.</p></li>
+<li><p>Slow-speed hydro generators typically have lower values.</p></li>
+<li><p>Synchronous condensers have moderate inertia values.</p></li>
+<li><p>Synchronous motors exhibit a wide range depending on the connected load and the presence of flywheels.</p></li>
+</ul>
+</section>
+<section id="rotational-kinetic-energy">
+<h2>Rotational Kinetic Energy<a class="headerlink" href="#rotational-kinetic-energy" title="Permalink to this heading">#</a></h2>
+<p>The derivation begins with the classical expression for rotational kinetic energy:</p>
+<div class="math notranslate nohighlight">
+\[
+KE = \frac{1}{2}J\omega^2
+\]</div>
+<p>Using the manufacturer quantity WR^2 and rotational speed in revolutions per minute, kinetic energy is expressed in foot-pounds.</p>
+</section>
+<section id="conversion-to-inertia-constant-h">
+<h2>Conversion to Inertia Constant H<a class="headerlink" href="#conversion-to-inertia-constant-h" title="Permalink to this heading">#</a></h2>
+<p>The kinetic energy at synchronous speed is converted to megajoules and divided by machine MVA rating according to the definition</p>
+<div class="math notranslate nohighlight">
+\[
+H = \frac{\text{stored kinetic energy at synchronous speed}}{S_{mach}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_{mach}\)</span> is the machine rating in MVA.</p>
+</section>
+<section id="final-practical-formula">
+<h2>Final Practical Formula<a class="headerlink" href="#final-practical-formula" title="Permalink to this heading">#</a></h2>
+<p>After unit conversions and algebraic simplification, the following engineering formula is obtained:</p>
+<div class="math notranslate nohighlight">
+\[
+H = \frac{2.31\times10^{-10}\,WR^2\,(r/min)^2}{S_{mach}}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H\)</span> is in MJ/MVA,</p></li>
+<li><p><span class="math notranslate nohighlight">\(WR^2\)</span> is in lb-ft^2,</p></li>
+<li><p><span class="math notranslate nohighlight">\(r/min\)</span> is rotational speed,</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_{mach}\)</span> is machine rating in MVA.</p></li>
+</ul>
+</section>
+<section id="significance">
+<h2>Significance<a class="headerlink" href="#significance" title="Permalink to this heading">#</a></h2>
+<p>This formula provides a direct way to estimate the inertia constant from manufacturer data, allowing the machine to be incorporated into transient stability studies and swing-equation models.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="equivalent-generator-representation-in-stability-studies">
+<h1>Equivalent Generator Representation in Stability Studies<a class="headerlink" href="#equivalent-generator-representation-in-stability-studies" title="Permalink to this heading">#</a></h1>
+<p>In large power systems, several generators located in the same power plant may respond almost identically to a disturbance. When their rotor angles remain closely synchronized, the generators can be represented by a single equivalent machine.</p>
+<section id="individual-swing-equations">
+<h2>Individual Swing Equations<a class="headerlink" href="#individual-swing-equations" title="Permalink to this heading">#</a></h2>
+<p>For two generators connected to the same bus, the swing equations can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H_1}{\omega_s}
+\frac{d^2\delta_1}{dt^2}
+=
+P_{m1}-P_{e1}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H_2}{\omega_s}
+\frac{d^2\delta_2}{dt^2}
+=
+P_{m2}-P_{e2}.
+\]</div>
+<p>If the generators swing together, then</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_1 \approx \delta_2 \approx \delta.
+\]</div>
+<p>Adding the two equations gives</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2(H_1+H_2)}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+(P_{m1}+P_{m2})
+-
+(P_{e1}+P_{e2}).
+\]</div>
+<p>Defining</p>
+<div class="math notranslate nohighlight">
+\[
+H = H_1 + H_2,
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_m = P_{m1}+P_{m2},
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = P_{e1}+P_{e2},
+\]</div>
+<p>the equivalent swing equation becomes</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e.
+\]</div>
+<p>This equation has the same form as the swing equation of a single machine and can therefore be used to represent the dynamics of an entire power plant.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-equivalent-inertia-constant">
+<h1>Example: Equivalent Inertia Constant<a class="headerlink" href="#example-equivalent-inertia-constant" title="Permalink to this heading">#</a></h1>
+<p>Consider two generating units operating in parallel.</p>
+<section id="unit-1">
+<h2>Unit 1<a class="headerlink" href="#unit-1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Rated power: 500 MVA</p></li>
+<li><p>Power factor: 0.85</p></li>
+<li><p>Voltage: 20 kV</p></li>
+<li><p>Speed: 3600 r/min</p></li>
+<li><p>Inertia constant:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H_1 = 4.8\ \text{MJ/MVA}
+\]</div>
+</section>
+<section id="unit-2">
+<h2>Unit 2<a class="headerlink" href="#unit-2" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Rated power: 1333 MVA</p></li>
+<li><p>Power factor: 0.9</p></li>
+<li><p>Voltage: 22 kV</p></li>
+<li><p>Speed: 1800 r/min</p></li>
+<li><p>Inertia constant:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H_2 = 3.27\ \text{MJ/MVA}
+\]</div>
+</section>
+<section id="equivalent-inertia-constant-on-a-common-base">
+<h2>Equivalent Inertia Constant on a Common Base<a class="headerlink" href="#equivalent-inertia-constant-on-a-common-base" title="Permalink to this heading">#</a></h2>
+<p>For machines operating on a common MVA base,</p>
+<div class="math notranslate nohighlight">
+\[
+H_{\text{eq}}
+=
+\frac{
+H_1S_1 + H_2S_2
+}{
+S_1+S_2
+}
+\]</div>
+<p>Substituting the ratings,</p>
+<div class="math notranslate nohighlight">
+\[
+H_{\text{eq}}
+=
+\frac{
+(4.8)(500)
++
+(3.27)(1333)
+}{500+1333}
+\]</div>
+</section>
+<section id="general-formula">
+<h2>General Formula<a class="headerlink" href="#general-formula" title="Permalink to this heading">#</a></h2>
+<p>For <span class="math notranslate nohighlight">\(n\)</span> coherent generators,</p>
+<div class="math notranslate nohighlight">
+\[
+H_{\text{eq}}
+=
+\frac{
+\sum_{i=1}^{n} H_i S_i
+}{
+\sum_{i=1}^{n} S_i
+}
+\]</div>
+<p>This equivalent machine approach significantly reduces the number of swing equations that must be solved in large-scale transient stability studies.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="coherent-machines-and-equivalent-inertia-constant">
+<h1>Coherent Machines and Equivalent Inertia Constant<a class="headerlink" href="#coherent-machines-and-equivalent-inertia-constant" title="Permalink to this heading">#</a></h1>
+<section id="example-result">
+<h2>Example Result<a class="headerlink" href="#example-result" title="Permalink to this heading">#</a></h2>
+<p>For two generators operating coherently, the total stored kinetic energy is obtained by adding the kinetic energies of the individual machines expressed on their own ratings:</p>
+<div class="math notranslate nohighlight">
+\[
+E_k = H_1S_1 + H_2S_2
+\]</div>
+<p>Using</p>
+<div class="math notranslate nohighlight">
+\[
+H_1 = 4.8\ \text{MJ/MVA}, \qquad S_1 = 500\ \text{MVA}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+H_2 = 3.27\ \text{MJ/MVA}, \qquad S_2 = 1333\ \text{MVA}
+\]</div>
+<p>results in</p>
+<div class="math notranslate nohighlight">
+\[
+E_k = 6759\ \text{MJ}
+\]</div>
+<p>On a 100 MVA base, the equivalent inertia constant becomes</p>
+<div class="math notranslate nohighlight">
+\[
+H_{eq}
+=
+\frac{E_k}{100}
+=
+67.59\ \text{MJ/MVA}
+\]</div>
+</section>
+<section id="coherent-machines">
+<h2>Coherent Machines<a class="headerlink" href="#coherent-machines" title="Permalink to this heading">#</a></h2>
+<p>Machines whose rotor angles remain approximately equal during a disturbance are called <strong>coherent machines</strong>.</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_1 \approx \delta_2 \approx \delta
+\]</div>
+<p>Because coherent machines swing together, they may be represented by a single equivalent machine with an equivalent inertia constant.</p>
+</section>
+<section id="importance-in-stability-studies">
+<h2>Importance in Stability Studies<a class="headerlink" href="#importance-in-stability-studies" title="Permalink to this heading">#</a></h2>
+<p>Representing a group of coherent generators as a single equivalent machine reduces the number of swing equations that must be solved.</p>
+<p>This approach is widely used in transient stability studies of large interconnected power systems, where many generators may respond in a similar manner to a disturbance.</p>
+<p>The simplification preserves the dominant electromechanical behavior while reducing computational complexity.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="non-coherent-machines-and-relative-swing-equation">
+<h1>Non-Coherent Machines and Relative Swing Equation<a class="headerlink" href="#non-coherent-machines-and-relative-swing-equation" title="Permalink to this heading">#</a></h1>
+<section id="relative-motion-of-two-machines">
+<h2>Relative Motion of Two Machines<a class="headerlink" href="#relative-motion-of-two-machines" title="Permalink to this heading">#</a></h2>
+<p>When two machines do not swing together, they are called non-coherent machines. Instead of studying the absolute rotor angles, it is often useful to study their relative angle.</p>
+<p>Define</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{12}=\delta_1-\delta_2
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\delta_1\)</span> is the rotor angle of machine 1,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta_2\)</span> is the rotor angle of machine 2.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>Individual Swing Equations<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>For the two machines,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H_1}{\omega_s}
+\frac{d^2\delta_1}{dt^2}
+=
+P_{m1}-P_{e1}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H_2}{\omega_s}
+\frac{d^2\delta_2}{dt^2}
+=
+P_{m2}-P_{e2}.
+\]</div>
+<p>Subtracting the two equations produces a differential equation describing the relative motion between the rotors.</p>
+</section>
+<section id="equivalent-two-machine-form">
+<h2>Equivalent Two-Machine Form<a class="headerlink" href="#equivalent-two-machine-form" title="Permalink to this heading">#</a></h2>
+<p>The resulting equation can be written in the standard swing-equation form</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2}{\omega_s}
+H_{12}
+\frac{d^2\delta_{12}}{dt^2}
+=
+P_{m12}-P_{e12}
+\]</div>
+<p>where the equivalent inertia constant is</p>
+<div class="math notranslate nohighlight">
+\[
+H_{12}
+=
+\frac{H_1H_2}{H_1+H_2}.
+\]</div>
+</section>
+<section id="weighted-mechanical-power">
+<h2>Weighted Mechanical Power<a class="headerlink" href="#weighted-mechanical-power" title="Permalink to this heading">#</a></h2>
+<p>The equivalent mechanical power is</p>
+<div class="math notranslate nohighlight">
+\[
+P_{m12}
+=
+\frac{P_{m1}H_2-P_{m2}H_1}
+     {H_1+H_2}.
+\]</div>
+</section>
+<section id="weighted-electrical-power">
+<h2>Weighted Electrical Power<a class="headerlink" href="#weighted-electrical-power" title="Permalink to this heading">#</a></h2>
+<p>The equivalent electrical power is</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e12}
+=
+\frac{P_{e1}H_2-P_{e2}H_1}
+     {H_1+H_2}.
+\]</div>
+</section>
+<section id="id3">
+<h2>Physical Interpretation<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>The relative-angle formulation transforms two coupled swing equations into a single equation describing how the angle difference between the machines evolves.</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{12}=\delta_1-\delta_2
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(\delta_{12}\)</span> remains bounded, the machines remain in synchronism. If <span class="math notranslate nohighlight">\(\delta_{12}\)</span> grows continuously, synchronism is lost.</p>
+</section>
+<section id="id4">
+<h2>Importance in Stability Studies<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>This formulation is particularly useful for:</p>
+<ul class="simple">
+<li><p>generator–generator stability studies,</p></li>
+<li><p>generator–motor stability studies,</p></li>
+<li><p>first-swing stability analysis,</p></li>
+<li><p>reduction of multimachine systems to equivalent two-machine systems.</p></li>
+</ul>
+<p>The relative-angle model is one of the fundamental tools used in transient stability analysis.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="two-machine-relative-stability-and-infinite-bus-concept">
+<h1>Two-Machine Relative Stability and Infinite Bus Concept<a class="headerlink" href="#two-machine-relative-stability-and-infinite-bus-concept" title="Permalink to this heading">#</a></h1>
+<section id="generator-motor-system">
+<h2>Generator-Motor System<a class="headerlink" href="#generator-motor-system" title="Permalink to this heading">#</a></h2>
+<p>Consider a two-machine system consisting of:</p>
+<ul class="simple">
+<li><p>one synchronous generator,</p></li>
+<li><p>one synchronous motor,</p></li>
+<li><p>a transmission network represented mainly by reactances.</p></li>
+</ul>
+<p>Any increase in generator output is absorbed by the motor. Under these assumptions, the mechanical and electrical powers can be represented by equal and opposite quantities.</p>
+</section>
+<section id="relative-swing-equation">
+<h2>Relative Swing Equation<a class="headerlink" href="#relative-swing-equation" title="Permalink to this heading">#</a></h2>
+<p>The relative-angle swing equation derived previously can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H_{12}}{\omega_s}
+\frac{d^2\delta_{12}}{dt^2}
+=
+P_m-P_e
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{12}=\delta_1-\delta_2
+\]</div>
+<p>is the relative rotor angle between the two machines.</p>
+<p>The equation has exactly the same mathematical form as the swing equation of a single machine.</p>
+</section>
+<section id="stability-as-a-relative-property">
+<h2>Stability as a Relative Property<a class="headerlink" href="#stability-as-a-relative-property" title="Permalink to this heading">#</a></h2>
+<p>A key observation is that power-system stability is fundamentally a relative phenomenon.</p>
+<p>The important quantity is not the absolute rotor angle of an individual machine but the angle difference between machines:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{12}=\delta_1-\delta_2.
+\]</div>
+<p>For a stable system, rotor-angle differences remain bounded and tend to decrease after the disturbance has been removed.</p>
+<p>If the angle difference continues to increase, synchronism is lost.</p>
+</section>
+<section id="types-of-stability-problems">
+<h2>Types of Stability Problems<a class="headerlink" href="#types-of-stability-problems" title="Permalink to this heading">#</a></h2>
+<p>Many transient-stability studies can be interpreted as one of two basic problems:</p>
+<section id="case-1-machine-against-an-infinite-bus">
+<h3>Case 1: Machine Against an Infinite Bus<a class="headerlink" href="#case-1-machine-against-an-infinite-bus" title="Permalink to this heading">#</a></h3>
+<p>A finite-inertia machine swings with respect to an infinite bus.</p>
+</section>
+<section id="case-2-two-finite-inertia-machines">
+<h3>Case 2: Two Finite-Inertia Machines<a class="headerlink" href="#case-2-two-finite-inertia-machines" title="Permalink to this heading">#</a></h3>
+<p>Two machines swing with respect to each other and the relative-angle formulation is used.</p>
+</section>
+</section>
+<section id="infinite-bus-concept">
+<h2>Infinite Bus Concept<a class="headerlink" href="#infinite-bus-concept" title="Permalink to this heading">#</a></h2>
+<p>An infinite bus is an idealized network node having:</p>
+<ul class="simple">
+<li><p>constant voltage magnitude,</p></li>
+<li><p>constant voltage angle,</p></li>
+<li><p>zero internal impedance,</p></li>
+<li><p>infinite inertia.</p></li>
+</ul>
+<p>Because of its infinite inertia, the infinite bus is unaffected by disturbances elsewhere in the system.</p>
+<p>A large interconnected power system is often approximated as an infinite bus when studying the dynamics of a single generator.</p>
+</section>
+<section id="importance">
+<h2>Importance<a class="headerlink" href="#importance" title="Permalink to this heading">#</a></h2>
+<p>The relative-angle viewpoint greatly simplifies transient-stability analysis.</p>
+<p>Many multimachine systems can be reduced to equivalent two-machine or machine-infinite-bus problems while retaining the essential electromechanical behavior of the original system.</p>
+<img src="images/gra08351_1302.jpg" width="50%"></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-power-angle-equation">
+<h1>14.4 The Power-Angle Equation<a class="headerlink" href="#the-power-angle-equation" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In transient stability studies, the mechanical input power is commonly assumed to remain constant during the first moments following a disturbance.</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = \text{constant}
+\]</div>
+<p>This assumption is reasonable because turbine governors and prime-mover control systems react more slowly than the electrical system dynamics.</p>
+<p>As a result, short-term rotor acceleration is primarily determined by variations in electrical output power.</p>
+</section>
+<section id="rotor-acceleration-and-deceleration">
+<h2>Rotor Acceleration and Deceleration<a class="headerlink" href="#rotor-acceleration-and-deceleration" title="Permalink to this heading">#</a></h2>
+<p>The swing equation can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_m\)</span> is the mechanical input power,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_e\)</span> is the electrical output power,</p></li>
+<li><p><span class="math notranslate nohighlight">\(H\)</span> is the inertia constant,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span> is the rotor angle.</p></li>
+</ul>
+<p>The difference</p>
+<div class="math notranslate nohighlight">
+\[
+P_a = P_m-P_e
+\]</div>
+<p>is called the accelerating power.</p>
+<section id="accelerating-rotor">
+<h3>Accelerating Rotor<a class="headerlink" href="#accelerating-rotor" title="Permalink to this heading">#</a></h3>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+P_m&gt;P_e
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[
+P_a&gt;0
+\]</div>
+<p>and the rotor accelerates.</p>
+</section>
+<section id="steady-state-operation">
+<h3>Steady-State Operation<a class="headerlink" href="#steady-state-operation" title="Permalink to this heading">#</a></h3>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+P_m=P_e
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[
+P_a=0
+\]</div>
+<p>and the machine operates at constant synchronous speed.</p>
+</section>
+<section id="decelerating-rotor">
+<h3>Decelerating Rotor<a class="headerlink" href="#decelerating-rotor" title="Permalink to this heading">#</a></h3>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+P_m&lt;P_e
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[
+P_a&lt;0
+\]</div>
+<p>and the rotor decelerates.</p>
+</section>
+</section>
+<section id="importance-of-electrical-power">
+<h2>Importance of Electrical Power<a class="headerlink" href="#importance-of-electrical-power" title="Permalink to this heading">#</a></h2>
+<p>Because the mechanical power is assumed constant over the short time period of interest, transient stability behavior is largely determined by changes in</p>
+<div class="math notranslate nohighlight">
+\[
+P_e.
+\]</div>
+<p>Any disturbance that changes electrical power transfer will affect rotor speed and rotor angle.</p>
+<p>Consequently, understanding the relationship</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=f(\delta)
+\]</div>
+<p>is fundamental to transient stability analysis.</p>
+<p>This relationship is known as the <strong>power-angle equation</strong> and forms the basis for the equal-area criterion and many classical stability methods.</p>
+</section>
+<section id="transition-to-the-classical-power-angle-relationship">
+<h2>Transition to the Classical Power-Angle Relationship<a class="headerlink" href="#transition-to-the-classical-power-angle-relationship" title="Permalink to this heading">#</a></h2>
+<p>For a generator connected to an infinite bus, the electrical power is later shown to depend on rotor angle according to</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=P_{\max}\sin\delta
+\]</div>
+<p>This equation is one of the most important relationships in transient stability analysis.</p>
+<img src="images/gra08351_1303.jpg" width="50%"></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="power-angle-equation-from-the-reduced-y-bus-network">
+<h1>Power-Angle Equation from the Reduced Y-Bus Network<a class="headerlink" href="#power-angle-equation-from-the-reduced-y-bus-network" title="Permalink to this heading">#</a></h1>
+<section id="reduced-two-bus-network">
+<h2>Reduced Two-Bus Network<a class="headerlink" href="#reduced-two-bus-network" title="Permalink to this heading">#</a></h2>
+<p>After network reduction, the system can be represented by two internal machine nodes and the reduced bus-admittance matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{\text{bus}}
+=
+\begin{bmatrix}
+Y_{11} &amp; Y_{12} \\
+Y_{21} &amp; Y_{22}
+\end{bmatrix}.
+\end{split}\]</div>
+<p>The complex power injected at bus <span class="math notranslate nohighlight">\(k\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+P_k-jQ_k
+=
+V_k^{*}
+\sum_{n=1}^{N}
+Y_{kn}V_n.
+\]</div>
+<p>For machine 1,</p>
+<div class="math notranslate nohighlight">
+\[
+P_1+jQ_1
+=
+E_1'(Y_{11}E_1')^{*}
++
+E_1'(Y_{12}E_2')^{*}.
+\]</div>
+</section>
+<section id="phasor-definitions">
+<h2>Phasor Definitions<a class="headerlink" href="#phasor-definitions" title="Permalink to this heading">#</a></h2>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+E_1' = |E_1'|\angle\delta_1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E_2' = |E_2'|\angle\delta_2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{11}=G_{11}+jB_{11}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_{12}=|Y_{12}|\angle\theta_{12}.
+\]</div>
+</section>
+<section id="active-and-reactive-power">
+<h2>Active and Reactive Power<a class="headerlink" href="#active-and-reactive-power" title="Permalink to this heading">#</a></h2>
+<p>The active power of machine 1 becomes</p>
+<div class="math notranslate nohighlight">
+\[
+P_1
+=
+|E_1'|^2G_{11}
++
+|E_1'||E_2'||Y_{12}|
+\cos(\delta_1-\delta_2-\theta_{12}).
+\]</div>
+<p>The reactive power becomes</p>
+<div class="math notranslate nohighlight">
+\[
+Q_1
+=
+-|E_1'|^2B_{11}
++
+|E_1'||E_2'||Y_{12}|
+\sin(\delta_1-\delta_2-\theta_{12}).
+\]</div>
+</section>
+<section id="relative-rotor-angle">
+<h2>Relative Rotor Angle<a class="headerlink" href="#relative-rotor-angle" title="Permalink to this heading">#</a></h2>
+<p>Define</p>
+<div class="math notranslate nohighlight">
+\[
+\delta = \delta_1-\delta_2.
+\]</div>
+<p>Also define</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma
+=
+\theta_{12}-\frac{\pi}{2}.
+\]</div>
+</section>
+<section id="simplified-power-angle-form">
+<h2>Simplified Power-Angle Form<a class="headerlink" href="#simplified-power-angle-form" title="Permalink to this heading">#</a></h2>
+<p>Using the new variables, the electrical power becomes</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+|E_1'|^2G_{11}
++
+|E_1'||E_2'||Y_{12}|
+\sin(\delta-\gamma).
+\]</div>
+<p>The reactive power becomes</p>
+<div class="math notranslate nohighlight">
+\[
+Q_e
+=
+-|E_1'|^2B_{11}
+-
+|E_1'||E_2'||Y_{12}|
+\cos(\delta-\gamma).
+\]</div>
+</section>
+<section id="classical-representation">
+<h2>Classical Representation<a class="headerlink" href="#classical-representation" title="Permalink to this heading">#</a></h2>
+<p>The active-power equation is commonly written as</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+P_c
++
+P_{\max}\sin(\delta-\gamma)
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+P_c
+=
+|E_1'|^2G_{11}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+=
+|E_1'||E_2'||Y_{12}|.
+\]</div>
+</section>
+<section id="lossless-network-approximation">
+<h2>Lossless Network Approximation<a class="headerlink" href="#lossless-network-approximation" title="Permalink to this heading">#</a></h2>
+<p>For a predominantly reactive network,</p>
+<div class="math notranslate nohighlight">
+\[
+P_c \approx 0
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma \approx 0.
+\]</div>
+<p>The power-angle equation then reduces to</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+P_e=P_{\max}\sin\delta
+}
+\]</div>
+<p>which is the classical relationship used in transient stability studies.</p>
+</section>
+<section id="connection-to-the-swing-equation">
+<h2>Connection to the Swing Equation<a class="headerlink" href="#connection-to-the-swing-equation" title="Permalink to this heading">#</a></h2>
+<p>Combining</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=P_{\max}\sin\delta
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+\]</div>
+<p>gives the fundamental nonlinear model used in classical transient stability analysis and the equal-area criterion.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="classical-power-angle-equation">
+<h1>Classical Power-Angle Equation<a class="headerlink" href="#classical-power-angle-equation" title="Permalink to this heading">#</a></h1>
+<section id="electrical-output-power">
+<h2>Electrical Output Power<a class="headerlink" href="#electrical-output-power" title="Permalink to this heading">#</a></h2>
+<p>The electrical output power of the generator is represented by</p>
+<div class="math notranslate nohighlight">
+\[
+P_e.
+\]</div>
+<p>When armature resistance and losses are neglected, the electrical power is equal to the active power injected by the generator into the network.</p>
+<p>The relationship between electrical power and rotor angle is called the <strong>power-angle equation</strong>.</p>
+<p>The graph of electrical power versus rotor angle is known as the <strong>power-angle curve</strong>.</p>
+</section>
+<section id="general-power-angle-equation">
+<h2>General Power-Angle Equation<a class="headerlink" href="#general-power-angle-equation" title="Permalink to this heading">#</a></h2>
+<p>For a reduced two-machine network, the electrical power can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+P_c
++
+P_{\max}
+\sin(\delta-\gamma)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_c\)</span> is a constant power term,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{\max}\)</span> is the maximum transferable power,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span> is the rotor-angle difference,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> is a network-dependent phase shift.</p></li>
+</ul>
+<p>For a fixed network configuration and constant voltage magnitudes, the quantities</p>
+<div class="math notranslate nohighlight">
+\[
+P_c,
+\qquad
+P_{\max},
+\qquad
+\gamma
+\]</div>
+<p>are constants.</p>
+</section>
+<section id="id5">
+<h2>Lossless Network Approximation<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>If transmission-system resistance is neglected, the network is represented by pure reactances.</p>
+<p>Under this assumption,</p>
+<div class="math notranslate nohighlight">
+\[
+G_{11}=0
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma=0.
+\]</div>
+<p>The general power-angle equation therefore simplifies to</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+P_e=P_{\max}\sin\delta
+}
+\]</div>
+<p>This is the classical power-angle equation used in transient stability analysis.</p>
+</section>
+<section id="maximum-transferable-power">
+<h2>Maximum Transferable Power<a class="headerlink" href="#maximum-transferable-power" title="Permalink to this heading">#</a></h2>
+<p>The maximum power transfer is given by</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+=
+\frac{|E_1'||E_2'|}{X}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E_1'\)</span> is the transient internal voltage of machine 1,</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_2'\)</span> is the transient internal voltage of machine 2 or the infinite-bus voltage,</p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span> is the equivalent transfer reactance between the two voltages.</p></li>
+</ul>
+</section>
+<section id="interpretation">
+<h2>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this heading">#</a></h2>
+<p>The equation</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=P_{\max}\sin\delta
+\]</div>
+<p>shows that electrical power transfer depends entirely on the rotor-angle difference.</p>
+<p>Important operating points are:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta = 0
+\quad \Rightarrow \quad
+P_e = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta = 90^{\circ}
+\quad \Rightarrow \quad
+P_e = P_{\max}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta &gt; 90^{\circ}
+\quad \Rightarrow \quad
+\frac{dP_e}{d\delta}&lt;0
+\]</div>
+<p>The point</p>
+<div class="math notranslate nohighlight">
+\[
+\delta = 90^{\circ}
+\]</div>
+<p>therefore represents the maximum of the power-angle curve and plays a central role in transient stability studies and the equal-area criterion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Spenningsmagnituder (pu)</span>
+<span class="n">E1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Angi |E1'|: "</span><span class="p">))</span>
+<span class="n">E2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Angi |E2'|: "</span><span class="p">))</span>
+
+<span class="c1"># Fasevinkler (grader)</span>
+<span class="n">delta1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Angi δ1 [grader]: "</span><span class="p">))</span>
+<span class="n">delta2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Angi δ2 [grader]: "</span><span class="p">))</span>
+
+<span class="c1"># Total reaktans mellom spenningskildene</span>
+<span class="n">X</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Angi X: "</span><span class="p">))</span>
+
+<span class="c1"># Vinkelforskjell</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">delta1</span> <span class="o">-</span> <span class="n">delta2</span><span class="p">)</span>
+
+<span class="c1"># Aktiv effekt</span>
+<span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">E1</span> <span class="o">*</span> <span class="n">E2</span> <span class="o">/</span> <span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">δ = </span><span class="si">{</span><span class="n">delta1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">delta2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"P = </span><span class="si">{</span><span class="n">P</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> pu"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">P</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Effekt overføres fra E1' til E2'"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">P</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Effekt overføres fra E2' til E1'"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Ingen aktiv effektoverføring"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Angi |E1'|: 0.2
+Angi |E2'|: 1.7
+Angi δ1 [grader]: 5
+Angi δ2 [grader]: 2
+Angi X: 0.2
+
+δ = 3.00°
+P = 0.0890 pu
+Effekt overføres fra E1' til E2'
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">E1</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">E2</span> <span class="o">=</span> <span class="mf">1.1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">E1</span> <span class="o">*</span> <span class="n">E2</span> <span class="o">/</span> <span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+<span class="n">P_max</span> <span class="o">=</span> <span class="n">E1</span> <span class="o">*</span> <span class="n">E2</span> <span class="o">/</span> <span class="n">X</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">delta</span><span class="p">),</span> <span class="n">P</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P(\delta)$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">P_max</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">fr</span><span class="s1">'$P_</span><span class="se">{{</span><span class="s1">max</span><span class="se">}}</span><span class="s1">=</span><span class="si">{</span><span class="n">P_max</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\delta$ (grader)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Effekt (p.u.)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Effekt-vinkel-karakteristikk'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/43286a2424f3f4782cd1bfc3946bc8be9d00784aebaf93e8c299afec46c0f78a.png" src="../_images/43286a2424f3f4782cd1bfc3946bc8be9d00784aebaf93e8c299afec46c0f78a.png" />
+</div>
+</div>
+<img src="images/gra08351_1304.jpg" width="50%"></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-14-3-determination-of-the-power-angle-equation">
+<h1>Example 14.3: Determination of the Power-Angle Equation<a class="headerlink" href="#example-14-3-determination-of-the-power-angle-equation" title="Permalink to this heading">#</a></h1>
+<section id="problem-description">
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this heading">#</a></h2>
+<p>A synchronous generator is connected to a large power system represented as an infinite bus through parallel transmission lines.</p>
+<p>Given operating conditions:</p>
+<ul class="simple">
+<li><p>Generator output power:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P_e = 1.0\ \text{pu}
+\]</div>
+<ul class="simple">
+<li><p>Generator terminal voltage:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+V_t = 1.0\ \text{pu}
+\]</div>
+<ul class="simple">
+<li><p>Infinite-bus voltage:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+V_{\infty} = 1.0\ \text{pu}
+\]</div>
+<ul class="simple">
+<li><p>Generator transient reactance:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+X_d' = 0.20\ \text{pu}
+\]</div>
+<p>All reactances are expressed on a common system base.</p>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>Determine the power-angle equation</p>
+<div class="math notranslate nohighlight">
+\[
+P_e=f(\delta)
+\]</div>
+<p>for the operating condition.</p>
+</section>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
+<p>The solution follows these steps:</p>
+<ol class="arabic simple">
+<li><p>Reduce the transmission network to an equivalent reactance.</p></li>
+<li><p>Determine the equivalent transfer reactance</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+X_{eq}.
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Compute the generator transient internal voltage</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+E'.
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Apply the classical power-angle relationship</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{|E'|\,|V_{\infty}|}{X_{eq}}
+sin\delta.
+\]</div>
+<p>Because the receiving system is represented by an infinite bus,</p>
+<div class="math notranslate nohighlight">
+\[
+|V_{\infty}| = 1.0\ \text{pu}.
+\]</div>
+</section>
+<section id="general-result">
+<h2>General Result<a class="headerlink" href="#general-result" title="Permalink to this heading">#</a></h2>
+<p>For a lossless network,</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+P_e=P_{\max}\sin\delta
+}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}
+=
+\frac{|E'|\,|V_{\infty}|}{X_{eq}}.
+\]</div>
+<p>The remainder of the example is devoted to determining</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+X_{eq}
+\]</div>
+<p>from the network data and then substituting these values into the power-angle equation.</p>
+</section>
+<section id="id6">
+<h2>Importance<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>This example illustrates the standard procedure used in transient-stability studies:</p>
+<ul class="simple">
+<li><p>construct the equivalent network,</p></li>
+<li><p>calculate the internal machine voltage,</p></li>
+<li><p>determine the transfer reactance,</p></li>
+<li><p>derive the corresponding power-angle curve.</p></li>
+</ul>
+<p>The resulting power-angle equation is subsequently combined with the swing equation to assess rotor-angle stability following disturbances.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-14-3-full-solution">
+<h1>Example 14.3 – Full Solution<a class="headerlink" href="#example-14-3-full-solution" title="Permalink to this heading">#</a></h1>
+<section id="given-data">
+<h2>Given Data<a class="headerlink" href="#given-data" title="Permalink to this heading">#</a></h2>
+<p>The generator is connected to an infinite bus through two parallel transmission lines.</p>
+<p>Given:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = 1.0\ \text{pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|V_t| = 1.0\ \text{pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|V_\infty| = 1.0\ \text{pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_d' = 0.20\ \text{pu}
+\]</div>
+<p>Transmission-line reactances:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{line1}=X_{line2}=0.40\ \text{pu}
+\]</div>
+<p>Transformer reactance:</p>
+<div class="math notranslate nohighlight">
+\[
+X_T=0.10\ \text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="step-1-equivalent-network-reactance">
+<h2>Step 1: Equivalent Network Reactance<a class="headerlink" href="#step-1-equivalent-network-reactance" title="Permalink to this heading">#</a></h2>
+<p>The two transmission lines are connected in parallel:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{line}
+=
+\frac{0.40}{2}
+=
+0.20\ \text{pu}
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+X
+=
+X_T + X_{line}
+=
+0.10+0.20
+=
+0.30\ \text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="step-2-determine-the-terminal-voltage-angle">
+<h2>Step 2: Determine the Terminal-Voltage Angle<a class="headerlink" href="#step-2-determine-the-terminal-voltage-angle" title="Permalink to this heading">#</a></h2>
+<p>The power-transfer equation between the terminal voltage and the infinite bus is</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{|V_t||V_\infty|}{X}
+\sin\alpha.
+\]</div>
+<p>Substituting the known values:</p>
+<div class="math notranslate nohighlight">
+\[
+1.0
+=
+\frac{(1.0)(1.0)}{0.30}
+\sin\alpha.
+\]</div>
+<p>Hence</p>
+<div class="math notranslate nohighlight">
+\[
+\sin\alpha = 0.30
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha
+=
+\sin^{-1}(0.30)
+=
+17.458^{\circ}.
+\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[
+V_t
+=
+1.0\angle17.458^{\circ}.
+\]</div>
+<p>In rectangular form,</p>
+<div class="math notranslate nohighlight">
+\[
+V_t
+=
+0.954+j0.300.
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="power-angle-equation-derivation">
+<h1>Power-Angle Equation Derivation<a class="headerlink" href="#power-angle-equation-derivation" title="Permalink to this heading">#</a></h1>
+<p>The output current from the generator is</p>
+<div class="math notranslate nohighlight">
+\[
+I
+=
+\frac{1.0\angle 17.458^\circ - 1.0\angle 0^\circ}
+{j0.3}
+\]</div>
+<p>Converting the voltages to rectangular form:</p>
+<div class="math notranslate nohighlight">
+\[
+1.0\angle 17.458^\circ
+=
+0.954 + j0.300
+\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[
+I
+=
+\frac{(0.954+j0.300)-1.0}{j0.3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+\frac{-0.046+j0.300}{j0.3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+1.0+j0.1535
+\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[
+I = 1.012\angle 8.729^\circ
+\quad \text{p.u.}
+\]</div>
+<hr class="docutils" />
+<p>The transient internal voltage is</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+=
+(0.954+j0.300)+j0.2(1.0+j0.1535)
+\]</div>
+<p>Expanding:</p>
+<div class="math notranslate nohighlight">
+\[
+j0.2(1.0+j0.1535)
+=
+j0.2-0.0307
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+=
+(0.954+j0.300)+(-0.0307+j0.2)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+0.923+j0.500
+\]</div>
+<p>In polar form:</p>
+<div class="math notranslate nohighlight">
+\[
+E'
+=
+1.050\angle 28.44^\circ
+\quad \text{p.u.}
+\]</div>
+<hr class="docutils" />
+<p>The total transfer reactance between the transient internal voltage and the infinite bus is</p>
+<div class="math notranslate nohighlight">
+\[
+X
+=
+0.2+0.1+\frac{0.4}{2}
+=
+0.5
+\quad \text{p.u.}
+\]</div>
+<hr class="docutils" />
+<p>The power-angle equation is</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{|E'|\,|V|}{X}\sin\delta
+\]</div>
+<p>Substituting the numerical values:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{(1.050)(1.0)}{0.5}\sin\delta
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+2.10\sin\delta
+\quad \text{p.u.}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\delta
+\]</div>
+<p>is the machine rotor angle with respect to the infinite bus.</p>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+P_e = 2.10\sin\delta
+}
+\quad \text{p.u.}
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="swing-equation-and-operating-point">
+<h1>Swing Equation and Operating Point<a class="headerlink" href="#swing-equation-and-operating-point" title="Permalink to this heading">#</a></h1>
+<p>The power-angle equation is plotted in Fig. 14.6.</p>
+<p>The mechanical input power is</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = 1.0 \; \text{p.u.}
+\]</div>
+<p>and intersects the electrical power-angle curve</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = 2.10\sin\delta
+\]</div>
+<p>at the operating angle</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0 = 28.44^\circ.
+\]</div>
+<p>This is the initial angular position of the generator rotor corresponding to the given operating conditions.</p>
+<hr class="docutils" />
+<p>The swing equation for the machine is</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{H}{180f}\frac{d^2\delta}{dt^2}
+=
+1.0 - 2.10\sin\delta
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H\)</span> is the inertia constant in MJ/MVA,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is the electrical frequency of the system,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span> is the rotor angle in electrical degrees.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Under the operating conditions,</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = 2.10\sin(28.44^\circ)
+= 1.0\;\text{p.u.}
+\]</div>
+<p>which is exactly equal to the mechanical input power:</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = 1.0\;\text{p.u.}
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+P_m - P_e = 0
+\]</div>
+<p>and the acceleration is zero:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}=0.
+\]</div>
+<p>The machine is initially in steady-state equilibrium.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">Pmax</span> <span class="o">=</span> <span class="mf">2.10</span>
+<span class="n">Pm</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">delta_deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">delta_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">)</span>
+
+<span class="n">Pe</span> <span class="o">=</span> <span class="n">Pmax</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_rad</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_e=2.10\sin\delta$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Pm</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_m=1.0$'</span><span class="p">)</span>
+
+<span class="c1"># Akselerasjon</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe</span><span class="p">,</span> <span class="n">Pm</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">Pm</span> <span class="o">&gt;</span> <span class="n">Pe</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">'limegreen'</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_m&gt;P_e$ (acceleration)'</span>
+<span class="p">)</span>
+
+<span class="c1"># Retardasjon</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe</span><span class="p">,</span> <span class="n">Pm</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">Pe</span> <span class="o">&gt;</span> <span class="n">Pm</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">'salmon'</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_e&gt;P_m$ (deceleration)'</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\delta$ (grader)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Effekt (p.u.)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Power-Angle Curve and Accelerating Power'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ec4d5939527d4fe92e67253acf2f2bc022f2e879ec219c1f76da06c46778cd45.png" src="../_images/ec4d5939527d4fe92e67253acf2f2bc022f2e879ec219c1f76da06c46778cd45.png" />
+</div>
+</div>
+<img src="../images/gra08351_1305.jpg" width="50%"></section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-14-4-three-phase-fault-at-point-p">
+<h1>Example 14.4 - Three-Phase Fault at Point P<a class="headerlink" href="#example-14-4-three-phase-fault-at-point-p" title="Permalink to this heading">#</a></h1>
+<p>The system of Example 14.3 is operating under the indicated conditions when a three-phase fault occurs at point <span class="math notranslate nohighlight">\(P\)</span> in Fig. 14.4.</p>
+<p>Determine:</p>
+<ol class="arabic simple">
+<li><p>The power-angle equation for the system with the fault on.</p></li>
+<li><p>The corresponding swing equation.</p></li>
+</ol>
+<p>Given:</p>
+<div class="math notranslate nohighlight">
+\[
+H = 5\,\text{MJ/MVA}
+\]</div>
+<section id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h2>
+<p>The reactance diagram is shown in Fig. 14.5b with the fault on the system.</p>
+<p>Per-unit values shown are admittances in per unit.</p>
+<p>The effect of the short circuit caused by the fault is clearly shown by redrawing the reactance diagram as in Fig. 14.5c.</p>
+<p>As calculated in Example 14.3, the transient internal voltage of the generator remains</p>
+<div class="math notranslate nohighlight">
+\[
+E' = 1.05\angle 28.44^\circ
+\]</div>
+<p>based on the assumption of constant flux linkages in the machine.</p>
+<p>The net transfer admittance connecting the voltage sources remains to be determined.</p>
+<p>The buses are numbered as shown and the bus admittance matrix is formed by inspection of Fig. 14.5c as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{\text{bus}}
+=
+j
+\begin{bmatrix}
+-3.333 &amp; 0 &amp; 3.333 \\
+0 &amp; -7.50 &amp; 2.50 \\
+3.333 &amp; 2.50 &amp; -10.833
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="kron-reduction-nodeeliminasjon">
+<h2>Kron reduction (nodeeliminasjon)<a class="headerlink" href="#kron-reduction-nodeeliminasjon" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>n = elimination node (eliminasjonsnode)</p></li>
+<li><p>k = row (rad)</p></li>
+<li><p>i = column (kolonne)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ Y_{ki, new} = Y_{ki, old} - \frac{Y_{kn, old}\cdot Y_{ni, old}}{Y_{nn, old}} \]</div>
+<div class="math notranslate nohighlight">
+\[ Y_{11, new} = Y_{11, old} - \frac{Y_{13, old}\cdot Y_{31, old}}{Y_{33, old}} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_11</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.3333</span>
+<span class="n">Y_13</span> <span class="o">=</span> <span class="mf">3.3333</span>
+<span class="n">Y_31</span> <span class="o">=</span> <span class="mf">3.3333</span>
+<span class="n">Y_33</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10.833</span>
+<span class="n">Y_12</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Y_22</span> <span class="o">=</span> <span class="o">-</span><span class="mf">7.50</span>
+<span class="n">Y_32</span> <span class="o">=</span> <span class="n">Y_23</span> <span class="o">=</span> <span class="mf">2.50</span>
+
+
+<span class="n">Y_11_ny</span> <span class="o">=</span> <span class="n">Y_11</span> <span class="o">-</span> <span class="p">((</span><span class="n">Y_13</span><span class="o">*</span><span class="n">Y_31</span><span class="p">)</span><span class="o">/</span><span class="n">Y_33</span><span class="p">)</span>
+<span class="n">Y_11_ny</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.307647928551648
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[ Y_{12, new} = Y_{12, old} - \frac{Y_{13, old}\cdot Y_{32, old}}{Y_{33, old}} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_12_new</span> <span class="o">=</span> <span class="n">Y_11</span> <span class="o">-</span> <span class="p">((</span><span class="n">Y_13</span><span class="o">*</span><span class="n">Y_31</span><span class="p">)</span><span class="o">/</span><span class="n">Y_33</span><span class="p">)</span>
+<span class="n">Y_12_new</span> <span class="o">=</span> <span class="n">Y_12</span> <span class="o">-</span> <span class="p">((</span><span class="n">Y_13</span><span class="o">*</span><span class="n">Y_32</span><span class="p">)</span><span class="o">/</span><span class="n">Y_33</span><span class="p">)</span>
+<span class="n">Y_12_new</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7692467460537247
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[ Y_{22, new} = Y_{22, old} - \frac{Y_{23, old}\cdot Y_{32, old}}{Y_{33, old}} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_22_new</span> <span class="o">=</span> <span class="n">Y_22</span> <span class="o">-</span> <span class="p">((</span><span class="n">Y_23</span><span class="o">*</span><span class="n">Y_32</span><span class="p">)</span><span class="o">/</span><span class="n">Y_33</span><span class="p">)</span>
+<span class="n">Y_22_new</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-6.923059171051417
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{\text{bus}}
+=
+j
+\begin{bmatrix}
+-2.308 &amp; 0.769  \\
+0.769 &amp; -6.923  
+\end{bmatrix}
+\end{split}\]</div>
+<p>The matrix tells us that the magnitude of the transfer reactance <span class="math notranslate nohighlight">\(Y_{12} = 0.769\)</span> and therefore:</p>
+<div class="math notranslate nohighlight">
+\[ P = |E1||E2||Y_{12}| = (1.05)\cdot(1.0)\cdot(0.769) \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1.05</span><span class="o">*</span><span class="mi">1</span><span class="o">*</span><span class="n">Y_12_new</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8077090833564109
+</pre></div>
+</div>
+</div>
+</div>
+<p>Power angle with fault on the system is therefore:</p>
+<div class="math notranslate nohighlight">
+\[ P_e = 0.808 sin \delta\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{5}{180f}\frac{d^2\delta}{dt^2}
+=
+1.0 - 0.808\sin\delta
+\]</div>
+<p>For later reference note that, because of its inertia, the rotor cannot change position instantlyupon occurrence of the fault. Therefore the rotor angle is initially $\delta =</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="powerfactory-setup-for-transient-stability-analysis-stevenson-example-14-4">
+<h1>PowerFactory Setup for Transient Stability Analysis (Stevenson Example 14.4)<a class="headerlink" href="#powerfactory-setup-for-transient-stability-analysis-stevenson-example-14-4" title="Permalink to this heading">#</a></h1>
+<section id="network-model">
+<h2>1. Network Model<a class="headerlink" href="#network-model" title="Permalink to this heading">#</a></h2>
+<p>Create the following single-line diagram:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Generator ─ Xd' ─ Transformer ─●──── Line 1 ──── Infinite Bus
+                               │
+                               └──── Line 2 ──── Infinite Bus
+</pre></div>
+</div>
+<p>Using:</p>
+<div class="math notranslate nohighlight">
+\[
+X_d' = 0.2\;\text{pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_T = 0.1\;\text{pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_{L1}=X_{L2}=0.4\;\text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="generator-model">
+<h2>2. Generator Model<a class="headerlink" href="#generator-model" title="Permalink to this heading">#</a></h2>
+<p>Insert a synchronous machine:</p>
+<div class="math notranslate nohighlight">
+\[
+S_n = 100\;\text{MVA}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H = 5\;\text{s}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_d' = 0.2\;\text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="infinite-bus">
+<h2>3. Infinite Bus<a class="headerlink" href="#infinite-bus" title="Permalink to this heading">#</a></h2>
+<p>Define the infinite bus:</p>
+<div class="math notranslate nohighlight">
+\[
+V = 1.0\angle 0^\circ
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="load-flow">
+<h2>4. Load Flow<a class="headerlink" href="#load-flow" title="Permalink to this heading">#</a></h2>
+<p>Specify generator output:</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = 1.0\;\text{pu}
+\]</div>
+<p>For a 100 MVA base:</p>
+<div class="math notranslate nohighlight">
+\[
+P = 100\;\text{MW}
+\]</div>
+<p>Run load flow and verify:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0 \approx 28.44^\circ
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="prefault-power-angle-equation">
+<h2>5. Prefault Power-Angle Equation<a class="headerlink" href="#prefault-power-angle-equation" title="Permalink to this heading">#</a></h2>
+<p>The prefault transfer reactance is</p>
+<div class="math notranslate nohighlight">
+\[
+X = 0.5\;\text{pu}
+\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{|E'|\,|V|}{X}\sin\delta
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{(1.05)(1.0)}{0.5}\sin\delta
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_e = 2.10\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="rms-simulation">
+<h2>6. RMS Simulation<a class="headerlink" href="#rms-simulation" title="Permalink to this heading">#</a></h2>
+<p>Create an RMS simulation and choose a simulation time of several seconds.</p>
+<p>The machine dynamics are governed by the swing equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="three-phase-fault">
+<h2>7. Three-Phase Fault<a class="headerlink" href="#three-phase-fault" title="Permalink to this heading">#</a></h2>
+<p>Create a three-phase short-circuit event.</p>
+<p>Fault inception time:</p>
+<div class="math notranslate nohighlight">
+\[
+t_f = 0.10\;\text{s}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="fault-clearing">
+<h2>8. Fault Clearing<a class="headerlink" href="#fault-clearing" title="Permalink to this heading">#</a></h2>
+<p>Create a fault clearing event.</p>
+<p>Example:</p>
+<div class="math notranslate nohighlight">
+\[
+t_c = 0.20\;\text{s}
+\]</div>
+<p>The clearing time is therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+T_{clear}
+=
+0.20-0.10
+=
+0.10\;\text{s}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="fault-on-power-angle-equation">
+<h2>9. Fault-On Power-Angle Equation<a class="headerlink" href="#fault-on-power-angle-equation" title="Permalink to this heading">#</a></h2>
+<p>Using node elimination (Kron reduction):</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = 0.808\sin\delta
+\]</div>
+<p>At fault inception the rotor angle cannot change instantaneously:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta = 28.44^\circ
+\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+0.808\sin(28.44^\circ)
+\approx 0.385\;\text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="accelerating-power">
+<h2>10. Accelerating Power<a class="headerlink" href="#accelerating-power" title="Permalink to this heading">#</a></h2>
+<p>The mechanical power remains unchanged:</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = 1.0\;\text{pu}
+\]</div>
+<p>Hence:</p>
+<div class="math notranslate nohighlight">
+\[
+P_a = P_m-P_e
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_a = 1.0-0.385
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_a = 0.615\;\text{pu}
+\]</div>
+<p>The rotor therefore accelerates.</p>
+</section>
+<hr class="docutils" />
+<section id="initial-rotor-acceleration">
+<h2>11. Initial Rotor Acceleration<a class="headerlink" href="#initial-rotor-acceleration" title="Permalink to this heading">#</a></h2>
+<p>Using:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{H}{180f}
+\frac{d^2\delta}{dt^2}
+=
+P_a
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+H=5
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+P_a=0.615
+\]</div>
+<p>results in</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}
+=
+\frac{180f}{5}(0.615)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}
+=
+22.14f
+\]</div>
+<p>Electrical degrees per second squared.</p>
+</section>
+<hr class="docutils" />
+<section id="critical-clearing-time-cct">
+<h2>12. Critical Clearing Time (CCT)<a class="headerlink" href="#critical-clearing-time-cct" title="Permalink to this heading">#</a></h2>
+<p>Plot:</p>
+<ul class="simple">
+<li><p>Rotor angle <span class="math notranslate nohighlight">\(\delta\)</span></p></li>
+<li><p>Electrical power <span class="math notranslate nohighlight">\(P_e\)</span></p></li>
+<li><p>Mechanical power <span class="math notranslate nohighlight">\(P_m\)</span></p></li>
+<li><p>Speed deviation <span class="math notranslate nohighlight">\(\Delta\omega\)</span></p></li>
+</ul>
+<p>Repeat the simulation with increasing clearing times.</p>
+<p>If:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t)
+\]</div>
+<p>returns to a bounded oscillation, the system is stable.</p>
+<p>If:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t)
+\]</div>
+<p>continues increasing, the machine loses synchronism.</p>
+<p>The limiting clearing time is the Critical Clearing Time (CCT).</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>PowerFactory Setup for Transient Stability Analysis (Stevenson Example 14.4)<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h1>
+<section id="id8">
+<h2>1. Network Model<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>Create the following single-line diagram:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Generator ─ Xd' ─ Transformer ─●──── Line 1 ──── Infinite Bus
+                               │
+                               └──── Line 2 ──── Infinite Bus
+</pre></div>
+</div>
+<p>Using:</p>
+<div class="math notranslate nohighlight">
+\[
+X_d' = 0.2\;\text{pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_T = 0.1\;\text{pu}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_{L1}=X_{L2}=0.4\;\text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>2. Generator Model<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p>Insert a synchronous machine:</p>
+<div class="math notranslate nohighlight">
+\[
+S_n = 100\;\text{MVA}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H = 5\;\text{s}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X_d' = 0.2\;\text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>3. Infinite Bus<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<p>Define the infinite bus:</p>
+<div class="math notranslate nohighlight">
+\[
+V = 1.0\angle 0^\circ
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>4. Load Flow<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<p>Specify generator output:</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = 1.0\;\text{pu}
+\]</div>
+<p>For a 100 MVA base:</p>
+<div class="math notranslate nohighlight">
+\[
+P = 100\;\text{MW}
+\]</div>
+<p>Run load flow and verify:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0 \approx 28.44^\circ
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>5. Prefault Power-Angle Equation<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<p>The prefault transfer reactance is</p>
+<div class="math notranslate nohighlight">
+\[
+X = 0.5\;\text{pu}
+\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{|E'|\,|V|}{X}\sin\delta
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+\frac{(1.05)(1.0)}{0.5}\sin\delta
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_e = 2.10\sin\delta
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2>6. RMS Simulation<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
+<p>Create an RMS simulation and choose a simulation time of several seconds.</p>
+<p>The machine dynamics are governed by the swing equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2H}{\omega_s}
+\frac{d^2\delta}{dt^2}
+=
+P_m-P_e
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>7. Three-Phase Fault<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<p>Create a three-phase short-circuit event.</p>
+<p>Fault inception time:</p>
+<div class="math notranslate nohighlight">
+\[
+t_f = 0.10\;\text{s}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h2>8. Fault Clearing<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<p>Create a fault clearing event.</p>
+<p>Example:</p>
+<div class="math notranslate nohighlight">
+\[
+t_c = 0.20\;\text{s}
+\]</div>
+<p>The clearing time is therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+T_{clear}
+=
+0.20-0.10
+=
+0.10\;\text{s}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>9. Fault-On Power-Angle Equation<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<p>Using node elimination (Kron reduction):</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = 0.808\sin\delta
+\]</div>
+<p>At fault inception the rotor angle cannot change instantaneously:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta = 28.44^\circ
+\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e
+=
+0.808\sin(28.44^\circ)
+\approx 0.385\;\text{pu}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h2>10. Accelerating Power<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h2>
+<p>The mechanical power remains unchanged:</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = 1.0\;\text{pu}
+\]</div>
+<p>Hence:</p>
+<div class="math notranslate nohighlight">
+\[
+P_a = P_m-P_e
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_a = 1.0-0.385
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_a = 0.615\;\text{pu}
+\]</div>
+<p>The rotor therefore accelerates.</p>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h2>11. Initial Rotor Acceleration<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<p>Using:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{H}{180f}
+\frac{d^2\delta}{dt^2}
+=
+P_a
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+H=5
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+P_a=0.615
+\]</div>
+<p>results in</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}
+=
+\frac{180f}{5}(0.615)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}
+=
+22.14f
+\]</div>
+<p>Electrical degrees per second squared.</p>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h2>12. Critical Clearing Time (CCT)<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<p>Plot:</p>
+<ul class="simple">
+<li><p>Rotor angle <span class="math notranslate nohighlight">\(\delta\)</span></p></li>
+<li><p>Electrical power <span class="math notranslate nohighlight">\(P_e\)</span></p></li>
+<li><p>Mechanical power <span class="math notranslate nohighlight">\(P_m\)</span></p></li>
+<li><p>Speed deviation <span class="math notranslate nohighlight">\(\Delta\omega\)</span></p></li>
+</ul>
+<p>Repeat the simulation with increasing clearing times.</p>
+<p>If:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t)
+\]</div>
+<p>returns to a bounded oscillation, the system is stable.</p>
+<p>If:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t)
+\]</div>
+<p>continues increasing, the machine loses synchronism.</p>
+<p>The limiting clearing time is the Critical Clearing Time (CCT).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./12_dynmod"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 14: Power System Stability</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stability-problem">14.1 THE STABILITY PROBLEM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-dynamics-and-the-swing-equation">14.2 ROTOR DYNAMICS AND THE SWING EQUATION</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-swing-equation-derivation">Summary of the Swing Equation Derivation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-modern-notation">Connection to Modern Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inertia-constant-h-and-the-swing-equation">Inertia Constant H and the Swing Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-inertia-constant">Definition of the Inertia Constant</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-m-and-h">Relationship Between M and H</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-unit-swing-equation">Per-Unit Swing Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-angle-in-electrical-radians">Rotor Angle in Electrical Radians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-angle-in-electrical-degrees">Rotor Angle in Electrical Degrees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special Cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hz-system">50 Hz System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">60 Hz System</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example">Worked Example</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-electrical-degrees">Solution Using Electrical Degrees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-electrical-radians">Solution Using Electrical Radians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-sections-14-2-and-14-3">Summary of Sections 14.2 and 14.3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swing-equation-as-two-first-order-equations">Swing Equation as Two First-Order Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-of-inertia-constant-to-a-common-system-base">Conversion of Inertia Constant to a Common System Base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-remarks">Practical Remarks</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-inertia-constants-and-example-14-1">Summary of Inertia Constants and Example 14.1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-inertia-constants">Typical Inertia Constants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-kinetic-energy">Rotational Kinetic Energy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-to-inertia-constant-h">Conversion to Inertia Constant H</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-practical-formula">Final Practical Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#significance">Significance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-generator-representation-in-stability-studies">Equivalent Generator Representation in Stability Studies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-swing-equations">Individual Swing Equations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-equivalent-inertia-constant">Example: Equivalent Inertia Constant</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-1">Unit 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-2">Unit 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-inertia-constant-on-a-common-base">Equivalent Inertia Constant on a Common Base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-formula">General Formula</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#coherent-machines-and-equivalent-inertia-constant">Coherent Machines and Equivalent Inertia Constant</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-result">Example Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coherent-machines">Coherent Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-stability-studies">Importance in Stability Studies</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#non-coherent-machines-and-relative-swing-equation">Non-Coherent Machines and Relative Swing Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-motion-of-two-machines">Relative Motion of Two Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Individual Swing Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-two-machine-form">Equivalent Two-Machine Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-mechanical-power">Weighted Mechanical Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-electrical-power">Weighted Electrical Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Physical Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Importance in Stability Studies</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-machine-relative-stability-and-infinite-bus-concept">Two-Machine Relative Stability and Infinite Bus Concept</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-motor-system">Generator-Motor System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-swing-equation">Relative Swing Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-as-a-relative-property">Stability as a Relative Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-stability-problems">Types of Stability Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-machine-against-an-infinite-bus">Case 1: Machine Against an Infinite Bus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-two-finite-inertia-machines">Case 2: Two Finite-Inertia Machines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-bus-concept">Infinite Bus Concept</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance">Importance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-power-angle-equation">14.4 The Power-Angle Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotor-acceleration-and-deceleration">Rotor Acceleration and Deceleration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerating-rotor">Accelerating Rotor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-operation">Steady-State Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decelerating-rotor">Decelerating Rotor</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-electrical-power">Importance of Electrical Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-to-the-classical-power-angle-relationship">Transition to the Classical Power-Angle Relationship</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-angle-equation-from-the-reduced-y-bus-network">Power-Angle Equation from the Reduced Y-Bus Network</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-two-bus-network">Reduced Two-Bus Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phasor-definitions">Phasor Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#active-and-reactive-power">Active and Reactive Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-rotor-angle">Relative Rotor Angle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-power-angle-form">Simplified Power-Angle Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-representation">Classical Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lossless-network-approximation">Lossless Network Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-swing-equation">Connection to the Swing Equation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-power-angle-equation">Classical Power-Angle Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-output-power">Electrical Output Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-power-angle-equation">General Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Lossless Network Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-transferable-power">Maximum Transferable Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14-3-determination-of-the-power-angle-equation">Example 14.3: Determination of the Power-Angle Equation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-description">Problem Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-result">General Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Importance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14-3-full-solution">Example 14.3 – Full Solution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#given-data">Given Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-equivalent-network-reactance">Step 1: Equivalent Network Reactance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determine-the-terminal-voltage-angle">Step 2: Determine the Terminal-Voltage Angle</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-angle-equation-derivation">Power-Angle Equation Derivation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#swing-equation-and-operating-point">Swing Equation and Operating Point</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14-4-three-phase-fault-at-point-p">Example 14.4 - Three-Phase Fault at Point P</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kron-reduction-nodeeliminasjon">Kron reduction (nodeeliminasjon)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#powerfactory-setup-for-transient-stability-analysis-stevenson-example-14-4">PowerFactory Setup for Transient Stability Analysis (Stevenson Example 14.4)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-model">1. Network Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-model">2. Generator Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-bus">3. Infinite Bus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-flow">4. Load Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prefault-power-angle-equation">5. Prefault Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-simulation">6. RMS Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-phase-fault">7. Three-Phase Fault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-clearing">8. Fault Clearing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-on-power-angle-equation">9. Fault-On Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerating-power">10. Accelerating Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-rotor-acceleration">11. Initial Rotor Acceleration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-clearing-time-cct">12. Critical Clearing Time (CCT)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">PowerFactory Setup for Transient Stability Analysis (Stevenson Example 14.4)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1. Network Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2. Generator Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3. Infinite Bus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4. Load Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. Prefault Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6. RMS Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7. Three-Phase Fault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">8. Fault Clearing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">9. Fault-On Power-Angle Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">10. Accelerating Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">11. Initial Rotor Acceleration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">12. Critical Clearing Time (CCT)</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
