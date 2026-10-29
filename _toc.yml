@@ -80,6 +80,10 @@ parts:
   - caption: Lastflytanalyse
     chapters:
       - file: LAB/LAB5
+
+  - caption: Dynamisk modellering
+    chapters:
+      - file: 12_dynmod/dynmod
       
 
   - caption: Referanser
