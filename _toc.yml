@@ -84,6 +84,7 @@ parts:
   - caption: Dynamisk modellering
     chapters:
       - file: 12_dynmod/dynmod
+      - file: 12_dynmod/dynmod_notes
       - file: assignments/assignment8
       
 
