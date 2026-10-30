@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Equal Area Criterion (Likarealkriteriet) &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '12_dynmod/eac';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/swingequation.html">Svingeligning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB5.html">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamisk modellering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dynmod.html">Single Machine Infinite Bus (SMIB)</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment8.html">Øving 8</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F12_dynmod/eac.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/12_dynmod/eac.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Equal Area Criterion (Likarealkriteriet)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Equal Area Criterion (Likarealkriteriet)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grunnide">Grunnidé</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitetsbetingelse">Stabilitetsbetingelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likarealkriteriet">Likarealkriteriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#utledning-av-equal-area-criterion">Utledning av Equal Area Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-forstyrrelsen">Før forstyrrelsen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betingelse-for-stabilitet">Betingelse for stabilitet</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="equal-area-criterion-likarealkriteriet">
+<h1>Equal Area Criterion (Likarealkriteriet)<a class="headerlink" href="#equal-area-criterion-likarealkriteriet" title="Permalink to this heading">#</a></h1>
+<p>Akselerasjonseffekten i swing-ligningen inneholder et sinusledd. Swing-ligningen blir derfor en ikke-lineær differensialligning, og det er generelt vanskelig å finne en analytisk løsning.</p>
+<p>For et system med to maskiner eller en generator koblet til en infinite bus (SMIB), kan transient stabilitet vurderes uten å løse swing-ligningen direkte. Dette gjøres ved hjelp av <strong>Equal Area Criterion (likarealkriteriet)</strong>.</p>
+<p>Likarealkriteriet avgjør om systemet er transient stabilt ved å sammenligne arealer i kraftvinkeldiagrammet (<span class="math notranslate nohighlight">\(P\)</span>-<span class="math notranslate nohighlight">\(\delta\)</span>-diagrammet). Dersom de nødvendige arealbetingelsene er oppfylt, vil rotorvinkelen forbli begrenset, og systemet er stabilt.</p>
+<hr class="docutils" />
+<section id="grunnide">
+<h2>Grunnidé<a class="headerlink" href="#grunnide" title="Permalink to this heading">#</a></h2>
+<p>Swing-ligningen er</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta}{dt^2}=P_m-P_e
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_m\)</span> = mekanisk tilført effekt</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_e\)</span> = elektrisk avgitt effekt</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span> = rotorvinkel</p></li>
+<li><p><span class="math notranslate nohighlight">\(M\)</span> = treghetskonstant</p></li>
+</ul>
+<p>Akselerasjonseffekten er</p>
+<div class="math notranslate nohighlight">
+\[
+P_a=P_m-P_e.
+\]</div>
+<ul class="simple">
+<li><p>Hvis <span class="math notranslate nohighlight">\(P_a&gt;0\)</span>, akselererer rotoren og <span class="math notranslate nohighlight">\(\delta\)</span> øker.</p></li>
+<li><p>Hvis <span class="math notranslate nohighlight">\(P_a&lt;0\)</span>, bremser rotoren og <span class="math notranslate nohighlight">\(\delta\)</span> reduseres.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="stabilitetsbetingelse">
+<h2>Stabilitetsbetingelse<a class="headerlink" href="#stabilitetsbetingelse" title="Permalink to this heading">#</a></h2>
+<p>Etter en forstyrrelse må rotorvinkelen nå et maksimum og deretter begynne å avta.</p>
+<p>Ved maksimumspunktet gjelder</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}=0.
+\]</div>
+<p>Dette betyr at all kinetisk energi som ble lagret under akselerasjonen, er tatt ut igjen under retardasjonen.</p>
+<p>I et reelt kraftsystem finnes det alltid en viss demping. Derfor vil de påfølgende oscillasjonene gradvis avta.</p>
+<p>Hvis rotorvinkelen når et maksimum der</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}=0,
+\]</div>
+<p>og deretter begynner å bevege seg tilbake, er systemet transient stabilt.</p>
+</section>
+<hr class="docutils" />
+<section id="likarealkriteriet">
+<h2>Likarealkriteriet<a class="headerlink" href="#likarealkriteriet" title="Permalink to this heading">#</a></h2>
+<p>Under feilen gjelder vanligvis</p>
+<div class="math notranslate nohighlight">
+\[
+P_e&lt;P_m,
+\]</div>
+<p>slik at maskinen akselererer.</p>
+<p>Akselerasjonsarealet er</p>
+<div class="math notranslate nohighlight">
+\[
+A_1
+=
+\int_{\delta_0}^{\delta_c}
+(P_m-P_e)\,d\delta.
+\]</div>
+<p>Etter feilutkobling blir vanligvis</p>
+<div class="math notranslate nohighlight">
+\[
+P_e&gt;P_m,
+\]</div>
+<p>slik at maskinen retarderer.</p>
+<p>Retardasjonsarealet er</p>
+<div class="math notranslate nohighlight">
+\[
+A_2
+=
+\int_{\delta_c}^{\delta_{\max}}
+(P_e-P_m)\,d\delta.
+\]</div>
+<p>Transient stabilitet krever</p>
+<div class="math notranslate nohighlight">
+\[
+A_1=A_2.
+\]</div>
+<p>Dette er opphavet til navnet <strong>Equal Area Criterion</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="tolkning">
+<h2>Tolkning<a class="headerlink" href="#tolkning" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A_1\)</span> representerer energi som lagres som kinetisk energi i rotoren under feilen.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A_2\)</span> representerer energi som fjernes etter at feilen er koblet ut.</p></li>
+<li><p>Dersom</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A_2 \ge A_1,
+\]</div>
+<p>kan rotoren bremses opp og synkronismen beholdes.</p>
+<ul class="simple">
+<li><p>Dersom</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A_2 &lt; A_1,
+\]</div>
+<p>fortsetter rotorvinkelen å øke, og generatoren mister synkronismen.</p>
+</section>
+<hr class="docutils" />
+<section id="oppsummering">
+<h2>Oppsummering<a class="headerlink" href="#oppsummering" title="Permalink to this heading">#</a></h2>
+<p>Likarealkriteriet gjør det mulig å bestemme transient stabilitet uten å løse swing-ligningen direkte.</p>
+<p>For et stabilt system må energien som rotoren får under akselerasjonen være lik energien som fjernes under retardasjonen:</p>
+<div class="math notranslate nohighlight">
+\[
+A_1=A_2.
+\]</div>
+<p>Når denne betingelsen er oppfylt, vil rotorvinkelen nå et maksimum hvor</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}=0,
+\]</div>
+<p>og deretter svinge tilbake mot et nytt stabilt arbeidspunkt.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="utledning-av-equal-area-criterion">
+<h1>Utledning av Equal Area Criterion<a class="headerlink" href="#utledning-av-equal-area-criterion" title="Permalink to this heading">#</a></h1>
+<p>Vi ønsker å finne betingelsen for at rotorhastighetsavviket skal bli null, dvs.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}=0.
+\]</div>
+<p>Swing-ligningen for en generator koblet til en infinite bus er</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta}{dt^2}=P_m-P_e
+\tag{18}
+\]</div>
+<p>der</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M\)</span> = treghetskoeffisient</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_m\)</span> = mekanisk effekt</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_e\)</span> = elektrisk effekt</p></li>
+</ul>
+<p>Multipliser begge sider med</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}
+\]</div>
+<p>slik at</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta}{dt^2}\frac{d\delta}{dt}
+=
+(P_m-P_e)\frac{d\delta}{dt}
+\]</div>
+<p>Omskriver vi ligningen</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d\delta}{dt}
+\frac{d}{dt}
+\left(\frac{d\delta}{dt}\right)=
+(P_m-P_e)\frac{d\delta}{dt}
+\]</div>
+<p>Ved å bruke identiteten</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt}(x^2)
+=
+2x\frac{dx}{dt},
+\]</div>
+<p>med</p>
+<div class="math notranslate nohighlight">
+\[
+x=\frac{d\delta}{dt},
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta}{dt^2}\frac{d\delta}{dt}
+=
+\frac{M}{2}
+\frac{d}{dt}
+\left(\frac{d\delta}{dt}\right)^2.
+\]</div>
+<p>Dermed fås</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{M}{2}
+\frac{d}{dt}
+\left(\frac{d\delta}{dt}\right)^2
+=
+(P_m-P_e)\frac{d\delta}{dt}
+\tag{19}
+\]</div>
+<p>eller</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt}
+\left(\frac{d\delta}{dt}\right)^2
+=
+\frac{2(P_m-P_e)}{M}
+\frac{d\delta}{dt}.
+\]</div>
+<p>Ved å bruke kjerneregelen</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt}
+=
+\frac{d\delta}{dt}
+\frac{d}{d\delta},
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{d\delta}
+\left(\frac{d\delta}{dt}\right)^2
+=
+\frac{2(P_m-P_e)}{M}.
+\]</div>
+<p>Integrasjon fra startvinkelen <span class="math notranslate nohighlight">\(\delta_0\)</span> til en vilkårlig vinkel <span class="math notranslate nohighlight">\(\delta\)</span> gir</p>
+<div class="math notranslate nohighlight">
+\[
+\left(\frac{d\delta}{dt}\right)^2
+=
+\int_{\delta_0}^{\delta}
+\frac{2(P_m-P_e)}{M}\,d\delta.
+\]</div>
+<p>Dermed</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}
+=
+\sqrt{
+\int_{\delta_0}^{\delta}
+\frac{2(P_m-P_e)}{M}\,d\delta
+}
+\tag{20}
+\]</div>
+<hr class="docutils" />
+<section id="for-forstyrrelsen">
+<h2>Før forstyrrelsen<a class="headerlink" href="#for-forstyrrelsen" title="Permalink to this heading">#</a></h2>
+<p>Før forstyrrelsen er systemet i stasjonær drift med rotorvinkel</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0.
+\]</div>
+<p>Da gjelder</p>
+<div class="math notranslate nohighlight">
+\[
+P_m=P_e
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}=0.
+\]</div>
+<p>Når en forstyrrelse oppstår, blir</p>
+<div class="math notranslate nohighlight">
+\[
+P_m \neq P_e,
+\]</div>
+<p>og rotorvinkelen begynner å endres.</p>
+</section>
+<hr class="docutils" />
+<section id="betingelse-for-stabilitet">
+<h2>Betingelse for stabilitet<a class="headerlink" href="#betingelse-for-stabilitet" title="Permalink to this heading">#</a></h2>
+<p>For at rotorvinkelen skal nå et maksimum og deretter vende tilbake, må hastigheten bli null ved et senere tidspunkt:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\delta}{dt}=0.
+\]</div>
+<p>Fra ligning (20) følger det at</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{\delta_0}^{\delta}
+(P_m-P_e)\,d\delta
+=
+0.
+\]</div>
+<p>Det betyr at nettoenergien som rotoren mottar under akselerasjon må være lik energien som avgis under retardasjon.</p>
+<p>Grafisk innebærer dette at arealet mellom <span class="math notranslate nohighlight">\(P_m\)</span>-linjen og <span class="math notranslate nohighlight">\(P_e\)</span>-kurven må være null.</p>
+<p>Dersom integralet deles inn i et akselerasjonsområde og et retardasjonsområde, fås</p>
+<div class="math notranslate nohighlight">
+\[
+A_1=A_2.
+\]</div>
+<p>hvor</p>
+<div class="math notranslate nohighlight">
+\[
+A_1
+=
+\int_{\delta_0}^{\delta_c}
+(P_m-P_e)\,d\delta
+\]</div>
+<p>er akselerasjonsarealet, og</p>
+<div class="math notranslate nohighlight">
+\[
+A_2
+=
+\int_{\delta_c}^{\delta_{\max}}
+(P_e-P_m)\,d\delta
+\]</div>
+<p>er retardasjonsarealet.</p>
+<p>Likheten</p>
+<div class="math notranslate nohighlight">
+\[
+A_1=A_2
+\]</div>
+<p>er kjent som <strong>Equal Area Criterion</strong> og utgjør stabilitetsbetingelsen for en generator koblet til en infinite bus.</p>
+<p>Ved å multiplisere swing-ligningen med <span class="math notranslate nohighlight">\(\dfrac{d\delta}{dt}\)</span> kan venstresiden skrives som</p>
+<div class="math notranslate nohighlight">
+\[
+M\frac{d^2\delta}{dt^2}\frac{d\delta}{dt}
+=
+\frac{M}{2}\frac{d}{dt}\left(\frac{d\delta}{dt}\right)^2.
+\]</div>
+<p>Uttrykket</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2}M\left(\frac{d\delta}{dt}\right)^2
+\]</div>
+<p>har samme form som kinetisk energi. Dermed representerer høyresiden den tidsderiverte av rotorens kinetiske energi. Equal Area Criterion er derfor en energibalanse mellom energien som tilføres rotoren under akselerasjon og energien som fjernes under retardasjon.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./12_dynmod"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Equal Area Criterion (Likarealkriteriet)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grunnide">Grunnidé</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilitetsbetingelse">Stabilitetsbetingelse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likarealkriteriet">Likarealkriteriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#utledning-av-equal-area-criterion">Utledning av Equal Area Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-forstyrrelsen">Før forstyrrelsen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betingelse-for-stabilitet">Betingelse for stabilitet</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
