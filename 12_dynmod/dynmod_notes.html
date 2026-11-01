@@ -287,6 +287,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Finne kraftvinkel</a></li>
 
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment8.html">Øving 8</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
@@ -491,6 +494,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bestemmelse-av-effekt-vinkel-ligningen">Bestemmelse av effekt-vinkel-ligningen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fremgangsmate">Fremgangsmåte</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betydning">Betydning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand">Driftstilstand</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generelt-resultat">Generelt resultat</a></li>
 </ul>
 </li>
@@ -500,10 +506,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminalspenningens-vinkel">2. Terminalspenningens vinkel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utledning-av-effekt-vinkel-ligningen">3. Utledning av effekt-vinkel-ligningen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transient-indre-spenning">Transient indre spenning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-overforingsreaktans">Total overføringsreaktans</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effekt-vinkel-ligning">Effekt-vinkel-ligning</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-1-friskt-system">Driftstilstand 1: Friskt system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-overforingsreaktans">Total overføringsreaktans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effekt-vinkel-ligning">Effekt-vinkel-ligning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svingligningen-og-driftspunktet">Svingligningen og driftspunktet</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svingligningen">Svingligningen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likevektspunkt-for-feil">Likevektspunkt før feil</a></li>
@@ -511,14 +520,19 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-2-trefasekortslutning-pa-en-av-linjene">Driftstilstand 2: Trefasekortslutning på en av linjene</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-2-en-av-linjene-er-kortsluttet-3-fasefeil-pa-midten">Driftstilstand 2: En av linjene er kortsluttet (3-fasefeil) på midten</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losning">Løsning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kron-reduksjon-nodeeliminasjon">Kron-reduksjon (nodeeliminasjon)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akselerasjonseffekt-i-svingeligningen">Akselerasjonseffekt i svingeligningen</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-3-en-av-linjene-er-frakoblet-klarert-feil">Driftstilstand 3: En av linjene er frakoblet (klarert feil)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Effekt-vinkel-ligning</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-effektvinkel-kurvene-p-delta-kurvene">Plot effektvinkel kurvene (<span class="math notranslate nohighlight">\(P-\delta\)</span>-kurvene)</a></li>
 </ul>
 
             </nav>
@@ -539,17 +553,26 @@ document.write(`
 </section>
 <section id="fremgangsmate">
 <h2>Fremgangsmåte<a class="headerlink" href="#fremgangsmate" title="Permalink to this heading">#</a></h2>
-<p>Løsningen følger disse trinnene: (i) reduser transmisjonsnettet til en ekvivalent reaktans <span class="math notranslate nohighlight">\(X_{nett)\)</span>, (ii) bestem referansevinkel, <span class="math notranslate nohighlight">\(\alpha\)</span> mellom terminalspenning <span class="math notranslate nohighlight">\(V_t\)</span> og svingbus <span class="math notranslate nohighlight">\(V_{\infty}\)</span>, (iii) bestem strøm, I, ut av generatoren (iv) beregn generatorens transiente indre spenning <span class="math notranslate nohighlight">\(E'\)</span>, (iv) bestem den ekvivalente overføringsreaktansen <span class="math notranslate nohighlight">\(X_{transfer}\)</span>, og (iv) bruk den klassiske effekt-vinkel-relasjonen</p>
+<p>Løsningen følger disse trinnene: (i) reduser transmisjonsnettet til en ekvivalent reaktans <span class="math notranslate nohighlight">\(X_{nett}\)</span>, (ii) bestem referansevinkel, <span class="math notranslate nohighlight">\(\alpha\)</span> mellom terminalspenning <span class="math notranslate nohighlight">\(V_t\)</span> og svingbus <span class="math notranslate nohighlight">\(V_{\infty}\)</span>, (iii) bestem strøm, I, ut av generatoren (iv) beregn generatorens transiente indre spenning <span class="math notranslate nohighlight">\(E'\)</span>, (iv) bestem den ekvivalente overføringsreaktansen <span class="math notranslate nohighlight">\(X_{transfer}\)</span>, og (iv) bruk den klassiske effekt-vinkel-relasjonen</p>
 <div class="math notranslate nohighlight">
 \[
 P_e=\frac{|E'||V_\infty|}{X_{eq}}\sin\delta.
 \]</div>
+<p><img alt="generator" src="../_images/LectureNotePdelta_curve.jpg" /></p>
 </section>
 <section id="betydning">
 <h2>Betydning<a class="headerlink" href="#betydning" title="Permalink to this heading">#</a></h2>
 <p>Dette eksemplet illustrerer standardprosedyren som benyttes i transientstabilitetsanalyser: (1) konstruere det ekvivalente nettet, (2) beregne generatorens interne spenning <span class="math notranslate nohighlight">\(E'\)</span>, (3) bestemme overføringsreaktansen <span class="math notranslate nohighlight">\(X_{transfer}\)</span>, og (4) utlede den tilhørende effekt-vinkel-kurven. Den resulterende effekt-vinkel-ligningen kombineres deretter med svingligningen (swing equation) for å vurdere rotorvinkelstabiliteten etter forstyrrelser.</p>
-<p><img alt="generator" src="../_images/LectureNotePdelta_curve.jpg" /></p>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="driftstilstand">
+<h1>Driftstilstand<a class="headerlink" href="#driftstilstand" title="Permalink to this heading">#</a></h1>
+<p>Systemet undersøkes og finner tilstandene før følgende operasjonell drift:</p>
+<ol class="arabic simple">
+<li><p>Friskt system (ingen feil)</p></li>
+<li><p>En av linjene er kortsluttet (3-fasefeil) på midten</p></li>
+<li><p>En av linjene er frakoblet</p></li>
+</ol>
 <section id="generelt-resultat">
 <h2>Generelt resultat<a class="headerlink" href="#generelt-resultat" title="Permalink to this heading">#</a></h2>
 <p>For et tapsfritt nett kan den elektriske effekten skrives som</p>
@@ -693,8 +716,12 @@ E'
 1.050\angle 28.44^\circ\;\text{pu}.
 \]</div>
 </section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="driftstilstand-1-friskt-system">
+<h1>Driftstilstand 1: Friskt system<a class="headerlink" href="#driftstilstand-1-friskt-system" title="Permalink to this heading">#</a></h1>
 <section id="total-overforingsreaktans">
-<h3>Total overføringsreaktans<a class="headerlink" href="#total-overforingsreaktans" title="Permalink to this heading">#</a></h3>
+<h2>Total overføringsreaktans<a class="headerlink" href="#total-overforingsreaktans" title="Permalink to this heading">#</a></h2>
 <p>Mellom den transiente indre spenningen og den uendelige bussen er den totale reaktansen</p>
 <div class="math notranslate nohighlight">
 \[
@@ -706,7 +733,7 @@ X_{transfer}
 \]</div>
 </section>
 <section id="effekt-vinkel-ligning">
-<h3>Effekt-vinkel-ligning<a class="headerlink" href="#effekt-vinkel-ligning" title="Permalink to this heading">#</a></h3>
+<h2>Effekt-vinkel-ligning<a class="headerlink" href="#effekt-vinkel-ligning" title="Permalink to this heading">#</a></h2>
 <p>For et tapsfritt system gjelder</p>
 <div class="math notranslate nohighlight">
 \[
@@ -743,7 +770,6 @@ P_e = 2.10\sin\delta
 \qquad \text{pu}.
 \]</div>
 <p>der <span class="math notranslate nohighlight">\(\delta\)</span> er rotorvinkelen målt i forhold til den uendelige bussen.</p>
-</section>
 </section>
 <section id="svingligningen-og-driftspunktet">
 <h2>Svingligningen og driftspunktet<a class="headerlink" href="#svingligningen-og-driftspunktet" title="Permalink to this heading">#</a></h2>
@@ -840,8 +866,8 @@ P_a=P_m-P_e=0.
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="driftstilstand-2-trefasekortslutning-pa-en-av-linjene">
-<h1>Driftstilstand 2: Trefasekortslutning på en av linjene<a class="headerlink" href="#driftstilstand-2-trefasekortslutning-pa-en-av-linjene" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="driftstilstand-2-en-av-linjene-er-kortsluttet-3-fasefeil-pa-midten">
+<h1>Driftstilstand 2: En av linjene er kortsluttet (3-fasefeil) på midten<a class="headerlink" href="#driftstilstand-2-en-av-linjene-er-kortsluttet-3-fasefeil-pa-midten" title="Permalink to this heading">#</a></h1>
 <p>Systemet opererer under de gitte driftsforholdene når en trefasekortslutning oppstår på den ene av linjene i prallell.</p>
 <p>Bestem:</p>
 <ol class="arabic simple">
@@ -983,6 +1009,77 @@ P_e = 0.808\sin\delta
 \]</div>
 </section>
 </section>
+<section id="driftstilstand-3-en-av-linjene-er-frakoblet-klarert-feil">
+<h2>Driftstilstand 3: En av linjene er frakoblet (klarert feil)<a class="headerlink" href="#driftstilstand-3-en-av-linjene-er-frakoblet-klarert-feil" title="Permalink to this heading">#</a></h2>
+<p>Feilen fra driftstilstand 2 er klarert ved åpning effektbryter. Bestem krafteffektvinkel og svingeligning.</p>
+<section id="id1">
+<h3>Effekt-vinkel-ligning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Besten admittansen for det nye overføringen:</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{X_{transfer}}=\frac{1}{j(0.2+0.1+0.4)}=-j1.429 pu\]</div>
+<p>Den nye overføringsadmittansen</p>
+<div class="math notranslate nohighlight">
+\[
+|Y_{12}| = j1.429,
+\]</div>
+<p>og dermed blir maksimal overført effekt</p>
+<div class="math notranslate nohighlight">
+\[
+P = |E_1||E_2||Y_{12}|\cdot sin\delta
+  = (1.05)\cdot(1.0)\cdot(1.429)\cdot sin\delta = 1.500 sin\delta
+\]</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="plot-effektvinkel-kurvene-p-delta-kurvene">
+<h1>Plot effektvinkel kurvene (<span class="math notranslate nohighlight">\(P-\delta\)</span>-kurvene)<a class="headerlink" href="#plot-effektvinkel-kurvene-p-delta-kurvene" title="Permalink to this heading">#</a></h1>
+<p>Under er de tre effektvinkel kurvene plottet i python. Legg merke til at initiell driftsvinkel før feil (<span class="math notranslate nohighlight">\(\delta_0=28.44^{\circ}\)</span>) treffer <span class="math notranslate nohighlight">\(P_m\)</span> ved 1 pu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">Pmax_prefault</span> <span class="o">=</span> <span class="mf">2.10</span>
+<span class="n">Pmax_fault</span> <span class="o">=</span> <span class="mf">0.808</span>
+<span class="n">Pmax_openline</span> <span class="o">=</span> <span class="mf">1.500</span>
+<span class="n">Pm</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">delta_deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">delta_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">)</span>
+<span class="n">delta_0</span> <span class="o">=</span> <span class="mf">28.44</span>
+
+<span class="n">Pe_prefault</span> <span class="o">=</span> <span class="n">Pmax_prefault</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_rad</span><span class="p">)</span>
+<span class="n">Pe_fault</span> <span class="o">=</span> <span class="n">Pmax_fault</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_rad</span><span class="p">)</span>
+<span class="n">Pe_openline</span> <span class="o">=</span> <span class="n">Pmax_openline</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_rad</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe_prefault</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_{e_</span><span class="si">{prefault}</span><span class="s1">}=2.10\sin\delta$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe_openline</span><span class="p">,</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_{e_</span><span class="si">{openline}</span><span class="s1">}=1.500\sin\delta$'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_deg</span><span class="p">,</span> <span class="n">Pe_fault</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_{e_</span><span class="si">{fault}</span><span class="s1">}=0.808\sin\delta$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Pm</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_m=1.0$'</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">delta_0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span>
+          <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$\delta_0=28.44$'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\delta$ (grader)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Effekt (p.u.)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Effektvinkel-kurve'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7509358c409292c16399ac35099e0cf03127690cd50336180e2d97fe3008df90.png" src="../_images/7509358c409292c16399ac35099e0cf03127690cd50336180e2d97fe3008df90.png" />
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1053,6 +1150,9 @@ P_e = 0.808\sin\delta
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bestemmelse-av-effekt-vinkel-ligningen">Bestemmelse av effekt-vinkel-ligningen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fremgangsmate">Fremgangsmåte</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betydning">Betydning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand">Driftstilstand</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generelt-resultat">Generelt resultat</a></li>
 </ul>
 </li>
@@ -1062,10 +1162,13 @@ P_e = 0.808\sin\delta
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminalspenningens-vinkel">2. Terminalspenningens vinkel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utledning-av-effekt-vinkel-ligningen">3. Utledning av effekt-vinkel-ligningen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transient-indre-spenning">Transient indre spenning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-overforingsreaktans">Total overføringsreaktans</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effekt-vinkel-ligning">Effekt-vinkel-ligning</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-1-friskt-system">Driftstilstand 1: Friskt system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-overforingsreaktans">Total overføringsreaktans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effekt-vinkel-ligning">Effekt-vinkel-ligning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svingligningen-og-driftspunktet">Svingligningen og driftspunktet</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svingligningen">Svingligningen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likevektspunkt-for-feil">Likevektspunkt før feil</a></li>
@@ -1073,14 +1176,19 @@ P_e = 0.808\sin\delta
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-2-trefasekortslutning-pa-en-av-linjene">Driftstilstand 2: Trefasekortslutning på en av linjene</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-2-en-av-linjene-er-kortsluttet-3-fasefeil-pa-midten">Driftstilstand 2: En av linjene er kortsluttet (3-fasefeil) på midten</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losning">Løsning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kron-reduksjon-nodeeliminasjon">Kron-reduksjon (nodeeliminasjon)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akselerasjonseffekt-i-svingeligningen">Akselerasjonseffekt i svingeligningen</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driftstilstand-3-en-av-linjene-er-frakoblet-klarert-feil">Driftstilstand 3: En av linjene er frakoblet (klarert feil)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Effekt-vinkel-ligning</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-effektvinkel-kurvene-p-delta-kurvene">Plot effektvinkel kurvene (<span class="math notranslate nohighlight">\(P-\delta\)</span>-kurvene)</a></li>
 </ul>
 
   </nav></div>
