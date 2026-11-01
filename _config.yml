@@ -41,6 +41,7 @@ sphinx:
       - override.css
 
   extra_extensions: 
+    - sphinx_design
     - sphinxcontrib.bibtex
 
     
