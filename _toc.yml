@@ -86,6 +86,7 @@ parts:
       - file: 12_dynmod/dynmod
       - file: 12_dynmod/dynmod_notes
       - file: assignments/assignment8
+      - file: 12_dynmod/equal_area
       
 
   - caption: Referanser
