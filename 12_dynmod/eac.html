@@ -291,6 +291,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="../assignments/assignment8.html">Øving 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equal_area.html">Likevektsarealkriteriet - Equal Area Criterion</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
 <ul class="nav bd-sidenav">
@@ -503,6 +505,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betingelse-for-stabilitet">Betingelse for stabilitet</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ikke-utbedret-eks">IKKE UTBEDRET EKS</a></li>
 </ul>
 
             </nav>
@@ -838,7 +841,175 @@ M\frac{d^2\delta}{dt^2}\frac{d\delta}{dt}
 \frac{1}{2}M\left(\frac{d\delta}{dt}\right)^2
 \]</div>
 <p>har samme form som kinetisk energi. Dermed representerer høyresiden den tidsderiverte av rotorens kinetiske energi. Equal Area Criterion er derfor en energibalanse mellom energien som tilføres rotoren under akselerasjon og energien som fjernes under retardasjon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Effekt-vinkel-kurve</span>
+<span class="n">Pmax</span> <span class="o">=</span> <span class="mf">2.10</span>
+
+<span class="c1"># Operasjonspunkt</span>
+<span class="n">delta0_deg</span> <span class="o">=</span> <span class="mf">28.44</span>
+<span class="n">delta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">delta0_deg</span><span class="p">)</span>
+
+<span class="c1"># Kurve</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">Pe</span> <span class="o">=</span> <span class="n">Pmax</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+<span class="c1"># Driftspunkt</span>
+<span class="n">Pe0</span> <span class="o">=</span> <span class="n">Pmax</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta0</span><span class="p">)</span>
+
+<span class="c1"># Synchronizing power coefficient</span>
+<span class="n">Sp</span> <span class="o">=</span> <span class="n">Pmax</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">delta0</span><span class="p">)</span>
+
+<span class="c1"># Tangent</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">delta0</span> <span class="o">-</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">delta0</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">tangent</span> <span class="o">=</span> <span class="n">Pe0</span> <span class="o">+</span> <span class="n">Sp</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="n">delta0</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">delta</span><span class="p">),</span> <span class="n">Pe</span><span class="p">,</span>
+         <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$P_e = 2.10\sin\delta$'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">tangent</span><span class="p">,</span> <span class="s1">'r--'</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s1">'$S_p = </span><span class="si">{</span><span class="n">Sp</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$ pu/rad'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta0_deg</span><span class="p">,</span> <span class="n">Pe0</span><span class="p">,</span> <span class="s1">'ko'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">delta0_deg</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">':'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="sa">rf</span><span class="s1">'$\delta_0=</span><span class="si">{</span><span class="n">delta0_deg</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">^\circ$'</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span>
+    <span class="sa">rf</span><span class="s1">'$P_e=</span><span class="si">{</span><span class="n">Pe0</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$ pu'</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span>
+    <span class="sa">rf</span><span class="s1">'$S_p=</span><span class="si">{</span><span class="n">Sp</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$ pu/rad'</span><span class="p">,</span>
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">delta0_deg</span><span class="p">,</span> <span class="n">Pe0</span><span class="p">),</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">),</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">'-&gt;'</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\delta$ (deg)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$P_e$ (pu)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Synchronizing Power Coefficient'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/610927c1e7cce04f02523d510928e8f0196f127861f7c8a7af93583effe0e013.png" src="../_images/610927c1e7cce04f02523d510928e8f0196f127861f7c8a7af93583effe0e013.png" />
+</div>
+</div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ikke-utbedret-eks">
+<h1>IKKE UTBEDRET EKS<a class="headerlink" href="#ikke-utbedret-eks" title="Permalink to this heading">#</a></h1>
+<p>Utgangspunktet er effekt-vinkel-relasjonen</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = P_{\max}\sin\delta
+\]</div>
+<p>Rotorvinkelen skrives som summen av operasjonspunktet og et lite avvik:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta = \delta_0 + \delta_\Delta
+\]</div>
+<p>Dermed blir den elektriske effekten</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e0}+P_{e\Delta}
+=
+P_{\max}\sin(\delta_0+\delta_\Delta)
+\]</div>
+<p>Ved bruk av identiteten</p>
+<div class="math notranslate nohighlight">
+\[
+\sin(A+B)=\sin A\cos B+\cos A\sin B
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e0}+P_{e\Delta}
+=
+P_{\max}
+\left(
+\sin\delta_0\cos\delta_\Delta
++
+\cos\delta_0\sin\delta_\Delta
+\right)
+\]</div>
+<p>For små vinkelavvik gjelder approksimasjonene</p>
+<div class="math notranslate nohighlight">
+\[
+\cos\delta_\Delta \approx 1
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\sin\delta_\Delta \approx \delta_\Delta.
+\]</div>
+<p>Dermed kan uttrykket forenkles til</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e0}+P_{e\Delta}
+\approx
+P_{\max}
+\left(
+\sin\delta_0
++
+\delta_\Delta\cos\delta_0
+\right)
+\]</div>
+<p>Siden</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e0}=P_{\max}\sin\delta_0,
+\]</div>
+<p>står vi igjen med</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e\Delta}
+=
+P_{\max}\cos\delta_0\,\delta_\Delta.
+\]</div>
+<p>Definerer vi den synkroniserende effektkoeffisienten som</p>
+<div class="math notranslate nohighlight">
+\[
+S_p=P_{\max}\cos\delta_0,
+\]</div>
+<p>kan småsignalrelasjonen skrives</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e\Delta}=S_p\,\delta_\Delta.
+\]</div>
+<p>For</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\max}=2.10
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0=28.44^\circ
+\]</div>
+<p>får vi</p>
+<div class="math notranslate nohighlight">
+\[
+S_p
+=
+2.10\cos(28.44^\circ)
+=
+1.85 \text{ pu/rad}.
+\]</div>
+<p>Den lineariserte effekt-vinkel-relasjonen blir derfor</p>
+<div class="math notranslate nohighlight">
+\[
+P_{e\Delta}
+=
+1.85\,\delta_\Delta.
+\]</div>
+<p>Geometrisk er <span class="math notranslate nohighlight">\(S_p\)</span> helningen til tangenten til <span class="math notranslate nohighlight">\(P_e\)</span>-<span class="math notranslate nohighlight">\(\delta\)</span>-kurven i operasjonspunktet <span class="math notranslate nohighlight">\(\delta_0\)</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -900,6 +1071,7 @@ M\frac{d^2\delta}{dt^2}\frac{d\delta}{dt}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betingelse-for-stabilitet">Betingelse for stabilitet</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ikke-utbedret-eks">IKKE UTBEDRET EKS</a></li>
 </ul>
 
   </nav></div>
