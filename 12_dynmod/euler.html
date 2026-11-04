@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '12_dynmod/euler';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="next" title="Bestemmelse av \(\delta_{cr}\) og \(t_{cr}\) ved EAC og Stevenson" href="ex_stevenson.html" />
     <link rel="prev" title="Likevektsarealkriteriet - Equal Area Criterion" href="equal_area.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -295,6 +295,193 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Euler-metoden</a></li>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ex_stevenson.html">Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
 <ul class="nav bd-sidenav">
@@ -495,12 +682,110 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Euler-metoden</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-vinkelhastighet">Endring i vinkelhastighet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-rotorvinkel">Endring i rotorvinkel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerisk-algoritme">Numerisk algoritme</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-betydning">Fysisk betydning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritme">Algoritme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-med-eksakt-verdi">Euler-metoden med eksakt verdi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-for-svingligningen">Euler-metoden for svingligningen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-d-delta-dt">$
+\frac{d\delta}{dt}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-d-omega-dt">$
+\frac{d\omega}{dt}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdatering">Oppdatering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-1">$
+\omega_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n-1">$
+\delta_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Euler-metoden for svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-d-2-delta-dt-2">$
+\frac{d^2\delta}{dt^2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">$
+\frac{d\delta}{dt}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">$
+\frac{d\omega}{dt}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Oppdatering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">$
+\omega_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">$
+\delta_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-punkt-for-punkt-metoden">Euler-metoden (punkt-for-punkt-metoden)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-vinkelhastighet">Endring i vinkelhastighet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#m-frac-d-2-delta-dt-2">$
+M\frac{d^2\delta}{dt^2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">$
+\frac{d^2\delta}{dt^2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-frac12">$
+\omega_{n-\frac12}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-frac32">\omega_{n-\frac32}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-omega-n-frac12">$
+\Delta\omega_{n-\frac12}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-rotorvinkel">Endring i rotorvinkel</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n-1-delta-n-2">$
+\delta_{n-1}-\delta_{n-2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">$
+\omega_{n-\frac12}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n-1">$
+\Delta\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">$
+\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerisk-algoritme">Numerisk algoritme</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregn-akselererende-effekt">1. Beregn akselererende effekt</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-n">$
+\Delta P_n</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-vinkelhastigheten">2. Oppdater vinkelhastigheten</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">$
+\omega_{n+\frac12}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-rotorvinkelen">3. Oppdater rotorvinkelen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">$
+\delta_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n">$
+\Delta\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n-delta-n-1">\delta_n-\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">$
+\Delta\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">\delta_{n-1}-\delta_{n-2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n-delta-delta-n-1">$
+\Delta\delta_n-\Delta\delta_{n-1}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-t-left-omega-n-frac12">\Delta t
+\left(
+\omega_{n-\frac12}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">$
+\omega_{n-\frac12}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">\omega_{n-\frac32}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">$
+\Delta\delta_n-\Delta\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-t-left-frac-delta-p-n-1-m-delta-t-right">\Delta t
+\left(
+\frac{\Delta P_{n-1}}{M}\Delta t
+\right)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxed-delta-delta-n">$
+\boxed{
+\Delta\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxed-delta-n">$
+\boxed{
+\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-betydning">Fysisk betydning</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fremgangsmate">Fremgangsmåte</a></li>
 </ul>
 
@@ -516,205 +801,475 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="euler-metoden">
 <h1>Euler-metoden<a class="headerlink" href="#euler-metoden" title="Permalink to this heading">#</a></h1>
-<p>I denne metoden bestemmes endringen i rotorvinkelen over korte tidsintervaller. Følgende antakelser gjøres:</p>
+<p>Gitt differensialligningen <span class="math notranslate nohighlight">\(\frac{dy}{dt}=f(t,y)\)</span> med startbetingelsen <span class="math notranslate nohighlight">\(y(t_0)=y_0,\)</span> kan Euler-metoden brukes til å beregne en tilnærmet løsning ved diskrete tidspunkter. For et tidssteg <span class="math notranslate nohighlight">\(h\)</span> beregnes neste verdi som</p>
+<div class="math notranslate nohighlight">
+\[
+y_{n+1}=y_n+h\,f(t_n,y_n).
+\]</div>
+<p>Tidspunktet oppdateres samtidig som</p>
+<div class="math notranslate nohighlight">
+\[
+t_{n+1}=t_n+h.
+\]</div>
+<section id="algoritme">
+<h2>Algoritme<a class="headerlink" href="#algoritme" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Start med kjente verdier <span class="math notranslate nohighlight">\(t_0\)</span> og <span class="math notranslate nohighlight">\(y_0\)</span>.</p></li>
+<li><p>Beregn stigningstallet:</p>
+<p><span class="math notranslate nohighlight">\(
+f(t_n,y_n)
+\)</span></p>
+</li>
+<li><p>Beregn neste verdi:</p>
+<p><span class="math notranslate nohighlight">\(
+y_{n+1}=y_n+h\,f(t_n,y_n)
+\)</span></p>
+</li>
+<li><p>Gjenta prosessen for hvert tidssteg.</p></li>
+</ol>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/502c2866907ddbdb307797166ebd548ca401107c26b75c330c1d639351b31b80.png" src="../_images/502c2866907ddbdb307797166ebd548ca401107c26b75c330c1d639351b31b80.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> n    x      Euler     Eksakt     Feil
+----------------------------------------
+ 0   1.0     1.00      1.00     0.00
+ 1   1.1     1.20      1.21     0.01
+ 2   1.2     1.42      1.44     0.02
+ 3   1.3     1.66      1.69     0.03
+ 4   1.4     1.92      1.96     0.04
+ 5   1.5     2.20      2.25     0.05
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="euler-metoden-med-eksakt-verdi">
+<h2>Euler-metoden med eksakt verdi<a class="headerlink" href="#euler-metoden-med-eksakt-verdi" title="Permalink to this heading">#</a></h2>
+<p>Gitt</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{dy}{dx}=2x
+\)</span></p>
+<p>med startbetingelse</p>
+<p><span class="math notranslate nohighlight">\(
+y(1)=1
+\)</span></p>
+<p>og steglengde</p>
+<p><span class="math notranslate nohighlight">\(
+h=0.1.
+\)</span></p>
+<p>Euler-formelen er</p>
+<p><span class="math notranslate nohighlight">\(
+y_{n+1}=y_n+h\,f(x_n)
+\)</span></p>
+<p>der</p>
+<p><span class="math notranslate nohighlight">\(
+f(x)=2x.
+\)</span></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>n</p></th>
+<th class="head text-right"><p>x_n</p></th>
+<th class="head text-right"><p>y_n (Euler)</p></th>
+<th class="head"><p>Utregning</p></th>
+<th class="head text-right"><p>Eksakt verdi y(x_n)=x_n²</p></th>
+<th class="head text-right"><p>Feil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>0</p></td>
+<td class="text-right"><p>1.0</p></td>
+<td class="text-right"><p>1.00</p></td>
+<td><p>Startverdi</p></td>
+<td class="text-right"><p>1.00</p></td>
+<td class="text-right"><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>1</p></td>
+<td class="text-right"><p>1.1</p></td>
+<td class="text-right"><p>1.20</p></td>
+<td><p>y₁ = 1.00 + 0.1·(2·1.0) = 1.20</p></td>
+<td class="text-right"><p>1.21</p></td>
+<td class="text-right"><p>0.01</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1.2</p></td>
+<td class="text-right"><p>1.42</p></td>
+<td><p>y₂ = 1.20 + 0.1·(2·1.1) = 1.42</p></td>
+<td class="text-right"><p>1.44</p></td>
+<td class="text-right"><p>0.02</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>3</p></td>
+<td class="text-right"><p>1.3</p></td>
+<td class="text-right"><p>1.66</p></td>
+<td><p>y₃ = 1.42 + 0.1·(2·1.2) = 1.66</p></td>
+<td class="text-right"><p>1.69</p></td>
+<td class="text-right"><p>0.03</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>4</p></td>
+<td class="text-right"><p>1.4</p></td>
+<td class="text-right"><p>1.92</p></td>
+<td><p>y₄ = 1.66 + 0.1·(2·1.3) = 1.92</p></td>
+<td class="text-right"><p>1.96</p></td>
+<td class="text-right"><p>0.04</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>5</p></td>
+<td class="text-right"><p>1.5</p></td>
+<td class="text-right"><p>2.20</p></td>
+<td><p>y₅ = 1.92 + 0.1·(2·1.4) = 2.20</p></td>
+<td class="text-right"><p>2.25</p></td>
+<td class="text-right"><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="resultat">
+<h3>Resultat<a class="headerlink" href="#resultat" title="Permalink to this heading">#</a></h3>
+<p>Euler-metoden gir</p>
+<p><span class="math notranslate nohighlight">\(
+y(1.5)\approx 2.20
+\)</span></p>
+<p>mens den eksakte løsningen er</p>
+<p><span class="math notranslate nohighlight">\(
+y(1.5)=2.25.
+\)</span></p>
+<p>Feilen blir</p>
+<p><span class="math notranslate nohighlight">\(
+e=2.25-2.20=0.05.
+\)</span></p>
+</section>
+</section>
+<section id="euler-metoden-for-svingligningen">
+<h2>Euler-metoden for svingligningen<a class="headerlink" href="#euler-metoden-for-svingligningen" title="Permalink to this heading">#</a></h2>
+<p>Euler-metoden for svingligningen er en modifisert Euler-metode (midpoint/leapfrog-formulering) anvendt på svingligningen.</p>
+<p>Svingligningen kan skrives som</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2\delta}{dt^2}
+=
+\frac{\pi f}{H}P_a.
+\]</div>
+<p>Vi innfører vinkelhastigheten</p>
+<p><span class="math notranslate nohighlight">\(
+\omega=\frac{d\delta}{dt},
+\)</span></p>
+<p>slik at ligningen splittes i to førsteordens differensialligninger:</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="frac-d-delta-dt">
+<h1>$
+\frac{d\delta}{dt}<a class="headerlink" href="#frac-d-delta-dt" title="Permalink to this heading">#</a></h1>
+<p>\omega
+$</p>
+<p>og</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="frac-d-omega-dt">
+<h1>$
+\frac{d\omega}{dt}<a class="headerlink" href="#frac-d-omega-dt" title="Permalink to this heading">#</a></h1>
+<p>\frac{\pi f}{H}P_a.
+$</p>
+<section id="oppdatering">
+<h2>Oppdatering<a class="headerlink" href="#oppdatering" title="Permalink to this heading">#</a></h2>
+<p>Euler-metoden gir da oppdateringene</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="omega-n-1">
+<h1>$
+\omega_{n+1}<a class="headerlink" href="#omega-n-1" title="Permalink to this heading">#</a></h1>
+<p>\omega_n
++
+h\frac{\pi f}{H}P_{a,n}
+$</p>
+<p>og</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-n-1">
+<h1>$
+\delta_{n+1}<a class="headerlink" href="#delta-n-1" title="Permalink to this heading">#</a></h1>
+<p>\delta_n
++
+h\omega_n.
+$</p>
+<p>Her er</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\delta_n\)</span> rotorvinkelen ved tidspunkt <span class="math notranslate nohighlight">\(t_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega_n\)</span> hastighetsavviket ved tidspunkt <span class="math notranslate nohighlight">\(t_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{a,n}\)</span> akselerasjonseffekten ved tidspunkt <span class="math notranslate nohighlight">\(t_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> tidssteget</p></li>
+</ul>
+<p>Disse ligningene brukes iterativt for å beregne rotorvinkel og hastighet gjennom en transient.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Euler-metoden for svingligningen<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Euler-metoden for svingligningen er en modifisert Euler-metode (midpoint- eller leapfrog-formulering) anvendt på svingligningen.</p>
+<p>Svingligningen kan skrives som</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="frac-d-2-delta-dt-2">
+<h1>$
+\frac{d^2\delta}{dt^2}<a class="headerlink" href="#frac-d-2-delta-dt-2" title="Permalink to this heading">#</a></h1>
+<p>\frac{\pi f}{H}P_a.
+$</p>
+<p>Vi innfører vinkelhastigheten</p>
+<p><span class="math notranslate nohighlight">\(
+\omega=\frac{d\delta}{dt},
+\)</span></p>
+<p>slik at ligningen splittes i to førsteordens differensialligninger:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>$
+\frac{d\delta}{dt}<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p>\omega
+$</p>
+<p>og</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>$
+\frac{d\omega}{dt}<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
+<p>\frac{\pi f}{H}P_a.
+$</p>
+<section id="id4">
+<h2>Oppdatering<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Euler-metoden gir da oppdateringene</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>$
+\omega_{n+1}<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h1>
+<p>\omega_n
++
+h\frac{\pi f}{H}P_{a,n}
+$</p>
+<p>og</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>$
+\delta_{n+1}<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h1>
+<p>\delta_n+h\omega_n.
+$</p>
+<p>Her er:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\delta_n\)</span> rotorvinkelen ved tidspunkt <span class="math notranslate nohighlight">\(t_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega_n\)</span> hastighetsavviket ved tidspunkt <span class="math notranslate nohighlight">\(t_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{a,n}\)</span> akselerasjonseffekten ved tidspunkt <span class="math notranslate nohighlight">\(t_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> tidssteget</p></li>
+</ul>
+<p>Disse ligningene brukes iterativt for å beregne rotorvinkel og hastighet gjennom en transient.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="euler-metoden-punkt-for-punkt-metoden">
+<h1>Euler-metoden (punkt-for-punkt-metoden)<a class="headerlink" href="#euler-metoden-punkt-for-punkt-metoden" title="Permalink to this heading">#</a></h1>
+<p>I denne metoden bestemmes endringen i rotorvinkelen over korte tidsintervaller.</p>
+<p>Følgende antakelser gjøres:</p>
 <ol class="arabic simple">
 <li><p>Den akselererende effekten <span class="math notranslate nohighlight">\(\Delta P\)</span> ved begynnelsen av et tidsintervall antas konstant fra midten av forrige intervall til midten av det aktuelle intervallet.</p></li>
 <li><p>Vinkelhastigheten <span class="math notranslate nohighlight">\(\omega\)</span> antas konstant gjennom hele tidsintervallet og beregnes for midtpunktet av intervallet.</p></li>
 </ol>
+<hr class="docutils" />
 <section id="endring-i-vinkelhastighet">
 <h2>Endring i vinkelhastighet<a class="headerlink" href="#endring-i-vinkelhastighet" title="Permalink to this heading">#</a></h2>
-<p>Fra svingeligningen</p>
-<div class="math notranslate nohighlight">
-\[
-M\frac{d^2\delta}{dt^2}=\Delta P
-\]</div>
-<p>fås</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{d^2\delta}{dt^2}=\frac{\Delta P}{M}.
-\]</div>
-<p>Over tidsintervallet <span class="math notranslate nohighlight">\(\Delta t\)</span> blir endringen i vinkelhastighet</p>
-<div class="math notranslate nohighlight">
-\[
-\omega_{n-\frac12}-\omega_{n-\frac32}
-=
-\frac{\Delta P_{n-1}}{M}\Delta t.
-\]</div>
-<p>eller</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\omega_{n-\frac12}
-=
-\frac{\Delta P_{n-1}}{M}\Delta t.
-\]</div>
-<p>Dette uttrykket brukes til å oppdatere rotorens hastighet fra ett halvsteg til det neste.</p>
+<p>Fra svingligningen</p>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="m-frac-d-2-delta-dt-2">
+<h1>$
+M\frac{d^2\delta}{dt^2}<a class="headerlink" href="#m-frac-d-2-delta-dt-2" title="Permalink to this heading">#</a></h1>
+<p>\Delta P
+$</p>
+<p>fås</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>$
+\frac{d^2\delta}{dt^2}<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h1>
+<p>\frac{\Delta P}{M}.
+$</p>
+<p>Over tidsintervallet <span class="math notranslate nohighlight">\(\Delta t\)</span> blir endringen i vinkelhastighet</p>
+<section id="omega-n-frac12">
+<h2>$
+\omega_{n-\frac12}<a class="headerlink" href="#omega-n-frac12" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="omega-n-frac32">
+<h1>\omega_{n-\frac32}<a class="headerlink" href="#omega-n-frac32" title="Permalink to this heading">#</a></h1>
+<p>\frac{\Delta P_{n-1}}{M}\Delta t.
+$</p>
+<p>eller</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-omega-n-frac12">
+<h1>$
+\Delta\omega_{n-\frac12}<a class="headerlink" href="#delta-omega-n-frac12" title="Permalink to this heading">#</a></h1>
+<p>\frac{\Delta P_{n-1}}{M}\Delta t.
+$</p>
+<p>Dette uttrykket brukes til å oppdatere rotorens hastighet fra ett halvsteg til det neste.</p>
+<hr class="docutils" />
 <section id="endring-i-rotorvinkel">
 <h2>Endring i rotorvinkel<a class="headerlink" href="#endring-i-rotorvinkel" title="Permalink to this heading">#</a></h2>
 <p>Rotorvinkelens endring i intervallet fra tid <span class="math notranslate nohighlight">\((n-2)\)</span> til <span class="math notranslate nohighlight">\((n-1)\)</span> er</p>
-<div class="math notranslate nohighlight">
-\[
-\delta_{n-1}-\delta_{n-2}
-=
-\Delta\delta_{n-1}.
-\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-n-1-delta-n-2">
+<h1>$
+\delta_{n-1}-\delta_{n-2}<a class="headerlink" href="#delta-n-1-delta-n-2" title="Permalink to this heading">#</a></h1>
+<p>\Delta\delta_{n-1}.
+$</p>
 <p>Siden <span class="math notranslate nohighlight">\(\omega_{n-\frac12}\)</span> antas konstant gjennom intervallet,</p>
-<div class="math notranslate nohighlight">
-\[
-\omega_{n-\frac12}
-=
-\frac{\Delta\delta_{n-1}}{\Delta t}.
-\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
+<h1>$
+\omega_{n-\frac12}<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h1>
+<p>\frac{\Delta\delta_{n-1}}{\Delta t}.
+$</p>
 <p>Dermed fås</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\delta_{n-1}
-=
-\omega_{n-\frac12}\Delta t
-\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-n-1">
+<h1>$
+\Delta\delta_{n-1}<a class="headerlink" href="#delta-delta-n-1" title="Permalink to this heading">#</a></h1>
+<p>\omega_{n-\frac12}\Delta t
+$</p>
 <p>og</p>
-<div class="math notranslate nohighlight">
-\[
-\delta_{n-1}
-=
-\delta_{n-2}
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id9">
+<h1>$
+\delta_{n-1}<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h1>
+<p>\delta_{n-2}
 +
 \omega_{n-\frac12}\Delta t.
-\]</div>
+$</p>
 </section>
-<section id="numerisk-algoritme">
-<h2>Numerisk algoritme<a class="headerlink" href="#numerisk-algoritme" title="Permalink to this heading">#</a></h2>
-<p>For hvert tidssteg utføres følgende beregninger:</p>
-<ol class="arabic simple">
-<li><p>Beregn akselererende effekt</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\Delta P_n = P_m - P_e(\delta_n).
-\]</div>
-<ol class="arabic simple" start="2">
-<li><p>Oppdater vinkelhastigheten</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\omega_{n+\frac12}
-=
-\omega_{n-\frac12}
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="numerisk-algoritme">
+<h1>Numerisk algoritme<a class="headerlink" href="#numerisk-algoritme" title="Permalink to this heading">#</a></h1>
+<p>For hvert tidssteg utføres følgende beregninger.</p>
+<section id="beregn-akselererende-effekt">
+<h2>1. Beregn akselererende effekt<a class="headerlink" href="#beregn-akselererende-effekt" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-p-n">
+<h1>$
+\Delta P_n<a class="headerlink" href="#delta-p-n" title="Permalink to this heading">#</a></h1>
+<p>P_m-P_e(\delta_n).
+$</p>
+<section id="oppdater-vinkelhastigheten">
+<h2>2. Oppdater vinkelhastigheten<a class="headerlink" href="#oppdater-vinkelhastigheten" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id10">
+<h1>$
+\omega_{n+\frac12}<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h1>
+<p>\omega_{n-\frac12}
 +
 \frac{\Delta P_n}{M}\Delta t.
-\]</div>
-<ol class="arabic simple" start="3">
-<li><p>Oppdater rotorvinkelen</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\delta_{n+1}
-=
-\delta_n
+$</p>
+<section id="oppdater-rotorvinkelen">
+<h2>3. Oppdater rotorvinkelen<a class="headerlink" href="#oppdater-rotorvinkelen" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id11">
+<h1>$
+\delta_{n+1}<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h1>
+<p>\delta_n
 +
 \omega_{n+\frac12}\Delta t.
-\]</div>
-<p>Over det (n)-te intervallet er endringen i rotorvinkelen</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\delta_n
-=
-\delta_n-\delta_{n-1}
-=
-\omega_{n-\frac12}\Delta t.
-\]</div>
+$</p>
+<hr class="docutils" />
+<p>Over det <span class="math notranslate nohighlight">\(n\)</span>-te intervallet er endringen i rotorvinkelen</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-n">
+<h1>$
+\Delta\delta_n<a class="headerlink" href="#delta-delta-n" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-n-delta-n-1">
+<h1>\delta_n-\delta_{n-1}<a class="headerlink" href="#delta-n-delta-n-1" title="Permalink to this heading">#</a></h1>
+<p>\omega_{n-\frac12}\Delta t.
+$</p>
 <p>Tilsvarende er</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\delta_{n-1}
-=
-\delta_{n-1}-\delta_{n-2}
-=
-\omega_{n-\frac32}\Delta t.
-\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id12">
+<h1>$
+\Delta\delta_{n-1}<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id13">
+<h1>\delta_{n-1}-\delta_{n-2}<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h1>
+<p>\omega_{n-\frac32}\Delta t.
+$</p>
 <p>Ved å subtrahere disse uttrykkene fås</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\delta_n-\Delta\delta_{n-1}
-=
-\Delta t
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-n-delta-delta-n-1">
+<h1>$
+\Delta\delta_n-\Delta\delta_{n-1}<a class="headerlink" href="#delta-delta-n-delta-delta-n-1" title="Permalink to this heading">#</a></h1>
+<section id="delta-t-left-omega-n-frac12">
+<h2>\Delta t
 \left(
-\omega_{n-\frac12}
--
-\omega_{n-\frac32}
+\omega_{n-\frac12}<a class="headerlink" href="#delta-t-left-omega-n-frac12" title="Permalink to this heading">#</a></h2>
+<p>\omega_{n-\frac32}
 \right).
-\]</div>
-<p>Fra hastighetsoppdateringen i punkt-for-punkt-metoden har vi</p>
-<div class="math notranslate nohighlight">
-\[
-\omega_{n-\frac12}
--
-\omega_{n-\frac32}
-=
-\frac{\Delta P_{n-1}}{M}\Delta t.
-\]</div>
+$</p>
+<p>Fra hastighetsoppdateringen har vi</p>
+</section>
+<section id="id14">
+<h2>$
+\omega_{n-\frac12}<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id15">
+<h1>\omega_{n-\frac32}<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h1>
+<p>\frac{\Delta P_{n-1}}{M}\Delta t.
+$</p>
 <p>Innsetting gir</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\delta_n-\Delta\delta_{n-1}
-=
-\Delta t
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id16">
+<h1>$
+\Delta\delta_n-\Delta\delta_{n-1}<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-t-left-frac-delta-p-n-1-m-delta-t-right">
+<h1>\Delta t
 \left(
 \frac{\Delta P_{n-1}}{M}\Delta t
-\right)
-=
-\frac{\Delta P_{n-1}}{M}(\Delta t)^2.
-\]</div>
+\right)<a class="headerlink" href="#delta-t-left-frac-delta-p-n-1-m-delta-t-right" title="Permalink to this heading">#</a></h1>
+<p>\frac{\Delta P_{n-1}}{M}
+(\Delta t)^2.
+$</p>
 <p>Dermed fås den rekursive ligningen</p>
-<div class="math notranslate nohighlight">
-\[
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="boxed-delta-delta-n">
+<h1>$
 \boxed{
-\Delta\delta_n
-=
-\Delta\delta_{n-1}
+\Delta\delta_n<a class="headerlink" href="#boxed-delta-delta-n" title="Permalink to this heading">#</a></h1>
+<p>\Delta\delta_{n-1}
 +
 \frac{\Delta P_{n-1}}{M}
 (\Delta t)^2
 }
-\]</div>
-<p>Dette er grunnlikningen for den klassiske punkt-for-punkt-metoden. Den viser at endringen i rotorvinkel i hvert nytt tidsintervall kan beregnes direkte fra:</p>
-<ul class="simple">
-<li><p>den forrige vinkelendringen <span class="math notranslate nohighlight">\(\Delta\delta_{n-1}\)</span>,</p></li>
-<li><p>den akselererende effekten <span class="math notranslate nohighlight">\(\Delta P_{n-1}\)</span>,</p></li>
-<li><p>treghetskonstanten <span class="math notranslate nohighlight">\(M\)</span>,</p></li>
-<li><p>tidssteget <span class="math notranslate nohighlight">\(\Delta_t\)</span>.</p></li>
-</ul>
+$</p>
+<p>Dette er grunnligningen for den klassiske punkt-for-punkt-metoden.</p>
 <p>Når <span class="math notranslate nohighlight">\(\Delta\delta_n\)</span> er funnet, oppdateres rotorvinkelen fra</p>
-<div class="math notranslate nohighlight">
-\[
-\delta_n
-=
-\delta_{n-1}
-+
-\Delta\delta_n.
-\]</div>
 </section>
-<section id="fysisk-betydning">
-<h2>Fysisk betydning<a class="headerlink" href="#fysisk-betydning" title="Permalink to this heading">#</a></h2>
-<p>Metoden følger den naturlige årsakskjeden i kraftsystemet:</p>
-<div class="math notranslate nohighlight">
-\[
+<section class="tex2jax_ignore mathjax_ignore" id="boxed-delta-n">
+<h1>$
+\boxed{
+\delta_n<a class="headerlink" href="#boxed-delta-n" title="Permalink to this heading">#</a></h1>
+<p>\delta_{n-1}
++
+\Delta\delta_n
+}
+$</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="fysisk-betydning">
+<h1>Fysisk betydning<a class="headerlink" href="#fysisk-betydning" title="Permalink to this heading">#</a></h1>
+<p>Metoden følger den naturlige årsakskjeden i kraftsystemet</p>
+<p><span class="math notranslate nohighlight">\(
 (P_m-P_e)
-\;\rightarrow\;
+\rightarrow
 \text{akselerasjon}
-\;\rightarrow\;
+\rightarrow
 \omega
-\;\rightarrow\;
+\rightarrow
 \delta.
-\]</div>
+\)</span></p>
 <p>Den mekaniske og elektriske effektubalansen bestemmer rotorens akselerasjon. Akselerasjonen gir en endring i rotorhastigheten, og rotorhastigheten bestemmer deretter hvordan rotorvinkelen utvikler seg med tiden.</p>
-<p>Ved å gjenta disse beregningene for små tidsintervaller kan den transiente rotorvinkelresponsen bestemmes numerisk uten å løse svinglikningen analytisk.</p>
+<p>Ved å gjenta disse beregningene for små tidsintervaller kan den transiente rotorvinkelresponsen bestemmes numerisk uten å løse svingligningen analytisk.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/5a73ac5b999b95cf81ab8e255948ae65cda0f9a004c837cc8382d315913895cf.png" src="../_images/5a73ac5b999b95cf81ab8e255948ae65cda0f9a004c837cc8382d315913895cf.png" />
 </div>
 </div>
-</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="fremgangsmate">
 <h1>Fremgangsmåte<a class="headerlink" href="#fremgangsmate" title="Permalink to this heading">#</a></h1>
@@ -771,11 +1326,11 @@ M\frac{d^2\delta}{dt^2}=\Delta P
       </div>
     </a>
     <a class="right-next"
-       href="../references.html"
+       href="ex_stevenson.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Referanser</p>
+        <p class="prev-next-title">Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -796,12 +1351,110 @@ M\frac{d^2\delta}{dt^2}=\Delta P
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Euler-metoden</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-vinkelhastighet">Endring i vinkelhastighet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-rotorvinkel">Endring i rotorvinkel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerisk-algoritme">Numerisk algoritme</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-betydning">Fysisk betydning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritme">Algoritme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-med-eksakt-verdi">Euler-metoden med eksakt verdi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-for-svingligningen">Euler-metoden for svingligningen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-d-delta-dt">$
+\frac{d\delta}{dt}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-d-omega-dt">$
+\frac{d\omega}{dt}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdatering">Oppdatering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-1">$
+\omega_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n-1">$
+\delta_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Euler-metoden for svingligningen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-d-2-delta-dt-2">$
+\frac{d^2\delta}{dt^2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">$
+\frac{d\delta}{dt}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">$
+\frac{d\omega}{dt}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Oppdatering</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">$
+\omega_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">$
+\delta_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-metoden-punkt-for-punkt-metoden">Euler-metoden (punkt-for-punkt-metoden)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-vinkelhastighet">Endring i vinkelhastighet</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#m-frac-d-2-delta-dt-2">$
+M\frac{d^2\delta}{dt^2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">$
+\frac{d^2\delta}{dt^2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-frac12">$
+\omega_{n-\frac12}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-frac32">\omega_{n-\frac32}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-omega-n-frac12">$
+\Delta\omega_{n-\frac12}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endring-i-rotorvinkel">Endring i rotorvinkel</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n-1-delta-n-2">$
+\delta_{n-1}-\delta_{n-2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">$
+\omega_{n-\frac12}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n-1">$
+\Delta\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">$
+\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerisk-algoritme">Numerisk algoritme</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregn-akselererende-effekt">1. Beregn akselererende effekt</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-n">$
+\Delta P_n</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-vinkelhastigheten">2. Oppdater vinkelhastigheten</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">$
+\omega_{n+\frac12}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppdater-rotorvinkelen">3. Oppdater rotorvinkelen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">$
+\delta_{n+1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n">$
+\Delta\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n-delta-n-1">\delta_n-\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">$
+\Delta\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">\delta_{n-1}-\delta_{n-2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n-delta-delta-n-1">$
+\Delta\delta_n-\Delta\delta_{n-1}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-t-left-omega-n-frac12">\Delta t
+\left(
+\omega_{n-\frac12}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">$
+\omega_{n-\frac12}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">\omega_{n-\frac32}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">$
+\Delta\delta_n-\Delta\delta_{n-1}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-t-left-frac-delta-p-n-1-m-delta-t-right">\Delta t
+\left(
+\frac{\Delta P_{n-1}}{M}\Delta t
+\right)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxed-delta-delta-n">$
+\boxed{
+\Delta\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxed-delta-n">$
+\boxed{
+\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fysisk-betydning">Fysisk betydning</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fremgangsmate">Fremgangsmåte</a></li>
 </ul>
 

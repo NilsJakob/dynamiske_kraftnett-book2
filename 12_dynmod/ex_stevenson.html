@@ -1,0 +1,2736 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Bestemmelse av \(\delta_{cr}\) og \(t_{cr}\) ved EAC og Stevenson &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '12_dynmod/ex_stevenson';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="prev" title="Euler-metoden" href="euler.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/swingequation.html">Svingeligning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB5.html">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamisk modellering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dynmod.html">Single Machine Infinite Bus (SMIB)</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="dynmod_notes.html">Finne kraftvinkel</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../assignments/assignment8.html">Øving 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equal_area.html">Likevektsarealkriteriet - Equal Area Criterion</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="euler.html">Euler-metoden</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2F12_dynmod/ex_stevenson.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/12_dynmod/ex_stevenson.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bestemmelse av \delta_{cr} og t_{cr} ved EAC og Stevenson</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-feil-driftsvinkel">1. Før-feil driftsvinkel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-0">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ustabil-post-fault-likevekt">2. Ustabil post-fault-likevekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-s">$
+\delta_s</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-1-left-frac-1-1-50-right">\sin^{-1}!\left(\frac{1}{1.50}\right)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-u">$
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">$
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#likearealkriteriet">3. Likearealkriteriet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1">$
+A_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2">$
+A_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-m-delta-u-delta-0">$
+P_m(\delta_u-\delta_0)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cos-delta-cr">$
+\cos\delta_{cr}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-p-m-delta-u-delta-0">\frac{
+P_m(\delta_u-\delta_0)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#innsetting-av-tall">4. Innsetting av tall</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#circ">28.44^\circ</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">$
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">138.19^\circ</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cos-delta-0">$
+\cos\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cos-delta-u">$
+\cos\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">$
+\cos\delta_{cr}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-2-4120-0-4964">\frac{
+(2.4120-0.4964)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">$
+\cos\delta_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-cr">$
+\delta_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-beregning">5. Stevenson-beregning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-delta-t-2-m">$
+\frac{(\Delta t)^2}{M}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta">$
+\Delta(\Delta\delta)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n">$
+\Delta\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n">$
+\delta_n</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-tabell">Stevenson-tabell</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-0-1-0-808-sin28-44-circ-2">\frac{
+0+
+(1-0.808\sin28.44^\circ)
+}{2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kritisk-klareringstid">6. Kritisk klareringstid</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#t-cr">$
+t_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">$
+t_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-de-seks-forste-tidsstegene">Beregning av de seks første tidsstegene</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-0">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">\frac{0+(1-0.808\sin28.44^\circ)}{2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1">Steg 1</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-1">$
+\Delta(\Delta\delta)_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.33(0.308)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-1">$
+\Delta\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">0+2.57</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-1">$
+\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">28.44+2.57</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-2">Steg 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-e">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-31-01-circ">0.808\sin(31.01^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1-0.416</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-2">$
+\Delta(\Delta\delta)_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">8.33(0.584)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-2">$
+\Delta\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.57+4.87</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-2">$
+\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">31.01+7.44</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-3">Steg 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-38-45-circ">0.808\sin(38.45^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-3">$
+\Delta(\Delta\delta)_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">8.33(0.498)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-3">$
+\Delta\delta_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">7.44+4.15</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-3">$
+\delta_3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-4">Steg 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-50-04-circ">0.808\sin(50.04^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-4">$
+\Delta(\Delta\delta)_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">8.33(0.381)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-4">$
+\Delta\delta_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">11.59+3.17</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-4">$
+\delta_4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-5">Steg 5</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-64-80-circ">0.808\sin(64.80^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-5">$
+\Delta(\Delta\delta)_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">8.33(0.269)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-5">$
+\Delta\delta_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">14.76+2.24</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-5">$
+\delta_5</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-6">Steg 6</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-81-80-circ">0.808\sin(81.80^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-6">$
+\Delta(\Delta\delta)_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">8.33(0.200)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-6">$
+\Delta\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">17.00+1.67</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-6">$
+\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-beregning-for-stabilt-tilfelle">Stevenson-beregning for stabilt tilfelle</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">$
+\frac{(\Delta t)^2}{M}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-t">$
+\Delta t</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">$
+\delta_0</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">Stevenson-tabell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-max-delta-u">$
+\delta_{\max}
+&lt;
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#de-seks-forste-tidsstegene-for-stabilt-tilfelle">De seks første tidsstegene for stabilt tilfelle</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">\frac{0+(1-0.808\sin28.44^\circ)}{2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">Steg 1</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">$
+\Delta(\Delta\delta)_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">8.33(0.308)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">$
+\Delta\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">0+2.57</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">$
+\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">28.44+2.57</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">Steg 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">0.808\sin(31.01^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">1-0.416</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">$
+\Delta(\Delta\delta)_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">8.33(0.584)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">$
+\Delta\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">2.57+4.87</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">$
+\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id57">31.01+7.44</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id58">Steg 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id59">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id60">0.808\sin(38.45^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id61">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id62">$
+\Delta(\Delta\delta)_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id63">8.33(0.498)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id64">$
+\Delta\delta_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id65">7.44+4.15</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id66">$
+\delta_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id67">38.45+11.59</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id68">Steg 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id69">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id70">0.808\sin(50.04^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id71">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id72">$
+\Delta(\Delta\delta)_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id73">8.33(0.381)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id74">$
+\Delta\delta_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id75">11.59+3.17</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id76">$
+\delta_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id77">50.04+14.76</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-5-etter-feilutkobling">Steg 5 (etter feilutkobling)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id78">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id79">1.50\sin(64.80^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id80">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id81">1-1.358</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id82">$
+\Delta(\Delta\delta)_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id83">8.33(-0.358)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id84">$
+\Delta\delta_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id85">14.76-2.98</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id86">$
+\delta_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id87">64.80+11.78</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id88">Steg 6</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id89">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-76-58-circ">1.50\sin(76.58^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id90">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id91">1-1.458</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id92">$
+\Delta(\Delta\delta)_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id93">8.33(-0.458)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id94">$
+\Delta\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id95">11.78-3.81</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id96">$
+\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id97">76.58+7.97</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-beregning-for-stabilt-tilfelle-t-text-clear-0-20-s">Stevenson-beregning for stabilt tilfelle (<span class="math notranslate nohighlight">\(t_{\text{clear}}=0.20\)</span> s)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id98">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-1-left-frac-1-2-10-right">\sin^{-1}!\left(\frac{1}{2.10}\right)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id99">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-0-left-1-0-808-sin28-44-circ-right-2">\frac{0+\left(1-0.808\sin28.44^\circ\right)}{2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id100">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id101">\frac{0+\left(1-0.808\sin28.44^\circ\right)}{2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-observasjon">Viktig observasjon</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bestemmelse-av-delta-cr-og-t-cr-ved-eac-og-stevenson">
+<h1>Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson<a class="headerlink" href="#bestemmelse-av-delta-cr-og-t-cr-ved-eac-og-stevenson" title="Permalink to this heading">#</a></h1>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>Før feil:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e = 2.10\sin\delta
+\)</span></p>
+<p>Under feil:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e = 0.808\sin\delta
+\)</span></p>
+<p>Etter feilutkobling:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e = 1.50\sin\delta
+\)</span></p>
+<p>Mekanisk effekt:</p>
+<p><span class="math notranslate nohighlight">\(
+P_m=1.0
+\)</span></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="for-feil-driftsvinkel">
+<h1>1. Før-feil driftsvinkel<a class="headerlink" href="#for-feil-driftsvinkel" title="Permalink to this heading">#</a></h1>
+<p>Før feilen gjelder</p>
+<p><span class="math notranslate nohighlight">\(
+P_m=P_{\max,\text{prefault}}\sin\delta_0
+\)</span></p>
+<p>slik at</p>
+<p><span class="math notranslate nohighlight">\(
+1.0=2.10\sin\delta_0
+\)</span></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-0">
+<h1>$
+\delta_0<a class="headerlink" href="#delta-0" title="Permalink to this heading">#</a></h1>
+<p>\sin^{-1}!\left(\frac{1}{2.10}\right)
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>$
+\delta_0<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>28.44^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ustabil-post-fault-likevekt">
+<h1>2. Ustabil post-fault-likevekt<a class="headerlink" href="#ustabil-post-fault-likevekt" title="Permalink to this heading">#</a></h1>
+<p>Etter feilutkobling:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e=1.50\sin\delta
+\)</span></p>
+<p>og</p>
+<p><span class="math notranslate nohighlight">\(
+P_m=P_e.
+\)</span></p>
+<p>Dermed</p>
+<p><span class="math notranslate nohighlight">\(
+1.0=1.50\sin\delta
+\)</span></p>
+<p>Den stabile løsningen er</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-s">
+<h1>$
+\delta_s<a class="headerlink" href="#delta-s" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-1-left-frac-1-1-50-right">
+<h1>\sin^{-1}!\left(\frac{1}{1.50}\right)<a class="headerlink" href="#sin-1-left-frac-1-1-50-right" title="Permalink to this heading">#</a></h1>
+<p>41.81^\circ
+$</p>
+<p>Den ustabile løsningen er</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-u">
+<h1>$
+\delta_u<a class="headerlink" href="#delta-u" title="Permalink to this heading">#</a></h1>
+<p>180^\circ-41.81^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>$
+\delta_u<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p>138.19^\circ
+$</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="likearealkriteriet">
+<h1>3. Likearealkriteriet<a class="headerlink" href="#likearealkriteriet" title="Permalink to this heading">#</a></h1>
+<p>Kritisk stabilitet oppstår når</p>
+<p><span class="math notranslate nohighlight">\(
+A_1=A_2
+\)</span></p>
+<p>der</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="a-1">
+<h1>$
+A_1<a class="headerlink" href="#a-1" title="Permalink to this heading">#</a></h1>
+<p>\int_{\delta_0}^{\delta_{cr}}
+(1-0.808\sin\delta),d\delta
+$</p>
+<p>og</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="a-2">
+<h1>$
+A_2<a class="headerlink" href="#a-2" title="Permalink to this heading">#</a></h1>
+<p>\int_{\delta_{cr}}^{\delta_u}
+(1.50\sin\delta-1),d\delta.
+$</p>
+<p>Etter integrasjon:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="p-m-delta-u-delta-0">
+<h1>$
+P_m(\delta_u-\delta_0)<a class="headerlink" href="#p-m-delta-u-delta-0" title="Permalink to this heading">#</a></h1>
+<p>0.808(\cos\delta_0-\cos\delta_{cr})
++
+1.50(\cos\delta_{cr}-\cos\delta_u)
+$</p>
+<p>Samle leddene med <span class="math notranslate nohighlight">\(\cos\delta_{cr}\)</span>:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cos-delta-cr">
+<h1>$
+\cos\delta_{cr}<a class="headerlink" href="#cos-delta-cr" title="Permalink to this heading">#</a></h1>
+<section id="frac-p-m-delta-u-delta-0">
+<h2>\frac{
+P_m(\delta_u-\delta_0)<a class="headerlink" href="#frac-p-m-delta-u-delta-0" title="Permalink to this heading">#</a></h2>
+<p>0.808\cos\delta_0
++
+1.50\cos\delta_u
+}
+{1.50-0.808}
+$</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="innsetting-av-tall">
+<h1>4. Innsetting av tall<a class="headerlink" href="#innsetting-av-tall" title="Permalink to this heading">#</a></h1>
+<p>Konverter til radianer:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>$
+\delta_0<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="circ">
+<h1>28.44^\circ<a class="headerlink" href="#circ" title="Permalink to this heading">#</a></h1>
+<p>0.4964
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>$
+\delta_u<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>138.19^\circ<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h1>
+<p>2.4120
+$</p>
+<p>Videre:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cos-delta-0">
+<h1>$
+\cos\delta_0<a class="headerlink" href="#cos-delta-0" title="Permalink to this heading">#</a></h1>
+<p>0.8793
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cos-delta-u">
+<h1>$
+\cos\delta_u<a class="headerlink" href="#cos-delta-u" title="Permalink to this heading">#</a></h1>
+<p>-0.7454
+$</p>
+<p>Setter inn:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>$
+\cos\delta_{cr}<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h1>
+<section id="frac-2-4120-0-4964">
+<h2>\frac{
+(2.4120-0.4964)<a class="headerlink" href="#frac-2-4120-0-4964" title="Permalink to this heading">#</a></h2>
+<p>0.808(0.8793)
++
+1.50(-0.7454)
+}
+{0.692}
+$</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>$
+\cos\delta_{cr}<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h1>
+<p>0.128
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-cr">
+<h1>$
+\delta_{cr}<a class="headerlink" href="#delta-cr" title="Permalink to this heading">#</a></h1>
+<p>\cos^{-1}(0.128)
+$</p>
+<p><span class="math notranslate nohighlight">\(
+\boxed{\delta_{cr}=82.6^\circ}
+\)</span></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="stevenson-beregning">
+<h1>5. Stevenson-beregning<a class="headerlink" href="#stevenson-beregning" title="Permalink to this heading">#</a></h1>
+<p>Gitt</p>
+<p><span class="math notranslate nohighlight">\(
+\Delta t=0.05\text{ s}
+\)</span></p>
+<p>og</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="frac-delta-t-2-m">
+<h1>$
+\frac{(\Delta t)^2}{M}<a class="headerlink" href="#frac-delta-t-2-m" title="Permalink to this heading">#</a></h1>
+<p>8.33
+$</p>
+<p>Stevensons formler:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-delta">
+<h1>$
+\Delta(\Delta\delta)<a class="headerlink" href="#delta-delta-delta" title="Permalink to this heading">#</a></h1>
+<p>8.33\Delta P
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-n">
+<h1>$
+\Delta\delta_n<a class="headerlink" href="#delta-delta-n" title="Permalink to this heading">#</a></h1>
+<p>\Delta\delta_{n-1}
++
+8.33\Delta P_{n-1}
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-n">
+<h1>$
+\delta_n<a class="headerlink" href="#delta-n" title="Permalink to this heading">#</a></h1>
+<p>\delta_{n-1}
++
+\Delta\delta_n
+$</p>
+<section id="stevenson-tabell">
+<h2>Stevenson-tabell<a class="headerlink" href="#stevenson-tabell" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>t</p></th>
+<th class="head text-right"><p>δ</p></th>
+<th class="head text-right"><p>Pmax</p></th>
+<th class="head text-right"><p>Pe</p></th>
+<th class="head text-right"><p>ΔP</p></th>
+<th class="head text-right"><p>8.33ΔP</p></th>
+<th class="head text-right"><p>Δδ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>0.00</p></td>
+<td class="text-right"><p>28.44</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.385</p></td>
+<td class="text-right"><p>0.308</p></td>
+<td class="text-right"><p>2.57</p></td>
+<td class="text-right"><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>0.05</p></td>
+<td class="text-right"><p>31.01</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.416</p></td>
+<td class="text-right"><p>0.584</p></td>
+<td class="text-right"><p>4.87</p></td>
+<td class="text-right"><p>2.57</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>0.10</p></td>
+<td class="text-right"><p>38.45</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.502</p></td>
+<td class="text-right"><p>0.498</p></td>
+<td class="text-right"><p>4.15</p></td>
+<td class="text-right"><p>7.44</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>0.15</p></td>
+<td class="text-right"><p>50.04</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.619</p></td>
+<td class="text-right"><p>0.381</p></td>
+<td class="text-right"><p>3.17</p></td>
+<td class="text-right"><p>11.59</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>0.20</p></td>
+<td class="text-right"><p>64.80</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.731</p></td>
+<td class="text-right"><p>0.269</p></td>
+<td class="text-right"><p>2.24</p></td>
+<td class="text-right"><p>14.76</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>0.25</p></td>
+<td class="text-right"><p>81.80</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.800</p></td>
+<td class="text-right"><p>0.200</p></td>
+<td class="text-right"><p>1.67</p></td>
+<td class="text-right"><p>17.00</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>0.30</p></td>
+<td class="text-right"><p>100.47</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.795</p></td>
+<td class="text-right"><p>0.205</p></td>
+<td class="text-right"><p>1.71</p></td>
+<td class="text-right"><p>18.67</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Første verdi er Stevenson-gjennomsnittet:</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-p">
+<h1>$
+\Delta P<a class="headerlink" href="#delta-p" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="frac-0-1-0-808-sin28-44-circ-2">
+<h1>\frac{
+0+
+(1-0.808\sin28.44^\circ)
+}{2}<a class="headerlink" href="#frac-0-1-0-808-sin28-44-circ-2" title="Permalink to this heading">#</a></h1>
+<p>0.308
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kritisk-klareringstid">
+<h1>6. Kritisk klareringstid<a class="headerlink" href="#kritisk-klareringstid" title="Permalink to this heading">#</a></h1>
+<p>Fra EAC:</p>
+<p><span class="math notranslate nohighlight">\(
+\delta_{cr}=82.6^\circ
+\)</span></p>
+<p>Fra Stevenson-tabellen:</p>
+<p><span class="math notranslate nohighlight">\(
+\delta(0.25)=81.8^\circ
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\delta(0.30)=100.47^\circ
+\)</span></p>
+<p>Interpolasjon gir</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="t-cr">
+<h1>$
+t_{cr}<a class="headerlink" href="#t-cr" title="Permalink to this heading">#</a></h1>
+<p>0.25
++
+\frac{82.6-81.8}
+{100.47-81.8}
+\cdot0.05
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
+<h1>$
+t_{cr}<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h1>
+<p>0.252\text{ s}
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="resultat">
+<h1>Resultat<a class="headerlink" href="#resultat" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(
+\boxed{\delta_{cr}=82.6^\circ}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\boxed{t_{cr}=0.252\text{ s}}
+\)</span></p>
+<p>Feilen må kobles ut før omtrent</p>
+<p><span class="math notranslate nohighlight">\(
+0.25\text{ s}
+\)</span></p>
+<p>for at generatoren skal forbli transient stabil.</p>
+<section id="beregning-av-de-seks-forste-tidsstegene">
+<h2>Beregning av de seks første tidsstegene<a class="headerlink" href="#beregning-av-de-seks-forste-tidsstegene" title="Permalink to this heading">#</a></h2>
+<p>Startverdier:</p>
+<p><span class="math notranslate nohighlight">\(
+\delta_0 = 28.44^\circ
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\Delta\delta_0 = 0
+\)</span></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-p-0">
+<h1>$
+\Delta P_0<a class="headerlink" href="#delta-p-0" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id9">
+<h1>\frac{0+(1-0.808\sin28.44^\circ)}{2}<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h1>
+<p>0.308
+$</p>
+<section id="steg-1">
+<h2>Steg 1<a class="headerlink" href="#steg-1" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-delta-1">
+<h1>$
+\Delta(\Delta\delta)_1<a class="headerlink" href="#delta-delta-delta-1" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id10">
+<h1>8.33(0.308)<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h1>
+<p>2.57^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-1">
+<h1>$
+\Delta\delta_1<a class="headerlink" href="#delta-delta-1" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id11">
+<h1>0+2.57<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h1>
+<p>2.57^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-1">
+<h1>$
+\delta_1<a class="headerlink" href="#delta-1" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id12">
+<h1>28.44+2.57<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h1>
+<p>31.01^\circ
+$</p>
+<section id="steg-2">
+<h2>Steg 2<a class="headerlink" href="#steg-2" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="p-e">
+<h1>$
+P_e<a class="headerlink" href="#p-e" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-31-01-circ">
+<h1>0.808\sin(31.01^\circ)<a class="headerlink" href="#sin-31-01-circ" title="Permalink to this heading">#</a></h1>
+<p>0.416
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id13">
+<h1>$
+\Delta P<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id14">
+<h1>1-0.416<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h1>
+<p>0.584
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-delta-2">
+<h1>$
+\Delta(\Delta\delta)_2<a class="headerlink" href="#delta-delta-delta-2" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id15">
+<h1>8.33(0.584)<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h1>
+<p>4.87^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-2">
+<h1>$
+\Delta\delta_2<a class="headerlink" href="#delta-delta-2" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id16">
+<h1>2.57+4.87<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h1>
+<p>7.44^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-2">
+<h1>$
+\delta_2<a class="headerlink" href="#delta-2" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id17">
+<h1>31.01+7.44<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h1>
+<p>38.45^\circ
+$</p>
+<section id="steg-3">
+<h2>Steg 3<a class="headerlink" href="#steg-3" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id18">
+<h1>$
+P_e<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-38-45-circ">
+<h1>0.808\sin(38.45^\circ)<a class="headerlink" href="#sin-38-45-circ" title="Permalink to this heading">#</a></h1>
+<p>0.502
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id19">
+<h1>$
+\Delta P<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h1>
+<p>0.498
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-delta-3">
+<h1>$
+\Delta(\Delta\delta)_3<a class="headerlink" href="#delta-delta-delta-3" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id20">
+<h1>8.33(0.498)<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h1>
+<p>4.15^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-3">
+<h1>$
+\Delta\delta_3<a class="headerlink" href="#delta-delta-3" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id21">
+<h1>7.44+4.15<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h1>
+<p>11.59^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-3">
+<h1>$
+\delta_3<a class="headerlink" href="#delta-3" title="Permalink to this heading">#</a></h1>
+<p>50.04^\circ
+$</p>
+<section id="steg-4">
+<h2>Steg 4<a class="headerlink" href="#steg-4" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id22">
+<h1>$
+P_e<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-50-04-circ">
+<h1>0.808\sin(50.04^\circ)<a class="headerlink" href="#sin-50-04-circ" title="Permalink to this heading">#</a></h1>
+<p>0.619
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id23">
+<h1>$
+\Delta P<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h1>
+<p>0.381
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-delta-4">
+<h1>$
+\Delta(\Delta\delta)_4<a class="headerlink" href="#delta-delta-delta-4" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id24">
+<h1>8.33(0.381)<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h1>
+<p>3.17^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-4">
+<h1>$
+\Delta\delta_4<a class="headerlink" href="#delta-delta-4" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id25">
+<h1>11.59+3.17<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h1>
+<p>14.76^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-4">
+<h1>$
+\delta_4<a class="headerlink" href="#delta-4" title="Permalink to this heading">#</a></h1>
+<p>64.80^\circ
+$</p>
+<section id="steg-5">
+<h2>Steg 5<a class="headerlink" href="#steg-5" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id26">
+<h1>$
+P_e<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-64-80-circ">
+<h1>0.808\sin(64.80^\circ)<a class="headerlink" href="#sin-64-80-circ" title="Permalink to this heading">#</a></h1>
+<p>0.731
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id27">
+<h1>$
+\Delta P<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h1>
+<p>0.269
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-delta-5">
+<h1>$
+\Delta(\Delta\delta)_5<a class="headerlink" href="#delta-delta-delta-5" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id28">
+<h1>8.33(0.269)<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h1>
+<p>2.24^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-5">
+<h1>$
+\Delta\delta_5<a class="headerlink" href="#delta-delta-5" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id29">
+<h1>14.76+2.24<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h1>
+<p>17.00^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-5">
+<h1>$
+\delta_5<a class="headerlink" href="#delta-5" title="Permalink to this heading">#</a></h1>
+<p>81.80^\circ
+$</p>
+<section id="steg-6">
+<h2>Steg 6<a class="headerlink" href="#steg-6" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id30">
+<h1>$
+P_e<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-81-80-circ">
+<h1>0.808\sin(81.80^\circ)<a class="headerlink" href="#sin-81-80-circ" title="Permalink to this heading">#</a></h1>
+<p>0.800
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id31">
+<h1>$
+\Delta P<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h1>
+<p>0.200
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-delta-6">
+<h1>$
+\Delta(\Delta\delta)_6<a class="headerlink" href="#delta-delta-delta-6" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id32">
+<h1>8.33(0.200)<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h1>
+<p>1.67^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-delta-6">
+<h1>$
+\Delta\delta_6<a class="headerlink" href="#delta-delta-6" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id33">
+<h1>17.00+1.67<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h1>
+<p>18.67^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-6">
+<h1>$
+\delta_6<a class="headerlink" href="#delta-6" title="Permalink to this heading">#</a></h1>
+<p>100.47^\circ
+$</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/b1b260fb165d0dbb14ea92f44909b00bd3b1cf6146e823d40bb805a0cc011a55.png" src="../_images/b1b260fb165d0dbb14ea92f44909b00bd3b1cf6146e823d40bb805a0cc011a55.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="stevenson-beregning-for-stabilt-tilfelle">
+<h1>Stevenson-beregning for stabilt tilfelle<a class="headerlink" href="#stevenson-beregning-for-stabilt-tilfelle" title="Permalink to this heading">#</a></h1>
+<p>Feilen kobles ut ved</p>
+<p><span class="math notranslate nohighlight">\(
+t_{\text{clear}}=0.20\text{ s}
+\)</span></p>
+<p>som er mindre enn</p>
+<p><span class="math notranslate nohighlight">\(
+t_{cr}=0.252\text{ s}.
+\)</span></p>
+<p>Dermed forventes stabil drift etter feilutkobling.</p>
+<section id="id34">
+<h2>Data<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(
+P_m=1.0
+\)</span></p>
+<p>Under feil:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e=0.808\sin\delta
+\)</span></p>
+<p>Etter feilutkobling:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e=1.50\sin\delta
+\)</span></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id35">
+<h1>$
+\frac{(\Delta t)^2}{M}<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h1>
+<p>8.33
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-t">
+<h1>$
+\Delta t<a class="headerlink" href="#delta-t" title="Permalink to this heading">#</a></h1>
+<p>0.05\text{ s}
+$</p>
+<p>Startvinkel:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id36">
+<h1>$
+\delta_0<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h1>
+<p>28.44^\circ
+$</p>
+<section id="id37">
+<h2>Stevenson-tabell<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>t</p></th>
+<th class="head text-right"><p>δ</p></th>
+<th class="head text-right"><p>Pmax</p></th>
+<th class="head text-right"><p>Pe</p></th>
+<th class="head text-right"><p>ΔP</p></th>
+<th class="head text-right"><p>8.33ΔP</p></th>
+<th class="head text-right"><p>Δδ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>0.00</p></td>
+<td class="text-right"><p>28.44</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.385</p></td>
+<td class="text-right"><p>0.308</p></td>
+<td class="text-right"><p>2.57</p></td>
+<td class="text-right"><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>0.05</p></td>
+<td class="text-right"><p>31.01</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.416</p></td>
+<td class="text-right"><p>0.584</p></td>
+<td class="text-right"><p>4.87</p></td>
+<td class="text-right"><p>2.57</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>0.10</p></td>
+<td class="text-right"><p>38.45</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.502</p></td>
+<td class="text-right"><p>0.498</p></td>
+<td class="text-right"><p>4.15</p></td>
+<td class="text-right"><p>7.44</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>0.15</p></td>
+<td class="text-right"><p>50.04</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.619</p></td>
+<td class="text-right"><p>0.381</p></td>
+<td class="text-right"><p>3.17</p></td>
+<td class="text-right"><p>11.59</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>0.20</p></td>
+<td class="text-right"><p>64.80</p></td>
+<td class="text-right"><p>1.500</p></td>
+<td class="text-right"><p>1.358</p></td>
+<td class="text-right"><p>-0.358</p></td>
+<td class="text-right"><p>-2.98</p></td>
+<td class="text-right"><p>14.76</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>0.25</p></td>
+<td class="text-right"><p>76.58</p></td>
+<td class="text-right"><p>1.500</p></td>
+<td class="text-right"><p>1.458</p></td>
+<td class="text-right"><p>-0.458</p></td>
+<td class="text-right"><p>-3.81</p></td>
+<td class="text-right"><p>11.78</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>0.30</p></td>
+<td class="text-right"><p>84.55</p></td>
+<td class="text-right"><p>1.500</p></td>
+<td class="text-right"><p>1.494</p></td>
+<td class="text-right"><p>-0.494</p></td>
+<td class="text-right"><p>-4.12</p></td>
+<td class="text-right"><p>7.97</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>0.35</p></td>
+<td class="text-right"><p>88.40</p></td>
+<td class="text-right"><p>1.500</p></td>
+<td class="text-right"><p>1.499</p></td>
+<td class="text-right"><p>-0.499</p></td>
+<td class="text-right"><p>-4.16</p></td>
+<td class="text-right"><p>3.85</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>0.40</p></td>
+<td class="text-right"><p>88.09</p></td>
+<td class="text-right"><p>1.500</p></td>
+<td class="text-right"><p>1.499</p></td>
+<td class="text-right"><p>-0.499</p></td>
+<td class="text-right"><p>-4.16</p></td>
+<td class="text-right"><p>-0.31</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tolkning">
+<h2>Tolkning<a class="headerlink" href="#tolkning" title="Permalink to this heading">#</a></h2>
+<p>Ved</p>
+<p><span class="math notranslate nohighlight">\(
+t=0.40\text{ s}
+\)</span></p>
+<p>blir</p>
+<p><span class="math notranslate nohighlight">\(
+\Delta\delta &lt;0.
+\)</span></p>
+<p>Rotorhastigheten har da passert null.</p>
+<p>Dette betyr at rotorvinkelen har nådd maksimum:</p>
+<p><span class="math notranslate nohighlight">\(
+\delta_{\max}
+\approx
+88.4^\circ.
+\)</span></p>
+<p>Siden</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="delta-max-delta-u">
+<h1>$
+\delta_{\max}
+&lt;
+\delta_u<a class="headerlink" href="#delta-max-delta-u" title="Permalink to this heading">#</a></h1>
+<p>138.2^\circ,
+$</p>
+<p>forblir systemet synkront.</p>
+<p>Dermed er systemet transient stabilt.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="de-seks-forste-tidsstegene-for-stabilt-tilfelle">
+<h1>De seks første tidsstegene for stabilt tilfelle<a class="headerlink" href="#de-seks-forste-tidsstegene-for-stabilt-tilfelle" title="Permalink to this heading">#</a></h1>
+<p>Feilen kobles ut ved</p>
+<p><span class="math notranslate nohighlight">\(
+t_{\text{clear}}=0.20\text{ s}
+\)</span></p>
+<p>Startverdier:</p>
+<p><span class="math notranslate nohighlight">\(
+\delta_0=28.44^\circ
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\Delta\delta_0=0
+\)</span></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id38">
+<h1>$
+\Delta P_0<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id39">
+<h1>\frac{0+(1-0.808\sin28.44^\circ)}{2}<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h1>
+<p>0.308
+$</p>
+<section id="id40">
+<h2>Steg 1<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id41">
+<h1>$
+\Delta(\Delta\delta)_1<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id42">
+<h1>8.33(0.308)<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h1>
+<p>2.57^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id43">
+<h1>$
+\Delta\delta_1<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id44">
+<h1>0+2.57<a class="headerlink" href="#id44" title="Permalink to this heading">#</a></h1>
+<p>2.57^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id45">
+<h1>$
+\delta_1<a class="headerlink" href="#id45" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id46">
+<h1>28.44+2.57<a class="headerlink" href="#id46" title="Permalink to this heading">#</a></h1>
+<p>31.01^\circ
+$</p>
+<section id="id47">
+<h2>Steg 2<a class="headerlink" href="#id47" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id48">
+<h1>$
+P_e<a class="headerlink" href="#id48" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id49">
+<h1>0.808\sin(31.01^\circ)<a class="headerlink" href="#id49" title="Permalink to this heading">#</a></h1>
+<p>0.416
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id50">
+<h1>$
+\Delta P<a class="headerlink" href="#id50" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id51">
+<h1>1-0.416<a class="headerlink" href="#id51" title="Permalink to this heading">#</a></h1>
+<p>0.584
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id52">
+<h1>$
+\Delta(\Delta\delta)_2<a class="headerlink" href="#id52" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id53">
+<h1>8.33(0.584)<a class="headerlink" href="#id53" title="Permalink to this heading">#</a></h1>
+<p>4.87^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id54">
+<h1>$
+\Delta\delta_2<a class="headerlink" href="#id54" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id55">
+<h1>2.57+4.87<a class="headerlink" href="#id55" title="Permalink to this heading">#</a></h1>
+<p>7.44^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id56">
+<h1>$
+\delta_2<a class="headerlink" href="#id56" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id57">
+<h1>31.01+7.44<a class="headerlink" href="#id57" title="Permalink to this heading">#</a></h1>
+<p>38.45^\circ
+$</p>
+<section id="id58">
+<h2>Steg 3<a class="headerlink" href="#id58" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id59">
+<h1>$
+P_e<a class="headerlink" href="#id59" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id60">
+<h1>0.808\sin(38.45^\circ)<a class="headerlink" href="#id60" title="Permalink to this heading">#</a></h1>
+<p>0.502
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id61">
+<h1>$
+\Delta P<a class="headerlink" href="#id61" title="Permalink to this heading">#</a></h1>
+<p>0.498
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id62">
+<h1>$
+\Delta(\Delta\delta)_3<a class="headerlink" href="#id62" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id63">
+<h1>8.33(0.498)<a class="headerlink" href="#id63" title="Permalink to this heading">#</a></h1>
+<p>4.15^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id64">
+<h1>$
+\Delta\delta_3<a class="headerlink" href="#id64" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id65">
+<h1>7.44+4.15<a class="headerlink" href="#id65" title="Permalink to this heading">#</a></h1>
+<p>11.59^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id66">
+<h1>$
+\delta_3<a class="headerlink" href="#id66" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id67">
+<h1>38.45+11.59<a class="headerlink" href="#id67" title="Permalink to this heading">#</a></h1>
+<p>50.04^\circ
+$</p>
+<section id="id68">
+<h2>Steg 4<a class="headerlink" href="#id68" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id69">
+<h1>$
+P_e<a class="headerlink" href="#id69" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id70">
+<h1>0.808\sin(50.04^\circ)<a class="headerlink" href="#id70" title="Permalink to this heading">#</a></h1>
+<p>0.619
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id71">
+<h1>$
+\Delta P<a class="headerlink" href="#id71" title="Permalink to this heading">#</a></h1>
+<p>0.381
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id72">
+<h1>$
+\Delta(\Delta\delta)_4<a class="headerlink" href="#id72" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id73">
+<h1>8.33(0.381)<a class="headerlink" href="#id73" title="Permalink to this heading">#</a></h1>
+<p>3.17^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id74">
+<h1>$
+\Delta\delta_4<a class="headerlink" href="#id74" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id75">
+<h1>11.59+3.17<a class="headerlink" href="#id75" title="Permalink to this heading">#</a></h1>
+<p>14.76^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id76">
+<h1>$
+\delta_4<a class="headerlink" href="#id76" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id77">
+<h1>50.04+14.76<a class="headerlink" href="#id77" title="Permalink to this heading">#</a></h1>
+<p>64.80^\circ
+$</p>
+<section id="steg-5-etter-feilutkobling">
+<h2>Steg 5 (etter feilutkobling)<a class="headerlink" href="#steg-5-etter-feilutkobling" title="Permalink to this heading">#</a></h2>
+<p>Nå endres</p>
+<p><span class="math notranslate nohighlight">\(
+P_{\max}
+\)</span></p>
+<p>fra</p>
+<p><span class="math notranslate nohighlight">\(
+0.808
+\)</span></p>
+<p>til</p>
+<p><span class="math notranslate nohighlight">\(
+1.50.
+\)</span></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id78">
+<h1>$
+P_e<a class="headerlink" href="#id78" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id79">
+<h1>1.50\sin(64.80^\circ)<a class="headerlink" href="#id79" title="Permalink to this heading">#</a></h1>
+<p>1.358
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id80">
+<h1>$
+\Delta P<a class="headerlink" href="#id80" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id81">
+<h1>1-1.358<a class="headerlink" href="#id81" title="Permalink to this heading">#</a></h1>
+<p>-0.358
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id82">
+<h1>$
+\Delta(\Delta\delta)_5<a class="headerlink" href="#id82" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id83">
+<h1>8.33(-0.358)<a class="headerlink" href="#id83" title="Permalink to this heading">#</a></h1>
+<p>-2.98^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id84">
+<h1>$
+\Delta\delta_5<a class="headerlink" href="#id84" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id85">
+<h1>14.76-2.98<a class="headerlink" href="#id85" title="Permalink to this heading">#</a></h1>
+<p>11.78^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id86">
+<h1>$
+\delta_5<a class="headerlink" href="#id86" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id87">
+<h1>64.80+11.78<a class="headerlink" href="#id87" title="Permalink to this heading">#</a></h1>
+<p>76.58^\circ
+$</p>
+<section id="id88">
+<h2>Steg 6<a class="headerlink" href="#id88" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id89">
+<h1>$
+P_e<a class="headerlink" href="#id89" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-76-58-circ">
+<h1>1.50\sin(76.58^\circ)<a class="headerlink" href="#sin-76-58-circ" title="Permalink to this heading">#</a></h1>
+<p>1.458
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id90">
+<h1>$
+\Delta P<a class="headerlink" href="#id90" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id91">
+<h1>1-1.458<a class="headerlink" href="#id91" title="Permalink to this heading">#</a></h1>
+<p>-0.458
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id92">
+<h1>$
+\Delta(\Delta\delta)_6<a class="headerlink" href="#id92" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id93">
+<h1>8.33(-0.458)<a class="headerlink" href="#id93" title="Permalink to this heading">#</a></h1>
+<p>-3.81^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id94">
+<h1>$
+\Delta\delta_6<a class="headerlink" href="#id94" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id95">
+<h1>11.78-3.81<a class="headerlink" href="#id95" title="Permalink to this heading">#</a></h1>
+<p>7.97^\circ
+$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id96">
+<h1>$
+\delta_6<a class="headerlink" href="#id96" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id97">
+<h1>76.58+7.97<a class="headerlink" href="#id97" title="Permalink to this heading">#</a></h1>
+<p>84.55^\circ
+$</p>
+<section id="stevenson-beregning-for-stabilt-tilfelle-t-text-clear-0-20-s">
+<h2>Stevenson-beregning for stabilt tilfelle (<span class="math notranslate nohighlight">\(t_{\text{clear}}=0.20\)</span> s)<a class="headerlink" href="#stevenson-beregning-for-stabilt-tilfelle-t-text-clear-0-20-s" title="Permalink to this heading">#</a></h2>
+<p>Data:</p>
+<p><span class="math notranslate nohighlight">\(
+P_m=1.0
+\)</span></p>
+<p>Under feil:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e=0.808\sin\delta
+\)</span></p>
+<p>Etter feilutkobling:</p>
+<p><span class="math notranslate nohighlight">\(
+P_e=1.50\sin\delta
+\)</span></p>
+<p>$</p>
+<p>\frac{(\Delta t)^2}{M}=8.33
+$</p>
+<p><span class="math notranslate nohighlight">\(
+\Delta t=0.05\text{ s}
+\)</span></p>
+<p>Startvinkel:</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id98">
+<h1>$
+\delta_0<a class="headerlink" href="#id98" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sin-1-left-frac-1-2-10-right">
+<h1>\sin^{-1}!\left(\frac{1}{2.10}\right)<a class="headerlink" href="#sin-1-left-frac-1-2-10-right" title="Permalink to this heading">#</a></h1>
+<p>28.44^\circ
+$</p>
+<p>Første Stevenson-verdi:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id99">
+<h1>$
+\Delta P_0<a class="headerlink" href="#id99" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="frac-0-left-1-0-808-sin28-44-circ-right-2">
+<h1>\frac{0+\left(1-0.808\sin28.44^\circ\right)}{2}<a class="headerlink" href="#frac-0-left-1-0-808-sin28-44-circ-right-2" title="Permalink to this heading">#</a></h1>
+<p>0.308
+$</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Steg</p></th>
+<th class="head text-right"><p>t (s)</p></th>
+<th class="head text-right"><p>δ_n (°)</p></th>
+<th class="head text-right"><p>Pmax</p></th>
+<th class="head text-right"><p>Pe</p></th>
+<th class="head text-right"><p>ΔP = 1 − Pe</p></th>
+<th class="head text-right"><p>8.33ΔP</p></th>
+<th class="head text-right"><p>Δδ_n (°)</p></th>
+<th class="head"><p>Beregning av Δδ_n</p></th>
+<th class="head"><p>Beregning av δ_n</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0.00</p></td>
+<td class="text-right"><p>28.44</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.385</p></td>
+<td class="text-right"><p>0.308*</p></td>
+<td class="text-right"><p>2.57</p></td>
+<td class="text-right"><p>0.00</p></td>
+<td><p>Startverdi</p></td>
+<td><p>Startverdi</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0.05</p></td>
+<td class="text-right"><p>31.01</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.416</p></td>
+<td class="text-right"><p>0.584</p></td>
+<td class="text-right"><p>4.87</p></td>
+<td class="text-right"><p>2.57</p></td>
+<td><p>0.00 + 2.57 = 2.57</p></td>
+<td><p>28.44 + 2.57 = 31.01</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0.10</p></td>
+<td class="text-right"><p>38.45</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.502</p></td>
+<td class="text-right"><p>0.498</p></td>
+<td class="text-right"><p>4.15</p></td>
+<td class="text-right"><p>7.44</p></td>
+<td><p>2.57 + 4.87 = 7.44</p></td>
+<td><p>31.01 + 7.44 = 38.45</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0.15</p></td>
+<td class="text-right"><p>50.04</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.619</p></td>
+<td class="text-right"><p>0.381</p></td>
+<td class="text-right"><p>3.17</p></td>
+<td class="text-right"><p>11.59</p></td>
+<td><p>7.44 + 4.15 = 11.59</p></td>
+<td><p>38.45 + 11.59 = 50.04</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>4</p></td>
+<td class="text-right"><p>0.20</p></td>
+<td class="text-right"><p>64.80</p></td>
+<td class="text-right"><p>0.808</p></td>
+<td class="text-right"><p>0.731</p></td>
+<td class="text-right"><p>0.269</p></td>
+<td class="text-right"><p>2.24</p></td>
+<td class="text-right"><p>14.76</p></td>
+<td><p>11.59 + 3.17 = 14.76</p></td>
+<td><p>50.04 + 14.76 = 64.80</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>5</p></td>
+<td class="text-right"><p>0.25</p></td>
+<td class="text-right"><p>76.58</p></td>
+<td class="text-right"><p>1.500</p></td>
+<td class="text-right"><p>1.358</p></td>
+<td class="text-right"><p>-0.358</p></td>
+<td class="text-right"><p>-2.98</p></td>
+<td class="text-right"><p>11.78</p></td>
+<td><p>14.76 - 2.98 = 11.78</p></td>
+<td><p>64.80 + 11.78 = 76.58</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>6</p></td>
+<td class="text-right"><p>0.30</p></td>
+<td class="text-right"><p>84.55</p></td>
+<td class="text-right"><p>1.500</p></td>
+<td class="text-right"><p>1.458</p></td>
+<td class="text-right"><p>-0.458</p></td>
+<td class="text-right"><p>-3.81</p></td>
+<td class="text-right"><p>7.97</p></td>
+<td><p>11.78 - 3.81 = 7.97</p></td>
+<td><p>76.58 + 7.97 = 84.55</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>* Første verdi:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id100">
+<h1>$
+\Delta P_0<a class="headerlink" href="#id100" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id101">
+<h1>\frac{0+\left(1-0.808\sin28.44^\circ\right)}{2}<a class="headerlink" href="#id101" title="Permalink to this heading">#</a></h1>
+<p>0.308
+$</p>
+<section id="viktig-observasjon">
+<h2>Viktig observasjon<a class="headerlink" href="#viktig-observasjon" title="Permalink to this heading">#</a></h2>
+<p>Feilen kobles ut ved</p>
+<p><span class="math notranslate nohighlight">\(
+t=0.20\text{ s}
+\)</span></p>
+<p>og da endres</p>
+<p><span class="math notranslate nohighlight">\(
+P_{\max}
+\)</span></p>
+<p>fra</p>
+<p><span class="math notranslate nohighlight">\(
+0.808
+\)</span></p>
+<p>til</p>
+<p><span class="math notranslate nohighlight">\(
+1.50.
+\)</span></p>
+<p>Derfor blir</p>
+<p><span class="math notranslate nohighlight">\(
+P_e&gt;P_m
+\)</span></p>
+<p>og</p>
+<p><span class="math notranslate nohighlight">\(
+\Delta P&lt;0.
+\)</span></p>
+<p>Vi ser da at</p>
+<p><span class="math notranslate nohighlight">\(
+\Delta\delta_4=14.76^\circ
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\Delta\delta_5=11.78^\circ
+\)</span></p>
+<p>$</p>
+<p>\Delta\delta_6=7.97^\circ
+$</p>
+<p>Rotorhastigheten avtar kontinuerlig. Fortsetter beregningen noen få steg til, får vi</p>
+<p><span class="math notranslate nohighlight">\(
+\Delta\delta=0
+\)</span></p>
+<p>og deretter</p>
+<p><span class="math notranslate nohighlight">\(
+\Delta\delta&lt;0,
+\)</span></p>
+<p>slik at rotorvinkelen når et maksimum og begynner å avta igjen.</p>
+<p>Dermed er systemet transient stabilt.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/5b14f872a5770f63548fc8e0b7bb523327d993698c78182ca9a04976e5866e3b.png" src="../_images/5b14f872a5770f63548fc8e0b7bb523327d993698c78182ca9a04976e5866e3b.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./12_dynmod"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="euler.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Euler-metoden</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referanser</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-feil-driftsvinkel">1. Før-feil driftsvinkel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-0">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ustabil-post-fault-likevekt">2. Ustabil post-fault-likevekt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-s">$
+\delta_s</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-1-left-frac-1-1-50-right">\sin^{-1}!\left(\frac{1}{1.50}\right)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-u">$
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">$
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#likearealkriteriet">3. Likearealkriteriet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1">$
+A_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2">$
+A_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-m-delta-u-delta-0">$
+P_m(\delta_u-\delta_0)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cos-delta-cr">$
+\cos\delta_{cr}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-p-m-delta-u-delta-0">\frac{
+P_m(\delta_u-\delta_0)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#innsetting-av-tall">4. Innsetting av tall</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#circ">28.44^\circ</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">$
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">138.19^\circ</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cos-delta-0">$
+\cos\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cos-delta-u">$
+\cos\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">$
+\cos\delta_{cr}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-2-4120-0-4964">\frac{
+(2.4120-0.4964)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">$
+\cos\delta_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-cr">$
+\delta_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-beregning">5. Stevenson-beregning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-delta-t-2-m">$
+\frac{(\Delta t)^2}{M}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta">$
+\Delta(\Delta\delta)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-n">$
+\Delta\delta_n</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-n">$
+\delta_n</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-tabell">Stevenson-tabell</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-0-1-0-808-sin28-44-circ-2">\frac{
+0+
+(1-0.808\sin28.44^\circ)
+}{2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kritisk-klareringstid">6. Kritisk klareringstid</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#t-cr">$
+t_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">$
+t_{cr}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resultat">Resultat</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beregning-av-de-seks-forste-tidsstegene">Beregning av de seks første tidsstegene</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-p-0">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">\frac{0+(1-0.808\sin28.44^\circ)}{2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1">Steg 1</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-1">$
+\Delta(\Delta\delta)_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.33(0.308)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-1">$
+\Delta\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">0+2.57</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-1">$
+\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">28.44+2.57</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-2">Steg 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-e">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-31-01-circ">0.808\sin(31.01^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1-0.416</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-2">$
+\Delta(\Delta\delta)_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">8.33(0.584)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-2">$
+\Delta\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.57+4.87</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-2">$
+\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">31.01+7.44</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-3">Steg 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-38-45-circ">0.808\sin(38.45^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-3">$
+\Delta(\Delta\delta)_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">8.33(0.498)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-3">$
+\Delta\delta_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">7.44+4.15</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-3">$
+\delta_3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-4">Steg 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-50-04-circ">0.808\sin(50.04^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-4">$
+\Delta(\Delta\delta)_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">8.33(0.381)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-4">$
+\Delta\delta_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">11.59+3.17</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-4">$
+\delta_4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-5">Steg 5</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-64-80-circ">0.808\sin(64.80^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-5">$
+\Delta(\Delta\delta)_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">8.33(0.269)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-5">$
+\Delta\delta_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">14.76+2.24</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-5">$
+\delta_5</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-6">Steg 6</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-81-80-circ">0.808\sin(81.80^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-delta-6">$
+\Delta(\Delta\delta)_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">8.33(0.200)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-delta-6">$
+\Delta\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">17.00+1.67</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-6">$
+\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-beregning-for-stabilt-tilfelle">Stevenson-beregning for stabilt tilfelle</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">$
+\frac{(\Delta t)^2}{M}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-t">$
+\Delta t</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">$
+\delta_0</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">Stevenson-tabell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tolkning">Tolkning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-max-delta-u">$
+\delta_{\max}
+&lt;
+\delta_u</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#de-seks-forste-tidsstegene-for-stabilt-tilfelle">De seks første tidsstegene for stabilt tilfelle</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">\frac{0+(1-0.808\sin28.44^\circ)}{2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">Steg 1</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">$
+\Delta(\Delta\delta)_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">8.33(0.308)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">$
+\Delta\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">0+2.57</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">$
+\delta_1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">28.44+2.57</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">Steg 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">0.808\sin(31.01^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">1-0.416</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">$
+\Delta(\Delta\delta)_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">8.33(0.584)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">$
+\Delta\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">2.57+4.87</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">$
+\delta_2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id57">31.01+7.44</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id58">Steg 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id59">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id60">0.808\sin(38.45^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id61">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id62">$
+\Delta(\Delta\delta)_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id63">8.33(0.498)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id64">$
+\Delta\delta_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id65">7.44+4.15</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id66">$
+\delta_3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id67">38.45+11.59</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id68">Steg 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id69">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id70">0.808\sin(50.04^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id71">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id72">$
+\Delta(\Delta\delta)_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id73">8.33(0.381)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id74">$
+\Delta\delta_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id75">11.59+3.17</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id76">$
+\delta_4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id77">50.04+14.76</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-5-etter-feilutkobling">Steg 5 (etter feilutkobling)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id78">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id79">1.50\sin(64.80^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id80">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id81">1-1.358</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id82">$
+\Delta(\Delta\delta)_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id83">8.33(-0.358)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id84">$
+\Delta\delta_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id85">14.76-2.98</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id86">$
+\delta_5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id87">64.80+11.78</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id88">Steg 6</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id89">$
+P_e</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-76-58-circ">1.50\sin(76.58^\circ)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id90">$
+\Delta P</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id91">1-1.458</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id92">$
+\Delta(\Delta\delta)_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id93">8.33(-0.458)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id94">$
+\Delta\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id95">11.78-3.81</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id96">$
+\delta_6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id97">76.58+7.97</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stevenson-beregning-for-stabilt-tilfelle-t-text-clear-0-20-s">Stevenson-beregning for stabilt tilfelle (<span class="math notranslate nohighlight">\(t_{\text{clear}}=0.20\)</span> s)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id98">$
+\delta_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sin-1-left-frac-1-2-10-right">\sin^{-1}!\left(\frac{1}{2.10}\right)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id99">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-0-left-1-0-808-sin28-44-circ-right-2">\frac{0+\left(1-0.808\sin28.44^\circ\right)}{2}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id100">$
+\Delta P_0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id101">\frac{0+\left(1-0.808\sin28.44^\circ\right)}{2}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viktig-observasjon">Viktig observasjon</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
