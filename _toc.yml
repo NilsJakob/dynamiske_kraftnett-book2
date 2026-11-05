@@ -89,6 +89,7 @@ parts:
       - file: 12_dynmod/equal_area
       - file: 12_dynmod/euler
       - file: 12_dynmod/ex_stevenson
+      - file: assignments/assignment9
       
 
   - caption: Referanser
