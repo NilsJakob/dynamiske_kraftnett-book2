@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Øving 9: Kritisk klareringstid (Stevenson-type med to-port-data) &#8212; Dynamiske kraftnett</title>
+    <title>Øving 9 &#8212; Dynamiske kraftnett</title>
   
   
   
@@ -70,6 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/assignment9';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="prev" title="Bestemmelse av \(\delta_{cr}\) og \(t_{cr}\) ved EAC og Stevenson" href="../12_dynmod/ex_stevenson.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,8 +133,6 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -273,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamisk modellering</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../12_dynmod/dynmod.html">Single Machine Infinite Bus (SMIB)</a></li>
 
 
@@ -307,6 +307,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Øving 9</a></li>
 
 
 </ul>
@@ -498,7 +501,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Øving 9: Kritisk klareringstid (Stevenson-type med to-port-data)</h1>
+    <h1>Øving 9</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -508,19 +511,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Øving 9</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losningsgrunnlag">Løsningsgrunnlag</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likearealkriteriet">Likearealkriteriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svingskurve">Svingskurve</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultatkontroll">Resultatkontroll</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svar">Svar</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -531,151 +530,171 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oving-9-kritisk-klareringstid-stevenson-type-med-to-port-data">
-<h1>Øving 9: Kritisk klareringstid (Stevenson-type med to-port-data)<a class="headerlink" href="#oving-9-kritisk-klareringstid-stevenson-type-med-to-port-data" title="Permalink to this heading">#</a></h1>
-<p>En synkrongenerator leverer effekt til et uendelig sterkt nett gjennom et transmisjonssystem. Generatoren representeres ved den klassiske modellen.</p>
-<section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<p>Generatorspenning bak transient reaktans:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="oving-9">
+<h1>Øving 9<a class="headerlink" href="#oving-9" title="Permalink to this heading">#</a></h1>
+<p>En generator som opererer ved 50 Hz leverer en mekanisk effekt på</p>
 <div class="math notranslate nohighlight">
 \[
-E' = 1.15\ pu
+P_m = 0.9 \text{ p.u.}
 \]</div>
-<p>Spenningen på det uendelig sterke nettet:</p>
+<p>til en uendelig sterk skinne gjennom et nett der resistansen kan neglisjeres.</p>
+<p>Før feilen er den maksimalt overførbare effekten</p>
 <div class="math notranslate nohighlight">
 \[
-V = 1.0\ pu
+P_{\max I}=1.6 \text{ p.u.}
 \]</div>
-<p>Transient reaktans:</p>
+<p>Under feilen reduseres den maksimalt overførbare effekten til</p>
 <div class="math notranslate nohighlight">
 \[
-X_d' = 0.25\ pu
+P_{\max II}=0.3 \text{ p.u.}
 \]</div>
-<p>Transmisjonslinjens reaktans:</p>
+<p>Etter at feilen er koblet ut, blir den maksimalt overførbare effekten</p>
 <div class="math notranslate nohighlight">
 \[
-X_L = 0.50\ pu
+P_{\max III}=1.2 \text{ p.u.}
 \]</div>
-<p>Mekanisk innmatet effekt:</p>
+<p>Generatorens treghetskonstant er</p>
 <div class="math notranslate nohighlight">
 \[
-P_m = 0.90\ pu
+H=3.0 \text{ p.u.}
 \]</div>
-<p>Treghetskonstant:</p>
+<p>Feilen kobles ut etter</p>
 <div class="math notranslate nohighlight">
 \[
-H = 5.0\ \text{MJ/MVA}
+t_c=0.15\text{ s}
 \]</div>
-<p>Frekvens:</p>
+<p>Bruk:</p>
+<ol class="arabic simple">
+<li><p>Likearealkriteriet til å bestemme den kritiske utkoblingsvinkelen.</p></li>
+<li><p>Punkt-til-punkt-metoden (step-by-step solution) til å beregne svingskurven.</p></li>
+</ol>
+<p>Bruk tidssteg</p>
 <div class="math notranslate nohighlight">
 \[
-f = 50\ \text{Hz}
+\Delta t=0.05\text{ s}
 \]</div>
-<p>En trefase kortslutning oppstår ved generatorens terminaler. Under feilen antas</p>
-<div class="math notranslate nohighlight">
-\[
-P_e = 0
-\]</div>
-<p>Feilen fjernes ved kritisk clearingtid.</p>
 </section>
 <hr class="docutils" />
-<section id="oppgaver">
-<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
-<section id="a">
-<h3>a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h3>
-<p>Finn den totale overføringsreaktansen</p>
-<div class="math notranslate nohighlight">
-\[
-X = X_d' + X_L
-\]</div>
-</section>
-<section id="b">
-<h3>b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h3>
-<p>Bestem maksimal overførbar effekt</p>
-<div class="math notranslate nohighlight">
-\[
-P_{\max}=\frac{E'V}{X}
-\]</div>
-</section>
-<section id="c">
-<h3>c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h3>
-<p>Bestem initial rotorvinkel</p>
+<section class="tex2jax_ignore mathjax_ignore" id="losningsgrunnlag">
+<h1>Løsningsgrunnlag<a class="headerlink" href="#losningsgrunnlag" title="Permalink to this heading">#</a></h1>
+<section id="likearealkriteriet">
+<h2>Likearealkriteriet<a class="headerlink" href="#likearealkriteriet" title="Permalink to this heading">#</a></h2>
+<p>Startvinkelen er</p>
 <div class="math notranslate nohighlight">
 \[
 \delta_0=
 \sin^{-1}
 \left(
-\frac{P_m}{P_{\max}}
+\frac{P_m}{P_{\max I}}
 \right)
 \]</div>
-</section>
-<section id="d">
-<h3>d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h3>
-<p>Bestem den kritiske clearingvinkelen ved hjelp av</p>
+<p>Maksimal rotorvinkel ved kritisk stabilitet er</p>
 <div class="math notranslate nohighlight">
 \[
-\delta_{cr}
+\delta_{\max}
 =
-\cos^{-1}
-\left[
-(\pi-2\delta_0)\sin\delta_0
--\cos\delta_0
-\right]
+180^\circ
+-
+\sin^{-1}
+\left(
+\frac{P_m}{P_{\max III}}
+\right)
 \]</div>
-</section>
-<section id="e">
-<h3>e)<a class="headerlink" href="#e" title="Permalink to this heading">#</a></h3>
-<p>Beregn den synkrone vinkelhastigheten</p>
+<p>Den kritiske utkoblingsvinkelen finnes fra</p>
 <div class="math notranslate nohighlight">
 \[
-\omega_s = 2\pi f
-\]</div>
-</section>
-<section id="f">
-<h3>f)<a class="headerlink" href="#f" title="Permalink to this heading">#</a></h3>
-<p>Beregn rotorakselerasjonen under feilen</p>
-<div class="math notranslate nohighlight">
-\[
-\alpha=
-\frac{\omega_s}{2H}P_m
-\]</div>
-</section>
-<section id="g">
-<h3>g)<a class="headerlink" href="#g" title="Permalink to this heading">#</a></h3>
-<p>Bestem den kritiske clearingtiden</p>
-<div class="math notranslate nohighlight">
-\[
-t_{cr}
+\cos \delta_{cr}
 =
-\sqrt{
-\frac{2(\delta_{cr}-\delta_0)}
-{\alpha}
+\frac{
+P_m(\delta_{\max}-\delta_0)
+-
+P_{\max II}\cos\delta_0
++
+P_{\max III}\cos\delta_{\max}
 }
+{
+P_{\max III}-P_{\max II}
+}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="svingskurve">
+<h2>Svingskurve<a class="headerlink" href="#svingskurve" title="Permalink to this heading">#</a></h2>
+<p>Bruk</p>
+<div class="math notranslate nohighlight">
+\[
+M
+=
+\frac{H}{180f}
+\]</div>
+<p>med</p>
+<div class="math notranslate nohighlight">
+\[
+f=50\text{ Hz}
+\]</div>
+<p>og beregn</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{(\Delta t)^2}{M}
+\]</div>
+<p>Den akselererende effekten under feilen er</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta P
+=
+P_m
+-
+P_{\max II}\sin\delta
+\]</div>
+<p>Etter feilutkobling er</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta P
+=
+P_m
+-
+P_{\max III}\sin\delta
+\]</div>
+<p>Rotorvinkelen beregnes trinnvis fra</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta\delta_n
+=
+\Delta\delta_{n-1}
++
+\frac{(\Delta t)^2}{M}
+\Delta P_{n-1}
+\]</div>
+<p>og</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_n
+=
+\delta_{n-1}
++
+\Delta\delta_n
 \]</div>
 </section>
 </section>
 <hr class="docutils" />
-<section id="resultatkontroll">
-<h2>Resultatkontroll<a class="headerlink" href="#resultatkontroll" title="Permalink to this heading">#</a></h2>
-<p>Hvis beregningene er riktige, skal du få omtrent:</p>
+<section class="tex2jax_ignore mathjax_ignore" id="svar">
+<h1>Svar<a class="headerlink" href="#svar" title="Permalink to this heading">#</a></h1>
+<p>Kontroller at du finner omtrent</p>
 <div class="math notranslate nohighlight">
 \[
-P_{\max}\approx 1.53\ pu
+\delta_0 \approx 34.2^\circ
 \]</div>
+<p>og</p>
 <div class="math notranslate nohighlight">
 \[
-\delta_0\approx 36^\circ
+\delta_{\max} \approx 131.4^\circ
 \]</div>
+<p>Før du fortsetter beregningen av</p>
 <div class="math notranslate nohighlight">
 \[
-\delta_{cr}\approx 73^\circ
+\delta_{cr}
 \]</div>
-<div class="math notranslate nohighlight">
-\[
-t_{cr}\approx 0.21\ s
-\]</div>
-<p><em>(Oppgitt kun som kontroll av mellom- og sluttsvar.)</em></p>
-</section>
+<p>og svingskurven.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -708,6 +727,24 @@ t_{cr}\approx 0.21\ s
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../12_dynmod/ex_stevenson.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referanser</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -724,19 +761,15 @@ t_{cr}\approx 0.21\ s
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e">e)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f">f)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g">g)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Øving 9</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losningsgrunnlag">Løsningsgrunnlag</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likearealkriteriet">Likearealkriteriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svingskurve">Svingskurve</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultatkontroll">Resultatkontroll</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svar">Svar</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
