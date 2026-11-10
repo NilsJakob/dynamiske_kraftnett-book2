@@ -1,0 +1,1073 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Løsningsforslag – Øving 9 &#8212; Dynamiske kraftnett</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/override.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/override-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/assignment9solution';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Referanser" href="../references.html" />
+    <link rel="prev" title="Øving 9" href="assignment9.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dynamiske kraftnett</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Velkommen til boken om dynamiske kraftnett
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Forord</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/practical.html">Praktisk info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/author.html">Om meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/contacts.html">Kontakt meg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/idea330.html">Fra idé til ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/literature.html">Støttelitteratur ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_forord/timetable.html">Timeplan ELK330</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduksjon</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/digital.html">Digitalisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/about330.html">Om ELK330</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/jupyter_book.html">Jupyter Bok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Øving 1: Opprett GitHub-repo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tallgrunnlag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/repo.html">Hva er versjonskontroll?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="assignment2.html">Øving 2: Klon Git-repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_tallgrunnlag/pd.read.html">pd.read()</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tallbehandling.html">Tallbehandling i pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="assignment3.html">Øving 3: Analyser, lagre og versjonskontroller data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/tidsstruktur.html">Tidsstruktur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment4.html">Øving 4: DateTimeIndex</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representativ dag</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/repr_dag.html">Data og modeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_reprdag/treffsikkerhet.html">Modell treffsikkerhet</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="assignment5.html">Øving 5: Modellering med Gauss</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrering av fornybar energi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/int_IBR.html">Integrering av fornybar energi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_modellering/ppow_solar.html">Soldata</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="assignment6.html">Øving 6: Modellering av soldata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application Programming Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07_api/API_SSB_tabell.html">Application Programming Interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Power Factory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/about_pf.html">Om Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/license_pf.html">Vår lisens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/install_pf_no.html">Installasjonsveiledning for PowerFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB1.html">LAB 1</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/start_pf.html">Oppstart Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_powerfactory/modelling_pf.html">Modellering i Power Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB2.html">LAB 2: Lastflyt- og kortslutningsanalyse i PowerFactory</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB3.html">LAB3: Early Stage Assessment – Individuelt prosjektforslag</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Stabilitet</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stability.html">Stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/stabilityclass.html">Klassifisering av stabilitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_stabilityclass/swingequation.html">Svingeligning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB4.html">LAB4  – Prosjektoppstart og prosjektplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment7.html">Øving 7 – Beregning av elektromekaniske konstanter</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lastflytanalyse</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LAB/LAB5.html">Lab5: Lastflyt i et enkelt kraftsystem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamisk modellering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12_dynmod/dynmod.html">Single Machine Infinite Bus (SMIB)</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../12_dynmod/dynmod_notes.html">Finne kraftvinkel</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="assignment8.html">Øving 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment8solution.html">Løsningsforslag – Øving 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_dynmod/equal_area.html">Likevektsarealkriteriet - Equal Area Criterion</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../12_dynmod/euler.html">Euler-metoden</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../12_dynmod/ex_stevenson.html">Bestemmelse av <span class="math notranslate nohighlight">\(\delta_{cr}\)</span> og <span class="math notranslate nohighlight">\(t_{cr}\)</span> ved EAC og Stevenson</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="assignment9.html">Øving 9</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Løsningsforslag – Øving 9</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referanser</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Referanser</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NilsJakob/dynamiske_kraftnett-book2/issues/new?title=Issue%20on%20page%20%2Fassignments/assignment9solution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/assignments/assignment9solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Løsningsforslag – Øving 9</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likearealkriteriet">1. Likearealkriteriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifisert-eulers-leapfrog-metode">Modifisert Eulers leapfrog metode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-0-t-0-00-s">Steg 0 (<span class="math notranslate nohighlight">\(t=0{,}00\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1-t-0-05-s">Steg 1 (<span class="math notranslate nohighlight">\(t=0{,}05\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-2-t-0-10-s">Steg 2 (<span class="math notranslate nohighlight">\(t=0{,}10\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-3-t-0-15-s">Steg 3 (<span class="math notranslate nohighlight">\(t=0{,}15\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell">Tabell</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="losningsforslag-oving-9">
+<h1>Løsningsforslag – Øving 9<a class="headerlink" href="#losningsforslag-oving-9" title="Permalink to this heading">#</a></h1>
+<p>Gitte verdier:</p>
+<div class="math notranslate nohighlight">
+\[
+P_m=0{,}9\ \text{p.u.},\quad
+P_{\max I}=1{,}6\ \text{p.u.},\quad
+P_{\max II}=0{,}3\ \text{p.u.},\quad
+P_{\max III}=1{,}2\ \text{p.u.}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H=3{,}0\ \text{s},\qquad
+f=50\ \text{Hz},\qquad
+t_c=0{,}15\ \text{s},\qquad
+\Delta t=0{,}05\ \text{s}.
+\]</div>
+<p><img alt="Kraftsystemligning" src="../_images/LectureNoteEACass9no1.jpg" /></p>
+<section id="likearealkriteriet">
+<h2>1. Likearealkriteriet<a class="headerlink" href="#likearealkriteriet" title="Permalink to this heading">#</a></h2>
+<p>Startvinkelen før feilen er</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0
+=\sin^{-1}\left(\frac{P_m}{P_{\max I}}\right)
+=\sin^{-1}\left(\frac{0{,}9}{1{,}6}\right)
+\approx\boxed{34{,}23^\circ}.
+\]</div>
+<p>Den maksimale rotorvinkelen etter feilutkobling er</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\delta_{\max}
+&amp;=180^\circ-\sin^{-1}\left(\frac{P_m}{P_{\max III}}\right)\\
+&amp;=180^\circ-\sin^{-1}\left(\frac{0{,}9}{1{,}2}\right)\\
+&amp;\approx\boxed{131{,}41^\circ}.
+\end{aligned}
+\end{split}\]</div>
+<p>Vinkeldifferansen i telleren må settes inn i radianer:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{\max}-\delta_0
+=(131{,}41^\circ-34{,}23^\circ)\frac{\pi}{180}
+\approx1{,}6961\ \text{rad}.
+\]</div>
+<p>Lik-arealkriteriet gir</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\cos\delta_{\mathrm{cr}}
+&amp;=
+\frac{
+P_m(\delta_{\max}-\delta_0)
+-P_{\max II}\cos\delta_0
++P_{\max III}\cos\delta_{\max}
+}{
+P_{\max III}-P_{\max II}
+}\\
+&amp;=
+\frac{
+0{,}9(1{,}6961)
+-0{,}3\cos(34{,}23^\circ)
++1{,}2\cos(131{,}41^\circ)
+}{
+1{,}2-0{,}3
+}\\
+&amp;\approx0{,}5386.
+\end{aligned}
+\end{split}\]</div>
+<p>Dermed blir den kritiske utkoblingsvinkelen</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\delta_{\mathrm{cr}}
+=\cos^{-1}(0{,}5386)
+\approx57{,}42^\circ.
+}
+\]</div>
+<p><img alt="Kraftsystemligning" src="images/LectureNoteEACass9no2.jpg" /></p>
+<p><img alt="Kraftsystemligning" src="../_images/LectureNoteEACass9no3.jpg" /></p>
+</section>
+<section id="modifisert-eulers-leapfrog-metode">
+<h2>Modifisert Eulers leapfrog metode<a class="headerlink" href="#modifisert-eulers-leapfrog-metode" title="Permalink to this heading">#</a></h2>
+<p>Data:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_0=34{,}23^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_m=0{,}9,\qquad P_{e}=0{,}3\sin\delta
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+M=\frac{H}{180f}
+=\frac{3}{180\cdot50}
+=\frac{1}{3000}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta t=0{,}05\ \text{s}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\Delta t^2}{M}
+=\frac{0{,}05^2}{1/3000}
+=7{,}5
+\]</div>
+<section id="steg-0-t-0-00-s">
+<h3>Steg 0 (<span class="math notranslate nohighlight">\(t=0{,}00\)</span> s)<a class="headerlink" href="#steg-0-t-0-00-s" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P_{e,0}=0{,}3\sin(34{,}23^\circ)
+\approx0{,}169
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta P_0=0{,}9-0{,}169
+\approx0{,}731
+\]</div>
+<p>Ved oppstart brukes middelverdien mellom null og den første akselererende effekten:</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{\Delta P}_0
+=\frac{0+0{,}731}{2}
+\approx0{,}366
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta_0=34{,}23^\circ
+\]</div>
+</section>
+<section id="steg-1-t-0-05-s">
+<h3>Steg 1 (<span class="math notranslate nohighlight">\(t=0{,}05\)</span> s)<a class="headerlink" href="#steg-1-t-0-05-s" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\Delta(\Delta\delta)_1
+=7{,}5(0{,}366)
+\approx2{,}74^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta\delta_1=0+2{,}74
+=2{,}74^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta_1=34{,}23+2{,}74
+\approx36{,}97^\circ
+\]</div>
+</section>
+<section id="steg-2-t-0-10-s">
+<h3>Steg 2 (<span class="math notranslate nohighlight">\(t=0{,}10\)</span> s)<a class="headerlink" href="#steg-2-t-0-10-s" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P_{e,1}=0{,}3\sin(36{,}97^\circ)
+\approx0{,}180
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta P_1=0{,}9-0{,}180
+\approx0{,}720
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta(\Delta\delta)_2=7{,}5(0{,}720)
+\approx5{,}40^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta\delta_2=2{,}74+5{,}40
+\approx8{,}14^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta_2=36{,}97+8{,}14
+\approx45{,}11^\circ
+\]</div>
+</section>
+<section id="steg-3-t-0-15-s">
+<h3>Steg 3 (<span class="math notranslate nohighlight">\(t=0{,}15\)</span> s)<a class="headerlink" href="#steg-3-t-0-15-s" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P_{e,2}=0{,}3\sin(45{,}11^\circ)
+\approx0{,}213
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta P_2=0{,}9-0{,}213
+\approx0{,}687
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta(\Delta\delta)_3=7{,}5(0{,}687)
+\approx5{,}16^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta\delta_3=8{,}14+5{,}16
+\approx13{,}30^\circ
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta_3=45{,}11+13{,}30
+\approx58{,}41^\circ
+\]</div>
+</section>
+<section id="oppsummering">
+<h3>Oppsummering<a class="headerlink" href="#oppsummering" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c}
+\text{Steg} &amp; t\;(\text{s}) &amp; \delta\;(^\circ)\\
+\hline
+0 &amp; 0{,}00 &amp; 34{,}23\\
+1 &amp; 0{,}05 &amp; 36{,}97\\
+2 &amp; 0{,}10 &amp; 45{,}11\\
+3 &amp; 0{,}15 &amp; 58{,}41
+\end{array}
+\end{split}\]</div>
+<p>Den kritiske utkoblingsvinkelen er</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{\mathrm{cr}}\approx57{,}42^\circ.
+\]</div>
+<p>Den ligger mellom <span class="math notranslate nohighlight">\(\delta_2\)</span> og <span class="math notranslate nohighlight">\(\delta_3\)</span>. Lineær interpolasjon gir</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+t_{\mathrm{cr}}
+&amp;=0{,}10+
+\frac{57{,}42-45{,}11}{58{,}41-45{,}11}(0{,}05)\\
+&amp;\approx0{,}146\ \text{s}.
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{t_{\mathrm{cr}}\approx0{,}15\ \text{s}}
+\]</div>
+<p>Utkoblingstiden <span class="math notranslate nohighlight">\(t_c=0{,}15\)</span> s er litt større enn det interpolerte estimatet <span class="math notranslate nohighlight">\(t_{\mathrm{cr}}\approx0{,}146\)</span> s.</p>
+</section>
+</section>
+<section id="tabell">
+<h2>Tabell<a class="headerlink" href="#tabell" title="Permalink to this heading">#</a></h2>
+<p>Før utkobling brukes <span class="math notranslate nohighlight">\(P_{\max}=P_{\max II}=0{,}3\)</span> p.u.
+Etter utkobling brukes <span class="math notranslate nohighlight">\(P_{\max}=P_{\max III}=1{,}2\)</span> p.u.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Steg n</p></th>
+<th class="head text-right"><p>Tid t_n [s]</p></th>
+<th class="head"><p>Tilstand</p></th>
+<th class="head text-right"><p>\Delta P_{n-1} [p.u.]</p></th>
+<th class="head text-right"><p>\Delta(\Delta\delta)_n</p></th>
+<th class="head text-right"><p>\Delta\delta_n} [°]</p></th>
+<th class="head text-right"><p>\delta_n [°]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0,00</p></td>
+<td><p>Før feil</p></td>
+<td class="text-right"><p>—</p></td>
+<td class="text-right"><p>—</p></td>
+<td class="text-right"><p>0,00</p></td>
+<td class="text-right"><p>34,23</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0,05</p></td>
+<td><p>Under feil</p></td>
+<td class="text-right"><p>0,7313</p></td>
+<td class="text-right"><p>5,48</p></td>
+<td class="text-right"><p>5,48</p></td>
+<td class="text-right"><p>39,71</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0,10</p></td>
+<td><p>Under feil</p></td>
+<td class="text-right"><p>0,7083</p></td>
+<td class="text-right"><p>5,31</p></td>
+<td class="text-right"><p>10,80</p></td>
+<td class="text-right"><p>50,51</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0,15</p></td>
+<td><p>Under feil</p></td>
+<td class="text-right"><p>0,6685</p></td>
+<td class="text-right"><p>5,01</p></td>
+<td class="text-right"><p>15,81</p></td>
+<td class="text-right"><p>66,32</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>4</p></td>
+<td class="text-right"><p>0,20</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,1990}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-1,49}\)</span></p></td>
+<td class="text-right"><p>14,32</p></td>
+<td class="text-right"><p>80,64</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>5</p></td>
+<td class="text-right"><p>0,25</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,2840}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-2,13}\)</span></p></td>
+<td class="text-right"><p>12,19</p></td>
+<td class="text-right"><p>92,83</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>6</p></td>
+<td class="text-right"><p>0,30</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,2985}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-2,24}\)</span></p></td>
+<td class="text-right"><p>9,95</p></td>
+<td class="text-right"><p>102,78</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>7</p></td>
+<td class="text-right"><p>0,35</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,2703}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-2,03}\)</span></p></td>
+<td class="text-right"><p>7,92</p></td>
+<td class="text-right"><p>110,70</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>8</p></td>
+<td class="text-right"><p>0,40</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,2224}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-1,67}\)</span></p></td>
+<td class="text-right"><p>6,25</p></td>
+<td class="text-right"><p>116,95</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>9</p></td>
+<td class="text-right"><p>0,45</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,1701}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-1,28}\)</span></p></td>
+<td class="text-right"><p>4,98</p></td>
+<td class="text-right"><p>121,93</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>10</p></td>
+<td class="text-right"><p>0,50</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,1182}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,89}\)</span></p></td>
+<td class="text-right"><p>4,09</p></td>
+<td class="text-right"><p>126,02</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>11</p></td>
+<td class="text-right"><p>0,55</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,0707}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,53}\)</span></p></td>
+<td class="text-right"><p>3,56</p></td>
+<td class="text-right"><p>129,58</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>12</p></td>
+<td class="text-right"><p>0,60</p></td>
+<td><p>Etter feil</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,0250}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\({-0,19}\)</span></p></td>
+<td class="text-right"><p>3,37</p></td>
+<td class="text-right"><p>132,95</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ved utkoblingstidspunktet <span class="math notranslate nohighlight">\(t_c=0{,}15\)</span> s er rotorvinkelen omtrent</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t_c)\approx66{,}32^\circ.
+\]</div>
+<p>Siden</p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t_c)&gt;\delta_{\mathrm{cr}}
+\qquad
+(66{,}32^\circ&gt;57{,}42^\circ),
+\]</div>
+<p>er feilen koblet ut for sent til at systemet er transient stabilt etter denne beregningen. Etter feilutkobling fortsetter rotorvinkelen å øke og passerer <span class="math notranslate nohighlight">\(\delta_{\max}\approx131{,}41^\circ\)</span>.</p>
+<p>En lineær interpolasjon mellom <span class="math notranslate nohighlight">\(t=0{,}10\)</span> s og <span class="math notranslate nohighlight">\(t=0{,}15\)</span> s gir et estimat for kritisk utkoblingstid:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+t_{\mathrm{cr}}
+&amp;\approx0{,}10+
+\frac{57{,}42-50{,}51}{66{,}32-50{,}51}(0{,}05)\\
+&amp;\approx\boxed{0{,}122\ \text{s}}.
+\end{aligned}
+\end{split}\]</div>
+<p>Dermed er den oppgitte utkoblingstiden <span class="math notranslate nohighlight">\(0{,}15\)</span> s større enn estimert kritisk utkoblingstid.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># Svingeligning for rotorvinkel i grader</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">M</span> <span class="o">=</span> <span class="n">H</span> <span class="o">/</span> <span class="p">(</span><span class="mi">180</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">delta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">Pm</span> <span class="o">/</span> <span class="n">Pmax_I</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">t_end</span> <span class="o">=</span> <span class="mf">1.2</span>
+
+<span class="ne">NameError</span>: name 'Pmax_I' is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./assignments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="assignment9.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Øving 9</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referanser</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likearealkriteriet">1. Likearealkriteriet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifisert-eulers-leapfrog-metode">Modifisert Eulers leapfrog metode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-0-t-0-00-s">Steg 0 (<span class="math notranslate nohighlight">\(t=0{,}00\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1-t-0-05-s">Steg 1 (<span class="math notranslate nohighlight">\(t=0{,}05\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-2-t-0-10-s">Steg 2 (<span class="math notranslate nohighlight">\(t=0{,}10\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-3-t-0-15-s">Steg 3 (<span class="math notranslate nohighlight">\(t=0{,}15\)</span> s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabell">Tabell</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nils Jakob Johannesen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
