@@ -91,6 +91,7 @@ parts:
       - file: 12_dynmod/euler
       - file: 12_dynmod/ex_stevenson
       - file: assignments/assignment9
+      - file: assignments/assignment9solution
       
 
   - caption: Referanser
